@@ -11,6 +11,12 @@
 		3B3DD0E3213AE1CC00FD00B3 /* MainSecondCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */; };
 		3B3DD0E5213AE1D900FD00B3 /* MainThirdTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */; };
 		3B3DD0E7213AE1E300FD00B3 /* MainThirdCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E6213AE1E300FD00B3 /* MainThirdCVCell.swift */; };
+		3B3DD0F1213B28A600FD00B3 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3DD0F0213B28A600FD00B3 /* Category.storyboard */; };
+		3B3DD0F3213B2BC900FD00B3 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0F2213B2BC900FD00B3 /* CategoryVC.swift */; };
+		3B3DD0F8213B2FAC00FD00B3 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0F7213B2FAC00FD00B3 /* Storyboard.swift */; };
+		3B3DD0FA213B314A00FD00B3 /* CelebrityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0F9213B314A00FD00B3 /* CelebrityVC.swift */; };
+		3B3DD0FC213B318E00FD00B3 /* BroadcastVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0FB213B318E00FD00B3 /* BroadcastVC.swift */; };
+		3B3DD0FE213B328E00FD00B3 /* EventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0FD213B328E00FD00B3 /* EventVC.swift */; };
 		3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D462139262800FFF08C /* AppDelegate.swift */; };
 		3BBF8D492139262800FFF08C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D482139262800FFF08C /* ViewController.swift */; };
 		3BBF8D4C2139262800FFF08C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF8D4A2139262800FFF08C /* Main.storyboard */; };
@@ -28,6 +34,12 @@
 		3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondCVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThirdTVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E6213AE1E300FD00B3 /* MainThirdCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThirdCVCell.swift; sourceTree = "<group>"; };
+		3B3DD0F0213B28A600FD00B3 /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
+		3B3DD0F2213B2BC900FD00B3 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
+		3B3DD0F7213B2FAC00FD00B3 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		3B3DD0F9213B314A00FD00B3 /* CelebrityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrityVC.swift; sourceTree = "<group>"; };
+		3B3DD0FB213B318E00FD00B3 /* BroadcastVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastVC.swift; sourceTree = "<group>"; };
+		3B3DD0FD213B328E00FD00B3 /* EventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVC.swift; sourceTree = "<group>"; };
 		3BBF8D432139262800FFF08C /* KSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBF8D462139262800FFF08C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBF8D482139262800FFF08C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +68,8 @@
 		3B3DD0E8213AE29D00FD00B3 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				3BBF8D62213936F000FFF08C /* MainVC */,
+				3B3DD0F6213B2E5600FD00B3 /* Category */,
+				3BBF8D62213936F000FFF08C /* Main */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -74,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				3BBF8D4A2139262800FFF08C /* Main.storyboard */,
+				3B3DD0F0213B28A600FD00B3 /* Category.storyboard */,
 				3BBF8D4F2139262800FFF08C /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
@@ -99,8 +113,20 @@
 			isa = PBXGroup;
 			children = (
 				3BBF8D60213935D300FFF08C /* ColorChip.swift */,
+				3B3DD0F7213B2FAC00FD00B3 /* Storyboard.swift */,
 			);
 			path = Singleton;
+			sourceTree = "<group>";
+		};
+		3B3DD0F6213B2E5600FD00B3 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				3B3DD0F2213B2BC900FD00B3 /* CategoryVC.swift */,
+				3B3DD0F9213B314A00FD00B3 /* CelebrityVC.swift */,
+				3B3DD0FB213B318E00FD00B3 /* BroadcastVC.swift */,
+				3B3DD0FD213B328E00FD00B3 /* EventVC.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		3BBF8D3A2139262800FFF08C = {
@@ -133,7 +159,7 @@
 			path = KSpot;
 			sourceTree = "<group>";
 		};
-		3BBF8D62213936F000FFF08C /* MainVC */ = {
+		3BBF8D62213936F000FFF08C /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				3BBF8D582139293600FFF08C /* MainViewController.swift */,
@@ -141,7 +167,7 @@
 				3BBF8D642139370A00FFF08C /* SecondSection */,
 				3BBF8D632139370600FFF08C /* ThirdSection */,
 			);
-			path = MainVC;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		3BBF8D632139370600FFF08C /* ThirdSection */ = {
@@ -230,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B3DD0F1213B28A600FD00B3 /* Category.storyboard in Resources */,
 				3BBF8D512139262800FFF08C /* LaunchScreen.storyboard in Resources */,
 				3BBF8D4E2139262800FFF08C /* Assets.xcassets in Resources */,
 				3BBF8D4C2139262800FFF08C /* Main.storyboard in Resources */,
@@ -245,12 +272,17 @@
 			files = (
 				3BBF8D5D21392A9500FFF08C /* MainFirstTVCell.swift in Sources */,
 				3BBF8D592139293600FFF08C /* MainViewController.swift in Sources */,
+				3B3DD0FC213B318E00FD00B3 /* BroadcastVC.swift in Sources */,
+				3B3DD0FE213B328E00FD00B3 /* EventVC.swift in Sources */,
 				3BBF8D492139262800FFF08C /* ViewController.swift in Sources */,
 				3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */,
+				3B3DD0F8213B2FAC00FD00B3 /* Storyboard.swift in Sources */,
 				3B3DD0E7213AE1E300FD00B3 /* MainThirdCVCell.swift in Sources */,
 				3B3DD0E1213AE1C200FD00B3 /* MainSecondTVCell.swift in Sources */,
+				3B3DD0F3213B2BC900FD00B3 /* CategoryVC.swift in Sources */,
 				3BBF8D5F21392D3E00FFF08C /* MainFirstCVCell.swift in Sources */,
 				3BBF8D5B21392A0D00FFF08C /* Extensions.swift in Sources */,
+				3B3DD0FA213B314A00FD00B3 /* CelebrityVC.swift in Sources */,
 				3BBF8D61213935D300FFF08C /* ColorChip.swift in Sources */,
 				3B3DD0E5213AE1D900FD00B3 /* MainThirdTVCell.swift in Sources */,
 				3B3DD0E3213AE1CC00FD00B3 /* MainSecondCVCell.swift in Sources */,
@@ -391,6 +423,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y4XABUQ539;
 				INFOPLIST_FILE = KSpot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kangsujin.KSpot;
@@ -405,6 +438,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y4XABUQ539;
 				INFOPLIST_FILE = KSpot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kangsujin.KSpot;
