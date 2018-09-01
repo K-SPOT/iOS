@@ -22,7 +22,7 @@ class MainFirstTVCell: UITableViewCell {
         pageControl.numberOfPages = sunglassArr.count
         pageControl.pageIndicatorTintColor = #colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1)
         pageControl.currentPageIndicatorTintColor = ColorChip.shared().mainColor
-        // Initialization code
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -47,6 +47,8 @@ extension MainFirstTVCell : UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sunglassArr.count
     }
+    
+   
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
