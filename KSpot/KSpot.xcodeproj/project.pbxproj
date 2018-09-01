@@ -18,6 +18,11 @@
 		3B3DD0FC213B318E00FD00B3 /* BroadcastVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0FB213B318E00FD00B3 /* BroadcastVC.swift */; };
 		3B3DD0FE213B328E00FD00B3 /* EventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0FD213B328E00FD00B3 /* EventVC.swift */; };
 		3B3DD103213B3C5000FD00B3 /* CelebrityTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD102213B3C5000FD00B3 /* CelebrityTVCell.swift */; };
+		3B3DD10B213B408000FD00B3 /* NanumSquareOTFBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3DD106213B400900FD00B3 /* NanumSquareOTFBold.otf */; };
+		3B3DD10C213B408200FD00B3 /* NanumSquareOTFExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3DD109213B400A00FD00B3 /* NanumSquareOTFExtraBold.otf */; };
+		3B3DD10D213B408500FD00B3 /* NanumSquareOTFLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3DD108213B400900FD00B3 /* NanumSquareOTFLight.otf */; };
+		3B3DD10E213B408700FD00B3 /* NanumSquareOTFRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3DD107213B400900FD00B3 /* NanumSquareOTFRegular.otf */; };
+		3B3DD10F213B408900FD00B3 /* BMJUA_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B3DD10A213B406E00FD00B3 /* BMJUA_otf.otf */; };
 		3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D462139262800FFF08C /* AppDelegate.swift */; };
 		3BBF8D492139262800FFF08C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D482139262800FFF08C /* ViewController.swift */; };
 		3BBF8D4C2139262800FFF08C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF8D4A2139262800FFF08C /* Main.storyboard */; };
@@ -42,6 +47,11 @@
 		3B3DD0FB213B318E00FD00B3 /* BroadcastVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastVC.swift; sourceTree = "<group>"; };
 		3B3DD0FD213B328E00FD00B3 /* EventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVC.swift; sourceTree = "<group>"; };
 		3B3DD102213B3C5000FD00B3 /* CelebrityTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrityTVCell.swift; sourceTree = "<group>"; };
+		3B3DD106213B400900FD00B3 /* NanumSquareOTFBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareOTFBold.otf; sourceTree = "<group>"; };
+		3B3DD107213B400900FD00B3 /* NanumSquareOTFRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareOTFRegular.otf; sourceTree = "<group>"; };
+		3B3DD108213B400900FD00B3 /* NanumSquareOTFLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareOTFLight.otf; sourceTree = "<group>"; };
+		3B3DD109213B400A00FD00B3 /* NanumSquareOTFExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareOTFExtraBold.otf; sourceTree = "<group>"; };
+		3B3DD10A213B406E00FD00B3 /* BMJUA_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMJUA_otf.otf; sourceTree = "<group>"; };
 		3BBF8D432139262800FFF08C /* KSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBF8D462139262800FFF08C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBF8D482139262800FFF08C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +166,26 @@
 			path = Celebrity;
 			sourceTree = "<group>";
 		};
+		3B3DD104213B3F4D00FD00B3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3B3DD105213B3F5400FD00B3 /* Font */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3B3DD105213B3F5400FD00B3 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				3B3DD106213B400900FD00B3 /* NanumSquareOTFBold.otf */,
+				3B3DD109213B400A00FD00B3 /* NanumSquareOTFExtraBold.otf */,
+				3B3DD108213B400900FD00B3 /* NanumSquareOTFLight.otf */,
+				3B3DD107213B400900FD00B3 /* NanumSquareOTFRegular.otf */,
+				3B3DD10A213B406E00FD00B3 /* BMJUA_otf.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		3BBF8D3A2139262800FFF08C = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +205,7 @@
 		3BBF8D452139262800FFF08C /* KSpot */ = {
 			isa = PBXGroup;
 			children = (
+				3B3DD104213B3F4D00FD00B3 /* Resources */,
 				3BBF8D462139262800FFF08C /* AppDelegate.swift */,
 				3BBF8D482139262800FFF08C /* ViewController.swift */,
 				3B3DD0EA213AE2AF00FD00B3 /* Storyboard */,
@@ -283,9 +314,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B3DD10B213B408000FD00B3 /* NanumSquareOTFBold.otf in Resources */,
 				3B3DD0F1213B28A600FD00B3 /* Category.storyboard in Resources */,
+				3B3DD10C213B408200FD00B3 /* NanumSquareOTFExtraBold.otf in Resources */,
+				3B3DD10E213B408700FD00B3 /* NanumSquareOTFRegular.otf in Resources */,
+				3B3DD10D213B408500FD00B3 /* NanumSquareOTFLight.otf in Resources */,
 				3BBF8D512139262800FFF08C /* LaunchScreen.storyboard in Resources */,
 				3BBF8D4E2139262800FFF08C /* Assets.xcassets in Resources */,
+				3B3DD10F213B408900FD00B3 /* BMJUA_otf.otf in Resources */,
 				3BBF8D4C2139262800FFF08C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
