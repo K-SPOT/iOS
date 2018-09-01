@@ -17,6 +17,7 @@
 		3B3DD0FA213B314A00FD00B3 /* CelebrityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0F9213B314A00FD00B3 /* CelebrityVC.swift */; };
 		3B3DD0FC213B318E00FD00B3 /* BroadcastVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0FB213B318E00FD00B3 /* BroadcastVC.swift */; };
 		3B3DD0FE213B328E00FD00B3 /* EventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0FD213B328E00FD00B3 /* EventVC.swift */; };
+		3B3DD103213B3C5000FD00B3 /* CelebrityTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD102213B3C5000FD00B3 /* CelebrityTVCell.swift */; };
 		3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D462139262800FFF08C /* AppDelegate.swift */; };
 		3BBF8D492139262800FFF08C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D482139262800FFF08C /* ViewController.swift */; };
 		3BBF8D4C2139262800FFF08C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF8D4A2139262800FFF08C /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 		3B3DD0F9213B314A00FD00B3 /* CelebrityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrityVC.swift; sourceTree = "<group>"; };
 		3B3DD0FB213B318E00FD00B3 /* BroadcastVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastVC.swift; sourceTree = "<group>"; };
 		3B3DD0FD213B328E00FD00B3 /* EventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVC.swift; sourceTree = "<group>"; };
+		3B3DD102213B3C5000FD00B3 /* CelebrityTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrityTVCell.swift; sourceTree = "<group>"; };
 		3BBF8D432139262800FFF08C /* KSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBF8D462139262800FFF08C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBF8D482139262800FFF08C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,8 +70,8 @@
 		3B3DD0E8213AE29D00FD00B3 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				3B3DD0F6213B2E5600FD00B3 /* Category */,
 				3BBF8D62213936F000FFF08C /* Main */,
+				3B3DD0F6213B2E5600FD00B3 /* Category */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -122,11 +124,36 @@
 			isa = PBXGroup;
 			children = (
 				3B3DD0F2213B2BC900FD00B3 /* CategoryVC.swift */,
-				3B3DD0F9213B314A00FD00B3 /* CelebrityVC.swift */,
-				3B3DD0FB213B318E00FD00B3 /* BroadcastVC.swift */,
-				3B3DD0FD213B328E00FD00B3 /* EventVC.swift */,
+				3B3DD101213B3BF700FD00B3 /* Celebrity */,
+				3B3DD100213B3BF600FD00B3 /* Event */,
+				3B3DD0FF213B3BF400FD00B3 /* Broadcast */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		3B3DD0FF213B3BF400FD00B3 /* Broadcast */ = {
+			isa = PBXGroup;
+			children = (
+				3B3DD0FB213B318E00FD00B3 /* BroadcastVC.swift */,
+			);
+			path = Broadcast;
+			sourceTree = "<group>";
+		};
+		3B3DD100213B3BF600FD00B3 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				3B3DD0FD213B328E00FD00B3 /* EventVC.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		3B3DD101213B3BF700FD00B3 /* Celebrity */ = {
+			isa = PBXGroup;
+			children = (
+				3B3DD0F9213B314A00FD00B3 /* CelebrityVC.swift */,
+				3B3DD102213B3C5000FD00B3 /* CelebrityTVCell.swift */,
+			);
+			path = Celebrity;
 			sourceTree = "<group>";
 		};
 		3BBF8D3A2139262800FFF08C = {
@@ -282,6 +309,7 @@
 				3B3DD0F3213B2BC900FD00B3 /* CategoryVC.swift in Sources */,
 				3BBF8D5F21392D3E00FFF08C /* MainFirstCVCell.swift in Sources */,
 				3BBF8D5B21392A0D00FFF08C /* Extensions.swift in Sources */,
+				3B3DD103213B3C5000FD00B3 /* CelebrityTVCell.swift in Sources */,
 				3B3DD0FA213B314A00FD00B3 /* CelebrityVC.swift in Sources */,
 				3BBF8D61213935D300FFF08C /* ColorChip.swift in Sources */,
 				3B3DD0E5213AE1D900FD00B3 /* MainThirdTVCell.swift in Sources */,
