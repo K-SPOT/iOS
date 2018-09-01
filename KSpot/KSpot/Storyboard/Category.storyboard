@@ -100,11 +100,22 @@
                                     <constraint firstItem="rjg-jO-3IV" firstAttribute="centerY" secondItem="D1t-fX-Frm" secondAttribute="centerY" id="zyR-jK-4ek"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="toj-1L-edV">
+                                <rect key="frame" x="127.5" y="562" width="119" height="61"/>
+                                <color key="backgroundColor" red="0.97957645939086291" green="0.89972055490065672" blue="0.81310361807554443" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="mft-E5-rAc"/>
+                                    <constraint firstAttribute="width" constant="119" id="rGQ-dE-dbh"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="toj-1L-edV" firstAttribute="centerX" secondItem="j9D-rF-wLf" secondAttribute="centerX" id="8Wv-cr-YQF"/>
                             <constraint firstItem="YLT-kX-336" firstAttribute="top" secondItem="j9D-rF-wLf" secondAttribute="top" id="HQY-fy-LRd"/>
                             <constraint firstItem="YLT-kX-336" firstAttribute="leading" secondItem="j9D-rF-wLf" secondAttribute="leading" id="Lmo-qx-ymB"/>
+                            <constraint firstItem="j9D-rF-wLf" firstAttribute="bottom" secondItem="toj-1L-edV" secondAttribute="bottom" id="PlF-ef-aXS"/>
                             <constraint firstItem="D1t-fX-Frm" firstAttribute="bottom" secondItem="YLT-kX-336" secondAttribute="bottom" id="QW8-Nx-vAr"/>
                             <constraint firstItem="D1t-fX-Frm" firstAttribute="trailing" secondItem="YLT-kX-336" secondAttribute="trailing" id="VId-vy-mb1"/>
                             <constraint firstItem="3yg-ay-cRr" firstAttribute="leading" secondItem="j9D-rF-wLf" secondAttribute="leading" id="WGW-v8-hKY"/>
