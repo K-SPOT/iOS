@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class MapVC: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
@@ -17,8 +19,11 @@ class MapVC: UIViewController {
         return viewController
     }()
     
+   
     let filterView = MapFilterView.instanceFromNib()
     var selectedFirstFiler : FilterToggleBtn?
+    var selectedSecondFiler : Int?
+    var selectedThirdFiler : FilterToggleBtn?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,13 +64,24 @@ extension MapVC {
         }
     }
     
+    func setDistanceIdx(index : Int){
+        let descArr : [String] = ["100m", "300m", "500m", "1k", "3k"]
+        let numberOfItems = descArr.count
+        let safeIndex = max(0, min(numberOfItems - 1, index))
+        
+        selectedSecondFiler = safeIndex
+        filterView.distanceLbl.text = "\(descArr[safeIndex]) 까지 설정"
+    }
+    
     func setFilterView(_ filterView : MapFilterView){
+        
         filterView.cancleBtn.addTarget(self, action: #selector(MapVC.cancleAction(_sender:)), for: .touchUpInside)
         filterView.okBtn.addTarget(self, action: #selector(MapVC.okAction(_sender:)), for: .touchUpInside)
         let buttons : [btnNum] = [ (filterView.popularBtn, 0), (filterView.recentBtn, 0), (filterView.reviewBtn, 0), (filterView.leftBtn, 1), (filterView.rightBtn, 1), (filterView.restaurantBtn, 2), (filterView.cafeBtn, 2), (filterView.hotplaceBtn, 2), (filterView.eventBtn, 2), (filterView.etcBtn, 2)]
         
         addtarget(inputs: buttons)
         
+        //첫번째 섹션
         let popularBtn = filterView.popularBtn!
         let recentBtn = filterView.recentBtn!
         let reviewBtn = filterView.reviewBtn!
@@ -76,8 +92,15 @@ extension MapVC {
             selectedBtn_.selected()
         } else {
             popularBtn.selected()
+            selectedFirstFiler = popularBtn
         }
-    }
+        
+        //두번째 섹션 - default 는 1km
+        setDistanceIdx(index: selectedSecondFiler ?? 3)
+
+        //세번째 섹션
+    } //setFilterView
+    
     
     //필터 뷰 버튼에 대한 액션 모음
     @objc public func cancleAction(_sender: UIButton) {
@@ -85,7 +108,9 @@ extension MapVC {
     }
     
     @objc public func okAction(_sender: UIButton) {
-        print("2")
+        //여기서 통신
+        //if selectedFirstFiler.tag == 0 이면 인기순
+        self.filterView.removeFromSuperview()
     }
     
     @objc public func firstFilterAction(_sender: FilterToggleBtn) {
@@ -98,9 +123,16 @@ extension MapVC {
          }
          */
         selectedFirstFiler = _sender
+        
     }
     @objc public func secondFilterAction(_sender: UIButton) {
-         print("1")
+        var index = selectedSecondFiler ?? 3
+        if _sender.tag == 0 {
+            index -= 1
+        } else {
+            index += 1
+        }
+        setDistanceIdx(index: index)
     }
     @objc public func thirdFilterAction(_sender: UIButton) {
         print("2")

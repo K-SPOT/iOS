@@ -8,7 +8,13 @@
 
 import Foundation
 
-
+enum Distance : String {
+    case oneHM = "100m"
+    case threeHM = "300m"
+    case fiveHM = "500m"
+    case oneKM = "1km"
+    case threeKM = "3km"
+}
 enum Region : String {
     //25개
     case gangsu = "강서구"
