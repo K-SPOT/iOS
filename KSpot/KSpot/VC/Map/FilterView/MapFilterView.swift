@@ -25,7 +25,8 @@ class MapFilterView: UIView {
     @IBOutlet weak var okBtn: UIButton!
     
     class func instanceFromNib() -> MapFilterView {
-        return UINib(nibName: "MapFilterView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! MapFilterView
+    let view = UINib(nibName: "MapFilterView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! MapFilterView
+        return view
     }
 
 }

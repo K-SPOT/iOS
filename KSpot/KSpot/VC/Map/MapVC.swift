@@ -21,9 +21,9 @@ class MapVC: UIViewController {
     
    
     let filterView = MapFilterView.instanceFromNib()
-    var selectedFirstFiler : FilterToggleBtn?
-    var selectedSecondFiler : Int?
-    var selectedThirdFiler : FilterToggleBtn?
+    var selectedFirstFilter : FilterToggleBtn?
+    var selectedSecondFilter : Int?
+    var selectedThirdFilter = Set<UIButton>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +69,7 @@ extension MapVC {
         let numberOfItems = descArr.count
         let safeIndex = max(0, min(numberOfItems - 1, index))
         
-        selectedSecondFiler = safeIndex
+        selectedSecondFilter = safeIndex
         filterView.distanceLbl.text = "\(descArr[safeIndex]) 까지 설정"
     }
     
@@ -88,17 +88,23 @@ extension MapVC {
         popularBtn.setOtherBtn(another: recentBtn, theOther: reviewBtn)
         recentBtn.setOtherBtn(another: popularBtn, theOther: reviewBtn)
         reviewBtn.setOtherBtn(another: recentBtn, theOther: popularBtn)
-        if let selectedBtn_ = selectedFirstFiler {
+        if let selectedBtn_ = selectedFirstFilter {
             selectedBtn_.selected()
         } else {
             popularBtn.selected()
-            selectedFirstFiler = popularBtn
+            selectedFirstFilter = popularBtn
         }
         
         //두번째 섹션 - default 는 1km
-        setDistanceIdx(index: selectedSecondFiler ?? 3)
+        setDistanceIdx(index: selectedSecondFilter ?? 3)
 
         //세번째 섹션
+        filterView.restaurantBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_restaurant_green"), unselected: #imageLiteral(resourceName: "map_filter_restaurant_gray"))
+        filterView.hotplaceBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_hotplace_green"), unselected: #imageLiteral(resourceName: "map_filter_hotplace_gray"))
+        filterView.etcBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_etc_green"), unselected: #imageLiteral(resourceName: "map_filter_etc_gray"))
+        filterView.cafeBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_cafe_green"), unselected: #imageLiteral(resourceName: "map_filter_cafe_gray"))
+        filterView.eventBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_event_green"), unselected: #imageLiteral(resourceName: "map_filter_event_gray"))
+        
     } //setFilterView
     
     
@@ -110,6 +116,11 @@ extension MapVC {
     @objc public func okAction(_sender: UIButton) {
         //여기서 통신
         //if selectedFirstFiler.tag == 0 이면 인기순
+        print(selectedFirstFilter?.tag ?? -1)
+        print(selectedSecondFilter ?? -1)
+       selectedThirdFilter.forEach({ (button) in
+            print(button.tag)
+        })
         self.filterView.removeFromSuperview()
     }
     
@@ -122,11 +133,11 @@ extension MapVC {
          popularBtn.selected()
          }
          */
-        selectedFirstFiler = _sender
+        selectedFirstFilter = _sender
         
     }
     @objc public func secondFilterAction(_sender: UIButton) {
-        var index = selectedSecondFiler ?? 3
+        var index = selectedSecondFilter ?? 3
         if _sender.tag == 0 {
             index -= 1
         } else {
@@ -135,6 +146,14 @@ extension MapVC {
         setDistanceIdx(index: index)
     }
     @objc public func thirdFilterAction(_sender: UIButton) {
-        print("2")
+        if(!_sender.isSelected) {
+            _sender.isSelected = true
+            selectedThirdFilter.insert(_sender)
+        } else {
+             _sender.isSelected = false
+            selectedThirdFilter.remove(_sender)
+        }
     }
 }
+
+

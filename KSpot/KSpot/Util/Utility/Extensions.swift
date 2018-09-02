@@ -75,3 +75,10 @@ extension UIView {
     }
 }
 
+extension UIButton{
+    func setImage(selected : UIImage, unselected : UIImage){
+        self.setImage(selected, for: .selected)
+        self.setImage(unselected, for: .normal)
+        
+    }
+}
