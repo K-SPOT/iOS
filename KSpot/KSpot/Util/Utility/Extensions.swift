@@ -68,3 +68,10 @@ extension UIViewController {
     }
 }
 
+extension UIView {
+    func makeRounded(){
+        self.layer.cornerRadius = self.layer.frame.height/2
+        self.layer.masksToBounds = true
+    }
+}
+
