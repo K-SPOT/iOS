@@ -117,14 +117,13 @@
                                     <constraint firstItem="rjg-jO-3IV" firstAttribute="centerY" secondItem="D1t-fX-Frm" secondAttribute="centerY" id="zyR-jK-4ek"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="toj-1L-edV">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="toj-1L-edV">
                                 <rect key="frame" x="127.5" y="562" width="119" height="61"/>
-                                <color key="backgroundColor" red="0.97957645939086291" green="0.89972055490065672" blue="0.81310361807554443" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="mft-E5-rAc"/>
                                     <constraint firstAttribute="width" constant="119" id="rGQ-dE-dbh"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="category_filter"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -147,8 +146,12 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="K-Spot" id="hsn-O4-I9a">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="Nof-4P-NWI"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="vjt-SG-hPs"/>
+                        <barButtonItem key="leftBarButtonItem" image="category_translation" id="Nof-4P-NWI">
+                            <color key="tintColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="category_search" id="vjt-SG-hPs">
+                            <color key="tintColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -237,13 +240,13 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbH-Ti-fGI">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbH-Ti-fGI">
                                                     <rect key="frame" x="302" y="32.5" width="57" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="96H-pP-hwS"/>
                                                         <constraint firstAttribute="width" constant="57" id="hDF-R7-OBx"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button"/>
+                                                    <state key="normal" image="category_detail_subscription_green"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -304,5 +307,9 @@
     </scenes>
     <resources>
         <image name="aimg" width="91" height="74"/>
+        <image name="category_detail_subscription_green" width="57" height="24"/>
+        <image name="category_filter" width="119" height="61"/>
+        <image name="category_search" width="24" height="24"/>
+        <image name="category_translation" width="24" height="24"/>
     </resources>
 </document>
