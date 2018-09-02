@@ -34,6 +34,7 @@
 		3B3DD12C213C1C3200FD00B3 /* SelectRegionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD12B213C1C3200FD00B3 /* SelectRegionDelegate.swift */; };
 		3B3DD132213C32F200FD00B3 /* MapFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD131213C32F200FD00B3 /* MapFilterView.swift */; };
 		3B3DD134213C32FB00FD00B3 /* MapFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3DD133213C32FB00FD00B3 /* MapFilterView.xib */; };
+		3B3DD137213C4F4D00FD00B3 /* FilterToggleBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD136213C4F4D00FD00B3 /* FilterToggleBtn.swift */; };
 		3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D462139262800FFF08C /* AppDelegate.swift */; };
 		3BBF8D492139262800FFF08C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D482139262800FFF08C /* ViewController.swift */; };
 		3BBF8D4C2139262800FFF08C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF8D4A2139262800FFF08C /* Main.storyboard */; };
@@ -74,6 +75,7 @@
 		3B3DD12B213C1C3200FD00B3 /* SelectRegionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRegionDelegate.swift; sourceTree = "<group>"; };
 		3B3DD131213C32F200FD00B3 /* MapFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterView.swift; sourceTree = "<group>"; };
 		3B3DD133213C32FB00FD00B3 /* MapFilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapFilterView.xib; sourceTree = "<group>"; };
+		3B3DD136213C4F4D00FD00B3 /* FilterToggleBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterToggleBtn.swift; sourceTree = "<group>"; };
 		3BBF8D432139262800FFF08C /* KSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBF8D462139262800FFF08C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBF8D482139262800FFF08C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				3B3DD127213C0B8100FD00B3 /* RegionBtn.swift */,
+				3B3DD136213C4F4D00FD00B3 /* FilterToggleBtn.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				3B3DD122213BF02800FD00B3 /* MapHeaderView.swift in Sources */,
 				3B3DD126213C05C900FD00B3 /* MapCelebrityCVCell.swift in Sources */,
 				3B3DD128213C0B8100FD00B3 /* RegionBtn.swift in Sources */,
+				3B3DD137213C4F4D00FD00B3 /* FilterToggleBtn.swift in Sources */,
 				3BBF8D5D21392A9500FFF08C /* MainFirstTVCell.swift in Sources */,
 				3BBF8D592139293600FFF08C /* MainViewController.swift in Sources */,
 				3B3DD132213C32F200FD00B3 /* MapFilterView.swift in Sources */,

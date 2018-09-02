@@ -25,17 +25,17 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNN-ky-RCy">
                     <rect key="frame" x="0.0" y="305" width="375" height="290"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tuj-ES-5FW">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tuj-ES-5FW" customClass="FilterToggleBtn" customModule="KSpot" customModuleProvider="target">
                             <rect key="frame" x="23" y="25" width="113" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="113" id="hLF-YP-ITx"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="18"/>
                             <state key="normal" title="인기순">
-                                <color key="titleColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7k-ex-OQZ">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7k-ex-OQZ" customClass="FilterToggleBtn" customModule="KSpot" customModuleProvider="target">
                             <rect key="frame" x="131" y="31" width="113" height="19.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="113" id="big-3e-Wkz"/>
@@ -45,7 +45,7 @@
                                 <color key="titleColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGw-hB-Bs6">
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGw-hB-Bs6" customClass="FilterToggleBtn" customModule="KSpot" customModuleProvider="target">
                             <rect key="frame" x="245" y="25" width="113" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="113" id="1Uf-dA-AH6"/>
@@ -93,7 +93,7 @@
                             </constraints>
                             <state key="normal" image="map_filter_left_arrow"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIG-9q-XwN">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIG-9q-XwN">
                             <rect key="frame" x="335" y="110.5" width="24" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="24" id="EIj-jE-iVu"/>
@@ -117,22 +117,22 @@
                                     </constraints>
                                     <state key="normal" image="map_filter_restaurant_gray"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8I-99-vGF">
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8I-99-vGF">
                                     <rect key="frame" x="69.5" y="0.0" width="65.5" height="65.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Z8I-99-vGF" secondAttribute="height" multiplier="1:1" id="Scj-fc-6jM"/>
                                     </constraints>
                                     <state key="normal" image="map_filter_cafe_gray"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Zp-6y-xgh">
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Zp-6y-xgh">
                                     <rect key="frame" x="139" y="0.0" width="65" height="65.5"/>
                                     <state key="normal" image="map_filter_hotplace_gray"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqN-fy-61q">
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqN-fy-61q">
                                     <rect key="frame" x="208" y="0.0" width="65.5" height="65.5"/>
                                     <state key="normal" image="map_filter_event_gray"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVX-rg-9vs">
+                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVX-rg-9vs">
                                     <rect key="frame" x="277.5" y="0.0" width="65.5" height="65.5"/>
                                     <state key="normal" image="map_filter_etc_gray"/>
                                 </button>

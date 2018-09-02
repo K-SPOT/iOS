@@ -11,9 +11,9 @@ import UIKit
 class MapFilterView: UIView {
     
     @IBOutlet weak var cancleBtn: UIButton!
-    @IBOutlet weak var popularBtn: UIButton!
-    @IBOutlet weak var recentBtn: UIButton!
-    @IBOutlet weak var reviewBtn: UIButton!
+    @IBOutlet weak var popularBtn: FilterToggleBtn!
+    @IBOutlet weak var recentBtn: FilterToggleBtn!
+    @IBOutlet weak var reviewBtn: FilterToggleBtn!
     @IBOutlet weak var leftBtn: UIButton!
     @IBOutlet weak var rightBtn: UIButton!
     @IBOutlet weak var distanceLbl: UILabel!
