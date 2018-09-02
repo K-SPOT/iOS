@@ -17,15 +17,29 @@ class MapVC: UIViewController {
         return viewController
     }()
     
+    let filterView = MapFilterView.instanceFromNib()
     override func viewDidLoad() {
         super.viewDidLoad()
         initContainerView()
-        self.title = "용산구"
-        // Do any additional setup after loading the view.
+        setFilterView(filterView)
+        self.title = "defulat title"
+       
     }
     
     func initContainerView(){
         addChildView(containerView: containerView, asChildViewController: mapContainerVC)
     }
-
+    
+    @IBAction func filterAction(_ sender: Any) {
+      UIApplication.shared.keyWindow!.addSubview(filterView)
+    }
+    
+    func setFilterView(_ filterView : MapFilterView){
+        filterView.cancleBtn.addTarget(self, action: #selector(MapVC.cancleAction(_sender:)), for: .touchUpInside)
+    }
+    
+    @objc public func cancleAction(_sender: UIButton) {
+         self.filterView.removeFromSuperview()
+    }
+    
 }

@@ -10,8 +10,7 @@ import Foundation
 
 
 enum Region : String {
-  
-    //25
+    //25개
     case gangsu = "강서구"
     case yangcheon = "양천구"
     case guro = "구로구"

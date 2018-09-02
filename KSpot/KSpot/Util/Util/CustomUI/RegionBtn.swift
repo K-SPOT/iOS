@@ -14,7 +14,7 @@ class RegionBtn : UIButton {
         super.init(coder: aDecoder)
         setBtnClickEvent()
     }
-    var delegate : selectRegionDelegate?
+    var delegate : SelectRegionDelegate?
     var region : Region?
     
     func setBtnClickEvent() {

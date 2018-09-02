@@ -28,10 +28,23 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g26-82-bsl">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAf-1v-fhL">
+                                <rect key="frame" x="127.5" y="606" width="119" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="PQT-uu-z0l"/>
+                                    <constraint firstAttribute="width" constant="119" id="ZRB-eH-L9V"/>
+                                </constraints>
+                                <state key="normal" image="map_filter"/>
+                                <connections>
+                                    <action selector="filterAction:" destination="obj-tZ-kba" eventType="touchUpInside" id="0pP-XN-6iz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vAf-1v-fhL" firstAttribute="bottom" secondItem="g26-82-bsl" secondAttribute="bottom" id="XJo-tS-pnV"/>
                             <constraint firstItem="jAx-YQ-HtA" firstAttribute="trailing" secondItem="g26-82-bsl" secondAttribute="trailing" id="bSl-5P-8Kx"/>
+                            <constraint firstItem="vAf-1v-fhL" firstAttribute="centerX" secondItem="g26-82-bsl" secondAttribute="centerX" id="jsL-0I-sCq"/>
                             <constraint firstItem="jAx-YQ-HtA" firstAttribute="bottom" secondItem="g26-82-bsl" secondAttribute="bottom" id="lRD-yG-NuM"/>
                             <constraint firstItem="g26-82-bsl" firstAttribute="top" secondItem="jAx-YQ-HtA" secondAttribute="top" id="pHJ-as-nhb"/>
                             <constraint firstItem="g26-82-bsl" firstAttribute="leading" secondItem="jAx-YQ-HtA" secondAttribute="leading" id="wOR-Cj-FFy"/>
@@ -39,10 +52,16 @@
                         <viewLayoutGuide key="safeArea" id="jAx-YQ-HtA"/>
                     </view>
                     <navigationItem key="navigationItem" id="sto-01-LWy">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="aCT-5Q-Jgc"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="map_translation" id="aCT-5Q-Jgc">
+                            <color key="tintColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" id="ofL-NP-sp5"/>
-                            <barButtonItem title="Item" id="tjG-Jl-ANj"/>
+                            <barButtonItem title="Item" image="map_search" id="ofL-NP-sp5">
+                                <color key="tintColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </barButtonItem>
+                            <barButtonItem image="map_location_arrow" id="tjG-Jl-ANj">
+                                <color key="tintColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -84,13 +103,13 @@
                                 <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dqq-oK-0Ev">
                                     <size key="itemSize" width="248" height="215"/>
-                                    <size key="headerReferenceSize" width="50" height="502"/>
+                                    <size key="headerReferenceSize" width="50" height="459"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MapContainerCVCell" id="Nt8-z9-sST" customClass="MapContainerCVCell" customModule="KSpot" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="502" width="343" height="371"/>
+                                        <rect key="frame" x="16" y="459" width="343" height="371"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="371"/>
@@ -198,18 +217,18 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MapHeaderView" id="MKH-j8-9PD" customClass="MapHeaderView" customModule="KSpot" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="459"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_illustration_img" translatesAutoresizingMaskIntoConstraints="NO" id="tJL-Gj-h54">
-                                            <rect key="frame" x="16" y="40" width="343" height="380"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="377"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="380" id="db9-Q9-fQe"/>
+                                                <constraint firstAttribute="height" constant="377" id="db9-Q9-fQe"/>
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1yU-Em-BRg">
-                                            <rect key="frame" x="0.0" y="420" width="375" height="82"/>
+                                            <rect key="frame" x="0.0" y="377" width="375" height="82"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용산구" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPQ-pp-aDp">
                                                     <rect key="frame" x="16" y="31.5" width="49.5" height="20"/>
@@ -249,12 +268,12 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="tJL-Gj-h54" firstAttribute="top" secondItem="MKH-j8-9PD" secondAttribute="top" constant="40" id="6fB-S2-AoE"/>
-                                        <constraint firstItem="tJL-Gj-h54" firstAttribute="leading" secondItem="MKH-j8-9PD" secondAttribute="leading" constant="16" id="Bl4-JD-PLh"/>
+                                        <constraint firstAttribute="bottom" secondItem="1yU-Em-BRg" secondAttribute="bottom" id="3RT-M3-6Ax"/>
+                                        <constraint firstItem="tJL-Gj-h54" firstAttribute="top" secondItem="MKH-j8-9PD" secondAttribute="top" id="6fB-S2-AoE"/>
+                                        <constraint firstItem="tJL-Gj-h54" firstAttribute="leading" secondItem="MKH-j8-9PD" secondAttribute="leading" id="Bl4-JD-PLh"/>
                                         <constraint firstItem="1yU-Em-BRg" firstAttribute="top" secondItem="tJL-Gj-h54" secondAttribute="bottom" id="Jb4-3Q-1mq"/>
-                                        <constraint firstAttribute="bottom" secondItem="1yU-Em-BRg" secondAttribute="bottom" id="YvO-v4-C9H"/>
                                         <constraint firstAttribute="trailing" secondItem="1yU-Em-BRg" secondAttribute="trailing" id="dh8-N5-0Bu"/>
-                                        <constraint firstAttribute="trailing" secondItem="tJL-Gj-h54" secondAttribute="trailing" constant="16" id="gA7-9o-SLR"/>
+                                        <constraint firstAttribute="trailing" secondItem="tJL-Gj-h54" secondAttribute="trailing" id="gA7-9o-SLR"/>
                                         <constraint firstItem="1yU-Em-BRg" firstAttribute="leading" secondItem="MKH-j8-9PD" secondAttribute="leading" id="pjW-8G-rJB"/>
                                     </constraints>
                                     <connections>
@@ -286,7 +305,10 @@
     <resources>
         <image name="board_star_green" width="18" height="18"/>
         <image name="main_arrow" width="15" height="15"/>
+        <image name="map_filter" width="119" height="61"/>
         <image name="map_illustration_img" width="375" height="377"/>
         <image name="map_location_arrow" width="24" height="24"/>
+        <image name="map_search" width="24" height="24"/>
+        <image name="map_translation" width="24" height="24"/>
     </resources>
 </document>

@@ -9,12 +9,7 @@
 import UIKit
 
 class MapHeaderView: UICollectionReusableView {
-    
-    var delegate : selectRegionDelegate?
     @IBOutlet weak var selectedRegionLbl: UILabel!
     @IBOutlet weak var dobongBtn: RegionBtn!
+}
 
-}
-protocol selectRegionDelegate {
-    func tap(_ tag : Region)
-}

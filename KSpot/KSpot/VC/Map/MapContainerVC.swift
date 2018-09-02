@@ -24,12 +24,13 @@ class MapContainerVC: UIViewController {
     }
 }
 
-extension MapContainerVC : selectRegionDelegate {
+extension MapContainerVC : SelectRegionDelegate {
     func tap(_ region : Region) {
         reusableView?.selectedRegionLbl.text = region.rawValue
         self.parent?.title = region.rawValue
-        self.parent?.title = region
-       
+        //TODO - 통신 대비해서 case rawValue 뽑아내기 case gangsu -> gangsu
+        
+        
     }
 }
 
