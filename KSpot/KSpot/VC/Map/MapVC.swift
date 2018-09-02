@@ -29,7 +29,8 @@ class MapVC: UIViewController {
         super.viewDidLoad()
         initContainerView()
         setFilterView(filterView)
-        self.title = "defulat title"
+        //네이게이션 타이틀
+        self.navigationItem.title = "defualt"
         
     }
     
