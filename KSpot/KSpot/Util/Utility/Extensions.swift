@@ -68,3 +68,17 @@ extension UIViewController {
     }
 }
 
+extension UIView {
+    func makeRounded(){
+        self.layer.cornerRadius = self.layer.frame.height/2
+        self.layer.masksToBounds = true
+    }
+}
+
+extension UIButton{
+    func setImage(selected : UIImage, unselected : UIImage){
+        self.setImage(selected, for: .selected)
+        self.setImage(unselected, for: .normal)
+        
+    }
+}
