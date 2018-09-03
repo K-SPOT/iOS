@@ -14,16 +14,13 @@ class CategoryDetailVC: UIViewController{
     override func viewDidLoad() {
         tableView.delegate = self
         tableView.dataSource = self
-        let header = tableView.dequeueReusableCell(withIdentifier: CategoryDetailSecondTVHeaderCell.reuseIdentifier) as! CategoryDetailSecondTVHeaderCell
-        
-
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         //hide navigationBar without losing slide-back ability
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
+       self.navigationController?.navigationBar.isHidden = true
         
     }
     
@@ -69,9 +66,13 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
         }
     }
     
+   
+    
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 1 || section == 2  ? 79 : 0
     }
+    
     
     
     
