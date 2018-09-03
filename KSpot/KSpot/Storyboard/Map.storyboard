@@ -43,7 +43,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.99215686270000003" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vAf-1v-fhL" firstAttribute="bottom" secondItem="g26-82-bsl" secondAttribute="bottom" id="XJo-tS-pnV"/>
                             <constraint firstItem="jAx-YQ-HtA" firstAttribute="trailing" secondItem="g26-82-bsl" secondAttribute="trailing" id="bSl-5P-8Kx"/>
@@ -55,7 +55,7 @@
                         <viewLayoutGuide key="safeArea" id="jAx-YQ-HtA"/>
                     </view>
                     <navigationItem key="navigationItem" id="sto-01-LWy">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="map_translation" id="aCT-5Q-Jgc">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="navigationbar_translation" id="aCT-5Q-Jgc">
                             <color key="tintColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                         <rightBarButtonItems>
@@ -375,6 +375,6 @@
         <image name="map_illustration_img" width="375" height="377"/>
         <image name="map_location_arrow" width="24" height="24"/>
         <image name="map_search" width="24" height="24"/>
-        <image name="map_translation" width="24" height="24"/>
+        <image name="navigationbar_translation" width="24" height="24"/>
     </resources>
 </document>

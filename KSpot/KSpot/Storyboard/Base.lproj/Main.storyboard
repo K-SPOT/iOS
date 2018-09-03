@@ -320,7 +320,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="K-Spot" id="kwT-rU-c1m">
-                        <barButtonItem key="leftBarButtonItem" image="main_translation" id="icU-Dn-hma">
+                        <barButtonItem key="leftBarButtonItem" image="navigationbar_translation" id="icU-Dn-hma">
                             <color key="tintColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="main_search" id="IrG-M1-7q2">
@@ -448,7 +448,7 @@
         <image name="main_arrow" width="15" height="15"/>
         <image name="main_search" width="24" height="24"/>
         <image name="main_theme image" width="376" height="364"/>
-        <image name="main_translation" width="24" height="24"/>
+        <image name="navigationbar_translation" width="24" height="24"/>
         <image name="tab_category_gray" width="23" height="23"/>
         <image name="tab_home_gray" width="23" height="23"/>
         <image name="tab_map_gray" width="23" height="23"/>
