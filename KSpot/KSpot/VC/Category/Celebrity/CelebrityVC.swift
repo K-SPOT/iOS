@@ -30,5 +30,13 @@ extension CelebrityVC : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CelebrityTVCell.reuseIdentifier) as! CelebrityTVCell
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let categoryStoryboard = Storyboard.shared().categoryStoryboard
+        if let categoryDetailVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailVC.reuseIdentifier) as? CategoryDetailVC {
+            
+            self.navigationController?.pushViewController(categoryDetailVC, animated: true)
+        }
+    }
 }
 

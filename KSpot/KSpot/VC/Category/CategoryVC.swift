@@ -23,12 +23,7 @@ class CategoryVC: UIViewController {
         return viewController
     }()
     
-    private lazy var eventVC: EventVC = {
-        let storyboard = Storyboard.shared().categoryStoryboard
-        var viewController = storyboard.instantiateViewController(withIdentifier: EventVC.reuseIdentifier) as! EventVC
-        return viewController
-    }()
-    
+   
     @IBAction func switchView(_ sender: UIButton) {
         updateView(selected: sender.tag)
     }
@@ -37,6 +32,12 @@ class CategoryVC: UIViewController {
         super.viewDidLoad()
         updateView(selected: 0)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        //self.navigationController?.navigationBar.isHidden = false
+        //viewWillLayoutSubviews()
+    }
+ 
+  
 
 }
 
@@ -45,16 +46,12 @@ extension CategoryVC{
     private func updateView(selected : Int) {
         if selected == 0 {
             removeChildView(containerView: containerView, asChildViewController: broadcastVC)
-            removeChildView(containerView: containerView, asChildViewController: eventVC)
+          
             addChildView(containerView: containerView, asChildViewController: celebrityVC)
-        } else if selected == 1{
-            removeChildView(containerView: containerView, asChildViewController: celebrityVC)
-            removeChildView(containerView: containerView, asChildViewController: eventVC)
-            addChildView(containerView: containerView, asChildViewController: broadcastVC)
         } else {
-            removeChildView(containerView: containerView, asChildViewController: broadcastVC)
             removeChildView(containerView: containerView, asChildViewController: celebrityVC)
-            addChildView(containerView: containerView, asChildViewController: eventVC)
+          
+            addChildView(containerView: containerView, asChildViewController: broadcastVC)
         }
     }
 

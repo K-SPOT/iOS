@@ -82,3 +82,12 @@ extension UIButton{
         
     }
 }
+
+extension UICollectionViewCell {
+    func makeCornerRound(cornerRadius : CGFloat){
+        self.contentView.layer.cornerRadius = cornerRadius
+        self.contentView.layer.borderWidth = 0.5
+        self.contentView.layer.borderColor = #colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1)
+        self.contentView.layer.masksToBounds = true
+    }
+}
