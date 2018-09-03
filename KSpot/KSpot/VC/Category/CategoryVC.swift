@@ -32,6 +32,12 @@ class CategoryVC: UIViewController {
         super.viewDidLoad()
         updateView(selected: 0)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        //self.navigationController?.navigationBar.isHidden = false
+        //viewWillLayoutSubviews()
+    }
+ 
+  
 
 }
 
