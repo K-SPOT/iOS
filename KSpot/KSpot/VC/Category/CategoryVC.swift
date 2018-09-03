@@ -11,6 +11,11 @@ import UIKit
 class CategoryVC: UIViewController {
 
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var celebrityBtn: CategoryToggleBtn!
+    @IBOutlet weak var celebrityGreenView: UIView!
+    @IBOutlet weak var broadcastBtn: CategoryToggleBtn!
+    
+    @IBOutlet weak var broadcastGreenView: UIView!
     private lazy var celebrityVC: CelebrityVC = {
         let storyboard = Storyboard.shared().categoryStoryboard
         var viewController = storyboard.instantiateViewController(withIdentifier: CelebrityVC.reuseIdentifier) as! CelebrityVC
@@ -24,12 +29,14 @@ class CategoryVC: UIViewController {
     }()
     
    
-    @IBAction func switchView(_ sender: UIButton) {
+    @IBAction func switchView(_ sender: CategoryToggleBtn) {
         updateView(selected: sender.tag)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        celebrityBtn.setBtn(another: broadcastBtn, bottomLine: celebrityGreenView)
+        broadcastBtn.setBtn(another: celebrityBtn, bottomLine: broadcastGreenView)
         updateView(selected: 0)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +52,7 @@ class CategoryVC: UIViewController {
 extension CategoryVC{
     private func updateView(selected : Int) {
         if selected == 0 {
+        
             removeChildView(containerView: containerView, asChildViewController: broadcastVC)
           
             addChildView(containerView: containerView, asChildViewController: celebrityVC)
