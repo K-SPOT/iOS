@@ -106,16 +106,13 @@ extension CategoryDetailFirstTVCell : UIScrollViewDelegate{
     
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
         // Stop scrollView sliding:
         targetContentOffset.pointee = scrollView.contentOffset
         // calculate where scrollView should snap to:
         let indexOfMajorCell = self.indexOfMajorCell()
         let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        
-        
-        
+
     }
    
     

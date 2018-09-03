@@ -33,7 +33,6 @@ extension CelebrityVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let categoryStoryboard = Storyboard.shared().categoryStoryboard
-        print("touched")
         if let categoryDetailVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailVC.reuseIdentifier) as? CategoryDetailVC {
             
             self.navigationController?.pushViewController(categoryDetailVC, animated: true)

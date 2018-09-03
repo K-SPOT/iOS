@@ -8,25 +8,44 @@
 
 import UIKit
 
-class CategoryDetailVC: UIViewController, UIScrollViewDelegate{
+class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
     @IBOutlet weak var tableView: UITableView!
     
-   
+    @IBOutlet weak var backgroundImg: UIImageView!
+    @IBOutlet weak var mainImg: UIImageView!
+    @IBOutlet weak var mainTitleLbl: UILabel!
+    @IBOutlet weak var subTitleLbl: UILabel!
+    @IBOutlet weak var subscribeBtn: UIButton!
+    
+    @IBOutlet weak var subscribeLbl: UILabel!
     @IBAction func scrollToTopAction(_ sender: Any) {
         tableView.setContentOffset(.zero, animated: true)
     }
+    
+    @IBAction func backBtnAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     
     let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
     override func viewDidLoad() {
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
+        mainImg.makeImageRound()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         //hide navigationBar without losing slide-back ability
         super.viewWillAppear(animated)
-       self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
+        let backBTN = UIBarButtonItem(image: UIImage(named: "category_detail_left_arrow"),
+                                      style: .plain,
+                                      target: self,
+                                      action: #selector(self.navigationController?.popViewController(animated:)))
+        navigationItem.leftBarButtonItem = backBTN
+        navigationItem.leftBarButtonItem?.tintColor = .white
+       
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
         
     }
     
