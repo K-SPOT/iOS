@@ -12,6 +12,6 @@ class MapCelebrityCVCell: UICollectionViewCell {
      @IBOutlet weak var myImgView: UIImageView!
     
     override func awakeFromNib() {
-        myImgView.makeImageRound()
+        self.makeCornerRound(cornerRadius: self.layer.frame.width/2)
     }
 }
