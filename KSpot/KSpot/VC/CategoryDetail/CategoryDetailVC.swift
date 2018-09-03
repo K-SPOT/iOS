@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
+class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, UIScrollViewDelegate{
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var backgroundImg: UIImageView!

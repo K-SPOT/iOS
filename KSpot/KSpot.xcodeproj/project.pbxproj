@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E32930B09199A39C981A507 /* Pods_KSpot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA688BBCA5DFBD11AEA04D6 /* Pods_KSpot.framework */; };
 		3B3DD0E1213AE1C200FD00B3 /* MainSecondTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */; };
 		3B3DD0E3213AE1CC00FD00B3 /* MainSecondCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */; };
 		3B3DD0E5213AE1D900FD00B3 /* MainThirdTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */; };
@@ -42,6 +43,13 @@
 		3B3DD149213D6C5800FD00B3 /* BroadcastTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD148213D6C5800FD00B3 /* BroadcastTVCell.swift */; };
 		3B3DD14B213D708800FD00B3 /* CategoryToggleBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD14A213D708800FD00B3 /* CategoryToggleBtn.swift */; };
 		3B3DD14E213D788B00FD00B3 /* PlaceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD14D213D788B00FD00B3 /* PlaceDetailVC.swift */; };
+		3B3DD150213D9C8B00FD00B3 /* PlaceDetailSecondTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD14F213D9C8B00FD00B3 /* PlaceDetailSecondTVCell.swift */; };
+		3B3DD16D213DA7AE00FD00B3 /* WRNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD16C213DA7AE00FD00B3 /* WRNavigationBar.swift */; };
+		3B3DD16F213DA7B100FD00B3 /* WRCustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD16E213DA7B100FD00B3 /* WRCustomNavigationBar.swift */; };
+		3B3DD178213DBDBD00FD00B3 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD177213DBDBD00FD00B3 /* Font.swift */; };
+		3B3DD17B213DC9D200FD00B3 /* WRCycleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD17A213DC9D200FD00B3 /* WRCycleCell.swift */; };
+		3B3DD17D213DC9DF00FD00B3 /* WRCycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD17C213DC9DF00FD00B3 /* WRCycleScrollView.swift */; };
+		3B3DD17F213DC9EA00FD00B3 /* WRProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD17E213DC9EA00FD00B3 /* WRProxy.swift */; };
 		3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D462139262800FFF08C /* AppDelegate.swift */; };
 		3BBF8D492139262800FFF08C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D482139262800FFF08C /* ViewController.swift */; };
 		3BBF8D4C2139262800FFF08C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF8D4A2139262800FFF08C /* Main.storyboard */; };
@@ -55,6 +63,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19DF3B2A98B342F2051D7EA1 /* Pods-KSpot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSpot.release.xcconfig"; path = "Pods/Target Support Files/Pods-KSpot/Pods-KSpot.release.xcconfig"; sourceTree = "<group>"; };
 		3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondTVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondCVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThirdTVCell.swift; sourceTree = "<group>"; };
@@ -90,6 +99,13 @@
 		3B3DD148213D6C5800FD00B3 /* BroadcastTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastTVCell.swift; sourceTree = "<group>"; };
 		3B3DD14A213D708800FD00B3 /* CategoryToggleBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryToggleBtn.swift; sourceTree = "<group>"; };
 		3B3DD14D213D788B00FD00B3 /* PlaceDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailVC.swift; sourceTree = "<group>"; };
+		3B3DD14F213D9C8B00FD00B3 /* PlaceDetailSecondTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailSecondTVCell.swift; sourceTree = "<group>"; };
+		3B3DD16C213DA7AE00FD00B3 /* WRNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WRNavigationBar.swift; sourceTree = "<group>"; };
+		3B3DD16E213DA7B100FD00B3 /* WRCustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WRCustomNavigationBar.swift; sourceTree = "<group>"; };
+		3B3DD177213DBDBD00FD00B3 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		3B3DD17A213DC9D200FD00B3 /* WRCycleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRCycleCell.swift; sourceTree = "<group>"; };
+		3B3DD17C213DC9DF00FD00B3 /* WRCycleScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRCycleScrollView.swift; sourceTree = "<group>"; };
+		3B3DD17E213DC9EA00FD00B3 /* WRProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRProxy.swift; sourceTree = "<group>"; };
 		3BBF8D432139262800FFF08C /* KSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBF8D462139262800FFF08C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBF8D482139262800FFF08C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +118,8 @@
 		3BBF8D5C21392A9500FFF08C /* MainFirstTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFirstTVCell.swift; sourceTree = "<group>"; };
 		3BBF8D5E21392D3E00FFF08C /* MainFirstCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFirstCVCell.swift; sourceTree = "<group>"; };
 		3BBF8D60213935D300FFF08C /* ColorChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChip.swift; sourceTree = "<group>"; };
+		4C6052FD7CF496FE2E3B933E /* Pods-KSpot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSpot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KSpot/Pods-KSpot.debug.xcconfig"; sourceTree = "<group>"; };
+		FFA688BBCA5DFBD11AEA04D6 /* Pods_KSpot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KSpot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E32930B09199A39C981A507 /* Pods_KSpot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +190,7 @@
 				3BBF8D60213935D300FFF08C /* ColorChip.swift */,
 				3B3DD123213BFCE700FD00B3 /* Region.swift */,
 				3B3DD0F7213B2FAC00FD00B3 /* Storyboard.swift */,
+				3B3DD177213DBDBD00FD00B3 /* Font.swift */,
 			);
 			path = Singleton;
 			sourceTree = "<group>";
@@ -206,6 +226,8 @@
 		3B3DD104213B3F4D00FD00B3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3B3DD179213DC9BD00FD00B3 /* WRCycleScrollView */,
+				3B3DD16B213DA7A700FD00B3 /* WRNavigationBar */,
 				3B3DD105213B3F5400FD00B3 /* Font */,
 			);
 			path = Resources;
@@ -295,8 +317,28 @@
 			isa = PBXGroup;
 			children = (
 				3B3DD14D213D788B00FD00B3 /* PlaceDetailVC.swift */,
+				3B3DD14F213D9C8B00FD00B3 /* PlaceDetailSecondTVCell.swift */,
 			);
 			path = PlaceDetail;
+			sourceTree = "<group>";
+		};
+		3B3DD16B213DA7A700FD00B3 /* WRNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				3B3DD16C213DA7AE00FD00B3 /* WRNavigationBar.swift */,
+				3B3DD16E213DA7B100FD00B3 /* WRCustomNavigationBar.swift */,
+			);
+			path = WRNavigationBar;
+			sourceTree = "<group>";
+		};
+		3B3DD179213DC9BD00FD00B3 /* WRCycleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				3B3DD17A213DC9D200FD00B3 /* WRCycleCell.swift */,
+				3B3DD17C213DC9DF00FD00B3 /* WRCycleScrollView.swift */,
+				3B3DD17E213DC9EA00FD00B3 /* WRProxy.swift */,
+			);
+			path = WRCycleScrollView;
 			sourceTree = "<group>";
 		};
 		3BBF8D3A2139262800FFF08C = {
@@ -304,6 +346,8 @@
 			children = (
 				3BBF8D452139262800FFF08C /* KSpot */,
 				3BBF8D442139262800FFF08C /* Products */,
+				D6AE4B83FA448A03730B7B24 /* Pods */,
+				8A6468103673BAA5D697E0E6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -368,6 +412,23 @@
 			path = FirstSection;
 			sourceTree = "<group>";
 		};
+		8A6468103673BAA5D697E0E6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FFA688BBCA5DFBD11AEA04D6 /* Pods_KSpot.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D6AE4B83FA448A03730B7B24 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4C6052FD7CF496FE2E3B933E /* Pods-KSpot.debug.xcconfig */,
+				19DF3B2A98B342F2051D7EA1 /* Pods-KSpot.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -375,9 +436,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3BBF8D552139262800FFF08C /* Build configuration list for PBXNativeTarget "KSpot" */;
 			buildPhases = (
+				4162B5B25AB136480D81734F /* [CP] Check Pods Manifest.lock */,
 				3BBF8D3F2139262800FFF08C /* Sources */,
 				3BBF8D402139262800FFF08C /* Frameworks */,
 				3BBF8D412139262800FFF08C /* Resources */,
+				E0D5C63472E0A3EA69262E81 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -443,18 +506,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4162B5B25AB136480D81734F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KSpot-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0D5C63472E0A3EA69262E81 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-KSpot/Pods-KSpot-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KSpot/Pods-KSpot-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3BBF8D3F2139262800FFF08C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B3DD178213DBDBD00FD00B3 /* Font.swift in Sources */,
+				3B3DD16D213DA7AE00FD00B3 /* WRNavigationBar.swift in Sources */,
+				3B3DD150213D9C8B00FD00B3 /* PlaceDetailSecondTVCell.swift in Sources */,
 				3B3DD122213BF02800FD00B3 /* MapHeaderView.swift in Sources */,
 				3B3DD147213D3C3500FD00B3 /* CategoryDetailSecondTVHeaderCell.swift in Sources */,
 				3B3DD126213C05C900FD00B3 /* MapCelebrityCVCell.swift in Sources */,
 				3B3DD128213C0B8100FD00B3 /* RegionBtn.swift in Sources */,
 				3B3DD137213C4F4D00FD00B3 /* FilterToggleBtn.swift in Sources */,
 				3BBF8D5D21392A9500FFF08C /* MainFirstTVCell.swift in Sources */,
+				3B3DD17D213DC9DF00FD00B3 /* WRCycleScrollView.swift in Sources */,
 				3BBF8D592139293600FFF08C /* MainViewController.swift in Sources */,
+				3B3DD17F213DC9EA00FD00B3 /* WRProxy.swift in Sources */,
 				3B3DD132213C32F200FD00B3 /* MapFilterView.swift in Sources */,
 				3B3DD0FC213B318E00FD00B3 /* BroadcastVC.swift in Sources */,
 				3BBF8D492139262800FFF08C /* ViewController.swift in Sources */,
@@ -466,6 +573,7 @@
 				3B3DD14B213D708800FD00B3 /* CategoryToggleBtn.swift in Sources */,
 				3B3DD0F8213B2FAC00FD00B3 /* Storyboard.swift in Sources */,
 				3B3DD114213BD74300FD00B3 /* MapVC.swift in Sources */,
+				3B3DD16F213DA7B100FD00B3 /* WRCustomNavigationBar.swift in Sources */,
 				3B3DD0E7213AE1E300FD00B3 /* MainThirdCVCell.swift in Sources */,
 				3B3DD14E213D788B00FD00B3 /* PlaceDetailVC.swift in Sources */,
 				3B3DD143213D3B9F00FD00B3 /* CategoryDetailSecondTVCell.swift in Sources */,
@@ -473,6 +581,7 @@
 				3B3DD0F3213B2BC900FD00B3 /* CategoryVC.swift in Sources */,
 				3BBF8D5F21392D3E00FFF08C /* MainFirstCVCell.swift in Sources */,
 				3BBF8D5B21392A0D00FFF08C /* Extensions.swift in Sources */,
+				3B3DD17B213DC9D200FD00B3 /* WRCycleCell.swift in Sources */,
 				3B3DD116213BD77F00FD00B3 /* MapContainerVC.swift in Sources */,
 				3B3DD103213B3C5000FD00B3 /* CelebrityTVCell.swift in Sources */,
 				3B3DD13F213D3B4000FD00B3 /* CategoryDetailFirstTVCell.swift in Sources */,
@@ -616,6 +725,7 @@
 		};
 		3BBF8D562139262800FFF08C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C6052FD7CF496FE2E3B933E /* Pods-KSpot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -631,6 +741,7 @@
 		};
 		3BBF8D572139262800FFF08C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19DF3B2A98B342F2051D7EA1 /* Pods-KSpot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

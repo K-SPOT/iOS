@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="obj-tZ-kba">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xjm-Rj-98B">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -43,7 +43,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.99215686270000003" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vAf-1v-fhL" firstAttribute="bottom" secondItem="g26-82-bsl" secondAttribute="bottom" id="XJo-tS-pnV"/>
                             <constraint firstItem="jAx-YQ-HtA" firstAttribute="trailing" secondItem="g26-82-bsl" secondAttribute="trailing" id="bSl-5P-8Kx"/>
@@ -294,7 +294,7 @@
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7IW-ZH-ibU" firstAttribute="trailing" secondItem="Cvt-xT-Bmv" secondAttribute="trailing" id="0uz-X2-2ud"/>
                             <constraint firstItem="Cvt-xT-Bmv" firstAttribute="top" secondItem="7IW-ZH-ibU" secondAttribute="top" id="2ar-Am-5x5"/>
@@ -312,23 +312,63 @@
             </objects>
             <point key="canvasLocation" x="1461.5999999999999" y="89.955022488755631"/>
         </scene>
-        <!--Place DetailVC-->
-        <scene sceneID="p73-xJ-wlw">
+        <!--PlaceDetailVC-->
+        <scene sceneID="cUh-qD-zqk">
             <objects>
-                <viewController storyboardIdentifier="PlaceDetailVC" id="tkH-DA-XbA" customClass="PlaceDetailVC" customModule="KSpot" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6lf-Hh-tJU">
+                <viewController title="PlaceDetailVC" id="Xjm-Rj-98B" customClass="PlaceDetailVC" customModule="KSpot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f7D-eB-yjh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O9C-nv-jxo">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaceDetailSecondTVCell" rowHeight="202" id="xji-9O-34O" customClass="PlaceDetailSecondTVCell" customModule="KSpot" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="202"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xji-9O-34O" id="d1Y-6q-DUC">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="201.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aimg" translatesAutoresizingMaskIntoConstraints="NO" id="Cak-aU-M0c">
+                                                    <rect key="frame" x="67" y="53" width="240" height="128"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="128" id="Rm8-ik-0Ln"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Cak-aU-M0c" secondAttribute="bottom" constant="20.5" id="9mR-yo-0Ko"/>
+                                                <constraint firstItem="Cak-aU-M0c" firstAttribute="leading" secondItem="d1Y-6q-DUC" secondAttribute="leading" constant="67" id="O0m-4P-wEA"/>
+                                                <constraint firstItem="Cak-aU-M0c" firstAttribute="top" secondItem="d1Y-6q-DUC" secondAttribute="top" constant="53" id="aYO-hk-WvS"/>
+                                                <constraint firstAttribute="trailing" secondItem="Cak-aU-M0c" secondAttribute="trailing" constant="68" id="lqH-eb-Acl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="PKa-nu-63U"/>
+                        <constraints>
+                            <constraint firstItem="O9C-nv-jxo" firstAttribute="top" secondItem="f7D-eB-yjh" secondAttribute="top" id="1eE-Mo-JVY"/>
+                            <constraint firstItem="O9C-nv-jxo" firstAttribute="leading" secondItem="7EJ-Nc-Mnm" secondAttribute="leading" id="7dy-3l-yK7"/>
+                            <constraint firstItem="7EJ-Nc-Mnm" firstAttribute="bottom" secondItem="O9C-nv-jxo" secondAttribute="bottom" id="Tx0-WL-ERw"/>
+                            <constraint firstItem="O9C-nv-jxo" firstAttribute="trailing" secondItem="7EJ-Nc-Mnm" secondAttribute="trailing" id="xlc-Jn-0oj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7EJ-Nc-Mnm"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="O9C-nv-jxo" id="HwT-Co-gtu"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="A19-Nv-aaI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e3h-Pm-orP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2221" y="177"/>
+            <point key="canvasLocation" x="2519.1999999999998" y="181.25937031484258"/>
         </scene>
     </scenes>
     <resources>
+        <image name="aimg" width="91" height="74"/>
         <image name="board_star_green" width="18" height="18"/>
         <image name="main_arrow" width="15" height="15"/>
         <image name="map_filter" width="119" height="61"/>

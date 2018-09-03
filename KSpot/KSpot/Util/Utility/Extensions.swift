@@ -13,6 +13,30 @@ extension NSObject {
     }
 }
 
+extension UIBarButtonItem {
+    class func itemWith(colorfulImage: UIImage?, target: AnyObject, action: Selector) -> UIBarButtonItem {
+        let button = UIButton(type: .custom)
+        button.setImage(colorfulImage, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        button.addTarget(target, action: action, for: .touchUpInside)
+        
+        let barButtonItem = UIBarButtonItem(customView: button)
+        return barButtonItem
+    }
+    
+    class func titleBarbutton(title : String, red : Double, green : Double, blue : Double, fontSize : CGFloat, fontName : String, selector : Selector?)->UIBarButtonItem{
+        let customBarbuttonItem = UIBarButtonItem(title: title, style: .plain, target: self, action: selector)
+        let customFont = UIFont(name: fontName, size: fontSize)!
+        customBarbuttonItem.setTitleTextAttributes([
+            NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): customFont,
+            NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue) : UIColor(red: CGFloat(red/255.0), green: CGFloat(green/255.0), blue: CGFloat(blue/255.0), alpha: CGFloat(1.0) )
+            ], for: UIControlState.normal)
+        return customBarbuttonItem
+    }
+}
+
 extension UIViewController {
     
     func gsno(_ value : String?) -> String{
