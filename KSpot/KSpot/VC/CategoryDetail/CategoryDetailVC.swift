@@ -8,8 +8,14 @@
 
 import UIKit
 
-class CategoryDetailVC: UIViewController{
+class CategoryDetailVC: UIViewController, UIScrollViewDelegate{
     @IBOutlet weak var tableView: UITableView!
+    
+   
+    @IBAction func scrollToTopAction(_ sender: Any) {
+        tableView.setContentOffset(.zero, animated: true)
+    }
+    
     let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
     override func viewDidLoad() {
         tableView.delegate = self
