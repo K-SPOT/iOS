@@ -12,6 +12,7 @@ class CategoryDetailFirstTVCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     private var indexOfCellBeforeDragging = 0
+    var currentPages = 0
     private var collectionViewFlowLayout: UICollectionViewFlowLayout {
         return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
@@ -77,7 +78,7 @@ extension CategoryDetailFirstTVCell: UICollectionViewDelegateFlowLayout {
     
     //cell size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (252/375)*window!.frame.width, height: (262/667)*window!.frame.height)
+        return CGSize(width: (318/375)*window!.frame.width, height: (195/667)*window!.frame.height)
     }
     
     
@@ -88,7 +89,9 @@ extension CategoryDetailFirstTVCell : UIScrollViewDelegate{
     private func indexOfMajorCell() -> Int {
         
         let itemWidth = collectionViewFlowLayout.itemSize.width
-        let proportionalOffset = collectionView.contentOffset.x / (itemWidth)
+      
+        let proportionalOffset = (collectionView.contentOffset.x / (itemWidth))
+
         let index = Int(round(proportionalOffset))
         let numberOfItems = collectionView.numberOfItems(inSection: 0)
         let safeIndex = max(0, min(numberOfItems - 1, index))
@@ -114,6 +117,7 @@ extension CategoryDetailFirstTVCell : UIScrollViewDelegate{
         
         
     }
+   
     
     
 }

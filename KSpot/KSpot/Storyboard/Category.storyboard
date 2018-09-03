@@ -15,6 +15,9 @@
         <array key="NanumSquareOTFBold.otf">
             <string>NanumSquareOTFB</string>
         </array>
+        <array key="NanumSquareOTFLight.otf">
+            <string>NanumSquareOTFL</string>
+        </array>
         <array key="NanumSquareOTFRegular.otf">
             <string>NanumSquareOTFR</string>
         </array>
@@ -172,7 +175,7 @@
                                     <color key="backgroundColor" red="0.7725490196" green="0.7725490196" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Ua1-Oq-nN0">
-                                    <rect key="frame" x="0.0" y="958" width="375" height="109"/>
+                                    <rect key="frame" x="0.0" y="1004" width="375" height="109"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Rw-ZP-kG8">
@@ -189,39 +192,52 @@
                                     <color key="backgroundColor" red="0.7725490196" green="0.7725490196" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryDetailFirstTVCell" rowHeight="299" id="4Ef-Vg-rJJ" customClass="CategoryDetailFirstTVCell" customModule="KSpot" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="228" width="375" height="299"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryDetailFirstTVCell" rowHeight="345" id="4Ef-Vg-rJJ" customClass="CategoryDetailFirstTVCell" customModule="KSpot" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="228" width="375" height="345"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Ef-Vg-rJJ" id="Tbh-Fm-YvV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="298.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="344.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="52q-Ux-eIO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="298.5"/>
-                                                    <color key="backgroundColor" red="0.97957645940000004" green="0.89972055490000002" blue="0.81310361809999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="방탄소년단's 추천장소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obe-48-MqH">
+                                                    <rect key="frame" x="16" y="35" width="343" height="20"/>
+                                                    <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="18"/>
+                                                    <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사람들이 많이 찾는 장소를 확인해보세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dn8-0g-6Ht">
+                                                    <rect key="frame" x="16" y="64" width="234.5" height="15.5"/>
+                                                    <fontDescription key="fontDescription" name="NanumSquareOTFL" family="NanumSquareOTF" pointSize="14"/>
+                                                    <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="52q-Ux-eIO">
+                                                    <rect key="frame" x="0.0" y="104.5" width="375" height="195"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="298.5" id="6IC-R0-faw"/>
+                                                        <constraint firstAttribute="height" constant="195" id="it7-MD-sbD"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ufl-1z-qeL">
-                                                        <size key="itemSize" width="153" height="101"/>
+                                                        <size key="itemSize" width="318" height="195"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryDetailFirstCVCell" id="Sp9-pn-qFe" customClass="CategoryDetailFirstCVCell" customModule="KSpot" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="153" height="101"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="318" height="195"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                                <rect key="frame" x="0.0" y="0.0" width="153" height="101"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="318" height="195"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pNa-sw-avy">
-                                                                        <rect key="frame" x="33" y="28" width="91" height="47"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="318" height="195"/>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pne-M6-deK">
-                                                                        <rect key="frame" x="56" y="7" width="42" height="21"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pne-M6-deK">
+                                                                        <rect key="frame" x="36" y="26" width="161" height="71"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <string key="text">SMTOWN
+코엑스아티움</string>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -229,10 +245,10 @@
                                                                 </subviews>
                                                             </view>
                                                             <constraints>
-                                                                <constraint firstAttribute="bottom" secondItem="pNa-sw-avy" secondAttribute="bottom" constant="26" id="Ljz-ps-MOs"/>
-                                                                <constraint firstItem="pNa-sw-avy" firstAttribute="leading" secondItem="Sp9-pn-qFe" secondAttribute="leading" constant="33" id="Q1e-SE-RvD"/>
-                                                                <constraint firstAttribute="trailing" secondItem="pNa-sw-avy" secondAttribute="trailing" constant="29" id="ZW8-We-aq5"/>
-                                                                <constraint firstItem="pNa-sw-avy" firstAttribute="top" secondItem="Sp9-pn-qFe" secondAttribute="top" constant="28" id="aMI-j3-XCv"/>
+                                                                <constraint firstAttribute="bottom" secondItem="pNa-sw-avy" secondAttribute="bottom" id="Ljz-ps-MOs"/>
+                                                                <constraint firstItem="pNa-sw-avy" firstAttribute="leading" secondItem="Sp9-pn-qFe" secondAttribute="leading" id="Q1e-SE-RvD"/>
+                                                                <constraint firstAttribute="trailing" secondItem="pNa-sw-avy" secondAttribute="trailing" id="ZW8-We-aq5"/>
+                                                                <constraint firstItem="pNa-sw-avy" firstAttribute="top" secondItem="Sp9-pn-qFe" secondAttribute="top" id="aMI-j3-XCv"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="myImgView" destination="pNa-sw-avy" id="y6g-WD-Fjj"/>
@@ -243,10 +259,15 @@
                                                 </collectionView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="52q-Ux-eIO" secondAttribute="bottom" id="CaN-Bw-Qe9"/>
+                                                <constraint firstItem="52q-Ux-eIO" firstAttribute="top" secondItem="dn8-0g-6Ht" secondAttribute="bottom" constant="25" id="4p8-Z1-Ce9"/>
+                                                <constraint firstAttribute="bottom" secondItem="52q-Ux-eIO" secondAttribute="bottom" constant="45" id="CaN-Bw-Qe9"/>
+                                                <constraint firstItem="dn8-0g-6Ht" firstAttribute="top" secondItem="Obe-48-MqH" secondAttribute="bottom" constant="9" id="I7D-4P-3oJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="52q-Ux-eIO" secondAttribute="trailing" id="VHD-jh-PSk"/>
-                                                <constraint firstItem="52q-Ux-eIO" firstAttribute="top" secondItem="Tbh-Fm-YvV" secondAttribute="top" id="bLR-GZ-pBW"/>
+                                                <constraint firstItem="Obe-48-MqH" firstAttribute="leading" secondItem="Tbh-Fm-YvV" secondAttribute="leading" constant="16" id="gNb-L8-3ni"/>
+                                                <constraint firstItem="dn8-0g-6Ht" firstAttribute="leading" secondItem="Obe-48-MqH" secondAttribute="leading" id="gid-Lo-GAY"/>
                                                 <constraint firstItem="52q-Ux-eIO" firstAttribute="leading" secondItem="Tbh-Fm-YvV" secondAttribute="leading" id="ikQ-Wj-VfU"/>
+                                                <constraint firstAttribute="trailing" secondItem="Obe-48-MqH" secondAttribute="trailing" constant="16" id="kBG-JU-ZSP"/>
+                                                <constraint firstItem="Obe-48-MqH" firstAttribute="top" secondItem="Tbh-Fm-YvV" secondAttribute="top" constant="35" id="kIP-XD-raK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -254,7 +275,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryDetailSecondTVHeaderCell" rowHeight="71" id="93M-Fo-qNR" customClass="CategoryDetailSecondTVHeaderCell" customModule="KSpot" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="527" width="375" height="71"/>
+                                        <rect key="frame" x="0.0" y="573" width="375" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="93M-Fo-qNR" id="lzA-hB-duy">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="70.5"/>
@@ -289,7 +310,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryDetailSecondTVCell" rowHeight="360" id="dWH-l4-YDi" customClass="CategoryDetailSecondTVCell" customModule="KSpot" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="598" width="375" height="360"/>
+                                        <rect key="frame" x="0.0" y="644" width="375" height="360"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dWH-l4-YDi" id="xGF-Vn-LXA">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="359.5"/>

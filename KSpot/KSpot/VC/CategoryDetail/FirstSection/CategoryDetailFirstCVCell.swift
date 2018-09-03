@@ -11,4 +11,8 @@ import UIKit
 class CategoryDetailFirstCVCell: UICollectionViewCell {
     @IBOutlet weak var myImgView : UIImageView!
     @IBOutlet weak var placeLbl : UILabel!
+    override func awakeFromNib() {
+        self.makeCornerRound(cornerRadius: 17)
+    }
 }
+
