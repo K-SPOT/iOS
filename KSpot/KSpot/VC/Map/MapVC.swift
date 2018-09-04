@@ -29,9 +29,11 @@ class MapVC: UIViewController {
         super.viewDidLoad()
         initContainerView()
         setFilterView(filterView)
+        
         //네비게이션 타이틀
         self.navigationItem.title = "defualt"
     }
+    
     
     func initContainerView(){
         addChildView(containerView: containerView, asChildViewController: mapContainerVC)

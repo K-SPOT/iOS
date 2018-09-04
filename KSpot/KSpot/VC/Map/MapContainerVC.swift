@@ -20,7 +20,6 @@ class MapContainerVC: UIViewController {
   
         collectionView.delegate = self
         collectionView.dataSource = self
-        
     }
 }
 
@@ -79,8 +78,8 @@ extension MapContainerVC : UICollectionViewDataSource, UICollectionViewDelegate{
         return UICollectionViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(0, 0, 16, 0)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.goToPlaceDetailVC()
     }
 }
 
@@ -98,6 +97,9 @@ extension MapContainerVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (343/375)*view.frame.width, height: (371/375)*view.frame.width)
         //return CGSize(width: 375, height: 375)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(0, 0, 16, 0)
     }
 }
 

@@ -15,7 +15,7 @@ class MainThirdTVCell: UITableViewCell {
     private var collectionViewFlowLayout: UICollectionViewFlowLayout {
         return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
-  
+   var delegate : SelectDelegate?
     let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg")]
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -58,9 +58,11 @@ extension MainThirdTVCell : UICollectionViewDataSource, UICollectionViewDelegate
         return UICollectionViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(0, 33, 0, 33)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.tap(selected: indexPath.row)
     }
+    
+   
 }
 
 extension MainThirdTVCell: UICollectionViewDelegateFlowLayout {
@@ -77,6 +79,11 @@ extension MainThirdTVCell: UICollectionViewDelegateFlowLayout {
     //cell size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (252/375)*window!.frame.width, height: (262/667)*window!.frame.height)
+    }
+    
+    //collectionView inset
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(0, 33, 0, 33)
     }
     
     

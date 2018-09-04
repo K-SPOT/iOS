@@ -11,3 +11,7 @@ import Foundation
 protocol SelectRegionDelegate {
     func tap(_ tag : Region)
 }
+
+protocol SelectDelegate {
+    func tap(selected : Int?)
+}

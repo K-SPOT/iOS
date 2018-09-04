@@ -13,11 +13,7 @@ private let IMAGE_HEIGHT:CGFloat = 232
 private let SCROLL_DOWN_LIMIT:CGFloat = 100
 private let LIMIT_OFFSET_Y:CGFloat = -(IMAGE_HEIGHT + SCROLL_DOWN_LIMIT)
 
-let kScreenWidth = UIScreen.main.bounds.width
-let kScreenHeight = UIScreen.main.bounds.height
-let kTabBarHeight = 49
-let kNavBarHeight = 44
-let kNavBarBottom = WRNavigationBar.navBarBottom()
+
 
 class PlaceDetailVC: UIViewController
 {
