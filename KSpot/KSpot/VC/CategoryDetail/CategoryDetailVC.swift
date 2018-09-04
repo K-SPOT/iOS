@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
+class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, UIScrollViewDelegate{
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var backgroundImg: UIImageView!
@@ -31,7 +31,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
     override func viewDidLoad() {
         tableView.delegate = self
         tableView.dataSource = self
-        mainImg.makeImageRound()
+        mainImg.makeRounded(cornerRadius: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

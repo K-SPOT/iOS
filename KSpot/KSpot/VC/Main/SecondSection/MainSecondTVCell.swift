@@ -15,6 +15,7 @@ class MainSecondTVCell: UITableViewCell {
     private var collectionViewFlowLayout: UICollectionViewFlowLayout {
         return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
+    var delegate : SelectDelegate?
     
     let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg")]
     override func awakeFromNib() {
@@ -56,12 +57,11 @@ extension MainSecondTVCell : UICollectionViewDataSource, UICollectionViewDelegat
         return UICollectionViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(0, 33, 0, 33)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.tap(selected: indexPath.row)
     }
-    
-    
 }
+
 
 extension MainSecondTVCell: UICollectionViewDelegateFlowLayout {
     //section내의
@@ -79,13 +79,16 @@ extension MainSecondTVCell: UICollectionViewDelegateFlowLayout {
         return CGSize(width: (252/375)*window!.frame.width, height: (262/667)*window!.frame.height)
     }
     
-    
+    //collectionView inset
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(0, 33, 0, 33)
+    }
 }
 
 extension MainSecondTVCell : UIScrollViewDelegate{
     
     private func indexOfMajorCell() -> Int {
-     
+        
         let itemWidth = collectionViewFlowLayout.itemSize.width
         let proportionalOffset = collectionView.contentOffset.x / (itemWidth)
         let index = Int(round(proportionalOffset))
@@ -96,7 +99,7 @@ extension MainSecondTVCell : UIScrollViewDelegate{
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         indexOfCellBeforeDragging = indexOfMajorCell()
-
+        
     }
     
     
@@ -109,8 +112,8 @@ extension MainSecondTVCell : UIScrollViewDelegate{
         let indexOfMajorCell = self.indexOfMajorCell()
         let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-       
-       
+        
+        
         
     }
     

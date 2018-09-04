@@ -19,7 +19,7 @@ class MapVC: UIViewController {
         return viewController
     }()
     
-   
+    
     let filterView = MapFilterView.instanceFromNib()
     var selectedFirstFilter : FilterToggleBtn?
     var selectedSecondFilter : Int?
@@ -29,10 +29,11 @@ class MapVC: UIViewController {
         super.viewDidLoad()
         initContainerView()
         setFilterView(filterView)
-        //네이게이션 타이틀
+       
+        //네비게이션 타이틀
         self.navigationItem.title = "defualt"
-        
     }
+   
     
     func initContainerView(){
         addChildView(containerView: containerView, asChildViewController: mapContainerVC)
@@ -98,7 +99,7 @@ extension MapVC {
         
         //두번째 섹션 - default 는 1km
         setDistanceIdx(index: selectedSecondFilter ?? 3)
-
+        
         //세번째 섹션
         filterView.restaurantBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_restaurant_green"), unselected: #imageLiteral(resourceName: "map_filter_restaurant_gray"))
         filterView.hotplaceBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_hotplace_green"), unselected: #imageLiteral(resourceName: "map_filter_hotplace_gray"))
@@ -119,7 +120,7 @@ extension MapVC {
         //if selectedFirstFiler.tag == 0 이면 인기순
         print(selectedFirstFilter?.tag ?? -1)
         print(selectedSecondFilter ?? -1)
-       selectedThirdFilter.forEach({ (button) in
+        selectedThirdFilter.forEach({ (button) in
             print(button.tag)
         })
         self.filterView.removeFromSuperview()
@@ -151,7 +152,7 @@ extension MapVC {
             _sender.isSelected = true
             selectedThirdFilter.insert(_sender)
         } else {
-             _sender.isSelected = false
+            _sender.isSelected = false
             selectedThirdFilter.remove(_sender)
         }
     }

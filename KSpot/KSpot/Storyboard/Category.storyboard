@@ -130,7 +130,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="K-Spot" id="hsn-O4-I9a">
                         <barButtonItem key="backBarButtonItem" title=" " id="Kwc-fb-EWg"/>
-                        <barButtonItem key="leftBarButtonItem" image="category_translation" id="Nof-4P-NWI">
+                        <barButtonItem key="leftBarButtonItem" image="navigationbar_translation" id="Nof-4P-NWI">
                             <color key="tintColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="category_search" id="vjt-SG-hPs">
@@ -730,6 +730,6 @@
         <image name="category_detail_unscrap" width="11" height="15"/>
         <image name="category_filter" width="119" height="61"/>
         <image name="category_search" width="24" height="24"/>
-        <image name="category_translation" width="24" height="24"/>
+        <image name="navigationbar_translation" width="24" height="24"/>
     </resources>
 </document>

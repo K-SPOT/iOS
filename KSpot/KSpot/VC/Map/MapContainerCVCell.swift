@@ -49,7 +49,7 @@ extension MapContainerCVCell  : UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
        
-        return UIEdgeInsetsMake(0 ,10, 0 , 10)
+        return UIEdgeInsetsMake(11 ,16, 15 , 16)
     }
 }
 
@@ -66,6 +66,6 @@ extension MapContainerCVCell : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
        // return CGSize(width: self.frame.width, height: (364/375)*self.frame.width)
-        return CGSize(width: 50, height: 50)
+        return CGSize(width: 26, height: 26)
     }
 }

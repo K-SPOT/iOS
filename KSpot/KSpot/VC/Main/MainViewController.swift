@@ -16,10 +16,18 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
         tableView.tableFooterView = UIView(frame : .zero)
         // Do any additional setup after loading the view.
     }
 
+}
+
+extension MainViewController : SelectDelegate {
+    func tap(selected: Int?) {
+        print("taped")
+        self.goToPlaceDetailVC()
+    }
 }
 
 extension MainViewController : UITableViewDelegate, UITableViewDataSource {
@@ -37,9 +45,11 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: MainSecondTVCell.reuseIdentifier) as! MainSecondTVCell
+            cell.delegate = self
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: MainThirdTVCell.reuseIdentifier) as! MainThirdTVCell
+            cell.delegate = self
             return cell
         }
       
