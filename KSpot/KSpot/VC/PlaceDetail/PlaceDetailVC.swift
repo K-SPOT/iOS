@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import MessageUI
 
 private let NAVBAR_COLORCHANGE_POINT:CGFloat = -80
 private let IMAGE_HEIGHT:CGFloat = 232
 private let SCROLL_DOWN_LIMIT:CGFloat = 100
 private let LIMIT_OFFSET_Y:CGFloat = -(IMAGE_HEIGHT + SCROLL_DOWN_LIMIT)
 
-class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate {
+class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var locationView : UIView!
     @IBOutlet weak var phoneView: UIView!
@@ -28,11 +29,39 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate {
         return cycleView
     }()
     
+    @IBAction func phoneViewAction(_ sender: Any) {
+        "01025010258".makeACall()
+    }
+    
+    
+    @IBAction func emailViewAction(_ sender: Any) {
+        sendEmail()
+    }
+    
     @IBAction func scrollToTopAction(_ sender: Any) {
         tableView.setContentOffset(CGPoint(x: 0, y : -IMAGE_HEIGHT), animated: true)
     }
-   
     
+    
+    func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["rkdthd1234@naver.com"])
+            mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
+            
+            present(mail, animated: true)
+        } else {
+            // show failure alert
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+       
+        controller.dismiss(animated: true)
+    }
+
+   
     override func viewDidLoad()
     {
         super.viewDidLoad()

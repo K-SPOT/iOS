@@ -556,11 +556,15 @@
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="48" id="YrF-Ux-nFq"/>
                                                 <constraint firstItem="sSo-iP-kaa" firstAttribute="centerX" secondItem="I8H-iI-1rp" secondAttribute="centerX" id="i6k-7d-qdi"/>
                                                 <constraint firstItem="sSo-iP-kaa" firstAttribute="centerY" secondItem="I8H-iI-1rp" secondAttribute="centerY" id="o2S-qn-4mv"/>
                                             </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="T2g-kV-Lem" appends="YES" id="V5t-z5-rMy"/>
+                                            </connections>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OCi-PN-Kz5">
                                             <rect key="frame" x="19" y="364" width="337" height="48"/>
@@ -585,11 +589,15 @@
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstItem="xTb-wv-hfn" firstAttribute="centerX" secondItem="OCi-PN-Kz5" secondAttribute="centerX" id="agm-GH-ai7"/>
                                                 <constraint firstItem="xTb-wv-hfn" firstAttribute="centerY" secondItem="OCi-PN-Kz5" secondAttribute="centerY" id="cpw-B8-sxC"/>
                                                 <constraint firstAttribute="height" constant="48" id="ves-E8-dMk"/>
                                             </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="f4o-qV-1eQ" appends="YES" id="be5-va-l7s"/>
+                                            </connections>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrH-GU-GgI">
                                             <rect key="frame" x="165.5" y="496" width="44" height="44"/>
@@ -1002,6 +1010,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3h-Pm-orP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="T2g-kV-Lem">
+                    <connections>
+                        <action selector="phoneViewAction:" destination="Xjm-Rj-98B" id="0r7-kX-TRe"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="f4o-qV-1eQ">
+                    <connections>
+                        <action selector="emailViewAction:" destination="Xjm-Rj-98B" id="Icu-u4-5bg"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2519.1999999999998" y="180.80959520239881"/>
         </scene>
