@@ -31,7 +31,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, UIScrollV
     override func viewDidLoad() {
         tableView.delegate = self
         tableView.dataSource = self
-        mainImg.makeImageRound()
+        mainImg.makeRounded(cornerRadius: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

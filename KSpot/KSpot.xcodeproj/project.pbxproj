@@ -50,6 +50,9 @@
 		3B3DD17B213DC9D200FD00B3 /* WRCycleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD17A213DC9D200FD00B3 /* WRCycleCell.swift */; };
 		3B3DD17D213DC9DF00FD00B3 /* WRCycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD17C213DC9DF00FD00B3 /* WRCycleScrollView.swift */; };
 		3B3DD17F213DC9EA00FD00B3 /* WRProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD17E213DC9EA00FD00B3 /* WRProxy.swift */; };
+		3B3DD182213F072D00FD00B3 /* PlaceDetailFirstTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD181213F072D00FD00B3 /* PlaceDetailFirstTVCell.swift */; };
+		3B3DD185213F085600FD00B3 /* PlaceDetailFirstCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD184213F085600FD00B3 /* PlaceDetailFirstCVCell.swift */; };
+		3B3DD189213F0D0600FD00B3 /* PlaceDetailSecondCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD188213F0D0600FD00B3 /* PlaceDetailSecondCVCell.swift */; };
 		3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D462139262800FFF08C /* AppDelegate.swift */; };
 		3BBF8D492139262800FFF08C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D482139262800FFF08C /* ViewController.swift */; };
 		3BBF8D4C2139262800FFF08C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF8D4A2139262800FFF08C /* Main.storyboard */; };
@@ -106,6 +109,9 @@
 		3B3DD17A213DC9D200FD00B3 /* WRCycleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRCycleCell.swift; sourceTree = "<group>"; };
 		3B3DD17C213DC9DF00FD00B3 /* WRCycleScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRCycleScrollView.swift; sourceTree = "<group>"; };
 		3B3DD17E213DC9EA00FD00B3 /* WRProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRProxy.swift; sourceTree = "<group>"; };
+		3B3DD181213F072D00FD00B3 /* PlaceDetailFirstTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailFirstTVCell.swift; sourceTree = "<group>"; };
+		3B3DD184213F085600FD00B3 /* PlaceDetailFirstCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailFirstCVCell.swift; sourceTree = "<group>"; };
+		3B3DD188213F0D0600FD00B3 /* PlaceDetailSecondCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailSecondCVCell.swift; sourceTree = "<group>"; };
 		3BBF8D432139262800FFF08C /* KSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBF8D462139262800FFF08C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBF8D482139262800FFF08C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -317,7 +323,8 @@
 			isa = PBXGroup;
 			children = (
 				3B3DD14D213D788B00FD00B3 /* PlaceDetailVC.swift */,
-				3B3DD14F213D9C8B00FD00B3 /* PlaceDetailSecondTVCell.swift */,
+				3B3DD187213F0CDA00FD00B3 /* FirstSection */,
+				3B3DD186213F0CD800FD00B3 /* SecondSection */,
 			);
 			path = PlaceDetail;
 			sourceTree = "<group>";
@@ -339,6 +346,24 @@
 				3B3DD17E213DC9EA00FD00B3 /* WRProxy.swift */,
 			);
 			path = WRCycleScrollView;
+			sourceTree = "<group>";
+		};
+		3B3DD186213F0CD800FD00B3 /* SecondSection */ = {
+			isa = PBXGroup;
+			children = (
+				3B3DD14F213D9C8B00FD00B3 /* PlaceDetailSecondTVCell.swift */,
+				3B3DD188213F0D0600FD00B3 /* PlaceDetailSecondCVCell.swift */,
+			);
+			path = SecondSection;
+			sourceTree = "<group>";
+		};
+		3B3DD187213F0CDA00FD00B3 /* FirstSection */ = {
+			isa = PBXGroup;
+			children = (
+				3B3DD181213F072D00FD00B3 /* PlaceDetailFirstTVCell.swift */,
+				3B3DD184213F085600FD00B3 /* PlaceDetailFirstCVCell.swift */,
+			);
+			path = FirstSection;
 			sourceTree = "<group>";
 		};
 		3BBF8D3A2139262800FFF08C = {
@@ -569,10 +594,13 @@
 				3B3DD124213BFCE700FD00B3 /* Region.swift in Sources */,
 				3B3DD141213D3B5100FD00B3 /* CategoryDetailFirstCVCell.swift in Sources */,
 				3B3DD149213D6C5800FD00B3 /* BroadcastTVCell.swift in Sources */,
+				3B3DD182213F072D00FD00B3 /* PlaceDetailFirstTVCell.swift in Sources */,
 				3B3DD120213BEE0500FD00B3 /* MapContainerCVCell.swift in Sources */,
+				3B3DD185213F085600FD00B3 /* PlaceDetailFirstCVCell.swift in Sources */,
 				3B3DD14B213D708800FD00B3 /* CategoryToggleBtn.swift in Sources */,
 				3B3DD0F8213B2FAC00FD00B3 /* Storyboard.swift in Sources */,
 				3B3DD114213BD74300FD00B3 /* MapVC.swift in Sources */,
+				3B3DD189213F0D0600FD00B3 /* PlaceDetailSecondCVCell.swift in Sources */,
 				3B3DD16F213DA7B100FD00B3 /* WRCustomNavigationBar.swift in Sources */,
 				3B3DD0E7213AE1E300FD00B3 /* MainThirdCVCell.swift in Sources */,
 				3B3DD14E213D788B00FD00B3 /* PlaceDetailVC.swift in Sources */,

@@ -73,24 +73,35 @@ extension UIViewController {
 /*---------------------UIView---------------------------*/
 
 extension UIView {
-    func makeRounded(){
-        self.layer.cornerRadius = self.layer.frame.height/2
+    func makeRounded(cornerRadius : CGFloat?){
+        if let cornerRadius_ = cornerRadius {
+            self.layer.cornerRadius = cornerRadius_
+        }  else {
+             self.layer.cornerRadius = self.layer.frame.height/2
+        }
         self.layer.masksToBounds = true
+    }
+    
+    
+    
+    func makeViewBorder(width : Double, color : UIColor){
+        self.layer.borderWidth = CGFloat(width)
+        self.layer.borderColor = color.cgColor
     }
 }
 
 /*---------------------UIImageView---------------------------*/
-extension UIImageView {
+/*extension UIImageView {
     func makeImageRound(){
         self.layer.cornerRadius = self.layer.frame.width/2
         self.layer.masksToBounds = true
     }
     
-    func makeImgBorder(width : Int, color : UIColor){
+    func makeImgBorder(width : Double, color : UIColor){
         self.layer.borderWidth = CGFloat(width)
         self.layer.borderColor = color.cgColor
     }
-}
+}*/
 
 
 /*---------------------UIButton---------------------------*/

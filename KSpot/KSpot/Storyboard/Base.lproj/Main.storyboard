@@ -86,7 +86,7 @@
                                                             <rect key="frame" x="168" y="8" width="39" height="37"/>
                                                         </pageControl>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.99215686270000003" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="Yye-u9-p72" firstAttribute="centerX" secondItem="dB1-SI-sNG" secondAttribute="centerX" id="CjP-T2-kAn"/>
                                                         <constraint firstItem="Yye-u9-p72" firstAttribute="centerY" secondItem="dB1-SI-sNG" secondAttribute="centerY" id="ZIR-c3-vR3"/>
@@ -427,7 +427,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XNU-Nn-8DG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="장소" image="tab_map_gray" id="475-Ic-UN8"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yyC-JC-BAh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="category_detail_left_arrow" id="yyC-JC-BAh">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -445,6 +445,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="category_detail_left_arrow" width="24" height="24"/>
         <image name="main_arrow" width="15" height="15"/>
         <image name="main_search" width="24" height="24"/>
         <image name="main_theme image" width="376" height="364"/>
