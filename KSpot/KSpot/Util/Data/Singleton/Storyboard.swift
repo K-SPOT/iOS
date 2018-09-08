@@ -13,6 +13,7 @@ class Storyboard {
     let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
     let categoryStoryboard = UIStoryboard(name: "Category", bundle: nil)
     let mapStoryboard = UIStoryboard(name: "Map", bundle: nil)
+    let mypageStoryboard = UIStoryboard(name: "Mypage", bundle: nil)
   
     struct StaticInstance {
         static var instance: Storyboard?
