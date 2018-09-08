@@ -53,6 +53,8 @@
 		3B3DD182213F072D00FD00B3 /* PlaceDetailFirstTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD181213F072D00FD00B3 /* PlaceDetailFirstTVCell.swift */; };
 		3B3DD185213F085600FD00B3 /* PlaceDetailFirstCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD184213F085600FD00B3 /* PlaceDetailFirstCVCell.swift */; };
 		3B3DD189213F0D0600FD00B3 /* PlaceDetailSecondCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD188213F0D0600FD00B3 /* PlaceDetailSecondCVCell.swift */; };
+		3BB188232144107E0021B543 /* Mypage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BB188222144107E0021B543 /* Mypage.storyboard */; };
+		3BB1882B214420980021B543 /* ReviewWriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB1882A214420980021B543 /* ReviewWriteVC.swift */; };
 		3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D462139262800FFF08C /* AppDelegate.swift */; };
 		3BBF8D492139262800FFF08C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D482139262800FFF08C /* ViewController.swift */; };
 		3BBF8D4C2139262800FFF08C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF8D4A2139262800FFF08C /* Main.storyboard */; };
@@ -112,6 +114,8 @@
 		3B3DD181213F072D00FD00B3 /* PlaceDetailFirstTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailFirstTVCell.swift; sourceTree = "<group>"; };
 		3B3DD184213F085600FD00B3 /* PlaceDetailFirstCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailFirstCVCell.swift; sourceTree = "<group>"; };
 		3B3DD188213F0D0600FD00B3 /* PlaceDetailSecondCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailSecondCVCell.swift; sourceTree = "<group>"; };
+		3BB188222144107E0021B543 /* Mypage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mypage.storyboard; sourceTree = "<group>"; };
+		3BB1882A214420980021B543 /* ReviewWriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteVC.swift; sourceTree = "<group>"; };
 		3BBF8D432139262800FFF08C /* KSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBF8D462139262800FFF08C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBF8D482139262800FFF08C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 		3B3DD0E8213AE29D00FD00B3 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				3BB1882921441D940021B543 /* ReviewWrite */,
+				3BB1882821441D850021B543 /* Review */,
 				3B3DD112213BD72B00FD00B3 /* Map */,
 				3BBF8D62213936F000FFF08C /* Main */,
 				3B3DD0F6213B2E5600FD00B3 /* Category */,
@@ -169,6 +175,7 @@
 				3BBF8D4A2139262800FFF08C /* Main.storyboard */,
 				3B3DD0F0213B28A600FD00B3 /* Category.storyboard */,
 				3B3DD110213BD5A600FD00B3 /* Map.storyboard */,
+				3BB188222144107E0021B543 /* Mypage.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -366,6 +373,21 @@
 			path = FirstSection;
 			sourceTree = "<group>";
 		};
+		3BB1882821441D850021B543 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
+		3BB1882921441D940021B543 /* ReviewWrite */ = {
+			isa = PBXGroup;
+			children = (
+				3BB1882A214420980021B543 /* ReviewWriteVC.swift */,
+			);
+			path = ReviewWrite;
+			sourceTree = "<group>";
+		};
 		3BBF8D3A2139262800FFF08C = {
 			isa = PBXGroup;
 			children = (
@@ -466,6 +488,7 @@
 				3BBF8D402139262800FFF08C /* Frameworks */,
 				3BBF8D412139262800FFF08C /* Resources */,
 				E0D5C63472E0A3EA69262E81 /* [CP] Embed Pods Frameworks */,
+				E7B24488030981238C266BFC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -522,6 +545,7 @@
 				3B3DD10D213B408500FD00B3 /* NanumSquareOTFLight.otf in Resources */,
 				3BBF8D512139262800FFF08C /* LaunchScreen.storyboard in Resources */,
 				3BBF8D4E2139262800FFF08C /* Assets.xcassets in Resources */,
+				3BB188232144107E0021B543 /* Mypage.storyboard in Resources */,
 				3B3DD134213C32FB00FD00B3 /* MapFilterView.xib in Resources */,
 				3B3DD111213BD5A600FD00B3 /* Map.storyboard in Resources */,
 				3B3DD10F213B408900FD00B3 /* BMJUA_otf.otf in Resources */,
@@ -558,14 +582,36 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-KSpot/Pods-KSpot-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KSpot/Pods-KSpot-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7B24488030981238C266BFC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-KSpot/Pods-KSpot-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KSpot/Pods-KSpot-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -609,6 +655,7 @@
 				3B3DD0F3213B2BC900FD00B3 /* CategoryVC.swift in Sources */,
 				3BBF8D5F21392D3E00FFF08C /* MainFirstCVCell.swift in Sources */,
 				3BBF8D5B21392A0D00FFF08C /* Extensions.swift in Sources */,
+				3BB1882B214420980021B543 /* ReviewWriteVC.swift in Sources */,
 				3B3DD17B213DC9D200FD00B3 /* WRCycleCell.swift in Sources */,
 				3B3DD116213BD77F00FD00B3 /* MapContainerVC.swift in Sources */,
 				3B3DD103213B3C5000FD00B3 /* CelebrityTVCell.swift in Sources */,
