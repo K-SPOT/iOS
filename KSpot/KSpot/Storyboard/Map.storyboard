@@ -9,6 +9,7 @@
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -276,21 +277,66 @@
                                                 <constraint firstItem="cTS-5j-bW5" firstAttribute="centerY" secondItem="CPQ-pp-aDp" secondAttribute="centerY" id="ysY-T4-9BR"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bA-Wy-PVw" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
-                                            <rect key="frame" x="135" y="141" width="46" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Button"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bA-Wy-PVw" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="223.5" y="35" width="23" height="48"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="4bA-Wy-PVw" secondAttribute="height" multiplier="23:48" id="LdW-em-1kR"/>
+                                            </constraints>
+                                            <state key="normal" title="도봉"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGY-Wf-hIs">
+                                            <rect key="frame" x="254" y="35" width="43" height="72"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="NGY-Wf-hIs" secondAttribute="height" multiplier="43:72" id="opY-gD-w2k"/>
+                                            </constraints>
+                                            <state key="normal" title="노원"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4l-pQ-wHf">
+                                            <rect key="frame" x="269" y="115" width="36" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="r4l-pQ-wHf" secondAttribute="height" multiplier="9:11" id="s3r-Ys-h1m"/>
+                                            </constraints>
+                                            <state key="normal" title="중랑"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dum-wC-woy">
+                                            <rect key="frame" x="197" y="50" width="22" height="51"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="dum-wC-woy" secondAttribute="height" multiplier="22:51" id="lYB-sL-4PX"/>
+                                            </constraints>
+                                            <state key="normal" title="강"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUD-HA-R3X">
+                                            <rect key="frame" x="217" y="86" width="24" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="EUD-HA-R3X" secondAttribute="height" multiplier="12:13" id="sdX-Uw-w9k"/>
+                                            </constraints>
+                                            <state key="normal" title="북"/>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstItem="NGY-Wf-hIs" firstAttribute="width" secondItem="tJL-Gj-h54" secondAttribute="width" multiplier="43:375" id="07V-tQ-aG2"/>
                                         <constraint firstAttribute="bottom" secondItem="1yU-Em-BRg" secondAttribute="bottom" id="3RT-M3-6Ax"/>
                                         <constraint firstItem="tJL-Gj-h54" firstAttribute="top" secondItem="MKH-j8-9PD" secondAttribute="top" id="6fB-S2-AoE"/>
+                                        <constraint firstItem="dum-wC-woy" firstAttribute="width" secondItem="tJL-Gj-h54" secondAttribute="width" multiplier="22:375" id="ARe-r5-4Oi"/>
                                         <constraint firstItem="tJL-Gj-h54" firstAttribute="leading" secondItem="MKH-j8-9PD" secondAttribute="leading" id="Bl4-JD-PLh"/>
                                         <constraint firstItem="1yU-Em-BRg" firstAttribute="top" secondItem="tJL-Gj-h54" secondAttribute="bottom" id="Jb4-3Q-1mq"/>
+                                        <constraint firstItem="4bA-Wy-PVw" firstAttribute="leading" secondItem="dum-wC-woy" secondAttribute="trailing" constant="4.5" id="NMX-KI-Dzz"/>
+                                        <constraint firstItem="4bA-Wy-PVw" firstAttribute="width" secondItem="tJL-Gj-h54" secondAttribute="width" multiplier="23:375" id="Tye-hy-jh3"/>
+                                        <constraint firstItem="EUD-HA-R3X" firstAttribute="top" secondItem="dum-wC-woy" secondAttribute="bottom" constant="-15" id="WEb-yz-SbZ"/>
+                                        <constraint firstItem="EUD-HA-R3X" firstAttribute="width" secondItem="tJL-Gj-h54" secondAttribute="width" multiplier="24:375" id="bJI-a7-tuI"/>
+                                        <constraint firstItem="NGY-Wf-hIs" firstAttribute="top" secondItem="4bA-Wy-PVw" secondAttribute="top" id="bsp-Pm-o4T"/>
                                         <constraint firstAttribute="trailing" secondItem="1yU-Em-BRg" secondAttribute="trailing" id="dh8-N5-0Bu"/>
+                                        <constraint firstItem="dum-wC-woy" firstAttribute="top" secondItem="4bA-Wy-PVw" secondAttribute="bottom" constant="-33" id="flH-cp-zZq"/>
                                         <constraint firstAttribute="trailing" secondItem="tJL-Gj-h54" secondAttribute="trailing" id="gA7-9o-SLR"/>
+                                        <constraint firstItem="r4l-pQ-wHf" firstAttribute="leading" secondItem="NGY-Wf-hIs" secondAttribute="trailing" constant="-28" id="gEh-SF-edQ"/>
+                                        <constraint firstItem="r4l-pQ-wHf" firstAttribute="top" secondItem="NGY-Wf-hIs" secondAttribute="bottom" constant="8" id="hJx-NX-bV9"/>
+                                        <constraint firstItem="4bA-Wy-PVw" firstAttribute="centerX" secondItem="tJL-Gj-h54" secondAttribute="centerX" multiplier="1.25:1" id="o3M-17-3wl"/>
+                                        <constraint firstItem="NGY-Wf-hIs" firstAttribute="leading" secondItem="4bA-Wy-PVw" secondAttribute="trailing" constant="7.5" id="pZi-zu-qhA"/>
                                         <constraint firstItem="1yU-Em-BRg" firstAttribute="leading" secondItem="MKH-j8-9PD" secondAttribute="leading" id="pjW-8G-rJB"/>
+                                        <constraint firstItem="4bA-Wy-PVw" firstAttribute="centerY" secondItem="tJL-Gj-h54" secondAttribute="centerY" multiplier="1:3.2" id="zAb-PG-OXB"/>
+                                        <constraint firstItem="r4l-pQ-wHf" firstAttribute="width" secondItem="tJL-Gj-h54" secondAttribute="width" multiplier="36:375" id="zc6-JE-LnR"/>
+                                        <constraint firstItem="EUD-HA-R3X" firstAttribute="leading" secondItem="dum-wC-woy" secondAttribute="trailing" constant="-2" id="ziu-md-bq6"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="dobongBtn" destination="4bA-Wy-PVw" id="Ezf-bV-PB2"/>
