@@ -11,6 +11,10 @@ import SnapKit
 
 class ReviewWriteVC: UIViewController, UITextFieldDelegate {
     
+    
+    @IBOutlet weak var ratingView: CosmosView!
+    
+    @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var scrollTopView: UIView!
     @IBOutlet weak var titleTxtField: UITextField!
     @IBOutlet weak var writeCountLbl: UILabel!
@@ -55,6 +59,10 @@ class ReviewWriteVC: UIViewController, UITextFieldDelegate {
         contentTxtView.textColor = #colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1)
         doneBtn.isEnabled = false
         doneBtn.tintColor = #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1)
+        ratingView.settings.fillMode = .half
+        ratingView.didTouchCosmos = didTouchCosmos
+        
+        ratingView.didFinishTouchingCosmos = didFinishTouchingCosmos
     }
     
     
@@ -77,6 +85,23 @@ class ReviewWriteVC: UIViewController, UITextFieldDelegate {
         }
     } //isValid
     
+}
+
+extension ReviewWriteVC {
+    private class func formatValue(_ value: Double) -> String {
+        return String(format: "%.1f", value)
+    }
+    
+    private func didTouchCosmos(_ rating: Double) {
+       
+        self.ratingLbl.text = ReviewWriteVC.formatValue(rating)
+    
+    }
+    
+    private func didFinishTouchingCosmos(_ rating: Double) {
+        self.ratingLbl.text = ReviewWriteVC.formatValue(rating)
+       
+    }
 }
 
 //이미지뷰에 대한 추가 및 삭제

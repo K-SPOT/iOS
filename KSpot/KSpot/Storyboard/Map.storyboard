@@ -127,7 +127,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVh-g4-d5Z">
-                                                    <rect key="frame" x="166.5" y="220.5" width="17.5" height="13.5"/>
+                                                    <rect key="frame" x="166.5" y="220" width="17" height="14"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                     <color key="textColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -139,7 +139,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용산구 . 명동역" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBh-dU-cXV">
-                                                    <rect key="frame" x="33" y="284" width="74.5" height="13.5"/>
+                                                    <rect key="frame" x="33" y="284" width="74.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                     <color key="textColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -380,13 +380,13 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울남산타워" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZm-8e-0tb">
-                                            <rect key="frame" x="122" y="34" width="131.5" height="27"/>
+                                            <rect key="frame" x="122.5" y="34" width="131.5" height="27"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="24"/>
                                             <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울의 야경을 한눈에 볼 수 있는" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAE-Ge-KfA">
-                                            <rect key="frame" x="96" y="76" width="183.5" height="15.5"/>
+                                            <rect key="frame" x="96.5" y="76" width="183.5" height="15.5"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="14"/>
                                             <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -398,13 +398,13 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="고려대" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUm-Ga-AzB">
-                                            <rect key="frame" x="53" y="197" width="33" height="13.5"/>
+                                            <rect key="frame" x="53" y="206" width="33" height="13.5"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                             <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="보문" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1EK-97-hui">
-                                            <rect key="frame" x="300" y="197" width="22" height="13.5"/>
+                                            <rect key="frame" x="300" y="206" width="22" height="13.5"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                             <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -428,20 +428,20 @@
                                             </subviews>
                                         </stackView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="place_detail_star_full" translatesAutoresizingMaskIntoConstraints="NO" id="GKm-tq-8ua">
-                                            <rect key="frame" x="263.5" y="40.5" width="14" height="14"/>
+                                            <rect key="frame" x="264" y="40.5" width="14" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="GKm-tq-8ua" secondAttribute="height" multiplier="1:1" id="UPh-0S-5lL"/>
                                                 <constraint firstAttribute="width" constant="14" id="nay-3m-nHT"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNR-RO-Hxi">
-                                            <rect key="frame" x="281" y="41" width="17.5" height="13.5"/>
+                                            <rect key="frame" x="281.5" y="41.5" width="17.5" height="13.5"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                             <color key="textColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0Iq-dq-01I">
-                                            <rect key="frame" x="145" y="172" width="60.5" height="16"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="0Iq-dq-01I">
+                                            <rect key="frame" x="162" y="172" width="52.5" height="16"/>
                                             <subviews>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="place_detail_dot_6" translatesAutoresizingMaskIntoConstraints="NO" id="qoW-N4-CpL">
                                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -450,8 +450,8 @@
                                                         <constraint firstAttribute="width" constant="16" id="OK5-Bv-fcl"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안암" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fW6-Vr-HlW">
-                                                    <rect key="frame" x="31" y="0.0" width="29.5" height="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안암" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fW6-Vr-HlW">
+                                                    <rect key="frame" x="23" y="0.0" width="29.5" height="16"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="16"/>
                                                     <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -470,7 +470,7 @@
                                     <constraints>
                                         <constraint firstItem="mNR-RO-Hxi" firstAttribute="leading" secondItem="GKm-tq-8ua" secondAttribute="trailing" constant="3.6000000000000001" id="193-QV-sPI"/>
                                         <constraint firstAttribute="bottom" secondItem="dVk-A3-TUM" secondAttribute="bottom" id="3wg-kp-g7v"/>
-                                        <constraint firstItem="wUm-Ga-AzB" firstAttribute="top" secondItem="QGJ-yN-97G" secondAttribute="bottom" id="40c-K3-bNe"/>
+                                        <constraint firstItem="wUm-Ga-AzB" firstAttribute="top" secondItem="QGJ-yN-97G" secondAttribute="bottom" constant="9" id="40c-K3-bNe"/>
                                         <constraint firstItem="1EK-97-hui" firstAttribute="trailing" secondItem="QGJ-yN-97G" secondAttribute="trailing" id="8eq-C9-fe6"/>
                                         <constraint firstItem="QGJ-yN-97G" firstAttribute="leading" secondItem="J1V-p6-Gnp" secondAttribute="leading" constant="53" id="9CX-xK-WYx"/>
                                         <constraint firstItem="dVk-A3-TUM" firstAttribute="leading" secondItem="J1V-p6-Gnp" secondAttribute="leading" id="Cqt-eF-rSl"/>
@@ -479,9 +479,9 @@
                                         <constraint firstItem="0Iq-dq-01I" firstAttribute="centerY" secondItem="QGJ-yN-97G" secondAttribute="centerY" id="Pz4-hx-o9T"/>
                                         <constraint firstAttribute="trailing" secondItem="QGJ-yN-97G" secondAttribute="trailing" constant="53" id="V7z-0Y-kKg"/>
                                         <constraint firstItem="wUm-Ga-AzB" firstAttribute="leading" secondItem="QGJ-yN-97G" secondAttribute="leading" id="X0q-Vz-tY8"/>
-                                        <constraint firstItem="0Iq-dq-01I" firstAttribute="centerX" secondItem="QGJ-yN-97G" secondAttribute="centerX" constant="-13" id="YYY-M8-1Vo"/>
+                                        <constraint firstItem="0Iq-dq-01I" firstAttribute="centerX" secondItem="QGJ-yN-97G" secondAttribute="centerX" id="YYY-M8-1Vo"/>
                                         <constraint firstItem="fZm-8e-0tb" firstAttribute="centerX" secondItem="J1V-p6-Gnp" secondAttribute="centerX" id="ZQ1-Sm-0aK"/>
-                                        <constraint firstItem="1EK-97-hui" firstAttribute="top" secondItem="QGJ-yN-97G" secondAttribute="bottom" id="aEN-tw-hOZ"/>
+                                        <constraint firstItem="1EK-97-hui" firstAttribute="top" secondItem="QGJ-yN-97G" secondAttribute="bottom" constant="9" id="aEN-tw-hOZ"/>
                                         <constraint firstItem="nAE-Ge-KfA" firstAttribute="centerX" secondItem="fZm-8e-0tb" secondAttribute="centerX" id="avl-PX-Pgk"/>
                                         <constraint firstItem="mNR-RO-Hxi" firstAttribute="centerY" secondItem="GKm-tq-8ua" secondAttribute="centerY" id="h1F-Vg-Ulp"/>
                                         <constraint firstAttribute="trailing" secondItem="dVk-A3-TUM" secondAttribute="trailing" id="i7y-iR-9Xp"/>
@@ -548,13 +548,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAl-5d-dKW">
-                                            <rect key="frame" x="71" y="238" width="45" height="18"/>
+                                            <rect key="frame" x="71.5" y="238" width="45" height="18"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="16"/>
                                             <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yM-tc-Za7">
-                                            <rect key="frame" x="259" y="238" width="45" height="18"/>
+                                            <rect key="frame" x="259.5" y="238" width="45" height="18"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="16"/>
                                             <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -583,7 +583,7 @@
                                             <rect key="frame" x="19" y="299" width="337" height="48"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sSo-iP-kaa">
-                                                    <rect key="frame" x="95.5" y="15.5" width="146" height="17"/>
+                                                    <rect key="frame" x="96" y="15.5" width="146" height="17"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="place_detail_phone" translatesAutoresizingMaskIntoConstraints="NO" id="e0x-zf-xYO">
                                                             <rect key="frame" x="0.0" y="0.0" width="17" height="17"/>
@@ -718,7 +718,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="관련 연예인/방송" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYz-Gt-woe">
-                                                    <rect key="frame" x="16" y="34" width="128" height="20"/>
+                                                    <rect key="frame" x="16" y="34" width="127.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="18"/>
                                                     <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -751,7 +751,7 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="방탄소년단" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwC-X9-bwR">
-                                                                        <rect key="frame" x="23" y="77" width="55" height="13.5"/>
+                                                                        <rect key="frame" x="23" y="77" width="55" height="14"/>
                                                                         <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="12"/>
                                                                         <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -783,7 +783,7 @@
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VpI-Ae-enX">
-                                                    <rect key="frame" x="152" y="34" width="27" height="20"/>
+                                                    <rect key="frame" x="151.5" y="34" width="27" height="20"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFL" family="NanumSquareOTF" pointSize="18"/>
                                                     <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1099,43 +1099,101 @@
                                                     <constraint firstAttribute="height" constant="0.5" id="fr0-d7-ZHB"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4L-co-3NB">
+                                                <rect key="frame" x="18" y="123.5" width="339" height="0.5"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="0.5" id="tBZ-I0-0Hd"/>
+                                                </constraints>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6M-Vg-dgi">
-                                                <rect key="frame" x="319" y="121.5" width="38" height="15.5"/>
+                                                <rect key="frame" x="319" y="171" width="38" height="15.5"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareOTFL" family="NanumSquareOTF" pointSize="14"/>
                                                 <color key="textColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvc-Ke-G3g">
-                                                <rect key="frame" x="308.5" y="122" width="8.5" height="16"/>
+                                                <rect key="frame" x="309" y="171.5" width="8" height="16"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareOTFL" family="NanumSquareOTF" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wAO-rD-JpF">
-                                                <rect key="frame" x="18" y="79.5" width="339" height="32"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <rect key="frame" x="18" y="129" width="339" height="32"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="1" constant="33" id="TRx-6X-yJq"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWf-cR-Fip">
+                                                <rect key="frame" x="186.5" y="85.5" width="29" height="22.5"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSK-JB-x4H" customClass="CosmosView" customModule="KSpot" customModuleProvider="target">
+                                                <rect key="frame" x="18" y="85.5" width="160.5" height="22"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="22" id="QpS-jS-7GF"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="review_star_full"/>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="review_star_empty"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                                        <color key="value" red="0.41927871109999998" green="0.85189700130000001" blue="0.68716549869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                                        <color key="value" red="0.41927871109999998" green="0.85189700130000001" blue="0.68716549869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
+                                                        <color key="value" red="0.41927871109999998" green="0.85189700130000001" blue="0.68716549869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                                        <real key="value" value="21"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                        <real key="value" value="4.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minTouchRating">
+                                                        <real key="value" value="0.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwi-IZ-PRh">
+                                                <rect key="frame" x="218.5" y="85" width="25" height="23"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Lx3-sQ-51R" secondAttribute="trailing" constant="18" id="1OU-VO-y8T"/>
                                             <constraint firstItem="lMA-7s-3H4" firstAttribute="trailing" secondItem="Lx3-sQ-51R" secondAttribute="trailing" id="8iu-YA-fTL"/>
+                                            <constraint firstItem="wAO-rD-JpF" firstAttribute="top" secondItem="U4L-co-3NB" secondAttribute="bottom" constant="5" id="Bwm-OD-IYq"/>
                                             <constraint firstItem="kvc-Ke-G3g" firstAttribute="centerY" secondItem="Z6M-Vg-dgi" secondAttribute="centerY" id="ELJ-lv-XpB"/>
-                                            <constraint firstItem="wAO-rD-JpF" firstAttribute="top" secondItem="lMA-7s-3H4" secondAttribute="bottom" constant="10" id="FsQ-d3-edC"/>
+                                            <constraint firstItem="KWf-cR-Fip" firstAttribute="leading" secondItem="hSK-JB-x4H" secondAttribute="trailing" constant="8" id="Meu-wo-9IB"/>
                                             <constraint firstItem="wAO-rD-JpF" firstAttribute="leading" secondItem="lMA-7s-3H4" secondAttribute="leading" id="S2x-yM-jED"/>
+                                            <constraint firstItem="U4L-co-3NB" firstAttribute="top" secondItem="hSK-JB-x4H" secondAttribute="bottom" constant="16" id="WwP-n5-tcy"/>
                                             <constraint firstItem="wAO-rD-JpF" firstAttribute="trailing" secondItem="lMA-7s-3H4" secondAttribute="trailing" id="Y7m-4E-hac"/>
+                                            <constraint firstItem="hSK-JB-x4H" firstAttribute="top" secondItem="lMA-7s-3H4" secondAttribute="bottom" constant="16" id="YKT-En-qay"/>
                                             <constraint firstItem="lMA-7s-3H4" firstAttribute="top" secondItem="Lx3-sQ-51R" secondAttribute="bottom" constant="23" id="cwb-mb-yu0"/>
+                                            <constraint firstItem="nwi-IZ-PRh" firstAttribute="leading" secondItem="KWf-cR-Fip" secondAttribute="trailing" constant="3" id="dqt-Zv-ynZ"/>
+                                            <constraint firstItem="U4L-co-3NB" firstAttribute="leading" secondItem="lMA-7s-3H4" secondAttribute="leading" id="duV-Gz-H9z"/>
+                                            <constraint firstItem="hSK-JB-x4H" firstAttribute="leading" secondItem="lMA-7s-3H4" secondAttribute="leading" id="eBI-4q-tz5"/>
                                             <constraint firstItem="Lx3-sQ-51R" firstAttribute="leading" secondItem="SAD-2Z-yQE" secondAttribute="leading" constant="18" id="lKe-V5-ouc"/>
                                             <constraint firstItem="lMA-7s-3H4" firstAttribute="leading" secondItem="Lx3-sQ-51R" secondAttribute="leading" id="nyU-ux-hel"/>
+                                            <constraint firstItem="KWf-cR-Fip" firstAttribute="centerY" secondItem="hSK-JB-x4H" secondAttribute="centerY" id="o0h-sV-nML"/>
+                                            <constraint firstItem="nwi-IZ-PRh" firstAttribute="centerY" secondItem="KWf-cR-Fip" secondAttribute="centerY" id="osK-Lc-F6I"/>
+                                            <constraint firstItem="U4L-co-3NB" firstAttribute="trailing" secondItem="lMA-7s-3H4" secondAttribute="trailing" id="pla-yM-pVg"/>
                                             <constraint firstItem="Z6M-Vg-dgi" firstAttribute="top" secondItem="wAO-rD-JpF" secondAttribute="bottom" constant="10" id="qFh-Hy-NiE"/>
                                             <constraint firstItem="Lx3-sQ-51R" firstAttribute="top" secondItem="SAD-2Z-yQE" secondAttribute="top" constant="23" id="r8l-Cl-3yj"/>
                                             <constraint firstItem="Z6M-Vg-dgi" firstAttribute="trailing" secondItem="wAO-rD-JpF" secondAttribute="trailing" id="u1V-bZ-Mqi"/>
                                             <constraint firstItem="Z6M-Vg-dgi" firstAttribute="leading" secondItem="kvc-Ke-G3g" secondAttribute="trailing" constant="2" id="yxx-Sp-BSr"/>
+                                            <constraint firstItem="hSK-JB-x4H" firstAttribute="trailing" secondItem="lMA-7s-3H4" secondAttribute="trailing" multiplier="1:2" id="z1B-HE-fVQ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1170,6 +1228,8 @@
                     <connections>
                         <outlet property="contentTxtView" destination="wAO-rD-JpF" id="e27-DS-13C"/>
                         <outlet property="doneBtn" destination="DDR-hV-Wt3" id="XSx-IL-JEQ"/>
+                        <outlet property="ratingLbl" destination="KWf-cR-Fip" id="5Mo-Xy-EYP"/>
+                        <outlet property="ratingView" destination="hSK-JB-x4H" id="6qT-UV-BUH"/>
                         <outlet property="scrollTopView" destination="SAD-2Z-yQE" id="2iU-9L-pTw"/>
                         <outlet property="scrollView" destination="bX4-y1-C5F" id="tD9-IB-rIP"/>
                         <outlet property="titleTxtField" destination="Lx3-sQ-51R" id="Gfo-sM-YlB"/>
@@ -1178,7 +1238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vNh-eq-Lkm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3684" y="394"/>
+            <point key="canvasLocation" x="3684" y="393.55322338830587"/>
         </scene>
     </scenes>
     <resources>
@@ -1207,5 +1267,7 @@
         <image name="place_detail_star_half_small" width="14" height="14"/>
         <image name="place_detail_subscription_green" width="51" height="22"/>
         <image name="place_detail_user" width="18" height="18"/>
+        <image name="review_star_empty" width="21" height="21"/>
+        <image name="review_star_full" width="21" height="21"/>
     </resources>
 </document>
