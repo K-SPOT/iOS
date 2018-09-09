@@ -61,6 +61,18 @@ extension MypageVC : UITableViewDelegate, UITableViewDataSource{
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            let mypageStoryboard = Storyboard.shared().mypageStoryboard
+            if let scrapVC = mypageStoryboard.instantiateViewController(withIdentifier:ScrapVC.reuseIdentifier) as? ScrapVC {
+                
+                self.navigationController?.pushViewController(scrapVC, animated: true)
+            }
+        } else {
+            
+        }
+    }
 }
 
 

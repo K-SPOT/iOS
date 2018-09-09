@@ -66,6 +66,7 @@
 		3BBB7D83214578D2004CC142 /* SubBroadCastVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7D82214578D2004CC142 /* SubBroadCastVC.swift */; };
 		3BBB7D85214578E7004CC142 /* SubCelebrityTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7D84214578E7004CC142 /* SubCelebrityTVCell.swift */; };
 		3BBB7D87214578F4004CC142 /* SubBroadcastTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7D86214578F4004CC142 /* SubBroadcastTVCell.swift */; };
+		3BBB7D8A214596BF004CC142 /* ScrapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7D89214596BF004CC142 /* ScrapVC.swift */; };
 		3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D462139262800FFF08C /* AppDelegate.swift */; };
 		3BBF8D492139262800FFF08C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D482139262800FFF08C /* ViewController.swift */; };
 		3BBF8D4C2139262800FFF08C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF8D4A2139262800FFF08C /* Main.storyboard */; };
@@ -138,6 +139,7 @@
 		3BBB7D82214578D2004CC142 /* SubBroadCastVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBroadCastVC.swift; sourceTree = "<group>"; };
 		3BBB7D84214578E7004CC142 /* SubCelebrityTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCelebrityTVCell.swift; sourceTree = "<group>"; };
 		3BBB7D86214578F4004CC142 /* SubBroadcastTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBroadcastTVCell.swift; sourceTree = "<group>"; };
+		3BBB7D89214596BF004CC142 /* ScrapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapVC.swift; sourceTree = "<group>"; };
 		3BBF8D432139262800FFF08C /* KSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBF8D462139262800FFF08C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBF8D482139262800FFF08C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 		3BB1882C214443090021B543 /* Mypage */ = {
 			isa = PBXGroup;
 			children = (
+				3BBB7D88214596AB004CC142 /* Scrap */,
 				3BBB7D7B214577A1004CC142 /* Subscribe */,
 				3BB1882E2144431F0021B543 /* MypageVC.swift */,
 				3BB18830214445810021B543 /* MypageTVCell.swift */,
@@ -459,6 +462,14 @@
 				3BBB7D84214578E7004CC142 /* SubCelebrityTVCell.swift */,
 			);
 			path = Celebrity;
+			sourceTree = "<group>";
+		};
+		3BBB7D88214596AB004CC142 /* Scrap */ = {
+			isa = PBXGroup;
+			children = (
+				3BBB7D89214596BF004CC142 /* ScrapVC.swift */,
+			);
+			path = Scrap;
 			sourceTree = "<group>";
 		};
 		3BBF8D3A2139262800FFF08C = {
@@ -703,6 +714,7 @@
 				3B3DD126213C05C900FD00B3 /* MapCelebrityCVCell.swift in Sources */,
 				3BBB7D7F214577CA004CC142 /* SubscribeVC.swift in Sources */,
 				3B3DD128213C0B8100FD00B3 /* RegionBtn.swift in Sources */,
+				3BBB7D8A214596BF004CC142 /* ScrapVC.swift in Sources */,
 				3B3DD137213C4F4D00FD00B3 /* FilterToggleBtn.swift in Sources */,
 				3BBF8D5D21392A9500FFF08C /* MainFirstTVCell.swift in Sources */,
 				3B3DD17D213DC9DF00FD00B3 /* WRCycleScrollView.swift in Sources */,

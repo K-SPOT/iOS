@@ -426,48 +426,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="무엇을 찾으시나요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9n-EH-p4L">
-                                <rect key="frame" x="16" y="116" width="194" height="27"/>
+                                <rect key="frame" x="16" y="116" width="186.5" height="28"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="24"/>
                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="검색어를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kmO-25-Nxj">
-                                <rect key="frame" x="16" y="192" width="309" height="20"/>
+                                <rect key="frame" x="16" y="193" width="309" height="21"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_search" translatesAutoresizingMaskIntoConstraints="NO" id="kq3-oi-QON">
-                                <rect key="frame" x="335" y="190" width="24" height="24"/>
+                                <rect key="frame" x="335" y="191.5" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="kq3-oi-QON" secondAttribute="height" multiplier="1:1" id="9Qb-h7-E5T"/>
                                     <constraint firstAttribute="width" constant="24" id="cmF-9c-ekX"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZmP-Pr-Vmw">
-                                <rect key="frame" x="16" y="222" width="343" height="2"/>
+                                <rect key="frame" x="16" y="224" width="343" height="2"/>
                                 <color key="backgroundColor" red="0.41927871109999998" green="0.85189700130000001" blue="0.68716549869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="rlf-SF-Sqa"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="rE2-Ik-jVZ">
-                                <rect key="frame" x="16" y="288" width="261" height="242.5"/>
+                                <rect key="frame" x="16" y="290" width="254" height="245.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="eGC-Ig-zPC">
-                                        <rect key="frame" x="0.0" y="0.0" width="174" height="61.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="169" height="62.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연예인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Li-jH-m8M">
-                                                <rect key="frame" x="0.0" y="0.0" width="38.5" height="15.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="36.5" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="14"/>
                                                 <color key="textColor" red="0.36862745098039218" green="0.36862745098039218" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="HEI-Xo-v4U">
-                                                <rect key="frame" x="0.0" y="31.5" width="174" height="30"/>
+                                                <rect key="frame" x="0.0" y="32.5" width="169" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHx-Ik-lCs" customClass="CustomButton" customModule="KSpot" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="87" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="84" height="30"/>
                                                         <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                         <inset key="contentEdgeInsets" minX="11" minY="8" maxX="11" maxY="8"/>
                                                         <state key="normal" title="# 방탄소년단">
@@ -486,7 +486,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJi-XB-d31" customClass="CustomButton" customModule="KSpot" customModuleProvider="target">
-                                                        <rect key="frame" x="98" y="0.0" width="76" height="30"/>
+                                                        <rect key="frame" x="95" y="0.0" width="74" height="30"/>
                                                         <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                         <inset key="contentEdgeInsets" minX="11" minY="8" maxX="11" maxY="8"/>
                                                         <state key="normal" title="# 트와이스">
@@ -509,19 +509,19 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="65w-n6-uiA">
-                                        <rect key="frame" x="0.0" y="90.5" width="261" height="61.5"/>
+                                        <rect key="frame" x="0.0" y="91.5" width="254" height="62.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="방송" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngf-Qt-NZv">
-                                                <rect key="frame" x="0.0" y="0.0" width="25.5" height="15.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="24.5" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="14"/>
                                                 <color key="textColor" red="0.36862745099999999" green="0.36862745099999999" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="ZrV-Hj-nEU">
-                                                <rect key="frame" x="0.0" y="31.5" width="261" height="30"/>
+                                                <rect key="frame" x="0.0" y="32.5" width="254" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Bb-RG-pXJ" customClass="CustomButton" customModule="KSpot" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="64" height="30"/>
                                                         <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                         <inset key="contentEdgeInsets" minX="11" minY="8" maxX="11" maxY="8"/>
                                                         <state key="normal" title="# 런닝맨">
@@ -540,7 +540,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMB-Gq-vzm" customClass="CustomButton" customModule="KSpot" customModuleProvider="target">
-                                                        <rect key="frame" x="76" y="0.0" width="87" height="30"/>
+                                                        <rect key="frame" x="75" y="0.0" width="84" height="30"/>
                                                         <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                         <inset key="contentEdgeInsets" minX="11" minY="8" maxX="11" maxY="8"/>
                                                         <state key="normal" title="# 태양의후예">
@@ -559,7 +559,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWv-Ob-JGz" customClass="CustomButton" customModule="KSpot" customModuleProvider="target">
-                                                        <rect key="frame" x="174" y="0.0" width="87" height="30"/>
+                                                        <rect key="frame" x="170" y="0.0" width="84" height="30"/>
                                                         <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                         <inset key="contentEdgeInsets" minX="11" minY="8" maxX="11" maxY="8"/>
                                                         <state key="normal" title="# 나혼자산다">
@@ -582,19 +582,19 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="e60-Iq-a5K">
-                                        <rect key="frame" x="0.0" y="181" width="163" height="61.5"/>
+                                        <rect key="frame" x="0.0" y="183" width="159" height="62.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이벤트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fg4-tr-7Ep">
-                                                <rect key="frame" x="0.0" y="0.0" width="38.5" height="15.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="36.5" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="14"/>
                                                 <color key="textColor" red="0.36862745099999999" green="0.36862745099999999" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="TeX-ya-SBm">
-                                                <rect key="frame" x="0.0" y="31.5" width="163" height="30"/>
+                                                <rect key="frame" x="0.0" y="32.5" width="159" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s56-20-rBv" customClass="CustomButton" customModule="KSpot" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="64" height="30"/>
                                                         <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                         <inset key="contentEdgeInsets" minX="11" minY="8" maxX="11" maxY="8"/>
                                                         <state key="normal" title="# 지하철">
@@ -613,7 +613,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9CM-Qr-aII" customClass="CustomButton" customModule="KSpot" customModuleProvider="target">
-                                                        <rect key="frame" x="76" y="0.0" width="87" height="30"/>
+                                                        <rect key="frame" x="75" y="0.0" width="84" height="30"/>
                                                         <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                         <inset key="contentEdgeInsets" minX="11" minY="8" maxX="11" maxY="8"/>
                                                         <state key="normal" title="# 생일이벤트">
