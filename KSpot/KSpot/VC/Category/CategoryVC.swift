@@ -58,7 +58,7 @@ class CategoryVC: UIViewController {
     
     lazy var searchTxtField : UITextField = {
         let txtField = UITextField()
-        txtField.placeholder = "찾고 싶은 국회의원을 검색해보세요"
+        txtField.placeholder = "검색어를 입력하세요"
         txtField.font = UIFont.systemFont(ofSize: 14.0)
          txtField.addTarget(self, action: #selector(searchAction), for: .editingChanged)
         return txtField
