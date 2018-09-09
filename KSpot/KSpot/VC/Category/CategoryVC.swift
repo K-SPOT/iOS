@@ -108,13 +108,15 @@ extension CategoryVC {
     
     @objc func setDefaultNav(){
         //setupTitleNavImg
-        let titleImageView = UIImageView(image: #imageLiteral(resourceName: "bimg"))
+       /* let titleImageView = UIImageView(image: #imageLiteral(resourceName: "bimg"))
         titleImageView.contentMode = .scaleAspectFit
         titleImageView.snp.makeConstraints { (make) in
             make.height.equalTo(21)
             make.width.equalTo(52)
-        }
-        navigationItem.titleView = titleImageView
+        }*/
+        navigationItem.titleView = nil
+        
+       navigationItem.title = "K-Spot"
         navigationController?.navigationBar.isTranslucent = false
         
         //setupLeftNavItem
