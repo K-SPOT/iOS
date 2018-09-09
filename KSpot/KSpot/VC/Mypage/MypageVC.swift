@@ -16,6 +16,10 @@ class MypageVC: UIViewController {
     }
     
     @IBAction func moreAction(_ sender: Any) {
+        let mypageStoryboard = Storyboard.shared().mypageStoryboard
+        if let subscribeVC = mypageStoryboard.instantiateViewController(withIdentifier:SubscribeVC.reuseIdentifier) as? SubscribeVC {
+            self.navigationController?.pushViewController(subscribeVC, animated: true)
+        }
     }
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -56,6 +60,23 @@ extension MypageVC : UITableViewDelegate, UITableViewDataSource{
            cell.myLbl.text = "회원정보 수정"
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let mypageStoryboard = Storyboard.shared().mypageStoryboard
+        if indexPath.row == 0 {
+           
+            if let scrapVC = mypageStoryboard.instantiateViewController(withIdentifier:ScrapVC.reuseIdentifier) as? ScrapVC {
+                
+                self.navigationController?.pushViewController(scrapVC, animated: true)
+            }
+        } else {
+            if let editProfileVC = mypageStoryboard.instantiateViewController(withIdentifier:EditProfileVC.reuseIdentifier) as? EditProfileVC {
+                
+                self.navigationController?.pushViewController(editProfileVC, animated: true)
+            }
+        }
     }
 }
 

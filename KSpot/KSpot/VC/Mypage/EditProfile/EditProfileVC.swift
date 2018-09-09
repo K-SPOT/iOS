@@ -1,29 +1,32 @@
 //
-//  MainSearchVC.swift
+//  EditProfileVC.swift
 //  KSpot
 //
-//  Created by 강수진 on 2018. 9. 9..
+//  Created by 강수진 on 2018. 9. 10..
 //  Copyright © 2018년 강수진. All rights reserved.
 //
 
 import UIKit
 
-class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
+class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
+    @IBOutlet weak var profileImgView: UIImageView!
     var keyboardDismissGesture: UITapGestureRecognizer?
     override func viewDidLoad() {
         super.viewDidLoad()
+        profileImgView.makeRounded(cornerRadius: nil)
         setBackBtn()
         setKeyboardSetting()
-        // textfeild.delegate = self 하기
     }
-    
-    
 
-
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 
 }
+
 //키보드 대응
-extension MainSearchVC{
+extension EditProfileVC{
     func setKeyboardSetting() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
@@ -34,7 +37,7 @@ extension MainSearchVC{
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-         adjustKeyboardDismissGesture(isKeyboardVisible: false)
+        adjustKeyboardDismissGesture(isKeyboardVisible: false)
         
     }
     
@@ -58,13 +61,4 @@ extension MainSearchVC{
     }
     
 }
-
-//txtField Delegate (엔터버튼 클릭시)
-extension MainSearchVC : UITextFieldDelegate{
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-       
-        return true
-    }
-}
-
 

@@ -34,10 +34,15 @@ extension UIViewController {
         let backBTN = UIBarButtonItem(image: UIImage(named: "category_detail_left_arrow"),
                                       style: .plain,
                                       target: self,
-                                      action: #selector(self.navigationController?.popViewController(animated:)))
+                                      action: #selector(self.pop))
         navigationItem.leftBarButtonItem = backBTN
         navigationItem.leftBarButtonItem?.tintColor = color
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
+    }
+    
+    
+    @objc func pop(){
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -203,3 +208,6 @@ extension String {
         }
     }
 }
+
+
+
