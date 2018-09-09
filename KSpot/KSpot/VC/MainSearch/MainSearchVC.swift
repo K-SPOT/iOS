@@ -16,6 +16,8 @@ class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
         setKeyboardSetting()
         // textfeild.delegate = self 하기
     }
+    
+    
 
 
 

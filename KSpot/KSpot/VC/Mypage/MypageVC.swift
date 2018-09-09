@@ -16,6 +16,10 @@ class MypageVC: UIViewController {
     }
     
     @IBAction func moreAction(_ sender: Any) {
+        let mypageStoryboard = Storyboard.shared().mypageStoryboard
+        if let subscribeVC = mypageStoryboard.instantiateViewController(withIdentifier:SubscribeVC.reuseIdentifier) as? SubscribeVC {
+            self.navigationController?.pushViewController(subscribeVC, animated: true)
+        }
     }
     
     @IBOutlet weak var collectionView: UICollectionView!

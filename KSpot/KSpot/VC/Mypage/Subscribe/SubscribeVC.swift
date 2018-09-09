@@ -44,8 +44,8 @@ class SubscribeVC: UIViewController, UIGestureRecognizerDelegate {
         broadcastBtn.setBtn(another: celebrityBtn, bottomLine: broadcastGreenView)
         updateView(selected: 0)
         setBackBtn()
-        
     }
+    
     
 
 }

@@ -426,33 +426,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="무엇을 찾으시나요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9n-EH-p4L">
-                                <rect key="frame" x="16" y="72" width="194" height="27"/>
+                                <rect key="frame" x="16" y="116" width="194" height="27"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="24"/>
                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="검색어를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kmO-25-Nxj">
-                                <rect key="frame" x="16" y="148" width="309" height="20"/>
+                                <rect key="frame" x="16" y="192" width="309" height="20"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_search" translatesAutoresizingMaskIntoConstraints="NO" id="kq3-oi-QON">
-                                <rect key="frame" x="335" y="146" width="24" height="24"/>
+                                <rect key="frame" x="335" y="190" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="kq3-oi-QON" secondAttribute="height" multiplier="1:1" id="9Qb-h7-E5T"/>
                                     <constraint firstAttribute="width" constant="24" id="cmF-9c-ekX"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZmP-Pr-Vmw">
-                                <rect key="frame" x="16" y="178" width="343" height="2"/>
+                                <rect key="frame" x="16" y="222" width="343" height="2"/>
                                 <color key="backgroundColor" red="0.41927871109999998" green="0.85189700130000001" blue="0.68716549869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="rlf-SF-Sqa"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="rE2-Ik-jVZ">
-                                <rect key="frame" x="16" y="244" width="261" height="242.5"/>
+                                <rect key="frame" x="16" y="288" width="261" height="242.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="eGC-Ig-zPC">
                                         <rect key="frame" x="0.0" y="0.0" width="174" height="61.5"/>
@@ -669,6 +669,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Sv-oN-HTh"/>
                     </view>
+                    <navigationItem key="navigationItem" id="EB4-JG-T44">
+                        <barButtonItem key="leftBarButtonItem" image="category_detail_left_arrow" id="G8t-aX-xby">
+                            <color key="tintColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U5Y-ar-Qha" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
