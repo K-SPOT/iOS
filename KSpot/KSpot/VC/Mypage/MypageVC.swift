@@ -63,14 +63,19 @@ extension MypageVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let mypageStoryboard = Storyboard.shared().mypageStoryboard
         if indexPath.row == 0 {
-            let mypageStoryboard = Storyboard.shared().mypageStoryboard
+           
             if let scrapVC = mypageStoryboard.instantiateViewController(withIdentifier:ScrapVC.reuseIdentifier) as? ScrapVC {
                 
                 self.navigationController?.pushViewController(scrapVC, animated: true)
             }
         } else {
-            
+            if let editProfileVC = mypageStoryboard.instantiateViewController(withIdentifier:EditProfileVC.reuseIdentifier) as? EditProfileVC {
+                
+                self.navigationController?.pushViewController(editProfileVC, animated: true)
+            }
         }
     }
 }
