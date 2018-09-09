@@ -44,18 +44,15 @@ class MypageVC: UIViewController {
 extension MypageVC : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: MypageTVCell.reuseIdentifier) as! MypageTVCell
-    
         if indexPath.row == 0 {
-           cell.myLbl.text = "내 글"
-        } else if indexPath.row == 1 {
            cell.myLbl.text = "스크랩"
         } else {
-            cell.myLbl.text = "회원정보 수정"
+           cell.myLbl.text = "회원정보 수정"
         }
         return cell
     }

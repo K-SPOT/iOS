@@ -12,7 +12,6 @@ class MypageCVCell: UICollectionViewCell {
     @IBOutlet weak var myImgView: UIImageView!
      @IBOutlet weak var engNameLbl: UILabel!
      @IBOutlet weak var koreanNameLbl: UILabel!
-     @IBOutlet weak var subscribeBtn: UIButton!
     override func awakeFromNib() {
         self.makeRounded(cornerRadius: 17)
     }
