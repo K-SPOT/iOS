@@ -20,6 +20,7 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     @IBOutlet weak var phoneView: UIView!
     @IBOutlet weak var emailView: UIView!
 
+    @IBOutlet weak var subwayLbl: UILabel!
     var whiteScrapBarBtn : UIBarButtonItem?
     var blackScrapBarBtn : UIBarButtonItem?
     lazy var cycleScrollView:WRCycleScrollView = {
@@ -68,6 +69,8 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
         setTableView()
         setcycleScrollView()
         setNavbar()
+    
+        subwayLbl.adjustsFontSizeToFitWidth = true
         locationView.makeRounded(cornerRadius: 17)
         phoneView.makeRounded(cornerRadius: nil)
         phoneView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
@@ -98,13 +101,7 @@ extension PlaceDetailVC {
         self.navigationItem.rightBarButtonItems = [whiteScrapBarBtn!, titleBarBtn]
         
         //왼쪽 백버튼 아이템 설정
-        let backBTN = UIBarButtonItem(image: UIImage(named: "category_detail_left_arrow"),
-                                      style: .plain,
-                                      target: self,
-                                      action: #selector(self.navigationController?.popViewController(animated:)))
-        navigationItem.leftBarButtonItem = backBTN
-        //navigationItem.leftBarButtonItem?.tintColor = .white
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        setBackBtn(color: .white)
         
         self.navigationItem.title = ""
         

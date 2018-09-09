@@ -55,7 +55,7 @@
                                             <rect key="frame" x="0.0" y="108" width="375" height="241"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TTk-Qd-7nX">
-                                                    <rect key="frame" x="320" y="12.5" width="39" height="30"/>
+                                                    <rect key="frame" x="318" y="13.5" width="41" height="29"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="15"/>
                                                     <state key="normal" title="더보기">
                                                         <color key="titleColor" red="0.41927871109999998" green="0.85189700130000001" blue="0.68716549869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -135,7 +135,7 @@
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 구독" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wiz-tJ-gLO">
-                                                    <rect key="frame" x="16" y="18" width="46" height="19"/>
+                                                    <rect key="frame" x="16" y="19" width="48" height="18"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -154,16 +154,16 @@
                                             </constraints>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="AbJ-Cc-QZw">
-                                            <rect key="frame" x="78" y="39.5" width="106" height="41"/>
+                                            <rect key="frame" x="78" y="40.5" width="110" height="39"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="큐티문어 고객님," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b86-Co-Qvf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="106" height="19"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="110" height="18"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안녕하세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hz-yx-fzy">
-                                                    <rect key="frame" x="0.0" y="22" width="73.5" height="19"/>
+                                                    <rect key="frame" x="0.0" y="21" width="77" height="18"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFL" family="NanumSquareOTF" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

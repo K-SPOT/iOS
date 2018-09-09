@@ -32,20 +32,13 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, UIScrollV
         tableView.delegate = self
         tableView.dataSource = self
         mainImg.makeRounded(cornerRadius: nil)
+        setBackBtn(color: .white)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         //hide navigationBar without losing slide-back ability
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        let backBTN = UIBarButtonItem(image: UIImage(named: "category_detail_left_arrow"),
-                                      style: .plain,
-                                      target: self,
-                                      action: #selector(self.navigationController?.popViewController(animated:)))
-        navigationItem.leftBarButtonItem = backBTN
-        navigationItem.leftBarButtonItem?.tintColor = .white
-       
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
         
     }
     

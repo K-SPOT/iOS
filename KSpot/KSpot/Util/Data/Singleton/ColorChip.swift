@@ -12,6 +12,7 @@ import UIKit
 class ColorChip {
     
     let mainColor = #colorLiteral(red: 0.2509803922, green: 0.8274509804, blue: 0.6235294118, alpha: 1)
+    let barbuttonColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
 
     struct StaticInstance {
         static var instance: ColorChip?

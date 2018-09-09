@@ -321,11 +321,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="K-Spot" id="kwT-rU-c1m">
+                        <barButtonItem key="backBarButtonItem" title=" " id="JFD-pc-J9w"/>
                         <barButtonItem key="leftBarButtonItem" image="navigationbar_translation" id="icU-Dn-hma">
                             <color key="tintColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="main_search" id="IrG-M1-7q2">
                             <color key="tintColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="searchAction:" destination="BYZ-38-t0r" id="z3G-Io-a8h"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <size key="freeformSize" width="375" height="1400"/>
@@ -411,7 +415,264 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7iC-HW-eOV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1816.8" y="6.746626686656672"/>
+            <point key="canvasLocation" x="1386" y="-977"/>
+        </scene>
+        <!--Main SearchVC-->
+        <scene sceneID="Jwz-mZ-hpL">
+            <objects>
+                <viewController storyboardIdentifier="MainSearchVC" hidesBottomBarWhenPushed="YES" id="xf3-RC-xfV" customClass="MainSearchVC" customModule="KSpot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5p6-q0-TFm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="무엇을 찾으시나요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9n-EH-p4L">
+                                <rect key="frame" x="16" y="72" width="194" height="27"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="24"/>
+                                <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="검색어를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kmO-25-Nxj">
+                                <rect key="frame" x="16" y="148" width="309" height="20"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_search" translatesAutoresizingMaskIntoConstraints="NO" id="kq3-oi-QON">
+                                <rect key="frame" x="335" y="146" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="kq3-oi-QON" secondAttribute="height" multiplier="1:1" id="9Qb-h7-E5T"/>
+                                    <constraint firstAttribute="width" constant="24" id="cmF-9c-ekX"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZmP-Pr-Vmw">
+                                <rect key="frame" x="16" y="178" width="343" height="2"/>
+                                <color key="backgroundColor" red="0.41927871109999998" green="0.85189700130000001" blue="0.68716549869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="rlf-SF-Sqa"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="rE2-Ik-jVZ">
+                                <rect key="frame" x="16" y="244" width="261" height="242.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="eGC-Ig-zPC">
+                                        <rect key="frame" x="0.0" y="0.0" width="174" height="61.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연예인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Li-jH-m8M">
+                                                <rect key="frame" x="0.0" y="0.0" width="38.5" height="15.5"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="14"/>
+                                                <color key="textColor" red="0.36862745098039218" green="0.36862745098039218" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="HEI-Xo-v4U">
+                                                <rect key="frame" x="0.0" y="31.5" width="174" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHx-Ik-lCs" customClass="CustomButton" customModule="KSpot" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="87" height="30"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
+                                                        <inset key="contentEdgeInsets" minX="11" minY="8" maxX="11" maxY="8"/>
+                                                        <state key="normal" title="# 방탄소년단">
+                                                            <color key="titleColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJi-XB-d31" customClass="CustomButton" customModule="KSpot" customModuleProvider="target">
+                                                        <rect key="frame" x="98" y="0.0" width="76" height="30"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
+                                                        <inset key="contentEdgeInsets" minX="11" minY="8" maxX="11" maxY="8"/>
+                                                        <state key="normal" title="# 트와이스">
+                                                            <color key="titleColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="65w-n6-uiA">
+                                        <rect key="frame" x="0.0" y="90.5" width="261" height="61.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="방송" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngf-Qt-NZv">
+                                                <rect key="frame" x="0.0" y="0.0" width="25.5" height="15.5"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="14"/>
+                                                <color key="textColor" red="0.36862745099999999" green="0.36862745099999999" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="ZrV-Hj-nEU">
+                                                <rect key="frame" x="0.0" y="31.5" width="261" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Bb-RG-pXJ" customClass="CustomButton" customModule="KSpot" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="30"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
+                                                        <inset key="contentEdgeInsets" minX="11" minY="8" maxX="11" maxY="8"/>
+                                                        <state key="normal" title="# 런닝맨">
+                                                            <color key="titleColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMB-Gq-vzm" customClass="CustomButton" customModule="KSpot" customModuleProvider="target">
+                                                        <rect key="frame" x="76" y="0.0" width="87" height="30"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
+                                                        <inset key="contentEdgeInsets" minX="11" minY="8" maxX="11" maxY="8"/>
+                                                        <state key="normal" title="# 태양의후예">
+                                                            <color key="titleColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWv-Ob-JGz" customClass="CustomButton" customModule="KSpot" customModuleProvider="target">
+                                                        <rect key="frame" x="174" y="0.0" width="87" height="30"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
+                                                        <inset key="contentEdgeInsets" minX="11" minY="8" maxX="11" maxY="8"/>
+                                                        <state key="normal" title="# 나혼자산다">
+                                                            <color key="titleColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="e60-Iq-a5K">
+                                        <rect key="frame" x="0.0" y="181" width="163" height="61.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이벤트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fg4-tr-7Ep">
+                                                <rect key="frame" x="0.0" y="0.0" width="38.5" height="15.5"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="14"/>
+                                                <color key="textColor" red="0.36862745099999999" green="0.36862745099999999" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="TeX-ya-SBm">
+                                                <rect key="frame" x="0.0" y="31.5" width="163" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s56-20-rBv" customClass="CustomButton" customModule="KSpot" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="30"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
+                                                        <inset key="contentEdgeInsets" minX="11" minY="8" maxX="11" maxY="8"/>
+                                                        <state key="normal" title="# 지하철">
+                                                            <color key="titleColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9CM-Qr-aII" customClass="CustomButton" customModule="KSpot" customModuleProvider="target">
+                                                        <rect key="frame" x="76" y="0.0" width="87" height="30"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
+                                                        <inset key="contentEdgeInsets" minX="11" minY="8" maxX="11" maxY="8"/>
+                                                        <state key="normal" title="# 생일이벤트">
+                                                            <color key="titleColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Yo-jk-Scf">
+                                <rect key="frame" x="0.0" y="595" width="375" height="72"/>
+                                <color key="backgroundColor" red="0.41927871109999998" green="0.85189700130000001" blue="0.68716549869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="BgB-P2-v5q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
+                                <state key="normal" title="검색하기">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kmO-25-Nxj" firstAttribute="top" secondItem="l9n-EH-p4L" secondAttribute="bottom" constant="49" id="1LP-cJ-Q7Y"/>
+                            <constraint firstItem="kq3-oi-QON" firstAttribute="leading" secondItem="kmO-25-Nxj" secondAttribute="trailing" constant="10" id="34N-RK-tha"/>
+                            <constraint firstItem="rE2-Ik-jVZ" firstAttribute="top" secondItem="ZmP-Pr-Vmw" secondAttribute="bottom" constant="64" id="8Xh-BT-sEb"/>
+                            <constraint firstItem="8Yo-jk-Scf" firstAttribute="leading" secondItem="9Sv-oN-HTh" secondAttribute="leading" id="CfN-3R-4tD"/>
+                            <constraint firstItem="rE2-Ik-jVZ" firstAttribute="leading" secondItem="ZmP-Pr-Vmw" secondAttribute="leading" id="QNY-em-hBh"/>
+                            <constraint firstItem="ZmP-Pr-Vmw" firstAttribute="leading" secondItem="kmO-25-Nxj" secondAttribute="leading" id="RqV-9f-nVf"/>
+                            <constraint firstItem="ZmP-Pr-Vmw" firstAttribute="top" secondItem="kmO-25-Nxj" secondAttribute="bottom" constant="10" id="eTn-e7-zoK"/>
+                            <constraint firstItem="ZmP-Pr-Vmw" firstAttribute="trailing" secondItem="kq3-oi-QON" secondAttribute="trailing" id="hNv-zi-Iz2"/>
+                            <constraint firstItem="9Sv-oN-HTh" firstAttribute="trailing" secondItem="8Yo-jk-Scf" secondAttribute="trailing" id="hxd-Wg-0wQ"/>
+                            <constraint firstItem="kmO-25-Nxj" firstAttribute="leading" secondItem="l9n-EH-p4L" secondAttribute="leading" id="inl-vb-y3r"/>
+                            <constraint firstItem="9Sv-oN-HTh" firstAttribute="bottom" secondItem="8Yo-jk-Scf" secondAttribute="bottom" id="lSQ-T9-TEn"/>
+                            <constraint firstItem="9Sv-oN-HTh" firstAttribute="trailing" secondItem="kq3-oi-QON" secondAttribute="trailing" constant="16" id="ly2-76-zpd"/>
+                            <constraint firstItem="l9n-EH-p4L" firstAttribute="leading" secondItem="9Sv-oN-HTh" secondAttribute="leading" constant="16" id="td3-mZ-BrP"/>
+                            <constraint firstItem="kq3-oi-QON" firstAttribute="centerY" secondItem="kmO-25-Nxj" secondAttribute="centerY" id="uez-50-Myu"/>
+                            <constraint firstItem="l9n-EH-p4L" firstAttribute="top" secondItem="9Sv-oN-HTh" secondAttribute="top" constant="52" id="vfJ-bb-Fnd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9Sv-oN-HTh"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U5Y-ar-Qha" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2113" y="-179"/>
         </scene>
         <!--홈-->
         <scene sceneID="5fe-d4-kqu">
