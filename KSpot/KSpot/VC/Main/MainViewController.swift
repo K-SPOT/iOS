@@ -9,13 +9,21 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    @IBAction func searchAction(_ sender: Any) {
+        let mainStoryboard = Storyboard.shared().mainStoryboard
+        if let mainSearchVC = mainStoryboard.instantiateViewController(withIdentifier:MainSearchVC.reuseIdentifier) as? MainSearchVC {
+            self.navigationController?.pushViewController(mainSearchVC, animated: true)
+        }
+    }
     
     @IBOutlet weak var tableView: UITableView!
-    
+
+   
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.delegate = self
         tableView.dataSource = self
         

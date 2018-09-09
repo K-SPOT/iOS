@@ -28,6 +28,17 @@ extension UIViewController {
             self.navigationController?.pushViewController(placeDetailVC, animated: true)
         }
     }
+    
+    //백버튼
+    func setBackBtn(color : UIColor? = ColorChip.shared().barbuttonColor){
+        let backBTN = UIBarButtonItem(image: UIImage(named: "category_detail_left_arrow"),
+                                      style: .plain,
+                                      target: self,
+                                      action: #selector(self.navigationController?.popViewController(animated:)))
+        navigationItem.leftBarButtonItem = backBTN
+        navigationItem.leftBarButtonItem?.tintColor = color
+        navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
+    }
 }
 
 extension UIViewController {
