@@ -59,6 +59,7 @@
 		3BB18831214445810021B543 /* MypageTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB18830214445810021B543 /* MypageTVCell.swift */; };
 		3BB188332144471A0021B543 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB188322144471A0021B543 /* CustomView.swift */; };
 		3BB18835214448B40021B543 /* MypageCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB18834214448B40021B543 /* MypageCVCell.swift */; };
+		3BB188392145303F0021B543 /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB188382145303F0021B543 /* CosmosDistrib.swift */; };
 		3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D462139262800FFF08C /* AppDelegate.swift */; };
 		3BBF8D492139262800FFF08C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D482139262800FFF08C /* ViewController.swift */; };
 		3BBF8D4C2139262800FFF08C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF8D4A2139262800FFF08C /* Main.storyboard */; };
@@ -124,6 +125,7 @@
 		3BB18830214445810021B543 /* MypageTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageTVCell.swift; sourceTree = "<group>"; };
 		3BB188322144471A0021B543 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		3BB18834214448B40021B543 /* MypageCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageCVCell.swift; sourceTree = "<group>"; };
+		3BB188382145303F0021B543 /* CosmosDistrib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
 		3BBF8D432139262800FFF08C /* KSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBF8D462139262800FFF08C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBF8D482139262800FFF08C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				3B3DD179213DC9BD00FD00B3 /* WRCycleScrollView */,
 				3B3DD16B213DA7A700FD00B3 /* WRNavigationBar */,
 				3B3DD105213B3F5400FD00B3 /* Font */,
+				3BB188382145303F0021B543 /* CosmosDistrib.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -644,6 +647,7 @@
 				3B3DD178213DBDBD00FD00B3 /* Font.swift in Sources */,
 				3B3DD16D213DA7AE00FD00B3 /* WRNavigationBar.swift in Sources */,
 				3B3DD150213D9C8B00FD00B3 /* PlaceDetailSecondTVCell.swift in Sources */,
+				3BB188392145303F0021B543 /* CosmosDistrib.swift in Sources */,
 				3B3DD122213BF02800FD00B3 /* MapHeaderView.swift in Sources */,
 				3B3DD147213D3C3500FD00B3 /* CategoryDetailSecondTVHeaderCell.swift in Sources */,
 				3B3DD126213C05C900FD00B3 /* MapCelebrityCVCell.swift in Sources */,

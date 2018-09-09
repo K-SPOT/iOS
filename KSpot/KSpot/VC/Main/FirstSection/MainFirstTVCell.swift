@@ -54,6 +54,8 @@ extension MainFirstTVCell : UICollectionViewDataSource, UICollectionViewDelegate
         
         if let cell: MainFirstCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: MainFirstCVCell.reuseIdentifier, for: indexPath) as? MainFirstCVCell
         {
+           
+            
             cell.myImgView.image = sunglassArr[indexPath.row]
             return cell
         }

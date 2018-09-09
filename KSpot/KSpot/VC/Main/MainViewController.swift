@@ -12,14 +12,18 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.tableFooterView = UIView(frame : .zero)
-        // Do any additional setup after loading the view.
+        
     }
+    
+   
 
 }
 
@@ -58,3 +62,4 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     
     
 }
+
