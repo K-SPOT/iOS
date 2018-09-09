@@ -51,7 +51,7 @@
                                                 <rect key="frame" x="72" y="0.0" width="44" height="39"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="16"/>
                                                 <state key="normal" title="연예인">
-                                                    <color key="titleColor" red="0.19605761766433716" green="0.19609168171882629" blue="0.19605019688606262" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" red="0.41927871109999998" green="0.85189700130000001" blue="0.68716549869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="switchView:" destination="RVE-2v-0Kw" eventType="touchUpInside" id="te9-Nh-ldB"/>
