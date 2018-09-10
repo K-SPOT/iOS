@@ -53,6 +53,7 @@ class ReviewWriteVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         setKeyboardSetting()
         setToolbar()
+        setBackBtn()
         titleTxtField.addTarget(self, action: #selector(isValid), for: .editingChanged)
         contentTxtView.delegate = self
         contentTxtView.text = defaultTxtMsg

@@ -24,7 +24,7 @@ class ThemeVC: UIViewController, UIGestureRecognizerDelegate {
         label.textColor = UIColor.white
         label.text = "방탄소년단's PICK! \n HOT PLACE 5"
         label.numberOfLines = 2
-        label.setLineSpacing(lineSpacing: 3.5)
+        label.setLineSpacing(lineSpacing: 10)
         label.textAlignment = .center
         label.font = UIFont(name: NanumSquareOTF.NanumSquareOTFB.rawValue, size: 22)
         return label

@@ -13,9 +13,15 @@ class PlaceDetailSecondTVCell: UITableViewCell {
     @IBOutlet weak var countLbl: UILabel!
     @IBOutlet weak var showAllBtn: UIButton!
     @IBOutlet weak var ratingLbl: UILabel!
-    @IBOutlet weak var writeReviewBtn: UIButton!
+    
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBAction func writeReviewAction(_ sender: Any) {
+        //-1이면 리뷰 쓰는 것
+        delegate?.tap(section: .second, seledtedId: -1)
+        
+    }
     
     private var indexOfCellBeforeDragging = 0
     private var collectionViewFlowLayout: UICollectionViewFlowLayout {
