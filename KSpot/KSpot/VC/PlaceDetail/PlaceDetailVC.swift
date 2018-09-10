@@ -199,22 +199,27 @@ extension PlaceDetailVC: UITableViewDelegate,UITableViewDataSource{
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: PlaceDetailSecondTVCell.reuseIdentifier) as! PlaceDetailSecondTVCell
+            cell.delegate = self
             return cell
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let vc:UIViewController = UIViewController()
-        vc.view.backgroundColor = UIColor.red
-        let str = String(format: "知乎日报 %zd", indexPath.row)
-        vc.title = str
-        navigationController?.pushViewController(vc, animated: true)
-    }
 }
 
-
+extension PlaceDetailVC : SelectSectionelegate {
+    func tap(section: Section, seledtedId: Int) {
+        //리뷰 쓰는 버튼
+        if (seledtedId == -1){
+            let mapStoryboard = Storyboard.shared().mapStoryboard
+            if let reviewWriteVC = mapStoryboard.instantiateViewController(withIdentifier:ReviewWriteVC.reuseIdentifier) as? ReviewWriteVC {
+                
+                self.navigationController?.pushViewController(reviewWriteVC, animated: true)
+            }
+        }
+    }
+    
+    
+}
 
 
 

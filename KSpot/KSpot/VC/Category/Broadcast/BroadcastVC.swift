@@ -11,6 +11,7 @@ import UIKit
 class BroadcastVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var delegate : SelectDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -31,15 +32,8 @@ extension BroadcastVC : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: BroadcastTVCell.reuseIdentifier) as! BroadcastTVCell
         return cell
     }
-    
-    /*
-     */
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let categoryStoryboard = Storyboard.shared().categoryStoryboard
-        if let categoryDetailVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailVC.reuseIdentifier) as? CategoryDetailVC {
-            
-            self.navigationController?.pushViewController(categoryDetailVC, animated: true)
-        }
+        delegate?.tap(selected: 1)
     }
 }

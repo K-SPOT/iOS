@@ -8,49 +8,196 @@
 
 import UIKit
 
-class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, UIScrollViewDelegate{
+private let TOPVIEW_HEIGHT:CGFloat = 269
+private let NAVBAR_COLORCHANGE_POINT:CGFloat = TOPVIEW_HEIGHT - CGFloat(kNavBarBottom * 2)
+
+class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
+   
     @IBOutlet weak var tableView: UITableView!
+   
     
-    @IBOutlet weak var backgroundImg: UIImageView!
-    @IBOutlet weak var mainImg: UIImageView!
-    @IBOutlet weak var mainTitleLbl: UILabel!
-    @IBOutlet weak var subTitleLbl: UILabel!
-    @IBOutlet weak var subscribeBtn: UIButton!
+    lazy var backgroundImg :UIImageView = {
+        let imgView = UIImageView(image: UIImage(named: "aimg"))
+        
+        return imgView
+    }()
+    lazy var logoImg :UIImageView = {
+        let imgView = UIImageView(image: UIImage(named: "bimg"))
+        imgView.makeRounded(cornerRadius: nil)
+        return imgView
+    }()
     
-    @IBOutlet weak var subscribeLbl: UILabel!
+    lazy var mainTitleLbl:UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.clear
+        label.textColor = .black
+        label.text = "방탄소년단"
+        label.textAlignment = .left
+        label.font = UIFont(name: NanumSquareOTF.NanumSquareOTFB.rawValue, size: 20)
+        return label
+    }()
+    lazy var subTitleLbl:UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.clear
+        label.textColor = #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1)
+        label.text = "빅히트 엔터테이먼트"
+        label.textAlignment = .left
+        label.font = UIFont(name: NanumSquareOTF.NanumSquareOTFR.rawValue, size: 12)
+        return label
+    }()
+    
+    lazy var subscribeLbl:UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.clear
+        label.textColor = #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1)
+        label.text = "1,445,054"
+        label.textAlignment = .left
+        label.font = UIFont(name: NanumSquareOTF.NanumSquareOTFR.rawValue, size: 12)
+        return label
+    }()
+    
+    lazy var subscribeBtn:UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "category_subscription_white"), for: .normal)
+        button.addTarget(self, action: #selector(CategoryDetailVC.subscribeAction(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+
+    lazy var bottomGrayView: UIView = {
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
+        return view
+    }()
+    
+    lazy var topView: UIView = {
+        let view = UIView()
+        view.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: TOPVIEW_HEIGHT)
+        view.contentMode = UIViewContentMode.scaleAspectFill
+        view.clipsToBounds = true
+        return view
+    }()
+    
+
     @IBAction func scrollToTopAction(_ sender: Any) {
         tableView.setContentOffset(.zero, animated: true)
     }
     
-    @IBAction func backBtnAction(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+    @objc func subscribeAction(_ : UIButton){
+        print("구독버튼 클릭")
     }
-    
+   
     
     let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
     override func viewDidLoad() {
+      
+        setupTableView()
+        setupNavView()
+    }
+    
+    func setupTableView(){
+        tableView.contentInset = UIEdgeInsetsMake(-CGFloat(kNavBarBottom), 0, 0, 0)
         tableView.delegate = self
         tableView.dataSource = self
-        mainImg.makeRounded(cornerRadius: nil)
-        setBackBtn(color: .white)
+        makeTopViewConstraint()
+        tableView.tableHeaderView = topView
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        //hide navigationBar without losing slide-back ability
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
-        
-    }
-    
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = false
-        
-    }
-    
-    
+
 }
+
+//네비게이션 및 탑 뷰 설정
+extension CategoryDetailVC {
+    //네비게이션 설정
+    func setupNavView(){
+        setBackBtn(color: .white)
+        self.navigationItem.title = ""
+        //네비게이션바 컬러
+        navBarBarTintColor = .white
+        navBarBackgroundAlpha = 0
+        //네비게이션 바 안의 아이템 컬러
+        navBarTintColor = .white
+    }
+    //탑뷰 설정
+    func makeTopViewConstraint(){
+        
+        topView.addSubview(backgroundImg)
+        topView.addSubview(logoImg)
+        topView.addSubview(mainTitleLbl)
+        topView.addSubview(subTitleLbl)
+        topView.addSubview(subscribeLbl)
+        topView.addSubview(subscribeBtn)
+        topView.addSubview(bottomGrayView)
+        
+        backgroundImg.snp.makeConstraints { (make) in
+            make.leading.trailing.top.equalToSuperview()
+            make.height.equalTo(165)
+        }
+        
+        logoImg.snp.makeConstraints { (make) in
+            make.height.width.equalTo(74)
+            make.leading.equalToSuperview().offset(16)
+            make.centerY.equalTo(backgroundImg.snp.bottom) //centerVertically
+            
+        }
+        
+        mainTitleLbl.snp.makeConstraints { (make) in
+            make.leading.equalTo(logoImg.snp.trailing).offset(8)
+            make.top.equalTo(backgroundImg.snp.bottom).offset(16)
+        }
+        subTitleLbl.snp.makeConstraints { (make) in
+            make.leading.equalTo(mainTitleLbl.snp.leading)
+            make.top.equalTo(mainTitleLbl.snp.bottom).offset(9)
+        }
+        subscribeBtn.snp.makeConstraints { (make) in
+            make.height.equalTo(24)
+            make.width.equalTo(57)
+            make.centerY.equalTo(mainTitleLbl.snp.centerY)
+            make.trailing.equalToSuperview().offset(-16)
+            
+        }
+        subscribeLbl.snp.makeConstraints { (make) in
+            make.trailing.equalToSuperview().offset(-16)
+            make.top.equalTo(subscribeBtn.snp.bottom).offset(9)
+        }
+        bottomGrayView.snp.makeConstraints { (make) in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(0.5)
+        }
+    } //setConstraint
+}
+
+
+// MARK: - 스크롤 할 때
+extension CategoryDetailVC
+{
+    func scrollViewDidScroll(_ scrollView: UIScrollView)
+    {
+        let offsetY = scrollView.contentOffset.y
+        if (offsetY > NAVBAR_COLORCHANGE_POINT)
+        {
+            
+            navBarTintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
+            navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
+          
+            let alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / CGFloat(kNavBarBottom)
+            navBarBackgroundAlpha = alpha
+            navBarTintColor = UIColor.black.withAlphaComponent(alpha)
+            navBarTitleColor = UIColor.black.withAlphaComponent(alpha)
+            statusBarStyle = .default
+        }
+        else
+        {
+            
+            navBarTintColor = .white
+            navigationItem.leftBarButtonItem?.tintColor = .white
+            
+            navBarBackgroundAlpha = 0
+            navBarTitleColor = .white
+            statusBarStyle = .lightContent
+        }
+    }
+}
+
 
 extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     
@@ -69,7 +216,7 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     }
     
     
-    //header View 만드는 것
+    //headerSection View 만드는 것
    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableCell(withIdentifier: CategoryDetailSecondTVHeaderCell.reuseIdentifier) as! CategoryDetailSecondTVHeaderCell
         
@@ -90,8 +237,7 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 1 || section == 2  ? 79 : 0
     }
-    
-    
+ 
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -109,17 +255,5 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
             return cell
         }
     }
-    
-    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     let selectedUser:Profile
-     if indexPath.section == 0 {
-     selectedUser = myProfile
-     } else {
-     selectedUser = friend[indexPath.row]
-     }
-     
-     let secondVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ProfileViewController.reuseIdentifier) as! ProfileViewController
-     secondVC.selectedUser = selectedUser
-     self.present(secondVC, animated: true, completion: nil)
-     }*/
+
 }

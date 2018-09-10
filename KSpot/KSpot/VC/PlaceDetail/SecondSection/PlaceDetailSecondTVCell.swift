@@ -13,9 +13,16 @@ class PlaceDetailSecondTVCell: UITableViewCell {
     @IBOutlet weak var countLbl: UILabel!
     @IBOutlet weak var showAllBtn: UIButton!
     @IBOutlet weak var ratingLbl: UILabel!
-    @IBOutlet weak var writeReviewBtn: UIButton!
-    @IBOutlet weak var stackView: UIStackView!
+    
+    @IBOutlet weak var ratingView: CosmosView!
+  
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBAction func writeReviewAction(_ sender: Any) {
+        //-1이면 리뷰 쓰는 것
+        delegate?.tap(section: .second, seledtedId: -1)
+        
+    }
     
     private var indexOfCellBeforeDragging = 0
     private var collectionViewFlowLayout: UICollectionViewFlowLayout {
@@ -28,10 +35,12 @@ class PlaceDetailSecondTVCell: UITableViewCell {
         super.awakeFromNib()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        ratingView.settings.fillMode = .precise
         
         let ratingLblInt = Double(ratingLbl.text!)
+        
         if let ratingLblInt_ = ratingLblInt {
-            setStackViewStar(rating: ratingLblInt_)
+            ratingView.rating = ratingLblInt_
         }
     }
     
@@ -45,21 +54,7 @@ class PlaceDetailSecondTVCell: UITableViewCell {
         
     }
     
-    func setStackViewStar(rating : Double){
-        var temp = rating
-        for i in 0..<stackView.arrangedSubviews.count{
-            if (temp - 1 >= 0){
-                (stackView.arrangedSubviews[i] as! UIImageView).image = #imageLiteral(resourceName: "review_star_full")
-                temp -= 1
-            } else if (temp - 0.5 >= 0){
-                (stackView.arrangedSubviews[i] as! UIImageView).image = #imageLiteral(resourceName: "review_star_half")
-                temp -= 0.5
-            } else {
-                (stackView.arrangedSubviews[i] as! UIImageView).image = #imageLiteral(resourceName: "review_star_empty")
-            }
-        }
-    } //setStackViewStar
-
+   
 }
 
 extension PlaceDetailSecondTVCell : UICollectionViewDataSource, UICollectionViewDelegate {

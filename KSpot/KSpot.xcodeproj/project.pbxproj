@@ -70,6 +70,10 @@
 		3BBB7D8F21459B81004CC142 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7D8E21459B81004CC142 /* EditProfileVC.swift */; };
 		3BBB7D9321469656004CC142 /* ThemeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7D9221469656004CC142 /* ThemeVC.swift */; };
 		3BBB7D992146D0F3004CC142 /* ThemeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7D982146D0F3004CC142 /* ThemeTVCell.swift */; };
+		3BBB7D9B2146EA9E004CC142 /* ReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7D9A2146EA9E004CC142 /* ReviewVC.swift */; };
+		3BBB7D9D2146F481004CC142 /* ReviewImgTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7D9C2146F481004CC142 /* ReviewImgTVCell.swift */; };
+		3BBB7D9F2146F6D9004CC142 /* ReviewNoImgTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7D9E2146F6D9004CC142 /* ReviewNoImgTVCell.swift */; };
+		3BBB7DA12146F847004CC142 /* ReviewContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7DA02146F847004CC142 /* ReviewContainerVC.swift */; };
 		3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D462139262800FFF08C /* AppDelegate.swift */; };
 		3BBF8D492139262800FFF08C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D482139262800FFF08C /* ViewController.swift */; };
 		3BBF8D4C2139262800FFF08C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF8D4A2139262800FFF08C /* Main.storyboard */; };
@@ -146,6 +150,10 @@
 		3BBB7D8E21459B81004CC142 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		3BBB7D9221469656004CC142 /* ThemeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeVC.swift; sourceTree = "<group>"; };
 		3BBB7D982146D0F3004CC142 /* ThemeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTVCell.swift; sourceTree = "<group>"; };
+		3BBB7D9A2146EA9E004CC142 /* ReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewVC.swift; sourceTree = "<group>"; };
+		3BBB7D9C2146F481004CC142 /* ReviewImgTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewImgTVCell.swift; sourceTree = "<group>"; };
+		3BBB7D9E2146F6D9004CC142 /* ReviewNoImgTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewNoImgTVCell.swift; sourceTree = "<group>"; };
+		3BBB7DA02146F847004CC142 /* ReviewContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewContainerVC.swift; sourceTree = "<group>"; };
 		3BBF8D432139262800FFF08C /* KSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBF8D462139262800FFF08C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBF8D482139262800FFF08C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -411,6 +419,10 @@
 		3BB1882821441D850021B543 /* Review */ = {
 			isa = PBXGroup;
 			children = (
+				3BBB7DA02146F847004CC142 /* ReviewContainerVC.swift */,
+				3BBB7D9A2146EA9E004CC142 /* ReviewVC.swift */,
+				3BBB7D9C2146F481004CC142 /* ReviewImgTVCell.swift */,
+				3BBB7D9E2146F6D9004CC142 /* ReviewNoImgTVCell.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -755,12 +767,14 @@
 				3B3DD149213D6C5800FD00B3 /* BroadcastTVCell.swift in Sources */,
 				3B3DD182213F072D00FD00B3 /* PlaceDetailFirstTVCell.swift in Sources */,
 				3B3DD120213BEE0500FD00B3 /* MapContainerCVCell.swift in Sources */,
+				3BBB7D9B2146EA9E004CC142 /* ReviewVC.swift in Sources */,
 				3B3DD185213F085600FD00B3 /* PlaceDetailFirstCVCell.swift in Sources */,
 				3B3DD14B213D708800FD00B3 /* CategoryToggleBtn.swift in Sources */,
 				3B3DD0F8213B2FAC00FD00B3 /* Storyboard.swift in Sources */,
 				3BBB7D992146D0F3004CC142 /* ThemeTVCell.swift in Sources */,
 				3B3DD114213BD74300FD00B3 /* MapVC.swift in Sources */,
 				3B3DD189213F0D0600FD00B3 /* PlaceDetailSecondCVCell.swift in Sources */,
+				3BBB7DA12146F847004CC142 /* ReviewContainerVC.swift in Sources */,
 				3BBB7D8F21459B81004CC142 /* EditProfileVC.swift in Sources */,
 				3BB18831214445810021B543 /* MypageTVCell.swift in Sources */,
 				3B3DD16F213DA7B100FD00B3 /* WRCustomNavigationBar.swift in Sources */,
@@ -770,12 +784,14 @@
 				3B3DD0E1213AE1C200FD00B3 /* MainSecondTVCell.swift in Sources */,
 				3BB188332144471A0021B543 /* CustomView.swift in Sources */,
 				3B3DD0F3213B2BC900FD00B3 /* CategoryVC.swift in Sources */,
+				3BBB7D9F2146F6D9004CC142 /* ReviewNoImgTVCell.swift in Sources */,
 				3BBB7D81214578C6004CC142 /* SubCelebrityVC.swift in Sources */,
 				3BBF8D5F21392D3E00FFF08C /* MainFirstCVCell.swift in Sources */,
 				3BBB7D83214578D2004CC142 /* SubBroadCastVC.swift in Sources */,
 				3BBF8D5B21392A0D00FFF08C /* Extensions.swift in Sources */,
 				3BB1882B214420980021B543 /* ReviewWriteVC.swift in Sources */,
 				3BBB7D87214578F4004CC142 /* SubBroadcastTVCell.swift in Sources */,
+				3BBB7D9D2146F481004CC142 /* ReviewImgTVCell.swift in Sources */,
 				3BB18835214448B40021B543 /* MypageCVCell.swift in Sources */,
 				3B3DD17B213DC9D200FD00B3 /* WRCycleCell.swift in Sources */,
 				3B3DD116213BD77F00FD00B3 /* MapContainerVC.swift in Sources */,
