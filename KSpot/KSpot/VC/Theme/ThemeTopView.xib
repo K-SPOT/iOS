@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NanumSquareOTFBold.otf">
+            <string>NanumSquareOTFB</string>
+        </array>
+        <array key="NanumSquareOTFRegular.otf">
+            <string>NanumSquareOTFR</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="ThemeTopView" id="iN0-l3-epB" customClass="ThemeTopView" customModule="KSpot" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="363" height="220"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bimg" translatesAutoresizingMaskIntoConstraints="NO" id="IX6-b1-viC">
+                    <rect key="frame" x="0.0" y="0.0" width="363" height="220"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hch-fk-cvW">
+                    <rect key="frame" x="16" y="98" width="331" height="24.5"/>
+                    <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="22"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ra9-ie-ZL4">
+                    <rect key="frame" x="163.5" y="147" width="36.5" height="17"/>
+                    <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="15"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hch-fk-cvW" secondAttribute="trailing" constant="16" id="7Fc-7v-hVN"/>
+                <constraint firstItem="ra9-ie-ZL4" firstAttribute="top" secondItem="hch-fk-cvW" secondAttribute="bottom" constant="24" id="B4u-YO-ub7"/>
+                <constraint firstItem="IX6-b1-viC" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Jts-bN-AWX"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="IX6-b1-viC" secondAttribute="trailing" id="Plr-4m-6Uv"/>
+                <constraint firstItem="hch-fk-cvW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="SXJ-9C-jyd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="IX6-b1-viC" secondAttribute="bottom" id="USk-SV-THR"/>
+                <constraint firstItem="IX6-b1-viC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ZMD-EO-w40"/>
+                <constraint firstItem="hch-fk-cvW" firstAttribute="centerX" secondItem="IX6-b1-viC" secondAttribute="centerX" id="bpv-PU-rYy"/>
+                <constraint firstItem="ra9-ie-ZL4" firstAttribute="centerX" secondItem="hch-fk-cvW" secondAttribute="centerX" id="k8o-ot-BWh"/>
+                <constraint firstItem="hch-fk-cvW" firstAttribute="centerY" secondItem="IX6-b1-viC" secondAttribute="centerY" id="uXj-U9-awO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="profileImgView" destination="IX6-b1-viC" id="52V-iY-JCT"/>
+                <outlet property="subtitleLbl" destination="ra9-ie-ZL4" id="xjC-G8-3Kv"/>
+                <outlet property="titleLbl" destination="hch-fk-cvW" id="0V9-Cx-JWO"/>
+            </connections>
+            <point key="canvasLocation" x="18.5" y="-171"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bimg" width="72" height="79"/>
+    </resources>
+</document>

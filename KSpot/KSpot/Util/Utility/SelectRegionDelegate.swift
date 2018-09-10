@@ -15,3 +15,13 @@ protocol SelectRegionDelegate {
 protocol SelectDelegate {
     func tap(selected : Int?)
 }
+
+protocol SelectSectionelegate {
+    func tap(section : Section, seledtedId : Int)
+}
+
+enum Section {
+    case first
+    case second
+    case third
+}

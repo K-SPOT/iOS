@@ -6,35 +6,28 @@
 //  Copyright © 2018년 강수진. All rights reserved.
 //
 
-//
-//  WeiBoMineController.swift
-//  WRNavigationBar_swift
-//
-//  Created by wangrui on 2017/4/19.
-//  Copyright © 2017年 wangrui. All rights reserved.
-//
-//  Github地址：https://github.com/wangrui460/WRNavigationBar_swift
 
 import UIKit
 
 private let IMAGE_HEIGHT:CGFloat = 284
 private let NAVBAR_COLORCHANGE_POINT:CGFloat = IMAGE_HEIGHT - CGFloat(kNavBarBottom * 2)
 
-class ThemeVC: UIViewController, UIGestureRecognizerDelegate
-{
-    @IBOutlet var tableView : UITableView!
+class ThemeVC: UIViewController, UIGestureRecognizerDelegate {
+    @IBOutlet weak var tableView : UITableView!
     var whiteScrapBarBtn : UIBarButtonItem?
     var blackScrapBarBtn : UIBarButtonItem?
-    lazy var topView:UIImageView = {
-        let imgView = UIImageView(image: UIImage(named: "aimg"))
-        imgView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: IMAGE_HEIGHT)
-        imgView.contentMode = UIViewContentMode.scaleAspectFill
-        imgView.clipsToBounds = true
-        return imgView
+    
+    private lazy var topView : UIView = {
+        let headerView = ThemeTopView.instanceFromNib()
+        headerView.titleLbl.text = "방탄소년단's PICK \n HOT PLACE 5!"
+        headerView.subtitleLbl.text = "#논현동 #압구정동 #신사동 #가락시장"
+        headerView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: IMAGE_HEIGHT)
+        headerView.contentMode = UIViewContentMode.scaleAspectFill
+        headerView.clipsToBounds = true
+        return headerView
     }()
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad(){
         super.viewDidLoad()
         setupTableView()
         setupNavView()
@@ -132,11 +125,7 @@ extension ThemeVC:UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc:UIViewController = UIViewController()
-        vc.view.backgroundColor = UIColor.white
-        let str = "WRNavigationBar"
-        vc.title = str
-        navigationController?.pushViewController(vc, animated: true)
+    
     }
 }
 

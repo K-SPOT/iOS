@@ -29,7 +29,7 @@ class MypageVC: UIViewController {
     private var collectionViewFlowLayout: UICollectionViewFlowLayout {
         return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
-    var delegate : SelectDelegate?
+  
     let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg")]
 
     override func viewDidLoad() {
@@ -102,7 +102,7 @@ extension MypageVC : UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.tap(selected: indexPath.row)
+        
     }
 }
 
