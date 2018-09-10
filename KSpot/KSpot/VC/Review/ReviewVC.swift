@@ -17,6 +17,19 @@ class ReviewVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func sortingAction(_ sender: Any) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+        let recentAction = UIAlertAction(title: "최신순", style: .default) { (_) in
+            print("최신순 선택")
+        }
+        let popularAction = UIAlertAction(title: "인기순", style: .default) { (_) in
+            print("인기순 선택")
+        }
+        let cancleAction = UIAlertAction(title: "취소",style: .cancel)
+        alert.addAction(recentAction)
+        alert.addAction(popularAction)
+        alert.addAction(cancleAction)
+        present(alert, animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
