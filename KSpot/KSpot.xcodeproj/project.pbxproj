@@ -69,8 +69,7 @@
 		3BBB7D8A214596BF004CC142 /* ScrapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7D89214596BF004CC142 /* ScrapVC.swift */; };
 		3BBB7D8F21459B81004CC142 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7D8E21459B81004CC142 /* EditProfileVC.swift */; };
 		3BBB7D9321469656004CC142 /* ThemeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7D9221469656004CC142 /* ThemeVC.swift */; };
-		3BBB7D952146B69C004CC142 /* ThemeTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7D942146B69C004CC142 /* ThemeTopView.swift */; };
-		3BBB7D972146B6AA004CC142 /* ThemeTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BBB7D962146B6AA004CC142 /* ThemeTopView.xib */; };
+		3BBB7D992146D0F3004CC142 /* ThemeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7D982146D0F3004CC142 /* ThemeTVCell.swift */; };
 		3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D462139262800FFF08C /* AppDelegate.swift */; };
 		3BBF8D492139262800FFF08C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D482139262800FFF08C /* ViewController.swift */; };
 		3BBF8D4C2139262800FFF08C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF8D4A2139262800FFF08C /* Main.storyboard */; };
@@ -146,8 +145,7 @@
 		3BBB7D89214596BF004CC142 /* ScrapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapVC.swift; sourceTree = "<group>"; };
 		3BBB7D8E21459B81004CC142 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		3BBB7D9221469656004CC142 /* ThemeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeVC.swift; sourceTree = "<group>"; };
-		3BBB7D942146B69C004CC142 /* ThemeTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTopView.swift; sourceTree = "<group>"; };
-		3BBB7D962146B6AA004CC142 /* ThemeTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThemeTopView.xib; sourceTree = "<group>"; };
+		3BBB7D982146D0F3004CC142 /* ThemeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTVCell.swift; sourceTree = "<group>"; };
 		3BBF8D432139262800FFF08C /* KSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBF8D462139262800FFF08C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBF8D482139262800FFF08C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -494,8 +492,7 @@
 			isa = PBXGroup;
 			children = (
 				3BBB7D9221469656004CC142 /* ThemeVC.swift */,
-				3BBB7D942146B69C004CC142 /* ThemeTopView.swift */,
-				3BBB7D962146B6AA004CC142 /* ThemeTopView.xib */,
+				3BBB7D982146D0F3004CC142 /* ThemeTVCell.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -653,7 +650,6 @@
 				3B3DD10B213B408000FD00B3 /* NanumSquareOTFBold.otf in Resources */,
 				3B3DD0F1213B28A600FD00B3 /* Category.storyboard in Resources */,
 				3B3DD10C213B408200FD00B3 /* NanumSquareOTFExtraBold.otf in Resources */,
-				3BBB7D972146B6AA004CC142 /* ThemeTopView.xib in Resources */,
 				3B3DD10E213B408700FD00B3 /* NanumSquareOTFRegular.otf in Resources */,
 				3B3DD10D213B408500FD00B3 /* NanumSquareOTFLight.otf in Resources */,
 				3BBF8D512139262800FFF08C /* LaunchScreen.storyboard in Resources */,
@@ -762,6 +758,7 @@
 				3B3DD185213F085600FD00B3 /* PlaceDetailFirstCVCell.swift in Sources */,
 				3B3DD14B213D708800FD00B3 /* CategoryToggleBtn.swift in Sources */,
 				3B3DD0F8213B2FAC00FD00B3 /* Storyboard.swift in Sources */,
+				3BBB7D992146D0F3004CC142 /* ThemeTVCell.swift in Sources */,
 				3B3DD114213BD74300FD00B3 /* MapVC.swift in Sources */,
 				3B3DD189213F0D0600FD00B3 /* PlaceDetailSecondCVCell.swift in Sources */,
 				3BBB7D8F21459B81004CC142 /* EditProfileVC.swift in Sources */,
@@ -780,7 +777,6 @@
 				3BB1882B214420980021B543 /* ReviewWriteVC.swift in Sources */,
 				3BBB7D87214578F4004CC142 /* SubBroadcastTVCell.swift in Sources */,
 				3BB18835214448B40021B543 /* MypageCVCell.swift in Sources */,
-				3BBB7D952146B69C004CC142 /* ThemeTopView.swift in Sources */,
 				3B3DD17B213DC9D200FD00B3 /* WRCycleCell.swift in Sources */,
 				3B3DD116213BD77F00FD00B3 /* MapContainerVC.swift in Sources */,
 				3BBB7D7921456BD1004CC142 /* MainSearchVC.swift in Sources */,

@@ -8,6 +8,7 @@
 
 
 import UIKit
+import SnapKit
 
 private let IMAGE_HEIGHT:CGFloat = 284
 private let NAVBAR_COLORCHANGE_POINT:CGFloat = IMAGE_HEIGHT - CGFloat(kNavBarBottom * 2)
@@ -17,14 +18,33 @@ class ThemeVC: UIViewController, UIGestureRecognizerDelegate {
     var whiteScrapBarBtn : UIBarButtonItem?
     var blackScrapBarBtn : UIBarButtonItem?
     
-    private lazy var topView : UIView = {
-        let headerView = ThemeTopView.instanceFromNib()
-        headerView.titleLbl.text = "방탄소년단's PICK \n HOT PLACE 5!"
-        headerView.subtitleLbl.text = "#논현동 #압구정동 #신사동 #가락시장"
-        headerView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: IMAGE_HEIGHT)
-        headerView.contentMode = UIViewContentMode.scaleAspectFill
-        headerView.clipsToBounds = true
-        return headerView
+    lazy var titleLbl:UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.clear
+        label.textColor = UIColor.white
+        label.text = "방탄소년단's PICK! \n HOT PLACE 5"
+        label.numberOfLines = 2
+        label.setLineSpacing(lineSpacing: 3.5)
+        label.textAlignment = .center
+        label.font = UIFont(name: NanumSquareOTF.NanumSquareOTFB.rawValue, size: 22)
+        return label
+    }()
+    lazy var subtitleLbl:UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.clear
+        label.textColor = UIColor.white
+        label.text = "#논현동 #압구정동 #신사동 #가락시장"
+        label.textAlignment = .center
+         label.font = UIFont(name: NanumSquareOTF.NanumSquareOTFR.rawValue, size: 15)
+        return label
+    }()
+    
+    lazy var topView:UIImageView = {
+        let imgView = UIImageView(image: UIImage(named: "aimg"))
+        imgView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: IMAGE_HEIGHT)
+        imgView.contentMode = UIViewContentMode.scaleAspectFill
+        imgView.clipsToBounds = true
+        return imgView
     }()
     
     override func viewDidLoad(){
@@ -42,10 +62,21 @@ class ThemeVC: UIViewController, UIGestureRecognizerDelegate {
         tableView.contentInset = UIEdgeInsetsMake(-CGFloat(kNavBarBottom), 0, 0, 0)
         tableView.delegate = self
         tableView.dataSource = self
+        topView.addSubview(titleLbl)
+        topView.addSubview(subtitleLbl)
+        
+        titleLbl.snp.makeConstraints { (make) in
+            make.centerX.centerY.equalTo(topView)
+        }
+        subtitleLbl.snp.makeConstraints { (make) in
+            make.centerX.equalTo(titleLbl)
+            make.top.equalTo(titleLbl.snp.bottom).offset(24)
+        }
+        
         tableView.tableHeaderView = topView
     }
     
-   
+    
 }
 
 //네비게이션 설정
@@ -83,7 +114,9 @@ extension ThemeVC
         let offsetY = scrollView.contentOffset.y
         if (offsetY > NAVBAR_COLORCHANGE_POINT)
         {
+            
             navBarTintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
+            navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             navigationItem.rightBarButtonItems?[1].tintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             navigationItem.rightBarButtonItems?[0] = blackScrapBarBtn!
             let alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / CGFloat(kNavBarBottom)
@@ -94,8 +127,9 @@ extension ThemeVC
         }
         else
         {
-           
+            
             navBarTintColor = .white
+            navigationItem.leftBarButtonItem?.tintColor = .white
             navigationItem.rightBarButtonItems?[1].tintColor = .white
             navigationItem.rightBarButtonItems?[0] = whiteScrapBarBtn!
             navBarBackgroundAlpha = 0
@@ -110,22 +144,20 @@ extension ThemeVC
 extension ThemeVC:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 40
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = UITableViewCell.init(style: .default, reuseIdentifier: nil)
-        let str = String(format: "WRNavigationBar %zd", indexPath.row)
-        cell.textLabel?.text = str
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+        let cell = tableView.dequeueReusableCell(withIdentifier: ThemeTVCell.reuseIdentifier) as! ThemeTVCell
+   
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         tableView.deselectRow(at: indexPath, animated: true)
-    
+        
     }
 }
 
