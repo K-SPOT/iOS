@@ -119,9 +119,8 @@ extension PlaceDetailVC {
         tableView.delegate = self
         tableView.dataSource = self
         //view.backgroundColor = UIColor.white
-        
         tableView.addSubview(cycleScrollView)
-        view.addSubview(tableView)
+       
     }
     
     func setcycleScrollView(){
