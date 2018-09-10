@@ -44,6 +44,21 @@ class ReviewVC: UIViewController {
     }
 }
 
+extension ReviewVC : SelectDelegate {
+    func tap(selected : Int?) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let reportAction = UIAlertAction(title: "신고", style: .default) { (_) in
+            print("신고 선택")
+        }
+      
+        let cancleAction = UIAlertAction(title: "취소",style: .cancel)
+        alert.addAction(reportAction)
+        alert.addAction(cancleAction)
+        present(alert, animated: true)
+    }
+}
+
 
 //tableView dataSource, delegate
 extension ReviewVC:UITableViewDelegate,UITableViewDataSource
@@ -55,7 +70,7 @@ extension ReviewVC:UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: ReviewImgTVCell.reuseIdentifier) as! ReviewImgTVCell
-        
+        cell.delegate = self
         return cell
     }
     
