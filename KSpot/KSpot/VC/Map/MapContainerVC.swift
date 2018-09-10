@@ -12,7 +12,7 @@ class MapContainerVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var reusableView : MapHeaderView?
+    var mapView : MapHeaderView?
     let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
     
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class MapContainerVC: UIViewController {
 
 extension MapContainerVC : SelectRegionDelegate {
     func tap(_ region : Region) {
-        reusableView?.selectedRegionLbl.text = region.rawValue
+         mapView?.selectedRegionLbl.text = region.rawValue
         //self.parent?.title = region.rawValue
         self.parent?.navigationItem.title = region.rawValue
         //TODO - 통신 대비해서 case rawValue 뽑아내기 case gangsu -> gangsu
@@ -50,13 +50,38 @@ extension MapContainerVC : UICollectionViewDataSource, UICollectionViewDelegate{
     
     //headerView 설정
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: MapHeaderView.reuseIdentifier, for: indexPath) as? MapHeaderView
-        let buttons : [buttonRegion] =  [((reusableView?.dobongBtn)!, .dobong)]
+        mapView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: MapHeaderView.reuseIdentifier, for: indexPath) as? MapHeaderView
+        let buttons : [buttonRegion] =
+            [((mapView?.gangnamBtn)!, .gangnam),
+             ((mapView?.seodaemunBtn)!, .seodaemun),
+             ((mapView?.mapoBtn)!, .mapo),
+             ((mapView?.yongsanBtn)!, .yongsan),
+             ((mapView?.dongjakBtn)!, .dongjak),
+             ((mapView?.gwanakBtn)!, .gwanak),
+             ((mapView?.geumcheonBtn)!, .geumcheon),
+             ((mapView?.yeongdeungpoBtn)!, .yeongdeungpo),
+             ((mapView?.guroBtn)!, .guro),
+             ((mapView?.yangcheonBtn)!, .yangcheon),
+             ((mapView?.gangsuBtn)!, .gangsu),
+             ((mapView?.gangbukBtn)!, .gangbuk),
+             ((mapView?.seongbukBtn)!, .seongbuk),
+             ((mapView?.jongroBtn)!, .jongro),
+             ((mapView?.eunpyeongBtn)!, .eunpyeong),
+             ((mapView?.jungguBtn)!, .junggu),
+             ((mapView?.seochoBtn)!, .seocho),
+             ((mapView?.dobongBtn)!, .dobong),
+             ((mapView?.nowonBtn)!, .nowon),
+             ((mapView?.jungnangBtn)!, .jungnang),
+             ((mapView?.dongdaemunBtn)!, .dongdaemun),
+             ((mapView?.seongdongBtn)!, .seongdong),
+             ((mapView?.gwangjinBtn)!, .gwangjin),
+             ((mapView?.songpaBtn)!, .songpa),
+             ((mapView?.gangdongBtn)!, .gangdong)]
         setRegion(inputs: buttons)
         setDelegate(buttons: buttons.map({ (btn, region)  in
             return btn
         }))
-        return reusableView!
+        return mapView!
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

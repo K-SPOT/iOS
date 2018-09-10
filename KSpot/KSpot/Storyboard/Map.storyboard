@@ -284,33 +284,138 @@
                                             </constraints>
                                             <state key="normal" title="도봉"/>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGY-Wf-hIs">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGY-Wf-hIs" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
                                             <rect key="frame" x="254" y="35" width="43" height="72"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="NGY-Wf-hIs" secondAttribute="height" multiplier="43:72" id="opY-gD-w2k"/>
                                             </constraints>
                                             <state key="normal" title="노원"/>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4l-pQ-wHf">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4l-pQ-wHf" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
                                             <rect key="frame" x="269" y="115" width="36" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="r4l-pQ-wHf" secondAttribute="height" multiplier="9:11" id="s3r-Ys-h1m"/>
                                             </constraints>
                                             <state key="normal" title="중랑"/>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dum-wC-woy">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dum-wC-woy" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
                                             <rect key="frame" x="197" y="50" width="22" height="51"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="dum-wC-woy" secondAttribute="height" multiplier="22:51" id="lYB-sL-4PX"/>
                                             </constraints>
                                             <state key="normal" title="강"/>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUD-HA-R3X">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUD-HA-R3X" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
                                             <rect key="frame" x="217" y="86" width="24" height="26"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="EUD-HA-R3X" secondAttribute="height" multiplier="12:13" id="sdX-Uw-w9k"/>
                                             </constraints>
                                             <state key="normal" title="북"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoO-EU-Qx4" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="8" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="강서"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oew-E2-VYr" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="35" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="양천"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ui-MF-fGm" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="71" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="구로"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDJ-h8-Gsm" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="100" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="영등포"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GuK-Ta-oBV" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="138" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="금천"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7X-v2-2CT" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="169" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="관악"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Po1-GH-0KM" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="207" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="동작"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcR-4V-YJE" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="245" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="용산"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hf9-rv-xI8" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="283" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="마포"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7m-8G-uHZ" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="43" y="316" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="강남"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bb8-Ys-q4j" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="82" y="316" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="서초"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KUH-DP-Mrg" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="127" y="316" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="중구"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2M1-CN-DGN" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="173" y="316" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="은평"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="au9-rV-xXA" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="217" y="316" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="종로"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eu8-zk-uSa" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="316" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="서대문"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N4s-Pn-zZe" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="271" y="316" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="성북"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpG-AY-4W7" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="43" y="278" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="동대문"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgd-EJ-1mV" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="82" y="278" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="성동"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJx-KD-I1X" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="127" y="278" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="광진"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khe-KP-Scp" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="173" y="278" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="송파"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WIN-Nx-FxC" customClass="RegionBtn" customModule="KSpot" customModuleProvider="target">
+                                            <rect key="frame" x="217" y="278" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="강동"/>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -340,7 +445,31 @@
                                     </constraints>
                                     <connections>
                                         <outlet property="dobongBtn" destination="4bA-Wy-PVw" id="Ezf-bV-PB2"/>
+                                        <outlet property="dongdaemunBtn" destination="jpG-AY-4W7" id="bCw-vj-57q"/>
+                                        <outlet property="dongjakBtn" destination="Po1-GH-0KM" id="Jdx-2B-Sxi"/>
+                                        <outlet property="eunpyeongBtn" destination="2M1-CN-DGN" id="8d6-AZ-xVe"/>
+                                        <outlet property="gangbukBtn" destination="EUD-HA-R3X" id="btH-nP-drM"/>
+                                        <outlet property="gangdongBtn" destination="WIN-Nx-FxC" id="lbe-R3-j5A"/>
+                                        <outlet property="gangnamBtn" destination="f7m-8G-uHZ" id="B9x-rf-9rC"/>
+                                        <outlet property="gangsuBtn" destination="BoO-EU-Qx4" id="5ct-Gg-bf1"/>
+                                        <outlet property="geumcheonBtn" destination="GuK-Ta-oBV" id="gcm-gl-VeW"/>
+                                        <outlet property="guroBtn" destination="3ui-MF-fGm" id="rcs-gn-woJ"/>
+                                        <outlet property="gwanakBtn" destination="f7X-v2-2CT" id="fWi-mN-24K"/>
+                                        <outlet property="gwangjinBtn" destination="hJx-KD-I1X" id="QgC-3d-3eo"/>
+                                        <outlet property="jongroBtn" destination="au9-rV-xXA" id="KIP-M8-CPf"/>
+                                        <outlet property="jungguBtn" destination="KUH-DP-Mrg" id="pEq-PP-uug"/>
+                                        <outlet property="jungnangBtn" destination="r4l-pQ-wHf" id="tmy-f9-c0M"/>
+                                        <outlet property="mapoBtn" destination="Hf9-rv-xI8" id="7we-A8-mXj"/>
+                                        <outlet property="nowonBtn" destination="NGY-Wf-hIs" id="xc7-wH-vKL"/>
                                         <outlet property="selectedRegionLbl" destination="CPQ-pp-aDp" id="tz2-ZK-ZKt"/>
+                                        <outlet property="seochoBtn" destination="bb8-Ys-q4j" id="fOk-SJ-Las"/>
+                                        <outlet property="seodaemunBtn" destination="eu8-zk-uSa" id="Btu-6v-car"/>
+                                        <outlet property="seongbukBtn" destination="N4s-Pn-zZe" id="Vmu-ID-AdX"/>
+                                        <outlet property="seongdongBtn" destination="Hgd-EJ-1mV" id="HYs-cY-2vI"/>
+                                        <outlet property="songpaBtn" destination="khe-KP-Scp" id="E6H-Id-VkI"/>
+                                        <outlet property="yangcheonBtn" destination="Oew-E2-VYr" id="Cdo-5v-Bgq"/>
+                                        <outlet property="yeongdeungpoBtn" destination="KDJ-h8-Gsm" id="H8t-4t-Z3R"/>
+                                        <outlet property="yongsanBtn" destination="bcR-4V-YJE" id="V5O-sj-Aam"/>
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>
