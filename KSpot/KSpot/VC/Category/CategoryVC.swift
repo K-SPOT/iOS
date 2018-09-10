@@ -21,12 +21,14 @@ class CategoryVC: UIViewController {
     private lazy var celebrityVC: CelebrityVC = {
         let storyboard = Storyboard.shared().categoryStoryboard
         var viewController = storyboard.instantiateViewController(withIdentifier: CelebrityVC.reuseIdentifier) as! CelebrityVC
+        viewController.delegate = self
         return viewController
     }()
     
     private lazy var broadcastVC: BroadcastVC = {
         let storyboard = Storyboard.shared().categoryStoryboard
         var viewController = storyboard.instantiateViewController(withIdentifier: BroadcastVC.reuseIdentifier) as! BroadcastVC
+        viewController.delegate = self
         return viewController
     }()
     
@@ -75,7 +77,7 @@ class CategoryVC: UIViewController {
         broadcastBtn.setBtn(another: celebrityBtn, bottomLine: broadcastGreenView)
         updateView(selected: 0)
         searchTxtField.delegate = self
-        setDefaultNav()
+      //  setDefaultNav()
          self.navigationController?.navigationBar.shadowImage = UIImage()
         setKeyboardSetting()
     }
@@ -101,7 +103,18 @@ extension CategoryVC{
     }
 
 }
-
+extension CategoryVC : SelectDelegate {
+    func tap(selected: Int?) {
+        //selected 0 => celebrity / 1 = > broadcast
+        let categoryStoryboard = Storyboard.shared().categoryStoryboard
+        if let categoryDetailVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailVC.reuseIdentifier) as? CategoryDetailVC {
+            
+            self.navigationController?.pushViewController(categoryDetailVC, animated: true)
+        }
+    }
+    
+   
+}
 
 //네비게이션 기본바 커스텀
 extension CategoryVC {

@@ -12,7 +12,7 @@ class CelebrityVC: UIViewController {
     
    
     @IBOutlet weak var tableView: UITableView!
-    
+    var delegate : SelectDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -32,11 +32,7 @@ extension CelebrityVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let categoryStoryboard = Storyboard.shared().categoryStoryboard
-        if let categoryDetailVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailVC.reuseIdentifier) as? CategoryDetailVC {
-            
-            self.navigationController?.pushViewController(categoryDetailVC, animated: true)
-        }
+        delegate?.tap(selected: 0)
     }
 }
 

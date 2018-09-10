@@ -204,15 +204,6 @@ extension PlaceDetailVC: UITableViewDelegate,UITableViewDataSource{
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let vc:UIViewController = UIViewController()
-        vc.view.backgroundColor = UIColor.red
-        let str = String(format: "知乎日报 %zd", indexPath.row)
-        vc.title = str
-        navigationController?.pushViewController(vc, animated: true)
-    }
 }
 
 extension PlaceDetailVC : SelectSectionelegate {

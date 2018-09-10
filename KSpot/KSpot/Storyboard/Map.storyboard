@@ -380,37 +380,37 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울남산타워" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZm-8e-0tb">
-                                            <rect key="frame" x="126" y="34" width="125" height="28"/>
+                                            <rect key="frame" x="122" y="34" width="131.5" height="27"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="24"/>
                                             <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울의 야경을 한눈에 볼 수 있는" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAE-Ge-KfA">
-                                            <rect key="frame" x="100" y="77" width="177" height="16.5"/>
+                                            <rect key="frame" x="96" y="76" width="183.5" height="15.5"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="14"/>
                                             <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="place_detail_line_6" translatesAutoresizingMaskIntoConstraints="NO" id="QGJ-yN-97G">
-                                            <rect key="frame" x="53" y="165" width="269" height="34"/>
+                                            <rect key="frame" x="53" y="163" width="269" height="34"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="34" id="emT-y7-Ny4"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="고려대" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUm-Ga-AzB">
-                                            <rect key="frame" x="53" y="208" width="31.5" height="14"/>
+                                            <rect key="frame" x="53" y="206" width="33" height="13.5"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                             <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="보문" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1EK-97-hui">
-                                            <rect key="frame" x="301" y="208" width="21" height="14"/>
+                                            <rect key="frame" x="300" y="206" width="22" height="13.5"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                             <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="q9X-xy-rTE">
-                                            <rect key="frame" x="118.5" y="110.5" width="139" height="20"/>
+                                            <rect key="frame" x="114.5" y="108.5" width="145" height="20"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="place_detail_location_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="9Q3-oL-G9T">
                                                     <rect key="frame" x="0.0" y="0.0" width="14" height="20"/>
@@ -420,7 +420,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용산구 남산공원길 105" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hv1-DB-k2S">
-                                                    <rect key="frame" x="20" y="0.0" width="119" height="20"/>
+                                                    <rect key="frame" x="20" y="0.0" width="125" height="20"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="13"/>
                                                     <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -428,20 +428,20 @@
                                             </subviews>
                                         </stackView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="place_detail_star_full" translatesAutoresizingMaskIntoConstraints="NO" id="GKm-tq-8ua">
-                                            <rect key="frame" x="261" y="41" width="14" height="14"/>
+                                            <rect key="frame" x="263.5" y="40.5" width="14" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="GKm-tq-8ua" secondAttribute="height" multiplier="1:1" id="UPh-0S-5lL"/>
                                                 <constraint firstAttribute="width" constant="14" id="nay-3m-nHT"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNR-RO-Hxi">
-                                            <rect key="frame" x="278.5" y="42" width="17" height="14"/>
+                                            <rect key="frame" x="281" y="41" width="17.5" height="13.5"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                             <color key="textColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="0Iq-dq-01I">
-                                            <rect key="frame" x="155.5" y="174" width="65" height="16"/>
+                                            <rect key="frame" x="154.5" y="172" width="67" height="16"/>
                                             <subviews>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="place_detail_dot_6" translatesAutoresizingMaskIntoConstraints="NO" id="qoW-N4-CpL">
                                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -451,7 +451,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안암역" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fW6-Vr-HlW">
-                                                    <rect key="frame" x="23" y="0.0" width="42" height="16"/>
+                                                    <rect key="frame" x="23" y="0.0" width="44" height="16"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="16"/>
                                                     <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -713,7 +713,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaceDetailFirstTVCell" rowHeight="271" id="K2l-Cx-Op4" customClass="PlaceDetailFirstTVCell" customModule="KSpot" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlaceDetailFirstTVCell" rowHeight="271" id="K2l-Cx-Op4" customClass="PlaceDetailFirstTVCell" customModule="KSpot" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="266" width="375" height="271"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K2l-Cx-Op4" id="kZZ-Zr-003">
@@ -721,7 +721,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="관련 연예인/방송" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYz-Gt-woe">
-                                                    <rect key="frame" x="16" y="34" width="120" height="20"/>
+                                                    <rect key="frame" x="16" y="34" width="127.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="18"/>
                                                     <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -786,7 +786,7 @@
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VpI-Ae-enX">
-                                                    <rect key="frame" x="144" y="33.5" width="26" height="21"/>
+                                                    <rect key="frame" x="151.5" y="34" width="27" height="20"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFL" family="NanumSquareOTF" pointSize="18"/>
                                                     <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -808,7 +808,7 @@
                                             <outlet property="countLbl" destination="VpI-Ae-enX" id="kt2-l1-JaX"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaceDetailSecondTVCell" rowHeight="486" id="xji-9O-34O" customClass="PlaceDetailSecondTVCell" customModule="KSpot" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlaceDetailSecondTVCell" rowHeight="486" id="xji-9O-34O" customClass="PlaceDetailSecondTVCell" customModule="KSpot" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="537" width="375" height="486"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xji-9O-34O" id="d1Y-6q-DUC">
@@ -816,13 +816,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="리뷰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8J-sf-38z">
-                                                    <rect key="frame" x="16" y="42" width="31.5" height="21"/>
+                                                    <rect key="frame" x="16" y="42" width="33" height="21"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="18"/>
                                                     <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30,256개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8H-M8-Cgx">
-                                                    <rect key="frame" x="55.5" y="42" width="71" height="21"/>
+                                                    <rect key="frame" x="57" y="42.5" width="73.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFL" family="NanumSquareOTF" pointSize="18"/>
                                                     <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -849,13 +849,13 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="밤에 야경보러갔는데" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYf-U9-V30">
-                                                                        <rect key="frame" x="24" y="31" width="192" height="21"/>
+                                                                        <rect key="frame" x="24" y="31" width="192" height="20"/>
                                                                         <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="18"/>
                                                                         <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dG3-OC-4N9">
-                                                                        <rect key="frame" x="24" y="60" width="192" height="54"/>
+                                                                        <rect key="frame" x="24" y="59" width="192" height="51.5"/>
                                                                         <attributedString key="attributedText">
                                                                             <fragment content="넘좋아용 넘좋아용 넘좋아용 넘좋아용 넘좋아용 넘좋아용 넘좋아용 넘좋아용 넘좋아용 넘좋아용 넘좋아용 넘좋아용">
                                                                                 <attributes>
@@ -868,13 +868,13 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTSLove" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dja-iK-VlJ">
-                                                                        <rect key="frame" x="24" y="152" width="49" height="14"/>
+                                                                        <rect key="frame" x="24" y="148.5" width="47.5" height="14"/>
                                                                         <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                                         <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018.09.04" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydY-6K-gGZ">
-                                                                        <rect key="frame" x="79" y="152" width="60.5" height="14"/>
+                                                                        <rect key="frame" x="77.5" y="148.5" width="63.5" height="14"/>
                                                                         <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                                         <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -887,7 +887,7 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gxh-gc-gtY" customClass="CosmosView" customModule="KSpot" customModuleProvider="target">
-                                                                        <rect key="frame" x="24" y="129" width="90" height="15"/>
+                                                                        <rect key="frame" x="24" y="125.5" width="90" height="15"/>
                                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="90" id="4Nr-9B-n4b"/>
@@ -946,7 +946,7 @@
                                                     </cells>
                                                 </collectionView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEX-sJ-uqG">
-                                                    <rect key="frame" x="303" y="37" width="56" height="31"/>
+                                                    <rect key="frame" x="300" y="37.5" width="59" height="30"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="16"/>
                                                     <state key="normal" title="모두보기">
                                                         <color key="titleColor" red="0.41927871109999998" green="0.85189700130000001" blue="0.68716549869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -956,13 +956,13 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5T-OV-vjw">
-                                                    <rect key="frame" x="157" y="81.5" width="28" height="24"/>
+                                                    <rect key="frame" x="157" y="82.5" width="29" height="22.5"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                                     <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5J-k3-sNT">
-                                                    <rect key="frame" x="187" y="81.5" width="18" height="23.5"/>
+                                                    <rect key="frame" x="188" y="82" width="20" height="22.5"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                                     <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1130,39 +1130,39 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="제목을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lx3-sQ-51R">
-                                                <rect key="frame" x="18" y="23" width="339" height="24"/>
+                                                <rect key="frame" x="18" y="23" width="339" height="23"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMA-7s-3H4">
-                                                <rect key="frame" x="18" y="70" width="339" height="0.5"/>
+                                                <rect key="frame" x="18" y="69" width="339" height="0.5"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="0.5" id="fr0-d7-ZHB"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4L-co-3NB">
-                                                <rect key="frame" x="18" y="124.5" width="339" height="0.5"/>
+                                                <rect key="frame" x="18" y="123.5" width="339" height="0.5"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="0.5" id="tBZ-I0-0Hd"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6M-Vg-dgi">
-                                                <rect key="frame" x="321" y="173" width="36" height="16.5"/>
+                                                <rect key="frame" x="319" y="171" width="38" height="15.5"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareOTFL" family="NanumSquareOTF" pointSize="14"/>
                                                 <color key="textColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvc-Ke-G3g">
-                                                <rect key="frame" x="311" y="174" width="8" height="16"/>
+                                                <rect key="frame" x="309" y="171.5" width="8" height="16"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareOTFL" family="NanumSquareOTF" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wAO-rD-JpF">
-                                                <rect key="frame" x="18" y="130" width="339" height="33"/>
+                                                <rect key="frame" x="18" y="129" width="339" height="32"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="1" constant="33" id="TRx-6X-yJq"/>
@@ -1171,13 +1171,13 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWf-cR-Fip">
-                                                <rect key="frame" x="186.5" y="86.5" width="28" height="23.5"/>
+                                                <rect key="frame" x="186.5" y="86" width="29" height="22.5"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSK-JB-x4H" customClass="CosmosView" customModule="KSpot" customModuleProvider="target">
-                                                <rect key="frame" x="18" y="86.5" width="160.5" height="22"/>
+                                                <rect key="frame" x="18" y="85.5" width="160.5" height="22"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="QpS-jS-7GF"/>
@@ -1206,7 +1206,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwi-IZ-PRh">
-                                                <rect key="frame" x="217.5" y="86.5" width="23.5" height="23"/>
+                                                <rect key="frame" x="218.5" y="85.5" width="25" height="23"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -1296,19 +1296,19 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRU-0a-UEZ">
-                                            <rect key="frame" x="156" y="84.5" width="28" height="23.5"/>
+                                            <rect key="frame" x="156" y="84" width="29" height="22.5"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                             <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="리뷰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRp-99-dDo">
-                                            <rect key="frame" x="16" y="39" width="42" height="28"/>
+                                            <rect key="frame" x="16" y="39" width="44" height="27"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="24"/>
                                             <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="keI-gx-Hdy" customClass="CosmosView" customModule="KSpot" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="85" width="132" height="22"/>
+                                            <rect key="frame" x="16" y="84" width="132" height="22"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="CV3-cw-cA0"/>
@@ -1338,26 +1338,26 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30,256개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOA-bZ-mky">
-                                            <rect key="frame" x="65" y="42.5" width="71" height="21"/>
+                                            <rect key="frame" x="67" y="42.5" width="73.5" height="20"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFL" family="NanumSquareOTF" pointSize="18"/>
                                             <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPq-A9-sEZ">
-                                            <rect key="frame" x="0.0" y="147" width="375" height="0.5"/>
+                                            <rect key="frame" x="0.0" y="146" width="375" height="0.5"/>
                                             <color key="backgroundColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="0.5" id="Zl8-g9-foh"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVS-sb-9qM">
-                                            <rect key="frame" x="187" y="85" width="23.5" height="23"/>
+                                            <rect key="frame" x="188" y="84" width="25" height="23"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRR-TE-Jmk">
-                                            <rect key="frame" x="53" y="153.5" width="15" height="22"/>
+                                            <rect key="frame" x="54" y="152.5" width="15" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="GmR-hw-C7d"/>
                                                 <constraint firstAttribute="width" constant="15" id="YEo-26-Uov"/>
@@ -1368,7 +1368,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cp-We-IZ4">
-                                            <rect key="frame" x="18" y="158" width="32" height="13"/>
+                                            <rect key="frame" x="18" y="157" width="33" height="13"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="13" id="tLS-bb-bMS"/>
                                             </constraints>
@@ -1411,25 +1411,25 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="밤에 야경보러 갔는데" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuc-c9-LWy">
-                                                    <rect key="frame" x="16" y="20" width="343" height="21"/>
+                                                    <rect key="frame" x="16" y="20" width="343" height="20"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="18"/>
                                                     <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전망도 너무 예쁘고 좋았어요ㅜㅜ 다음엔 꼭 남자친구랑 가고 싶어요 ^^,,,,방탄 LOVE~!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjn-cM-VUw">
-                                                    <rect key="frame" x="16" y="49" width="318" height="16.5"/>
+                                                    <rect key="frame" x="16" y="48" width="318" height="31"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="14"/>
                                                     <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bimg" translatesAutoresizingMaskIntoConstraints="NO" id="iUa-dq-56d">
-                                                    <rect key="frame" x="16" y="86.5" width="343" height="230"/>
+                                                    <rect key="frame" x="16" y="100" width="343" height="230"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="230" id="6ew-Vu-DfL"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OEm-Gn-KBw" customClass="CosmosView" customModule="KSpot" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="337.5" width="90" height="15"/>
+                                                    <rect key="frame" x="16" y="351" width="90" height="15"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="90" id="9hC-X6-4Nd"/>
@@ -1459,7 +1459,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTSlove · 2018-08-31" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1c2-f6-aUw">
-                                                    <rect key="frame" x="16" y="360.5" width="118" height="14"/>
+                                                    <rect key="frame" x="16" y="374" width="122.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                     <color key="textColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1468,7 +1468,6 @@
                                             <constraints>
                                                 <constraint firstItem="1c2-f6-aUw" firstAttribute="leading" secondItem="OEm-Gn-KBw" secondAttribute="leading" id="8bb-Yn-Fk1"/>
                                                 <constraint firstItem="OEm-Gn-KBw" firstAttribute="leading" secondItem="iUa-dq-56d" secondAttribute="leading" id="K90-eM-XKT"/>
-                                                <constraint firstAttribute="bottom" secondItem="1c2-f6-aUw" secondAttribute="bottom" constant="18" id="KIh-wF-sdq"/>
                                                 <constraint firstItem="iUa-dq-56d" firstAttribute="top" secondItem="Tjn-cM-VUw" secondAttribute="bottom" constant="21" id="OpP-sr-6gl"/>
                                                 <constraint firstItem="xuc-c9-LWy" firstAttribute="top" secondItem="k3a-bU-1sD" secondAttribute="top" constant="20" id="PgQ-xd-jeW"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Tjn-cM-VUw" secondAttribute="trailing" constant="41" id="UuY-Qm-RAV"/>
@@ -1479,6 +1478,7 @@
                                                 <constraint firstItem="iUa-dq-56d" firstAttribute="leading" secondItem="xuc-c9-LWy" secondAttribute="leading" id="mim-wS-f71"/>
                                                 <constraint firstAttribute="trailing" secondItem="xuc-c9-LWy" secondAttribute="trailing" constant="16" id="rB7-c7-Ofu"/>
                                                 <constraint firstItem="1c2-f6-aUw" firstAttribute="top" secondItem="OEm-Gn-KBw" secondAttribute="bottom" constant="8" id="w9q-xa-ftH"/>
+                                                <constraint firstAttribute="bottom" secondItem="1c2-f6-aUw" secondAttribute="bottom" constant="5" id="wPi-tR-x3B"/>
                                                 <constraint firstItem="Tjn-cM-VUw" firstAttribute="top" secondItem="xuc-c9-LWy" secondAttribute="bottom" constant="8" id="wrL-LQ-klJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1498,19 +1498,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="밤에 야경보러 갔는데" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82H-4a-Vbz">
-                                                    <rect key="frame" x="16" y="20" width="343" height="21"/>
+                                                    <rect key="frame" x="16" y="20" width="343" height="20"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="18"/>
                                                     <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="밤에 야경보러 갔는데" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pC-BB-i9S">
-                                                    <rect key="frame" x="16" y="49" width="117" height="16.5"/>
+                                                    <rect key="frame" x="16" y="48" width="122" height="15.5"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="14"/>
                                                     <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MRf-3w-IB4" customClass="CosmosView" customModule="KSpot" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="86.5" width="90" height="15"/>
+                                                    <rect key="frame" x="16" y="84.5" width="90" height="15"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="20x-Dg-Esk"/>
@@ -1540,7 +1540,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTSlove · 2018-08-31" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyn-f2-oaG">
-                                                    <rect key="frame" x="16" y="109.5" width="118" height="14"/>
+                                                    <rect key="frame" x="16" y="107.5" width="122.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                     <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1552,10 +1552,10 @@
                                                 <constraint firstItem="qyn-f2-oaG" firstAttribute="top" secondItem="MRf-3w-IB4" secondAttribute="bottom" constant="8" id="eEd-Ag-ZWQ"/>
                                                 <constraint firstItem="4pC-BB-i9S" firstAttribute="leading" secondItem="82H-4a-Vbz" secondAttribute="leading" id="eWg-3N-5xe"/>
                                                 <constraint firstItem="82H-4a-Vbz" firstAttribute="leading" secondItem="TxA-RF-css" secondAttribute="leading" constant="16" id="fWz-wt-Yya"/>
-                                                <constraint firstAttribute="bottom" secondItem="qyn-f2-oaG" secondAttribute="bottom" constant="20" id="iQd-s7-xTQ"/>
                                                 <constraint firstItem="MRf-3w-IB4" firstAttribute="top" secondItem="4pC-BB-i9S" secondAttribute="bottom" constant="21" id="mNR-y0-wkc"/>
                                                 <constraint firstItem="MRf-3w-IB4" firstAttribute="leading" secondItem="4pC-BB-i9S" secondAttribute="leading" id="mZH-EO-ov3"/>
                                                 <constraint firstItem="4pC-BB-i9S" firstAttribute="top" secondItem="82H-4a-Vbz" secondAttribute="bottom" constant="8" id="sRN-Yi-4hG"/>
+                                                <constraint firstAttribute="bottom" secondItem="qyn-f2-oaG" secondAttribute="bottom" constant="22.5" id="tTg-UL-wup"/>
                                                 <constraint firstItem="82H-4a-Vbz" firstAttribute="top" secondItem="TxA-RF-css" secondAttribute="top" constant="20" id="wKF-d4-fbm"/>
                                                 <constraint firstItem="qyn-f2-oaG" firstAttribute="leading" secondItem="MRf-3w-IB4" secondAttribute="leading" id="ztP-CF-zhi"/>
                                             </constraints>
