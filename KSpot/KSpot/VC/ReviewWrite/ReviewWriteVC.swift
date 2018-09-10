@@ -30,7 +30,7 @@ class ReviewWriteVC: UIViewController, UITextFieldDelegate {
         let button = UIButton()
         button.isEnabled = true
         button.isUserInteractionEnabled = true
-        button.setImage(#imageLiteral(resourceName: "aimg"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "review_write_x"), for: .normal)
         button.addTarget(self, action: #selector(ReviewWriteVC.deleteImg(_sender:)), for: .touchUpInside)
         return button
     }()
@@ -111,17 +111,17 @@ extension ReviewWriteVC {
         self.scrollTopView.addSubview(deleteImgBtn)
         deleteImgBtn.contentMode = .scaleAspectFit
         contentImgView.snp.makeConstraints { (make) in
-            make.height.equalTo(302)
+            //make.height.equalTo(302)
             make.top.equalTo(writeCountLbl.snp.bottom).offset(22.5)
             make.bottom.equalToSuperview().offset(-23)
             make.leading.trailing.equalTo(contentTxtView)
+            make.height.equalTo(contentImgView.snp.width)
             
         }
         
         deleteImgBtn.snp.makeConstraints { (make) in
-            make.height.equalTo(17)
-            make.width.equalTo(17)
-            make.leading.equalTo(contentImgView.snp.leading).offset(16)
+            make.height.width.equalTo(24)
+            make.trailing.equalTo(contentImgView.snp.trailing).offset(-16)
             make.top.equalTo(contentImgView.snp.top).offset(16)
         }
     }

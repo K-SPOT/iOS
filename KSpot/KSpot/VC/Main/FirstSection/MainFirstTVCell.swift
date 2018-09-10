@@ -13,6 +13,7 @@ class MainFirstTVCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     
+    var delegate : SelectSectionelegate?
      var currentPages = 0
      let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
      override func awakeFromNib() {
@@ -60,6 +61,10 @@ extension MainFirstTVCell : UICollectionViewDataSource, UICollectionViewDelegate
             return cell
         }
         return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.tap(section: .first, seledtedId: indexPath.row)
     }
 }
 

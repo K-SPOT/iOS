@@ -26,25 +26,27 @@ class MainViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
         tableView.tableFooterView = UIView(frame : .zero)
         
     }
-    
-   
-
 }
 
-extension MainViewController : SelectDelegate {
-    func tap(selected: Int?) {
-        print("taped")
-        self.goToPlaceDetailVC()
+extension MainViewController : SelectSectionelegate {
+    func tap(section: Section, seledtedId: Int) {
+        if (section == .first){
+            let mainStoryboard = Storyboard.shared().mainStoryboard
+            if let themeVC = mainStoryboard.instantiateViewController(withIdentifier:ThemeVC.reuseIdentifier) as? ThemeVC {
+                
+                self.navigationController?.pushViewController(themeVC, animated: true)
+            }
+        } else {
+            print("taped")
+            self.goToPlaceDetailVC()
+        }
     }
 }
 
 extension MainViewController : UITableViewDelegate, UITableViewDataSource {
-    
-   
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -54,6 +56,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: MainFirstTVCell.reuseIdentifier) as! MainFirstTVCell
+            cell.delegate = self
             return cell
         } else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: MainSecondTVCell.reuseIdentifier) as! MainSecondTVCell

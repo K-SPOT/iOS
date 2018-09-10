@@ -15,7 +15,7 @@ class MainSecondTVCell: UITableViewCell {
     private var collectionViewFlowLayout: UICollectionViewFlowLayout {
         return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
-    var delegate : SelectDelegate?
+    var delegate : SelectSectionelegate?
     
     let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg")]
     override func awakeFromNib() {
@@ -58,7 +58,7 @@ extension MainSecondTVCell : UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.tap(selected: indexPath.row)
+        delegate?.tap(section: .second, seledtedId: indexPath.row)
     }
 }
 

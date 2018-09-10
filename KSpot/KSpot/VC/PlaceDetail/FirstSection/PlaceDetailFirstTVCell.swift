@@ -14,7 +14,7 @@ class PlaceDetailFirstTVCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
   
     let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
-    var delegate : SelectDelegate?
+    var delegate : SelectSectionelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.delegate = self
@@ -55,7 +55,7 @@ extension PlaceDetailFirstTVCell : UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.tap(selected: indexPath.row)
+        delegate?.tap(section: .first, seledtedId: indexPath.row)
     }
 }
 

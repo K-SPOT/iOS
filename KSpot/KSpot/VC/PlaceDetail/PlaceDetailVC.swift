@@ -119,9 +119,8 @@ extension PlaceDetailVC {
         tableView.delegate = self
         tableView.dataSource = self
         //view.backgroundColor = UIColor.white
-        
         tableView.addSubview(cycleScrollView)
-        view.addSubview(tableView)
+       
     }
     
     func setcycleScrollView(){
@@ -145,6 +144,7 @@ extension PlaceDetailVC {
         if (offsetY > NAVBAR_COLORCHANGE_POINT)
         {
              navBarTintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
+            navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             navigationItem.rightBarButtonItems?[1].tintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             navigationItem.rightBarButtonItems?[0] = blackScrapBarBtn!
             let alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / CGFloat(kNavBarBottom)
@@ -153,6 +153,7 @@ extension PlaceDetailVC {
         else
         {
             navBarTintColor = .white
+            navigationItem.leftBarButtonItem?.tintColor = .white
             navigationItem.rightBarButtonItems?[1].tintColor = .white
             navigationItem.rightBarButtonItems?[0] = whiteScrapBarBtn!
             navBarBackgroundAlpha = 0
