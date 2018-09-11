@@ -634,7 +634,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="aimg" width="91" height="74"/>
+        <image name="aimg" width="750" height="910"/>
         <image name="category_detail_location_arrow" width="12" height="17"/>
         <image name="category_detail_subscription_green" width="57" height="24"/>
         <image name="category_detail_top_button" width="44" height="44"/>
