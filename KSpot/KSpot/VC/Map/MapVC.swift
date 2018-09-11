@@ -43,6 +43,17 @@ class MapVC: UIViewController {
         UIApplication.shared.keyWindow!.addSubview(filterView)
     }
     
+    @IBAction func locationAction(_ sender: Any) {
+    }
+    @IBAction func searchAction(_ sender: Any) {
+        let mapStoryboard = Storyboard.shared().mapStoryboard
+        if let googleMapVC = mapStoryboard.instantiateViewController(withIdentifier:GoogleMapVC.reuseIdentifier) as? GoogleMapVC {
+            
+            self.navigationController?.pushViewController(googleMapVC, animated: true)
+        }
+    }
+    
+    
 }
 
 //필터 뷰 버튼 액션 적용
