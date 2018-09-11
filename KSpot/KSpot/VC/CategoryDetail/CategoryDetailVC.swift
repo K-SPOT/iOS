@@ -17,13 +17,13 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
    
     
     lazy var backgroundImg :UIImageView = {
-        let imgView = UIImageView(image: UIImage(named: "aimg"))
+        let imgView = UIImageView(image: UIImage(named: "cimg"))
         
         return imgView
     }()
     lazy var logoImg :UIImageView = {
-        let imgView = UIImageView(image: UIImage(named: "bimg"))
-        imgView.makeRounded(cornerRadius: nil)
+        let imgView = UIImageView(image: UIImage(named: "aimg"))
+
         return imgView
     }()
     
@@ -31,7 +31,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
         let label = UILabel()
         label.backgroundColor = UIColor.clear
         label.textColor = .black
-        label.text = "방탄소년단"
+        label.text = "짱절미"
         label.textAlignment = .left
         label.font = UIFont(name: NanumSquareOTF.NanumSquareOTFB.rawValue, size: 20)
         return label
@@ -40,7 +40,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
         let label = UILabel()
         label.backgroundColor = UIColor.clear
         label.textColor = #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1)
-        label.text = "빅히트 엔터테이먼트"
+        label.text = "절미쓰 엔터테이먼트"
         label.textAlignment = .left
         label.font = UIFont(name: NanumSquareOTF.NanumSquareOTFR.rawValue, size: 12)
         return label
@@ -131,15 +131,15 @@ extension CategoryDetailVC {
         backgroundImg.snp.makeConstraints { (make) in
             make.leading.trailing.top.equalToSuperview()
             make.height.equalTo(165)
+        
         }
         
         logoImg.snp.makeConstraints { (make) in
             make.height.width.equalTo(74)
             make.leading.equalToSuperview().offset(16)
             make.centerY.equalTo(backgroundImg.snp.bottom) //centerVertically
-            
         }
-        
+        logoImg.makeRounded(cornerRadius: 37)
         mainTitleLbl.snp.makeConstraints { (make) in
             make.leading.equalTo(logoImg.snp.trailing).offset(8)
             make.top.equalTo(backgroundImg.snp.bottom).offset(16)

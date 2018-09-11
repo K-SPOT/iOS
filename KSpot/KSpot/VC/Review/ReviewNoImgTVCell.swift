@@ -16,6 +16,14 @@ class ReviewNoImgTVCell: UITableViewCell {
 
     @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var writingInfoLbl: UILabel!
+    var delegate : SelectDelegate?
+    
+    @IBAction func moreAction(_ sender: Any) {
+        delegate?.tap(selected: 0)
+    }
+    //@IBOutlet weak var moreBtn: UIButton!
+    
+    //delegate?.tap()
     override func awakeFromNib() {
         super.awakeFromNib()
         ratingView.settings.fillMode = .half
