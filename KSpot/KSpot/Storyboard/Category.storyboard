@@ -134,6 +134,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="category_search" id="vjt-SG-hPs">
                             <color key="tintColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="searchAction:" destination="RVE-2v-0Kw" id="1xL-uy-9cm"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

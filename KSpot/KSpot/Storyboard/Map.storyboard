@@ -846,7 +846,7 @@
                                         <rect key="frame" x="0.0" y="266" width="375" height="271"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K2l-Cx-Op4" id="kZZ-Zr-003">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="270.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="271"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="관련 연예인/방송" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYz-Gt-woe">
@@ -941,7 +941,7 @@
                                         <rect key="frame" x="0.0" y="537" width="375" height="486"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xji-9O-34O" id="d1Y-6q-DUC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="485.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="486"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="리뷰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8J-sf-38z">
