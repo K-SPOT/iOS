@@ -8,6 +8,7 @@ pod 'Kingfisher'
 pod 'GoogleMaps'
 pod 'GooglePlaces'
 pod 'SnapKit'
+pod 'SwiftyJSON'
 
 
   # Pods for KSpot

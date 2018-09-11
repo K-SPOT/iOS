@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import CoreLocation
+import SwiftyJSON
+
+
 
 
 
 class MapVC: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
+    var locationManager = CLLocationManager()
+    var currentLocation : CLLocation?
     private lazy var mapContainerVC: MapContainerVC = {
         let storyboard = Storyboard.shared().mapStoryboard
         var viewController = storyboard.instantiateViewController(withIdentifier: MapContainerVC.reuseIdentifier) as! MapContainerVC
@@ -29,7 +35,7 @@ class MapVC: UIViewController {
         super.viewDidLoad()
         initContainerView()
         setFilterView(filterView)
-       
+        locationInit()
         //네비게이션 타이틀
         self.navigationItem.title = "defualt"
     }
@@ -44,6 +50,17 @@ class MapVC: UIViewController {
     }
     
     @IBAction func locationAction(_ sender: Any) {
+        //허용 됐을때
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            currentLocation = locationManager.location
+            
+            guard let lat = currentLocation?.coordinate.latitude,
+                let long = currentLocation?.coordinate.longitude else {
+                    return
+            }
+            let addressName = getAddressForLatLng(latitude: lat.description, longitude: long.description)
+            print(addressName)
+        }
     }
     @IBAction func searchAction(_ sender: Any) {
         let mapStoryboard = Storyboard.shared().mapStoryboard
@@ -166,6 +183,97 @@ extension MapVC {
             _sender.isSelected = false
             selectedThirdFilter.remove(_sender)
         }
+    }
+}
+
+
+//위치 정보
+extension MapVC : CLLocationManagerDelegate{
+    
+    func locationInit(){
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        
+    }
+    
+    //location 허용 안했을 때
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .denied {
+            showLocationDisableAlert()
+        }
+    }
+    
+    func showLocationDisableAlert() {
+        let alertController = UIAlertController(title: "위치 접근이 제한되었습니다.", message: "위치 정보가 필요합니다.", preferredStyle: .alert)
+        let openAction = UIAlertAction(title: "설정으로 가기", style: .default) { (action) in
+            if let url = URL(string: UIApplicationOpenSettingsURLString) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+        alertController.addAction(openAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+
+//get address from lat/long
+extension MapVC {
+    func getAddressForLatLng(latitude: String, longitude: String) -> String {
+        
+        let url = NSURL(string: "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(latitude),\(longitude)&key=\(NetworkConfiguration.shared().googleMapAPIKey)")
+        let data = NSData(contentsOf: url! as URL)
+        if data != nil {
+            let json = try! JSONSerialization.jsonObject(with: data! as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
+            print(JSON(json))
+            if let result = json["results"] as? NSArray   {
+                if result.count > 0 {
+                    if let addresss:NSDictionary = result[0] as! NSDictionary {
+                        if let address = addresss["address_components"] as? NSArray {
+                            var newaddress = ""
+                            var number = ""
+                            var street = ""
+                            var city = ""
+                            var state = ""
+                            var zip = ""
+                            
+                            if(address.count > 1) {
+                                number =  (address.object(at: 0) as! NSDictionary)["short_name"] as! String
+                            }
+                            if(address.count > 2) {
+                                street = (address.object(at: 1) as! NSDictionary)["short_name"] as! String
+                            }
+                            if(address.count > 3) {
+                                city = (address.object(at: 2) as! NSDictionary)["short_name"] as! String
+                            }
+                            if(address.count > 4) {
+                                state = (address.object(at: 4) as! NSDictionary)["short_name"] as! String
+                            }
+                            if(address.count > 6) {
+                                zip =  (address.object(at: 6) as! NSDictionary)["short_name"] as! String
+                            }
+                            newaddress = "\(number) \(street), \(city), \(state) \(zip)"
+                            //newaddress = street.description
+                            return newaddress
+                        }
+                        else {
+                            return ""
+                        }
+                    }
+                } else {
+                    return ""
+                }
+            }
+            else {
+                return ""
+            }
+            
+        }   else {
+            return ""
+        }
+        
     }
 }
 

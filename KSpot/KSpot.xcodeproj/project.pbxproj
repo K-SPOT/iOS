@@ -75,6 +75,7 @@
 		3BBB7D9F2146F6D9004CC142 /* ReviewNoImgTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7D9E2146F6D9004CC142 /* ReviewNoImgTVCell.swift */; };
 		3BBB7DA12146F847004CC142 /* ReviewContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7DA02146F847004CC142 /* ReviewContainerVC.swift */; };
 		3BBB7DA82147A5C2004CC142 /* GoogleMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7DA72147A5C2004CC142 /* GoogleMapVC.swift */; };
+		3BBB7DAE2147DEBA004CC142 /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7DAD2147DEBA004CC142 /* NetworkConfiguration.swift */; };
 		3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D462139262800FFF08C /* AppDelegate.swift */; };
 		3BBF8D492139262800FFF08C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D482139262800FFF08C /* ViewController.swift */; };
 		3BBF8D4C2139262800FFF08C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF8D4A2139262800FFF08C /* Main.storyboard */; };
@@ -156,6 +157,7 @@
 		3BBB7D9E2146F6D9004CC142 /* ReviewNoImgTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewNoImgTVCell.swift; sourceTree = "<group>"; };
 		3BBB7DA02146F847004CC142 /* ReviewContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewContainerVC.swift; sourceTree = "<group>"; };
 		3BBB7DA72147A5C2004CC142 /* GoogleMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapVC.swift; sourceTree = "<group>"; };
+		3BBB7DAD2147DEBA004CC142 /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
 		3BBF8D432139262800FFF08C /* KSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBF8D462139262800FFF08C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBF8D482139262800FFF08C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				3B3DD123213BFCE700FD00B3 /* Region.swift */,
 				3B3DD0F7213B2FAC00FD00B3 /* Storyboard.swift */,
 				3B3DD177213DBDBD00FD00B3 /* Font.swift */,
+				3BBB7DAD2147DEBA004CC142 /* NetworkConfiguration.swift */,
 			);
 			path = Singleton;
 			sourceTree = "<group>";
@@ -715,11 +718,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-KSpot/Pods-KSpot-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -806,6 +811,7 @@
 				3BB18835214448B40021B543 /* MypageCVCell.swift in Sources */,
 				3B3DD17B213DC9D200FD00B3 /* WRCycleCell.swift in Sources */,
 				3B3DD116213BD77F00FD00B3 /* MapContainerVC.swift in Sources */,
+				3BBB7DAE2147DEBA004CC142 /* NetworkConfiguration.swift in Sources */,
 				3BBB7D7921456BD1004CC142 /* MainSearchVC.swift in Sources */,
 				3B3DD103213B3C5000FD00B3 /* CelebrityTVCell.swift in Sources */,
 				3B3DD13F213D3B4000FD00B3 /* CategoryDetailFirstTVCell.swift in Sources */,

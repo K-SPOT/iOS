@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import SwiftyJSON
 
 struct MyPlace {
     var name: String
@@ -17,7 +18,6 @@ struct MyPlace {
 }
 
 class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDelegate {
-    
     let currentLocationMarker = GMSMarker()
     var locationManager = CLLocationManager()
     var chosenPlace: MyPlace?
@@ -37,8 +37,6 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
         let btn=UIButton()
         btn.backgroundColor = UIColor.white
         btn.setImage(#imageLiteral(resourceName: "map_gps_gps"), for: .normal)
-        btn.layer.cornerRadius = 25.5
-        btn.clipsToBounds=true
         btn.addTarget(self, action: #selector(btnMyLocationAction), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints=false
         return btn
@@ -77,8 +75,6 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
         if let location_ = location {
             let lat = location_.coordinate.latitude
             let long = location_.coordinate.longitude
-            print("위도 = \(lat)")
-            print("경도 = \(long)")
             chosenPlace = MyPlace(name: "", lat: lat, long: long)
             myMapView.animate(toLocation: (location_.coordinate))
         }
@@ -86,23 +82,90 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
     
     @objc func okAction() {
         if let chosenPlace_ = chosenPlace {
+            let addressName = getAddressForLatLng(latitude: chosenPlace_.lat.description, longitude: chosenPlace_.long.description)
+            print("여기예요 여기 1 \(addressName)")
             print("선택된 내 위도 : \(chosenPlace_.lat)")
             print("선택된 내 경도 : \(chosenPlace_.long)")
+        } else {
+            //현재 위치
+            let location: CLLocation? = myMapView.myLocation
+            if let location_ = location {
+                let lat = location_.coordinate.latitude
+                let long = location_.coordinate.longitude
+                let addressName = getAddressForLatLng(latitude: lat.description, longitude: long.description)
+                print("여기예요 여기 2 \(addressName)")
+            }
         }
         self.pop()
     }
 }
+
+//get address from lat/long
+extension GoogleMapVC {
+    func getAddressForLatLng(latitude: String, longitude: String) -> String {
+        
+        let url = NSURL(string: "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(latitude),\(longitude)&key=\(NetworkConfiguration.shared().googleMapAPIKey)")
+        let data = NSData(contentsOf: url! as URL)
+        if data != nil {
+            let json = try! JSONSerialization.jsonObject(with: data! as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
+             print(JSON(json))
+            if let result = json["results"] as? NSArray   {
+                if result.count > 0 {
+                    if let addresss:NSDictionary = result[0] as! NSDictionary {
+                        if let address = addresss["address_components"] as? NSArray {
+                            var newaddress = ""
+                            var number = ""
+                            var street = ""
+                            var city = ""
+                            var state = ""
+                            var zip = ""
+                            
+                            if(address.count > 1) {
+                                number =  (address.object(at: 0) as! NSDictionary)["short_name"] as! String
+                            }
+                            if(address.count > 2) {
+                                street = (address.object(at: 1) as! NSDictionary)["short_name"] as! String
+                            }
+                            if(address.count > 3) {
+                                city = (address.object(at: 2) as! NSDictionary)["short_name"] as! String
+                            }
+                            if(address.count > 4) {
+                                state = (address.object(at: 4) as! NSDictionary)["short_name"] as! String
+                            }
+                            if(address.count > 6) {
+                                zip =  (address.object(at: 6) as! NSDictionary)["short_name"] as! String
+                            }
+                            newaddress = "\(number) \(street), \(city), \(state) \(zip)"
+                            //newaddress = street.description
+                            return newaddress
+                        }
+                        else {
+                            return ""
+                        }
+                    }
+                } else {
+                    return ""
+                }
+            }
+            else {
+                return ""
+            }
+            
+        }   else {
+            return ""
+        }
+        
+    }
+}
+
+
 
 extension GoogleMapVC : GMSAutocompleteViewControllerDelegate {
     // MARK: GOOGLE AUTO COMPLETE DELEGATE
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         let lat = place.coordinate.latitude
         let long = place.coordinate.longitude
-        
-        print("찾은 위도 : \(lat)")
-        print("찾은 경도 : \(long)")
 
-        
         let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 17.0)
         myMapView.camera = camera
         txtFieldSearch.text=place.formattedAddress
@@ -184,9 +247,6 @@ extension GoogleMapVC {
             make.trailing.equalToSuperview().offset(-10)
             make.height.equalTo(35)
         }
-       /* txtFieldSearch.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive=true
-        txtFieldSearch.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive=true
-        txtFieldSearch.heightAnchor.constraint(equalToConstant: 35).isActive=true*/
         setupTextField(textField: txtFieldSearch, img: #imageLiteral(resourceName: "main_search"))
         
         

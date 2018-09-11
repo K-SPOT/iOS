@@ -26,8 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
        //구글맵
-        GMSServices.provideAPIKey("AIzaSyB10TDQAafMeUxJGE-a-5WHbDZZ8kDDHNo")
-        GMSPlacesClient.provideAPIKey("AIzaSyB10TDQAafMeUxJGE-a-5WHbDZZ8kDDHNo")
+        GMSServices.provideAPIKey(NetworkConfiguration.shared().googleMapAPIKey)
+        GMSPlacesClient.provideAPIKey(NetworkConfiguration.shared().googleMapAPIKey)
         
         setNavBarAppearence()
         return true
