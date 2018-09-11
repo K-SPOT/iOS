@@ -9,7 +9,7 @@
 import UIKit
 
 class MapContainerVC: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     var mapView : MapHeaderView?
@@ -17,7 +17,7 @@ class MapContainerVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-  
+        
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -25,7 +25,7 @@ class MapContainerVC: UIViewController {
 
 extension MapContainerVC : SelectRegionDelegate {
     func tap(_ region : Region) {
-         mapView?.selectedRegionLbl.text = region.rawValue
+        mapView?.selectedRegionLbl.text = region.rawValue
         //self.parent?.title = region.rawValue
         self.parent?.navigationItem.title = region.rawValue
         //TODO - 통신 대비해서 case rawValue 뽑아내기 case gangsu -> gangsu
@@ -44,7 +44,7 @@ extension MapContainerVC : UICollectionViewDataSource, UICollectionViewDelegate{
     
     private func setRegion(inputs : [buttonRegion]){
         inputs.forEach { (input) in
-             input.0.region = input.1
+            input.0.region = input.1
         }
     }
     
@@ -76,7 +76,21 @@ extension MapContainerVC : UICollectionViewDataSource, UICollectionViewDelegate{
              ((mapView?.seongdongBtn)!, .seongdong),
              ((mapView?.gwangjinBtn)!, .gwangjin),
              ((mapView?.songpaBtn)!, .songpa),
-             ((mapView?.gangdongBtn)!, .gangdong)]
+             ((mapView?.gangdongBtn)!, .gangdong),
+             
+              ((mapView?.guroBtn1)!, .guro),
+             ((mapView?.gangsuBtn1)!, .gangsu),
+             ((mapView?.yeongdeungpoBtn1)!, .yeongdeungpo),
+             ((mapView?.gwanakBtn1)!, .gwanak),
+             ((mapView?.mapoBtn1)!, .mapo),
+             ((mapView?.gangnamBtn1)!, .gangnam),
+             ((mapView?.seochoBtn1)!, .seocho),
+             ((mapView?.seochoBtn2)!, .seocho),
+             ((mapView?.jongroBtn1)!, .jongro),
+             ((mapView?.seongbukBtn1)!, .seongbuk),
+             ((mapView?.seongbukBtn2)!, .seongbuk),
+             ((mapView?.gangbukBtn1)!, .gangbuk),
+             ((mapView?.songpaBtn1)!, .songpa)]
         setRegion(inputs: buttons)
         setDelegate(buttons: buttons.map({ (btn, region)  in
             return btn
@@ -89,10 +103,10 @@ extension MapContainerVC : UICollectionViewDataSource, UICollectionViewDelegate{
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       
+        
         return sunglassArr.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell: MapContainerCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: MapContainerCVCell.reuseIdentifier, for: indexPath) as? MapContainerCVCell
