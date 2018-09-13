@@ -11,6 +11,24 @@ import UIKit
 class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var profileImgView: UIImageView!
     var keyboardDismissGesture: UITapGestureRecognizer?
+    let imagePicker : UIImagePickerController = UIImagePickerController()
+    var imageData : Data? {
+        didSet {
+            if imageData != nil {
+                if let imageData_ = imageData {
+                    //makeImgView()
+                    profileImgView.image =  UIImage(data: imageData_)
+                    //isValid()
+                }
+            }
+            
+        }
+    }
+    
+    @IBAction func imageTapAction(_ sender: Any) {
+        print("tapped")
+        openGallery()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         profileImgView.makeRounded(cornerRadius: nil)
@@ -23,6 +41,43 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+}
+
+//앨범 열기 위함
+extension EditProfileVC : UIImagePickerControllerDelegate,
+UINavigationControllerDelegate  {
+    
+    // imagePickerDelegate
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        //사용자 취소
+        self.dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        //크롭한 이미지
+        if let editedImage: UIImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            imageData = UIImageJPEGRepresentation(editedImage, 0.1)
+        } else if let originalImage: UIImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            imageData = UIImageJPEGRepresentation(originalImage, 0.1)
+        }
+        
+        self.dismiss(animated: true)
+    }
+    
+    // Method
+    func openGallery() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            self.imagePicker.sourceType = .photoLibrary
+            self.imagePicker.delegate = self
+            //false 로 되어있으면 이미지 자르지 않고 오리지널로 들어감
+            //이거 true로 하면 crop 가능
+            self.imagePicker.allowsEditing = true
+            
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }
+    }
+    
 }
 
 //키보드 대응
