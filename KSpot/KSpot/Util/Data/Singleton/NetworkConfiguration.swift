@@ -23,3 +23,24 @@ class NetworkConfiguration {
         return StaticInstance.instance!
     }
 }
+
+
+
+enum NetResult<T> {
+    case success(T)
+    case error(String)
+    case failure(Error)
+}
+
+enum NetworkResult<T> {
+    case networkSuccess(T)
+    case nullValue
+    case duplicated
+    case serverErr
+    case networkFail
+    case wrongInput
+    case accessDenied
+    case noCoin
+    case noPoint
+    case failInsert
+}

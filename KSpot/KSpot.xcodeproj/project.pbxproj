@@ -76,6 +76,9 @@
 		3BBB7DA12146F847004CC142 /* ReviewContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7DA02146F847004CC142 /* ReviewContainerVC.swift */; };
 		3BBB7DA82147A5C2004CC142 /* GoogleMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7DA72147A5C2004CC142 /* GoogleMapVC.swift */; };
 		3BBB7DAE2147DEBA004CC142 /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7DAD2147DEBA004CC142 /* NetworkConfiguration.swift */; };
+		3BBB7DB0214A1699004CC142 /* GoogleMapVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7DAF214A1699004CC142 /* GoogleMapVO.swift */; };
+		3BBB7DB2214A16FE004CC142 /* GettableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7DB1214A16FE004CC142 /* GettableService.swift */; };
+		3BBB7DB6214A17D8004CC142 /* GoogleMapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7DB5214A17D8004CC142 /* GoogleMapService.swift */; };
 		3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D462139262800FFF08C /* AppDelegate.swift */; };
 		3BBF8D492139262800FFF08C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D482139262800FFF08C /* ViewController.swift */; };
 		3BBF8D4C2139262800FFF08C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF8D4A2139262800FFF08C /* Main.storyboard */; };
@@ -158,6 +161,9 @@
 		3BBB7DA02146F847004CC142 /* ReviewContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewContainerVC.swift; sourceTree = "<group>"; };
 		3BBB7DA72147A5C2004CC142 /* GoogleMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapVC.swift; sourceTree = "<group>"; };
 		3BBB7DAD2147DEBA004CC142 /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
+		3BBB7DAF214A1699004CC142 /* GoogleMapVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapVO.swift; sourceTree = "<group>"; };
+		3BBB7DB1214A16FE004CC142 /* GettableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettableService.swift; sourceTree = "<group>"; };
+		3BBB7DB5214A17D8004CC142 /* GoogleMapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapService.swift; sourceTree = "<group>"; };
 		3BBF8D432139262800FFF08C /* KSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBF8D462139262800FFF08C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBF8D482139262800FFF08C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +237,7 @@
 			children = (
 				3BBF8D5A21392A0D00FFF08C /* Extensions.swift */,
 				3B3DD12B213C1C3200FD00B3 /* SelectRegionDelegate.swift */,
+				3BBB7DB1214A16FE004CC142 /* GettableService.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -238,6 +245,8 @@
 		3B3DD0EC213AE2F700FD00B3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				3BBB7DB4214A17A7004CC142 /* VO */,
+				3BBB7DB3214A17A2004CC142 /* Service */,
 				3B3DD0ED213AE30800FD00B3 /* Singleton */,
 			);
 			path = Data;
@@ -523,6 +532,22 @@
 			path = GoogleMap;
 			sourceTree = "<group>";
 		};
+		3BBB7DB3214A17A2004CC142 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				3BBB7DB5214A17D8004CC142 /* GoogleMapService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		3BBB7DB4214A17A7004CC142 /* VO */ = {
+			isa = PBXGroup;
+			children = (
+				3BBB7DAF214A1699004CC142 /* GoogleMapVO.swift */,
+			);
+			path = VO;
+			sourceTree = "<group>";
+		};
 		3BBF8D3A2139262800FFF08C = {
 			isa = PBXGroup;
 			children = (
@@ -716,12 +741,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-KSpot/Pods-KSpot-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -787,6 +814,7 @@
 				3B3DD185213F085600FD00B3 /* PlaceDetailFirstCVCell.swift in Sources */,
 				3B3DD14B213D708800FD00B3 /* CategoryToggleBtn.swift in Sources */,
 				3B3DD0F8213B2FAC00FD00B3 /* Storyboard.swift in Sources */,
+				3BBB7DB2214A16FE004CC142 /* GettableService.swift in Sources */,
 				3BBB7D992146D0F3004CC142 /* ThemeTVCell.swift in Sources */,
 				3B3DD114213BD74300FD00B3 /* MapVC.swift in Sources */,
 				3B3DD189213F0D0600FD00B3 /* PlaceDetailSecondCVCell.swift in Sources */,
@@ -805,8 +833,10 @@
 				3BBF8D5F21392D3E00FFF08C /* MainFirstCVCell.swift in Sources */,
 				3BBB7D83214578D2004CC142 /* SubBroadCastVC.swift in Sources */,
 				3BBF8D5B21392A0D00FFF08C /* Extensions.swift in Sources */,
+				3BBB7DB6214A17D8004CC142 /* GoogleMapService.swift in Sources */,
 				3BB1882B214420980021B543 /* ReviewWriteVC.swift in Sources */,
 				3BBB7D87214578F4004CC142 /* SubBroadcastTVCell.swift in Sources */,
+				3BBB7DB0214A1699004CC142 /* GoogleMapVO.swift in Sources */,
 				3BBB7D9D2146F481004CC142 /* ReviewImgTVCell.swift in Sources */,
 				3BB18835214448B40021B543 /* MypageCVCell.swift in Sources */,
 				3B3DD17B213DC9D200FD00B3 /* WRCycleCell.swift in Sources */,
