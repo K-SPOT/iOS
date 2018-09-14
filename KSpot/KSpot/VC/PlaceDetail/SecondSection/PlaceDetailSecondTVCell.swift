@@ -31,6 +31,8 @@ class PlaceDetailSecondTVCell: UITableViewCell {
     var delegate : SelectSectionelegate?
     
     let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg")]
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.delegate = self
@@ -42,6 +44,9 @@ class PlaceDetailSecondTVCell: UITableViewCell {
         if let ratingLblInt_ = ratingLblInt {
             ratingView.rating = ratingLblInt_
         }
+        
+        
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -104,10 +109,18 @@ extension PlaceDetailSecondTVCell : UIScrollViewDelegate{
     
     private func indexOfMajorCell() -> Int {
         
-        let itemWidth = collectionViewFlowLayout.itemSize.width
-        let proportionalOffset = collectionView.contentOffset.x / (itemWidth)
-        let index = Int(round(proportionalOffset))
+      //  let itemWidth = collectionViewFlowLayout.itemSize.width
+      //  let proportionalOffset = collectionView.contentOffset.x / (itemWidth)
+        var index = 0
         let numberOfItems = collectionView.numberOfItems(inSection: 0)
+        let offset = collectionView.contentOffset.x
+        if offset > CGFloat(CGFloat(indexOfCellBeforeDragging)*collectionView.frame.width){
+            //왼쪽으로 스와이프
+            index = indexOfCellBeforeDragging+1
+        } else {
+            index = indexOfCellBeforeDragging-1
+        }
+        
         let safeIndex = max(0, min(numberOfItems - 1, index))
         return safeIndex
     }
@@ -127,9 +140,6 @@ extension PlaceDetailSecondTVCell : UIScrollViewDelegate{
         let indexOfMajorCell = self.indexOfMajorCell()
         let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        
-        
-        
     }
     
     

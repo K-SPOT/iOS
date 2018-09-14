@@ -26,9 +26,9 @@
                     <rect key="frame" x="0.0" y="305" width="375" height="290"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tuj-ES-5FW" customClass="FilterToggleBtn" customModule="KSpot" customModuleProvider="target">
-                            <rect key="frame" x="23" y="25" width="113" height="32"/>
+                            <rect key="frame" x="6" y="25" width="187" height="32"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="113" id="hLF-YP-ITx"/>
+                                <constraint firstAttribute="width" constant="187" id="hLF-YP-ITx"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="18"/>
                             <state key="normal" title="인기순">
@@ -36,35 +36,17 @@
                             </state>
                         </button>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7k-ex-OQZ" customClass="FilterToggleBtn" customModule="KSpot" customModuleProvider="target">
-                            <rect key="frame" x="131" y="31" width="113" height="19.5"/>
+                            <rect key="frame" x="188" y="31" width="187" height="19.5"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="113" id="big-3e-Wkz"/>
+                                <constraint firstAttribute="width" constant="187" id="big-3e-Wkz"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="18"/>
                             <state key="normal" title="최신순">
                                 <color key="titleColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                         </button>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGw-hB-Bs6" customClass="FilterToggleBtn" customModule="KSpot" customModuleProvider="target">
-                            <rect key="frame" x="245" y="25" width="113" height="32"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="113" id="1Uf-dA-AH6"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="18"/>
-                            <state key="normal" title="리뷰순">
-                                <color key="titleColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                        </button>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ato-V0-YRA">
-                            <rect key="frame" x="244" y="31" width="1" height="20"/>
-                            <color key="backgroundColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="8oR-SJ-Xmk"/>
-                                <constraint firstAttribute="width" constant="1" id="vP2-Z0-7e4"/>
-                            </constraints>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLb-8O-1yo">
-                            <rect key="frame" x="130" y="31" width="1" height="20"/>
+                            <rect key="frame" x="187" y="31" width="1" height="20"/>
                             <color key="backgroundColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="K0E-J7-wxG"/>
@@ -151,25 +133,21 @@
                         <constraint firstItem="gpe-a1-UYx" firstAttribute="leading" secondItem="TNN-ky-RCy" secondAttribute="leading" constant="16" id="7Dm-OO-GDv"/>
                         <constraint firstItem="Hgh-Y0-dZW" firstAttribute="trailing" secondItem="TqE-DX-bkX" secondAttribute="trailing" id="7fz-79-a0K"/>
                         <constraint firstItem="TqE-DX-bkX" firstAttribute="top" secondItem="S7k-ex-OQZ" secondAttribute="bottom" constant="30" id="AQV-cn-WIG"/>
-                        <constraint firstItem="SGw-hB-Bs6" firstAttribute="centerY" secondItem="ato-V0-YRA" secondAttribute="centerY" id="EL0-77-7m4"/>
                         <constraint firstItem="zY7-hO-jQ4" firstAttribute="leading" secondItem="TNN-ky-RCy" secondAttribute="leading" constant="16" id="Edw-ow-eog"/>
                         <constraint firstItem="S7k-ex-OQZ" firstAttribute="leading" secondItem="aLb-8O-1yo" secondAttribute="trailing" id="HTR-m8-u1x"/>
-                        <constraint firstItem="ato-V0-YRA" firstAttribute="centerY" secondItem="S7k-ex-OQZ" secondAttribute="centerY" id="HvI-45-LlJ"/>
                         <constraint firstAttribute="trailing" secondItem="kIG-9q-XwN" secondAttribute="trailing" constant="16" id="ISK-OQ-btd"/>
                         <constraint firstItem="zY7-hO-jQ4" firstAttribute="top" secondItem="TqE-DX-bkX" secondAttribute="bottom" constant="29" id="PBf-qG-fET"/>
+                        <constraint firstItem="aLb-8O-1yo" firstAttribute="centerX" secondItem="TNN-ky-RCy" secondAttribute="centerX" id="Qhd-do-fU3"/>
                         <constraint firstItem="kIG-9q-XwN" firstAttribute="centerY" secondItem="zY7-hO-jQ4" secondAttribute="centerY" id="RAl-3r-60b"/>
                         <constraint firstItem="gpe-a1-UYx" firstAttribute="top" secondItem="Hgh-Y0-dZW" secondAttribute="bottom" constant="30" id="TPA-Qv-Bpk"/>
-                        <constraint firstItem="SGw-hB-Bs6" firstAttribute="leading" secondItem="ato-V0-YRA" secondAttribute="trailing" id="VME-OR-KFH"/>
                         <constraint firstItem="S7k-ex-OQZ" firstAttribute="centerY" secondItem="aLb-8O-1yo" secondAttribute="centerY" id="crE-Fu-PdH"/>
                         <constraint firstAttribute="trailing" secondItem="gpe-a1-UYx" secondAttribute="trailing" constant="16" id="d6e-js-yPz"/>
                         <constraint firstAttribute="trailing" secondItem="TqE-DX-bkX" secondAttribute="trailing" constant="15" id="eYV-JJ-wgn"/>
                         <constraint firstItem="aLb-8O-1yo" firstAttribute="centerY" secondItem="tuj-ES-5FW" secondAttribute="centerY" id="hFq-RM-fE3"/>
                         <constraint firstItem="DCm-pu-yzj" firstAttribute="centerY" secondItem="zY7-hO-jQ4" secondAttribute="centerY" id="put-eu-GiK"/>
                         <constraint firstAttribute="height" constant="290" id="sks-B9-IYw"/>
-                        <constraint firstItem="S7k-ex-OQZ" firstAttribute="centerX" secondItem="TNN-ky-RCy" secondAttribute="centerX" id="tRg-xG-LPf"/>
                         <constraint firstItem="aLb-8O-1yo" firstAttribute="leading" secondItem="tuj-ES-5FW" secondAttribute="trailing" constant="-6" id="v6i-1E-W19"/>
                         <constraint firstItem="DCm-pu-yzj" firstAttribute="centerX" secondItem="TqE-DX-bkX" secondAttribute="centerX" id="wRr-DT-Tzf"/>
-                        <constraint firstItem="S7k-ex-OQZ" firstAttribute="trailing" secondItem="ato-V0-YRA" secondAttribute="leading" id="xIz-na-gHK"/>
                         <constraint firstItem="TqE-DX-bkX" firstAttribute="leading" secondItem="TNN-ky-RCy" secondAttribute="leading" constant="15" id="ySr-jq-Rzm"/>
                         <constraint firstItem="Hgh-Y0-dZW" firstAttribute="top" secondItem="zY7-hO-jQ4" secondAttribute="bottom" constant="29" id="zkn-DR-OYk"/>
                         <constraint firstItem="Hgh-Y0-dZW" firstAttribute="leading" secondItem="TqE-DX-bkX" secondAttribute="leading" id="zwo-HI-K8u"/>
@@ -220,7 +198,6 @@
                 <outlet property="popularBtn" destination="tuj-ES-5FW" id="VHs-nn-LTl"/>
                 <outlet property="recentBtn" destination="S7k-ex-OQZ" id="UFB-Ui-JE3"/>
                 <outlet property="restaurantBtn" destination="uHG-qJ-SpY" id="5TL-5j-lKT"/>
-                <outlet property="reviewBtn" destination="SGw-hB-Bs6" id="3HZ-f8-gRh"/>
                 <outlet property="rightBtn" destination="kIG-9q-XwN" id="BXp-Bo-UgI"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="53.5"/>

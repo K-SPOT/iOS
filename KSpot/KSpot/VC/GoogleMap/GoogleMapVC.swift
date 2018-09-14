@@ -22,6 +22,7 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
     var locationManager = CLLocationManager()
     var chosenPlace: MyPlace?
     var address : [Result]?
+    var delegate : SelectDelegate?
     @IBOutlet var myMapView: GMSMapView!
     
     let txtFieldSearch: UITextField = {
@@ -82,6 +83,7 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
     }
     
     @objc func okAction() {
+        delegate?.tap(selected: 0)
         if let chosenPlace_ = chosenPlace {
             //let addressName = getAddressForLatLng(latitude: chosenPlace_.lat.description, longitude: chosenPlace_.long.description)
             let lat = chosenPlace_.lat.description
@@ -104,6 +106,8 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
             }
         }
         self.pop()
+      
+       
     }
 }
 

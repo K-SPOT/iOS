@@ -20,6 +20,7 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     @IBOutlet weak var phoneView: UIView!
     @IBOutlet weak var emailView: UIView!
 
+   
     @IBOutlet weak var subwayLbl: UILabel!
     var whiteScrapBarBtn : UIBarButtonItem?
     var blackScrapBarBtn : UIBarButtonItem?
