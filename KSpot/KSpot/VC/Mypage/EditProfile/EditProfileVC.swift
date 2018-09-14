@@ -34,11 +34,20 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let doneBtn = UIBarButtonItem.titleBarbutton(title: "완료", red: 64, green: 211, blue: 159, fontSize: 18, fontName: NanumSquareOTF.NanumSquareOTFB.rawValue, selector: #selector(EditProfileVC.doneAction(_sender:)), target: self)
+        self.navigationItem.rightBarButtonItem = doneBtn
+       
         profileImgView.makeRounded(cornerRadius: nil)
         nameTxtfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         setBackBtn()
         setKeyboardSetting()
     }
+    
+    @objc func doneAction(_sender : UIBarButtonItem) {
+           print("click done")
+    }
+    
 
     @objc func textFieldDidChange(_ textField: UITextField) {
        
