@@ -722,54 +722,27 @@
                                     <constraint firstAttribute="height" constant="0.5" id="Bac-vI-CV9"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NwR-IX-QTw">
-                                <rect key="frame" x="0.0" y="316.5" width="375" height="0.5"/>
-                                <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="0.5" id="Ihy-Do-MC3"/>
-                                </constraints>
-                            </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="짱절미" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2mq-AM-tUl">
                                 <rect key="frame" x="120" y="242" width="227" height="16"/>
                                 <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTb-4b-pKz">
-                                <rect key="frame" x="28" y="287" width="25.5" height="15.5"/>
-                                <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="14"/>
-                                <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="rkdthd1234@naver.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lih-tD-Wkc">
-                                <rect key="frame" x="120" y="286.5" width="227" height="17"/>
-                                <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tTb-4b-pKz" firstAttribute="top" secondItem="8kq-df-abS" secondAttribute="bottom" constant="15.5" id="1Z7-eR-Jdu"/>
-                            <constraint firstItem="Lih-tD-Wkc" firstAttribute="leading" secondItem="2mq-AM-tUl" secondAttribute="leading" id="3Uh-Px-QZH"/>
                             <constraint firstItem="8kq-df-abS" firstAttribute="leading" secondItem="UdT-yK-N8g" secondAttribute="leading" id="7Uk-H4-WBQ"/>
                             <constraint firstItem="K2F-6Y-hBz" firstAttribute="trailing" secondItem="mDI-ki-yFu" secondAttribute="trailing" id="BeR-fv-L4C"/>
-                            <constraint firstItem="UdT-yK-N8g" firstAttribute="trailing" secondItem="NwR-IX-QTw" secondAttribute="trailing" id="CDv-aW-XHZ"/>
                             <constraint firstItem="mDI-ki-yFu" firstAttribute="top" secondItem="UdT-yK-N8g" secondAttribute="top" constant="30" id="Ckw-xw-uhN"/>
                             <constraint firstItem="K2F-6Y-hBz" firstAttribute="width" secondItem="zge-0f-M42" secondAttribute="width" multiplier="30:375" id="LFe-xi-VSF"/>
-                            <constraint firstItem="Lih-tD-Wkc" firstAttribute="centerY" secondItem="tTb-4b-pKz" secondAttribute="centerY" id="LcA-k8-uuH"/>
                             <constraint firstItem="mDI-ki-yFu" firstAttribute="width" secondItem="zge-0f-M42" secondAttribute="width" multiplier="103:375" id="PXL-Lm-0e2"/>
                             <constraint firstItem="2mq-AM-tUl" firstAttribute="leading" secondItem="JCF-Tv-LYK" secondAttribute="trailing" constant="53" id="VJE-5u-IbJ"/>
                             <constraint firstItem="UdT-yK-N8g" firstAttribute="trailing" secondItem="8kq-df-abS" secondAttribute="trailing" id="W7o-hX-5s5"/>
                             <constraint firstItem="JCF-Tv-LYK" firstAttribute="leading" secondItem="UdT-yK-N8g" secondAttribute="leading" constant="28" id="WbA-R1-tgD"/>
                             <constraint firstItem="mDI-ki-yFu" firstAttribute="centerX" secondItem="UdT-yK-N8g" secondAttribute="centerX" id="YAZ-NO-7rL"/>
                             <constraint firstItem="2mq-AM-tUl" firstAttribute="centerY" secondItem="JCF-Tv-LYK" secondAttribute="centerY" id="iUm-yz-374"/>
-                            <constraint firstItem="NwR-IX-QTw" firstAttribute="top" secondItem="8kq-df-abS" secondAttribute="bottom" constant="45" id="ibN-Sk-txx"/>
                             <constraint firstItem="UdT-yK-N8g" firstAttribute="trailing" secondItem="2mq-AM-tUl" secondAttribute="trailing" constant="28" id="lFc-gK-8uH"/>
                             <constraint firstItem="JCF-Tv-LYK" firstAttribute="top" secondItem="mDI-ki-yFu" secondAttribute="bottom" constant="45" id="mqd-1T-uY6"/>
-                            <constraint firstItem="tTb-4b-pKz" firstAttribute="leading" secondItem="JCF-Tv-LYK" secondAttribute="leading" id="n2Z-iT-iNH"/>
-                            <constraint firstItem="Lih-tD-Wkc" firstAttribute="trailing" secondItem="2mq-AM-tUl" secondAttribute="trailing" id="n3N-RW-wR9"/>
-                            <constraint firstItem="NwR-IX-QTw" firstAttribute="leading" secondItem="UdT-yK-N8g" secondAttribute="leading" id="t1L-Jk-rJC"/>
                             <constraint firstItem="K2F-6Y-hBz" firstAttribute="bottom" secondItem="mDI-ki-yFu" secondAttribute="bottom" id="wos-Kg-wSH"/>
                             <constraint firstItem="8kq-df-abS" firstAttribute="top" secondItem="JCF-Tv-LYK" secondAttribute="bottom" constant="13.5" id="yhM-6D-CPu"/>
                         </constraints>
