@@ -10,6 +10,7 @@ import UIKit
 
 class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var nameTxtfield: UITextField!
     @IBOutlet weak var nameCountLbl: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
@@ -104,7 +105,7 @@ UINavigationControllerDelegate  {
         
         let defualtAction = UIAlertAction(title: "기본 이미지 선택", style: .default) {
             _ in
-            self.imageData = UIImageJPEGRepresentation(#imageLiteral(resourceName: "cimg"), 0.1)
+            self.imageData = UIImageJPEGRepresentation(#imageLiteral(resourceName: "mypage_membership_edit_default_img"), 0.1)
         }
         let cancelAction = UIAlertAction(title: "취소", style: .cancel)
         selectAlert.addAction(libraryAction)
@@ -125,11 +126,12 @@ extension EditProfileVC{
     
     @objc func keyboardWillShow(_ notification: Notification) {
         adjustKeyboardDismissGesture(isKeyboardVisible: true)
+        self.editBtn.isHidden = true
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
         adjustKeyboardDismissGesture(isKeyboardVisible: false)
-        
+        self.editBtn.isHidden = false
     }
     
     //화면 바깥 터치했을때 키보드 없어지는 코드
