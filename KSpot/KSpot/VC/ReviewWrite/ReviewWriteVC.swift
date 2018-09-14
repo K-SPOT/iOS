@@ -215,6 +215,7 @@ extension ReviewWriteVC : UITextViewDelegate{
         if(contentTxt.count > 1000) {
             simpleAlert(title: "오류", message: "1000글자 초과")
             contentTxtView.text = String(describing: contentTxt.prefix(999))
+            writeCountLbl.text = contentTxtView.text.count.description
             isValid()
             //doneBtn.tintColor = .green
             //doneBtn.isEnabled = true

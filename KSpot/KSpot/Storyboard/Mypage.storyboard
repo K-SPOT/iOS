@@ -56,7 +56,7 @@
                                             <rect key="frame" x="0.0" y="108" width="375" height="241"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TTk-Qd-7nX">
-                                                    <rect key="frame" x="318" y="13.5" width="41" height="29"/>
+                                                    <rect key="frame" x="320" y="12.5" width="39" height="30"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="15"/>
                                                     <state key="normal" title="더보기">
                                                         <color key="titleColor" red="0.41927871109999998" green="0.85189700130000001" blue="0.68716549869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -136,7 +136,7 @@
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 구독" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wiz-tJ-gLO">
-                                                    <rect key="frame" x="16" y="19" width="48" height="18"/>
+                                                    <rect key="frame" x="16" y="18" width="46" height="19"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -155,16 +155,16 @@
                                             </constraints>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="AbJ-Cc-QZw">
-                                            <rect key="frame" x="78" y="40.5" width="95.5" height="39"/>
+                                            <rect key="frame" x="78" y="39.5" width="92" height="41"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="짱절미 고객님," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b86-Co-Qvf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="95.5" height="18"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="92" height="19"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안녕하세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hz-yx-fzy">
-                                                    <rect key="frame" x="0.0" y="21" width="77" height="18"/>
+                                                    <rect key="frame" x="0.0" y="22" width="73.5" height="19"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFL" family="NanumSquareOTF" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -368,7 +368,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="짱쎈 절미의 고척돔 산책 라방" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ff-Nw-Uil">
-                                                    <rect key="frame" x="77" y="21.5" width="179" height="17"/>
+                                                    <rect key="frame" x="77" y="21.5" width="172.5" height="17"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="15"/>
                                                     <color key="textColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -450,7 +450,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="절미의 지구뿌셔 우주뿌셔 라방❤️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ife-mX-S8g">
-                                                    <rect key="frame" x="77" y="21.5" width="209" height="17"/>
+                                                    <rect key="frame" x="77" y="21.5" width="201.5" height="17"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="15"/>
                                                     <color key="textColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -723,25 +723,43 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="짱절미" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2mq-AM-tUl">
-                                <rect key="frame" x="120" y="242" width="227" height="16"/>
+                                <rect key="frame" x="120" y="242" width="156.5" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="156.5" id="roL-zj-gEx"/>
+                                </constraints>
                                 <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQc-Mw-u0G">
+                                <rect key="frame" x="326.5" y="242.5" width="21.5" height="15.5"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFL" family="NanumSquareOTF" pointSize="14"/>
+                                <color key="textColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ow-rk-lmj">
+                                <rect key="frame" x="307.5" y="242" width="17" height="16"/>
+                                <fontDescription key="fontDescription" name="NanumSquareOTFL" family="NanumSquareOTF" pointSize="14"/>
+                                <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8kq-df-abS" firstAttribute="leading" secondItem="UdT-yK-N8g" secondAttribute="leading" id="7Uk-H4-WBQ"/>
                             <constraint firstItem="K2F-6Y-hBz" firstAttribute="trailing" secondItem="mDI-ki-yFu" secondAttribute="trailing" id="BeR-fv-L4C"/>
+                            <constraint firstItem="UdT-yK-N8g" firstAttribute="trailing" secondItem="pQc-Mw-u0G" secondAttribute="trailing" constant="27" id="C69-CF-ZQ0"/>
                             <constraint firstItem="mDI-ki-yFu" firstAttribute="top" secondItem="UdT-yK-N8g" secondAttribute="top" constant="30" id="Ckw-xw-uhN"/>
+                            <constraint firstItem="pQc-Mw-u0G" firstAttribute="centerY" secondItem="2mq-AM-tUl" secondAttribute="centerY" id="D9r-xm-ghj"/>
                             <constraint firstItem="K2F-6Y-hBz" firstAttribute="width" secondItem="zge-0f-M42" secondAttribute="width" multiplier="30:375" id="LFe-xi-VSF"/>
                             <constraint firstItem="mDI-ki-yFu" firstAttribute="width" secondItem="zge-0f-M42" secondAttribute="width" multiplier="103:375" id="PXL-Lm-0e2"/>
+                            <constraint firstItem="pQc-Mw-u0G" firstAttribute="leading" secondItem="7Ow-rk-lmj" secondAttribute="trailing" constant="2" id="Qy5-Ko-hd6"/>
                             <constraint firstItem="2mq-AM-tUl" firstAttribute="leading" secondItem="JCF-Tv-LYK" secondAttribute="trailing" constant="53" id="VJE-5u-IbJ"/>
                             <constraint firstItem="UdT-yK-N8g" firstAttribute="trailing" secondItem="8kq-df-abS" secondAttribute="trailing" id="W7o-hX-5s5"/>
                             <constraint firstItem="JCF-Tv-LYK" firstAttribute="leading" secondItem="UdT-yK-N8g" secondAttribute="leading" constant="28" id="WbA-R1-tgD"/>
                             <constraint firstItem="mDI-ki-yFu" firstAttribute="centerX" secondItem="UdT-yK-N8g" secondAttribute="centerX" id="YAZ-NO-7rL"/>
+                            <constraint firstItem="7Ow-rk-lmj" firstAttribute="centerY" secondItem="pQc-Mw-u0G" secondAttribute="centerY" id="g6M-Jb-TNN"/>
                             <constraint firstItem="2mq-AM-tUl" firstAttribute="centerY" secondItem="JCF-Tv-LYK" secondAttribute="centerY" id="iUm-yz-374"/>
-                            <constraint firstItem="UdT-yK-N8g" firstAttribute="trailing" secondItem="2mq-AM-tUl" secondAttribute="trailing" constant="28" id="lFc-gK-8uH"/>
                             <constraint firstItem="JCF-Tv-LYK" firstAttribute="top" secondItem="mDI-ki-yFu" secondAttribute="bottom" constant="45" id="mqd-1T-uY6"/>
                             <constraint firstItem="K2F-6Y-hBz" firstAttribute="bottom" secondItem="mDI-ki-yFu" secondAttribute="bottom" id="wos-Kg-wSH"/>
                             <constraint firstItem="8kq-df-abS" firstAttribute="top" secondItem="JCF-Tv-LYK" secondAttribute="bottom" constant="13.5" id="yhM-6D-CPu"/>
@@ -751,6 +769,8 @@
                     <navigationItem key="navigationItem" title="회원정보 수정" id="sSK-U7-SzU"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="nameCountLbl" destination="7Ow-rk-lmj" id="fzz-Tk-Be1"/>
+                        <outlet property="nameTxtfield" destination="2mq-AM-tUl" id="ZKg-p2-77f"/>
                         <outlet property="profileImgView" destination="mDI-ki-yFu" id="5ec-rr-PSd"/>
                     </connections>
                 </viewController>

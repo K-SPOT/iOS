@@ -9,6 +9,9 @@
 import UIKit
 
 class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
+    
+    @IBOutlet weak var nameTxtfield: UITextField!
+    @IBOutlet weak var nameCountLbl: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
     var keyboardDismissGesture: UITapGestureRecognizer?
     let imagePicker : UIImagePickerController = UIImagePickerController()
@@ -32,14 +35,28 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         profileImgView.makeRounded(cornerRadius: nil)
+        nameTxtfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         setBackBtn()
         setKeyboardSetting()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @objc func textFieldDidChange(_ textField: UITextField) {
+       
+        if let text = nameTxtfield.text {
+            nameCountLbl.text = text.count.description
+        } else {
+            nameCountLbl.text = "0"
+        }
+        guard let contentTxt = nameTxtfield.text else {return}
+
+        if(contentTxt.count > 20) {
+            simpleAlert(title: "오류", message: "20글자 초과")
+            nameTxtfield.text = String(describing: contentTxt.prefix(19))
+            nameCountLbl.text = nameTxtfield.text?.count.description
+        }
+        
     }
+
 
 }
 
@@ -77,6 +94,10 @@ UINavigationControllerDelegate  {
             self.present(self.imagePicker, animated: true, completion: nil)
         }
     }
+    
+}
+
+extension EditProfileVC : UITextFieldDelegate {
     
 }
 
