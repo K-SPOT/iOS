@@ -63,6 +63,7 @@ class MapVC: UIViewController {
         UIApplication.shared.keyWindow!.addSubview(filterView)
     }
     
+   
     @IBAction func locationAction(_ sender: Any) {
         //허용 됐을때
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
@@ -74,6 +75,8 @@ class MapVC: UIViewController {
             }
             let addressName = getAddressForLatLng(latitude: lat.description, longitude: long.description)
             print(addressName)
+        } else {
+            showLocationDisableAlert()
         }
     }
     @IBAction func searchAction(_ sender: Any) {
@@ -225,6 +228,10 @@ extension MapVC : CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .denied {
             showLocationDisableAlert()
+            //이때 디폴트 세팅
+        } else {
+            self.locationAction(0)
+            self.mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변"
         }
     }
     

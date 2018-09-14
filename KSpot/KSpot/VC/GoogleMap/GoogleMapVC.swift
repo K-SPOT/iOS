@@ -73,13 +73,31 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
     }
     
     @objc func btnMyLocationAction() {
-        let location: CLLocation? = myMapView.myLocation
-        if let location_ = location {
-            let lat = location_.coordinate.latitude
-            let long = location_.coordinate.longitude
-            chosenPlace = MyPlace(name: "", lat: lat, long: long)
-            myMapView.animate(toLocation: (location_.coordinate))
+        
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            let location: CLLocation? = myMapView.myLocation
+            if let location_ = location {
+                let lat = location_.coordinate.latitude
+                let long = location_.coordinate.longitude
+                chosenPlace = MyPlace(name: "", lat: lat, long: long)
+                myMapView.animate(toLocation: (location_.coordinate))
+            }
+        } else {
+            showLocationDisableAlert()
         }
+        
+    }
+    
+    func showLocationDisableAlert() {
+        let alertController = UIAlertController(title: "위치 접근이 제한되었습니다.", message: "위치 정보가 필요합니다.", preferredStyle: .alert)
+        let openAction = UIAlertAction(title: "설정으로 가기", style: .default) { (action) in
+            if let url = URL(string: UIApplicationOpenSettingsURLString) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+        alertController.addAction(openAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     @objc func okAction() {
@@ -88,7 +106,7 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
             //let addressName = getAddressForLatLng(latitude: chosenPlace_.lat.description, longitude: chosenPlace_.long.description)
             let lat = chosenPlace_.lat.description
             let long = chosenPlace_.long.description
-            self.getAddress(url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(lat),\(long)&key=\(NetworkConfiguration.shared().googleMapAPIKey)")
+            //self.getAddress(url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(lat),\(long)&key=\(NetworkConfiguration.shared().googleMapAPIKey)")
             
 //            print("여기예요 여기 1 \(addressName)")
 //            print("선택된 내 위도 : \(chosenPlace_.lat)")
@@ -99,7 +117,7 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
             if let location_ = location {
                 let lat = location_.coordinate.latitude.description
                 let long = location_.coordinate.longitude.description
-                self.getAddress(url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(lat),\(long)&key=\(NetworkConfiguration.shared().googleMapAPIKey)")
+                //self.getAddress(url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(lat),\(long)&key=\(NetworkConfiguration.shared().googleMapAPIKey)")
                // let addressName = getAddressForLatLng(latitude: lat.description, longitude: long.description)
                 
                // print("여기예요 여기 2 \(addressName)")
@@ -111,7 +129,7 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
     }
 }
 
-extension GoogleMapVC {
+/*extension GoogleMapVC {
     func getAddress(url : String){
         GoogleMapService.shareInstance.getAddress(url: url) { [weak self] (result) in
             guard let `self` = self else { return }
@@ -140,10 +158,10 @@ extension GoogleMapVC {
             }
         }
     }
-}
+}*/
 
 //get address from lat/long
-extension GoogleMapVC {
+/*extension GoogleMapVC {
     func getAddressForLatLng(latitude: String, longitude: String) -> String {
         
         let url = NSURL(string: "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(latitude),\(longitude)&key=\(NetworkConfiguration.shared().googleMapAPIKey)")
@@ -198,7 +216,7 @@ extension GoogleMapVC {
         }
         
     }
-}
+}*/
 
 
 extension GoogleMapVC : GMSAutocompleteViewControllerDelegate {
