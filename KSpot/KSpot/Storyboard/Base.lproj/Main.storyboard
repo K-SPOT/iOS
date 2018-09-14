@@ -189,6 +189,8 @@
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="myImgView" destination="3bJ-9y-HaA" id="Yq3-O2-ZXh"/>
+                                                                <outlet property="placeLbl" destination="qND-Ug-b1J" id="hlm-dE-sdb"/>
+                                                                <outlet property="titleLbl" destination="Jlg-my-g31" id="8eL-6C-419"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -299,6 +301,8 @@
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="myImgView" destination="va5-D6-290" id="13g-E2-6Cr"/>
+                                                                <outlet property="placeLbl" destination="Ic4-iF-rbF" id="Hjs-9R-FSs"/>
+                                                                <outlet property="titleLbl" destination="4hr-0s-SJ2" id="Qt9-3W-jAq"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
