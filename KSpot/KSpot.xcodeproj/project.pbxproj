@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2E32930B09199A39C981A507 /* Pods_KSpot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA688BBCA5DFBD11AEA04D6 /* Pods_KSpot.framework */; };
+		3B0FA12A214C2F87009F33AE /* Gallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0FA129214C2F87009F33AE /* Gallery.swift */; };
 		3B3DD0E1213AE1C200FD00B3 /* MainSecondTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */; };
 		3B3DD0E3213AE1CC00FD00B3 /* MainSecondCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */; };
 		3B3DD0E5213AE1D900FD00B3 /* MainThirdTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */; };
@@ -93,6 +94,7 @@
 
 /* Begin PBXFileReference section */
 		19DF3B2A98B342F2051D7EA1 /* Pods-KSpot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSpot.release.xcconfig"; path = "Pods/Target Support Files/Pods-KSpot/Pods-KSpot.release.xcconfig"; sourceTree = "<group>"; };
+		3B0FA129214C2F87009F33AE /* Gallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gallery.swift; sourceTree = "<group>"; };
 		3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondTVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondCVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThirdTVCell.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				3B3DD0F7213B2FAC00FD00B3 /* Storyboard.swift */,
 				3B3DD177213DBDBD00FD00B3 /* Font.swift */,
 				3BBB7DAD2147DEBA004CC142 /* NetworkConfiguration.swift */,
+				3B0FA129214C2F87009F33AE /* Gallery.swift */,
 			);
 			path = Singleton;
 			sourceTree = "<group>";
@@ -801,6 +804,7 @@
 				3BBF8D592139293600FFF08C /* MainViewController.swift in Sources */,
 				3B3DD17F213DC9EA00FD00B3 /* WRProxy.swift in Sources */,
 				3B3DD132213C32F200FD00B3 /* MapFilterView.swift in Sources */,
+				3B0FA12A214C2F87009F33AE /* Gallery.swift in Sources */,
 				3B3DD0FC213B318E00FD00B3 /* BroadcastVC.swift in Sources */,
 				3BBF8D492139262800FFF08C /* ViewController.swift in Sources */,
 				3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */,

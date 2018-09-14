@@ -14,7 +14,7 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var nameCountLbl: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
     var keyboardDismissGesture: UITapGestureRecognizer?
-    let imagePicker : UIImagePickerController = UIImagePickerController()
+    //let imagePicker : UIImagePickerController = UIImagePickerController()
     var imageData : Data? {
         didSet {
             if imageData != nil {
@@ -65,9 +65,8 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
         }
         
     }
-
-
 }
+
 
 //앨범 열기 위함
 extension EditProfileVC : UIImagePickerControllerDelegate,
@@ -92,23 +91,30 @@ UINavigationControllerDelegate  {
     }
     
     // Method
-    func openGallery() {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            self.imagePicker.sourceType = .photoLibrary
-            self.imagePicker.delegate = self
-            //false 로 되어있으면 이미지 자르지 않고 오리지널로 들어감
-            //이거 true로 하면 crop 가능
-            self.imagePicker.allowsEditing = true
-            
-            self.present(self.imagePicker, animated: true, completion: nil)
+    func openGallery(){
+        let selectAlert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let libraryAction = UIAlertAction(title: "앨범에서 사진 선택", style: .default) { _ in if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary){
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+            }
         }
+        
+        let defualtAction = UIAlertAction(title: "기본 이미지 선택", style: .default) {
+            _ in
+            self.imageData = UIImageJPEGRepresentation(#imageLiteral(resourceName: "cimg"), 0.1)
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        selectAlert.addAction(libraryAction)
+        selectAlert.addAction(defualtAction)
+        selectAlert.addAction(cancelAction)
+        self.present(selectAlert, animated: true, completion: nil)
     }
     
 }
 
-extension EditProfileVC : UITextFieldDelegate {
-    
-}
 
 //키보드 대응
 extension EditProfileVC{
