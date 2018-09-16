@@ -8,9 +8,13 @@
 import UIKit
 class MainSecondCVCell: UICollectionViewCell {
     
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var placeLbl: UILabel!
+    
     @IBOutlet weak var myImgView: UIImageView!
     override func awakeFromNib() {
-        self.makeCornerRound(cornerRadius: 17)
+       
+        titleLbl.setLineSpacing(lineSpacing: 6); self.makeCornerRound(cornerRadius: 17)
     }
 }
 

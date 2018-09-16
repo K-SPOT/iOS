@@ -154,13 +154,18 @@ extension UIBarButtonItem {
         return barButtonItem
     }
     
-    class func titleBarbutton(title : String, red : Double, green : Double, blue : Double, fontSize : CGFloat, fontName : String, selector : Selector?)->UIBarButtonItem{
-        let customBarbuttonItem = UIBarButtonItem(title: title, style: .plain, target: self, action: selector)
+    class func titleBarbutton(title : String, red : Double, green : Double, blue : Double, fontSize : CGFloat, fontName : String, selector : Selector?, target: AnyObject)->UIBarButtonItem{
+        let customBarbuttonItem = UIBarButtonItem(title: title, style: .plain, target: target, action: selector)
         let customFont = UIFont(name: fontName, size: fontSize)!
         customBarbuttonItem.setTitleTextAttributes([
             NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): customFont,
             NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue) : UIColor(red: CGFloat(red/255.0), green: CGFloat(green/255.0), blue: CGFloat(blue/255.0), alpha: CGFloat(1.0) )
             ], for: UIControlState.normal)
+        customBarbuttonItem.setTitleTextAttributes([
+            NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): customFont,
+            NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue) : UIColor(red: CGFloat(red/255.0), green: CGFloat(green/255.0), blue: CGFloat(blue/255.0), alpha: CGFloat(1.0) )
+            ], for: UIControlState.selected)
+        
         return customBarbuttonItem
     }
 }

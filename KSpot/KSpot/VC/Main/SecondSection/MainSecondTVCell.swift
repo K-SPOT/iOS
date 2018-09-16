@@ -12,6 +12,7 @@ class MainSecondTVCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     private var indexOfCellBeforeDragging = 0
+    var finalOffset : CGFloat = 0
     private var collectionViewFlowLayout: UICollectionViewFlowLayout {
         return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
@@ -88,9 +89,24 @@ extension MainSecondTVCell: UICollectionViewDelegateFlowLayout {
 extension MainSecondTVCell : UIScrollViewDelegate{
     
     private func indexOfMajorCell() -> Int {
+      /*var index = 0
+        let numberOfItems = collectionView.numberOfItems(inSection: 0)
+        let offset = collectionView.contentOffset.x
         
+        print("offset : \(offset)")
+        if (offset > finalOffset){
+            //왼쪽으로 스와이프
+            index = indexOfCellBeforeDragging+1
+        } else {
+            index = indexOfCellBeforeDragging-1
+        }
+        
+        let safeIndex = max(0, min(numberOfItems - 1, index))
+        return safeIndex*/
         let itemWidth = collectionViewFlowLayout.itemSize.width
         let proportionalOffset = collectionView.contentOffset.x / (itemWidth)
+        print("최종 오프셋 \(collectionView.contentOffset.x)")
+        print("proportionalOffset \(proportionalOffset)")
         let index = Int(round(proportionalOffset))
         let numberOfItems = collectionView.numberOfItems(inSection: 0)
         let safeIndex = max(0, min(numberOfItems - 1, index))
@@ -98,7 +114,13 @@ extension MainSecondTVCell : UIScrollViewDelegate{
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print("시작")
         indexOfCellBeforeDragging = indexOfMajorCell()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        finalOffset = collectionView.contentOffset.x
+        print("오프셋 \(collectionView.contentOffset.x)")
         
     }
     
@@ -112,9 +134,6 @@ extension MainSecondTVCell : UIScrollViewDelegate{
         let indexOfMajorCell = self.indexOfMajorCell()
         let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        
-        
-        
     }
     
     

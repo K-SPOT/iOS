@@ -27,6 +27,7 @@ class MainViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame : .zero)
+
         
     }
 }

@@ -9,11 +9,6 @@
 import UIKit
 import CoreLocation
 import SwiftyJSON
-
-
-
-
-
 class MapVC: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
@@ -26,18 +21,36 @@ class MapVC: UIViewController {
     }()
     
     
-    let filterView = MapFilterView.instanceFromNib()
+    var filterView = MapFilterView.instanceFromNib()
     var selectedFirstFilter : FilterToggleBtn?
     var selectedSecondFilter : Int?
     var selectedThirdFilter = Set<UIButton>()
-    
+    var isGoogleMapLocation : Bool = true {
+        didSet {
+            filterView.isGoogle = isGoogleMapLocation
+            if isGoogleMapLocation {
+                //구글 맵에서 선택했을 때는 거리 인덱스 활성화
+                 setDistanceIdx(index: selectedSecondFilter ?? 3)
+            } else {
+                  filterView.distanceLbl.text = "1k 까지 설정"
+                //지도에서 클릭해서 선택했을 때는 버튼 활성화
+                 if let selectedBtn_ = selectedFirstFilter {
+                 selectedBtn_.selected()
+                 } else {
+                 filterView.popularBtn.selected()
+                 selectedFirstFilter = filterView.popularBtn
+                 }
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         initContainerView()
-        setFilterView(filterView)
         locationInit()
+        setFilterView(filterView)
+       
         //네비게이션 타이틀
-        self.navigationItem.title = "defualt"
+        self.navigationItem.title = "K-Spot"
     }
    
     
@@ -46,33 +59,45 @@ class MapVC: UIViewController {
     }
     
     @IBAction func filterAction(_ sender: Any) {
+   
         UIApplication.shared.keyWindow!.addSubview(filterView)
     }
     
+   
     @IBAction func locationAction(_ sender: Any) {
         //허용 됐을때
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            currentLocation = locationManager.location
+            isGoogleMapLocation = true
+            self.mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변"
             
+            currentLocation = locationManager.location
             guard let lat = currentLocation?.coordinate.latitude,
                 let long = currentLocation?.coordinate.longitude else {
                     return
             }
             let addressName = getAddressForLatLng(latitude: lat.description, longitude: long.description)
             print(addressName)
+        } else {
+            showLocationDisableAlert()
         }
     }
     @IBAction func searchAction(_ sender: Any) {
         let mapStoryboard = Storyboard.shared().mapStoryboard
         if let googleMapVC = mapStoryboard.instantiateViewController(withIdentifier:GoogleMapVC.reuseIdentifier) as? GoogleMapVC {
-            
+            googleMapVC.delegate = self
             self.navigationController?.pushViewController(googleMapVC, animated: true)
         }
     }
     
     
 }
-
+extension MapVC : SelectDelegate {
+    func tap(selected: Int?) {
+        isGoogleMapLocation = true
+        mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변"
+        
+    }
+}
 //필터 뷰 버튼 액션 적용
 extension MapVC {
     
@@ -103,27 +128,30 @@ extension MapVC {
         filterView.distanceLbl.text = "\(descArr[safeIndex]) 까지 설정"
     }
     
+    
     func setFilterView(_ filterView : MapFilterView){
-        
+       
         filterView.cancleBtn.addTarget(self, action: #selector(MapVC.cancleAction(_sender:)), for: .touchUpInside)
         filterView.okBtn.addTarget(self, action: #selector(MapVC.okAction(_sender:)), for: .touchUpInside)
-        let buttons : [btnNum] = [ (filterView.popularBtn, 0), (filterView.recentBtn, 0), (filterView.reviewBtn, 0), (filterView.leftBtn, 1), (filterView.rightBtn, 1), (filterView.restaurantBtn, 2), (filterView.cafeBtn, 2), (filterView.hotplaceBtn, 2), (filterView.eventBtn, 2), (filterView.etcBtn, 2)]
+        let buttons : [btnNum] = [ (filterView.popularBtn, 0), (filterView.recentBtn, 0), (filterView.leftBtn, 1), (filterView.rightBtn, 1), (filterView.restaurantBtn, 2), (filterView.cafeBtn, 2), (filterView.hotplaceBtn, 2), (filterView.eventBtn, 2), (filterView.etcBtn, 2)]
         
         addtarget(inputs: buttons)
+
+        filterView.isGoogle = isGoogleMapLocation
         
         //첫번째 섹션
         let popularBtn = filterView.popularBtn!
         let recentBtn = filterView.recentBtn!
-        let reviewBtn = filterView.reviewBtn!
-        popularBtn.setOtherBtn(another: recentBtn, theOther: reviewBtn)
-        recentBtn.setOtherBtn(another: popularBtn, theOther: reviewBtn)
-        reviewBtn.setOtherBtn(another: recentBtn, theOther: popularBtn)
-        if let selectedBtn_ = selectedFirstFilter {
+      
+        popularBtn.setOtherBtn(another: recentBtn)
+        recentBtn.setOtherBtn(another: popularBtn)
+     
+      /*  if let selectedBtn_ = selectedFirstFilter {
             selectedBtn_.selected()
         } else {
             popularBtn.selected()
             selectedFirstFilter = popularBtn
-        }
+        }*/
         
         //두번째 섹션 - default 는 1km
         setDistanceIdx(index: selectedSecondFilter ?? 3)
@@ -202,6 +230,10 @@ extension MapVC : CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .denied {
             showLocationDisableAlert()
+            //이때 디폴트 세팅
+        } else {
+            self.locationAction(0)
+            
         }
     }
     

@@ -10,15 +10,31 @@ import UIKit
 
 class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
     var keyboardDismissGesture: UITapGestureRecognizer?
+    
+    @IBOutlet weak var searchTxtfield: UITextField!
+    
+    @IBOutlet weak var searchBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackBtn()
         setKeyboardSetting()
+        searchTxtfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        searchBtn.addTarget(self, action: #selector(searchAction(_:)), for: .touchUpInside)
         // textfeild.delegate = self 하기
     }
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if !(searchTxtfield.text?.isEmpty)! {
+            searchBtn.backgroundColor = ColorChip.shared().mainColor
+            searchBtn.isEnabled = true
+        } else {
+            searchBtn.backgroundColor = #colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1)
+            searchBtn.isEnabled = false
+        }
+    }
     
-    
-
+    @objc func searchAction(_ button : UIButton) {
+        print("search action!")
+    }
 
 
 }

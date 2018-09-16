@@ -17,7 +17,7 @@ class FilterToggleBtn : UIButton {
     }
     
     var anotherBtn : FilterToggleBtn?
-    var theOtherBtn : FilterToggleBtn?
+ 
     
     func setBtnClickEvent() {
         self.addTarget(self, action: #selector(FilterToggleBtn.touchBtn(_:)), for: UIControlEvents.touchUpInside)
@@ -26,7 +26,7 @@ class FilterToggleBtn : UIButton {
     @objc func touchBtn(_ sender: FilterToggleBtn){
         sender.selected()
         sender.anotherBtn?.unSelected()
-        sender.theOtherBtn?.unSelected()
+      
     }
 
     func setDefaultBtn(){
@@ -42,12 +42,12 @@ extension FilterToggleBtn{
     }
     func unSelected(){
         
-        self.setTitleColor(#colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1), for: .normal)
+        self.setTitleColor(#colorLiteral(red: 0.6274509804, green: 0.6274509804, blue: 0.6274509804, alpha: 1), for: .normal)
         self.isSelected = false
     }
     
-    func setOtherBtn(another : FilterToggleBtn, theOther : FilterToggleBtn){
+    func setOtherBtn(another : FilterToggleBtn){
         self.anotherBtn = another
-        self.theOtherBtn = theOther
+       
     }
 }

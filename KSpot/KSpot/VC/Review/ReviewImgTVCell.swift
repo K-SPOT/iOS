@@ -27,6 +27,7 @@ class ReviewImgTVCell: UITableViewCell {
     // delegate?.tap()
     override func awakeFromNib() {
         super.awakeFromNib()
+        contentLbl.setLineSpacing(lineSpacing: 6)
         ratingView.settings.fillMode = .half
         ratingView.rating = 3.5
     }

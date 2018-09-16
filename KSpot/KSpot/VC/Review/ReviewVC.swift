@@ -31,14 +31,34 @@ class ReviewVC: UIViewController {
 
 extension ReviewVC : SelectDelegate {
     func tap(selected : Int?) {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: nil, message: "신고 사유를 선택해주세요", preferredStyle: .actionSheet)
         
-        let reportAction = UIAlertAction(title: "신고", style: .default) { (_) in
-            print("신고 선택")
+        let report1 = UIAlertAction(title: "음란물", style: .default) { (_) in
+            reportAction()
+        }
+        let report2 = UIAlertAction(title: "사칭 및 사기", style: .default) { (_) in
+            reportAction()
+        }
+        let report3 = UIAlertAction(title: "허위사실 유포", style: .default) { (_) in
+           reportAction()
+        }
+        let report4 = UIAlertAction(title: "상업적 광고 및 판매", style: .default) { (_) in
+           reportAction()
+        }
+        let report5 = UIAlertAction(title: "욕설 및 불쾌감을 주는 표현", style: .default) { (_) in
+            reportAction()
+        }
+        
+        func reportAction(){
+            self.simpleAlert(title: "신고접수", message: "신고가 완료되었습니다")
         }
       
         let cancleAction = UIAlertAction(title: "취소",style: .cancel)
-        alert.addAction(reportAction)
+        alert.addAction(report1)
+        alert.addAction(report2)
+        alert.addAction(report3)
+        alert.addAction(report4)
+        alert.addAction(report5)
         alert.addAction(cancleAction)
         present(alert, animated: true)
     }

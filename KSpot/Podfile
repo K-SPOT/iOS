@@ -9,6 +9,7 @@ pod 'GoogleMaps'
 pod 'GooglePlaces'
 pod 'SnapKit'
 pod 'SwiftyJSON'
+pod 'Alamofire'
 
 
   # Pods for KSpot

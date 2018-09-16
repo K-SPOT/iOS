@@ -26,8 +26,12 @@ class MapContainerVC: UIViewController {
 extension MapContainerVC : SelectRegionDelegate {
     func tap(_ region : Region) {
         mapView?.selectedRegionLbl.text = region.rawValue
+        let parentVC = self.parent as? MapVC
+         parentVC?.isGoogleMapLocation = false
+
+        
         //self.parent?.title = region.rawValue
-        self.parent?.navigationItem.title = region.rawValue
+        //self.parent?.navigationItem.title = region.rawValue
         //TODO - 통신 대비해서 case rawValue 뽑아내기 case gangsu -> gangsu
         
         
