@@ -10,6 +10,11 @@
 		2E32930B09199A39C981A507 /* Pods_KSpot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA688BBCA5DFBD11AEA04D6 /* Pods_KSpot.framework */; };
 		3B0FA12A214C2F87009F33AE /* Gallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0FA129214C2F87009F33AE /* Gallery.swift */; };
 		3B3C43CA214EE10E005B8650 /* SearchResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C43C9214EE10E005B8650 /* SearchResultVC.swift */; };
+		3B3C43CD214EECAA005B8650 /* CategoryDetailMoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C43CC214EECAA005B8650 /* CategoryDetailMoreVC.swift */; };
+		3B3C43CF214EECC5005B8650 /* CategoryDetailMorePlaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C43CE214EECC5005B8650 /* CategoryDetailMorePlaceVC.swift */; };
+		3B3C43D1214EECD4005B8650 /* CategoryDetailMoreEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C43D0214EECD4005B8650 /* CategoryDetailMoreEventVC.swift */; };
+		3B3C43D8214EF459005B8650 /* PlaceFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C43D7214EF459005B8650 /* PlaceFilterView.swift */; };
+		3B3C43DA214EF593005B8650 /* PlaceFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3C43D9214EF593005B8650 /* PlaceFilterView.xib */; };
 		3B3DD0E1213AE1C200FD00B3 /* MainSecondTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */; };
 		3B3DD0E3213AE1CC00FD00B3 /* MainSecondCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */; };
 		3B3DD0E5213AE1D900FD00B3 /* MainThirdTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */; };
@@ -97,6 +102,11 @@
 		19DF3B2A98B342F2051D7EA1 /* Pods-KSpot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSpot.release.xcconfig"; path = "Pods/Target Support Files/Pods-KSpot/Pods-KSpot.release.xcconfig"; sourceTree = "<group>"; };
 		3B0FA129214C2F87009F33AE /* Gallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gallery.swift; sourceTree = "<group>"; };
 		3B3C43C9214EE10E005B8650 /* SearchResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultVC.swift; sourceTree = "<group>"; };
+		3B3C43CC214EECAA005B8650 /* CategoryDetailMoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailMoreVC.swift; sourceTree = "<group>"; };
+		3B3C43CE214EECC5005B8650 /* CategoryDetailMorePlaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailMorePlaceVC.swift; sourceTree = "<group>"; };
+		3B3C43D0214EECD4005B8650 /* CategoryDetailMoreEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailMoreEventVC.swift; sourceTree = "<group>"; };
+		3B3C43D7214EF459005B8650 /* PlaceFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceFilterView.swift; sourceTree = "<group>"; };
+		3B3C43D9214EF593005B8650 /* PlaceFilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceFilterView.xib; sourceTree = "<group>"; };
 		3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondTVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondCVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThirdTVCell.swift; sourceTree = "<group>"; };
@@ -204,17 +214,54 @@
 			path = SearchResult;
 			sourceTree = "<group>";
 		};
+		3B3C43CB214EEC89005B8650 /* CategoryDetailMore */ = {
+			isa = PBXGroup;
+			children = (
+				3B3C43D3214EEFB9005B8650 /* Place */,
+				3B3C43D2214EEFB7005B8650 /* Event */,
+			);
+			path = CategoryDetailMore;
+			sourceTree = "<group>";
+		};
+		3B3C43D2214EEFB7005B8650 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				3B3C43D0214EECD4005B8650 /* CategoryDetailMoreEventVC.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		3B3C43D3214EEFB9005B8650 /* Place */ = {
+			isa = PBXGroup;
+			children = (
+				3B3C43CC214EECAA005B8650 /* CategoryDetailMoreVC.swift */,
+				3B3C43CE214EECC5005B8650 /* CategoryDetailMorePlaceVC.swift */,
+				3B3C43D4214EEFC9005B8650 /* FilterView */,
+			);
+			path = Place;
+			sourceTree = "<group>";
+		};
+		3B3C43D4214EEFC9005B8650 /* FilterView */ = {
+			isa = PBXGroup;
+			children = (
+				3B3C43D7214EF459005B8650 /* PlaceFilterView.swift */,
+				3B3C43D9214EF593005B8650 /* PlaceFilterView.xib */,
+			);
+			path = FilterView;
+			sourceTree = "<group>";
+		};
 		3B3DD0E8213AE29D00FD00B3 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				3B3C43C8214EDF5D005B8650 /* SearchResult */,
-				3BBB7DA62147A5AA004CC142 /* GoogleMap */,
 				3BBB7D9021469640004CC142 /* Theme */,
 				3BBF8D62213936F000FFF08C /* Main */,
 				3BBB7D7A21456D60004CC142 /* MainSearch */,
+				3B3C43C8214EDF5D005B8650 /* SearchResult */,
 				3B3DD0F6213B2E5600FD00B3 /* Category */,
 				3B3DD138213C7D0000FD00B3 /* CategoryDetail */,
+				3B3C43CB214EEC89005B8650 /* CategoryDetailMore */,
 				3B3DD112213BD72B00FD00B3 /* Map */,
+				3BBB7DA62147A5AA004CC142 /* GoogleMap */,
 				3B3DD14C213D786A00FD00B3 /* PlaceDetail */,
 				3BB1882821441D850021B543 /* Review */,
 				3BB1882921441D940021B543 /* ReviewWrite */,
@@ -717,6 +764,7 @@
 				3B3DD10C213B408200FD00B3 /* NanumSquareOTFExtraBold.otf in Resources */,
 				3B3DD10E213B408700FD00B3 /* NanumSquareOTFRegular.otf in Resources */,
 				3B3DD10D213B408500FD00B3 /* NanumSquareOTFLight.otf in Resources */,
+				3B3C43DA214EF593005B8650 /* PlaceFilterView.xib in Resources */,
 				3BBF8D512139262800FFF08C /* LaunchScreen.storyboard in Resources */,
 				3BBF8D4E2139262800FFF08C /* Assets.xcassets in Resources */,
 				3BB188232144107E0021B543 /* Mypage.storyboard in Resources */,
@@ -815,6 +863,7 @@
 				3BBF8D592139293600FFF08C /* MainViewController.swift in Sources */,
 				3B3DD17F213DC9EA00FD00B3 /* WRProxy.swift in Sources */,
 				3B3DD132213C32F200FD00B3 /* MapFilterView.swift in Sources */,
+				3B3C43D8214EF459005B8650 /* PlaceFilterView.swift in Sources */,
 				3B0FA12A214C2F87009F33AE /* Gallery.swift in Sources */,
 				3B3DD0FC213B318E00FD00B3 /* BroadcastVC.swift in Sources */,
 				3BBF8D492139262800FFF08C /* ViewController.swift in Sources */,
@@ -830,7 +879,9 @@
 				3B3DD14B213D708800FD00B3 /* CategoryToggleBtn.swift in Sources */,
 				3B3DD0F8213B2FAC00FD00B3 /* Storyboard.swift in Sources */,
 				3BBB7DB2214A16FE004CC142 /* GettableService.swift in Sources */,
+				3B3C43D1214EECD4005B8650 /* CategoryDetailMoreEventVC.swift in Sources */,
 				3BBB7D992146D0F3004CC142 /* ThemeTVCell.swift in Sources */,
+				3B3C43CF214EECC5005B8650 /* CategoryDetailMorePlaceVC.swift in Sources */,
 				3B3DD114213BD74300FD00B3 /* MapVC.swift in Sources */,
 				3B3DD189213F0D0600FD00B3 /* PlaceDetailSecondCVCell.swift in Sources */,
 				3BBB7DA12146F847004CC142 /* ReviewContainerVC.swift in Sources */,
@@ -865,6 +916,7 @@
 				3BBF8D61213935D300FFF08C /* ColorChip.swift in Sources */,
 				3B3DD13A213C7DAC00FD00B3 /* CategoryDetailVC.swift in Sources */,
 				3BBB7DA82147A5C2004CC142 /* GoogleMapVC.swift in Sources */,
+				3B3C43CD214EECAA005B8650 /* CategoryDetailMoreVC.swift in Sources */,
 				3B3DD0E5213AE1D900FD00B3 /* MainThirdTVCell.swift in Sources */,
 				3BBB7D85214578E7004CC142 /* SubCelebrityTVCell.swift in Sources */,
 				3BBB7D9321469656004CC142 /* ThemeVC.swift in Sources */,

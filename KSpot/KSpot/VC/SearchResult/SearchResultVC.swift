@@ -11,7 +11,7 @@ import UIKit
 class SearchResultVC: UIViewController, UIGestureRecognizerDelegate {
 
     let sunglassArr1 = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
-    let sunglassArr2 : [UIImage] = []
+    let sunglassArr2 : [UIImage] = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
     let sunglassArr3 : [UIImage] = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
     @IBOutlet weak var tableView : UITableView!
     override func viewDidLoad() {
