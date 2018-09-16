@@ -1330,13 +1330,13 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5T-OV-vjw">
-                                                    <rect key="frame" x="157" y="82.5" width="29" height="22.5"/>
+                                                    <rect key="frame" x="157" y="82" width="29" height="22.5"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                                     <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5J-k3-sNT">
-                                                    <rect key="frame" x="188" y="82" width="20" height="22.5"/>
+                                                    <rect key="frame" x="188" y="81.5" width="20" height="22.5"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                                     <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1545,7 +1545,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWf-cR-Fip">
-                                                <rect key="frame" x="186.5" y="85.5" width="29" height="22.5"/>
+                                                <rect key="frame" x="186.5" y="86" width="29" height="22.5"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1580,7 +1580,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwi-IZ-PRh">
-                                                <rect key="frame" x="218.5" y="85" width="25" height="23"/>
+                                                <rect key="frame" x="218.5" y="85.5" width="25" height="23"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -1601,6 +1601,7 @@
                                             <constraint firstItem="nwi-IZ-PRh" firstAttribute="leading" secondItem="KWf-cR-Fip" secondAttribute="trailing" constant="3" id="dqt-Zv-ynZ"/>
                                             <constraint firstItem="U4L-co-3NB" firstAttribute="leading" secondItem="lMA-7s-3H4" secondAttribute="leading" id="duV-Gz-H9z"/>
                                             <constraint firstItem="hSK-JB-x4H" firstAttribute="leading" secondItem="lMA-7s-3H4" secondAttribute="leading" id="eBI-4q-tz5"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Z6M-Vg-dgi" secondAttribute="bottom" constant="20" id="fvL-D4-tP7"/>
                                             <constraint firstItem="Lx3-sQ-51R" firstAttribute="leading" secondItem="SAD-2Z-yQE" secondAttribute="leading" constant="18" id="lKe-V5-ouc"/>
                                             <constraint firstItem="lMA-7s-3H4" firstAttribute="leading" secondItem="Lx3-sQ-51R" secondAttribute="leading" id="nyU-ux-hel"/>
                                             <constraint firstItem="KWf-cR-Fip" firstAttribute="centerY" secondItem="hSK-JB-x4H" secondAttribute="centerY" id="o0h-sV-nML"/>
