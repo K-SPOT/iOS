@@ -67,8 +67,10 @@ class MapVC: UIViewController {
     @IBAction func locationAction(_ sender: Any) {
         //허용 됐을때
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            currentLocation = locationManager.location
+            isGoogleMapLocation = true
+            self.mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변"
             
+            currentLocation = locationManager.location
             guard let lat = currentLocation?.coordinate.latitude,
                 let long = currentLocation?.coordinate.longitude else {
                     return
@@ -231,7 +233,7 @@ extension MapVC : CLLocationManagerDelegate{
             //이때 디폴트 세팅
         } else {
             self.locationAction(0)
-            self.mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변"
+            
         }
     }
     
