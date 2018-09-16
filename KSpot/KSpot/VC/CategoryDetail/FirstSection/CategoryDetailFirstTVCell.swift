@@ -13,6 +13,7 @@ class CategoryDetailFirstTVCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     private var indexOfCellBeforeDragging = 0
     var currentPages = 0
+    var delegate : SelectSectionelegate?
     private var collectionViewFlowLayout: UICollectionViewFlowLayout {
         return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
@@ -60,6 +61,10 @@ extension CategoryDetailFirstTVCell : UICollectionViewDataSource, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 33, 0, 33)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.tap(section: .first, seledtedId: 0)
     }
     
     

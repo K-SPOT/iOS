@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class CategoryDetailMoreVC: UIViewController {
+class CategoryDetailMoreVC: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var containerView: UIView!
     var filterView = PlaceFilterView.instanceFromNib()
@@ -25,6 +25,7 @@ class CategoryDetailMoreVC: UIViewController {
         super.viewDidLoad()
         initContainerView()
         setFilterView(filterView)
+        setBackBtn()
     }
     
     

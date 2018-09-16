@@ -94,12 +94,6 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
             }
         }
     }
-//
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return section == 1 || section == 2  ? 79 : 0
-//    }
-    
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
@@ -115,6 +109,19 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
             }
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let section = indexPath.section
+        if section == 0 {
+            goToCelebrityDetail()
+        } else if section == 1 {
+            goToPlaceDetailVC()
+        } else {
+            goToPlaceDetailVC()
+        }
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
 }
