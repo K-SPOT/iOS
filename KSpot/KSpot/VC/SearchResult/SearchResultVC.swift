@@ -11,7 +11,7 @@ import UIKit
 class SearchResultVC: UIViewController, UIGestureRecognizerDelegate {
 
     let sunglassArr1 = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
-    let sunglassArr2 : [UIImage] = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
+    let sunglassArr2 : [UIImage] = []
     let sunglassArr3 : [UIImage] = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
     @IBOutlet weak var tableView : UITableView!
     override func viewDidLoad() {
@@ -88,28 +88,23 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
         }
     }
     
-    
+   
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0  {
-            if( sunglassArr1.count != 0) {
-                return 62
-            } else {
-                return 0
-            }
+            return heightForHeaderInSection(arr: sunglassArr1)
         } else if section == 1 {
-            if( sunglassArr2.count != 0) {
-                return 62
-            } else {
-                return 0
-            }
+           return heightForHeaderInSection(arr: sunglassArr2)
         } else {
-            if( sunglassArr3.count != 0) {
-                return 62
-            } else {
-                return 0
-            }
+            return heightForHeaderInSection(arr: sunglassArr3)
         }
+    }
+    
+    private func heightForHeaderInSection(arr : [UIImage]) -> CGFloat {
+        if (arr.count > 0){
+            return 62
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
