@@ -121,8 +121,10 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
             let cell = tableView.dequeueReusableCell(withIdentifier: CategoryDetailSecondTVCell.reuseIdentifier) as! CategoryDetailSecondTVCell
             if indexPath.section == 1 {
                 //cell.configure
+                 cell.myImgView.image = #imageLiteral(resourceName: "search_result_place_icon")
             } else {
                 //cell.configure
+                cell.myImgView.image = #imageLiteral(resourceName: "search_result_event_birthday")
             }
             return cell
         }
