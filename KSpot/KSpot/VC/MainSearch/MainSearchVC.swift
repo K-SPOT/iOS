@@ -33,7 +33,12 @@ class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func searchAction(_ button : UIButton) {
-        print("search action!")
+        let mainStoryboard = Storyboard.shared().mainStoryboard
+        if let mainSearchVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultVC.reuseIdentifier) as? SearchResultVC {
+            //네비게이션 타이틀
+            mainSearchVC.title = searchTxtfield.text
+            self.navigationController?.pushViewController(mainSearchVC, animated: true)
+        }
     }
 
 
