@@ -22,6 +22,7 @@ class PlaceFilterView: UIView {
     
     class func instanceFromNib() -> PlaceFilterView {
         let view = UINib(nibName: "PlaceFilterView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! PlaceFilterView
+        
         return view
     }
 

@@ -56,6 +56,7 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
         } else if section == 1 {
             if( sunglassArr2.count != 0) {
                 header.titleLbl.text = "장소"
+                header.morBtn.addTarget(self, action: #selector(goToPlaceMore(_:)), for: .touchUpInside)
                 return header
             } else {
                 return nil
@@ -63,6 +64,7 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
         } else {
             if( sunglassArr3.count != 0) {
                 header.titleLbl.text = "이벤트"
+                header.morBtn.addTarget(self, action: #selector(goToEventMore(_:)), for: .touchUpInside)
                 return header
             } else {
                 return nil
@@ -70,6 +72,21 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
         }
     }
     
+    @objc func goToPlaceMore(_ sender : UIButton){
+        let mainStoryboard = Storyboard.shared().mainStoryboard
+        if let searchResultMoreVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultMoreVC.reuseIdentifier) as? SearchResultMoreVC {
+           
+            self.navigationController?.pushViewController(searchResultMoreVC, animated: true)
+        }
+    }
+    @objc func goToEventMore(_ sender : UIButton){
+        let mainStoryboard = Storyboard.shared().mainStoryboard
+        if let searchResultMorePlaceVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultMorePlaceVC.reuseIdentifier) as? SearchResultMorePlaceVC {
+        
+            searchResultMorePlaceVC.headerTitle = "이벤트"
+            self.navigationController?.pushViewController(searchResultMorePlaceVC, animated: true)
+        }
+    }
     
     
     
