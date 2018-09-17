@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class MainViewController: UIViewController {
     @IBAction func searchAction(_ sender: Any) {
@@ -19,11 +21,19 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
    
-    
+    fileprivate func reloadRootViewController() {
+        let isOpened = FBSDKAccessToken.currentAccessTokenIsActive()
+        if !isOpened {
+            let mainStoryboard = Storyboard.shared().mainStoryboard
+            if let loginVC = mainStoryboard.instantiateViewController(withIdentifier:LoginVC.reuseIdentifier) as? LoginVC {
+                 self.present(loginVC, animated: false, completion: nil)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        reloadRootViewController()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame : .zero)

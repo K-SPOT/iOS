@@ -85,6 +85,8 @@ class MapVC: UIViewController {
         let mapStoryboard = Storyboard.shared().mapStoryboard
         if let googleMapVC = mapStoryboard.instantiateViewController(withIdentifier:GoogleMapVC.reuseIdentifier) as? GoogleMapVC {
             googleMapVC.delegate = self
+            
+           googleMapVC.entryPoint = .currentLocation
             self.navigationController?.pushViewController(googleMapVC, animated: true)
         }
     }

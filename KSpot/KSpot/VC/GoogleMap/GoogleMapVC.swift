@@ -17,12 +17,18 @@ struct MyPlace {
     var long: Double
 }
 
+enum MapEntryPoint {
+    case searchSpecificLocation
+    case currentLocation
+}
+
 class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDelegate {
     let currentLocationMarker = GMSMarker()
     var locationManager = CLLocationManager()
     var chosenPlace: MyPlace?
     var address : [Result]?
     var delegate : SelectDelegate?
+    var entryPoint : MapEntryPoint = .currentLocation
     @IBOutlet var myMapView: GMSMapView!
     
     let txtFieldSearch: UITextField = {
@@ -65,11 +71,38 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
         txtFieldSearch.delegate=self
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        //locationManager.startUpdatingLocation()
         locationManager.startMonitoringSignificantLocationChanges()
         setBackBtn()
         setupViews()
         initGoogleMaps()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if entryPoint == .currentLocation {
+            locationManager.startUpdatingLocation()
+        } else {
+            let lat = chosenPlace?.lat
+            let long = chosenPlace?.long
+            if let lat_ = lat, let long_ = long {
+                goToSelectedMapView(lat : lat_, long : long_)
+            }
+        }
+        
+    }
+    
+    func goToSelectedMapView(lat : Double, long : Double){
+        
+        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 17.0)
+        
+        self.myMapView.animate(to: camera)
+        let marker=GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        marker.icon = #imageLiteral(resourceName: "map_gps_dot")
+        marker.title = "\(chosenPlace?.name ?? "")"
+        marker.map = myMapView
+        
     }
     
     @objc func btnMyLocationAction() {

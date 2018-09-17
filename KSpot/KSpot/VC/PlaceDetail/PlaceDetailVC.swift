@@ -31,6 +31,15 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
         return cycleView
     }()
     
+    @IBAction func goToMapAction(_ sender: Any) {
+        let mapStoryboard = Storyboard.shared().mapStoryboard
+        if let googleMapVC = mapStoryboard.instantiateViewController(withIdentifier:GoogleMapVC.reuseIdentifier) as? GoogleMapVC {
+            googleMapVC.chosenPlace = MyPlace(name: "대전히히", lat: 36.3504, long: 127.3845)
+            googleMapVC.entryPoint = .searchSpecificLocation
+            self.navigationController?.pushViewController(googleMapVC, animated: true)
+        }
+    }
+    
     @IBAction func phoneViewAction(_ sender: Any) {
         "01025010258".makeACall()
     }

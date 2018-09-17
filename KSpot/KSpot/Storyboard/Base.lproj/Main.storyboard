@@ -573,10 +573,10 @@
             </objects>
             <point key="canvasLocation" x="1940" y="63"/>
         </scene>
-        <!--View Controller-->
+        <!--LoginVC-->
         <scene sceneID="Goj-UM-Iy9">
             <objects>
-                <viewController id="8Tf-e7-IlC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="8Tf-e7-IlC" customClass="LoginVC" customModule="KSpot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="emo-0d-Vpn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -591,6 +591,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lec-4s-1ox">
                                         <rect key="frame" x="0.0" y="63" width="287" height="41"/>
                                         <state key="normal" image="login__facebook_button"/>
+                                        <connections>
+                                            <action selector="facebookLoginAction:" destination="8Tf-e7-IlC" eventType="touchUpInside" id="wOa-Tu-zdc"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8H-2s-yOc">
                                         <rect key="frame" x="0.0" y="126" width="287" height="41"/>
