@@ -32,6 +32,9 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (2.7.0):
     - GoogleMaps/Base (= 2.7.0)
+  - ImageSlideshow (1.6.1):
+    - ImageSlideshow/Core (= 1.6.1)
+  - ImageSlideshow/Core (1.6.1)
   - Kingfisher (4.7.0)
   - SnapKit (4.0.0)
   - SwiftyJSON (4.1.0)
@@ -43,6 +46,7 @@ DEPENDENCIES:
   - FacebookShare
   - GoogleMaps
   - GooglePlaces
+  - ImageSlideshow
   - Kingfisher
   - SnapKit
   - SwiftyJSON
@@ -59,6 +63,7 @@ SPEC REPOS:
     - FBSDKShareKit
     - GoogleMaps
     - GooglePlaces
+    - ImageSlideshow
     - Kingfisher
     - SnapKit
     - SwiftyJSON
@@ -74,10 +79,11 @@ SPEC CHECKSUMS:
   FBSDKShareKit: 7090fdd55c39b03941efddb64c83a64ff6b3949f
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
+  ImageSlideshow: f0f33e1a20668e83d77f5fb7729e4ae4437c0759
   Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 363048aa833c8e512be06317cf9d664dfe22ea05
+PODFILE CHECKSUM: 1b6996035943fe0c56965a0fbfc7cd7a2379ce3f
 
 COCOAPODS: 1.5.0

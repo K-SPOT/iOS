@@ -13,6 +13,7 @@ pod 'Alamofire'
 pod 'FacebookCore'
 pod 'FacebookLogin'
 pod 'FacebookShare'
+pod 'ImageSlideshow'
 
   # Pods for KSpot
 
