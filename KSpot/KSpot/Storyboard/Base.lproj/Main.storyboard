@@ -180,6 +180,7 @@
                                                 <constraint firstItem="MqP-OX-56f" firstAttribute="centerY" secondItem="5XM-PP-vgJ" secondAttribute="centerY" id="zVi-p5-L1L"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="collectionView" destination="TE1-lf-SG4" id="m5U-ZP-DGJ"/>
                                         </connections>
@@ -276,6 +277,7 @@
                                                 <constraint firstItem="6B1-y0-Cyq" firstAttribute="top" secondItem="rj9-bp-nmJ" secondAttribute="bottom" constant="22" id="vSI-X6-jcv"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="collectionView" destination="6B1-y0-Cyq" id="uRo-Qt-CIv"/>
                                         </connections>

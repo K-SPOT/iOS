@@ -98,7 +98,6 @@
 		3BBF8D592139293600FFF08C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D582139293600FFF08C /* MainViewController.swift */; };
 		3BBF8D5B21392A0D00FFF08C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D5A21392A0D00FFF08C /* Extensions.swift */; };
 		3BBF8D5D21392A9500FFF08C /* MainFirstTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D5C21392A9500FFF08C /* MainFirstTVCell.swift */; };
-		3BBF8D5F21392D3E00FFF08C /* MainFirstCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D5E21392D3E00FFF08C /* MainFirstCVCell.swift */; };
 		3BBF8D61213935D300FFF08C /* ColorChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D60213935D300FFF08C /* ColorChip.swift */; };
 /* End PBXBuildFile section */
 
@@ -196,7 +195,6 @@
 		3BBF8D582139293600FFF08C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3BBF8D5A21392A0D00FFF08C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3BBF8D5C21392A9500FFF08C /* MainFirstTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFirstTVCell.swift; sourceTree = "<group>"; };
-		3BBF8D5E21392D3E00FFF08C /* MainFirstCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFirstCVCell.swift; sourceTree = "<group>"; };
 		3BBF8D60213935D300FFF08C /* ColorChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChip.swift; sourceTree = "<group>"; };
 		4C6052FD7CF496FE2E3B933E /* Pods-KSpot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSpot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KSpot/Pods-KSpot.debug.xcconfig"; sourceTree = "<group>"; };
 		FFA688BBCA5DFBD11AEA04D6 /* Pods_KSpot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KSpot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -720,7 +718,6 @@
 			isa = PBXGroup;
 			children = (
 				3BBF8D5C21392A9500FFF08C /* MainFirstTVCell.swift */,
-				3BBF8D5E21392D3E00FFF08C /* MainFirstCVCell.swift */,
 			);
 			path = FirstSection;
 			sourceTree = "<group>";
@@ -960,7 +957,6 @@
 				3B3DD0F3213B2BC900FD00B3 /* CategoryVC.swift in Sources */,
 				3BBB7D9F2146F6D9004CC142 /* ReviewNoImgTVCell.swift in Sources */,
 				3BBB7D81214578C6004CC142 /* SubCelebrityVC.swift in Sources */,
-				3BBF8D5F21392D3E00FFF08C /* MainFirstCVCell.swift in Sources */,
 				3BBB7D83214578D2004CC142 /* SubBroadCastVC.swift in Sources */,
 				3BBF8D5B21392A0D00FFF08C /* Extensions.swift in Sources */,
 				3BBB7DB6214A17D8004CC142 /* GoogleMapService.swift in Sources */,
