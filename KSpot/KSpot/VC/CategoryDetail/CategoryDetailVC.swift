@@ -12,9 +12,9 @@ private let TOPVIEW_HEIGHT:CGFloat = 269
 private let NAVBAR_COLORCHANGE_POINT:CGFloat = TOPVIEW_HEIGHT - CGFloat(kNavBarBottom * 2)
 
 class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
-   
+    
     @IBOutlet weak var tableView: UITableView!
-   
+    
     
     lazy var backgroundImg :UIImageView = {
         let imgView = UIImageView(image: UIImage(named: "cimg"))
@@ -23,7 +23,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
     }()
     lazy var logoImg :UIImageView = {
         let imgView = UIImageView(image: UIImage(named: "aimg"))
-
+        
         return imgView
     }()
     
@@ -63,7 +63,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
         return button
     }()
     
-
+    
     lazy var bottomGrayView: UIView = {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
@@ -78,7 +78,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
         return view
     }()
     
-
+    
     @IBAction func scrollToTopAction(_ sender: Any) {
         tableView.setContentOffset(.zero, animated: true)
     }
@@ -86,11 +86,11 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
     @objc func subscribeAction(_ : UIButton){
         print("구독버튼 클릭")
     }
-   
+    
     
     let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
     override func viewDidLoad() {
-      
+        
         setupTableView()
         setupNavView()
     }
@@ -102,7 +102,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
         makeTopViewConstraint()
         tableView.tableHeaderView = topView
     }
-
+    
 }
 
 //네비게이션 및 탑 뷰 설정
@@ -131,7 +131,7 @@ extension CategoryDetailVC {
         backgroundImg.snp.makeConstraints { (make) in
             make.leading.trailing.top.equalToSuperview()
             make.height.equalTo(165)
-        
+            
         }
         
         logoImg.snp.makeConstraints { (make) in
@@ -178,7 +178,7 @@ extension CategoryDetailVC
             
             navBarTintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
-          
+            
             let alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / CGFloat(kNavBarBottom)
             navBarBackgroundAlpha = alpha
             navBarTintColor = UIColor.black.withAlphaComponent(alpha)
@@ -217,32 +217,53 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     
     
     //headerSection View 만드는 것
-   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableCell(withIdentifier: CategoryDetailSecondTVHeaderCell.reuseIdentifier) as! CategoryDetailSecondTVHeaderCell
         
         if section == 1 {
             header.titleLbl.text = "관련된 장소"
+            header.morBtn.addTarget(self, action: #selector(placeMoreAction(_:)), for: .touchUpInside)
+            
             return header
         } else if section == 2{
             header.titleLbl.text = "관련된 이벤트"
+            header.morBtn.addTarget(self, action: #selector(eventMoreAction(_:)), for: .touchUpInside)
             return header
         } else {
             return nil
         }
     }
     
-   
+    @objc func placeMoreAction(_ sender : UIButton){
+        let categoryStoryboard = Storyboard.shared().categoryStoryboard
+        if let categoryDetailMoreVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailMoreVC.reuseIdentifier) as? CategoryDetailMoreVC {
+            categoryDetailMoreVC.title = "장소"
+            self.navigationController?.pushViewController(categoryDetailMoreVC, animated: true)
+        }
+    }
+    
+    @objc func eventMoreAction(_ sender : UIButton){
+        let categoryStoryboard = Storyboard.shared().categoryStoryboard
+        if let categoryDetailMoreEventVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailMoreEventVC.reuseIdentifier) as? CategoryDetailMoreEventVC {
+            
+            categoryDetailMoreEventVC.title = "이벤트"
+            self.navigationController?.pushViewController(categoryDetailMoreEventVC, animated: true)
+        }
+    }
+    
+    
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 1 || section == 2  ? 79 : 0
     }
- 
+    
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: CategoryDetailFirstTVCell.reuseIdentifier) as! CategoryDetailFirstTVCell
+            cell.delegate = self
             return cell
             
         }  else {
@@ -255,5 +276,22 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
             return cell
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        if indexPath.section == 1  {
+            goToPlaceDetailVC()
+        } else if indexPath.section == 2 {
+            goToCelebrityDetail()
+        }
+    }
+    
+}
 
+extension CategoryDetailVC : SelectSectionelegate {
+    func tap(section: Section, seledtedId: Int) {
+        if section == .first {
+            goToPlaceDetailVC()
+        }
+    }
 }

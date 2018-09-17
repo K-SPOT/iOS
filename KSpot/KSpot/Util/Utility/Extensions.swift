@@ -30,6 +30,14 @@ extension UIViewController {
         }
     }
     
+    func goToCelebrityDetail(){
+        let categoryStoryboard = Storyboard.shared().categoryStoryboard
+        if let categoryDetailVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailVC.reuseIdentifier) as? CategoryDetailVC {
+            
+            self.navigationController?.pushViewController(categoryDetailVC, animated: true)
+        }
+    }
+    
     //백버튼
     func setBackBtn(color : UIColor? = ColorChip.shared().barbuttonColor){
         let backBTN = UIBarButtonItem(image: UIImage(named: "category_detail_left_arrow"),
