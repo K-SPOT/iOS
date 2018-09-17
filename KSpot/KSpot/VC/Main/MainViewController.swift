@@ -9,6 +9,12 @@
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
+import ImageSlideshow
+
+struct SampleStruct {
+    var image : ImageSource
+    var id : String
+}
 
 class MainViewController: UIViewController {
     @IBAction func searchAction(_ sender: Any) {
@@ -20,7 +26,9 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
 
-   
+    
+    var sampleData : [SampleStruct] = [SampleStruct(image: ImageSource(imageString: "aimg")!, id: "80"), SampleStruct(image: ImageSource(imageString: "bimg")!, id: "10"), SampleStruct(image: ImageSource(imageString: "cimg")!, id: "820")]
+    
     fileprivate func reloadRootViewController() {
         let isOpened = FBSDKAccessToken.currentAccessTokenIsActive()
         if !isOpened {
@@ -46,6 +54,7 @@ extension MainViewController : SelectSectionelegate {
     func tap(section: Section, seledtedId: Int) {
         if (section == .first){
             let mainStoryboard = Storyboard.shared().mainStoryboard
+            print("id는 \(sampleData[seledtedId].id)")
             if let themeVC = mainStoryboard.instantiateViewController(withIdentifier:ThemeVC.reuseIdentifier) as? ThemeVC {
                 
                 self.navigationController?.pushViewController(themeVC, animated: true)
@@ -68,6 +77,10 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: MainFirstTVCell.reuseIdentifier) as! MainFirstTVCell
             cell.delegate = self
+            cell.localSource = sampleData.map({ (data) in
+                data.image
+            })
+            cell.prepareForReuse()
             return cell
         } else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: MainSecondTVCell.reuseIdentifier) as! MainSecondTVCell
