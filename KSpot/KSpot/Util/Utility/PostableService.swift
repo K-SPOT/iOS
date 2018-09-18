@@ -16,7 +16,7 @@ protocol PostableService {
     typealias networkResult = (resCode : Int, resResult : NetworkData)
     func post(_ URL:String, params : [String : Any], completion : @escaping (Result<networkResult>)->Void)
     
-    func delete(_ URL:String, params : [String : Any], completion : @escaping (Result<networkResult>)->Void)
+    func delete(_ URL:String, completion : @escaping (Result<networkResult>)->Void)
 }
 
 extension PostableService {
@@ -84,22 +84,26 @@ extension PostableService {
     }
     
     
-    func delete(_ URL:String, params : [String : Any], completion : @escaping (Result<networkResult>)->Void){
+    func delete(_ URL:String, completion : @escaping (Result<networkResult>)->Void){
         
         guard let encodedUrl = URL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             print("networking - invalid url")
             return
         }
-        print(encodedUrl)
-        var headers: HTTPHeaders?
-        let userToken = UserDefaults.standard.string(forKey: "userToken") ?? "-1"
+       
+        print("url 은 \(encodedUrl)")
         
-        if userToken != "-1" {
+        let userAuth = UserDefaults.standard.string(forKey: "userAuth") ?? "-1"
+        let flag = UserDefaults.standard.string(forKey: "flag") ?? "0"
+        var headers: HTTPHeaders?
+        
+        if userAuth != "-1" {
             headers = [
-                "authorization" : userToken
+                "authorization" : userAuth,
+                "flag" : flag
             ]
         }
-        Alamofire.request(encodedUrl, method: .delete, parameters: params, encoding: JSONEncoding.default, headers: headers).responseData(){
+        Alamofire.request(encodedUrl, method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseData(){
             
             res in
             switch res.result {

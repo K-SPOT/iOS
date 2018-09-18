@@ -17,7 +17,7 @@ class MypageCVCell: UICollectionViewCell {
     func configure(data : MypageVODataChannel){
         self.setImgWithKF(url: data.backgroundImg, imgView: myImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
          engNameLbl.text = data.engName
-        koreanNameLbl.text = data.name
+        koreanNameLbl.text = data.korName
     }
     override func awakeFromNib() {
         self.makeRounded(cornerRadius: 17)

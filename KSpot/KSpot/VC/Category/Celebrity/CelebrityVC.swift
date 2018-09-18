@@ -38,6 +38,7 @@ extension CelebrityVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CelebrityTVCell.reuseIdentifier) as! CelebrityTVCell
         if let celebrityList_ = celebrityList {
+            cell.delegate = parent as? SelectSenderDelegate
            cell.configure(data: celebrityList_[indexPath.row])
         }
         return cell

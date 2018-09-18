@@ -20,6 +20,10 @@ protocol SelectSectionDelegate {
     func tap(section : Section, seledtedId : Int)
 }
 
+protocol SelectSenderDelegate {
+    func tap(section : Section, seledtedId : Int, sender : mySubscribeBtn)
+}
+
 enum Section {
     case first
     case second

@@ -36,6 +36,7 @@ class CategoryVC: UIViewController {
         let storyboard = Storyboard.shared().categoryStoryboard
         var viewController = storyboard.instantiateViewController(withIdentifier: CelebrityVC.reuseIdentifier) as! CelebrityVC
         viewController.delegate = self
+        
         return viewController
     }()
     
@@ -82,6 +83,8 @@ extension CategoryVC{
     }
 
 }
+
+//딜리게이트
 extension CategoryVC : SelectDelegate {
     func tap(selected: Int?) {
         //selected 0 => celebrity / 1 = > broadcast
@@ -94,6 +97,19 @@ extension CategoryVC : SelectDelegate {
    
 }
 
+//딜리게이트
+extension CategoryVC : SelectSenderDelegate {
+    func tap(section: Section, seledtedId: Int, sender: mySubscribeBtn) {
+        let params = ["channel_id" : seledtedId]
+        if sender.isSelected {
+            unsubscribe(url: UrlPath.ChannelSubscribe.getURL(sender.contentIdx?.description), sender: sender)
+        } else {
+            subscribe(url: UrlPath.ChannelSubscribe.getURL(), params: params, sender: sender)
+        }
+        
+    }
+}
+
 //통신
 extension CategoryVC  {
     func getMyChannel(url : String){
@@ -101,9 +117,9 @@ extension CategoryVC  {
             guard let `self` = self else { return }
             switch result {
             case .networkSuccess(let channelList):
-                let channelData = channelList as! ChannelVOData
-               self.celebrityList = channelData.channelCelebrityList
-               self.broadcastList = channelData.channelBroadcastList
+               let channelList = channelList as! ChannelVOData
+               self.broadcastList = channelList.channelBroadcastList
+                self.celebrityList = channelList.channelCelebrityList
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
             default :
@@ -112,5 +128,36 @@ extension CategoryVC  {
             }
         })
     }
+    
+    func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
+        ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(_):
+                sender.isSelected = true
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    } //subscribe
+    
+    func unsubscribe(url : String, sender : mySubscribeBtn){
+        ChannelSubscribeService.shareInstance.unsubscribe(url: url, completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(_):
+                sender.isSelected = false
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    }
+    
     
 }

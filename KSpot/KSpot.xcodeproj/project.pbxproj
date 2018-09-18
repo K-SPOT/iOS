@@ -31,6 +31,8 @@
 		3B3C441521517A1F005B8650 /* MyPageFirstTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C441421517A1F005B8650 /* MyPageFirstTVCell.swift */; };
 		3B3C441721518366005B8650 /* ChannelVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C441621518366005B8650 /* ChannelVO.swift */; };
 		3B3C4419215183BA005B8650 /* ChannelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C4418215183BA005B8650 /* ChannelService.swift */; };
+		3B3C441B21518C3E005B8650 /* DefaultVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C441A21518C3E005B8650 /* DefaultVO.swift */; };
+		3B3C441D21518C74005B8650 /* ChannelSubscribeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C441C21518C74005B8650 /* ChannelSubscribeService.swift */; };
 		3B3DD0E1213AE1C200FD00B3 /* MainSecondTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */; };
 		3B3DD0E3213AE1CC00FD00B3 /* MainSecondCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */; };
 		3B3DD0E5213AE1D900FD00B3 /* MainThirdTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */; };
@@ -136,6 +138,8 @@
 		3B3C441421517A1F005B8650 /* MyPageFirstTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageFirstTVCell.swift; sourceTree = "<group>"; };
 		3B3C441621518366005B8650 /* ChannelVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelVO.swift; sourceTree = "<group>"; };
 		3B3C4418215183BA005B8650 /* ChannelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelService.swift; sourceTree = "<group>"; };
+		3B3C441A21518C3E005B8650 /* DefaultVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultVO.swift; sourceTree = "<group>"; };
+		3B3C441C21518C74005B8650 /* ChannelSubscribeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSubscribeService.swift; sourceTree = "<group>"; };
 		3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondTVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondCVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThirdTVCell.swift; sourceTree = "<group>"; };
@@ -668,6 +672,7 @@
 				3B3C440A21515FCB005B8650 /* FacebookLoginService.swift */,
 				3B3C441221516D41005B8650 /* MypageService.swift */,
 				3B3C4418215183BA005B8650 /* ChannelService.swift */,
+				3B3C441C21518C74005B8650 /* ChannelSubscribeService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -678,6 +683,7 @@
 				3B3C440C21516072005B8650 /* FacebookLoginVO.swift */,
 				3B3C441021516C64005B8650 /* MypageVO.swift */,
 				3B3C441621518366005B8650 /* ChannelVO.swift */,
+				3B3C441A21518C3E005B8650 /* DefaultVO.swift */,
 			);
 			path = VO;
 			sourceTree = "<group>";
@@ -943,6 +949,7 @@
 				3BB188392145303F0021B543 /* CosmosDistrib.swift in Sources */,
 				3B3DD122213BF02800FD00B3 /* MapHeaderView.swift in Sources */,
 				3B3DD147213D3C3500FD00B3 /* CategoryDetailSecondTVHeaderCell.swift in Sources */,
+				3B3C441D21518C74005B8650 /* ChannelSubscribeService.swift in Sources */,
 				3B3DD126213C05C900FD00B3 /* MapCelebrityCVCell.swift in Sources */,
 				3BBB7D7F214577CA004CC142 /* SubscribeVC.swift in Sources */,
 				3B3DD128213C0B8100FD00B3 /* RegionBtn.swift in Sources */,
@@ -1003,6 +1010,7 @@
 				3BB1882B214420980021B543 /* ReviewWriteVC.swift in Sources */,
 				3BBB7D87214578F4004CC142 /* SubBroadcastTVCell.swift in Sources */,
 				3BBB7D9D2146F481004CC142 /* ReviewImgTVCell.swift in Sources */,
+				3B3C441B21518C3E005B8650 /* DefaultVO.swift in Sources */,
 				3BB18835214448B40021B543 /* MypageCVCell.swift in Sources */,
 				3B3DD17B213DC9D200FD00B3 /* WRCycleCell.swift in Sources */,
 				3B3DD116213BD77F00FD00B3 /* MapContainerVC.swift in Sources */,
