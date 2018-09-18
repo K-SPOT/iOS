@@ -75,14 +75,21 @@ class ReviewWriteVC: UIViewController, UITextFieldDelegate {
     }
     
     @objc func isValid(){
+        //완료 버튼 활성화
         if (!(titleTxtField.text?.isEmpty)! && !(contentTxtView.text.isEmpty)){
-            
             doneBtn.isEnabled = true
             doneBtn.tintColor = ColorChip.shared().mainColor
-            
         } else {
             doneBtn.isEnabled = false
             doneBtn.tintColor = #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1)
+        }
+        
+        //20자 초과되면 안되게
+        guard let contentTxt = titleTxtField.text else {return}
+        
+        if(contentTxt.count > 20) {
+            simpleAlert(title: "오류", message: "20글자 초과")
+            titleTxtField.text = String(describing: contentTxt.prefix(19))
         }
     } //isValid
     
@@ -212,9 +219,9 @@ extension ReviewWriteVC : UITextViewDelegate{
             writeCountLbl.text = "0"
         }
         guard let contentTxt = contentTxtView.text else {return}
-        if(contentTxt.count > 1000) {
-            simpleAlert(title: "오류", message: "1000글자 초과")
-            contentTxtView.text = String(describing: contentTxt.prefix(999))
+        if(contentTxt.count > 300) {
+            simpleAlert(title: "오류", message: "300글자 초과")
+            contentTxtView.text = String(describing: contentTxt.prefix(299))
             writeCountLbl.text = contentTxtView.text.count.description
             isValid()
             //doneBtn.tintColor = .green

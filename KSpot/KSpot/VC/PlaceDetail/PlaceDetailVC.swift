@@ -206,6 +206,7 @@ extension PlaceDetailVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: PlaceDetailFirstTVCell.reuseIdentifier) as! PlaceDetailFirstTVCell
+            cell.delegate = self
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: PlaceDetailSecondTVCell.reuseIdentifier) as! PlaceDetailSecondTVCell
@@ -225,6 +226,11 @@ extension PlaceDetailVC : SelectSectionelegate {
                 
                 self.navigationController?.pushViewController(reviewWriteVC, animated: true)
             }
+        }
+        
+        //관련/연예인 방송
+        if section == .first {
+            self.goToCelebrityDetail()
         }
     }
     
