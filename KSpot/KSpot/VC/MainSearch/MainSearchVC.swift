@@ -90,11 +90,20 @@ extension MainSearchVC{
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
+       
         adjustKeyboardDismissGesture(isKeyboardVisible: true)
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            searchBtn.snp.remakeConstraints({ (make) in
+                make.bottom.equalToSuperview().offset(-keyboardSize.height)
+            })
+        }
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-         adjustKeyboardDismissGesture(isKeyboardVisible: false)
+        adjustKeyboardDismissGesture(isKeyboardVisible: false)
+            searchBtn.snp.remakeConstraints({ (make) in
+                make.bottom.equalToSuperview()
+            })
         
     }
     
