@@ -11,6 +11,7 @@ import UIKit
 class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
     var keyboardDismissGesture: UITapGestureRecognizer?
     
+    @IBOutlet weak var searchIconBtn: UIButton!
     @IBOutlet weak var searchTxtfield: UITextField!
     
     @IBOutlet weak var searchBtn: UIButton!
@@ -27,6 +28,7 @@ class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
         setStackViewAction()
         searchTxtfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         searchBtn.addTarget(self, action: #selector(searchAction(_:)), for: .touchUpInside)
+        searchIconBtn.addTarget(self, action: #selector(searchIconAction(_:)), for: .touchUpInside)
         // textfeild.delegate = self 하기
     }
     
@@ -50,13 +52,16 @@ class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
     @objc func goToPlaceDetailVC(_ sender : UIButton){
         self.goToPlaceDetailVC()
     }
+    
     @objc func textFieldDidChange(_ textField: UITextField) {
         if !(searchTxtfield.text?.isEmpty)! {
             searchBtn.backgroundColor = ColorChip.shared().mainColor
             searchBtn.isEnabled = true
+            searchIconBtn.setImage(#imageLiteral(resourceName: "map_filter_x_button"), for: .normal)
         } else {
             searchBtn.backgroundColor = #colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1)
             searchBtn.isEnabled = false
+            searchIconBtn.setImage(#imageLiteral(resourceName: "main_search"), for: .normal)
         }
     }
     
@@ -67,6 +72,12 @@ class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
             mainSearchVC.title = searchTxtfield.text
             self.navigationController?.pushViewController(mainSearchVC, animated: true)
         }
+    }
+    
+    @objc func searchIconAction(_ button : UIButton) {
+        searchTxtfield.text = ""
+        textFieldDidChange(searchTxtfield)
+        
     }
 
 

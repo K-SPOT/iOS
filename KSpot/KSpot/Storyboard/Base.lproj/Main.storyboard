@@ -625,13 +625,6 @@
                                 <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_search" translatesAutoresizingMaskIntoConstraints="NO" id="kq3-oi-QON">
-                                <rect key="frame" x="335" y="190" width="24" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="kq3-oi-QON" secondAttribute="height" multiplier="1:1" id="9Qb-h7-E5T"/>
-                                    <constraint firstAttribute="width" constant="24" id="cmF-9c-ekX"/>
-                                </constraints>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZmP-Pr-Vmw">
                                 <rect key="frame" x="16" y="222" width="343" height="2"/>
                                 <color key="backgroundColor" red="0.41927871109999998" green="0.85189700130000001" blue="0.68716549869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -836,23 +829,31 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOa-7R-q9W">
+                                <rect key="frame" x="335" y="190" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dOa-7R-q9W" secondAttribute="height" multiplier="1:1" id="gD0-ou-b1S"/>
+                                    <constraint firstAttribute="width" constant="24" id="jKI-JC-ogb"/>
+                                </constraints>
+                                <state key="normal" image="main_search"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kmO-25-Nxj" firstAttribute="top" secondItem="l9n-EH-p4L" secondAttribute="bottom" constant="49" id="1LP-cJ-Q7Y"/>
-                            <constraint firstItem="kq3-oi-QON" firstAttribute="leading" secondItem="kmO-25-Nxj" secondAttribute="trailing" constant="10" id="34N-RK-tha"/>
                             <constraint firstItem="rE2-Ik-jVZ" firstAttribute="top" secondItem="ZmP-Pr-Vmw" secondAttribute="bottom" constant="64" id="8Xh-BT-sEb"/>
                             <constraint firstItem="8Yo-jk-Scf" firstAttribute="leading" secondItem="9Sv-oN-HTh" secondAttribute="leading" id="CfN-3R-4tD"/>
                             <constraint firstItem="rE2-Ik-jVZ" firstAttribute="leading" secondItem="ZmP-Pr-Vmw" secondAttribute="leading" id="QNY-em-hBh"/>
                             <constraint firstItem="ZmP-Pr-Vmw" firstAttribute="leading" secondItem="kmO-25-Nxj" secondAttribute="leading" id="RqV-9f-nVf"/>
+                            <constraint firstItem="ZmP-Pr-Vmw" firstAttribute="trailing" secondItem="dOa-7R-q9W" secondAttribute="trailing" id="Sg2-LV-pkx"/>
+                            <constraint firstItem="9Sv-oN-HTh" firstAttribute="trailing" secondItem="dOa-7R-q9W" secondAttribute="trailing" constant="16" id="Zfc-7c-rDZ"/>
                             <constraint firstItem="ZmP-Pr-Vmw" firstAttribute="top" secondItem="kmO-25-Nxj" secondAttribute="bottom" constant="10" id="eTn-e7-zoK"/>
-                            <constraint firstItem="ZmP-Pr-Vmw" firstAttribute="trailing" secondItem="kq3-oi-QON" secondAttribute="trailing" id="hNv-zi-Iz2"/>
+                            <constraint firstItem="dOa-7R-q9W" firstAttribute="leading" secondItem="kmO-25-Nxj" secondAttribute="trailing" constant="10" id="gEd-kV-et5"/>
                             <constraint firstItem="9Sv-oN-HTh" firstAttribute="trailing" secondItem="8Yo-jk-Scf" secondAttribute="trailing" id="hxd-Wg-0wQ"/>
                             <constraint firstItem="kmO-25-Nxj" firstAttribute="leading" secondItem="l9n-EH-p4L" secondAttribute="leading" id="inl-vb-y3r"/>
                             <constraint firstItem="9Sv-oN-HTh" firstAttribute="bottom" secondItem="8Yo-jk-Scf" secondAttribute="bottom" id="lSQ-T9-TEn"/>
-                            <constraint firstItem="9Sv-oN-HTh" firstAttribute="trailing" secondItem="kq3-oi-QON" secondAttribute="trailing" constant="16" id="ly2-76-zpd"/>
+                            <constraint firstItem="dOa-7R-q9W" firstAttribute="centerY" secondItem="kmO-25-Nxj" secondAttribute="centerY" id="pjh-9D-TnS"/>
                             <constraint firstItem="l9n-EH-p4L" firstAttribute="leading" secondItem="9Sv-oN-HTh" secondAttribute="leading" constant="16" id="td3-mZ-BrP"/>
-                            <constraint firstItem="kq3-oi-QON" firstAttribute="centerY" secondItem="kmO-25-Nxj" secondAttribute="centerY" id="uez-50-Myu"/>
                             <constraint firstItem="l9n-EH-p4L" firstAttribute="top" secondItem="9Sv-oN-HTh" secondAttribute="top" constant="52" id="vfJ-bb-Fnd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Sv-oN-HTh"/>
@@ -868,12 +869,13 @@
                         <outlet property="celebrityStack" destination="HEI-Xo-v4U" id="Ch5-J9-jF6"/>
                         <outlet property="eventStack" destination="TeX-ya-SBm" id="B0v-HG-cEn"/>
                         <outlet property="searchBtn" destination="8Yo-jk-Scf" id="kkL-OU-LtB"/>
+                        <outlet property="searchIconBtn" destination="dOa-7R-q9W" id="DpY-xL-g71"/>
                         <outlet property="searchTxtfield" destination="kmO-25-Nxj" id="qVi-1Q-fr4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U5Y-ar-Qha" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2780" y="-150"/>
+            <point key="canvasLocation" x="2780" y="-150.67466266866569"/>
         </scene>
         <!--홈-->
         <scene sceneID="5fe-d4-kqu">
