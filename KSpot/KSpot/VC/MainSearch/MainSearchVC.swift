@@ -69,7 +69,12 @@ class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
         let mainStoryboard = Storyboard.shared().mainStoryboard
         if let mainSearchVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultVC.reuseIdentifier) as? SearchResultVC {
             //네비게이션 타이틀
-            mainSearchVC.title = searchTxtfield.text
+            guard let searchTxt = searchTxtfield.text else{return}
+            if ((searchTxt.count) < 10) {
+                 mainSearchVC.navigationItem.title = searchTxtfield.text
+            } else {
+                mainSearchVC.navigationItem.title = "\(searchTxt.prefix(9))..."
+            }
             self.navigationController?.pushViewController(mainSearchVC, animated: true)
         }
     }

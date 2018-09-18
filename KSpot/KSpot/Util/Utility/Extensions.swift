@@ -22,18 +22,18 @@ extension NSObject {
 
 //화면 이동
 extension UIViewController {
-    func goToPlaceDetailVC(){
+    func goToPlaceDetailVC(title : String = ""){
         let mapStoryboard = Storyboard.shared().mapStoryboard
         if let placeDetailVC = mapStoryboard.instantiateViewController(withIdentifier:PlaceDetailVC.reuseIdentifier) as? PlaceDetailVC {
-            
+            placeDetailVC.navigationItem.title = title
             self.navigationController?.pushViewController(placeDetailVC, animated: true)
         }
     } //goToPlaceDetailVC
     
-     func goToCelebrityDetail(){
+    func goToCelebrityDetail(title : String = ""){
         let categoryStoryboard = Storyboard.shared().categoryStoryboard
         if let categoryDetailVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailVC.reuseIdentifier) as? CategoryDetailVC {
-            
+            categoryDetailVC.navigationItem.title = title
             self.navigationController?.pushViewController(categoryDetailVC, animated: true)
         }
     } //goToCelebrityDetail
@@ -41,6 +41,7 @@ extension UIViewController {
     func goToSearchVC(){
         let mainStoryboard = Storyboard.shared().mainStoryboard
         if let mainSearchVC = mainStoryboard.instantiateViewController(withIdentifier:MainSearchVC.reuseIdentifier) as? MainSearchVC {
+            
             self.navigationController?.pushViewController(mainSearchVC, animated: true)
         }
     } //goToSearchVC
