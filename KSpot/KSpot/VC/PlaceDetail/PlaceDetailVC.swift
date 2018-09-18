@@ -24,6 +24,7 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     @IBOutlet weak var subwayLbl: UILabel!
     var whiteScrapBarBtn : UIBarButtonItem?
     var blackScrapBarBtn : UIBarButtonItem?
+    var selectedIdx = 0
     lazy var cycleScrollView:WRCycleScrollView = {
     
         let frame = CGRect(x: 0, y: -IMAGE_HEIGHT, width: CGFloat(kScreenWidth), height: IMAGE_HEIGHT)
@@ -230,7 +231,7 @@ extension PlaceDetailVC : SelectSectionDelegate {
         
         //관련/연예인 방송
         if section == .first {
-            self.goToCelebrityDetail()
+            self.goToCelebrityDetail(selectedIdx : 0)
         }
     }
     

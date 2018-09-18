@@ -24,18 +24,20 @@ extension NSObject {
 
 //화면 이동
 extension UIViewController {
-    func goToPlaceDetailVC(title : String = ""){
+    func goToPlaceDetailVC(selectedIdx : Int, title : String = ""){
         let mapStoryboard = Storyboard.shared().mapStoryboard
         if let placeDetailVC = mapStoryboard.instantiateViewController(withIdentifier:PlaceDetailVC.reuseIdentifier) as? PlaceDetailVC {
             placeDetailVC.navigationItem.title = title
+            placeDetailVC.selectedIdx = selectedIdx
             self.navigationController?.pushViewController(placeDetailVC, animated: true)
         }
     } //goToPlaceDetailVC
     
-    func goToCelebrityDetail(title : String = ""){
+    func goToCelebrityDetail(selectedIdx : Int, title : String = ""){
         let categoryStoryboard = Storyboard.shared().categoryStoryboard
         if let categoryDetailVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailVC.reuseIdentifier) as? CategoryDetailVC {
             categoryDetailVC.navigationItem.title = title
+            categoryDetailVC.selectedIdx = selectedIdx
             self.navigationController?.pushViewController(categoryDetailVC, animated: true)
         }
     } //goToCelebrityDetail
@@ -232,18 +234,7 @@ extension UICollectionViewCell {
             imgView.image = defaultImg
         }
     }
-    
-    func setSubscribeBtn(subscribeBtn : mySubscribeBtn, idx : Int, isSubscribe : Int){
-        subscribeBtn.setImage(UIImage(named: "category_subscription_white"), for: .normal)
-        subscribeBtn.setImage(
-            UIImage(named: "category_subscription_green"), for: .selected)
-        subscribeBtn.contentIdx = idx
-        if isSubscribe == 0 {
-            subscribeBtn.isSelected = false
-        } else {
-            subscribeBtn.isSelected = true
-        }
-    }
+ 
 }
 
 extension UITableViewCell {
@@ -254,16 +245,19 @@ extension UITableViewCell {
             imgView.image = defaultImg
         }
     }
-    
-    func setSubscribeBtn(subscribeBtn : mySubscribeBtn, idx : Int, isSubscribe : Int){
-        subscribeBtn.setImage(UIImage(named: "category_subscription_white"), for: .normal)
-        subscribeBtn.setImage(
+  
+}
+
+extension mySubscribeBtn {
+    func setSubscribeBtn(idx : Int, isSubscribe : Int){
+        self.setImage(UIImage(named: "category_subscription_white"), for: .normal)
+        self.setImage(
             UIImage(named: "category_subscription_green"), for: .selected)
-        subscribeBtn.contentIdx = idx
+        self.contentIdx = idx
         if isSubscribe == 0 {
-            subscribeBtn.isSelected = false
+            self.isSelected = false
         } else {
-            subscribeBtn.isSelected = true
+            self.isSelected = true
         }
     }
 }

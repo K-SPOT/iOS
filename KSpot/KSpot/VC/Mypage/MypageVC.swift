@@ -121,7 +121,7 @@ extension MypageVC : SelectSectionDelegate{
                 self.navigationController?.pushViewController(subscribeVC, animated: true)
             }
         } else {
-            goToCelebrityDetail()
+             self.goToCelebrityDetail(selectedIdx : 0)
         }
     }
 }

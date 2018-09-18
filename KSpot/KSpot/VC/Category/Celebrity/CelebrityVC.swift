@@ -45,7 +45,9 @@ extension CelebrityVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.tap(selected: 0)
+        if let celebrityList_ = celebrityList {
+            delegate?.tap(selected: celebrityList_[indexPath.row].channelID)
+        }
     }
 }
 

@@ -58,7 +58,7 @@ extension MainViewController : SelectSectionDelegate {
             }
         } else {
             print("taped")
-            self.goToPlaceDetailVC()
+            self.goToPlaceDetailVC(selectedIdx: 0)
         }
     }
 }

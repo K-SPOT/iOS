@@ -24,6 +24,9 @@ enum UrlPath : String {
     //카테고리
     case ChannelList = "/channel/list" //get
     case ChannelSubscription = "/channel/subscription/"
+    case ChannelDetail = "/channel/detail/"
+    
+
     
     
 

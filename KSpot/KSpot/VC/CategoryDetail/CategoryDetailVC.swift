@@ -14,7 +14,7 @@ private let NAVBAR_COLORCHANGE_POINT:CGFloat = TOPVIEW_HEIGHT - CGFloat(kNavBarB
 class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
     
     @IBOutlet weak var tableView: UITableView!
-    
+    var selectedIdx = 0
     
     lazy var backgroundImg :UIImageView = {
         let imgView = UIImageView(image: UIImage(named: "cimg"))
@@ -56,9 +56,9 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
         return label
     }()
     
-    lazy var subscribeBtn:UIButton = {
-        let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "category_subscription_white"), for: .normal)
+    lazy var subscribeBtn:mySubscribeBtn = {
+        let button = mySubscribeBtn()
+        //button.setImage(#imageLiteral(resourceName: "category_subscription_white"), for: .normal)
         button.addTarget(self, action: #selector(CategoryDetailVC.subscribeAction(_:)), for: .touchUpInside)
         return button
     }()
@@ -83,8 +83,13 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
         tableView.setContentOffset(.zero, animated: true)
     }
     
-    @objc func subscribeAction(_ : UIButton){
-        print("구독버튼 클릭")
+    @objc func subscribeAction(_ sender : mySubscribeBtn){
+        let params = ["channel_id" : sender.contentIdx?.description]
+        if sender.isSelected {
+            unsubscribe(url: UrlPath.ChannelSubscription.getURL(sender.contentIdx?.description), sender: sender)
+        } else {
+            subscribe(url: UrlPath.ChannelSubscription.getURL(), params: params, sender: sender)
+        }
     }
     
     
@@ -94,6 +99,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
         
         setupTableView()
         setupNavView()
+        getChannelDetail(url : UrlPath.ChannelDetail.getURL(selectedIdx.description))
     }
     
     func setupTableView(){
@@ -295,9 +301,9 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         if indexPath.section == 1  {
-            goToPlaceDetailVC()
+           self.goToPlaceDetailVC(selectedIdx: 0)
         } else if indexPath.section == 2 {
-            goToCelebrityDetail()
+             self.goToCelebrityDetail(selectedIdx : 0)
         }
     }
     
@@ -306,7 +312,63 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
 extension CategoryDetailVC : SelectSectionDelegate {
     func tap(section: Section, seledtedId: Int) {
         if section == .first {
-            goToPlaceDetailVC()
+           self.goToPlaceDetailVC(selectedIdx: 0)
         }
+    }
+}
+
+//통신
+extension CategoryDetailVC {
+    func getChannelDetail(url : String){
+        ChannelDetailService.shareInstance.getChannelDetail(url: url,completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(let channelDetailData):
+                let detailData = channelDetailData as! ChannelDetailVOData
+                let info = detailData.channelInfo[0]
+                self.mainTitleLbl.text = info.korName
+                self.subTitleLbl.text = info.korCompany
+                self.subscribeLbl.text = info.subscriptionCnt.description
+                self.setImgWithKF(url: info.backgroundImg, imgView: self.backgroundImg, defaultImg: #imageLiteral(resourceName: "aimg"))
+                self.setImgWithKF(url: info.thumbnailImg, imgView: self.logoImg, defaultImg: #imageLiteral(resourceName: "aimg"))
+                self.subscribeBtn.setSubscribeBtn(idx: info.id, isSubscribe: info.subscription)
+                
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    }
+    
+    func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
+        ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(_):
+                sender.isSelected = true
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    } //subscribe
+    
+    func unsubscribe(url : String, sender : mySubscribeBtn){
+        ChannelSubscribeService.shareInstance.unsubscribe(url: url, completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(_):
+                sender.isSelected = false
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
     }
 }

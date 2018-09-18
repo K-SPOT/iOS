@@ -46,11 +46,11 @@ class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func goToCelebrityDetail(_ sender : UIButton){
-        self.goToCelebrityDetail()
+        self.goToCelebrityDetail(selectedIdx : 0)
     }
     
     @objc func goToPlaceDetailVC(_ sender : UIButton){
-        self.goToPlaceDetailVC()
+        self.goToPlaceDetailVC(selectedIdx: 0)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {

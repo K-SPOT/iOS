@@ -142,11 +142,11 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
         
         let section = indexPath.section
         if section == 0 {
-            goToCelebrityDetail()
+             self.goToCelebrityDetail(selectedIdx : 0)
         } else if section == 1 {
-            goToPlaceDetailVC()
+            self.goToPlaceDetailVC(selectedIdx: 0)
         } else {
-            goToPlaceDetailVC()
+           self.goToPlaceDetailVC(selectedIdx: 0)
         }
         tableView.deselectRow(at: indexPath, animated: false)
     }

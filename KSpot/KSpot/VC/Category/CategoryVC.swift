@@ -87,14 +87,8 @@ extension CategoryVC{
 //딜리게이트
 extension CategoryVC : SelectDelegate {
     func tap(selected: Int?) {
-        //selected 0 => celebrity / 1 = > broadcast
-        let categoryStoryboard = Storyboard.shared().categoryStoryboard
-        if let categoryDetailVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailVC.reuseIdentifier) as? CategoryDetailVC {
-            
-            self.navigationController?.pushViewController(categoryDetailVC, animated: true)
-        }
+        goToCelebrityDetail(selectedIdx: selected!)
     }
-   
 }
 
 //딜리게이트
@@ -158,6 +152,8 @@ extension CategoryVC  {
             }
         })
     }
+    
+    
     
     
 }

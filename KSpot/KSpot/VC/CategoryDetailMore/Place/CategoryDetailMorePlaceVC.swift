@@ -44,7 +44,7 @@ extension CategoryDetailMorePlaceVC : UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.goToPlaceDetailVC()
+        self.goToPlaceDetailVC(selectedIdx: 0)
     }
 }
 

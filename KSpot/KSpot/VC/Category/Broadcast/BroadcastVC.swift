@@ -46,6 +46,8 @@ extension BroadcastVC : UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.tap(selected: 1)
+        if let broadcastList_ = broadcastList {
+            delegate?.tap(selected: broadcastList_[indexPath.row].channelID)
+        }
     }
 }

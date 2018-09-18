@@ -38,6 +38,8 @@
 		3B3C442A2151A121005B8650 /* UserScrapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C44292151A121005B8650 /* UserScrapService.swift */; };
 		3B3C442C2151A14A005B8650 /* UserScrapVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C442B2151A14A005B8650 /* UserScrapVO.swift */; };
 		3B3C442E2151AA4E005B8650 /* UserEditService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C442D2151AA4E005B8650 /* UserEditService.swift */; };
+		3B3C44302151B054005B8650 /* ChannelDetailVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C442F2151B054005B8650 /* ChannelDetailVO.swift */; };
+		3B3C44322151B070005B8650 /* ChannelDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C44312151B070005B8650 /* ChannelDetailService.swift */; };
 		3B3DD0E1213AE1C200FD00B3 /* MainSecondTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */; };
 		3B3DD0E3213AE1CC00FD00B3 /* MainSecondCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */; };
 		3B3DD0E5213AE1D900FD00B3 /* MainThirdTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */; };
@@ -150,6 +152,8 @@
 		3B3C44292151A121005B8650 /* UserScrapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScrapService.swift; sourceTree = "<group>"; };
 		3B3C442B2151A14A005B8650 /* UserScrapVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScrapVO.swift; sourceTree = "<group>"; };
 		3B3C442D2151AA4E005B8650 /* UserEditService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEditService.swift; sourceTree = "<group>"; };
+		3B3C442F2151B054005B8650 /* ChannelDetailVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailVO.swift; sourceTree = "<group>"; };
+		3B3C44312151B070005B8650 /* ChannelDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailService.swift; sourceTree = "<group>"; };
 		3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondTVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondCVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThirdTVCell.swift; sourceTree = "<group>"; };
@@ -338,6 +342,7 @@
 			children = (
 				3B3C4418215183BA005B8650 /* ChannelService.swift */,
 				3B3C441C21518C74005B8650 /* ChannelSubscribeService.swift */,
+				3B3C44312151B070005B8650 /* ChannelDetailService.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				3B3C441621518366005B8650 /* ChannelVO.swift */,
+				3B3C442F2151B054005B8650 /* ChannelDetailVO.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1005,6 +1011,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B3C43E5214F05D6005B8650 /* SearchResultMoreVC.swift in Sources */,
+				3B3C44302151B054005B8650 /* ChannelDetailVO.swift in Sources */,
 				3B3DD178213DBDBD00FD00B3 /* Font.swift in Sources */,
 				3B3C43E3214F05BC005B8650 /* SearchResultMorePlaceVC.swift in Sources */,
 				3B3DD16D213DA7AE00FD00B3 /* WRNavigationBar.swift in Sources */,
@@ -1095,6 +1102,7 @@
 				3B3C43CD214EECAA005B8650 /* CategoryDetailMoreVC.swift in Sources */,
 				3B3DD0E5213AE1D900FD00B3 /* MainThirdTVCell.swift in Sources */,
 				3BBB7D85214578E7004CC142 /* SubCelebrityTVCell.swift in Sources */,
+				3B3C44322151B070005B8650 /* ChannelDetailService.swift in Sources */,
 				3BBB7D9321469656004CC142 /* ThemeVC.swift in Sources */,
 				3B3DD12C213C1C3200FD00B3 /* SelectRegionDelegate.swift in Sources */,
 				3B3DD0E3213AE1CC00FD00B3 /* MainSecondCVCell.swift in Sources */,

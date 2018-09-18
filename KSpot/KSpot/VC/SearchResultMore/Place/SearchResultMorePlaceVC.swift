@@ -51,7 +51,7 @@ extension SearchResultMorePlaceVC : UITableViewDelegate, UITableViewDataSource  
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        goToPlaceDetailVC()
+        self.goToPlaceDetailVC(selectedIdx: 0)
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
