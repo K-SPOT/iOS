@@ -23,12 +23,16 @@ enum MapEntryPoint {
 }
 
 class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDelegate {
+    typealias latLong = (lat : Double, long : Double)
     let currentLocationMarker = GMSMarker()
     var locationManager = CLLocationManager()
     var chosenPlace: MyPlace?
     var address : [Result]?
     var delegate : SelectDelegate?
     var entryPoint : MapEntryPoint = .currentLocation
+    let defualtLat = 36.3504
+    let defualtLong = 127.3845
+
     @IBOutlet var myMapView: GMSMapView!
     
     let txtFieldSearch: UITextField = {
@@ -82,6 +86,12 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
         super.viewWillAppear(animated)
         if entryPoint == .currentLocation {
             locationManager.startUpdatingLocation()
+            if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+                let myLocation = getMyLatLong()
+                chosenPlace = MyPlace(name: "", lat: myLocation.lat, long: myLocation.long)
+            } else {
+                chosenPlace = MyPlace(name: "대전", lat: defualtLat, long: defualtLong)
+            }
         } else {
             let lat = chosenPlace?.lat
             let long = chosenPlace?.long
@@ -89,7 +99,7 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
                 goToSelectedMapView(lat : lat_, long : long_)
             }
         }
-        
+
     }
     
     func goToSelectedMapView(lat : Double, long : Double){
@@ -106,19 +116,27 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
     }
     
     @objc func btnMyLocationAction() {
-        
+
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            let location: CLLocation? = myMapView.myLocation
-            if let location_ = location {
-                let lat = location_.coordinate.latitude
-                let long = location_.coordinate.longitude
-                chosenPlace = MyPlace(name: "", lat: lat, long: long)
-                myMapView.animate(toLocation: (location_.coordinate))
-            }
+           
+            let myLocation = getMyLatLong()
+            chosenPlace = MyPlace(name: "", lat: myLocation.lat, long: myLocation.long)
+            let camera = GMSCameraPosition.camera(withLatitude: myLocation.lat, longitude: myLocation.long, zoom: 17.0)
+            self.myMapView.animate(to: camera)
         } else {
             showLocationDisableAlert()
         }
         
+    }
+
+    func getMyLatLong() -> latLong {
+        let location: CLLocation? = myMapView.myLocation
+        if let location_ = location {
+            let lat = location_.coordinate.latitude
+            let long = location_.coordinate.longitude
+            return (lat, long)
+        }
+        return (defualtLat, defualtLong)
     }
     
     func showLocationDisableAlert() {
@@ -136,25 +154,12 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
     @objc func okAction() {
         delegate?.tap(selected: 0)
         if let chosenPlace_ = chosenPlace {
-            //let addressName = getAddressForLatLng(latitude: chosenPlace_.lat.description, longitude: chosenPlace_.long.description)
+            //1. 만약 위치 정보 허용 안해서 defualt 로 대전이 설정되어 있을때
+            //2. 위치 정보 허용해서 현재 위치가 설정 되어 있을 때
+            //3. 구글 맵 상에서 위치를 설정 했을 때
             let lat = chosenPlace_.lat.description
             let long = chosenPlace_.long.description
-            //self.getAddress(url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(lat),\(long)&key=\(NetworkConfiguration.shared().googleMapAPIKey)")
-            
-//            print("여기예요 여기 1 \(addressName)")
-//            print("선택된 내 위도 : \(chosenPlace_.lat)")
-//            print("선택된 내 경도 : \(chosenPlace_.long)")
-        } else {
-            //현재 위치
-            let location: CLLocation? = myMapView.myLocation
-            if let location_ = location {
-                let lat = location_.coordinate.latitude.description
-                let long = location_.coordinate.longitude.description
-                //self.getAddress(url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(lat),\(long)&key=\(NetworkConfiguration.shared().googleMapAPIKey)")
-               // let addressName = getAddressForLatLng(latitude: lat.description, longitude: long.description)
-                
-               // print("여기예요 여기 2 \(addressName)")
-            }
+        
         }
         self.pop()
       
@@ -193,65 +198,6 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
     }
 }*/
 
-//get address from lat/long
-/*extension GoogleMapVC {
-    func getAddressForLatLng(latitude: String, longitude: String) -> String {
-        
-        let url = NSURL(string: "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(latitude),\(longitude)&key=\(NetworkConfiguration.shared().googleMapAPIKey)")
-        let data = NSData(contentsOf: url! as URL)
-        if data != nil {
-            let json = try! JSONSerialization.jsonObject(with: data! as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
-             print(JSON(json))
-            if let result = json["results"] as? NSArray   {
-                if result.count > 0 {
-                    if let addresss:NSDictionary = result[0] as! NSDictionary {
-                        if let address = addresss["address_components"] as? NSArray {
-                            var newaddress = ""
-                            var number = ""
-                            var street = ""
-                            var city = ""
-                            var state = ""
-                            var zip = ""
-                            
-                            if(address.count > 1) {
-                                number =  (address.object(at: 0) as! NSDictionary)["short_name"] as! String
-                            }
-                            if(address.count > 2) {
-                                street = (address.object(at: 1) as! NSDictionary)["short_name"] as! String
-                            }
-                            if(address.count > 3) {
-                                city = (address.object(at: 2) as! NSDictionary)["short_name"] as! String
-                            }
-                            if(address.count > 4) {
-                                state = (address.object(at: 4) as! NSDictionary)["short_name"] as! String
-                            }
-                            if(address.count > 6) {
-                                zip =  (address.object(at: 6) as! NSDictionary)["short_name"] as! String
-                            }
-                            newaddress = "\(number) \(street), \(city), \(state) \(zip)"
-                            //newaddress = street.description
-                            return newaddress
-                        }
-                        else {
-                            return ""
-                        }
-                    }
-                } else {
-                    return ""
-                }
-            }
-            else {
-                return ""
-            }
-            
-        }   else {
-            return ""
-        }
-        
-    }
-}*/
-
-
 extension GoogleMapVC : GMSAutocompleteViewControllerDelegate {
     // MARK: GOOGLE AUTO COMPLETE DELEGATE
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
@@ -281,7 +227,7 @@ extension GoogleMapVC : GMSAutocompleteViewControllerDelegate {
     }
     
     func initGoogleMaps() {
-        let camera = GMSCameraPosition.camera(withLatitude: 28.7041, longitude: 77.1025, zoom: 17.0)
+        let camera = GMSCameraPosition.camera(withLatitude: defualtLat, longitude: defualtLong, zoom: 17.0)
         self.myMapView.camera = camera
         self.myMapView.delegate = self
         self.myMapView.isMyLocationEnabled = true

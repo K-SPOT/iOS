@@ -28,7 +28,7 @@ extension UIViewController {
             
             self.navigationController?.pushViewController(placeDetailVC, animated: true)
         }
-    }
+    } //goToPlaceDetailVC
     
      func goToCelebrityDetail(){
         let categoryStoryboard = Storyboard.shared().categoryStoryboard
@@ -36,7 +36,14 @@ extension UIViewController {
             
             self.navigationController?.pushViewController(categoryDetailVC, animated: true)
         }
-    }
+    } //goToCelebrityDetail
+    
+    func goToSearchVC(){
+        let mainStoryboard = Storyboard.shared().mainStoryboard
+        if let mainSearchVC = mainStoryboard.instantiateViewController(withIdentifier:MainSearchVC.reuseIdentifier) as? MainSearchVC {
+            self.navigationController?.pushViewController(mainSearchVC, animated: true)
+        }
+    } //goToSearchVC
     
     //백버튼
     func setBackBtn(color : UIColor? = ColorChip.shared().barbuttonColor){

@@ -18,10 +18,7 @@ class CategoryVC: UIViewController {
     @IBOutlet weak var broadcastGreenView: UIView!
     
     @IBAction func searchAction(_ sender: Any) {
-        let mainStoryboard = Storyboard.shared().mainStoryboard
-        if let mainSearchVC = mainStoryboard.instantiateViewController(withIdentifier:MainSearchVC.reuseIdentifier) as? MainSearchVC {
-            self.navigationController?.pushViewController(mainSearchVC, animated: true)
-        }
+        self.goToSearchVC()
     }
     
     
