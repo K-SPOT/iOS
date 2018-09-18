@@ -11,6 +11,11 @@ import UIKit
 class SubBroadCastVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var broadcastSubscriptionList : [UserSubcriptionVOBroadcast]?{
+        didSet {
+            tableView.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -22,11 +27,18 @@ class SubBroadCastVC: UIViewController {
 
 extension SubBroadCastVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        if let broadcastSubscriptionList_ = broadcastSubscriptionList {
+            return broadcastSubscriptionList_.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SubBroadcastTVCell.reuseIdentifier) as! SubBroadcastTVCell
+        if let broadcastSubscriptionList_ = broadcastSubscriptionList {
+           cell.configure(data: broadcastSubscriptionList_[indexPath.row])
+        }
+        
         return cell
     }
     

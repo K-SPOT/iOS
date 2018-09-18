@@ -72,6 +72,7 @@ extension MypageVC : UITableViewDelegate, UITableViewDataSource{
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: MypageFisrtTVCell.reuseIdentifier) as! MypageFisrtTVCell
                 cell.channelArr = self.channelArr
+                cell.delegate = self
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: MypageTVCell.reuseIdentifier) as! MypageTVCell
@@ -106,6 +107,7 @@ extension MypageVC : UITableViewDelegate, UITableViewDataSource{
 
 extension MypageVC : SelectSectionDelegate{
     func tap(section: Section, seledtedId: Int) {
+        //more action
         if (seledtedId == 0){
             let mypageStoryboard = Storyboard.shared().mypageStoryboard
             if let subscribeVC = mypageStoryboard.instantiateViewController(withIdentifier:SubscribeVC.reuseIdentifier) as? SubscribeVC {
@@ -137,7 +139,7 @@ extension MypageVC {
                 break
             }
         })
-    } //login
+    } //getmyinfo
 }
 
 

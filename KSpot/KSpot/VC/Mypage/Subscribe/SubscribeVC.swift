@@ -17,6 +17,17 @@ class SubscribeVC: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var broadcastGreenView: UIView!
     
+    var celebritySubscriptionList : [UserSubcriptionVOBroadcast]? {
+        didSet {
+            celebrityVC.celebritySubscriptionList = celebritySubscriptionList
+        }
+    }
+    var broadcastSubscriptionList : [UserSubcriptionVOBroadcast]? {
+        didSet {
+            broadcastVC.broadcastSubscriptionList = broadcastSubscriptionList
+        }
+    }
+    
     
     private lazy var celebrityVC: SubCelebrityVC = {
         let storyboard = Storyboard.shared().mypageStoryboard
@@ -42,6 +53,7 @@ class SubscribeVC: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         celebrityBtn.setBtn(another: broadcastBtn, bottomLine: celebrityGreenView)
         broadcastBtn.setBtn(another: celebrityBtn, bottomLine: broadcastGreenView)
+        getUserSubcription(url: UrlPath.UserSubscription.getURL())
         updateView(selected: 0)
         setBackBtn()
     }
@@ -67,4 +79,27 @@ extension SubscribeVC{
     }
     
 }
+
+//통신
+extension SubscribeVC{
+    func getUserSubcription(url : String){
+        UserSubcriptionService.shareInstance.getSubscriptionList(url: url,completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(let subsData):
+                let subsData = subsData as! UserSubcriptionVOData
+                self.broadcastSubscriptionList = subsData.broadcast
+                self.celebritySubscriptionList = subsData.celebrity
+               
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    }
+    
+}
+
 

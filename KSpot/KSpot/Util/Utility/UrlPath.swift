@@ -18,8 +18,8 @@ enum UrlPath : String {
     
     //카테고리
     case ChannelList = "/channel/list" //get
-    case ChannelSubscribe = "/channel/subscription/"
-    //case ChannelUnSubscribe = "/channel/subscription/"
+    case ChannelSubscription = "/channel/subscription/"
+    case UserSubscription = "/user/subscription"
     
 
     

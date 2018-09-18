@@ -102,9 +102,9 @@ extension CategoryVC : SelectSenderDelegate {
     func tap(section: Section, seledtedId: Int, sender: mySubscribeBtn) {
         let params = ["channel_id" : seledtedId]
         if sender.isSelected {
-            unsubscribe(url: UrlPath.ChannelSubscribe.getURL(sender.contentIdx?.description), sender: sender)
+            unsubscribe(url: UrlPath.ChannelSubscription.getURL(sender.contentIdx?.description), sender: sender)
         } else {
-            subscribe(url: UrlPath.ChannelSubscribe.getURL(), params: params, sender: sender)
+            subscribe(url: UrlPath.ChannelSubscription.getURL(), params: params, sender: sender)
         }
         
     }

@@ -14,6 +14,12 @@ class SubCelebrityTVCell: UITableViewCell {
     @IBOutlet weak var profileView: UIImageView!
     
     @IBOutlet weak var nameLbl: UILabel!
+    
+    func configure(data : UserSubcriptionVOBroadcast) {
+        setImgWithKF(url: data.thumbnailImg, imgView: profileView, defaultImg: #imageLiteral(resourceName: "aimg"))
+        nameLbl.text = data.korName
+        greenView.isHidden = (data.newPostCheck == 0)
+    }
     override func awakeFromNib() {
         profileView.makeRounded(cornerRadius: profileView.frame.height/2)
         super.awakeFromNib()

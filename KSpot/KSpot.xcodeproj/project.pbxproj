@@ -33,6 +33,8 @@
 		3B3C4419215183BA005B8650 /* ChannelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C4418215183BA005B8650 /* ChannelService.swift */; };
 		3B3C441B21518C3E005B8650 /* DefaultVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C441A21518C3E005B8650 /* DefaultVO.swift */; };
 		3B3C441D21518C74005B8650 /* ChannelSubscribeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C441C21518C74005B8650 /* ChannelSubscribeService.swift */; };
+		3B3C442621519C98005B8650 /* UserSubcriptionVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C442521519C98005B8650 /* UserSubcriptionVO.swift */; };
+		3B3C442821519CEF005B8650 /* UserSubcriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C442721519CEF005B8650 /* UserSubcriptionService.swift */; };
 		3B3DD0E1213AE1C200FD00B3 /* MainSecondTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */; };
 		3B3DD0E3213AE1CC00FD00B3 /* MainSecondCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */; };
 		3B3DD0E5213AE1D900FD00B3 /* MainThirdTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */; };
@@ -140,6 +142,8 @@
 		3B3C4418215183BA005B8650 /* ChannelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelService.swift; sourceTree = "<group>"; };
 		3B3C441A21518C3E005B8650 /* DefaultVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultVO.swift; sourceTree = "<group>"; };
 		3B3C441C21518C74005B8650 /* ChannelSubscribeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSubscribeService.swift; sourceTree = "<group>"; };
+		3B3C442521519C98005B8650 /* UserSubcriptionVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSubcriptionVO.swift; sourceTree = "<group>"; };
+		3B3C442721519CEF005B8650 /* UserSubcriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSubcriptionService.swift; sourceTree = "<group>"; };
 		3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondTVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondCVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThirdTVCell.swift; sourceTree = "<group>"; };
@@ -313,6 +317,57 @@
 			);
 			name = Login;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		3B3C441E21519C38005B8650 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				3B3C440A21515FCB005B8650 /* FacebookLoginService.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		3B3C441F21519C41005B8650 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				3B3C4418215183BA005B8650 /* ChannelService.swift */,
+				3B3C441C21518C74005B8650 /* ChannelSubscribeService.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		3B3C442021519C53005B8650 /* Mypage */ = {
+			isa = PBXGroup;
+			children = (
+				3B3C441221516D41005B8650 /* MypageService.swift */,
+				3B3C442721519CEF005B8650 /* UserSubcriptionService.swift */,
+			);
+			path = Mypage;
+			sourceTree = "<group>";
+		};
+		3B3C442121519C63005B8650 /* Mypage */ = {
+			isa = PBXGroup;
+			children = (
+				3B3C441021516C64005B8650 /* MypageVO.swift */,
+				3B3C442521519C98005B8650 /* UserSubcriptionVO.swift */,
+			);
+			path = Mypage;
+			sourceTree = "<group>";
+		};
+		3B3C442221519C68005B8650 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				3B3C441621518366005B8650 /* ChannelVO.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		3B3C442321519C6D005B8650 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				3B3C440C21516072005B8650 /* FacebookLoginVO.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		3B3DD0E8213AE29D00FD00B3 /* VC */ = {
@@ -669,10 +724,9 @@
 		3BBB7DB3214A17A2004CC142 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				3B3C440A21515FCB005B8650 /* FacebookLoginService.swift */,
-				3B3C441221516D41005B8650 /* MypageService.swift */,
-				3B3C4418215183BA005B8650 /* ChannelService.swift */,
-				3B3C441C21518C74005B8650 /* ChannelSubscribeService.swift */,
+				3B3C442021519C53005B8650 /* Mypage */,
+				3B3C441F21519C41005B8650 /* Category */,
+				3B3C441E21519C38005B8650 /* Main */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -680,10 +734,10 @@
 		3BBB7DB4214A17A7004CC142 /* VO */ = {
 			isa = PBXGroup;
 			children = (
-				3B3C440C21516072005B8650 /* FacebookLoginVO.swift */,
-				3B3C441021516C64005B8650 /* MypageVO.swift */,
-				3B3C441621518366005B8650 /* ChannelVO.swift */,
 				3B3C441A21518C3E005B8650 /* DefaultVO.swift */,
+				3B3C442321519C6D005B8650 /* Main */,
+				3B3C442221519C68005B8650 /* Category */,
+				3B3C442121519C63005B8650 /* Mypage */,
 			);
 			path = VO;
 			sourceTree = "<group>";
@@ -958,10 +1012,12 @@
 				3BBB7D8A214596BF004CC142 /* ScrapVC.swift in Sources */,
 				3B3DD137213C4F4D00FD00B3 /* FilterToggleBtn.swift in Sources */,
 				3BBF8D5D21392A9500FFF08C /* MainFirstTVCell.swift in Sources */,
+				3B3C442821519CEF005B8650 /* UserSubcriptionService.swift in Sources */,
 				3B3DD17D213DC9DF00FD00B3 /* WRCycleScrollView.swift in Sources */,
 				3BBF8D592139293600FFF08C /* MainViewController.swift in Sources */,
 				3B3DD17F213DC9EA00FD00B3 /* WRProxy.swift in Sources */,
 				3B3DD132213C32F200FD00B3 /* MapFilterView.swift in Sources */,
+				3B3C442621519C98005B8650 /* UserSubcriptionVO.swift in Sources */,
 				3B3C43D8214EF459005B8650 /* PlaceFilterView.swift in Sources */,
 				3B0FA12A214C2F87009F33AE /* Gallery.swift in Sources */,
 				3B3DD0FC213B318E00FD00B3 /* BroadcastVC.swift in Sources */,

@@ -81,18 +81,34 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MypageFisrtTVCell" rowHeight="225" id="fj0-fe-IY0" customClass="MypageFisrtTVCell" customModule="KSpot" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MypageFisrtTVCell" rowHeight="225" id="fj0-fe-IY0" customClass="MypageFisrtTVCell" customModule="KSpot" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="136" width="375" height="225"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fj0-fe-IY0" id="jKL-qf-ZgL">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 구독" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpk-wv-8DJ">
+                                                    <rect key="frame" x="16" y="17" width="48" height="27"/>
+                                                    <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aV-wU-JKK">
+                                                    <rect key="frame" x="318" y="16" width="41" height="29"/>
+                                                    <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="15"/>
+                                                    <state key="normal" title="더보기">
+                                                        <color key="titleColor" red="0.41927871109999998" green="0.85189700130000001" blue="0.68716549869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="moreAction:" destination="fj0-fe-IY0" eventType="touchUpInside" id="hCo-XT-aJh"/>
+                                                    </connections>
+                                                </button>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OyV-sD-bjF">
                                                     <rect key="frame" x="0.0" y="57" width="375" height="168"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="168" id="rxU-vN-8Bx"/>
+                                                        <constraint firstAttribute="height" constant="168" id="3pQ-hE-4I1"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OBc-zt-dr5">
                                                         <size key="itemSize" width="248" height="168"/>
@@ -158,41 +174,23 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aV-wU-JKK">
-                                                    <rect key="frame" x="318" y="14" width="41" height="29"/>
-                                                    <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="15"/>
-                                                    <state key="normal" title="더보기">
-                                                        <color key="titleColor" red="0.41927871109999998" green="0.85189700130000001" blue="0.68716549869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="moreAction:" destination="fj0-fe-IY0" eventType="touchUpInside" id="hCo-XT-aJh"/>
-                                                    </connections>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 구독" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpk-wv-8DJ">
-                                                    <rect key="frame" x="16" y="17" width="48" height="23"/>
-                                                    <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="OyV-sD-bjF" firstAttribute="top" secondItem="zpk-wv-8DJ" secondAttribute="bottom" constant="17" id="8gE-aM-plE"/>
                                                 <constraint firstItem="zpk-wv-8DJ" firstAttribute="top" secondItem="jKL-qf-ZgL" secondAttribute="top" constant="17" id="Dif-wc-Jhf"/>
+                                                <constraint firstAttribute="trailing" secondItem="OyV-sD-bjF" secondAttribute="trailing" id="KNt-yM-4iV"/>
+                                                <constraint firstItem="OyV-sD-bjF" firstAttribute="top" secondItem="zpk-wv-8DJ" secondAttribute="bottom" constant="13" id="N1Y-dr-dHc"/>
                                                 <constraint firstItem="zpk-wv-8DJ" firstAttribute="leading" secondItem="jKL-qf-ZgL" secondAttribute="leading" constant="16" id="Rou-Uo-7bT"/>
+                                                <constraint firstItem="OyV-sD-bjF" firstAttribute="leading" secondItem="jKL-qf-ZgL" secondAttribute="leading" id="c06-Gl-An2"/>
                                                 <constraint firstItem="6aV-wU-JKK" firstAttribute="centerY" secondItem="zpk-wv-8DJ" secondAttribute="centerY" id="nBg-eJ-myG"/>
+                                                <constraint firstAttribute="bottom" secondItem="OyV-sD-bjF" secondAttribute="bottom" id="u2I-Mx-857"/>
                                                 <constraint firstAttribute="trailing" secondItem="6aV-wU-JKK" secondAttribute="trailing" constant="16" id="xg1-GJ-pWd"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="OyV-sD-bjF" secondAttribute="trailing" id="27p-Qa-yqp"/>
-                                            <constraint firstItem="OyV-sD-bjF" firstAttribute="leading" secondItem="fj0-fe-IY0" secondAttribute="leading" id="M61-Fk-Ylg"/>
-                                            <constraint firstAttribute="bottom" secondItem="OyV-sD-bjF" secondAttribute="bottom" id="tR0-Xj-f7R"/>
-                                        </constraints>
                                         <connections>
                                             <outlet property="collectionView" destination="OyV-sD-bjF" id="FWj-LG-IeI"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MypageTVCell" rowHeight="51" id="G7d-i2-TiC" customClass="MypageTVCell" customModule="KSpot" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MypageTVCell" rowHeight="51" id="G7d-i2-TiC" customClass="MypageTVCell" customModule="KSpot" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="361" width="375" height="51"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G7d-i2-TiC" id="FFe-gf-t2j">
