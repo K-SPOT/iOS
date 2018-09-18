@@ -16,7 +16,17 @@ class MapContainerCVCell: UICollectionViewCell {
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
 
-    let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
+   
+    var channel : UserScrapVODataChannel?
+    
+    func configure(data : UserScrapVOData){
+        setImgWithKF(url: data.img, imgView: myImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
+        titleLbl.text = data.name
+        ratingLbl.text = data.reviewScore.description
+        descLbl.text = data.description
+        locationLbl.text = "\(data.addressGu) . \(data.station)"
+        channel = data.channel
+    }
     
     override func awakeFromNib() {
         self.collectionView.delegate = self
@@ -34,14 +44,19 @@ extension MapContainerCVCell  : UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sunglassArr.count
+        if let channel_ = channel {
+            return channel_.thubnailImg.count
+        }
+        return 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell: MapCelebrityCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: MapCelebrityCVCell.reuseIdentifier, for: indexPath) as? MapCelebrityCVCell
         {
-            cell.myImgView.image = sunglassArr[indexPath.row]
+            if let channel_ = channel {
+                cell.configure(data : channel_.thubnailImg[indexPath.row])
+            }
             return cell
         }
         return UICollectionViewCell()

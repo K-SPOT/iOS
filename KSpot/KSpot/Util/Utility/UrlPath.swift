@@ -15,11 +15,15 @@ enum UrlPath : String {
     
     //마이페이지
     case Mypage = "/user/mypage"
+    case UserSubscription = "/user/subscription"
+    case UserScrap = "/user/scrap"
     
     //카테고리
     case ChannelList = "/channel/list" //get
     case ChannelSubscription = "/channel/subscription/"
-    case UserSubscription = "/user/subscription"
+    
+    
+
     
 
     

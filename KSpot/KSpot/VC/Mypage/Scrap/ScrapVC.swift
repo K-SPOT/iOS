@@ -11,11 +11,16 @@ import UIKit
 class ScrapVC: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
-    
+  
+    var userScrapList : [UserScrapVOData]? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackBtn()
+        getUserScrap(url: UrlPath.UserScrap.getURL())
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -29,15 +34,19 @@ extension ScrapVC : UICollectionViewDataSource, UICollectionViewDelegate{
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return sunglassArr.count
+        if let userScrapList_ = userScrapList{
+            return userScrapList_.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell: MapContainerCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScrapCVCell", for: indexPath) as? MapContainerCVCell
         {
-            cell.myImgView.image = sunglassArr[indexPath.row]
+            if let userScrapList_ = userScrapList {
+                cell.configure(data: userScrapList_[indexPath.row])
+            }
             return cell
         }
         return UICollectionViewCell()
@@ -65,6 +74,25 @@ extension ScrapVC: UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 0, 16, 0)
+    }
+}
+
+//통신
+extension ScrapVC {
+    func getUserScrap(url : String){
+        UserScrapService.shareInstance.getScrapList(url: url,completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(let scrapData):
+                let scrapData = scrapData as! [UserScrapVOData]
+                self.userScrapList = scrapData
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
     }
 }
 

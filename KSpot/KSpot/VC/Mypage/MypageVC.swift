@@ -97,10 +97,10 @@ extension MypageVC : UITableViewDelegate, UITableViewDataSource{
             }
         } else if (indexPath.row == 1 && numberofRows == 2) || (indexPath.row == 2 && numberofRows == 3) {
             if let editProfileVC = mypageStoryboard.instantiateViewController(withIdentifier:EditProfileVC.reuseIdentifier) as? EditProfileVC {
-                
                 self.navigationController?.pushViewController(editProfileVC, animated: true)
             }
         }
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 }
 
@@ -111,6 +111,7 @@ extension MypageVC : SelectSectionDelegate{
         if (seledtedId == 0){
             let mypageStoryboard = Storyboard.shared().mypageStoryboard
             if let subscribeVC = mypageStoryboard.instantiateViewController(withIdentifier:SubscribeVC.reuseIdentifier) as? SubscribeVC {
+               
                 self.navigationController?.pushViewController(subscribeVC, animated: true)
             }
         } else {

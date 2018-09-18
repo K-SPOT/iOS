@@ -35,6 +35,8 @@
 		3B3C441D21518C74005B8650 /* ChannelSubscribeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C441C21518C74005B8650 /* ChannelSubscribeService.swift */; };
 		3B3C442621519C98005B8650 /* UserSubcriptionVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C442521519C98005B8650 /* UserSubcriptionVO.swift */; };
 		3B3C442821519CEF005B8650 /* UserSubcriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C442721519CEF005B8650 /* UserSubcriptionService.swift */; };
+		3B3C442A2151A121005B8650 /* UserScrapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C44292151A121005B8650 /* UserScrapService.swift */; };
+		3B3C442C2151A14A005B8650 /* UserScrapVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C442B2151A14A005B8650 /* UserScrapVO.swift */; };
 		3B3DD0E1213AE1C200FD00B3 /* MainSecondTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */; };
 		3B3DD0E3213AE1CC00FD00B3 /* MainSecondCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */; };
 		3B3DD0E5213AE1D900FD00B3 /* MainThirdTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */; };
@@ -144,6 +146,8 @@
 		3B3C441C21518C74005B8650 /* ChannelSubscribeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSubscribeService.swift; sourceTree = "<group>"; };
 		3B3C442521519C98005B8650 /* UserSubcriptionVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSubcriptionVO.swift; sourceTree = "<group>"; };
 		3B3C442721519CEF005B8650 /* UserSubcriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSubcriptionService.swift; sourceTree = "<group>"; };
+		3B3C44292151A121005B8650 /* UserScrapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScrapService.swift; sourceTree = "<group>"; };
+		3B3C442B2151A14A005B8650 /* UserScrapVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScrapVO.swift; sourceTree = "<group>"; };
 		3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondTVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondCVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThirdTVCell.swift; sourceTree = "<group>"; };
@@ -341,6 +345,7 @@
 			children = (
 				3B3C441221516D41005B8650 /* MypageService.swift */,
 				3B3C442721519CEF005B8650 /* UserSubcriptionService.swift */,
+				3B3C44292151A121005B8650 /* UserScrapService.swift */,
 			);
 			path = Mypage;
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 			children = (
 				3B3C441021516C64005B8650 /* MypageVO.swift */,
 				3B3C442521519C98005B8650 /* UserSubcriptionVO.swift */,
+				3B3C442B2151A14A005B8650 /* UserScrapVO.swift */,
 			);
 			path = Mypage;
 			sourceTree = "<group>";
@@ -1027,6 +1033,7 @@
 				3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */,
 				3B3DD124213BFCE700FD00B3 /* Region.swift in Sources */,
 				3BB1882F2144431F0021B543 /* MypageVC.swift in Sources */,
+				3B3C442A2151A121005B8650 /* UserScrapService.swift in Sources */,
 				3B3DD141213D3B5100FD00B3 /* CategoryDetailFirstCVCell.swift in Sources */,
 				3B3DD149213D6C5800FD00B3 /* BroadcastTVCell.swift in Sources */,
 				3B3DD182213F072D00FD00B3 /* PlaceDetailFirstTVCell.swift in Sources */,
@@ -1087,6 +1094,7 @@
 				3BBB7D9321469656004CC142 /* ThemeVC.swift in Sources */,
 				3B3DD12C213C1C3200FD00B3 /* SelectRegionDelegate.swift in Sources */,
 				3B3DD0E3213AE1CC00FD00B3 /* MainSecondCVCell.swift in Sources */,
+				3B3C442C2151A14A005B8650 /* UserScrapVO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
