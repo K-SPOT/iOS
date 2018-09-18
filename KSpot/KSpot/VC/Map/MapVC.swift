@@ -65,28 +65,19 @@ class MapVC: UIViewController {
     
    
     @IBAction func locationAction(_ sender: Any) {
-        //허용 됐을때
-        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            isGoogleMapLocation = true
-            self.mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변"
-            
-            currentLocation = locationManager.location
-            guard let lat = currentLocation?.coordinate.latitude,
-                let long = currentLocation?.coordinate.longitude else {
-                    return
-            }
-            let addressName = getAddressForLatLng(latitude: lat.description, longitude: long.description)
-            print(addressName)
-        } else {
-            showLocationDisableAlert()
-        }
-    }
-    @IBAction func searchAction(_ sender: Any) {
+        
+        isGoogleMapLocation = true
         let mapStoryboard = Storyboard.shared().mapStoryboard
         if let googleMapVC = mapStoryboard.instantiateViewController(withIdentifier:GoogleMapVC.reuseIdentifier) as? GoogleMapVC {
             googleMapVC.delegate = self
+            
+            googleMapVC.entryPoint = .currentLocation
             self.navigationController?.pushViewController(googleMapVC, animated: true)
         }
+        
+    }
+    @IBAction func searchAction(_ sender: Any) {
+        goToSearchVC()
     }
     
     
@@ -123,6 +114,15 @@ extension MapVC {
         let descArr : [String] = ["100m", "300m", "500m", "1k", "3k"]
         let numberOfItems = descArr.count
         let safeIndex = max(0, min(numberOfItems - 1, index))
+        
+        if (safeIndex == 0){
+            filterView.leftBtn.isHidden = true
+        } else if (safeIndex == descArr.count - 1){
+             filterView.rightBtn.isHidden = true
+        } else {
+            filterView.leftBtn.isHidden = false
+            filterView.rightBtn.isHidden = false
+        }
         
         selectedSecondFilter = safeIndex
         filterView.distanceLbl.text = "\(descArr[safeIndex]) 까지 설정"
@@ -232,7 +232,7 @@ extension MapVC : CLLocationManagerDelegate{
             showLocationDisableAlert()
             //이때 디폴트 세팅
         } else {
-            self.locationAction(0)
+            //self.locationAction(0)
             
         }
     }
@@ -244,6 +244,7 @@ extension MapVC : CLLocationManagerDelegate{
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }
+        
         alertController.addAction(openAction)
         
         self.present(alertController, animated: true, completion: nil)
@@ -251,62 +252,5 @@ extension MapVC : CLLocationManagerDelegate{
 }
 
 
-//get address from lat/long
-extension MapVC {
-    func getAddressForLatLng(latitude: String, longitude: String) -> String {
-        
-        let url = NSURL(string: "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(latitude),\(longitude)&key=\(NetworkConfiguration.shared().googleMapAPIKey)")
-        let data = NSData(contentsOf: url! as URL)
-        if data != nil {
-            let json = try! JSONSerialization.jsonObject(with: data! as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
-            print(JSON(json))
-            if let result = json["results"] as? NSArray   {
-                if result.count > 0 {
-                    if let addresss:NSDictionary = result[0] as! NSDictionary {
-                        if let address = addresss["address_components"] as? NSArray {
-                            var newaddress = ""
-                            var number = ""
-                            var street = ""
-                            var city = ""
-                            var state = ""
-                            var zip = ""
-                            
-                            if(address.count > 1) {
-                                number =  (address.object(at: 0) as! NSDictionary)["short_name"] as! String
-                            }
-                            if(address.count > 2) {
-                                street = (address.object(at: 1) as! NSDictionary)["short_name"] as! String
-                            }
-                            if(address.count > 3) {
-                                city = (address.object(at: 2) as! NSDictionary)["short_name"] as! String
-                            }
-                            if(address.count > 4) {
-                                state = (address.object(at: 4) as! NSDictionary)["short_name"] as! String
-                            }
-                            if(address.count > 6) {
-                                zip =  (address.object(at: 6) as! NSDictionary)["short_name"] as! String
-                            }
-                            newaddress = "\(number) \(street), \(city), \(state) \(zip)"
-                            //newaddress = street.description
-                            return newaddress
-                        }
-                        else {
-                            return ""
-                        }
-                    }
-                } else {
-                    return ""
-                }
-            }
-            else {
-                return ""
-            }
-            
-        }   else {
-            return ""
-        }
-        
-    }
-}
 
 

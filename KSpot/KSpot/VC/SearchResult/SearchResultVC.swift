@@ -11,7 +11,7 @@ import UIKit
 class SearchResultVC: UIViewController, UIGestureRecognizerDelegate {
 
     let sunglassArr1 = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
-    let sunglassArr2 : [UIImage] = []
+    let sunglassArr2 : [UIImage] = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
     let sunglassArr3 : [UIImage] = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
     @IBOutlet weak var tableView : UITableView!
     override func viewDidLoad() {
@@ -76,6 +76,12 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
         let mainStoryboard = Storyboard.shared().mainStoryboard
         if let searchResultMoreVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultMoreVC.reuseIdentifier) as? SearchResultMoreVC {
            
+            guard let navTitle = self.navigationItem.title else{return}
+            if ((navTitle.count) < 10) {
+                searchResultMoreVC.navigationItem.title = "'\(navTitle)' 검색결과"
+            } else {
+                searchResultMoreVC.navigationItem.title = "'\(navTitle.prefix(9))...' 검색결과"
+            }
             self.navigationController?.pushViewController(searchResultMoreVC, animated: true)
         }
     }
@@ -84,6 +90,12 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
         if let searchResultMorePlaceVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultMorePlaceVC.reuseIdentifier) as? SearchResultMorePlaceVC {
         
             searchResultMorePlaceVC.headerTitle = "이벤트"
+            guard let navTitle = self.navigationItem.title else{return}
+            if ((navTitle.count) < 10) {
+                searchResultMorePlaceVC.navigationItem.title = "'\(navTitle)' 검색결과"
+            } else {
+                searchResultMorePlaceVC.navigationItem.title = "'\(navTitle.prefix(9))...' 검색결과"
+            }
             self.navigationController?.pushViewController(searchResultMorePlaceVC, animated: true)
         }
     }
@@ -126,6 +138,7 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         
         let section = indexPath.section
         if section == 0 {

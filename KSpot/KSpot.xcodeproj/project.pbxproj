@@ -18,6 +18,7 @@
 		3B3C43E1214F05AF005B8650 /* SearchResultMoreCelebrityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C43E0214F05AF005B8650 /* SearchResultMoreCelebrityVC.swift */; };
 		3B3C43E3214F05BC005B8650 /* SearchResultMorePlaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C43E2214F05BC005B8650 /* SearchResultMorePlaceVC.swift */; };
 		3B3C43E5214F05D6005B8650 /* SearchResultMoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C43E4214F05D6005B8650 /* SearchResultMoreVC.swift */; };
+		3B3C4401214FE03E005B8650 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C4400214FE03E005B8650 /* LoginVC.swift */; };
 		3B3DD0E1213AE1C200FD00B3 /* MainSecondTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */; };
 		3B3DD0E3213AE1CC00FD00B3 /* MainSecondCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */; };
 		3B3DD0E5213AE1D900FD00B3 /* MainThirdTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */; };
@@ -97,7 +98,6 @@
 		3BBF8D592139293600FFF08C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D582139293600FFF08C /* MainViewController.swift */; };
 		3BBF8D5B21392A0D00FFF08C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D5A21392A0D00FFF08C /* Extensions.swift */; };
 		3BBF8D5D21392A9500FFF08C /* MainFirstTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D5C21392A9500FFF08C /* MainFirstTVCell.swift */; };
-		3BBF8D5F21392D3E00FFF08C /* MainFirstCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D5E21392D3E00FFF08C /* MainFirstCVCell.swift */; };
 		3BBF8D61213935D300FFF08C /* ColorChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D60213935D300FFF08C /* ColorChip.swift */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +113,7 @@
 		3B3C43E0214F05AF005B8650 /* SearchResultMoreCelebrityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMoreCelebrityVC.swift; sourceTree = "<group>"; };
 		3B3C43E2214F05BC005B8650 /* SearchResultMorePlaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMorePlaceVC.swift; sourceTree = "<group>"; };
 		3B3C43E4214F05D6005B8650 /* SearchResultMoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMoreVC.swift; sourceTree = "<group>"; };
+		3B3C4400214FE03E005B8650 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondTVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondCVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThirdTVCell.swift; sourceTree = "<group>"; };
@@ -194,7 +195,6 @@
 		3BBF8D582139293600FFF08C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3BBF8D5A21392A0D00FFF08C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3BBF8D5C21392A9500FFF08C /* MainFirstTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFirstTVCell.swift; sourceTree = "<group>"; };
-		3BBF8D5E21392D3E00FFF08C /* MainFirstCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFirstCVCell.swift; sourceTree = "<group>"; };
 		3BBF8D60213935D300FFF08C /* ColorChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChip.swift; sourceTree = "<group>"; };
 		4C6052FD7CF496FE2E3B933E /* Pods-KSpot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSpot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KSpot/Pods-KSpot.debug.xcconfig"; sourceTree = "<group>"; };
 		FFA688BBCA5DFBD11AEA04D6 /* Pods_KSpot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KSpot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -282,9 +282,19 @@
 			path = Celebrity;
 			sourceTree = "<group>";
 		};
+		3B3C43FF214FE01A005B8650 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				3B3C4400214FE03E005B8650 /* LoginVC.swift */,
+			);
+			name = Login;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		3B3DD0E8213AE29D00FD00B3 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				3B3C43FF214FE01A005B8650 /* Login */,
 				3BBF8D62213936F000FFF08C /* Main */,
 				3BBB7D9021469640004CC142 /* Theme */,
 				3BBB7D7A21456D60004CC142 /* MainSearch */,
@@ -708,7 +718,6 @@
 			isa = PBXGroup;
 			children = (
 				3BBF8D5C21392A9500FFF08C /* MainFirstTVCell.swift */,
-				3BBF8D5E21392D3E00FFF08C /* MainFirstCVCell.swift */,
 			);
 			path = FirstSection;
 			sourceTree = "<group>";
@@ -837,6 +846,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-KSpot/Pods-KSpot-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -844,6 +861,14 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -932,7 +957,6 @@
 				3B3DD0F3213B2BC900FD00B3 /* CategoryVC.swift in Sources */,
 				3BBB7D9F2146F6D9004CC142 /* ReviewNoImgTVCell.swift in Sources */,
 				3BBB7D81214578C6004CC142 /* SubCelebrityVC.swift in Sources */,
-				3BBF8D5F21392D3E00FFF08C /* MainFirstCVCell.swift in Sources */,
 				3BBB7D83214578D2004CC142 /* SubBroadCastVC.swift in Sources */,
 				3BBF8D5B21392A0D00FFF08C /* Extensions.swift in Sources */,
 				3BBB7DB6214A17D8004CC142 /* GoogleMapService.swift in Sources */,
@@ -945,6 +969,7 @@
 				3B3DD116213BD77F00FD00B3 /* MapContainerVC.swift in Sources */,
 				3B3C43CA214EE10E005B8650 /* SearchResultVC.swift in Sources */,
 				3BBB7DAE2147DEBA004CC142 /* NetworkConfiguration.swift in Sources */,
+				3B3C4401214FE03E005B8650 /* LoginVC.swift in Sources */,
 				3BBB7D7921456BD1004CC142 /* MainSearchVC.swift in Sources */,
 				3B3DD103213B3C5000FD00B3 /* CelebrityTVCell.swift in Sources */,
 				3B3DD13F213D3B4000FD00B3 /* CategoryDetailFirstTVCell.swift in Sources */,

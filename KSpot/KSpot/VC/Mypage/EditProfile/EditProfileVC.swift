@@ -15,6 +15,9 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var nameCountLbl: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
     var keyboardDismissGesture: UITapGestureRecognizer?
+   
+    var greenDoneBtn : UIBarButtonItem?
+    var grayDoneBtn : UIBarButtonItem?
     //let imagePicker : UIImagePickerController = UIImagePickerController()
     var imageData : Data? {
         didSet {
@@ -25,7 +28,6 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
                     //isValid()
                 }
             }
-            
         }
     }
     
@@ -35,10 +37,9 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let doneBtn = UIBarButtonItem.titleBarbutton(title: "완료", red: 64, green: 211, blue: 159, fontSize: 18, fontName: NanumSquareOTF.NanumSquareOTFB.rawValue, selector: #selector(EditProfileVC.doneAction(_sender:)), target: self)
-        self.navigationItem.rightBarButtonItem = doneBtn
-       
+         grayDoneBtn = UIBarButtonItem.titleBarbutton(title: "완료", red: 236, green: 236, blue: 236, fontSize: 18, fontName: NanumSquareOTF.NanumSquareOTFB.rawValue, selector: nil, target: self)
+        greenDoneBtn = UIBarButtonItem.titleBarbutton(title: "완료", red: 64, green: 211, blue: 159, fontSize: 18, fontName: NanumSquareOTF.NanumSquareOTFB.rawValue, selector: #selector(EditProfileVC.doneAction(_sender:)), target: self)
+        self.navigationItem.rightBarButtonItem = greenDoneBtn
         profileImgView.makeRounded(cornerRadius: nil)
         nameTxtfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         setBackBtn()
@@ -59,12 +60,16 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
         }
         guard let contentTxt = nameTxtfield.text else {return}
 
+        if contentTxt.count < 2 {
+            self.navigationItem.rightBarButtonItem = grayDoneBtn
+        } else {
+            self.navigationItem.rightBarButtonItem = greenDoneBtn
+        }
         if(contentTxt.count > 20) {
             simpleAlert(title: "오류", message: "20글자 초과")
             nameTxtfield.text = String(describing: contentTxt.prefix(19))
             nameCountLbl.text = nameTxtfield.text?.count.description
         }
-        
     }
 }
 

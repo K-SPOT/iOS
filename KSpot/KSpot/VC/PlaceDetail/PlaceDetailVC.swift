@@ -31,6 +31,15 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
         return cycleView
     }()
     
+    @IBAction func goToMapAction(_ sender: Any) {
+        let mapStoryboard = Storyboard.shared().mapStoryboard
+        if let googleMapVC = mapStoryboard.instantiateViewController(withIdentifier:GoogleMapVC.reuseIdentifier) as? GoogleMapVC {
+            googleMapVC.chosenPlace = MyPlace(name: "대전히히", lat: 36.3504, long: 127.3845)
+            googleMapVC.entryPoint = .searchSpecificLocation
+            self.navigationController?.pushViewController(googleMapVC, animated: true)
+        }
+    }
+    
     @IBAction func phoneViewAction(_ sender: Any) {
         "01025010258".makeACall()
     }
@@ -197,6 +206,7 @@ extension PlaceDetailVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: PlaceDetailFirstTVCell.reuseIdentifier) as! PlaceDetailFirstTVCell
+            cell.delegate = self
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: PlaceDetailSecondTVCell.reuseIdentifier) as! PlaceDetailSecondTVCell
@@ -207,7 +217,7 @@ extension PlaceDetailVC: UITableViewDelegate,UITableViewDataSource{
     
 }
 
-extension PlaceDetailVC : SelectSectionelegate {
+extension PlaceDetailVC : SelectSectionDelegate {
     func tap(section: Section, seledtedId: Int) {
         //리뷰 쓰는 버튼
         if (seledtedId == -1){
@@ -216,6 +226,11 @@ extension PlaceDetailVC : SelectSectionelegate {
                 
                 self.navigationController?.pushViewController(reviewWriteVC, animated: true)
             }
+        }
+        
+        //관련/연예인 방송
+        if section == .first {
+            self.goToCelebrityDetail()
         }
     }
     

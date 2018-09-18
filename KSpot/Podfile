@@ -10,8 +10,11 @@ pod 'GooglePlaces'
 pod 'SnapKit'
 pod 'SwiftyJSON'
 pod 'Alamofire'
-
-
+pod 'FacebookCore'
+pod 'FacebookLogin'
+pod 'FacebookShare'
+pod 'ImageSlideshow'
+pod 'ImageSlideshow/Kingfisher'
   # Pods for KSpot
 
 end

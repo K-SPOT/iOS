@@ -14,7 +14,7 @@ class PlaceDetailFirstTVCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
   
     let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
-    var delegate : SelectSectionelegate?
+    var delegate : SelectSectionDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.delegate = self

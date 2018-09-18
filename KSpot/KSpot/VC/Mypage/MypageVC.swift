@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class MypageVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func logoutAction(_ sender: Any) {
+        self.simpleAlertwithHandler(title: "로그아웃 하시겠습니까?", message: "") { (_) in
+            //faceBookLogout
+            let fbLoginManager = FBSDKLoginManager()
+            fbLoginManager.logOut()
+            self.simpleAlert(title: "완료", message: "로그아웃이 완료되었습니다")
+        }
     }
     
     @IBAction func moreAction(_ sender: Any) {

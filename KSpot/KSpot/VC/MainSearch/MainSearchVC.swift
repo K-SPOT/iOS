@@ -11,24 +11,57 @@ import UIKit
 class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
     var keyboardDismissGesture: UITapGestureRecognizer?
     
+    @IBOutlet weak var searchIconBtn: UIButton!
     @IBOutlet weak var searchTxtfield: UITextField!
     
     @IBOutlet weak var searchBtn: UIButton!
+    
+    @IBOutlet weak var celebrityStack: UIStackView!
+    
+    @IBOutlet weak var broadcastStack: UIStackView!
+    
+    @IBOutlet weak var eventStack: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackBtn()
         setKeyboardSetting()
+        setStackViewAction()
         searchTxtfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         searchBtn.addTarget(self, action: #selector(searchAction(_:)), for: .touchUpInside)
+        searchIconBtn.addTarget(self, action: #selector(searchIconAction(_:)), for: .touchUpInside)
         // textfeild.delegate = self 하기
     }
+    
+    func setStackViewAction(){
+        for celebrityBtn in celebrityStack.arrangedSubviews as! [UIButton]{
+            celebrityBtn.addTarget(self, action: #selector(MainSearchVC.goToCelebrityDetail(_:)), for: .touchUpInside)
+        }
+        for broadcastBtn in broadcastStack.arrangedSubviews as! [UIButton]{
+            broadcastBtn.addTarget(self, action: #selector(MainSearchVC.goToCelebrityDetail(_:)), for: .touchUpInside)
+        }
+        for eventBtn in eventStack.arrangedSubviews as! [UIButton]{
+            eventBtn.addTarget(self, action: #selector(MainSearchVC.goToPlaceDetailVC(_:)), for: .touchUpInside)
+        }
+       
+    }
+    
+    @objc func goToCelebrityDetail(_ sender : UIButton){
+        self.goToCelebrityDetail()
+    }
+    
+    @objc func goToPlaceDetailVC(_ sender : UIButton){
+        self.goToPlaceDetailVC()
+    }
+    
     @objc func textFieldDidChange(_ textField: UITextField) {
         if !(searchTxtfield.text?.isEmpty)! {
             searchBtn.backgroundColor = ColorChip.shared().mainColor
             searchBtn.isEnabled = true
+            searchIconBtn.setImage(#imageLiteral(resourceName: "map_filter_x_button"), for: .normal)
         } else {
             searchBtn.backgroundColor = #colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1)
             searchBtn.isEnabled = false
+            searchIconBtn.setImage(#imageLiteral(resourceName: "main_search"), for: .normal)
         }
     }
     
@@ -36,9 +69,20 @@ class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
         let mainStoryboard = Storyboard.shared().mainStoryboard
         if let mainSearchVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultVC.reuseIdentifier) as? SearchResultVC {
             //네비게이션 타이틀
-            mainSearchVC.title = searchTxtfield.text
+            guard let searchTxt = searchTxtfield.text else{return}
+            if ((searchTxt.count) < 10) {
+                 mainSearchVC.navigationItem.title = searchTxtfield.text
+            } else {
+                mainSearchVC.navigationItem.title = "\(searchTxt.prefix(9))..."
+            }
             self.navigationController?.pushViewController(mainSearchVC, animated: true)
         }
+    }
+    
+    @objc func searchIconAction(_ button : UIButton) {
+        searchTxtfield.text = ""
+        textFieldDidChange(searchTxtfield)
+        
     }
 
 
@@ -51,11 +95,20 @@ extension MainSearchVC{
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
+       
         adjustKeyboardDismissGesture(isKeyboardVisible: true)
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            searchBtn.snp.remakeConstraints({ (make) in
+                make.bottom.equalToSuperview().offset(-keyboardSize.height)
+            })
+        }
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-         adjustKeyboardDismissGesture(isKeyboardVisible: false)
+        adjustKeyboardDismissGesture(isKeyboardVisible: false)
+            searchBtn.snp.remakeConstraints({ (make) in
+                make.bottom.equalToSuperview()
+            })
         
     }
     

@@ -88,7 +88,8 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
     }
     
     
-    let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
+    let sunglassArr1 = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
+    let sunglassArr2 : [UIImage] =  [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
     override func viewDidLoad() {
         
         setupTableView()
@@ -209,9 +210,9 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
         if section == 0 {
             return 1
         } else if section == 1{
-            return sunglassArr.count
+            return sunglassArr1.count
         } else {
-            return sunglassArr.count
+            return sunglassArr2.count
         }
     }
     
@@ -255,7 +256,21 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 1 || section == 2  ? 79 : 0
+        if section == 1 {
+            return heightForHeaderInSection(arr : sunglassArr1)
+        } else if section == 2 {
+            return heightForHeaderInSection(arr : sunglassArr2)
+        } else {
+            return 0
+        }
+        //return section == 1 || section == 2  ? 79 : 0
+    }
+    
+    private func heightForHeaderInSection(arr : [UIImage]) -> CGFloat {
+        if (arr.count > 0){
+            return 62
+        }
+        return 0
     }
     
     
@@ -288,7 +303,7 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     
 }
 
-extension CategoryDetailVC : SelectSectionelegate {
+extension CategoryDetailVC : SelectSectionDelegate {
     func tap(section: Section, seledtedId: Int) {
         if section == .first {
             goToPlaceDetailVC()
