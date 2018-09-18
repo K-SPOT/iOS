@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum Language : Int {
+    case Kor = 0
+    case Eng = 1
+}
+
 enum Distance : String {
     case oneHM = "100m"
     case threeHM = "300m"

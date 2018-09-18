@@ -27,7 +27,6 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
     let currentLocationMarker = GMSMarker()
     var locationManager = CLLocationManager()
     var chosenPlace: MyPlace?
-    var address : [Result]?
     var delegate : SelectDelegate?
     var entryPoint : MapEntryPoint = .currentLocation
     let defualtLat = 36.3504

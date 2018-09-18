@@ -27,8 +27,8 @@ class MainViewController: UIViewController {
     var sampleData : [SampleStruct] = [SampleStruct(image: KingfisherSource(urlString: "https://t1.daumcdn.net/cfile/tistory/240636455780D09234")!, id: "80"), SampleStruct(image: KingfisherSource(urlString: "https://i.pinimg.com/originals/f7/eb/e1/f7ebe1de2088de46229b163747e1a40a.gif")!, id: "10"), SampleStruct(image: KingfisherSource(urlString: "https://i.pinimg.com/originals/05/b5/c1/05b5c164be2121b2271b5c5ec7a59770.gif")!, id: "820")]
     
     fileprivate func reloadRootViewController() {
-        let isOpened = FBSDKAccessToken.currentAccessTokenIsActive()
-        if !isOpened {
+        //isUserLogin()
+        if FBSDKAccessToken.current() == nil {
             let mainStoryboard = Storyboard.shared().mainStoryboard
             if let loginVC = mainStoryboard.instantiateViewController(withIdentifier:LoginVC.reuseIdentifier) as? LoginVC {
                  self.present(loginVC, animated: false, completion: nil)

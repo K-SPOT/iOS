@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import Kingfisher
 
 /*---------------------NSObject---------------------------*/
 extension NSObject {
@@ -72,12 +74,30 @@ extension UIViewController {
 }
 
 extension UIViewController {
+    
+    func setImgWithKF(url : String, imgView : UIImageView, defaultImg : UIImage){
+        if let url = URL(string: url){
+            imgView.kf.setImage(with: url)
+        } else {
+            imgView.image = defaultImg
+        }
+    }
     func gsno(_ value : String?) -> String{
         return value ?? ""
     }
     
     func gino(_ value : Int?) -> Int {
         return value ?? 0
+    }
+    
+    
+    func setLanguageFlag(langugae : Language ){
+        UserDefaults.standard.set(langugae.rawValue.description, forKey : "flag")
+    }
+    
+    func isUserLogin() -> Bool {
+        return FBSDKAccessToken.currentAccessTokenIsActive()
+            // &&UserDefaults.standard.string(forKey: "userAuth") != "-1"
     }
     
     func simpleAlert(title: String, message: String){
@@ -202,6 +222,25 @@ extension UICollectionViewCell {
         self.contentView.layer.borderWidth = 0.5
         self.contentView.layer.borderColor = #colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1)
         self.contentView.layer.masksToBounds = true
+    }
+    
+    
+    func setImgWithKF(url : String, imgView : UIImageView, defaultImg : UIImage){
+        if let url = URL(string: url){
+            imgView.kf.setImage(with: url)
+        } else {
+            imgView.image = defaultImg
+        }
+    }
+}
+
+extension UITableViewCell {
+    func setImgWithKF(url : String, imgView : UIImageView, defaultImg : UIImage){
+        if let url = URL(string: url){
+            imgView.kf.setImage(with: url)
+        } else {
+            imgView.image = defaultImg
+        }
     }
 }
 
