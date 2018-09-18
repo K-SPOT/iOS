@@ -28,7 +28,6 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
                     //isValid()
                 }
             }
-            
         }
     }
     
