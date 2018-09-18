@@ -722,8 +722,8 @@
                                     <constraint firstAttribute="height" constant="0.5" id="Bac-vI-CV9"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="짱절미" placeholder="두글자 이상의 닉네임을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2mq-AM-tUl">
-                                <rect key="frame" x="120" y="242" width="156.5" height="16"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="짱절미" placeholder="두글자 이상 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2mq-AM-tUl">
+                                <rect key="frame" x="120" y="242" width="151.5" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="156.5" id="roL-zj-gEx"/>
                                 </constraints>
@@ -744,7 +744,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvv-oj-av9">
-                                <rect key="frame" x="285.5" y="243.5" width="13" height="13"/>
+                                <rect key="frame" x="280.5" y="243.5" width="13" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="13" id="CcE-Kj-RRw"/>
                                     <constraint firstAttribute="width" secondItem="Bvv-oj-av9" secondAttribute="height" multiplier="1:1" id="fMp-5C-XCm"/>
