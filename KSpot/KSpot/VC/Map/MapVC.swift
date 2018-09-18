@@ -115,6 +115,15 @@ extension MapVC {
         let numberOfItems = descArr.count
         let safeIndex = max(0, min(numberOfItems - 1, index))
         
+        if (safeIndex == 0){
+            filterView.leftBtn.isHidden = true
+        } else if (safeIndex == descArr.count - 1){
+             filterView.rightBtn.isHidden = true
+        } else {
+            filterView.leftBtn.isHidden = false
+            filterView.rightBtn.isHidden = false
+        }
+        
         selectedSecondFilter = safeIndex
         filterView.distanceLbl.text = "\(descArr[safeIndex]) 까지 설정"
     }
