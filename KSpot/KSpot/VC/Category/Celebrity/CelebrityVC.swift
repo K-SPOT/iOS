@@ -13,6 +13,12 @@ class CelebrityVC: UIViewController {
    
     @IBOutlet weak var tableView: UITableView!
     var delegate : SelectDelegate?
+    var celebrityList : [ChannelVODataChannelList]? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -23,11 +29,17 @@ class CelebrityVC: UIViewController {
 
 extension CelebrityVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 23
+        if let celebrityList_ = celebrityList {
+            return celebrityList_.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CelebrityTVCell.reuseIdentifier) as! CelebrityTVCell
+        if let celebrityList_ = celebrityList {
+           cell.configure(data: celebrityList_[indexPath.row])
+        }
         return cell
     }
     

@@ -29,6 +29,8 @@
 		3B3C441121516C64005B8650 /* MypageVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C441021516C64005B8650 /* MypageVO.swift */; };
 		3B3C441321516D41005B8650 /* MypageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C441221516D41005B8650 /* MypageService.swift */; };
 		3B3C441521517A1F005B8650 /* MyPageFirstTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C441421517A1F005B8650 /* MyPageFirstTVCell.swift */; };
+		3B3C441721518366005B8650 /* ChannelVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C441621518366005B8650 /* ChannelVO.swift */; };
+		3B3C4419215183BA005B8650 /* ChannelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C4418215183BA005B8650 /* ChannelService.swift */; };
 		3B3DD0E1213AE1C200FD00B3 /* MainSecondTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */; };
 		3B3DD0E3213AE1CC00FD00B3 /* MainSecondCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */; };
 		3B3DD0E5213AE1D900FD00B3 /* MainThirdTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */; };
@@ -132,6 +134,8 @@
 		3B3C441021516C64005B8650 /* MypageVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageVO.swift; sourceTree = "<group>"; };
 		3B3C441221516D41005B8650 /* MypageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageService.swift; sourceTree = "<group>"; };
 		3B3C441421517A1F005B8650 /* MyPageFirstTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageFirstTVCell.swift; sourceTree = "<group>"; };
+		3B3C441621518366005B8650 /* ChannelVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelVO.swift; sourceTree = "<group>"; };
+		3B3C4418215183BA005B8650 /* ChannelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelService.swift; sourceTree = "<group>"; };
 		3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondTVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondCVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThirdTVCell.swift; sourceTree = "<group>"; };
@@ -663,6 +667,7 @@
 			children = (
 				3B3C440A21515FCB005B8650 /* FacebookLoginService.swift */,
 				3B3C441221516D41005B8650 /* MypageService.swift */,
+				3B3C4418215183BA005B8650 /* ChannelService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -672,6 +677,7 @@
 			children = (
 				3B3C440C21516072005B8650 /* FacebookLoginVO.swift */,
 				3B3C441021516C64005B8650 /* MypageVO.swift */,
+				3B3C441621518366005B8650 /* ChannelVO.swift */,
 			);
 			path = VO;
 			sourceTree = "<group>";
@@ -972,6 +978,7 @@
 				3B3C440321515C25005B8650 /* APIService.swift in Sources */,
 				3BBB7DB2214A16FE004CC142 /* GettableService.swift in Sources */,
 				3B3C43D1214EECD4005B8650 /* CategoryDetailMoreEventVC.swift in Sources */,
+				3B3C441721518366005B8650 /* ChannelVO.swift in Sources */,
 				3B3C441321516D41005B8650 /* MypageService.swift in Sources */,
 				3BBB7D992146D0F3004CC142 /* ThemeTVCell.swift in Sources */,
 				3B3C43CF214EECC5005B8650 /* CategoryDetailMorePlaceVC.swift in Sources */,
@@ -1001,6 +1008,7 @@
 				3B3DD116213BD77F00FD00B3 /* MapContainerVC.swift in Sources */,
 				3B3C43CA214EE10E005B8650 /* SearchResultVC.swift in Sources */,
 				3BBB7DAE2147DEBA004CC142 /* NetworkConfiguration.swift in Sources */,
+				3B3C4419215183BA005B8650 /* ChannelService.swift in Sources */,
 				3B3C4401214FE03E005B8650 /* LoginVC.swift in Sources */,
 				3BBB7D7921456BD1004CC142 /* MainSearchVC.swift in Sources */,
 				3B3DD103213B3C5000FD00B3 /* CelebrityTVCell.swift in Sources */,

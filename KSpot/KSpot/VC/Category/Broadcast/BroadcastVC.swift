@@ -12,6 +12,11 @@ class BroadcastVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var delegate : SelectDelegate?
+    var broadcastList : [ChannelVODataChannelList]? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -25,11 +30,17 @@ class BroadcastVC: UIViewController {
 
 extension BroadcastVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 23
+        if let broadcastList_ = broadcastList {
+            return broadcastList_.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BroadcastTVCell.reuseIdentifier) as! BroadcastTVCell
+        if let broadcastList_ = broadcastList {
+            cell.configure(data: broadcastList_[indexPath.row])
+        }
         return cell
     }
 

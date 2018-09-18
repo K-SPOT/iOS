@@ -16,6 +16,9 @@ enum UrlPath : String {
     //마이페이지
     case Mypage = "/user/mypage"
     
+    //카테고리
+    case ChannelList = "/channel/list" //get
+    
     
     
     func getURL(_ parameter : String? = nil) -> String{

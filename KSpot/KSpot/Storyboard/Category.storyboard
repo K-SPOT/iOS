@@ -201,7 +201,7 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJv-GC-SaV">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJv-GC-SaV" customClass="mySubscribeBtn" customModule="KSpot" customModuleProvider="target">
                                                     <rect key="frame" x="302" y="32.5" width="57" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="f9Q-Dw-K1P"/>
@@ -223,6 +223,12 @@
                                                 <constraint firstItem="Dh7-RI-hCN" firstAttribute="leading" secondItem="PG7-Ux-HBV" secondAttribute="trailing" constant="16" id="xO9-3n-3Tr"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="mainImgView" destination="PG7-Ux-HBV" id="SYF-H5-tlZ"/>
+                                            <outlet property="subscribeBtn" destination="iJv-GC-SaV" id="r8m-hf-nWy"/>
+                                            <outlet property="subtitleLbl" destination="bxD-Q6-Z8T" id="qkT-wI-NNU"/>
+                                            <outlet property="titleLbl" destination="Qxa-ya-rK5" id="0KH-Cz-6h8"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -800,7 +806,7 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbH-Ti-fGI">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbH-Ti-fGI" customClass="mySubscribeBtn" customModule="KSpot" customModuleProvider="target">
                                                     <rect key="frame" x="302" y="32.5" width="57" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="96H-pP-hwS"/>
@@ -822,6 +828,12 @@
                                                 <constraint firstItem="seC-Q3-8AE" firstAttribute="leading" secondItem="Zb3-BN-n0D" secondAttribute="leading" constant="41" id="xj0-dB-CcN"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="mainImgView" destination="seC-Q3-8AE" id="tCa-Zk-Lj0"/>
+                                            <outlet property="subscribeBtn" destination="TbH-Ti-fGI" id="W2L-fw-oDU"/>
+                                            <outlet property="subtitleLbl" destination="ddh-B6-EZl" id="7iX-Q0-0AT"/>
+                                            <outlet property="titleLbl" destination="IO5-mI-z5a" id="Bht-IK-8HR"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

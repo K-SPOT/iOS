@@ -232,6 +232,18 @@ extension UICollectionViewCell {
             imgView.image = defaultImg
         }
     }
+    
+    func setSubscribeBtn(subscribeBtn : mySubscribeBtn, idx : Int, isSubscribe : Int){
+        subscribeBtn.setImage(UIImage(named: "category_subscription_white"), for: .normal)
+        subscribeBtn.setImage(
+            UIImage(named: "category_subscription_green"), for: .selected)
+        subscribeBtn.contentIdx = idx
+        if isSubscribe == 0 {
+            subscribeBtn.isSelected = false
+        } else {
+            subscribeBtn.isSelected = true
+        }
+    }
 }
 
 extension UITableViewCell {
@@ -240,6 +252,18 @@ extension UITableViewCell {
             imgView.kf.setImage(with: url)
         } else {
             imgView.image = defaultImg
+        }
+    }
+    
+    func setSubscribeBtn(subscribeBtn : mySubscribeBtn, idx : Int, isSubscribe : Int){
+        subscribeBtn.setImage(UIImage(named: "category_subscription_white"), for: .normal)
+        subscribeBtn.setImage(
+            UIImage(named: "category_subscription_green"), for: .selected)
+        subscribeBtn.contentIdx = idx
+        if isSubscribe == 0 {
+            subscribeBtn.isSelected = false
+        } else {
+            subscribeBtn.isSelected = true
         }
     }
 }

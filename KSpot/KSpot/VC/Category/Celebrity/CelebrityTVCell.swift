@@ -8,8 +8,25 @@
 
 import UIKit
 
+class mySubscribeBtn : UIButton {
+    var isSubscribe : Int?
+    var contentIdx : Int?
+}
+
 class CelebrityTVCell: UITableViewCell {
 
+     @IBOutlet weak var mainImgView : UIImageView!
+     @IBOutlet weak var titleLbl: UILabel!
+     @IBOutlet weak var subtitleLbl: UILabel!
+     @IBOutlet weak var subscribeBtn : mySubscribeBtn!
+ 
+    func configure(data : ChannelVODataChannelList){
+        self.setImgWithKF(url: data.thumbnailImg, imgView: mainImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
+        titleLbl.text = data.name
+        subtitleLbl.text = "구독자 \(data.subscriptionCnt.description) · 게시물 \(data.spotCnt.description)"
+        self.setSubscribeBtn(subscribeBtn: subscribeBtn, idx: data.channelID, isSubscribe: data.subscription)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

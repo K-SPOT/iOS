@@ -14,6 +14,16 @@ class CategoryVC: UIViewController {
     @IBOutlet weak var celebrityBtn: CategoryToggleBtn!
     @IBOutlet weak var celebrityGreenView: UIView!
     @IBOutlet weak var broadcastBtn: CategoryToggleBtn!
+    var celebrityList : [ChannelVODataChannelList]? {
+        didSet {
+            celebrityVC.celebrityList = celebrityList
+        }
+    }
+    var broadcastList : [ChannelVODataChannelList]? {
+        didSet {
+            broadcastVC.broadcastList = broadcastList
+        }
+    }
     
     @IBOutlet weak var broadcastGreenView: UIView!
     
@@ -40,14 +50,12 @@ class CategoryVC: UIViewController {
     @IBAction func switchView(_ sender: CategoryToggleBtn) {
         updateView(selected: sender.tag)
     }
-    
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         celebrityBtn.setBtn(another: broadcastBtn, bottomLine: celebrityGreenView)
         broadcastBtn.setBtn(another: celebrityBtn, bottomLine: broadcastGreenView)
+        self.getMyChannel(url: UrlPath.ChannelList.getURL())
         updateView(selected: 0)
         
       
@@ -84,4 +92,25 @@ extension CategoryVC : SelectDelegate {
         }
     }
    
+}
+
+//통신
+extension CategoryVC  {
+    func getMyChannel(url : String){
+        ChannelService.shareInstance.getChannelList(url: url,completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(let channelList):
+                let channelData = channelList as! ChannelVOData
+               self.celebrityList = channelData.channelCelebrityList
+               self.broadcastList = channelData.channelBroadcastList
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    }
+    
 }
