@@ -17,6 +17,9 @@ enum UrlPath : String {
     case Mypage = "/user/mypage"
     case UserSubscription = "/user/subscription"
     case UserScrap = "/user/scrap"
+    case UserEdit = "/user/edit"
+    
+
     
     //카테고리
     case ChannelList = "/channel/list" //get

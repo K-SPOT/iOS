@@ -53,14 +53,25 @@
                                             </connections>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="AbJ-Cc-QZw">
-                                            <rect key="frame" x="78" y="40.5" width="95.5" height="39"/>
+                                            <rect key="frame" x="78" y="41" width="95" height="39"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="짱절미 고객님," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b86-Co-Qvf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="95.5" height="18"/>
-                                                    <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="GkV-zk-FdN">
+                                                    <rect key="frame" x="0.0" y="0.0" width="95" height="18"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="짱절미" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b86-Co-Qvf">
+                                                            <rect key="frame" x="0.0" y="0.0" width="44" height="18"/>
+                                                            <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="고객님," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uz-a5-YvM">
+                                                            <rect key="frame" x="47" y="0.0" width="48" height="18"/>
+                                                            <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안녕하세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hz-yx-fzy">
                                                     <rect key="frame" x="0.0" y="21" width="77" height="18"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFL" family="NanumSquareOTF" pointSize="16"/>

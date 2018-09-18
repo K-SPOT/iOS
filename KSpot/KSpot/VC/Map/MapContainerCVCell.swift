@@ -24,7 +24,7 @@ class MapContainerCVCell: UICollectionViewCell {
         titleLbl.text = data.name
         ratingLbl.text = data.reviewScore.description
         descLbl.text = data.description
-        locationLbl.text = "\(data.addressGu) . \(data.station)"
+        locationLbl.text = "\(data.addressGu) · \(data.station)"
         channel = data.channel
     }
     
