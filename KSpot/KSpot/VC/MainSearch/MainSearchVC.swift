@@ -14,13 +14,41 @@ class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var searchTxtfield: UITextField!
     
     @IBOutlet weak var searchBtn: UIButton!
+    
+    @IBOutlet weak var celebrityStack: UIStackView!
+    
+    @IBOutlet weak var broadcastStack: UIStackView!
+    
+    @IBOutlet weak var eventStack: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackBtn()
         setKeyboardSetting()
+        setStackViewAction()
         searchTxtfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         searchBtn.addTarget(self, action: #selector(searchAction(_:)), for: .touchUpInside)
         // textfeild.delegate = self 하기
+    }
+    
+    func setStackViewAction(){
+        for celebrityBtn in celebrityStack.arrangedSubviews as! [UIButton]{
+            celebrityBtn.addTarget(self, action: #selector(MainSearchVC.goToCelebrityDetail(_:)), for: .touchUpInside)
+        }
+        for broadcastBtn in broadcastStack.arrangedSubviews as! [UIButton]{
+            broadcastBtn.addTarget(self, action: #selector(MainSearchVC.goToCelebrityDetail(_:)), for: .touchUpInside)
+        }
+        for eventBtn in eventStack.arrangedSubviews as! [UIButton]{
+            eventBtn.addTarget(self, action: #selector(MainSearchVC.goToPlaceDetailVC(_:)), for: .touchUpInside)
+        }
+       
+    }
+    
+    @objc func goToCelebrityDetail(_ sender : UIButton){
+        self.goToCelebrityDetail()
+    }
+    
+    @objc func goToPlaceDetailVC(_ sender : UIButton){
+        self.goToPlaceDetailVC()
     }
     @objc func textFieldDidChange(_ textField: UITextField) {
         if !(searchTxtfield.text?.isEmpty)! {

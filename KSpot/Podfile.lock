@@ -35,6 +35,9 @@ PODS:
   - ImageSlideshow (1.6.1):
     - ImageSlideshow/Core (= 1.6.1)
   - ImageSlideshow/Core (1.6.1)
+  - ImageSlideshow/Kingfisher (1.6.1):
+    - ImageSlideshow/Core
+    - Kingfisher (> 3.0)
   - Kingfisher (4.7.0)
   - SnapKit (4.0.0)
   - SwiftyJSON (4.1.0)
@@ -47,6 +50,7 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
   - ImageSlideshow
+  - ImageSlideshow/Kingfisher
   - Kingfisher
   - SnapKit
   - SwiftyJSON
@@ -84,6 +88,6 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 1b6996035943fe0c56965a0fbfc7cd7a2379ce3f
+PODFILE CHECKSUM: 8051c0d308ee7688836929e6fd80f327f6f7132e
 
 COCOAPODS: 1.5.0

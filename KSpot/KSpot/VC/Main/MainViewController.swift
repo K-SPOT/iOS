@@ -12,7 +12,7 @@ import FBSDKLoginKit
 import ImageSlideshow
 
 struct SampleStruct {
-    var image : ImageSource
+    var image : InputSource
     var id : String
 }
 
@@ -26,8 +26,8 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
 
-    
-    var sampleData : [SampleStruct] = [SampleStruct(image: ImageSource(imageString: "aimg")!, id: "80"), SampleStruct(image: ImageSource(imageString: "bimg")!, id: "10"), SampleStruct(image: ImageSource(imageString: "cimg")!, id: "820")]
+
+    var sampleData : [SampleStruct] = [SampleStruct(image: KingfisherSource(urlString: "https://t1.daumcdn.net/cfile/tistory/240636455780D09234")!, id: "80"), SampleStruct(image: KingfisherSource(urlString: "https://i.pinimg.com/originals/f7/eb/e1/f7ebe1de2088de46229b163747e1a40a.gif")!, id: "10"), SampleStruct(image: KingfisherSource(urlString: "https://i.pinimg.com/originals/05/b5/c1/05b5c164be2121b2271b5c5ec7a59770.gif")!, id: "820")]
     
     fileprivate func reloadRootViewController() {
         let isOpened = FBSDKAccessToken.currentAccessTokenIsActive()
@@ -80,7 +80,8 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             cell.localSource = sampleData.map({ (data) in
                 data.image
             })
-            cell.prepareForReuse()
+    
+            cell.awakeFromNib()
             return cell
         } else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: MainSecondTVCell.reuseIdentifier) as! MainSecondTVCell

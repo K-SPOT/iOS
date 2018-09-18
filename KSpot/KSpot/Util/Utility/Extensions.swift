@@ -30,7 +30,7 @@ extension UIViewController {
         }
     }
     
-    func goToCelebrityDetail(){
+     func goToCelebrityDetail(){
         let categoryStoryboard = Storyboard.shared().categoryStoryboard
         if let categoryDetailVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailVC.reuseIdentifier) as? CategoryDetailVC {
             
