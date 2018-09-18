@@ -46,6 +46,14 @@ extension UIViewController {
         }
     } //goToSearchVC
     
+    func goToLoginPage(){
+        let mainStoryboard = Storyboard.shared().mainStoryboard
+        if let loginVC = mainStoryboard.instantiateViewController(withIdentifier:LoginVC.reuseIdentifier) as? LoginVC {
+            
+            self.present(loginVC, animated: true, completion: nil)
+        }
+    } //goToLoginPage
+    
     //백버튼
     func setBackBtn(color : UIColor? = ColorChip.shared().barbuttonColor){
         let backBTN = UIBarButtonItem(image: UIImage(named: "category_detail_left_arrow"),

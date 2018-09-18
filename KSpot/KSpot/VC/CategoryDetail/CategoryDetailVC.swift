@@ -303,7 +303,7 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     
 }
 
-extension CategoryDetailVC : SelectSectionelegate {
+extension CategoryDetailVC : SelectSectionDelegate {
     func tap(section: Section, seledtedId: Int) {
         if section == .first {
             goToPlaceDetailVC()

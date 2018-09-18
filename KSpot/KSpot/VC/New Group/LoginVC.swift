@@ -16,7 +16,6 @@ class LoginVC: UIViewController {
 
   
     var dict : [String : AnyObject]!
-    var dict1 : [String : AnyObject]!
     
     override func viewDidLoad() {
         super.viewDidLoad()

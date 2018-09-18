@@ -16,7 +16,7 @@ protocol SelectDelegate {
     func tap(selected : Int?)
 }
 
-protocol SelectSectionelegate {
+protocol SelectSectionDelegate {
     func tap(section : Section, seledtedId : Int)
 }
 

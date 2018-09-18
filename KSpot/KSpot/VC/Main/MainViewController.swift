@@ -47,7 +47,7 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController : SelectSectionelegate {
+extension MainViewController : SelectSectionDelegate {
     func tap(section: Section, seledtedId: Int) {
         if (section == .first){
             let mainStoryboard = Storyboard.shared().mainStoryboard

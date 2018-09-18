@@ -217,7 +217,7 @@ extension PlaceDetailVC: UITableViewDelegate,UITableViewDataSource{
     
 }
 
-extension PlaceDetailVC : SelectSectionelegate {
+extension PlaceDetailVC : SelectSectionDelegate {
     func tap(section: Section, seledtedId: Int) {
         //리뷰 쓰는 버튼
         if (seledtedId == -1){

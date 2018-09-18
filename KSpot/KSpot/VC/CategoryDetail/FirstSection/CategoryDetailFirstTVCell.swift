@@ -13,7 +13,7 @@ class CategoryDetailFirstTVCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     private var indexOfCellBeforeDragging = 0
     var currentPages = 0
-    var delegate : SelectSectionelegate?
+    var delegate : SelectSectionDelegate?
     private var collectionViewFlowLayout: UICollectionViewFlowLayout {
         return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }

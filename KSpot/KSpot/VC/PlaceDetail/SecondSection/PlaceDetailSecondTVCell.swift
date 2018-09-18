@@ -28,7 +28,7 @@ class PlaceDetailSecondTVCell: UITableViewCell {
     private var collectionViewFlowLayout: UICollectionViewFlowLayout {
         return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
-    var delegate : SelectSectionelegate?
+    var delegate : SelectSectionDelegate?
     
     let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg")]
     

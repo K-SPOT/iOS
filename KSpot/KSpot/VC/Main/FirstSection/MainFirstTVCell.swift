@@ -16,7 +16,7 @@ class MainFirstTVCell: UITableViewCell {
     
     var localSource : [InputSource] = []
     
-    var delegate : SelectSectionelegate?
+    var delegate : SelectSectionDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         slideshow.slideshowInterval = 5.0
