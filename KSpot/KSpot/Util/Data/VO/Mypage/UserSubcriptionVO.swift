@@ -18,11 +18,13 @@ struct UserSubcriptionVOData: Codable {
 }
 
 struct UserSubcriptionVOBroadcast: Codable {
-    let korName, thumbnailImg: String
+    let name, thumbnailImg: String
     let newPostCheck: Int
+    let channelId : Int
     
     enum CodingKeys: String, CodingKey {
-        case korName = "kor_name"
+        case channelId = "channel_id"
+        case name = "name"
         case thumbnailImg = "thumbnail_img"
         case newPostCheck = "new_post_check"
     }

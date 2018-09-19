@@ -129,6 +129,7 @@ extension CategoryVC  {
             switch result {
             case .networkSuccess(_):
                 sender.isSelected = true
+               
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
             default :
@@ -144,6 +145,7 @@ extension CategoryVC  {
             switch result {
             case .networkSuccess(_):
                 sender.isSelected = false
+               
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
             default :

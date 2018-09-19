@@ -196,6 +196,8 @@ extension EditProfileVC {
                 self.simpleOKAlert(title: "확인", message: "프로필 변경이 완료되었습니다", okHandler: { (_) in
                      self.pop()
                 })
+            case .duplicated :
+                self.simpleAlert(title: "오류", message: "중복된 아이디입니다")
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "인터넷 연결상태를 확인해주세요")
             default :

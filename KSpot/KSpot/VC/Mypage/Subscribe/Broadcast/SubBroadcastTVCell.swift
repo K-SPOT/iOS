@@ -16,7 +16,7 @@ class SubBroadcastTVCell: UITableViewCell {
     @IBOutlet weak var nameLbl: UILabel!
     func configure(data : UserSubcriptionVOBroadcast) {
         setImgWithKF(url: data.thumbnailImg, imgView: profileView, defaultImg: #imageLiteral(resourceName: "aimg"))
-        nameLbl.text = data.korName
+        nameLbl.text = data.name
         greenView.isHidden = (data.newPostCheck == 0)
     }
     override func awakeFromNib() {

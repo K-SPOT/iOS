@@ -10,7 +10,7 @@ import Foundation
 
 struct DefaultVO: Codable {
     let message: String
-    let data: DefaultVOData
+    let data: DefaultVOData?
 }
 
 struct DefaultVOData: Codable {

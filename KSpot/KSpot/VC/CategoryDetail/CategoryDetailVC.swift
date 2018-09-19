@@ -15,6 +15,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     var selectedIdx = 0
+    var initailSubCount = 0
     
     lazy var backgroundImg :UIImageView = {
         let imgView = UIImageView(image: UIImage(named: "cimg"))
@@ -150,9 +151,13 @@ extension CategoryDetailVC {
         mainTitleLbl.snp.makeConstraints { (make) in
             make.leading.equalTo(logoImg.snp.trailing).offset(8)
             make.top.equalTo(backgroundImg.snp.bottom).offset(16)
+            make.width.equalTo(180)
+            mainTitleLbl.adjustsFontSizeToFitWidth = true
         }
         subTitleLbl.snp.makeConstraints { (make) in
             make.leading.equalTo(mainTitleLbl.snp.leading)
+            make.width.equalTo(200)
+            subTitleLbl.adjustsFontSizeToFitWidth = true
             make.top.equalTo(mainTitleLbl.snp.bottom).offset(9)
         }
         subscribeBtn.snp.makeConstraints { (make) in
@@ -164,6 +169,9 @@ extension CategoryDetailVC {
         }
         subscribeLbl.snp.makeConstraints { (make) in
             make.trailing.equalToSuperview().offset(-16)
+            make.width.equalTo(50)
+            subscribeLbl.textAlignment = .right
+            subscribeLbl.adjustsFontSizeToFitWidth = true
             make.top.equalTo(subscribeBtn.snp.bottom).offset(9)
         }
         bottomGrayView.snp.makeConstraints { (make) in
@@ -325,9 +333,11 @@ extension CategoryDetailVC {
             switch result {
             case .networkSuccess(let channelDetailData):
                 let detailData = channelDetailData as! ChannelDetailVOData
-                let info = detailData.channelInfo[0]
-                self.mainTitleLbl.text = info.korName
-                self.subTitleLbl.text = info.korCompany
+                let info = detailData.channelInfo
+                self.mainTitleLbl.text = info.name
+                self.subTitleLbl.text = info.company
+                self.initailSubCount = info.subscriptionCnt
+                print("여기 확인 \(info.subscriptionCnt)")
                 self.subscribeLbl.text = info.subscriptionCnt.description
                 self.setImgWithKF(url: info.backgroundImg, imgView: self.backgroundImg, defaultImg: #imageLiteral(resourceName: "aimg"))
                 self.setImgWithKF(url: info.thumbnailImg, imgView: self.logoImg, defaultImg: #imageLiteral(resourceName: "aimg"))
@@ -348,6 +358,15 @@ extension CategoryDetailVC {
             switch result {
             case .networkSuccess(_):
                 sender.isSelected = true
+                sender.isSubscribe = 1
+                var changed : Int = 0
+                //Now change the text and background colour
+                if self.subscribeLbl.text == self.initailSubCount.description {
+                    changed = self.initailSubCount+1
+                } else {
+                    changed = self.initailSubCount
+                }
+                self.subscribeLbl.text = "\(changed)"
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
             default :
@@ -363,6 +382,16 @@ extension CategoryDetailVC {
             switch result {
             case .networkSuccess(_):
                 sender.isSelected = false
+                sender.isSubscribe = 0
+                var changed : Int = 0
+                
+                //Now change the text and background colour
+                if self.subscribeLbl.text == self.initailSubCount.description {
+                    changed = self.initailSubCount-1
+                } else {
+                    changed = self.initailSubCount
+                }
+                self.subscribeLbl.text = "\(changed)"
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
             default :

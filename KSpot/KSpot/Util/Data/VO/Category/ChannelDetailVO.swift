@@ -13,7 +13,7 @@ struct ChannelDetailVO: Codable {
 }
 
 struct ChannelDetailVOData: Codable {
-    let channelInfo: [ChannelDetailVODataChannelInfo]
+    let channelInfo: ChannelDetailVODataChannelInfo
     let placeRecommendedByChannel: [ChannelDetailVODataPlaceRecommendedByChannel]
     let placeRelatedChannel, eventRelatedChannel: [ChannelDetailVODataRelatedChannel]
     
@@ -27,31 +27,16 @@ struct ChannelDetailVOData: Codable {
 
 struct ChannelDetailVODataChannelInfo: Codable {
     let id: Int
-    let korName, engName, korCompany, backgroundImg: String
+    let name, company, backgroundImg: String
     let thumbnailImg: String
     let subscriptionCnt, subscription: Int
     
     enum CodingKeys: String, CodingKey {
-        case id
-        case korName = "kor_name"
-        case engName = "eng_name"
-        case korCompany = "kor_company"
+        case id, name, company
         case backgroundImg = "background_img"
         case thumbnailImg = "thumbnail_img"
         case subscriptionCnt = "subscription_cnt"
         case subscription
-    }
-}
-
-struct ChannelDetailVODataPlaceRecommendedByChannel: Codable {
-    let spotID: Int
-    let korName, engName, img: String
-    
-    enum CodingKeys: String, CodingKey {
-        case spotID = "spot_id"
-        case korName = "kor_name"
-        case engName = "eng_name"
-        case img
     }
 }
 
@@ -70,4 +55,14 @@ struct ChannelDetailVODataRelatedChannel: Codable {
     }
 }
 
-
+struct ChannelDetailVODataPlaceRecommendedByChannel: Codable {
+    let spotID: Int
+    let korName, engName, img: String
+    
+    enum CodingKeys: String, CodingKey {
+        case spotID = "spot_id"
+        case korName = "kor_name"
+        case engName = "eng_name"
+        case img
+    }
+}

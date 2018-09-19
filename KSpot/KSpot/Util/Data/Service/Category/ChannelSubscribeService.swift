@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ChannelSubscribeService: PostableService {
+struct ChannelSubscribeService: PostableService, GettableService {
     typealias NetworkData = DefaultVO
 
     static let shareInstance = ChannelSubscribeService()
@@ -40,18 +40,19 @@ struct ChannelSubscribeService: PostableService {
     }
     
     func unsubscribe(url : String, completion : @escaping (NetworkResult<Any>) -> Void){
-        delete(url) { (result) in
+        
+        get(url, method: .delete) { (result) in
             switch result {
             case .success(let networkResult):
                 switch networkResult.resCode{
-                case HttpResponseCode.POST_SUCCESS.rawValue :
+                case HttpResponseCode.GET_SUCCESS.rawValue :
                     completion(.networkSuccess(networkResult.resResult.data))
                 case HttpResponseCode.UID_ERROR.rawValue :
                     completion(.UIDErr)
                 case HttpResponseCode.SERVER_ERROR.rawValue :
                     completion(.serverErr)
                 default :
-                     print("no 201/204/500 rescode is \(networkResult.resCode)")
+                     print("no 200/204/500 rescode is \(networkResult.resCode)")
                     break
                 }
                 

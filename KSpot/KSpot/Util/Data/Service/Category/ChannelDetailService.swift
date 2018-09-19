@@ -17,7 +17,7 @@ struct ChannelDetailService: GettableService {
             switch result {
             case .success(let networkResult):
                 switch networkResult.resCode{
-                case HttpResponseCode.POST_SUCCESS.rawValue : completion(.networkSuccess(networkResult.resResult.data))
+                case HttpResponseCode.GET_SUCCESS.rawValue : completion(.networkSuccess(networkResult.resResult.data))
                 case HttpResponseCode.SELECT_ERROR.rawValue :
                     completion(.selectErr)
                 case HttpResponseCode.SERVER_ERROR.rawValue :
