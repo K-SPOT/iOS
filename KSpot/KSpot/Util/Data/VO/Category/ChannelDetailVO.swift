@@ -57,12 +57,11 @@ struct ChannelDetailVODataRelatedChannel: Codable {
 
 struct ChannelDetailVODataPlaceRecommendedByChannel: Codable {
     let spotID: Int
-    let korName, engName, img: String
+    let name, img: String
     
     enum CodingKeys: String, CodingKey {
         case spotID = "spot_id"
-        case korName = "kor_name"
-        case engName = "eng_name"
-        case img
+        case name, img
     }
+    
 }

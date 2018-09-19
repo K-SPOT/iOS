@@ -395,6 +395,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="collectionView" destination="52q-Ux-eIO" id="MK4-0r-5wy"/>
+                                            <outlet property="titleLbl" destination="Obe-48-MqH" id="nJY-nB-35f"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryDetailSecondTVHeaderCell" rowHeight="79" id="93M-Fo-qNR" customClass="CategoryDetailSecondTVHeaderCell" customModule="KSpot" customModuleProvider="target">

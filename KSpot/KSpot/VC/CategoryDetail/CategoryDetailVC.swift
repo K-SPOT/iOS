@@ -16,7 +16,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
     @IBOutlet weak var tableView: UITableView!
     var selectedIdx = 0
     var initailSubCount = 0
-    
+   
     lazy var backgroundImg :UIImageView = {
         let imgView = UIImageView(image: UIImage(named: "cimg"))
         
@@ -94,8 +94,9 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
     }
     
     
-    let sunglassArr1 = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
-    let sunglassArr2 : [UIImage] =  [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
+    var recommendPlace : [ChannelDetailVODataPlaceRecommendedByChannel]?
+    var relatedPlace : [ChannelDetailVODataRelatedChannel]?
+    var relatedEvent : [ChannelDetailVODataRelatedChannel]?
     override func viewDidLoad() {
         
         setupTableView()
@@ -217,17 +218,29 @@ extension CategoryDetailVC
 extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        if let relatedEvent_ = relatedEvent {
+            if relatedEvent_.count == 0 {
+                return 2
+            } else {
+                return 3
+            }
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         } else if section == 1{
-            return sunglassArr1.count
+            if let relatedPlace_ = relatedPlace {
+                return relatedPlace_.count
+            }
         } else {
-            return sunglassArr2.count
+            if let relatedEvent_ = relatedEvent {
+                return relatedEvent_.count
+            }
         }
+        return 0
     }
     
     
@@ -271,16 +284,21 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 1 {
-            return heightForHeaderInSection(arr : sunglassArr1)
+            if let relatedPlace_ = relatedPlace {
+                return heightForHeaderInSection(arr : relatedPlace_)
+            }
         } else if section == 2 {
-            return heightForHeaderInSection(arr : sunglassArr2)
+            if let relatedEvent_ = relatedEvent {
+                return heightForHeaderInSection(arr : relatedEvent_)
+            }
         } else {
             return 0
         }
+        return 0
         //return section == 1 || section == 2  ? 79 : 0
     }
     
-    private func heightForHeaderInSection(arr : [UIImage]) -> CGFloat {
+    private func heightForHeaderInSection(arr : [ChannelDetailVODataRelatedChannel]) -> CGFloat {
         if (arr.count > 0){
             return 62
         }
@@ -293,14 +311,20 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: CategoryDetailFirstTVCell.reuseIdentifier) as! CategoryDetailFirstTVCell
             cell.delegate = self
+            cell.recommendData = self.recommendPlace
+            cell.titleTxt = "\(self.mainTitleLbl.text ?? "")'s 추천 장소"
             return cell
             
         }  else {
             let cell = tableView.dequeueReusableCell(withIdentifier: CategoryDetailSecondTVCell.reuseIdentifier) as! CategoryDetailSecondTVCell
             if indexPath.section == 1 {
-                //cell.configure
+                if let relatedPlace_ = relatedPlace{
+                     cell.configure(data: relatedPlace_[indexPath.row])
+                }
             } else {
-                //cell.configure
+                if let relatedEvent_ = relatedEvent{
+                   cell.configure(data: relatedEvent_[indexPath.row])
+                }
             }
             return cell
         }
@@ -342,7 +366,10 @@ extension CategoryDetailVC {
                 self.setImgWithKF(url: info.backgroundImg, imgView: self.backgroundImg, defaultImg: #imageLiteral(resourceName: "aimg"))
                 self.setImgWithKF(url: info.thumbnailImg, imgView: self.logoImg, defaultImg: #imageLiteral(resourceName: "aimg"))
                 self.subscribeBtn.setSubscribeBtn(idx: info.id, isSubscribe: info.subscription)
-                
+                self.recommendPlace = detailData.placeRecommendedByChannel
+                self.relatedPlace = detailData.placeRelatedChannel
+                self.relatedEvent = detailData.eventRelatedChannel
+                self.tableView.reloadData()
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
             default :
