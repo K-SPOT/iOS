@@ -24,7 +24,7 @@ class CategoryDetailMorePlaceVC: UIViewController, UIGestureRecognizerDelegate {
         collectionView.delegate = self
         collectionView.dataSource = self
         let isEvent = isPlace ? 0 : 1
-        getChannelSpotMore(url: UrlPath.ChannelSpotMore.getSpotMoreURL(channelId: selectedIdx, isEvent: isEvent))
+        getChannelSpotMore(url: UrlPath.channelSpotMore.getSpotMoreURL(channelId: selectedIdx, isEvent: isEvent))
         
     }
     

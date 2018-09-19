@@ -87,9 +87,9 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
     @objc func subscribeAction(_ sender : mySubscribeBtn){
         let params = ["channel_id" : sender.contentIdx?.description]
         if sender.isSelected {
-            unsubscribe(url: UrlPath.ChannelSubscription.getURL(sender.contentIdx?.description), sender: sender)
+            unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
         } else {
-            subscribe(url: UrlPath.ChannelSubscription.getURL(), params: params, sender: sender)
+            subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
         }
     }
     
@@ -101,7 +101,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
         
         setupTableView()
         setupNavView()
-        getChannelDetail(url : UrlPath.ChannelDetail.getURL(selectedIdx.description))
+        getChannelDetail(url : UrlPath.channelDetail.getURL(selectedIdx.description))
     }
     
     func setupTableView(){

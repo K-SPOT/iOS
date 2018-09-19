@@ -11,28 +11,33 @@ import Foundation
 
 enum UrlPath : String {
     //로그인
-    case FacebookLogin = "/user/facebook/signin"
+    case facebookLogin = "/user/facebook/signin"
+    
+
+    //메인
+    case main = "/main"
+    case mainSearch = "/search"
     
     //마이페이지
-    case Mypage = "/user/mypage"
-    case UserSubscription = "/user/subscription"
-    case UserScrap = "/user/scrap"
-    case UserEdit = "/user/edit"
+    case mypage = "/user/mypage"
+    case userSubscription = "/user/subscription"
+    case userScrap = "/user/scrap"
+    case userEdit = "/user/edit"
     
 
     
     //카테고리
-    case ChannelList = "/channel/list" //get
-    case ChannelSubscription = "/channel/subscription/"
-    case ChannelDetail = "/channel/detail/"
-    case ChannelSpotMore
+    case channelList = "/channel/list" //get
+    case channelSubscription = "/channel/subscription/"
+    case channelDetail = "/channel/detail/"
+    case channelSpotMore
     
     func getSpotMoreURL(channelId : Int, isEvent : Int)->String{
-        return "http://13.209.35.110:3000/channel/\(channelId)/spot/\(isEvent)"
+        return "\(NetworkConfiguration.shared().baseURL)/channel/\(channelId)/spot/\(isEvent)"
     }
     
     func getURL(_ parameter : String? = nil) -> String{
-        return "http://13.209.35.110:3000\(self.rawValue)\(parameter ?? "")"
+        return "\(NetworkConfiguration.shared().baseURL)\(self.rawValue)\(parameter ?? "")"
     }
 }
 

@@ -53,7 +53,7 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func doneAction(_sender : UIBarButtonItem) {
-        editProfile(url: UrlPath.UserEdit.getURL(), editedName: nameTxtfield.text!)
+        editProfile(url: UrlPath.userEdit.getURL(), editedName: nameTxtfield.text!)
     }
     
 

@@ -39,6 +39,10 @@
 		3B3C442E2151AA4E005B8650 /* UserEditService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C442D2151AA4E005B8650 /* UserEditService.swift */; };
 		3B3C44302151B054005B8650 /* ChannelDetailVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C442F2151B054005B8650 /* ChannelDetailVO.swift */; };
 		3B3C44322151B070005B8650 /* ChannelDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C44312151B070005B8650 /* ChannelDetailService.swift */; };
+		3B3C44382152EF43005B8650 /* MainVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C44372152EF43005B8650 /* MainVO.swift */; };
+		3B3C443A2152EFCF005B8650 /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C44392152EFCF005B8650 /* MainService.swift */; };
+		3B3C443C2152F8D3005B8650 /* MainSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C443B2152F8D3005B8650 /* MainSearchService.swift */; };
+		3B3C443E2152F8E2005B8650 /* MainSearchVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C443D2152F8E2005B8650 /* MainSearchVO.swift */; };
 		3B3DD0E1213AE1C200FD00B3 /* MainSecondTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */; };
 		3B3DD0E3213AE1CC00FD00B3 /* MainSecondCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */; };
 		3B3DD0E5213AE1D900FD00B3 /* MainThirdTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */; };
@@ -152,6 +156,10 @@
 		3B3C442D2151AA4E005B8650 /* UserEditService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEditService.swift; sourceTree = "<group>"; };
 		3B3C442F2151B054005B8650 /* ChannelDetailVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailVO.swift; sourceTree = "<group>"; };
 		3B3C44312151B070005B8650 /* ChannelDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailService.swift; sourceTree = "<group>"; };
+		3B3C44372152EF43005B8650 /* MainVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVO.swift; sourceTree = "<group>"; };
+		3B3C44392152EFCF005B8650 /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
+		3B3C443B2152F8D3005B8650 /* MainSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchService.swift; sourceTree = "<group>"; };
+		3B3C443D2152F8E2005B8650 /* MainSearchVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchVO.swift; sourceTree = "<group>"; };
 		3B3DD0E0213AE1C200FD00B3 /* MainSecondTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondTVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E2213AE1CC00FD00B3 /* MainSecondCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondCVCell.swift; sourceTree = "<group>"; };
 		3B3DD0E4213AE1D900FD00B3 /* MainThirdTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThirdTVCell.swift; sourceTree = "<group>"; };
@@ -322,6 +330,8 @@
 			isa = PBXGroup;
 			children = (
 				3B3C440A21515FCB005B8650 /* FacebookLoginService.swift */,
+				3B3C44392152EFCF005B8650 /* MainService.swift */,
+				3B3C443B2152F8D3005B8650 /* MainSearchService.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -370,6 +380,8 @@
 			isa = PBXGroup;
 			children = (
 				3B3C440C21516072005B8650 /* FacebookLoginVO.swift */,
+				3B3C44372152EF43005B8650 /* MainVO.swift */,
+				3B3C443D2152F8E2005B8650 /* MainSearchVO.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1034,6 +1046,7 @@
 				3BB1882F2144431F0021B543 /* MypageVC.swift in Sources */,
 				3B3C442A2151A121005B8650 /* UserScrapService.swift in Sources */,
 				3B3DD141213D3B5100FD00B3 /* CategoryDetailFirstCVCell.swift in Sources */,
+				3B3C44382152EF43005B8650 /* MainVO.swift in Sources */,
 				3B3DD149213D6C5800FD00B3 /* BroadcastTVCell.swift in Sources */,
 				3B3DD182213F072D00FD00B3 /* PlaceDetailFirstTVCell.swift in Sources */,
 				3B3DD120213BEE0500FD00B3 /* MapContainerCVCell.swift in Sources */,
@@ -1051,9 +1064,11 @@
 				3B3C441321516D41005B8650 /* MypageService.swift in Sources */,
 				3BBB7D992146D0F3004CC142 /* ThemeTVCell.swift in Sources */,
 				3B3C43CF214EECC5005B8650 /* CategoryDetailMorePlaceVC.swift in Sources */,
+				3B3C443E2152F8E2005B8650 /* MainSearchVO.swift in Sources */,
 				3B3DD114213BD74300FD00B3 /* MapVC.swift in Sources */,
 				3B3DD189213F0D0600FD00B3 /* PlaceDetailSecondCVCell.swift in Sources */,
 				3B3C440F2151616D005B8650 /* HttpResCode.swift in Sources */,
+				3B3C443A2152EFCF005B8650 /* MainService.swift in Sources */,
 				3BBB7DA12146F847004CC142 /* ReviewContainerVC.swift in Sources */,
 				3BBB7D8F21459B81004CC142 /* EditProfileVC.swift in Sources */,
 				3BB18831214445810021B543 /* MypageTVCell.swift in Sources */,
@@ -1090,6 +1105,7 @@
 				3B3C43CD214EECAA005B8650 /* CategoryDetailMoreVC.swift in Sources */,
 				3B3DD0E5213AE1D900FD00B3 /* MainThirdTVCell.swift in Sources */,
 				3BBB7D85214578E7004CC142 /* SubCelebrityTVCell.swift in Sources */,
+				3B3C443C2152F8D3005B8650 /* MainSearchService.swift in Sources */,
 				3B3C44322151B070005B8650 /* ChannelDetailService.swift in Sources */,
 				3BBB7D9321469656004CC142 /* ThemeVC.swift in Sources */,
 				3B3DD12C213C1C3200FD00B3 /* SelectRegionDelegate.swift in Sources */,

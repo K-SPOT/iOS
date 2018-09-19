@@ -14,7 +14,7 @@ class MainFirstTVCell: UITableViewCell {
     
     @IBOutlet var slideshow: ImageSlideshow!
     
-    var localSource : [InputSource] = []
+    var imageSource : [InputSource] = []
     
     var delegate : SelectSectionDelegate?
     override func awakeFromNib() {
@@ -35,7 +35,7 @@ class MainFirstTVCell: UITableViewCell {
         }
         
         // can be used with other sample sources as `afNetworkingSource`, `alamofireSource` or `sdWebImageSource` or `kingfisherSource`
-        slideshow.setImageInputs(localSource)
+        slideshow.setImageInputs(imageSource)
         
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(MainFirstTVCell.didTap))
         slideshow.addGestureRecognizer(recognizer)

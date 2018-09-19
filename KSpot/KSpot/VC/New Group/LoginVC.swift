@@ -19,7 +19,7 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLanguageFlag(langugae: .Kor)
+        setLanguageFlag(langugae: .kor)
     }
 
     @IBAction func facebookLoginAction(_ sender: UIButton) {
@@ -36,7 +36,7 @@ class LoginVC: UIViewController {
                 } else {
                     let currentToken = AccessToken.current?.authenticationToken ?? ""
                     let param = ["access_token" : currentToken]
-                    self.facebookLogin(url: UrlPath.FacebookLogin.getURL(), params: param)
+                    self.facebookLogin(url: UrlPath.facebookLogin.getURL(), params: param)
                 }
             }
         }

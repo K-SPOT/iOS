@@ -56,7 +56,7 @@ class CategoryVC: UIViewController {
         super.viewDidLoad()
         celebrityBtn.setBtn(another: broadcastBtn, bottomLine: celebrityGreenView)
         broadcastBtn.setBtn(another: celebrityBtn, bottomLine: broadcastGreenView)
-        self.getMyChannel(url: UrlPath.ChannelList.getURL())
+        self.getMyChannel(url: UrlPath.channelList.getURL())
         updateView(selected: 0)
         
       
@@ -96,9 +96,9 @@ extension CategoryVC : SelectSenderDelegate {
     func tap(section: Section, seledtedId: Int, sender: mySubscribeBtn) {
         let params = ["channel_id" : seledtedId]
         if sender.isSelected {
-            unsubscribe(url: UrlPath.ChannelSubscription.getURL(sender.contentIdx?.description), sender: sender)
+            unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
         } else {
-            subscribe(url: UrlPath.ChannelSubscription.getURL(), params: params, sender: sender)
+            subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
         }
         
     }

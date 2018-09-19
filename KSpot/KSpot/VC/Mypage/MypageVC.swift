@@ -30,13 +30,12 @@ class MypageVC: UIViewController {
     var channelArr : [MypageVODataChannel]? {
         didSet {
             tableView.reloadData()
-            print("바귄 카운트는\(numberofRows)")
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.getMyInfo(url: UrlPath.Mypage.getURL())
+        self.getMyInfo(url: UrlPath.mypage.getURL())
     }
     override func viewDidLoad() {
         super.viewDidLoad()

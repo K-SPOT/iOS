@@ -20,7 +20,7 @@ class ScrapVC: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackBtn()
-        getUserScrap(url: UrlPath.UserScrap.getURL())
+        getUserScrap(url: UrlPath.userScrap.getURL())
         collectionView.delegate = self
         collectionView.dataSource = self
     }

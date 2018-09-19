@@ -9,8 +9,8 @@
 import Foundation
 
 enum Language : Int {
-    case Kor = 0
-    case Eng = 1
+    case kor = 0
+    case eng = 1
 }
 
 enum Distance : String {

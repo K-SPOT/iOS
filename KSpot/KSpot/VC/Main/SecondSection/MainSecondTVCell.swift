@@ -17,8 +17,11 @@ class MainSecondTVCell: UITableViewCell {
         return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
     var delegate : SelectSectionDelegate?
-    
-    let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg")]
+    var recommendPlaceData : [MainVODataMain]? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.delegate = self
@@ -45,14 +48,19 @@ extension MainSecondTVCell : UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sunglassArr.count
+        if let recommendPlaceData_ = recommendPlaceData{
+            return recommendPlaceData_.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell: MainSecondCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: MainSecondCVCell.reuseIdentifier, for: indexPath) as? MainSecondCVCell
         {
-            cell.myImgView.image = sunglassArr[indexPath.row]
+            if let recommendPlaceData_ = recommendPlaceData {
+                 cell.configure(data: recommendPlaceData_[indexPath.row])
+            }
             return cell
         }
         return UICollectionViewCell()

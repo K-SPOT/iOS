@@ -53,7 +53,7 @@ class SubscribeVC: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         celebrityBtn.setBtn(another: broadcastBtn, bottomLine: celebrityGreenView)
         broadcastBtn.setBtn(another: celebrityBtn, bottomLine: broadcastGreenView)
-        getUserSubcription(url: UrlPath.UserSubscription.getURL())
+        getUserSubcription(url: UrlPath.userSubscription.getURL())
         updateView(selected: 0)
         setBackBtn()
     }
