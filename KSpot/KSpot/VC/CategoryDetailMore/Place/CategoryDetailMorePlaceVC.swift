@@ -11,13 +11,21 @@ import UIKit
 class CategoryDetailMorePlaceVC: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
-    
+    var channelMoreData : [UserScrapVOData]? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    var isPlace = true
+    var selectedIdx = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackBtn()
         collectionView.delegate = self
         collectionView.dataSource = self
+        let isEvent = isPlace ? 0 : 1
+        getChannelSpotMore(url: UrlPath.ChannelSpotMore.getSpotMoreURL(channelId: selectedIdx, isEvent: isEvent))
+        
     }
     
 }
@@ -29,15 +37,19 @@ extension CategoryDetailMorePlaceVC : UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return sunglassArr.count
+        if let channelMoreData_ = channelMoreData{
+            return channelMoreData_.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell: MapContainerCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlaceMoreCVCell", for: indexPath) as? MapContainerCVCell
         {
-            cell.myImgView.image = sunglassArr[indexPath.row]
+            if let channelMoreData_ = channelMoreData{
+               cell.configure(data: channelMoreData_[indexPath.row])
+            }
             return cell
         }
         return UICollectionViewCell()
@@ -67,3 +79,22 @@ extension CategoryDetailMorePlaceVC: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsetsMake(0, 0, 16, 0)
     }
 }
+
+//통신
+extension CategoryDetailMorePlaceVC {
+    func getChannelSpotMore(url : String){
+        UserScrapService.shareInstance.getScrapList(url: url,completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(let channelMoreData):
+                self.channelMoreData = channelMoreData as? [UserScrapVOData]
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    }
+}
+

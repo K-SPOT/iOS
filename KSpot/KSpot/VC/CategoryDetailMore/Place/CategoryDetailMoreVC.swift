@@ -10,6 +10,16 @@ import UIKit
 class CategoryDetailMoreVC: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var containerView: UIView!
+    var isPlace : Bool = true {
+        didSet {
+            categoryDetailMorePlaceVC.isPlace = isPlace
+        }
+    }
+    var selectedIdx = 0 {
+        didSet {
+            categoryDetailMorePlaceVC.selectedIdx = selectedIdx
+        }
+    }
     var filterView = PlaceFilterView.instanceFromNib()
     private lazy var categoryDetailMorePlaceVC: CategoryDetailMorePlaceVC = {
         let storyboard = Storyboard.shared().categoryStoryboard
@@ -26,6 +36,7 @@ class CategoryDetailMoreVC: UIViewController, UIGestureRecognizerDelegate {
         initContainerView()
         setFilterView(filterView)
         setBackBtn()
+        
     }
     
     
@@ -121,4 +132,5 @@ extension CategoryDetailMoreVC {
         }
     }
 }
+
 

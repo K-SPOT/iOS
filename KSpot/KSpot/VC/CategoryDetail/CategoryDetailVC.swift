@@ -266,15 +266,19 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
         let categoryStoryboard = Storyboard.shared().categoryStoryboard
         if let categoryDetailMoreVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailMoreVC.reuseIdentifier) as? CategoryDetailMoreVC {
             categoryDetailMoreVC.title = "장소"
+            categoryDetailMoreVC.isPlace = true
+            categoryDetailMoreVC.selectedIdx = selectedIdx
             self.navigationController?.pushViewController(categoryDetailMoreVC, animated: true)
         }
     }
     
     @objc func eventMoreAction(_ sender : UIButton){
         let categoryStoryboard = Storyboard.shared().categoryStoryboard
-        if let categoryDetailMoreEventVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailMoreEventVC.reuseIdentifier) as? CategoryDetailMoreEventVC {
-            
+        if let categoryDetailMoreEventVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailMorePlaceVC.reuseIdentifier) as? CategoryDetailMorePlaceVC {
             categoryDetailMoreEventVC.title = "이벤트"
+            categoryDetailMoreEventVC.isPlace = false
+           categoryDetailMoreEventVC.selectedIdx = selectedIdx
+            
             self.navigationController?.pushViewController(categoryDetailMoreEventVC, animated: true)
         }
     }

@@ -25,15 +25,11 @@ enum UrlPath : String {
     case ChannelList = "/channel/list" //get
     case ChannelSubscription = "/channel/subscription/"
     case ChannelDetail = "/channel/detail/"
+    case ChannelSpotMore
     
-
-    
-    
-
-    
-
-    
-    
+    func getSpotMoreURL(channelId : Int, isEvent : Int)->String{
+        return "http://13.209.35.110:3000/channel/\(channelId)/spot/\(isEvent)"
+    }
     
     func getURL(_ parameter : String? = nil) -> String{
         return "http://13.209.35.110:3000\(self.rawValue)\(parameter ?? "")"
