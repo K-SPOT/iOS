@@ -187,13 +187,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dh7-RI-hCN">
                                                     <rect key="frame" x="157" y="24" width="140" height="42.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxa-ya-rK5">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxa-ya-rK5">
                                                             <rect key="frame" x="0.0" y="0.0" width="140" height="19"/>
                                                             <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="17"/>
                                                             <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="구독자 25만 게시물 2000개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxD-Q6-Z8T">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="구독자 25만 게시물 2000개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxD-Q6-Z8T">
                                                             <rect key="frame" x="0.0" y="29" width="140" height="13.5"/>
                                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                             <color key="textColor" red="0.7725490196" green="0.7725490196" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -219,6 +219,7 @@
                                                 <constraint firstItem="PG7-Ux-HBV" firstAttribute="width" secondItem="Iiw-Fv-acI" secondAttribute="width" multiplier="100:375" id="bfu-DR-49H"/>
                                                 <constraint firstAttribute="trailing" secondItem="iJv-GC-SaV" secondAttribute="trailing" constant="16" id="cyY-3M-oye"/>
                                                 <constraint firstItem="tgH-xv-xbe" firstAttribute="leading" secondItem="Iiw-Fv-acI" secondAttribute="leading" constant="16" id="hKf-jQ-T9I"/>
+                                                <constraint firstItem="iJv-GC-SaV" firstAttribute="leading" secondItem="Dh7-RI-hCN" secondAttribute="trailing" constant="5" id="hxf-I0-Xx9"/>
                                                 <constraint firstAttribute="bottom" secondItem="PG7-Ux-HBV" secondAttribute="bottom" constant="11.5" id="iSQ-Mp-idu"/>
                                                 <constraint firstItem="Dh7-RI-hCN" firstAttribute="leading" secondItem="PG7-Ux-HBV" secondAttribute="trailing" constant="16" id="xO9-3n-3Tr"/>
                                             </constraints>
@@ -460,19 +461,19 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울고척돔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HyK-A5-klr">
-                                                    <rect key="frame" x="190" y="13" width="82" height="20"/>
+                                                    <rect key="frame" x="190" y="13" width="169" height="20"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="18"/>
                                                     <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="절미의 산책을 한눈에" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIy-7L-aEt">
-                                                    <rect key="frame" x="190" y="40" width="122" height="16"/>
+                                                    <rect key="frame" x="190" y="40" width="169" height="16"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="14"/>
                                                     <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="용산구 / 명동역" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAu-4z-39J">
-                                                    <rect key="frame" x="206" y="66" width="132" height="14"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용산구 / 명동역" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAu-4z-39J">
+                                                    <rect key="frame" x="206" y="66" width="153" height="14"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                     <color key="textColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -491,8 +492,8 @@
                                                         <constraint firstAttribute="height" constant="13" id="Qv2-dk-dkp"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1,175" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Df-m7-mua">
-                                                    <rect key="frame" x="205" y="90" width="97" height="14"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,175" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Df-m7-mua">
+                                                    <rect key="frame" x="205" y="90" width="154" height="14"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                     <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -511,7 +512,11 @@
                                                 <constraint firstItem="d7L-Ja-DVQ" firstAttribute="leading" secondItem="aIm-Wo-B9d" secondAttribute="leading" id="REh-eT-aD3"/>
                                                 <constraint firstItem="hF9-jb-g8o" firstAttribute="leading" secondItem="xGF-Vn-LXA" secondAttribute="leading" constant="13" id="UcS-6k-Hen"/>
                                                 <constraint firstItem="jIy-7L-aEt" firstAttribute="leading" secondItem="HyK-A5-klr" secondAttribute="leading" id="Usj-7c-hC8"/>
+                                                <constraint firstItem="1Df-m7-mua" firstAttribute="trailing" secondItem="VAu-4z-39J" secondAttribute="trailing" id="VL0-C8-2CA"/>
+                                                <constraint firstAttribute="trailing" secondItem="HyK-A5-klr" secondAttribute="trailing" constant="16" id="eq4-EK-euk"/>
+                                                <constraint firstItem="jIy-7L-aEt" firstAttribute="trailing" secondItem="HyK-A5-klr" secondAttribute="trailing" id="fco-tT-tW4"/>
                                                 <constraint firstItem="aIm-Wo-B9d" firstAttribute="leading" secondItem="jIy-7L-aEt" secondAttribute="leading" id="l8N-Lt-fik"/>
+                                                <constraint firstItem="VAu-4z-39J" firstAttribute="trailing" secondItem="jIy-7L-aEt" secondAttribute="trailing" id="rIl-Ul-C10"/>
                                                 <constraint firstItem="HyK-A5-klr" firstAttribute="top" secondItem="xGF-Vn-LXA" secondAttribute="top" constant="13" id="txJ-Ji-6Ss"/>
                                                 <constraint firstItem="HyK-A5-klr" firstAttribute="leading" secondItem="hF9-jb-g8o" secondAttribute="trailing" constant="16" id="zep-LS-rCX"/>
                                             </constraints>
@@ -793,13 +798,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="I0b-Dg-hwL">
                                                     <rect key="frame" x="157" y="24" width="140" height="42.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="짱절미" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IO5-mI-z5a">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="짱절미" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IO5-mI-z5a">
                                                             <rect key="frame" x="0.0" y="0.0" width="140" height="19"/>
                                                             <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="17"/>
                                                             <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="구독자 25만 게시물 2000개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddh-B6-EZl">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="구독자 25만 게시물 2000개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddh-B6-EZl">
                                                             <rect key="frame" x="0.0" y="29" width="140" height="13.5"/>
                                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                             <color key="textColor" red="0.77254901960784317" green="0.77254901960784317" blue="0.77254901960784317" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -821,6 +826,7 @@
                                                 <constraint firstItem="TbH-Ti-fGI" firstAttribute="centerY" secondItem="Zb3-BN-n0D" secondAttribute="centerY" id="M33-FT-wuq"/>
                                                 <constraint firstItem="seC-Q3-8AE" firstAttribute="width" secondItem="Zb3-BN-n0D" secondAttribute="width" multiplier="100:375" id="Pcp-ZA-0us"/>
                                                 <constraint firstAttribute="trailing" secondItem="TbH-Ti-fGI" secondAttribute="trailing" constant="16" id="SaU-cE-Qlc"/>
+                                                <constraint firstItem="TbH-Ti-fGI" firstAttribute="leading" secondItem="I0b-Dg-hwL" secondAttribute="trailing" constant="5" id="XdR-aK-uUR"/>
                                                 <constraint firstItem="f94-qX-w3L" firstAttribute="leading" secondItem="Zb3-BN-n0D" secondAttribute="leading" constant="16" id="ZpJ-fe-V7B"/>
                                                 <constraint firstAttribute="bottom" secondItem="seC-Q3-8AE" secondAttribute="bottom" constant="11.5" id="kRu-8k-FVZ"/>
                                                 <constraint firstItem="I0b-Dg-hwL" firstAttribute="leading" secondItem="seC-Q3-8AE" secondAttribute="trailing" constant="16" id="lLO-4J-AjA"/>

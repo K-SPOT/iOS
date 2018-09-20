@@ -27,8 +27,8 @@ extension MapContainerVC : SelectRegionDelegate {
     func tap(_ region : Region) {
         mapView?.selectedRegionLbl.text = region.rawValue
         let parentVC = self.parent as? MapVC
-         parentVC?.isGoogleMapLocation = false
-
+        parentVC?.isGoogleMapLocation = false
+        
         
         //self.parent?.title = region.rawValue
         //self.parent?.navigationItem.title = region.rawValue
@@ -146,6 +146,10 @@ extension MapContainerVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
+//통신
+extension MapContainerVC {
+    
+}
 
 
 

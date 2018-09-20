@@ -10,8 +10,8 @@ import UIKit
 
 class SearchResultMorePlaceVC: UIViewController, UIGestureRecognizerDelegate {
     
-    let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
   
+    var searchData : [SearchResultVODataPlace]?
     var headerTitle = ""
     @IBOutlet weak var tableView : UITableView!
     override func viewDidLoad() {
@@ -28,7 +28,10 @@ class SearchResultMorePlaceVC: UIViewController, UIGestureRecognizerDelegate {
 extension SearchResultMorePlaceVC : UITableViewDelegate, UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sunglassArr.count
+        if let searchData_ = searchData {
+            return searchData_.count
+        }
+        return 0
     }
     
     
@@ -45,13 +48,16 @@ extension SearchResultMorePlaceVC : UITableViewDelegate, UITableViewDataSource  
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CategoryDetailSecondTVCell.reuseIdentifier) as! CategoryDetailSecondTVCell
-        cell.myImgView.image = sunglassArr[indexPath.row]
+        if let searchData_ = searchData {
+            cell.configure2(data: searchData_[indexPath.row])
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        self.goToPlaceDetailVC(selectedIdx: 0)
+        if let searchData_ = searchData{
+             self.goToPlaceDetailVC(selectedIdx: searchData_[indexPath.row].spotID)
+        }
         tableView.deselectRow(at: indexPath, animated: false)
     }
     

@@ -18,6 +18,7 @@ enum UrlPath : String {
     case main = "/main"
     case mainSearch = "/search"
     case theme = "/theme/"
+    case searchResult = "/search/"
     
     //마이페이지
     case mypage = "/user/mypage"
@@ -25,6 +26,10 @@ enum UrlPath : String {
     case userScrap = "/user/scrap"
     case userEdit = "/user/edit"
     
+
+    //맵
+    case spot = "/spot/"
+
 
     
     //카테고리

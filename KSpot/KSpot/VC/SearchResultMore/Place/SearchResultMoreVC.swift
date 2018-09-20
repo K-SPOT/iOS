@@ -12,6 +12,11 @@ class SearchResultMoreVC: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var containerView: UIView!
     var filterView = PlaceFilterView.instanceFromNib()
+    var searchData : [SearchResultVODataPlace]? {
+        didSet {
+            searchResultMorePlaceVC.searchData = searchData
+        }
+    }
     private lazy var searchResultMorePlaceVC: SearchResultMorePlaceVC = {
         let storyboard = Storyboard.shared().mainStoryboard
         var viewController = storyboard.instantiateViewController(withIdentifier: SearchResultMorePlaceVC.reuseIdentifier) as! SearchResultMorePlaceVC

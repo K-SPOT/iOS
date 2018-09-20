@@ -123,6 +123,9 @@
 		3BBF8D61213935D300FFF08C /* ColorChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D60213935D300FFF08C /* ColorChip.swift */; };
 		3BF85DC22153DE2B0005C83D /* ThemeVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85DC12153DE2B0005C83D /* ThemeVO.swift */; };
 		3BF85DC42153DEAB0005C83D /* ThemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85DC32153DEAB0005C83D /* ThemeService.swift */; };
+		3BF85DC72153EB510005C83D /* SearchResultVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85DC62153EB510005C83D /* SearchResultVO.swift */; };
+		3BF85DC92153EF6B0005C83D /* SearchResultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85DC82153EF6B0005C83D /* SearchResultService.swift */; };
+		3BF85DCB2153FB750005C83D /* SearchResultTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85DCA2153FB750005C83D /* SearchResultTVCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -244,6 +247,9 @@
 		3BBF8D60213935D300FFF08C /* ColorChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChip.swift; sourceTree = "<group>"; };
 		3BF85DC12153DE2B0005C83D /* ThemeVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeVO.swift; sourceTree = "<group>"; };
 		3BF85DC32153DEAB0005C83D /* ThemeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeService.swift; sourceTree = "<group>"; };
+		3BF85DC62153EB510005C83D /* SearchResultVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultVO.swift; sourceTree = "<group>"; };
+		3BF85DC82153EF6B0005C83D /* SearchResultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultService.swift; sourceTree = "<group>"; };
+		3BF85DCA2153FB750005C83D /* SearchResultTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTVCell.swift; sourceTree = "<group>"; };
 		4C6052FD7CF496FE2E3B933E /* Pods-KSpot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSpot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KSpot/Pods-KSpot.debug.xcconfig"; sourceTree = "<group>"; };
 		FFA688BBCA5DFBD11AEA04D6 /* Pods_KSpot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KSpot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -264,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				3B3C43C9214EE10E005B8650 /* SearchResultVC.swift */,
+				3BF85DCA2153FB750005C83D /* SearchResultTVCell.swift */,
 			);
 			path = SearchResult;
 			sourceTree = "<group>";
@@ -337,6 +344,7 @@
 				3B3C44392152EFCF005B8650 /* MainService.swift */,
 				3B3C443B2152F8D3005B8650 /* MainSearchService.swift */,
 				3BF85DC32153DEAB0005C83D /* ThemeService.swift */,
+				3BF85DC82153EF6B0005C83D /* SearchResultService.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -388,6 +396,7 @@
 				3B3C44372152EF43005B8650 /* MainVO.swift */,
 				3B3C443D2152F8E2005B8650 /* MainSearchVO.swift */,
 				3BF85DC12153DE2B0005C83D /* ThemeVO.swift */,
+				3BF85DC62153EB510005C83D /* SearchResultVO.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1036,6 +1045,7 @@
 				3B3DD137213C4F4D00FD00B3 /* FilterToggleBtn.swift in Sources */,
 				3BBF8D5D21392A9500FFF08C /* MainFirstTVCell.swift in Sources */,
 				3B3C442821519CEF005B8650 /* UserSubcriptionService.swift in Sources */,
+				3BF85DCB2153FB750005C83D /* SearchResultTVCell.swift in Sources */,
 				3B3DD17D213DC9DF00FD00B3 /* WRCycleScrollView.swift in Sources */,
 				3BBF8D592139293600FFF08C /* MainViewController.swift in Sources */,
 				3B3DD17F213DC9EA00FD00B3 /* WRProxy.swift in Sources */,
@@ -1051,6 +1061,7 @@
 				3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */,
 				3B3DD124213BFCE700FD00B3 /* Region.swift in Sources */,
 				3BB1882F2144431F0021B543 /* MypageVC.swift in Sources */,
+				3BF85DC92153EF6B0005C83D /* SearchResultService.swift in Sources */,
 				3B3C442A2151A121005B8650 /* UserScrapService.swift in Sources */,
 				3B3DD141213D3B5100FD00B3 /* CategoryDetailFirstCVCell.swift in Sources */,
 				3B3C44382152EF43005B8650 /* MainVO.swift in Sources */,
@@ -1117,6 +1128,7 @@
 				3B3C44322151B070005B8650 /* ChannelDetailService.swift in Sources */,
 				3BBB7D9321469656004CC142 /* ThemeVC.swift in Sources */,
 				3B3DD12C213C1C3200FD00B3 /* SelectRegionDelegate.swift in Sources */,
+				3BF85DC72153EB510005C83D /* SearchResultVO.swift in Sources */,
 				3B3DD0E3213AE1CC00FD00B3 /* MainSecondCVCell.swift in Sources */,
 				3B3C442C2151A14A005B8650 /* UserScrapVO.swift in Sources */,
 			);

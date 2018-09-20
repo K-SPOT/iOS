@@ -40,17 +40,17 @@ class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
         for i in 0..<searchData.celebrity.count {
             let button = celebrityStack.arrangedSubviews[i] as! UIButton
             button.setTitle(searchData.celebrity[i].name, for: .normal)
-            //button.tag = searchData.celebrity[i].id
+            button.tag = searchData.celebrity[i].channelId
         }
         for i in 0..<searchData.broadcast.count {
             let button = broadcastStack.arrangedSubviews[i] as! UIButton
             button.setTitle(searchData.broadcast[i].name, for: .normal)
-            //button.tag = searchData.broadcast[i].id
+            button.tag = searchData.broadcast[i].channelId
         }
         for i in 0..<searchData.event.count {
             let button = eventStack.arrangedSubviews[i] as! UIButton
             button.setTitle(searchData.event[i].name, for: .normal)
-            //button.tag = searchData.event[i].id
+            button.tag = searchData.event[i].spotID
         }
     }
     
@@ -68,11 +68,11 @@ class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func goToCelebrityDetail(_ sender : UIButton){
-        self.goToCelebrityDetail(selectedIdx : 0)
+        self.goToCelebrityDetail(selectedIdx : sender.tag)
     }
     
     @objc func goToPlaceDetailVC(_ sender : UIButton){
-        self.goToPlaceDetailVC(selectedIdx: 0)
+        self.goToPlaceDetailVC(selectedIdx: sender.tag)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -89,15 +89,16 @@ class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
     
     @objc func searchAction(_ button : UIButton) {
         let mainStoryboard = Storyboard.shared().mainStoryboard
-        if let mainSearchVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultVC.reuseIdentifier) as? SearchResultVC {
+        if let searchResultVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultVC.reuseIdentifier) as? SearchResultVC {
             //네비게이션 타이틀
             guard let searchTxt = searchTxtfield.text else{return}
             if ((searchTxt.count) < 10) {
-                 mainSearchVC.navigationItem.title = searchTxtfield.text
+                 searchResultVC.navigationItem.title = searchTxtfield.text
             } else {
-                mainSearchVC.navigationItem.title = "\(searchTxt.prefix(9))..."
+                searchResultVC.navigationItem.title = "\(searchTxt.prefix(9))..."
             }
-            self.navigationController?.pushViewController(mainSearchVC, animated: true)
+            searchResultVC.searchTxt = searchTxt
+            self.navigationController?.pushViewController(searchResultVC, animated: true)
         }
     }
     

@@ -1112,23 +1112,23 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FyN-JX-EzK">
-                                                    <rect key="frame" x="132" y="24.5" width="140" height="41.5"/>
+                                                    <rect key="frame" x="132" y="24.5" width="160" height="41.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="방탄소년단" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1W-2b-DCw">
-                                                            <rect key="frame" x="0.0" y="0.0" width="140" height="18"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="160" height="18"/>
                                                             <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="16"/>
                                                             <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="구독자 25만 게시물 2000개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Clk-aI-9fa">
-                                                            <rect key="frame" x="0.0" y="28" width="140" height="13.5"/>
+                                                            <rect key="frame" x="0.0" y="28" width="160" height="13.5"/>
                                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                             <color key="textColor" red="0.7725490196" green="0.7725490196" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVm-VF-88u">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVm-VF-88u" customClass="mySubscribeBtn" customModule="KSpot" customModuleProvider="target">
                                                     <rect key="frame" x="302" y="32.5" width="57" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="Rq9-nx-Ocd"/>
@@ -1144,12 +1144,19 @@
                                                 <constraint firstAttribute="bottom" secondItem="Kal-3v-3xZ" secondAttribute="bottom" constant="11.5" id="SZO-J7-GcH"/>
                                                 <constraint firstItem="Kal-3v-3xZ" firstAttribute="width" secondItem="VG3-7G-SfX" secondAttribute="width" multiplier="100:375" id="XJE-jd-7mX"/>
                                                 <constraint firstItem="FyN-JX-EzK" firstAttribute="centerY" secondItem="Kal-3v-3xZ" secondAttribute="centerY" id="Y3e-r4-EXj"/>
+                                                <constraint firstItem="pVm-VF-88u" firstAttribute="leading" secondItem="FyN-JX-EzK" secondAttribute="trailing" constant="10" id="abk-VE-vat"/>
                                                 <constraint firstAttribute="trailing" secondItem="pVm-VF-88u" secondAttribute="trailing" constant="16" id="z8Q-kf-azq"/>
                                                 <constraint firstItem="Kal-3v-3xZ" firstAttribute="top" secondItem="VG3-7G-SfX" secondAttribute="top" constant="12" id="zKx-a0-Hhs"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="mainImgView" destination="Kal-3v-3xZ" id="v08-CZ-KbH"/>
+                                            <outlet property="subscribeBtn" destination="pVm-VF-88u" id="A7E-rS-7Qz"/>
+                                            <outlet property="subtitleLbl" destination="Clk-aI-9fa" id="9Jt-Sg-JkI"/>
+                                            <outlet property="titleLbl" destination="l1W-2b-DCw" id="ZqY-fa-pF7"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryDetailSecondTVCell" rowHeight="67" id="kSi-km-SfT" customClass="CategoryDetailSecondTVCell" customModule="KSpot" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultTVCell" rowHeight="67" id="kSi-km-SfT" customClass="SearchResultTVCell" customModule="KSpot" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="179" width="375" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kSi-km-SfT" id="zX0-jI-qcB">
@@ -1164,13 +1171,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="방탄참치회" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujy-AL-hRg">
-                                                    <rect key="frame" x="69" y="13" width="73" height="18"/>
+                                                    <rect key="frame" x="69" y="13" width="290" height="18"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="16"/>
                                                     <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용산구 / 명동역" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGD-Xa-2Aj">
-                                                    <rect key="frame" x="85" y="38.5" width="76.5" height="14"/>
+                                                    <rect key="frame" x="85" y="38.5" width="274" height="14"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                     <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1185,6 +1192,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ujy-AL-hRg" firstAttribute="leading" secondItem="pEp-bt-I1c" secondAttribute="trailing" constant="19" id="2Ob-RC-iBd"/>
+                                                <constraint firstAttribute="trailing" secondItem="ujy-AL-hRg" secondAttribute="trailing" constant="16" id="9uL-lH-LMJ"/>
+                                                <constraint firstItem="ZGD-Xa-2Aj" firstAttribute="trailing" secondItem="ujy-AL-hRg" secondAttribute="trailing" id="DXR-n6-lJa"/>
                                                 <constraint firstItem="ujy-AL-hRg" firstAttribute="top" secondItem="zX0-jI-qcB" secondAttribute="top" constant="13" id="FQE-Jg-iSC"/>
                                                 <constraint firstItem="ZGD-Xa-2Aj" firstAttribute="centerY" secondItem="8Eh-EO-3eO" secondAttribute="centerY" id="Hmi-if-9wb"/>
                                                 <constraint firstItem="8Eh-EO-3eO" firstAttribute="top" secondItem="ujy-AL-hRg" secondAttribute="bottom" constant="6.2999999999999998" id="Hyx-qV-Hg6"/>
@@ -1196,9 +1205,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="descLbl" destination="ZGD-Xa-2Aj" id="A4Y-6Z-Hvw"/>
-                                            <outlet property="myImgView" destination="pEp-bt-I1c" id="fBQ-PP-6Be"/>
-                                            <outlet property="titleLbl" destination="ujy-AL-hRg" id="ptt-2A-3OT"/>
+                                            <outlet property="myImgView" destination="pEp-bt-I1c" id="LmW-Wo-lZv"/>
+                                            <outlet property="spotLbl" destination="ZGD-Xa-2Aj" id="Xah-iA-pdx"/>
+                                            <outlet property="titleLbl" destination="ujy-AL-hRg" id="Sfx-N2-5VL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1279,7 +1288,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fCi-mg-ejV" id="TDM-Lj-G2z">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="61.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="장소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="az2-vT-r1X">
@@ -1317,7 +1326,7 @@
                                         <rect key="frame" x="0.0" y="90" width="375" height="117"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0uM-7D-7e2" id="o7v-tM-PLv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="117"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="116.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aimg" translatesAutoresizingMaskIntoConstraints="NO" id="ZwN-iN-hn0">
@@ -1328,19 +1337,19 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울고척돔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvF-oV-Lcv">
-                                                    <rect key="frame" x="190" y="13" width="82" height="20"/>
+                                                    <rect key="frame" x="190" y="13" width="169" height="20"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="18"/>
                                                     <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="절미의 산책을 한눈에" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXs-n7-yWX">
-                                                    <rect key="frame" x="190" y="40" width="122" height="16"/>
+                                                    <rect key="frame" x="190" y="40" width="169" height="16"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="14"/>
                                                     <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="용산구 / 명동역" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwC-GV-nVV">
-                                                    <rect key="frame" x="206" y="66" width="132" height="14"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="용산구 / 명동역" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwC-GV-nVV">
+                                                    <rect key="frame" x="206" y="66" width="153" height="14"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                     <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1359,8 +1368,8 @@
                                                         <constraint firstAttribute="width" constant="10" id="mFR-qo-YAa"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1,175" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKh-Tg-ZZl">
-                                                    <rect key="frame" x="205" y="90" width="97" height="14"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,175" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKh-Tg-ZZl">
+                                                    <rect key="frame" x="205" y="90" width="154" height="14"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="12"/>
                                                     <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1374,20 +1383,24 @@
                                                 <constraint firstItem="ZwN-iN-hn0" firstAttribute="leading" secondItem="o7v-tM-PLv" secondAttribute="leading" constant="13" id="7UD-I2-iyx"/>
                                                 <constraint firstItem="xpQ-49-Sgk" firstAttribute="leading" secondItem="iD6-26-8Bz" secondAttribute="leading" id="8Vu-Zj-W5o"/>
                                                 <constraint firstItem="xpQ-49-Sgk" firstAttribute="top" secondItem="iD6-26-8Bz" secondAttribute="bottom" constant="10" id="A1v-A0-m96"/>
+                                                <constraint firstAttribute="bottom" secondItem="NKh-Tg-ZZl" secondAttribute="bottom" constant="12.5" id="HAt-fR-Xa1"/>
+                                                <constraint firstAttribute="trailing" secondItem="cvF-oV-Lcv" secondAttribute="trailing" constant="16" id="MNt-kj-O51"/>
+                                                <constraint firstItem="hwC-GV-nVV" firstAttribute="trailing" secondItem="gXs-n7-yWX" secondAttribute="trailing" id="N6M-11-7N4"/>
+                                                <constraint firstItem="gXs-n7-yWX" firstAttribute="trailing" secondItem="cvF-oV-Lcv" secondAttribute="trailing" id="Og2-gB-6aA"/>
                                                 <constraint firstItem="NKh-Tg-ZZl" firstAttribute="leading" secondItem="xpQ-49-Sgk" secondAttribute="trailing" constant="5" id="Sqn-HI-J50"/>
                                                 <constraint firstItem="cvF-oV-Lcv" firstAttribute="top" secondItem="o7v-tM-PLv" secondAttribute="top" constant="13" id="VGz-WX-s60"/>
                                                 <constraint firstItem="hwC-GV-nVV" firstAttribute="leading" secondItem="iD6-26-8Bz" secondAttribute="trailing" constant="5" id="WLW-PR-WO2"/>
                                                 <constraint firstItem="hwC-GV-nVV" firstAttribute="centerY" secondItem="iD6-26-8Bz" secondAttribute="centerY" id="YYG-Tg-g65"/>
                                                 <constraint firstItem="iD6-26-8Bz" firstAttribute="top" secondItem="gXs-n7-yWX" secondAttribute="bottom" constant="9" id="bDe-dz-mnP"/>
-                                                <constraint firstAttribute="bottom" secondItem="ZwN-iN-hn0" secondAttribute="bottom" constant="9" id="fh0-B4-WWg"/>
+                                                <constraint firstItem="NKh-Tg-ZZl" firstAttribute="trailing" secondItem="hwC-GV-nVV" secondAttribute="trailing" id="f48-Jp-8W1"/>
                                                 <constraint firstItem="gXs-n7-yWX" firstAttribute="leading" secondItem="cvF-oV-Lcv" secondAttribute="leading" id="wUS-cg-ie5"/>
                                                 <constraint firstItem="cvF-oV-Lcv" firstAttribute="leading" secondItem="ZwN-iN-hn0" secondAttribute="trailing" constant="16" id="zga-Or-Kpo"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="descLbl" destination="hwC-GV-nVV" id="GM8-ZX-JdV"/>
+                                            <outlet property="descLbl" destination="gXs-n7-yWX" id="GFK-3n-jLY"/>
                                             <outlet property="myImgView" destination="ZwN-iN-hn0" id="rNS-Sh-9k2"/>
-                                            <outlet property="placeLbl" destination="gXs-n7-yWX" id="GhA-fk-UCl"/>
+                                            <outlet property="placeLbl" destination="hwC-GV-nVV" id="oKm-Ty-684"/>
                                             <outlet property="scrapCountLbl" destination="NKh-Tg-ZZl" id="64W-5b-RhR"/>
                                             <outlet property="titleLbl" destination="cvF-oV-Lcv" id="zrG-3p-czQ"/>
                                         </connections>
