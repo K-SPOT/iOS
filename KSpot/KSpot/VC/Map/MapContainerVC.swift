@@ -25,7 +25,13 @@ class MapContainerVC: UIViewController {
 
 extension MapContainerVC : SelectRegionDelegate {
     func tap(_ region : Region) {
-        mapView?.selectedRegionLbl.text = region.rawValue
+        var regionTxt = ""
+        if selectedLang == .kor {
+            regionTxt = region.rawValue
+        } else {
+            regionTxt = "\(region)"
+        }
+        mapView?.selectedRegionLbl.text = regionTxt
         let parentVC = self.parent as? MapVC
         parentVC?.isGoogleMapLocation = false
         

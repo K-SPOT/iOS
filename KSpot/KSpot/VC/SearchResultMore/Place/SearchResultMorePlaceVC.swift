@@ -56,7 +56,12 @@ extension SearchResultMorePlaceVC : UITableViewDelegate, UITableViewDataSource  
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let searchData_ = searchData{
-             self.goToPlaceDetailVC(selectedIdx: searchData_[indexPath.row].spotID)
+            var isPlace = true
+            if self.headerTitle == "이벤트" {
+               isPlace = false
+            }
+            self.goToPlaceDetailVC(selectedIdx: searchData_[indexPath.row].spotID, isPlace : isPlace)
+            
         }
         tableView.deselectRow(at: indexPath, animated: false)
     }

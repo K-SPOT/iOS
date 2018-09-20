@@ -167,7 +167,7 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
             }
         } else {
             if let eventData = searchResultData?.event {
-                self.goToPlaceDetailVC(selectedIdx : eventData[indexPath.row].spotID)
+                self.goToPlaceDetailVC(selectedIdx : eventData[indexPath.row].spotID, isPlace : false)
             }
         }
         tableView.deselectRow(at: indexPath, animated: false)
@@ -176,14 +176,14 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
 }
 
 extension SearchResultVC : SelectSenderDelegate{
-    func tap(section: Section, seledtedId: Int, sender: mySubscribeBtn) {
+    /*func tap(section: Section, seledtedId: Int, sender: mySubscribeBtn) {
         if sender.isSelected {
             unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
         } else {
              let params = ["channel_id" : seledtedId]
             subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
         }
-    }
+    }*/
 }
 
 //통신
@@ -203,7 +203,7 @@ extension SearchResultVC {
         })
     }
     
-    func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
+    /*func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
             switch result {
@@ -233,5 +233,5 @@ extension SearchResultVC {
                 break
             }
         })
-    }
+    }*/
 }

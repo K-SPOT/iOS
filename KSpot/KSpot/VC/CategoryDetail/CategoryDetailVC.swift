@@ -11,7 +11,7 @@ import UIKit
 private let TOPVIEW_HEIGHT:CGFloat = 269
 private let NAVBAR_COLORCHANGE_POINT:CGFloat = TOPVIEW_HEIGHT - CGFloat(kNavBarBottom * 2)
 
-class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
+class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, SelectSenderDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     var selectedIdx = 0
@@ -85,12 +85,13 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
     }
     
     @objc func subscribeAction(_ sender : mySubscribeBtn){
-        let params = ["channel_id" : sender.contentIdx?.description]
+        tap(section: .first, seledtedId: sender.contentIdx!, sender: sender)
+        /*let params = ["channel_id" : sender.contentIdx?.description]
         if sender.isSelected {
             unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
         } else {
             subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
-        }
+        }*/
     }
     
     
@@ -383,7 +384,7 @@ extension CategoryDetailVC {
         })
     }
     
-    func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
+   /* func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
             switch result {
@@ -430,5 +431,5 @@ extension CategoryDetailVC {
                 break
             }
         })
-    }
+    }*/
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CelebrityVC: UIViewController {
+class CelebrityVC: UIViewController, SelectSenderDelegate {
     
    
     @IBOutlet weak var tableView: UITableView!
@@ -38,7 +38,8 @@ extension CelebrityVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CelebrityTVCell.reuseIdentifier) as! CelebrityTVCell
         if let celebrityList_ = celebrityList {
-            cell.delegate = parent as? SelectSenderDelegate
+            //cell.delegate = parent as? SelectSenderDelegate
+           cell.delegate = self
            cell.configure(data: celebrityList_[indexPath.row])
         }
         return cell

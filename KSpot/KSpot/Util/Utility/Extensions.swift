@@ -24,10 +24,11 @@ extension NSObject {
 
 //화면 이동
 extension UIViewController {
-    func goToPlaceDetailVC(selectedIdx : Int, title : String = ""){
+    func goToPlaceDetailVC(selectedIdx : Int, isPlace : Bool = true, title : String = ""){
         let mapStoryboard = Storyboard.shared().mapStoryboard
         if let placeDetailVC = mapStoryboard.instantiateViewController(withIdentifier:PlaceDetailVC.reuseIdentifier) as? PlaceDetailVC {
             placeDetailVC.navigationItem.title = title
+            placeDetailVC.isPlace = isPlace
             placeDetailVC.selectedIdx = selectedIdx
             self.navigationController?.pushViewController(placeDetailVC, animated: true)
         }

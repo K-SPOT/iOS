@@ -91,19 +91,6 @@ extension CategoryVC : SelectDelegate {
     }
 }
 
-//딜리게이트
-extension CategoryVC : SelectSenderDelegate {
-    func tap(section: Section, seledtedId: Int, sender: mySubscribeBtn) {
-        let params = ["channel_id" : seledtedId]
-        if sender.isSelected {
-            unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
-        } else {
-            subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
-        }
-        
-    }
-}
-
 //통신
 extension CategoryVC  {
     func getMyChannel(url : String){
@@ -123,7 +110,7 @@ extension CategoryVC  {
         })
     }
     
-    func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
+   /* func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
             switch result {
@@ -153,7 +140,7 @@ extension CategoryVC  {
                 break
             }
         })
-    }
+    }*/
     
     
     

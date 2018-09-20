@@ -13,8 +13,17 @@ class PlaceDetailFirstTVCell: UITableViewCell {
     @IBOutlet weak var countLbl: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
   
-    let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
     var delegate : SelectSectionDelegate?
+    var senderDelegate : SelectSenderDelegate?
+    var relatedChannel : PlaceDetailVODataChannel? {
+        didSet {
+            if let relatedChannel_ = self.relatedChannel {
+                countLbl.text = relatedChannel_.channelID.count.description
+                collectionView.reloadData()
+            }
+        }
+    }
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.delegate = self
@@ -29,7 +38,7 @@ class PlaceDetailFirstTVCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: false)
+        //self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: false)
     }
     
 }
@@ -40,7 +49,10 @@ extension PlaceDetailFirstTVCell : UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sunglassArr.count
+        if let relatedChannel_ = relatedChannel{
+            return relatedChannel_.channelID.count
+        }
+        return 0
     }
     
     
@@ -48,14 +60,26 @@ extension PlaceDetailFirstTVCell : UICollectionViewDataSource, UICollectionViewD
         
         if let cell: PlaceDetailFirstCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceDetailFirstCVCell.reuseIdentifier, for: indexPath) as? PlaceDetailFirstCVCell
         {
-            cell.logoImgView.image = sunglassArr[indexPath.row]
+            cell.delegate = self.senderDelegate
+            if let relatedChannel_ = relatedChannel{
+                //id, name, img, issubscription
+                cell.configure(id : relatedChannel_.channelID[indexPath.row],
+                               name : relatedChannel_.channelName[indexPath.row],
+                               img : relatedChannel_.thumbnailImg[indexPath.row],
+                               isSubscribe : relatedChannel_.isSubscription[indexPath.row]
+                               )
+                
+            }
             return cell
         }
         return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.tap(section: .first, seledtedId: indexPath.row)
+        if let relatedChannel_ = relatedChannel {
+            delegate?.tap(section: .first, seledtedId: Int(relatedChannel_.channelID[indexPath.row])!)
+        }
+        
     }
 }
 

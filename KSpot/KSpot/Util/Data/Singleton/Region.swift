@@ -47,4 +47,5 @@ enum Region : String {
     case gwangjin = "광진구"
     case songpa = "송파구"
     case gangdong = "강동구"
+
 }

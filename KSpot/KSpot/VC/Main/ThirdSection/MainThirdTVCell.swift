@@ -63,7 +63,9 @@ extension MainThirdTVCell : UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.tap(section: .third, seledtedId: indexPath.row)
+        if let popularPlaceData_ = popularPlaceData {
+            delegate?.tap(section: .third, seledtedId: popularPlaceData_[indexPath.row].spotID)
+        }
     }
     
    

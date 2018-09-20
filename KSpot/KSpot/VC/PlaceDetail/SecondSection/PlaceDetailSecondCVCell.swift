@@ -14,9 +14,16 @@ class PlaceDetailSecondCVCell: UICollectionViewCell {
     @IBOutlet weak var contentLabel : UILabel!
     @IBOutlet weak var nickNameLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
-   
     @IBOutlet weak var ratingView: CosmosView!
     
+    func configure(data : PlaceDetailVODataReview){
+        setImgWithKF(url: data.img, imgView: reviewImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
+        titleLabel.text = data.title
+        contentLabel.text = data.content
+        nickNameLbl.text = "수진날진"
+        dateLbl.text = data.regTime
+        ratingView.rating = data.reviewScore
+    }
     override func awakeFromNib() {
         self.makeCornerRound(cornerRadius: 17)
         ratingView.settings.fillMode = .half

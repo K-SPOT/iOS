@@ -126,6 +126,8 @@
 		3BF85DC72153EB510005C83D /* SearchResultVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85DC62153EB510005C83D /* SearchResultVO.swift */; };
 		3BF85DC92153EF6B0005C83D /* SearchResultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85DC82153EF6B0005C83D /* SearchResultService.swift */; };
 		3BF85DCB2153FB750005C83D /* SearchResultTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85DCA2153FB750005C83D /* SearchResultTVCell.swift */; };
+		3BF85DCF21541BCB0005C83D /* PlaceDetailVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85DCE21541BCB0005C83D /* PlaceDetailVO.swift */; };
+		3BF85DD121541BD70005C83D /* PlaceDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85DD021541BD70005C83D /* PlaceDetailService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -250,6 +252,8 @@
 		3BF85DC62153EB510005C83D /* SearchResultVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultVO.swift; sourceTree = "<group>"; };
 		3BF85DC82153EF6B0005C83D /* SearchResultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultService.swift; sourceTree = "<group>"; };
 		3BF85DCA2153FB750005C83D /* SearchResultTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTVCell.swift; sourceTree = "<group>"; };
+		3BF85DCE21541BCB0005C83D /* PlaceDetailVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailVO.swift; sourceTree = "<group>"; };
+		3BF85DD021541BD70005C83D /* PlaceDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailService.swift; sourceTree = "<group>"; };
 		4C6052FD7CF496FE2E3B933E /* Pods-KSpot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSpot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KSpot/Pods-KSpot.debug.xcconfig"; sourceTree = "<group>"; };
 		FFA688BBCA5DFBD11AEA04D6 /* Pods_KSpot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KSpot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -755,6 +759,7 @@
 		3BBB7DB3214A17A2004CC142 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				3BF85DCD21541BBD0005C83D /* Map */,
 				3B3C441E21519C38005B8650 /* Main */,
 				3B3C441F21519C41005B8650 /* Category */,
 				3B3C442021519C53005B8650 /* Mypage */,
@@ -765,6 +770,7 @@
 		3BBB7DB4214A17A7004CC142 /* VO */ = {
 			isa = PBXGroup;
 			children = (
+				3BF85DCC21541BB50005C83D /* Map */,
 				3B3C441A21518C3E005B8650 /* DefaultVO.swift */,
 				3B3C442321519C6D005B8650 /* Main */,
 				3B3C442221519C68005B8650 /* Category */,
@@ -841,6 +847,22 @@
 				3BBF8D5C21392A9500FFF08C /* MainFirstTVCell.swift */,
 			);
 			path = FirstSection;
+			sourceTree = "<group>";
+		};
+		3BF85DCC21541BB50005C83D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				3BF85DCE21541BCB0005C83D /* PlaceDetailVO.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		3BF85DCD21541BBD0005C83D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				3BF85DD021541BD70005C83D /* PlaceDetailService.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		8A6468103673BAA5D697E0E6 /* Frameworks */ = {
@@ -1099,12 +1121,14 @@
 				3BB188332144471A0021B543 /* CustomView.swift in Sources */,
 				3B3DD0F3213B2BC900FD00B3 /* CategoryVC.swift in Sources */,
 				3BBB7D9F2146F6D9004CC142 /* ReviewNoImgTVCell.swift in Sources */,
+				3BF85DCF21541BCB0005C83D /* PlaceDetailVO.swift in Sources */,
 				3BBB7D81214578C6004CC142 /* SubCelebrityVC.swift in Sources */,
 				3BBB7D83214578D2004CC142 /* SubBroadCastVC.swift in Sources */,
 				3BBF8D5B21392A0D00FFF08C /* Extensions.swift in Sources */,
 				3BB1882B214420980021B543 /* ReviewWriteVC.swift in Sources */,
 				3BBB7D87214578F4004CC142 /* SubBroadcastTVCell.swift in Sources */,
 				3BBB7D9D2146F481004CC142 /* ReviewImgTVCell.swift in Sources */,
+				3BF85DD121541BD70005C83D /* PlaceDetailService.swift in Sources */,
 				3B3C441B21518C3E005B8650 /* DefaultVO.swift in Sources */,
 				3BB18835214448B40021B543 /* MypageCVCell.swift in Sources */,
 				3B3DD17B213DC9D200FD00B3 /* WRCycleCell.swift in Sources */,

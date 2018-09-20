@@ -11,10 +11,11 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import ImageSlideshow
 
-struct SampleStruct {
+/*struct SampleStruct {
     var image : InputSource
     var id : String
-}
+}*/
+var selectedLang : Language = .kor
 
 class MainViewController: UIViewController {
     @IBAction func searchAction(_ sender: Any) {
@@ -28,8 +29,6 @@ class MainViewController: UIViewController {
         }
     }
     
-
-    var sampleData : [SampleStruct] = [SampleStruct(image: KingfisherSource(urlString: "https://t1.daumcdn.net/cfile/tistory/240636455780D09234")!, id: "80"), SampleStruct(image: KingfisherSource(urlString: "https://i.pinimg.com/originals/f7/eb/e1/f7ebe1de2088de46229b163747e1a40a.gif")!, id: "10"), SampleStruct(image: KingfisherSource(urlString: "https://i.pinimg.com/originals/05/b5/c1/05b5c164be2121b2271b5c5ec7a59770.gif")!, id: "820")]
     
     fileprivate func reloadRootViewController() {
         //isUserLogin()
@@ -56,15 +55,14 @@ extension MainViewController : SelectSectionDelegate {
     func tap(section: Section, seledtedId: Int) {
         if (section == .first){
             let mainStoryboard = Storyboard.shared().mainStoryboard
-            //print("id는 \(sampleData[seledtedId].id)")
+          
 
             if let themeVC = mainStoryboard.instantiateViewController(withIdentifier:ThemeVC.reuseIdentifier) as? ThemeVC {
                 themeVC.selectedId = (mainData?.theme[seledtedId].themeID)
                 self.navigationController?.pushViewController(themeVC, animated: true)
             }
         } else {
-            print("taped")
-            self.goToPlaceDetailVC(selectedIdx: 0)
+            self.goToPlaceDetailVC(selectedIdx: seledtedId)
         }
     }
 }
@@ -79,10 +77,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: MainFirstTVCell.reuseIdentifier) as! MainFirstTVCell
             cell.delegate = self
-            cell.imageSource = sampleData.map({ (data) in
-                data.image
-            })
-            
+          
             
             if let mainData_ = mainData{
                 let imageArr : [InputSource] = mainData_.theme.flatMap({ (data) in

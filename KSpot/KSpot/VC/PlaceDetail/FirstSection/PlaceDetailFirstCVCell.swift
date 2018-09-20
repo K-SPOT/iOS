@@ -11,12 +11,25 @@ import UIKit
 class PlaceDetailFirstCVCell: UICollectionViewCell {
     @IBOutlet weak var logoImgView : UIImageView!
     @IBOutlet weak var nameLbl : UILabel!
-    @IBOutlet weak var subscribeBtn: UIButton!
+    @IBOutlet weak var subscribeBtn: mySubscribeBtn!
+    var delegate : SelectSenderDelegate?
+    
+    func configure(id : String, name : String, img : String, isSubscribe : String){
+        setImgWithKF(url: img, imgView: logoImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
+        nameLbl.text = name
+        subscribeBtn.setSubscribeBtn(idx: Int(id)!, isSubscribe: Int(isSubscribe)!)
+    }
+    
+    @objc func subscribeAction(_ sender : mySubscribeBtn){
+        delegate?.tap(section: .first, seledtedId: sender.contentIdx!, sender: sender)
+    }
     
     override func awakeFromNib() {
         logoImgView.makeRounded(cornerRadius: nil)
         logoImgView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
         self.makeCornerRound(cornerRadius: 6)
+        subscribeBtn.addTarget(self, action: #selector(subscribeAction(_:)), for: .touchUpInside)
     }
 }
+
 

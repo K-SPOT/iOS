@@ -28,7 +28,7 @@ class BroadcastVC: UIViewController {
 
 }
 
-extension BroadcastVC : UITableViewDelegate, UITableViewDataSource {
+extension BroadcastVC : UITableViewDelegate, UITableViewDataSource, SelectSenderDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let broadcastList_ = broadcastList {
             return broadcastList_.count
@@ -40,7 +40,8 @@ extension BroadcastVC : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: BroadcastTVCell.reuseIdentifier) as! BroadcastTVCell
         if let broadcastList_ = broadcastList {
             cell.configure(data: broadcastList_[indexPath.row])
-             cell.delegate = parent as? SelectSenderDelegate
+             //cell.delegate = parent as? SelectSenderDelegate
+            cell.delegate = self
         }
         return cell
     }

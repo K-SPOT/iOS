@@ -67,7 +67,10 @@ extension MainSecondTVCell : UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.tap(section: .second, seledtedId: indexPath.row)
+        if let recommendPlaceData_ = recommendPlaceData {
+             delegate?.tap(section: .second, seledtedId: recommendPlaceData_[indexPath.row].spotID)
+        }
+       
     }
 }
 
