@@ -17,10 +17,11 @@ enum UrlPath : String {
     //메인
     case main = "/main"
     case mainSearch = "/search"
+    case theme = "/theme/"
     
     //마이페이지
     case mypage = "/user/mypage"
-    case userSubscription = "/user/subscription"
+    case userSubscription = "/user/subscription/"
     case userScrap = "/user/scrap"
     case userEdit = "/user/edit"
     

@@ -17,6 +17,20 @@ class ThemeVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var tableView : UITableView!
     var whiteScrapBarBtn : UIBarButtonItem?
     var blackScrapBarBtn : UIBarButtonItem?
+    var themeData : ThemeVOData? {
+        didSet {
+            setHeader(data : themeData)
+            tableView.reloadData()
+        }
+    }
+    var selectedId : Int? = 0
+
+    func setHeader(data : ThemeVOData?){
+        guard let data = data else {return}
+        titleLbl.text = data.theme.title
+        subtitleLbl.text = data.theme.subtitle
+        setImgWithKF(url: data.theme.img, imgView: topView, defaultImg: #imageLiteral(resourceName: "aimg"))
+    }
     
     lazy var titleLbl:UILabel = {
         let label = UILabel()
@@ -51,6 +65,8 @@ class ThemeVC: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         setupTableView()
         setupNavView()
+        guard let selectedId_ = selectedId else {return}
+        getTheme(url: UrlPath.theme.getURL(selectedId_.description))
     }
     
     deinit {
@@ -144,13 +160,19 @@ extension ThemeVC
 extension ThemeVC:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if let themeData_ = themeData {
+            return themeData_.themeContents.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: ThemeTVCell.reuseIdentifier) as! ThemeTVCell
-   
+        cell.delegate = self
+        if let themeData_ = themeData {
+            cell.configure(data : themeData_.themeContents[indexPath.row], row : indexPath.row)
+        }
         return cell
     }
     
@@ -161,5 +183,28 @@ extension ThemeVC:UITableViewDelegate,UITableViewDataSource
     }
 }
 
+extension ThemeVC : SelectDelegate {
+    func tap(selected: Int?) {
+        guard let selected_ = selected else {return}
+        goToPlaceDetailVC(selectedIdx: selected_)
+    }
+}
+
+extension ThemeVC {
+    func getTheme(url : String){
+        ThemeService.shareInstance.getThemeData(url: url,completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(let themeData):
+                self.themeData = themeData as? ThemeVOData
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    }
+}
 
 

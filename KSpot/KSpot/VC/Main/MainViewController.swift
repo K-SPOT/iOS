@@ -57,9 +57,9 @@ extension MainViewController : SelectSectionDelegate {
         if (section == .first){
             let mainStoryboard = Storyboard.shared().mainStoryboard
             //print("id는 \(sampleData[seledtedId].id)")
-             print("id는 \(mainData?.theme[seledtedId].themeID)")
+
             if let themeVC = mainStoryboard.instantiateViewController(withIdentifier:ThemeVC.reuseIdentifier) as? ThemeVC {
-                
+                themeVC.selectedId = (mainData?.theme[seledtedId].themeID)
                 self.navigationController?.pushViewController(themeVC, animated: true)
             }
         } else {

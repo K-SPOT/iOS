@@ -52,7 +52,7 @@ struct UserScrapVOData: Codable {
     let description: String
     let channel: UserScrapVODataChannel
     let station: String
-    let reviewScore: Int
+    let reviewScore: Double
     
     enum CodingKeys: String, CodingKey {
         case img, name
