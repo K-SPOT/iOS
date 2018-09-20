@@ -14,7 +14,7 @@ class MainFirstTVCell: UITableViewCell {
     
     @IBOutlet var slideshow: ImageSlideshow!
     
-    var imageSource : [InputSource] = []
+    var imageSource : [InputSource] = [] 
     
     var delegate : SelectSectionDelegate?
     override func awakeFromNib() {

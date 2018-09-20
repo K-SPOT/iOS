@@ -52,7 +52,7 @@ extension MainThirdTVCell : UICollectionViewDataSource, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell: MainSecondCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainThirdCVCell", for: indexPath) as? MainSecondCVCell
+        if let cell: MainThirdCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: MainThirdCVCell.reuseIdentifier, for: indexPath) as? MainThirdCVCell
         {
             if let popularPlaceData_ = popularPlaceData {
                 cell.configure(data: popularPlaceData_[indexPath.row])

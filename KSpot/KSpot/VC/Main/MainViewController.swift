@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
     }
     
 
-  /*  var sampleData : [SampleStruct] = [SampleStruct(image: KingfisherSource(urlString: "https://t1.daumcdn.net/cfile/tistory/240636455780D09234")!, id: "80"), SampleStruct(image: KingfisherSource(urlString: "https://i.pinimg.com/originals/f7/eb/e1/f7ebe1de2088de46229b163747e1a40a.gif")!, id: "10"), SampleStruct(image: KingfisherSource(urlString: "https://i.pinimg.com/originals/05/b5/c1/05b5c164be2121b2271b5c5ec7a59770.gif")!, id: "820")]*/
+    var sampleData : [SampleStruct] = [SampleStruct(image: KingfisherSource(urlString: "https://t1.daumcdn.net/cfile/tistory/240636455780D09234")!, id: "80"), SampleStruct(image: KingfisherSource(urlString: "https://i.pinimg.com/originals/f7/eb/e1/f7ebe1de2088de46229b163747e1a40a.gif")!, id: "10"), SampleStruct(image: KingfisherSource(urlString: "https://i.pinimg.com/originals/05/b5/c1/05b5c164be2121b2271b5c5ec7a59770.gif")!, id: "820")]
     
     fileprivate func reloadRootViewController() {
         //isUserLogin()
@@ -79,14 +79,16 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: MainFirstTVCell.reuseIdentifier) as! MainFirstTVCell
             cell.delegate = self
-           /* cell.localSource = sampleData.map({ (data) in
+            cell.imageSource = sampleData.map({ (data) in
                 data.image
-            })*/
+            })
+            
             
             if let mainData_ = mainData{
-                cell.imageSource = mainData_.theme.map({ (data) in
-                    KingfisherSource(urlString: data.img)
-                }) as! [InputSource]
+                let imageArr : [InputSource] = mainData_.theme.flatMap({ (data) in
+                    KingfisherSource(urlString: data.mainImg)
+                })
+                cell.imageSource = imageArr
             }
             cell.awakeFromNib()
             return cell

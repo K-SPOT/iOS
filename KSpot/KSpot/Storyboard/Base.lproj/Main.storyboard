@@ -70,7 +70,7 @@
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TE1-lf-SG4">
                                                     <rect key="frame" x="0.0" y="104" width="375" height="263.5"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="263.5" id="Oi4-FP-hlI"/>
                                                     </constraints>
@@ -124,6 +124,7 @@
                                                                     </label>
                                                                 </subviews>
                                                             </view>
+                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="3bJ-9y-HaA" firstAttribute="leading" secondItem="Nks-sC-zgX" secondAttribute="leading" id="4cM-hn-uhO"/>
                                                                 <constraint firstItem="Jlg-my-g31" firstAttribute="top" secondItem="Nks-sC-zgX" secondAttribute="top" constant="20" id="6iL-7S-Ldy"/>
@@ -197,7 +198,7 @@
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6B1-y0-Cyq">
                                                     <rect key="frame" x="0.0" y="84" width="375" height="262.5"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="262.5" id="142-K5-6an"/>
                                                     </constraints>
@@ -208,13 +209,66 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MainThirdCVCell" id="kg6-Ne-p0g" customClass="MainSecondCVCell" customModule="KSpot" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MainThirdCVCell" id="kg6-Ne-p0g" customClass="MainThirdCVCell" customModule="KSpot" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="-0.5" width="254" height="263"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="254" height="263"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Eo5-or-coo">
+                                                                        <rect key="frame" x="0.0" y="104" width="254" height="159"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="159" id="klJ-uA-MDc"/>
+                                                                        </constraints>
+                                                                    </imageView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SMTown 코엑스 아티움" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSp-RU-UU6">
+                                                                        <rect key="frame" x="31" y="62.5" width="192" height="14.5"/>
+                                                                        <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="13"/>
+                                                                        <color key="textColor" red="0.36862745099999999" green="0.36862745099999999" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAN-1h-mqF">
+                                                                        <rect key="frame" x="31" y="20" width="192" height="33.5"/>
+                                                                        <attributedString key="attributedText">
+                                                                            <fragment>
+                                                                                <string key="content">셀러브리티를 만나는
+</string>
+                                                                                <attributes>
+                                                                                    <color key="NSColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <font key="NSFont" size="15" name="NanumSquareOTFEB"/>
+                                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                            <fragment content="가장 새롭게 놀라운경험">
+                                                                                <attributes>
+                                                                                    <color key="NSColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <font key="NSFont" size="15" name="NanumSquareOTFEB"/>
+                                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="2.2999999999999998" tighteningFactorForTruncation="0.0"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                        </attributedString>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
                                                             </view>
+                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstItem="LSp-RU-UU6" firstAttribute="trailing" secondItem="zAN-1h-mqF" secondAttribute="trailing" id="CLN-CX-onz"/>
+                                                                <constraint firstAttribute="trailing" secondItem="zAN-1h-mqF" secondAttribute="trailing" constant="31" id="Kk4-yY-03G"/>
+                                                                <constraint firstItem="zAN-1h-mqF" firstAttribute="top" secondItem="kg6-Ne-p0g" secondAttribute="top" constant="20" id="Ozo-Lg-84S"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Eo5-or-coo" secondAttribute="trailing" id="Stt-Dq-eDX"/>
+                                                                <constraint firstItem="zAN-1h-mqF" firstAttribute="leading" secondItem="kg6-Ne-p0g" secondAttribute="leading" constant="31" id="UEK-dc-phY"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Eo5-or-coo" secondAttribute="bottom" id="aRU-st-H6d"/>
+                                                                <constraint firstItem="LSp-RU-UU6" firstAttribute="leading" secondItem="zAN-1h-mqF" secondAttribute="leading" id="fDF-Qr-BIk"/>
+                                                                <constraint firstItem="LSp-RU-UU6" firstAttribute="top" secondItem="zAN-1h-mqF" secondAttribute="bottom" constant="9" id="iGg-9a-AuR"/>
+                                                                <constraint firstItem="Eo5-or-coo" firstAttribute="leading" secondItem="kg6-Ne-p0g" secondAttribute="leading" id="qd1-ki-baT"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="myImgView" destination="Eo5-or-coo" id="rtt-tk-WI3"/>
+                                                                <outlet property="placeLbl" destination="LSp-RU-UU6" id="zow-1U-tLZ"/>
+                                                                <outlet property="titleLbl" destination="zAN-1h-mqF" id="1Zc-va-oOr"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>

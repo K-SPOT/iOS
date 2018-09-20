@@ -36,7 +36,7 @@ class MainSecondTVCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
+        //self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
         
     }
     
