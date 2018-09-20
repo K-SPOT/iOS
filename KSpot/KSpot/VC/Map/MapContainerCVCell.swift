@@ -45,7 +45,7 @@ extension MapContainerCVCell  : UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let channel_ = channel {
-            return channel_.thubnailImg.count
+            return channel_.thumbnailImg.count
         }
         return 0
     }
@@ -55,7 +55,7 @@ extension MapContainerCVCell  : UICollectionViewDataSource, UICollectionViewDele
         if let cell: MapCelebrityCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: MapCelebrityCVCell.reuseIdentifier, for: indexPath) as? MapCelebrityCVCell
         {
             if let channel_ = channel {
-                cell.configure(data : channel_.thubnailImg[indexPath.row])
+                cell.configure(data : channel_.thumbnailImg[indexPath.row])
             }
             return cell
         }

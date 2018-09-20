@@ -15,6 +15,7 @@ enum HttpResponseCode: Int{
     case UID_ERROR = 204
     case SELECT_ERROR = 300
     case ACCESS_DENIED = 401
+    case FORBIDDEN = 403
     case SERVER_ERROR = 500
 }
 
