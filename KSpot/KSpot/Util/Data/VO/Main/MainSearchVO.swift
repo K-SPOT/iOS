@@ -7,15 +7,35 @@
 //
 
 import Foundation
+
+
 struct MainSearchVO: Codable {
     let message: String
     let data: MainSearchVOData
 }
 
 struct MainSearchVOData: Codable {
-    let celebrity, broadcast, event: [MainSearchVODataCelebrity]
+    let celebrity, broadcast : [MainSearchVODataCelebrity]
+    let event : [MainSearchVODataEvent]
 }
 
 struct MainSearchVODataCelebrity: Codable {
     let name: String
+    let channelId : Int
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case channelId = "channel_id"
+    }
+    
+}
+
+struct MainSearchVODataEvent: Codable {
+    let spotID: Int
+    let name: String
+    
+    enum CodingKeys: String, CodingKey {
+        case spotID = "spot_id"
+        case name
+    }
 }

@@ -24,10 +24,10 @@ struct UserEditService : PostablewithPhoto {
                     completion(.networkSuccess(""))
                 case HttpResponseCode.UID_ERROR.rawValue :
                     completion(.UIDErr)
-                case HttpResponseCode.FORBIDDEN.rawValue :
+                case HttpResponseCode.CONFILCT.rawValue :
                     completion(.duplicated)
                 default :
-                    print("no 201/204/403 - statusCode is \(networkResult.resCode)")
+                    print("no 201/204/409 - statusCode is \(networkResult.resCode)")
                     break
                 }
                 break
