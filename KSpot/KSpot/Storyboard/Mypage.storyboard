@@ -47,47 +47,38 @@
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERC-de-uSC">
                                             <rect key="frame" x="292" y="48" width="57" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="57" id="tpW-wF-ACH"/>
+                                            </constraints>
                                             <state key="normal" image="mypage_logout"/>
                                             <connections>
                                                 <action selector="logoutAction:" destination="bEn-mv-NYG" eventType="touchUpInside" id="Dbc-Ps-hUq"/>
                                             </connections>
                                         </button>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="AbJ-Cc-QZw">
-                                            <rect key="frame" x="78" y="41" width="95" height="39"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="GkV-zk-FdN">
-                                                    <rect key="frame" x="0.0" y="0.0" width="95" height="18"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="짱절미" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b86-Co-Qvf">
-                                                            <rect key="frame" x="0.0" y="0.0" width="44" height="18"/>
-                                                            <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="16"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="고객님," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uz-a5-YvM">
-                                                            <rect key="frame" x="47" y="0.0" width="48" height="18"/>
-                                                            <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="16"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안녕하세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hz-yx-fzy">
-                                                    <rect key="frame" x="0.0" y="21" width="77" height="18"/>
-                                                    <fontDescription key="fontDescription" name="NanumSquareOTFL" family="NanumSquareOTF" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="짱절미미지구뿌셔 우주뿌셔 뿌셔뿌셔 다뿌셔 고객님," textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b86-Co-Qvf">
+                                            <rect key="frame" x="84" y="33" width="192" height="35.5"/>
+                                            <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안녕하세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hz-yx-fzy">
+                                            <rect key="frame" x="84" y="71" width="77" height="18"/>
+                                            <fontDescription key="fontDescription" name="NanumSquareOTFL" family="NanumSquareOTF" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
+                                        <constraint firstItem="ERC-de-uSC" firstAttribute="leading" secondItem="b86-Co-Qvf" secondAttribute="trailing" constant="16" id="2bu-xI-vBu"/>
                                         <constraint firstItem="tV5-qc-iVD" firstAttribute="leading" secondItem="lMi-gZ-cKI" secondAttribute="leading" constant="16" id="5LH-xJ-1ez"/>
+                                        <constraint firstItem="9hz-yx-fzy" firstAttribute="top" secondItem="b86-Co-Qvf" secondAttribute="bottom" constant="2.5" id="7cI-53-sg4"/>
                                         <constraint firstItem="tV5-qc-iVD" firstAttribute="top" secondItem="lMi-gZ-cKI" secondAttribute="top" constant="32" id="OtQ-34-3yX"/>
-                                        <constraint firstItem="AbJ-Cc-QZw" firstAttribute="centerY" secondItem="tV5-qc-iVD" secondAttribute="centerY" id="QBu-W9-3FC"/>
-                                        <constraint firstItem="AbJ-Cc-QZw" firstAttribute="leading" secondItem="tV5-qc-iVD" secondAttribute="trailing" constant="6" id="UhO-5P-cIM"/>
+                                        <constraint firstItem="9hz-yx-fzy" firstAttribute="leading" secondItem="b86-Co-Qvf" secondAttribute="leading" id="VmP-KG-Oco"/>
+                                        <constraint firstItem="b86-Co-Qvf" firstAttribute="centerY" secondItem="tV5-qc-iVD" secondAttribute="centerY" multiplier="1:1.2" id="bqd-op-d7D"/>
                                         <constraint firstAttribute="trailing" secondItem="ERC-de-uSC" secondAttribute="trailing" constant="26" id="d9v-2Z-dVQ"/>
+                                        <constraint firstAttribute="bottom" secondItem="tV5-qc-iVD" secondAttribute="bottom" constant="20" id="lb6-Mk-NYW"/>
+                                        <constraint firstItem="b86-Co-Qvf" firstAttribute="leading" secondItem="tV5-qc-iVD" secondAttribute="trailing" constant="12" id="lgE-xl-Cof"/>
                                         <constraint firstItem="ERC-de-uSC" firstAttribute="centerY" secondItem="tV5-qc-iVD" secondAttribute="centerY" id="mmV-9T-a4O"/>
                                     </constraints>
                                 </view>

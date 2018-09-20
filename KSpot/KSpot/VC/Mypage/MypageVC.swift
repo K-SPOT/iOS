@@ -101,7 +101,9 @@ extension MypageVC : UITableViewDelegate, UITableViewDataSource{
         } else if (indexPath.row == 1 && numberofRows == 2) || (indexPath.row == 2 && numberofRows == 3) {
             if let editProfileVC = mypageStoryboard.instantiateViewController(withIdentifier:EditProfileVC.reuseIdentifier) as? EditProfileVC {
                 editProfileVC.profileImg = self.profileImgView.image
-                editProfileVC.nameTxt = self.nameLbl.text ?? ""
+                if let nameTxt = nameLbl.text {
+                    editProfileVC.nameTxt = (self.nameLbl.text?.prefix((nameTxt.count)-5).description) ?? ""
+                }
                 self.navigationController?.pushViewController(editProfileVC, animated: true)
             }
         }
@@ -135,7 +137,7 @@ extension MypageVC {
             switch result {
             case .networkSuccess(let mypageData):
                 let userData = mypageData as! MypageVOData
-                self.nameLbl.text = "\(userData.user.name)"
+                self.nameLbl.text = "\(userData.user.name) 고객님,"
                 self.setImgWithKF(url: self.gsno(userData.user.profileImg), imgView: self.profileImgView, defaultImg: #imageLiteral(resourceName: "mypage_membership_edit_default_img"))
                 self.channelArr = userData.channel
             case .networkFail :
