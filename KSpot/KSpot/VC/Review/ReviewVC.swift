@@ -15,14 +15,31 @@ class ReviewVC: UIViewController {
     
     @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    var selectedIdx : Int = 0
+    var rating : Double = 0.0
+    var reviewData : [PlaceDetailVODataReview]? {
+        didSet {
+            if let reviewData_ = reviewData{
+                tableView.reloadData()
+                reviewCountLbl.text = reviewData_.count.description+"개"
+            }
+        }
+    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ratingView.rating = rating
+        ratingLbl.text = rating.description
+        getReviews(url: UrlPath.spot.getURL("\(selectedIdx)/review"))
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        ratingView.rating = 2.3
         ratingView.settings.fillMode = .precise
     }
+    
+    
     
     func update(_ rating: Double) {
         ratingView.rating = rating
@@ -69,13 +86,28 @@ extension ReviewVC : SelectDelegate {
 extension ReviewVC:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if let reviewData_ = reviewData{
+            return reviewData_.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ReviewImgTVCell.reuseIdentifier) as! ReviewImgTVCell
-        cell.delegate = self
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReviewNoImgTVCell.reuseIdentifier) as! ReviewNoImgTVCell
+        if let reviewData_ = reviewData {
+            if reviewData_[indexPath.row].img == "" {
+                let cell = tableView.dequeueReusableCell(withIdentifier: ReviewNoImgTVCell.reuseIdentifier) as! ReviewNoImgTVCell
+                cell.delegate = self
+                cell.configure(data : reviewData_[indexPath.row])
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: ReviewImgTVCell.reuseIdentifier) as! ReviewImgTVCell
+                cell.delegate = self
+                cell.configure(data : reviewData_[indexPath.row])
+                return cell
+            }
+        }
         return cell
     }
     
@@ -83,5 +115,23 @@ extension ReviewVC:UITableViewDelegate,UITableViewDataSource
     {
         tableView.deselectRow(at: indexPath, animated: true)
         
+    }
+}
+
+//통신
+extension ReviewVC {
+    func getReviews(url : String){
+        ReviewService.shareInstance.getReviewData(url: url,completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(let reviewData):
+                self.reviewData = reviewData as? [PlaceDetailVODataReview]
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
     }
 }

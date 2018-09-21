@@ -40,6 +40,7 @@ class CategoryDetailMoreVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     
+    
     func initContainerView(){
         addChildView(containerView: containerView, asChildViewController: categoryDetailMorePlaceVC)
     }

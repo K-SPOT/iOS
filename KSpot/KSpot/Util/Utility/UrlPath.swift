@@ -30,6 +30,9 @@ enum UrlPath : String {
     //맵
     case spot = "/spot/"
 
+    //리뷰
+    case reviewWrite = "/spot/review"
+
 
     
     //카테고리

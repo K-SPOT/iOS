@@ -18,7 +18,7 @@ class PlaceDetailFirstTVCell: UITableViewCell {
     var relatedChannel : PlaceDetailVODataChannel? {
         didSet {
             if let relatedChannel_ = self.relatedChannel {
-                countLbl.text = relatedChannel_.channelID.count.description
+                countLbl.text = relatedChannel_.channelID.count.description+"개"
                 collectionView.reloadData()
             }
         }

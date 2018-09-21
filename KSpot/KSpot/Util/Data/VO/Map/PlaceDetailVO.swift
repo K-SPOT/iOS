@@ -55,13 +55,13 @@ struct PlaceDetailVODataChannel: Codable {
 }
 
 struct PlaceDetailVODataReview: Codable {
-    let title, content: String
+    let title, content, name: String
     let img: String
     let reviewScore: Double
     let regTime: String
     
     enum CodingKeys: String, CodingKey {
-        case title, content, img
+        case title, content, img, name
         case reviewScore = "review_score"
         case regTime = "reg_time"
     }

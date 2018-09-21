@@ -23,8 +23,13 @@ class ReviewImgTVCell: UITableViewCell {
     @IBAction func moreAction(_ sender: Any) {
         delegate?.tap(selected: 0)
     }
-    //@IBOutlet weak var moreBtn: UIButton!
-    // delegate?.tap()
+    func configure(data : PlaceDetailVODataReview){
+        titleLbl.text = data.title
+        contentLbl.text = data.content
+        setImgWithKF(url: data.img, imgView: myImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
+        ratingView.rating = data.reviewScore
+        writingInfoLbl.text = "\(data.name) · \(data.regTime)"
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         contentLbl.setLineSpacing(lineSpacing: 6)

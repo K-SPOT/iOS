@@ -11,11 +11,9 @@ import UIKit
 class PlaceDetailSecondTVCell: UITableViewCell {
     
     @IBOutlet weak var countLbl: UILabel!
-    @IBOutlet weak var showAllBtn: UIButton!
     @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var collectionView: UICollectionView!
-
     private var indexOfCellBeforeDragging = 0
     private var collectionViewFlowLayout: UICollectionViewFlowLayout {
         return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -23,6 +21,9 @@ class PlaceDetailSecondTVCell: UITableViewCell {
     var delegate : SelectSectionDelegate?
     var reviewData : [PlaceDetailVODataReview]? {
         didSet {
+            if let reviewData_ = reviewData {
+                countLbl.text = reviewData_.count.description+"개"
+            }
             collectionView.reloadData()
         }
     }
@@ -30,12 +31,15 @@ class PlaceDetailSecondTVCell: UITableViewCell {
     @IBAction func writeReviewAction(_ sender: Any) {
         //-1이면 리뷰 쓰는 것
         delegate?.tap(section: .second, seledtedId: -1)
-        
     }
     
+    @IBAction func showAllAction(_ sender: Any) {
+        delegate?.tap(section: .second, seledtedId: 1)
+    }
+    
+   
     func configure(reviewScore : Double){
         ratingLbl.text = reviewScore.description
-        countLbl.text = reviewData?.count.description ?? "0"
         ratingView.rating = reviewScore
     }
   

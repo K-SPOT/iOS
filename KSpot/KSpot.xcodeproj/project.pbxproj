@@ -128,6 +128,8 @@
 		3BF85DCB2153FB750005C83D /* SearchResultTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85DCA2153FB750005C83D /* SearchResultTVCell.swift */; };
 		3BF85DCF21541BCB0005C83D /* PlaceDetailVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85DCE21541BCB0005C83D /* PlaceDetailVO.swift */; };
 		3BF85DD121541BD70005C83D /* PlaceDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85DD021541BD70005C83D /* PlaceDetailService.swift */; };
+		3BF85DD32154A5200005C83D /* ReviewVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85DD22154A5200005C83D /* ReviewVO.swift */; };
+		3BF85DD52154A5450005C83D /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85DD42154A5450005C83D /* ReviewService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -254,6 +256,8 @@
 		3BF85DCA2153FB750005C83D /* SearchResultTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTVCell.swift; sourceTree = "<group>"; };
 		3BF85DCE21541BCB0005C83D /* PlaceDetailVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailVO.swift; sourceTree = "<group>"; };
 		3BF85DD021541BD70005C83D /* PlaceDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailService.swift; sourceTree = "<group>"; };
+		3BF85DD22154A5200005C83D /* ReviewVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewVO.swift; sourceTree = "<group>"; };
+		3BF85DD42154A5450005C83D /* ReviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
 		4C6052FD7CF496FE2E3B933E /* Pods-KSpot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KSpot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KSpot/Pods-KSpot.debug.xcconfig"; sourceTree = "<group>"; };
 		FFA688BBCA5DFBD11AEA04D6 /* Pods_KSpot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KSpot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -770,8 +774,8 @@
 		3BBB7DB4214A17A7004CC142 /* VO */ = {
 			isa = PBXGroup;
 			children = (
-				3BF85DCC21541BB50005C83D /* Map */,
 				3B3C441A21518C3E005B8650 /* DefaultVO.swift */,
+				3BF85DCC21541BB50005C83D /* Map */,
 				3B3C442321519C6D005B8650 /* Main */,
 				3B3C442221519C68005B8650 /* Category */,
 				3B3C442121519C63005B8650 /* Mypage */,
@@ -853,6 +857,7 @@
 			isa = PBXGroup;
 			children = (
 				3BF85DCE21541BCB0005C83D /* PlaceDetailVO.swift */,
+				3BF85DD22154A5200005C83D /* ReviewVO.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -861,6 +866,7 @@
 			isa = PBXGroup;
 			children = (
 				3BF85DD021541BD70005C83D /* PlaceDetailService.swift */,
+				3BF85DD42154A5450005C83D /* ReviewService.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -1052,6 +1058,7 @@
 				3B3C44302151B054005B8650 /* ChannelDetailVO.swift in Sources */,
 				3B3DD178213DBDBD00FD00B3 /* Font.swift in Sources */,
 				3B3C43E3214F05BC005B8650 /* SearchResultMorePlaceVC.swift in Sources */,
+				3BF85DD52154A5450005C83D /* ReviewService.swift in Sources */,
 				3B3DD16D213DA7AE00FD00B3 /* WRNavigationBar.swift in Sources */,
 				3B3DD150213D9C8B00FD00B3 /* PlaceDetailSecondTVCell.swift in Sources */,
 				3BB188392145303F0021B543 /* CosmosDistrib.swift in Sources */,
@@ -1076,6 +1083,7 @@
 				3B3C442621519C98005B8650 /* UserSubcriptionVO.swift in Sources */,
 				3B3C43D8214EF459005B8650 /* PlaceFilterView.swift in Sources */,
 				3B0FA12A214C2F87009F33AE /* Gallery.swift in Sources */,
+				3BF85DD32154A5200005C83D /* ReviewVO.swift in Sources */,
 				3B3DD0FC213B318E00FD00B3 /* BroadcastVC.swift in Sources */,
 				3B3C440921515CB9005B8650 /* UrlPath.swift in Sources */,
 				3BBF8D492139262800FFF08C /* ViewController.swift in Sources */,

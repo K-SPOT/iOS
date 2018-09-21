@@ -20,7 +20,7 @@ class PlaceDetailSecondCVCell: UICollectionViewCell {
         setImgWithKF(url: data.img, imgView: reviewImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
         titleLabel.text = data.title
         contentLabel.text = data.content
-        nickNameLbl.text = "수진날진"
+        nickNameLbl.text = data.name
         dateLbl.text = data.regTime
         ratingView.rating = data.reviewScore
     }

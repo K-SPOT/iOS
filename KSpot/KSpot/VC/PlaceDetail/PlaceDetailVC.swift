@@ -1,4 +1,3 @@
-//
 //  PlaceDetailVC.swift
 //  KSpot
 //
@@ -69,12 +68,12 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     @IBAction func phoneViewAction(_ sender: Any) {
         guard let contact = placeData?.contact else {return}
         if isPlace {
-           contact.makeACall()
+            contact.makeACall()
         } else {
             sendEmail(to : contact)
         }
     }
-
+    
     
     @IBAction func scrollToTopAction(_ sender: Any) {
         tableView.setContentOffset(CGPoint(x: 0, y : -IMAGE_HEIGHT), animated: true)
@@ -107,7 +106,7 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
         //setcycleScrollView()
         setNavbar()
         if isPlace {
-           openCloseLbl.text = "오픈/마감 시간"
+            openCloseLbl.text = "오픈/마감 시간"
             openLbl.text = "오픈"
             closeLbl.text = "마감"
             contactImgView.image = #imageLiteral(resourceName: "place_detail_phone")
@@ -148,7 +147,7 @@ extension PlaceDetailVC {
         blackScrapBarBtn = UIBarButtonItem.itemWith(colorfulImage: #imageLiteral(resourceName: "place_detail_unscrap_black"), target: self, action: #selector(PlaceDetailVC.sample(_sender:)))
         greenScrapBarBtn = UIBarButtonItem.itemWith(colorfulImage: #imageLiteral(resourceName: "place_detail_scrap_green"), target: self, action: #selector(PlaceDetailVC.sample(_sender:)))
         
-       let titleBarBtn = UIBarButtonItem.titleBarbutton(title: "", red: 255, green: 255, blue: 255, fontSize: 14, fontName: NanumSquareOTF.NanumSquareOTFR.rawValue, selector: nil, target: self)
+        let titleBarBtn = UIBarButtonItem.titleBarbutton(title: "", red: 255, green: 255, blue: 255, fontSize: 14, fontName: NanumSquareOTF.NanumSquareOTFR.rawValue, selector: nil, target: self)
         titleBarBtn.isEnabled = false
         self.navigationItem.rightBarButtonItems = [whiteScrapBarBtn!, titleBarBtn]
         //왼쪽 백버튼 아이템 설정
@@ -305,11 +304,26 @@ extension PlaceDetailVC : SelectSectionDelegate, SelectSenderDelegate {
             self.goToCelebrityDetail(selectedIdx : seledtedId)
         } else {
             //리뷰 쓰기
-            let mapStoryboard = Storyboard.shared().mapStoryboard
-            if let reviewWriteVC = mapStoryboard.instantiateViewController(withIdentifier:ReviewWriteVC.reuseIdentifier) as? ReviewWriteVC {
-                
-                self.navigationController?.pushViewController(reviewWriteVC, animated: true)
+            if seledtedId == -1 {
+                let mapStoryboard = Storyboard.shared().mapStoryboard
+                if let reviewWriteVC = mapStoryboard.instantiateViewController(withIdentifier:ReviewWriteVC.reuseIdentifier) as? ReviewWriteVC {
+                    reviewWriteVC.selectedIdx = self.selectedIdx
+                    self.navigationController?.pushViewController(reviewWriteVC, animated: true)
+                }
+            } else {
+                //리뷰 보기
+                let mapStoryboard = Storyboard.shared().mapStoryboard
+                if let reviewContainerVC = mapStoryboard.instantiateViewController(withIdentifier:ReviewContainerVC.reuseIdentifier) as? ReviewContainerVC {
+                    
+                   reviewContainerVC.selectedIdx = self.selectedIdx
+
+                    if let reviewScore = placeData?.reviewScore {
+                         reviewContainerVC.rating = reviewScore
+                    }
+                    self.navigationController?.pushViewController(reviewContainerVC, animated: true)
+                }
             }
+            
         }
     }
 }
