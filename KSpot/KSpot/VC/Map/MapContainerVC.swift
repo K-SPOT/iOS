@@ -74,8 +74,6 @@ class MapContainerVC: UIViewController {
             
             let addressGu = regionTxt
             let order = selectedFirstFilter?.tag ?? 0
-
-            
             getDefaultSpot(url: UrlPath.spot.getURL("\(addressGu)/\(order)/\(isFood)/\(isCafe)/\(isSights)/\(isEvent)/\(isEtc)/"))
         
     } 
@@ -85,10 +83,13 @@ class MapContainerVC: UIViewController {
 extension MapContainerVC : SelectRegionDelegate {
     func tap(_ region : Region) {
         selectedRegion = region
-         print("taptap")
+        let parentVC = self.parent as? MapVC
+        parentVC?.entryPoint = .local
         entryPoint = .local
         getDefualtMapData()
     }
+    
+    
 }
 
 extension MapContainerVC : UICollectionViewDataSource, UICollectionViewDelegate{

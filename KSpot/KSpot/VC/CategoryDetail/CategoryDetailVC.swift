@@ -337,11 +337,14 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        if indexPath.section == 1  {
-           self.goToPlaceDetailVC(selectedIdx: 0)
-        } else if indexPath.section == 2 {
-             self.goToCelebrityDetail(selectedIdx : 0)
+        if let relatedPlace_ = relatedPlace, let relatedEvent_ = relatedEvent {
+            if indexPath.section == 1  {
+                self.goToPlaceDetailVC(selectedIdx: relatedPlace_[indexPath.row].spotID)
+            } else if indexPath.section == 2 {
+                self.goToCelebrityDetail(selectedIdx : relatedEvent_[indexPath.row].spotID)
+            }
         }
+        
     }
     
 }
@@ -349,7 +352,7 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
 extension CategoryDetailVC : SelectSectionDelegate {
     func tap(section: Section, seledtedId: Int) {
         if section == .first {
-           self.goToPlaceDetailVC(selectedIdx: 0)
+           self.goToPlaceDetailVC(selectedIdx: seledtedId)
         }
     }
 }

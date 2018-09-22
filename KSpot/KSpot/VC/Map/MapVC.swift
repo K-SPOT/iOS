@@ -23,7 +23,8 @@ class MapVC: UIViewController {
     var filterView = MapFilterView.instanceFromNib()
     var selectedFirstFilter : FilterToggleBtn?
     var selectedSecondFilter : Int?
-    var selectedThirdFilter = Set<UIButton>()
+    var selectedThirdFilter : Set<UIButton>?
+    var selectedThirdFilter_ = Set<UIButton>()
     var entryPoint : EntryPoint = .local
     var defaultSpot : [UserScrapVOData]?{
         didSet {
@@ -109,8 +110,9 @@ extension MapVC {
         var isSights : Int = 1
         var isEvent : Int = 1
         var isEtc : Int = 1
-        if selectedThirdFilter.count > 0 {
-            let buttonTagArr = selectedThirdFilter.map({ (button) in
+        if let selectedThirdFilter_ = selectedThirdFilter {
+            
+            let buttonTagArr = selectedThirdFilter_.map({ (button) in
                 return button.tag
             })
             isFood =  buttonTagArr.contains(0) ? 1: 0
@@ -253,9 +255,12 @@ extension MapVC {
         //if selectedFirstFiler.tag == 0 이면 인기순
         print(selectedFirstFilter?.tag ?? -1)
         print(selectedSecondFilter ?? -1)
-        selectedThirdFilter.forEach({ (button) in
-            print(button.tag)
-        })
+        if let selectedThirdFilter_ = selectedThirdFilter {
+            selectedThirdFilter_.forEach({ (button) in
+                print(button.tag)
+            })
+        }
+        
         mapContainerVC.selectedFirstFilter = self.selectedFirstFilter
         mapContainerVC.selectedSecondFilter = self.selectedSecondFilter
         mapContainerVC.selectedThirdFilter = selectedThirdFilter
@@ -288,14 +293,16 @@ extension MapVC {
         }
         setDistanceIdx(index: index)
     }
+    
     @objc public func thirdFilterAction(_sender: UIButton) {
         if(!_sender.isSelected) {
             _sender.isSelected = true
-            selectedThirdFilter.insert(_sender)
+            selectedThirdFilter_.insert(_sender)
         } else {
             _sender.isSelected = false
-            selectedThirdFilter.remove(_sender)
+            selectedThirdFilter_.remove(_sender)
         }
+        selectedThirdFilter = selectedThirdFilter_
     }
 }
 
@@ -309,7 +316,23 @@ extension MapVC : CLLocationManagerDelegate{
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            print("야이 여기다")
+            currentLocation = locationManager.location
+            
+            guard let latitude = currentLocation?.coordinate.latitude,
+                let longitude = currentLocation?.coordinate.longitude else {return}
+            chosenPlace = MyPlace(name: "", lat: latitude, long: longitude)
+            mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변"
+            print("my lat : \(latitude)")
+             print("my long : \(longitude)")
+            getMapInfo()
+        } else {
+            print("여기다 이자식")
+            mapContainerVC.tap(.seongbukgu)
+        }
     }
+    
     
     //location 허용 안했을 때
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

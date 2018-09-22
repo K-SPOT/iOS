@@ -7,7 +7,27 @@
 //
 
 import Foundation
+
 struct ReviewVO: Codable {
     let message: String
-    let data: [PlaceDetailVODataReview]
+    let data: ReviewVOData
+}
+
+struct ReviewVOData: Codable {
+    let spotReview: ReviewVODataSpotReview
+    let reviews: [PlaceDetailVODataReview]
+    enum CodingKeys: String, CodingKey {
+        case spotReview = "spot_review"
+        case reviews
+    }
+}
+
+struct ReviewVODataSpotReview: Codable {
+    let reviewScore: Double
+    let reviewCnt: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case reviewScore = "review_score"
+        case reviewCnt = "review_cnt"
+    }
 }

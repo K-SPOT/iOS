@@ -17,19 +17,20 @@ class ReviewVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var selectedIdx : Int = 0
     var rating : Double = 0.0
-    var reviewData : [PlaceDetailVODataReview]? {
+    var reviewData : ReviewVOData? {
         didSet {
             if let reviewData_ = reviewData{
                 tableView.reloadData()
-                reviewCountLbl.text = reviewData_.count.description+"개"
+                reviewCountLbl.text = reviewData_.spotReview.reviewCnt.description+"개"
+                ratingLbl.text = reviewData_.spotReview.reviewScore.description
+                ratingView.rating = reviewData_.spotReview.reviewScore
             }
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ratingView.rating = rating
-        ratingLbl.text = rating.description
+
         getReviews(url: UrlPath.spot.getURL("\(selectedIdx)/review"))
     }
     override func viewDidLoad() {
@@ -87,7 +88,7 @@ extension ReviewVC:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let reviewData_ = reviewData{
-            return reviewData_.count
+            return reviewData_.reviews.count
         }
         return 0
     }
@@ -96,15 +97,15 @@ extension ReviewVC:UITableViewDelegate,UITableViewDataSource
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: ReviewNoImgTVCell.reuseIdentifier) as! ReviewNoImgTVCell
         if let reviewData_ = reviewData {
-            if reviewData_[indexPath.row].img == "" {
+            if reviewData_.reviews[indexPath.row].img == "" {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ReviewNoImgTVCell.reuseIdentifier) as! ReviewNoImgTVCell
                 cell.delegate = self
-                cell.configure(data : reviewData_[indexPath.row])
+                cell.configure(data : reviewData_.reviews[indexPath.row])
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ReviewImgTVCell.reuseIdentifier) as! ReviewImgTVCell
                 cell.delegate = self
-                cell.configure(data : reviewData_[indexPath.row])
+                cell.configure(data : reviewData_.reviews[indexPath.row])
                 return cell
             }
         }
@@ -125,7 +126,7 @@ extension ReviewVC {
             guard let `self` = self else { return }
             switch result {
             case .networkSuccess(let reviewData):
-                self.reviewData = reviewData as? [PlaceDetailVODataReview]
+                self.reviewData = reviewData as? ReviewVOData
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
             default :
