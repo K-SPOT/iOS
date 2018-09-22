@@ -22,7 +22,7 @@ enum Distance : String {
 }
 enum Region : String {
     //25개
-    case gangsugu = "강서구"
+    case gangseogu = "강서구"
     case yangcheongu = "양천구"
     case gurogu = "구로구"
     case yeongdeungpogu = "영등포구"

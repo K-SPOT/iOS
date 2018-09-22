@@ -7,40 +7,87 @@
 //
 
 import UIKit
-
+enum EntryPoint {
+    case local
+    case google
+}
 class MapContainerVC: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var selectedFirstFilter : FilterToggleBtn?
+    var selectedSecondFilter : Int?
+    var selectedThirdFilter : Set<UIButton>?
+    var selectedRegion : Region?
+    var entryPoint : EntryPoint = .local {
+        didSet {
+            if entryPoint == .local {
+                getDefualtMapData()
+            }
+        }
+    }
     var mapView : MapHeaderView?
-    let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
+    var defaultSpot : [UserScrapVOData]? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionView.delegate = self
         collectionView.dataSource = self
     }
+
+    func getDefualtMapData(){
+        var isFood = 1
+        var isCafe = 1
+        var isSights = 1
+        var isEvent = 1
+        var isEtc = 1
+        if let selectedThirdFilter_ = selectedThirdFilter {
+            
+                let buttonTagArr = selectedThirdFilter_.map({ (button) in
+                    return button.tag
+                })
+                isFood =  buttonTagArr.contains(0) ? 1: 0
+                isCafe = buttonTagArr.contains(1) ? 1 : 0
+                isSights = buttonTagArr.contains(2) ? 1 : 0
+                isEvent = buttonTagArr.contains(3) ? 1 : 0
+                isEtc = buttonTagArr.contains(4) ? 1 : 0
+                
+            
+        }
+        
+        let parentVC = self.parent as? MapVC
+            var regionTxt = ""
+            if let selectedRegion_ = selectedRegion{
+                if selectedLang == .kor {
+                    regionTxt = selectedRegion_.rawValue
+                } else {
+                    regionTxt = "\(selectedRegion_)"
+                }
+            }
+            mapView?.selectedRegionLbl.text = regionTxt
+            parentVC?.isGoogleMapLocation = false
+            
+            let addressGu = regionTxt
+            let order = selectedFirstFilter?.tag ?? 0
+
+            
+            getDefaultSpot(url: UrlPath.spot.getURL("\(addressGu)/\(order)/\(isFood)/\(isCafe)/\(isSights)/\(isEvent)/\(isEtc)/"))
+        
+    } 
+    
 }
 
 extension MapContainerVC : SelectRegionDelegate {
     func tap(_ region : Region) {
-        var regionTxt = ""
-        if selectedLang == .kor {
-            regionTxt = region.rawValue
-        } else {
-            regionTxt = "\(region)"
-        }
-        mapView?.selectedRegionLbl.text = regionTxt
-        let parentVC = self.parent as? MapVC
-        parentVC?.isGoogleMapLocation = false
-        
-        
-        //self.parent?.title = region.rawValue
-        //self.parent?.navigationItem.title = region.rawValue
-        //TODO - 통신 대비해서 case rawValue 뽑아내기 case gangsu -> gangsu
-        
-        
+        selectedRegion = region
+         print("taptap")
+        entryPoint = .local
+        getDefualtMapData()
     }
 }
 
@@ -72,7 +119,7 @@ extension MapContainerVC : UICollectionViewDataSource, UICollectionViewDelegate{
              ((mapView?.yeongdeungpoBtn)!, .yeongdeungpogu),
              ((mapView?.guroBtn)!, .gurogu),
              ((mapView?.yangcheonBtn)!, .yangcheongu),
-             ((mapView?.gangsuBtn)!, .gangsugu),
+             ((mapView?.gangsuBtn)!, .gangseogu),
              ((mapView?.gangbukBtn)!, .gangbukgu),
              ((mapView?.seongbukBtn)!, .seongbukgu),
              ((mapView?.jongroBtn)!, .jongrogu),
@@ -88,8 +135,8 @@ extension MapContainerVC : UICollectionViewDataSource, UICollectionViewDelegate{
              ((mapView?.songpaBtn)!, .songpagu),
              ((mapView?.gangdongBtn)!, .gangdonggu),
              
-              ((mapView?.guroBtn1)!, .gurogu),
-             ((mapView?.gangsuBtn1)!, .gangsugu),
+             ((mapView?.guroBtn1)!, .gurogu),
+             ((mapView?.gangsuBtn1)!, .gangseogu),
              ((mapView?.yeongdeungpoBtn1)!, .yeongdeungpogu),
              ((mapView?.gwanakBtn1)!, .gwanakgu),
              ((mapView?.mapoBtn1)!, .mapogu),
@@ -113,22 +160,29 @@ extension MapContainerVC : UICollectionViewDataSource, UICollectionViewDelegate{
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return sunglassArr.count
+        if let defaultSpot_ = defaultSpot{
+            return defaultSpot_.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell: MapContainerCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: MapContainerCVCell.reuseIdentifier, for: indexPath) as? MapContainerCVCell
         {
-            cell.myImgView.image = sunglassArr[indexPath.row]
+            if let defaultSpot_ = defaultSpot{
+                cell.configure(data : defaultSpot_[indexPath.row])
+            }
             return cell
         }
         return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.goToPlaceDetailVC(selectedIdx: 0)
+        if let defaultSpot_ = defaultSpot{
+            self.goToPlaceDetailVC(selectedIdx: defaultSpot_[indexPath.row].spotID)
+        }
+        
     }
 }
 
@@ -154,7 +208,20 @@ extension MapContainerVC: UICollectionViewDelegateFlowLayout {
 
 //통신
 extension MapContainerVC {
-    
+    func getDefaultSpot(url : String){
+        DefaultSpotService.shareInstance.getDefaultSpot(url: url,completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(let defaultSpot):
+                self.defaultSpot = defaultSpot as? [UserScrapVOData]
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    }
 }
 
 

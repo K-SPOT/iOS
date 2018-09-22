@@ -27,10 +27,14 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
     let currentLocationMarker = GMSMarker()
     var locationManager = CLLocationManager()
     var chosenPlace: MyPlace?
-    var delegate : SelectDelegate?
+    var delegate : SelectGoogleDelegate?
     var entryPoint : MapEntryPoint = .currentLocation
     let defualtLat = 36.3504
     let defualtLong = 127.3845
+    
+    var selectedFirstFilter : FilterToggleBtn?
+    var selectedSecondFilter : Int?
+    var selectedThirdFilter : Set<UIButton>?
 
     @IBOutlet var myMapView: GMSMapView!
     
@@ -151,51 +155,11 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
     }
     
     @objc func okAction() {
-        delegate?.tap(selected: 0)
-        if let chosenPlace_ = chosenPlace {
-            //1. 만약 위치 정보 허용 안해서 defualt 로 대전이 설정되어 있을때
-            //2. 위치 정보 허용해서 현재 위치가 설정 되어 있을 때
-            //3. 구글 맵 상에서 위치를 설정 했을 때
-            let lat = chosenPlace_.lat.description
-            let long = chosenPlace_.long.description
-        
-        }
+        delegate?.tap(selectedGoogle: chosenPlace)
         self.pop()
-      
-       
     }
 }
 
-/*extension GoogleMapVC {
-    func getAddress(url : String){
-        GoogleMapService.shareInstance.getAddress(url: url) { [weak self] (result) in
-            guard let `self` = self else { return }
-            
-            switch result {
-            case .networkSuccess(let getAddress):
-                
-                self.address = getAddress as? [Result]
-                print("잘들어옴")
-                print(self.address)
-                for addressComponent in self.address![0].addressComponents{
-                    if addressComponent.types.contains("sublocality_level_1"){
-                         print("여기용~ \(addressComponent.shortName)")
-                    }
-                   
-                }
-                //print("여기용~ \(name)")
-                
-                break
-            case .nullValue :
-                self.simpleAlert(title: "오류", message: "검색 결과가 없습니다")
-            case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
-            default :
-                break
-            }
-        }
-    }
-}*/
 
 extension GoogleMapVC : GMSAutocompleteViewControllerDelegate {
     // MARK: GOOGLE AUTO COMPLETE DELEGATE

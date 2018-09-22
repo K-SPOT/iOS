@@ -20,26 +20,32 @@ class MapVC: UIViewController {
         return viewController
     }()
     
-    
     var filterView = MapFilterView.instanceFromNib()
     var selectedFirstFilter : FilterToggleBtn?
     var selectedSecondFilter : Int?
     var selectedThirdFilter = Set<UIButton>()
+    var entryPoint : EntryPoint = .local
+    var defaultSpot : [UserScrapVOData]?{
+        didSet {
+            mapContainerVC.defaultSpot = defaultSpot
+        }
+    }
+    var chosenPlace : MyPlace?
     var isGoogleMapLocation : Bool = true {
         didSet {
             filterView.isGoogle = isGoogleMapLocation
             if isGoogleMapLocation {
                 //구글 맵에서 선택했을 때는 거리 인덱스 활성화
-                 setDistanceIdx(index: selectedSecondFilter ?? 3)
+                setDistanceIdx(index: selectedSecondFilter ?? 3)
             } else {
-                  filterView.distanceLbl.text = "1k 까지 설정"
+                filterView.distanceLbl.text = "1k 까지 설정"
                 //지도에서 클릭해서 선택했을 때는 버튼 활성화
-                 if let selectedBtn_ = selectedFirstFilter {
-                 selectedBtn_.selected()
-                 } else {
-                 filterView.popularBtn.selected()
-                 selectedFirstFilter = filterView.popularBtn
-                 }
+                if let selectedBtn_ = selectedFirstFilter {
+                    selectedBtn_.selected()
+                } else {
+                    filterView.popularBtn.selected()
+                    selectedFirstFilter = filterView.popularBtn
+                }
             }
         }
     }
@@ -48,22 +54,22 @@ class MapVC: UIViewController {
         initContainerView()
         locationInit()
         setFilterView(filterView)
-       
+        
         //네비게이션 타이틀
         self.navigationItem.title = "K-Spot"
     }
-   
+    
     
     func initContainerView(){
         addChildView(containerView: containerView, asChildViewController: mapContainerVC)
     }
     
     @IBAction func filterAction(_ sender: Any) {
-   
+        
         UIApplication.shared.keyWindow!.addSubview(filterView)
     }
     
-   
+    
     @IBAction func locationAction(_ sender: Any) {
         
         isGoogleMapLocation = true
@@ -72,6 +78,9 @@ class MapVC: UIViewController {
             googleMapVC.delegate = self
             
             googleMapVC.entryPoint = .currentLocation
+            googleMapVC.selectedThirdFilter = selectedThirdFilter
+            googleMapVC.selectedSecondFilter = selectedSecondFilter
+            googleMapVC.selectedFirstFilter = selectedFirstFilter
             self.navigationController?.pushViewController(googleMapVC, animated: true)
         }
         
@@ -82,11 +91,79 @@ class MapVC: UIViewController {
     
     
 }
-extension MapVC : SelectDelegate {
-    func tap(selected: Int?) {
+extension MapVC : SelectGoogleDelegate {
+    //구글 맵에서 들어온 것
+    func tap(selectedGoogle: MyPlace?) {
         isGoogleMapLocation = true
         mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변"
+        entryPoint = .google
+        chosenPlace = selectedGoogle
+        getMapInfo()
+    }
+}
+
+extension MapVC {
+    func getMapInfo(){
+        var isFood : Int = 1
+        var isCafe : Int = 1
+        var isSights : Int = 1
+        var isEvent : Int = 1
+        var isEtc : Int = 1
+        if selectedThirdFilter.count > 0 {
+            let buttonTagArr = selectedThirdFilter.map({ (button) in
+                return button.tag
+            })
+            isFood =  buttonTagArr.contains(0) ? 1: 0
+            isCafe = buttonTagArr.contains(1) ? 1 : 0
+            isSights = buttonTagArr.contains(2) ? 1 : 0
+            isEvent = buttonTagArr.contains(3) ? 1 : 0
+            isEtc = buttonTagArr.contains(4) ? 1 : 0
+        }
+        var distance : Double = 1.0
+        if let selectedSecondFilter_ = selectedSecondFilter{
+            switch selectedSecondFilter_ {
+            case 0 :
+                distance = 0.1
+            case 1 :
+                distance = 0.3
+            case 2 :
+                distance = 0.5
+            case 3 :
+                distance = 1
+            case 4 :
+                distance = 3
+            default :
+                break
+            }
+        }
         
+        var lat : Double = 0
+        var long : Double = 0
+        if let chosenPlace_ = chosenPlace {
+            lat = chosenPlace_.lat
+            long = chosenPlace_.long
+        }
+        getGoogleSpot(url: UrlPath.spot.getURL("\(distance)/\(lat)/\(long)/\(isFood)/\(isCafe)/\(isSights)/\(isEvent)/\(isEtc)/"))
+        //getGoogleSpot(url: UrlPath.spot.getURL("\(distance)/\(lat)/\(long)/1/1/1/1/1"))
+    }
+    
+    
+}
+
+extension MapVC {
+    func getGoogleSpot(url : String){
+        GoogleSpotService.shareInstance.getGoogleSpot(url: url,completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(let defaultSpot):
+                self.defaultSpot = defaultSpot as? [UserScrapVOData]
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
     }
 }
 //필터 뷰 버튼 액션 적용
@@ -118,7 +195,7 @@ extension MapVC {
         if (safeIndex == 0){
             filterView.leftBtn.isHidden = true
         } else if (safeIndex == descArr.count - 1){
-             filterView.rightBtn.isHidden = true
+            filterView.rightBtn.isHidden = true
         } else {
             filterView.leftBtn.isHidden = false
             filterView.rightBtn.isHidden = false
@@ -130,28 +207,28 @@ extension MapVC {
     
     
     func setFilterView(_ filterView : MapFilterView){
-       
+        
         filterView.cancleBtn.addTarget(self, action: #selector(MapVC.cancleAction(_sender:)), for: .touchUpInside)
         filterView.okBtn.addTarget(self, action: #selector(MapVC.okAction(_sender:)), for: .touchUpInside)
         let buttons : [btnNum] = [ (filterView.popularBtn, 0), (filterView.recentBtn, 0), (filterView.leftBtn, 1), (filterView.rightBtn, 1), (filterView.restaurantBtn, 2), (filterView.cafeBtn, 2), (filterView.hotplaceBtn, 2), (filterView.eventBtn, 2), (filterView.etcBtn, 2)]
         
         addtarget(inputs: buttons)
-
+        
         filterView.isGoogle = isGoogleMapLocation
         
         //첫번째 섹션
         let popularBtn = filterView.popularBtn!
         let recentBtn = filterView.recentBtn!
-      
+        
         popularBtn.setOtherBtn(another: recentBtn)
         recentBtn.setOtherBtn(another: popularBtn)
-     
-      /*  if let selectedBtn_ = selectedFirstFilter {
-            selectedBtn_.selected()
-        } else {
-            popularBtn.selected()
-            selectedFirstFilter = popularBtn
-        }*/
+        
+        /*  if let selectedBtn_ = selectedFirstFilter {
+         selectedBtn_.selected()
+         } else {
+         popularBtn.selected()
+         selectedFirstFilter = popularBtn
+         }*/
         
         //두번째 섹션 - default 는 1km
         setDistanceIdx(index: selectedSecondFilter ?? 3)
@@ -179,6 +256,14 @@ extension MapVC {
         selectedThirdFilter.forEach({ (button) in
             print(button.tag)
         })
+        mapContainerVC.selectedFirstFilter = self.selectedFirstFilter
+        mapContainerVC.selectedSecondFilter = self.selectedSecondFilter
+        mapContainerVC.selectedThirdFilter = selectedThirdFilter
+        mapContainerVC.entryPoint = self.entryPoint
+        print("엔트리포인트는 \(entryPoint)")
+        if entryPoint == .google {
+            getMapInfo()
+        }
         self.filterView.removeFromSuperview()
     }
     

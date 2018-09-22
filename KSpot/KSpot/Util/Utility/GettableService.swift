@@ -37,7 +37,7 @@ extension GettableService {
         if userAuth != "-1" {
             headers = [
                 "authorization" : userAuth,
-                "flag" : flag
+                "flag" : selectedLang.rawValue.description
             ]
         }
         

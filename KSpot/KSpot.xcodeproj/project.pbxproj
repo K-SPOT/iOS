@@ -121,6 +121,9 @@
 		3BBF8D5B21392A0D00FFF08C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D5A21392A0D00FFF08C /* Extensions.swift */; };
 		3BBF8D5D21392A9500FFF08C /* MainFirstTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D5C21392A9500FFF08C /* MainFirstTVCell.swift */; };
 		3BBF8D61213935D300FFF08C /* ColorChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D60213935D300FFF08C /* ColorChip.swift */; };
+		3BE666682154CAE40044801C /* DefaultSpotVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE666672154CAE40044801C /* DefaultSpotVO.swift */; };
+		3BE6666A2154CB120044801C /* DefaultSpotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE666692154CB120044801C /* DefaultSpotService.swift */; };
+		3BE6666F2156ABCB0044801C /* GoogleSpotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6666E2156ABCB0044801C /* GoogleSpotService.swift */; };
 		3BF85DC22153DE2B0005C83D /* ThemeVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85DC12153DE2B0005C83D /* ThemeVO.swift */; };
 		3BF85DC42153DEAB0005C83D /* ThemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85DC32153DEAB0005C83D /* ThemeService.swift */; };
 		3BF85DC72153EB510005C83D /* SearchResultVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85DC62153EB510005C83D /* SearchResultVO.swift */; };
@@ -249,6 +252,9 @@
 		3BBF8D5A21392A0D00FFF08C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3BBF8D5C21392A9500FFF08C /* MainFirstTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFirstTVCell.swift; sourceTree = "<group>"; };
 		3BBF8D60213935D300FFF08C /* ColorChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChip.swift; sourceTree = "<group>"; };
+		3BE666672154CAE40044801C /* DefaultSpotVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSpotVO.swift; sourceTree = "<group>"; };
+		3BE666692154CB120044801C /* DefaultSpotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSpotService.swift; sourceTree = "<group>"; };
+		3BE6666E2156ABCB0044801C /* GoogleSpotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSpotService.swift; sourceTree = "<group>"; };
 		3BF85DC12153DE2B0005C83D /* ThemeVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeVO.swift; sourceTree = "<group>"; };
 		3BF85DC32153DEAB0005C83D /* ThemeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeService.swift; sourceTree = "<group>"; };
 		3BF85DC62153EB510005C83D /* SearchResultVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultVO.swift; sourceTree = "<group>"; };
@@ -858,6 +864,7 @@
 			children = (
 				3BF85DCE21541BCB0005C83D /* PlaceDetailVO.swift */,
 				3BF85DD22154A5200005C83D /* ReviewVO.swift */,
+				3BE666672154CAE40044801C /* DefaultSpotVO.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -867,6 +874,8 @@
 			children = (
 				3BF85DD021541BD70005C83D /* PlaceDetailService.swift */,
 				3BF85DD42154A5450005C83D /* ReviewService.swift */,
+				3BE666692154CB120044801C /* DefaultSpotService.swift */,
+				3BE6666E2156ABCB0044801C /* GoogleSpotService.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -1081,6 +1090,7 @@
 				3B3DD132213C32F200FD00B3 /* MapFilterView.swift in Sources */,
 				3BF85DC42153DEAB0005C83D /* ThemeService.swift in Sources */,
 				3B3C442621519C98005B8650 /* UserSubcriptionVO.swift in Sources */,
+				3BE6666A2154CB120044801C /* DefaultSpotService.swift in Sources */,
 				3B3C43D8214EF459005B8650 /* PlaceFilterView.swift in Sources */,
 				3B0FA12A214C2F87009F33AE /* Gallery.swift in Sources */,
 				3BF85DD32154A5200005C83D /* ReviewVO.swift in Sources */,
@@ -1115,6 +1125,7 @@
 				3B3C443E2152F8E2005B8650 /* MainSearchVO.swift in Sources */,
 				3B3DD114213BD74300FD00B3 /* MapVC.swift in Sources */,
 				3B3DD189213F0D0600FD00B3 /* PlaceDetailSecondCVCell.swift in Sources */,
+				3BE6666F2156ABCB0044801C /* GoogleSpotService.swift in Sources */,
 				3B3C440F2151616D005B8650 /* HttpResCode.swift in Sources */,
 				3B3C443A2152EFCF005B8650 /* MainService.swift in Sources */,
 				3BBB7DA12146F847004CC142 /* ReviewContainerVC.swift in Sources */,
@@ -1144,6 +1155,7 @@
 				3B3C43CA214EE10E005B8650 /* SearchResultVC.swift in Sources */,
 				3BBB7DAE2147DEBA004CC142 /* NetworkConfiguration.swift in Sources */,
 				3B3C4419215183BA005B8650 /* ChannelService.swift in Sources */,
+				3BE666682154CAE40044801C /* DefaultSpotVO.swift in Sources */,
 				3B3C4401214FE03E005B8650 /* LoginVC.swift in Sources */,
 				3BBB7D7921456BD1004CC142 /* MainSearchVC.swift in Sources */,
 				3B3DD103213B3C5000FD00B3 /* CelebrityTVCell.swift in Sources */,
