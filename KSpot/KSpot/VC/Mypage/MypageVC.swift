@@ -19,7 +19,8 @@ class MypageVC: UIViewController {
             //faceBookLogout
             let fbLoginManager = FBSDKLoginManager()
             fbLoginManager.logOut()
-            self.simpleAlert(title: "완료", message: "로그아웃이 완료되었습니다")
+            let parentVC = self.parent as? MyPageContainerVC
+            parentVC?.viewWillAppear(false)
         }
     }
     

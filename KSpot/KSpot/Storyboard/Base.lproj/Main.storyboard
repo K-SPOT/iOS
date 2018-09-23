@@ -603,6 +603,14 @@
                                 <rect key="frame" x="261" y="570" width="70" height="22"/>
                                 <state key="normal" image="login_skip"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c6R-pv-wcu">
+                                <rect key="frame" x="28" y="32" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="c6R-pv-wcu" secondAttribute="height" multiplier="1:1" id="W4z-pc-qrQ"/>
+                                    <constraint firstAttribute="width" constant="24" id="t92-HH-bNL"/>
+                                </constraints>
+                                <state key="normal" image="map_filter_x_button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -610,6 +618,8 @@
                             <constraint firstItem="e7c-Jt-Uxz" firstAttribute="trailing" secondItem="6jP-vS-bhK" secondAttribute="trailing" constant="44" id="Gh3-8E-XSg"/>
                             <constraint firstItem="vCO-cI-nOp" firstAttribute="top" secondItem="QRJ-r1-H93" secondAttribute="bottom" constant="37" id="JL8-OT-Ier"/>
                             <constraint firstItem="6jP-vS-bhK" firstAttribute="top" secondItem="F5g-Ir-CXB" secondAttribute="bottom" constant="74" id="cQ3-37-ZPX"/>
+                            <constraint firstItem="c6R-pv-wcu" firstAttribute="top" secondItem="emo-0d-Vpn" secondAttribute="top" constant="32" id="h79-s8-7bt"/>
+                            <constraint firstItem="c6R-pv-wcu" firstAttribute="leading" secondItem="e7c-Jt-Uxz" secondAttribute="leading" constant="28" id="jBp-Wx-dhV"/>
                             <constraint firstItem="e7c-Jt-Uxz" firstAttribute="trailing" secondItem="aa8-8p-Ica" secondAttribute="trailing" constant="44" id="lQW-qL-f9G"/>
                             <constraint firstItem="QRJ-r1-H93" firstAttribute="top" secondItem="e7c-Jt-Uxz" secondAttribute="top" constant="76" id="mhz-90-C8v"/>
                             <constraint firstItem="e7c-Jt-Uxz" firstAttribute="bottom" secondItem="aa8-8p-Ica" secondAttribute="bottom" constant="75" id="noy-jm-whj"/>
@@ -619,6 +629,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e7c-Jt-Uxz"/>
                     </view>
+                    <connections>
+                        <outlet property="skipBtn" destination="aa8-8p-Ica" id="21f-lp-SV3"/>
+                        <outlet property="xBtn" destination="c6R-pv-wcu" id="HwJ-NM-dIX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7iC-HW-eOV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1439,6 +1453,7 @@
         <image name="login_skip" width="70" height="18"/>
         <image name="main_arrow" width="15" height="15"/>
         <image name="main_search" width="24" height="24"/>
+        <image name="map_filter_x_button" width="66" height="66"/>
         <image name="search_result_place_icon" width="37" height="37"/>
         <image name="tab_category_gray" width="23" height="23"/>
         <image name="tab_home_gray" width="23" height="23"/>

@@ -9,7 +9,11 @@
 import UIKit
 
 class MypageLoginVC: UIViewController {
+    
 
+    @IBAction func loginAction(_ sender: Any) {
+        goToLoginPage()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

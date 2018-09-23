@@ -16,6 +16,7 @@ import ImageSlideshow
     var id : String
 }*/
 var selectedLang : Language = .kor
+var isLogin : Bool = false
 
 class MainViewController: UIViewController {
     @IBAction func searchAction(_ sender: Any) {
@@ -33,11 +34,9 @@ class MainViewController: UIViewController {
     
     fileprivate func reloadRootViewController() {
         //isUserLogin()
+        //if FBSDKAccessToken.current() == nil
         if FBSDKAccessToken.current() == nil {
-            let mainStoryboard = Storyboard.shared().mainStoryboard
-            if let loginVC = mainStoryboard.instantiateViewController(withIdentifier:LoginVC.reuseIdentifier) as? LoginVC {
-                 self.present(loginVC, animated: false, completion: nil)
-            }
+            goToLoginPage(entryPoint: 1)
         }
     }
     

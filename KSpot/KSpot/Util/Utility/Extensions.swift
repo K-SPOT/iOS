@@ -51,10 +51,10 @@ extension UIViewController {
         }
     } //goToSearchVC
     
-    func goToLoginPage(){
+    func goToLoginPage(entryPoint : Int = 0){
         let mainStoryboard = Storyboard.shared().mainStoryboard
         if let loginVC = mainStoryboard.instantiateViewController(withIdentifier:LoginVC.reuseIdentifier) as? LoginVC {
-            
+           loginVC.entryPoint = entryPoint
             self.present(loginVC, animated: true, completion: nil)
         }
     } //goToLoginPage

@@ -16,10 +16,27 @@ class LoginVC: UIViewController {
 
   
   //  var dict : [String : AnyObject]!
-    
+     @IBOutlet weak var skipBtn: UIButton!
+     @IBOutlet weak var xBtn: UIButton!
+    var entryPoint = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLanguageFlag(langugae: .kor)
+       // setLanguageFlag(langugae: .kor)
+      
+        skipBtn.addTarget(self, action: #selector(self.dismiss(_:)), for: .touchUpInside)
+        xBtn.addTarget(self, action: #selector(self.dismiss(_:)), for: .touchUpInside)
+        //처음으로 들어온 것
+        if entryPoint == 1 {
+            skipBtn.isHidden = false
+            xBtn.isHidden = true
+        } else {
+            skipBtn.isHidden = true
+            xBtn.isHidden = false
+        }
+    }
+    
+    @objc func dismiss(_ sender : UIButton){
+        self.dismiss(animated: true, completion: nil)
     }
 
     @IBAction func facebookLoginAction(_ sender: UIButton) {
@@ -54,6 +71,7 @@ extension LoginVC {
                 let userData = loginData as? FacebookLoginVOData
                  UserDefaults.standard.set(userData?.id, forKey: "userId")
                  UserDefaults.standard.set(userData?.authorization, forKey : "userAuth")
+                //isLogin = true
                 self.dismiss(animated: false, completion: nil)
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")

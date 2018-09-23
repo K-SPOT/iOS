@@ -46,10 +46,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="마이페이지" id="mny-JY-sKW"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="containerView" destination="Rcz-aG-gQ6" id="p7Q-js-W1K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GxM-CZ-qjW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1711" y="967"/>
+            <point key="canvasLocation" x="-2146" y="967"/>
         </scene>
         <!--Mypage LoginVC-->
         <scene sceneID="5Qa-S0-NdM">
@@ -84,6 +87,9 @@
                                     <constraint firstAttribute="width" constant="91" id="nsZ-7K-Zq4"/>
                                 </constraints>
                                 <state key="normal" image="mypage_login_button"/>
+                                <connections>
+                                    <action selector="loginAction:" destination="Jop-N5-EgZ" eventType="touchUpInside" id="rGd-cs-i5z"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
