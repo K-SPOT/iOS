@@ -40,13 +40,16 @@ class MypageVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        NotificationCenter.default.addObserver(self, selector: #selector(getLangInfo(_:)), name: NSNotification.Name("GetLanguageValue"), object: nil)
         tableView.delegate = self
         tableView.dataSource = self
-        
+       
         profileImgView.makeRounded(cornerRadius: profileImgView.frame.height/2)
-        
     }
+    @objc func getLangInfo(_ notification : Notification) {
+        self.getMyInfo(url: UrlPath.mypage.getURL())
+    }
+    
     
 }
 

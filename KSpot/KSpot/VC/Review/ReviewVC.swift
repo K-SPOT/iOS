@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import FBSDKLoginKit
 
 
 class ReviewVC: UIViewController {
@@ -51,38 +52,44 @@ class ReviewVC: UIViewController {
 
 extension ReviewVC : SelectDelegate {
     func tap(selected : Int?) {
-        let alert = UIAlertController(title: nil, message: "신고 사유를 선택해주세요", preferredStyle: .actionSheet)
         
-        let report1 = UIAlertAction(title: "음란물", style: .default) { (re1) in
-            reportAction(reportReason: re1.title!)
-        }
-        let report2 = UIAlertAction(title: "사칭 및 사기", style: .default) { (re2) in
-            reportAction(reportReason: re2.title!)
-        }
-        let report3 = UIAlertAction(title: "허위사실 유포", style: .default) { (re3) in
-           reportAction(reportReason: re3.title!)
-        }
-        let report4 = UIAlertAction(title: "상업적 광고 및 판매", style: .default) { (re4) in
-           reportAction(reportReason: re4.title!)
-        }
-        let report5 = UIAlertAction(title: "욕설 및 불쾌감을 주는 표현", style: .default) { (re5) in
-            reportAction(reportReason: re5.title!)
-        }
-        
-        func reportAction(reportReason : String){
-            guard let selectedMailId = selected else {return}
-            sendMail(selectedId: selectedMailId, reason : reportReason)
-        }
-
-        let cancleAction = UIAlertAction(title: "취소",style: .cancel)
-        alert.addAction(report1)
-        alert.addAction(report2)
-        alert.addAction(report3)
-        alert.addAction(report4)
-        alert.addAction(report5)
-        alert.addAction(cancleAction)
-        present(alert, animated: true)
-    }
+        if FBSDKAccessToken.current() == nil {
+            goToLoginPage()
+        } else {
+            //신고하기
+            let alert = UIAlertController(title: nil, message: "신고 사유를 선택해주세요", preferredStyle: .actionSheet)
+            
+            let report1 = UIAlertAction(title: "음란물", style: .default) { (re1) in
+                reportAction(reportReason: re1.title!)
+            }
+            let report2 = UIAlertAction(title: "사칭 및 사기", style: .default) { (re2) in
+                reportAction(reportReason: re2.title!)
+            }
+            let report3 = UIAlertAction(title: "허위사실 유포", style: .default) { (re3) in
+                reportAction(reportReason: re3.title!)
+            }
+            let report4 = UIAlertAction(title: "상업적 광고 및 판매", style: .default) { (re4) in
+                reportAction(reportReason: re4.title!)
+            }
+            let report5 = UIAlertAction(title: "욕설 및 불쾌감을 주는 표현", style: .default) { (re5) in
+                reportAction(reportReason: re5.title!)
+            }
+            
+            func reportAction(reportReason : String){
+                guard let selectedMailId = selected else {return}
+                sendMail(selectedId: selectedMailId, reason : reportReason)
+            }
+            
+            let cancleAction = UIAlertAction(title: "취소",style: .cancel)
+            alert.addAction(report1)
+            alert.addAction(report2)
+            alert.addAction(report3)
+            alert.addAction(report4)
+            alert.addAction(report5)
+            alert.addAction(cancleAction)
+            present(alert, animated: true)
+        } // else - 신고
+    } //tap
 }
 
 extension ReviewVC : MFMailComposeViewControllerDelegate{

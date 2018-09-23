@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class ReviewContainerVC: UIViewController, UIGestureRecognizerDelegate {
 
@@ -23,10 +24,15 @@ class ReviewContainerVC: UIViewController, UIGestureRecognizerDelegate {
     }()
     
     @IBAction func writeReviewAction(_ sender: Any) {
-        let mapStoryboard = Storyboard.shared().mapStoryboard
-        if let reviewWriteVC = mapStoryboard.instantiateViewController(withIdentifier:ReviewWriteVC.reuseIdentifier) as? ReviewWriteVC {
-            reviewWriteVC.selectedIdx = self.selectedIdx
-            self.navigationController?.pushViewController(reviewWriteVC, animated: true)
+        if FBSDKAccessToken.current() == nil {
+            goToLoginPage()
+        } else {
+            //리뷰 쓰기
+            let mapStoryboard = Storyboard.shared().mapStoryboard
+            if let reviewWriteVC = mapStoryboard.instantiateViewController(withIdentifier:ReviewWriteVC.reuseIdentifier) as? ReviewWriteVC {
+                reviewWriteVC.selectedIdx = self.selectedIdx
+                self.navigationController?.pushViewController(reviewWriteVC, animated: true)
+            }
         }
     }
     override func viewDidLoad() {

@@ -7,6 +7,7 @@
 
 import UIKit
 import MessageUI
+import FBSDKLoginKit
 
 private let NAVBAR_COLORCHANGE_POINT:CGFloat = -80
 private let IMAGE_HEIGHT:CGFloat = 232
@@ -70,11 +71,15 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     }
     
     @IBAction func writeReviewAction(_ sender: Any) {
-        //리뷰 쓰기
-        let mapStoryboard = Storyboard.shared().mapStoryboard
-        if let reviewWriteVC = mapStoryboard.instantiateViewController(withIdentifier:ReviewWriteVC.reuseIdentifier) as? ReviewWriteVC {
-            reviewWriteVC.selectedIdx = self.selectedIdx
-            self.navigationController?.pushViewController(reviewWriteVC, animated: true)
+        if FBSDKAccessToken.current() == nil {
+            goToLoginPage()
+        } else {
+            //리뷰 쓰기
+            let mapStoryboard = Storyboard.shared().mapStoryboard
+            if let reviewWriteVC = mapStoryboard.instantiateViewController(withIdentifier:ReviewWriteVC.reuseIdentifier) as? ReviewWriteVC {
+                reviewWriteVC.selectedIdx = self.selectedIdx
+                self.navigationController?.pushViewController(reviewWriteVC, animated: true)
+            }
         }
     }
     
@@ -146,21 +151,16 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     
     
     @objc public func scrapAction(_sender : UIBarButtonItem) {
-        if navigationItem.rightBarButtonItems?[0] == whiteScrapBarBtn! || navigationItem.rightBarButtonItems?[0] == blackScrapBarBtn! {
-            if(navigationItem.rightBarButtonItems?[0] == whiteScrapBarBtn!) {
-                 print("서브스크라이브 하얀 빈버튼")
-            } else {
-                 print("서브스크라이브 블랙 빈버튼")
-            }
-            let param : [String : Any] = ["spot_id":selectedIdx]
-            subscribe(url: UrlPath.spotSubscription.getURL(), params: param, sender: _sender)
+        if FBSDKAccessToken.current() == nil {
+            goToLoginPage()
         } else {
-            if(navigationItem.rightBarButtonItems?[0] == whiteFullScrapBarBtn!) {
-                print("언서브스크라이브 하얀 풀버튼")
+            //스크랩
+            if navigationItem.rightBarButtonItems?[0] == whiteScrapBarBtn! || navigationItem.rightBarButtonItems?[0] == blackScrapBarBtn! {
+                let param : [String : Any] = ["spot_id":selectedIdx]
+                subscribe(url: UrlPath.spotSubscription.getURL(), params: param, sender: _sender)
             } else {
-                print("언서브스크라이브 그린 버튼")
+                unsubscribe(url: UrlPath.spotSubscription.getURL(selectedIdx.description), sender: _sender)
             }
-            unsubscribe(url: UrlPath.spotSubscription.getURL(selectedIdx.description), sender: _sender)
         }
     }
     

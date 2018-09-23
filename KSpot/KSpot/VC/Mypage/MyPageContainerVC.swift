@@ -31,31 +31,17 @@ class MyPageContainerVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("여기는 \(currentSelectedLang)")
-        if currentSelectedLang != selectedLang {
-            self.viewDidLoad()
-            currentSelectedLang = selectedLang
-        }
         if FBSDKAccessToken.current() == nil {
             updateView(selected: 1)
         } else {
             updateView(selected: 0)
         }
     }
-
-    
-   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*if currentIsLogin {
-            updateView(selected: 0)
-        } else {
-           updateView(selected: 1)
-        }*/
-        
+         setTranslationBtn()
     }
-    
+
     private func updateView(selected : Int) {
         if selected == 0 {
             
