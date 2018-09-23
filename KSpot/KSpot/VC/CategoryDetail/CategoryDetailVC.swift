@@ -104,6 +104,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, SelectSen
         setupNavView()
         getChannelDetail(url : UrlPath.channelDetail.getURL(selectedIdx.description))
     }
+   
     
     func setupTableView(){
         tableView.contentInset = UIEdgeInsetsMake(-CGFloat(kNavBarBottom), 0, 0, 0)

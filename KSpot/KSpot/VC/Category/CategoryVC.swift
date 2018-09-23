@@ -53,22 +53,20 @@ class CategoryVC: UIViewController {
         updateView(selected: sender.tag)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("여기는 \(currentSelectedLang)")
-        if currentSelectedLang != selectedLang {
-            self.viewDidLoad()
-            currentSelectedLang = selectedLang
-        }
-    }
-
+  
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(getLangInfo(_:)), name: NSNotification.Name("GetLanguageValue"), object: nil)
         celebrityBtn.setBtn(another: broadcastBtn, bottomLine: celebrityGreenView)
         broadcastBtn.setBtn(another: celebrityBtn, bottomLine: broadcastGreenView)
         self.getMyChannel(url: UrlPath.channelList.getURL())
         updateView(selected: 0)
         setTranslationBtn()
+    }
+    
+    
+    @objc func getLangInfo(_ notification : Notification) {
+        self.getMyChannel(url: UrlPath.channelList.getURL())
     }
 
 }

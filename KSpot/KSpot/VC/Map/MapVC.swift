@@ -53,6 +53,7 @@ class MapVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(getLangInfo(_:)), name: NSNotification.Name("GetLanguageValue"), object: nil)
         initContainerView()
         locationInit()
         setFilterView(filterView)
@@ -61,13 +62,14 @@ class MapVC: UIViewController {
         self.navigationItem.title = "K-Spot"
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if currentSelectedLang != selectedLang {
-            self.viewDidLoad()
-            currentSelectedLang = selectedLang
+    @objc func getLangInfo(_ notification : Notification) {
+        if entryPoint == .google {
+            getMapInfo()
+        } else {
+            mapContainerVC.getDefualtMapData()
         }
     }
+
     func initContainerView(){
         addChildView(containerView: containerView, asChildViewController: mapContainerVC)
     }

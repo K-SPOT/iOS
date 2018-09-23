@@ -40,23 +40,20 @@ class MainViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if currentSelectedLang != selectedLang {
-            self.viewDidLoad()
-            currentSelectedLang = selectedLang
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(getLangInfo(_:)), name: NSNotification.Name("GetLanguageValue"), object: nil)
         reloadRootViewController()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame : .zero)
         getMainData(url: UrlPath.main.getURL())
         setTranslationBtn()
-        
+    }
+    
+    @objc func getLangInfo(_ notification : Notification) {
+        getMainData(url: UrlPath.main.getURL())
     }
 }
 

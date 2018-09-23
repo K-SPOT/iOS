@@ -81,7 +81,9 @@ extension UIViewController {
     
     @objc func translate(){
         selectedLang = selectedLang == .kor ? .eng : .kor
-        self.viewDidLoad()
+        let langInfo : [String : Language] = ["selectedLanguage" : selectedLang]
+        NotificationCenter.default.post(name: NSNotification.Name("GetLanguageValue"), object: nil, userInfo: langInfo)
+       // self.viewDidLoad()
     }
     
     @objc func pop(){

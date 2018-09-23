@@ -88,8 +88,6 @@ extension MapContainerVC : SelectRegionDelegate {
         entryPoint = .local
         getDefualtMapData()
     }
-    
-    
 }
 
 extension MapContainerVC : UICollectionViewDataSource, UICollectionViewDelegate{
