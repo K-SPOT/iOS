@@ -35,13 +35,13 @@ extension PostablewithPhoto {
         print("url 은 \(encodedUrl)")
         
         let userAuth = UserDefaults.standard.string(forKey: "userAuth") ?? "-1"
-        let flag = UserDefaults.standard.string(forKey: "flag") ?? "0"
+        
         var headers: HTTPHeaders?
         
         if userAuth != "-1" {
             headers = [
                 "authorization" : userAuth,
-                "flag" : flag
+                "flag" : selectedLang.rawValue.description
             ]
         }
         
@@ -53,6 +53,8 @@ extension PostablewithPhoto {
                     multipartFormData.append((y as! String).data(using: .utf8)!, withName: x)
                 }
                 else if y is Int {
+                    multipartFormData.append("\(y)".data(using: .utf8)!, withName: x)
+                } else if y is Double {
                     multipartFormData.append("\(y)".data(using: .utf8)!, withName: x)
                 }
                 print("param key is \(x), value is \(y)")

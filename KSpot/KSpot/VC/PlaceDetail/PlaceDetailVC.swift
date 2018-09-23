@@ -20,6 +20,8 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var descLbl: UILabel!
     @IBOutlet weak var addressLbl: UILabel!
+    @IBOutlet weak var staionImgView: UIImageView!
+    @IBOutlet weak var lineNumImgView: UIImageView!
     @IBOutlet weak var currentStationLbl: UILabel!
     @IBOutlet weak var prevStationLbl: UILabel!
     @IBOutlet weak var nextsStationLbl: UILabel!
@@ -206,7 +208,7 @@ extension PlaceDetailVC {
             self.navigationItem.rightBarButtonItems = [greenScrapBarBtn!, titleBarBtn]
         }
     } //setBarButtons
-    
+  
     func setHeaderView(placeData : PlaceDetailVOData){
         ratingLbl.text = placeData.reviewScore.description
         titleLbl.text = placeData.name
@@ -215,6 +217,10 @@ extension PlaceDetailVC {
         currentStationLbl.text = placeData.station
         prevStationLbl.text = placeData.prevStation
         nextsStationLbl.text = placeData.nextStation
+        if let lineNum = Int(placeData.lineNumber){
+            staionImgView.image = UIImage(named: "place_detail_line_\(lineNum)")
+            lineNumImgView.image = UIImage(named: "place_detail_dot_\(lineNum)")
+        }
     } //setHeaderView
     
     func setFooterView(placeData : PlaceDetailVOData){

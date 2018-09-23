@@ -19,7 +19,7 @@ struct PlaceDetailVOData: Codable {
     let reviewScore : Double
     let reviewCnt: Int
     let station, prevStation, nextStation, openTime: String
-    let closeTime, contact: String
+    let closeTime, contact, lineNumber: String
     let scrapCnt, isScrap: Int
     let channel: PlaceDetailVODataChannel
     let reviews: [PlaceDetailVODataReview]
@@ -34,6 +34,7 @@ struct PlaceDetailVOData: Codable {
         case nextStation = "next_station"
         case openTime = "open_time"
         case closeTime = "close_time"
+        case lineNumber = "line_number"
         case contact
         case scrapCnt = "scrap_cnt"
         case isScrap = "is_scrap"

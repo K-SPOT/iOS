@@ -1323,13 +1323,13 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5T-OV-vjw">
-                                                    <rect key="frame" x="157" y="81" width="29" height="22.5"/>
+                                                    <rect key="frame" x="157" y="81.5" width="29" height="22.5"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                                     <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5J-k3-sNT">
-                                                    <rect key="frame" x="188" y="80.5" width="20" height="22.5"/>
+                                                    <rect key="frame" x="188" y="81" width="20" height="22.5"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                                     <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1413,6 +1413,7 @@
                         <outlet property="contactView" destination="I8H-iI-1rp" id="cDa-2m-5lC"/>
                         <outlet property="currentStationLbl" destination="fW6-Vr-HlW" id="9wA-Ly-0yp"/>
                         <outlet property="descLbl" destination="nAE-Ge-KfA" id="HqW-Mj-dNo"/>
+                        <outlet property="lineNumImgView" destination="qoW-N4-CpL" id="CsY-aW-Hn8"/>
                         <outlet property="locationView" destination="sDy-q0-M2m" id="YGz-Aa-MMW"/>
                         <outlet property="nextsStationLbl" destination="1EK-97-hui" id="5dl-Kz-8og"/>
                         <outlet property="openCloseLbl" destination="yKm-8S-fh0" id="Pca-Zk-2MN"/>
@@ -1420,6 +1421,7 @@
                         <outlet property="openTimeLbl" destination="OAl-5d-dKW" id="qQN-Fd-D8t"/>
                         <outlet property="prevStationLbl" destination="wUm-Ga-AzB" id="soa-IZ-g2Y"/>
                         <outlet property="ratingLbl" destination="mNR-RO-Hxi" id="tiG-At-GXq"/>
+                        <outlet property="staionImgView" destination="QGJ-yN-97G" id="jrE-az-0cr"/>
                         <outlet property="tableView" destination="O9C-nv-jxo" id="HwT-Co-gtu"/>
                         <outlet property="titleLbl" destination="fZm-8e-0tb" id="FXA-mN-5Di"/>
                     </connections>
@@ -1536,7 +1538,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWf-cR-Fip">
-                                                <rect key="frame" x="186.5" y="85.5" width="29" height="22.5"/>
+                                                <rect key="frame" x="186.5" y="86" width="29" height="22.5"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1571,7 +1573,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwi-IZ-PRh">
-                                                <rect key="frame" x="218.5" y="85" width="25" height="23"/>
+                                                <rect key="frame" x="218.5" y="85.5" width="25" height="23"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -1665,7 +1667,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRU-0a-UEZ">
-                                            <rect key="frame" x="156" y="84.5" width="29" height="22.5"/>
+                                            <rect key="frame" x="156" y="84" width="29" height="22.5"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                             <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -1720,7 +1722,7 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVS-sb-9qM">
-                                            <rect key="frame" x="188" y="84.5" width="25" height="23"/>
+                                            <rect key="frame" x="188" y="84" width="25" height="23"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
