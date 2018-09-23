@@ -108,10 +108,7 @@ extension UIViewController {
         return value ?? 0
     }
     
-    
-    func setLanguageFlag(langugae : Language ){
-        UserDefaults.standard.set(langugae.rawValue.description, forKey : "flag")
-    }
+
     
     func isUserLogin() -> Bool {
         if FBSDKAccessToken.current() == nil {

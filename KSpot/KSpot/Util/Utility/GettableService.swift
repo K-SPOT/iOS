@@ -31,15 +31,15 @@ extension GettableService {
         print("url 은 \(encodedUrl)")
         
         let userAuth = UserDefaults.standard.string(forKey: "userAuth") ?? "-1"
-        let flag = UserDefaults.standard.string(forKey: "flag") ?? "0"
+        
         var headers: HTTPHeaders?
         
-        if userAuth != "-1" {
+       
             headers = [
-                "authorization" : userAuth,
+                "authorization" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIxNjM1NTU4MjcwNDgyNDgiLCJpYXQiOjE1MzcyOTEyNzcsImV4cCI6MTUzOTg4MzI3N30.exOHB3iyJdpckGLi_nCIOMQX4ArOQ_9n9QYBs1Xci5U",
                 "flag" : selectedLang.rawValue.description
             ]
-        }
+        
         
         Alamofire.request(encodedUrl, method: method, parameters: nil, headers: headers).responseData {(res) in
             print("encodedURK")
@@ -75,57 +75,4 @@ extension GettableService {
         }
     }
     
-    //딜리트
-    /*func delete(_ URL:String, completion : @escaping (Result<networkResult>)->Void){
-        
-        guard let encodedUrl = URL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            print("networking - invalid url")
-            return
-        }
-        
-        print("url 은 \(encodedUrl)")
-        
-        let userAuth = UserDefaults.standard.string(forKey: "userAuth") ?? "-1"
-        let flag = UserDefaults.standard.string(forKey: "flag") ?? "0"
-        var headers: HTTPHeaders?
-        
-        if userAuth != "-1" {
-            headers = [
-                "authorization" : userAuth,
-                "flag" : flag
-            ]
-        }
-        Alamofire.request(encodedUrl, method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseData(){
-            
-            res in
-            switch res.result {
-            case .success:
-                
-                if let value = res.result.value {
-                    
-                    let decoder = JSONDecoder()
-                    
-                    do {
-                        print(JSON(value))
-                        let resCode = self.gino(res.response?.statusCode)
-                        let data = try decoder.decode(NetworkData.self, from: value)
-                        
-                        let result : networkResult = (resCode, data)
-                        completion(.success(result))
-                        
-                        
-                    }catch{
-                        
-                        completion(.error("error"))
-                    }
-                }
-                break
-            case .failure(let err):
-                completion(.failure(err))
-                break
-            }
-        }
-        
-        
-    }*/
 }

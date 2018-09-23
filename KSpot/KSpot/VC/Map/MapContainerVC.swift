@@ -14,7 +14,7 @@ enum EntryPoint {
 class MapContainerVC: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    var regionTxt = ""
     var selectedFirstFilter : FilterToggleBtn?
     var selectedSecondFilter : Int?
     var selectedThirdFilter : Set<UIButton>?
@@ -61,7 +61,7 @@ class MapContainerVC: UIViewController {
         }
         
         let parentVC = self.parent as? MapVC
-            var regionTxt = ""
+        
             if let selectedRegion_ = selectedRegion{
                 if selectedLang == .kor {
                     regionTxt = selectedRegion_.rawValue
@@ -69,6 +69,7 @@ class MapContainerVC: UIViewController {
                     regionTxt = "\(selectedRegion_)"
                 }
             }
+       
             mapView?.selectedRegionLbl.text = regionTxt
             parentVC?.isGoogleMapLocation = false
             
@@ -213,6 +214,7 @@ extension MapContainerVC {
             switch result {
             case .networkSuccess(let defaultSpot):
                 self.defaultSpot = defaultSpot as? [UserScrapVOData]
+                self.mapView?.selectedRegionLbl.text = self.regionTxt
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
             default :

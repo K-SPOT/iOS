@@ -35,15 +35,15 @@ extension PostableService {
         print("url 은 \(encodedUrl)")
         
         let userAuth = UserDefaults.standard.string(forKey: "userAuth") ?? "-1"
-        let flag = UserDefaults.standard.string(forKey: "flag") ?? "0"
+      
         var headers: HTTPHeaders?
         
-        if userAuth != "-1" {
+       
             headers = [
-                "authorization" : userAuth,
+                "authorization" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIxNjM1NTU4MjcwNDgyNDgiLCJpYXQiOjE1MzcyOTEyNzcsImV4cCI6MTUzOTg4MzI3N30.exOHB3iyJdpckGLi_nCIOMQX4ArOQ_9n9QYBs1Xci5U",
                 "flag" : selectedLang.rawValue.description
             ]
-        }
+        
         
         
         Alamofire.request(encodedUrl, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseData(){

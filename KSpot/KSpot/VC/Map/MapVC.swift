@@ -155,7 +155,7 @@ extension MapVC {
             long = chosenPlace_.long
         }
         getGoogleSpot(url: UrlPath.spot.getURL("\(distance)/\(lat)/\(long)/\(isFood)/\(isCafe)/\(isSights)/\(isEvent)/\(isEtc)/"))
-        //getGoogleSpot(url: UrlPath.spot.getURL("\(distance)/\(lat)/\(long)/1/1/1/1/1"))
+       
     }
     
     
@@ -167,6 +167,7 @@ extension MapVC {
             guard let `self` = self else { return }
             switch result {
             case .networkSuccess(let defaultSpot):
+                self.mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변"
                 self.defaultSpot = defaultSpot as? [UserScrapVOData]
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
@@ -326,19 +327,20 @@ extension MapVC : CLLocationManagerDelegate{
         locationManager.startUpdatingLocation()
         
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            print("야이 여기다")
             currentLocation = locationManager.location
             
             guard let latitude = currentLocation?.coordinate.latitude,
                 let longitude = currentLocation?.coordinate.longitude else {return}
             chosenPlace = MyPlace(name: "", lat: latitude, long: longitude)
-            mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변"
+            
             print("my lat : \(latitude)")
              print("my long : \(longitude)")
+            entryPoint = .google
             getMapInfo()
         } else {
+            entryPoint = .local
             mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변 아님"
-            mapContainerVC.tap(.seongbukgu)
+            mapContainerVC.tap(.gangnamgu)
         }
     }
     

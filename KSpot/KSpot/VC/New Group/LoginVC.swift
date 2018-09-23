@@ -71,7 +71,6 @@ extension LoginVC {
                 let userData = loginData as? FacebookLoginVOData
                  UserDefaults.standard.set(userData?.id, forKey: "userId")
                  UserDefaults.standard.set(userData?.authorization, forKey : "userAuth")
-                //isLogin = true
                 self.dismiss(animated: false, completion: nil)
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
