@@ -21,17 +21,17 @@ class SearchResultTVCell: UITableViewCell {
         case 0 :
             myImgView.image = #imageLiteral(resourceName: "search_result_place_icon")
         case 1 :
-            myImgView.image = #imageLiteral(resourceName: "aimg")
+            myImgView.image = #imageLiteral(resourceName: "search_result_place_cafe_icon")
         case 2 :
-            myImgView.image = #imageLiteral(resourceName: "search_result_place_icon")
+            myImgView.image = #imageLiteral(resourceName: "search_result_place_hotplace_icon")
         case 3 :
-            myImgView.image = #imageLiteral(resourceName: "bimg")
+            myImgView.image = #imageLiteral(resourceName: "search_result_event_birthday")
         case 4 :
-            myImgView.image = #imageLiteral(resourceName: "search_result_event_birthday")
+            myImgView.image = #imageLiteral(resourceName: "search_result_event_firecracker_icon")
         case 5 :
-            myImgView.image = #imageLiteral(resourceName: "cimg")
+            myImgView.image = #imageLiteral(resourceName: "search_result_event_firecracker_icon")
         case 6 :
-            myImgView.image = #imageLiteral(resourceName: "search_result_event_birthday")
+            myImgView.image = #imageLiteral(resourceName: "search_result_event_etc_icon")
         default :
             break
         }

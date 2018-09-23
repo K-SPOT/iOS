@@ -17,7 +17,7 @@ class PlaceDetailSecondCVCell: UICollectionViewCell {
     @IBOutlet weak var ratingView: CosmosView!
     
     func configure(data : PlaceDetailVODataReview){
-        setImgWithKF(url: data.img, imgView: reviewImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
+        setImgWithKF(url: data.img, imgView: reviewImgView, defaultImg: #imageLiteral(resourceName: "place_detail_revew_default_img"))
         titleLabel.text = data.title
         contentLabel.text = data.content
         nickNameLbl.text = data.name

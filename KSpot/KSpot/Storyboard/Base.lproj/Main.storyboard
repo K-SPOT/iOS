@@ -666,7 +666,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="rE2-Ik-jVZ">
-                                <rect key="frame" x="16" y="288" width="261" height="242.5"/>
+                                <rect key="frame" x="16" y="288" width="343" height="242.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="eGC-Ig-zPC">
                                         <rect key="frame" x="0.0" y="0.0" width="174" height="61.5"/>
@@ -885,6 +885,7 @@
                             <constraint firstItem="9Sv-oN-HTh" firstAttribute="trailing" secondItem="8Yo-jk-Scf" secondAttribute="trailing" id="hxd-Wg-0wQ"/>
                             <constraint firstItem="kmO-25-Nxj" firstAttribute="leading" secondItem="l9n-EH-p4L" secondAttribute="leading" id="inl-vb-y3r"/>
                             <constraint firstItem="9Sv-oN-HTh" firstAttribute="bottom" secondItem="8Yo-jk-Scf" secondAttribute="bottom" id="lSQ-T9-TEn"/>
+                            <constraint firstItem="rE2-Ik-jVZ" firstAttribute="trailing" secondItem="ZmP-Pr-Vmw" secondAttribute="trailing" id="mbw-GC-EMN"/>
                             <constraint firstItem="dOa-7R-q9W" firstAttribute="centerY" secondItem="kmO-25-Nxj" secondAttribute="centerY" id="pjh-9D-TnS"/>
                             <constraint firstItem="l9n-EH-p4L" firstAttribute="leading" secondItem="9Sv-oN-HTh" secondAttribute="leading" constant="16" id="td3-mZ-BrP"/>
                             <constraint firstItem="l9n-EH-p4L" firstAttribute="top" secondItem="9Sv-oN-HTh" secondAttribute="top" constant="52" id="vfJ-bb-Fnd"/>
