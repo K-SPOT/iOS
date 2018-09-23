@@ -43,7 +43,7 @@ class MainFirstTVCell: UITableViewCell {
  
     
     @objc func didTap() {
-        delegate?.tap(section: .first, seledtedId: slideshow.currentPage)
+        delegate?.tap(section: .first, seledtedId: slideshow.currentPage-1)
     }
 }
 

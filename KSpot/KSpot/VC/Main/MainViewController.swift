@@ -12,9 +12,9 @@ import UIKit
 import ImageSlideshow
 
 /*struct SampleStruct {
-    var image : InputSource
-    var id : String
-}*/
+ var image : InputSource
+ var id : String
+ }*/
 var selectedLang : Language = .kor
 var isLogin : Bool = false
 
@@ -38,9 +38,9 @@ class MainViewController: UIViewController {
         if !isUserLogin() {
             goToLoginPage(entryPoint: 1)
         }
-      /*  if FBSDKAccessToken.current() == nil {
-            goToLoginPage(entryPoint: 1)
-        }*/
+        /*  if FBSDKAccessToken.current() == nil {
+         goToLoginPage(entryPoint: 1)
+         }*/
     }
     
     
@@ -62,13 +62,13 @@ class MainViewController: UIViewController {
 
 extension MainViewController : SelectSectionDelegate {
     func tap(section: Section, seledtedId: Int) {
-        if (section == .first){
-            let mainStoryboard = Storyboard.shared().mainStoryboard
-          
-
-            if let themeVC = mainStoryboard.instantiateViewController(withIdentifier:ThemeVC.reuseIdentifier) as? ThemeVC {
-                themeVC.selectedId = (mainData?.theme[seledtedId].themeID)
-                self.navigationController?.pushViewController(themeVC, animated: true)
+        if (section == .first) {
+            if seledtedId >= 0 {
+                let mainStoryboard = Storyboard.shared().mainStoryboard
+                if let themeVC = mainStoryboard.instantiateViewController(withIdentifier:ThemeVC.reuseIdentifier) as? ThemeVC {
+                    themeVC.selectedId = (mainData?.theme[seledtedId].themeID)
+                    self.navigationController?.pushViewController(themeVC, animated: true)
+                }
             }
         } else {
             self.goToPlaceDetailVC(selectedIdx: seledtedId)
@@ -86,12 +86,12 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: MainFirstTVCell.reuseIdentifier) as! MainFirstTVCell
             cell.delegate = self
-          
             
             if let mainData_ = mainData{
-                let imageArr : [InputSource] = mainData_.theme.flatMap({ (data) in
+                var imageArr : [InputSource] = mainData_.theme.flatMap({ (data) in
                     KingfisherSource(urlString: data.mainImg)
                 })
+                imageArr.insert(ImageSource(imageString: "main_theme image")!, at: 0)
                 cell.imageSource = imageArr
             }
             cell.awakeFromNib()
@@ -107,7 +107,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             cell.delegate = self
             return cell
         }
-      
+        
     }
     
 }
