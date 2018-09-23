@@ -135,7 +135,7 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
             let cell = tableView.dequeueReusableCell(withIdentifier: BroadcastTVCell.reuseIdentifier) as! BroadcastTVCell
             if let channelData = searchResultData?.channel {
                 cell.delegate = self
-                cell.configure(data: channelData[indexPath.row])
+                cell.configure(data: channelData[indexPath.row], index : indexPath.row)
             }
             return cell
             

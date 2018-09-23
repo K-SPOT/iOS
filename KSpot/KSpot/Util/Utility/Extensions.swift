@@ -70,6 +70,19 @@ extension UIViewController {
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
     }
     
+    func setTranslationBtn(){
+        let transBTN = UIBarButtonItem(image: UIImage(named: "navigationbar_translation"),
+                                      style: .plain,
+                                      target: self,
+                                      action: #selector(self.translate))
+        navigationItem.leftBarButtonItem = transBTN
+        navigationItem.leftBarButtonItem?.tintColor = ColorChip.shared().barbuttonColor
+    }
+    
+    @objc func translate(){
+        selectedLang = selectedLang == .kor ? .eng : .kor
+        self.viewDidLoad()
+    }
     
     @objc func pop(){
         self.navigationController?.popViewController(animated: true)

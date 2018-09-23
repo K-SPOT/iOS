@@ -29,6 +29,7 @@ class MainViewController: UIViewController {
         }
     }
     
+    var currentSelectedLang = selectedLang
     
     fileprivate func reloadRootViewController() {
         //isUserLogin()
@@ -40,6 +41,14 @@ class MainViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if currentSelectedLang != selectedLang {
+            self.viewDidLoad()
+            currentSelectedLang = selectedLang
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         reloadRootViewController()
@@ -47,6 +56,7 @@ class MainViewController: UIViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame : .zero)
         getMainData(url: UrlPath.main.getURL())
+        setTranslationBtn()
         
     }
 }

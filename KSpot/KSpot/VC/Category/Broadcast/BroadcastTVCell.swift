@@ -13,14 +13,16 @@ class BroadcastTVCell: UITableViewCell {
     @IBOutlet weak var mainImgView : UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var subtitleLbl: UILabel!
+    @IBOutlet weak var countLbl: UILabel!
     @IBOutlet weak var subscribeBtn : mySubscribeBtn!
     var delegate : SelectSenderDelegate?
     
-    func configure(data : ChannelVODataChannelList){
+    func configure(data : ChannelVODataChannelList, index : Int){
         self.setImgWithKF(url: data.thumbnailImg, imgView: mainImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
+        countLbl.text = (index+1).description
         titleLbl.text = data.name
          subtitleLbl.text = "구독자 \(data.subscriptionCnt.description) · 게시물 \(data.spotCnt.description)"
-
+        
         subscribeBtn.setSubscribeBtn(idx: data.channelID, isSubscribe: data.subscription)
         subscribeBtn.addTarget(self, action: #selector(subscribeAction(_:)), for: .touchUpInside)
     }

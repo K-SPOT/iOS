@@ -15,8 +15,6 @@ private let NAVBAR_COLORCHANGE_POINT:CGFloat = IMAGE_HEIGHT - CGFloat(kNavBarBot
 
 class ThemeVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var tableView : UITableView!
-    var whiteScrapBarBtn : UIBarButtonItem?
-    var blackScrapBarBtn : UIBarButtonItem?
     var themeData : ThemeVOData? {
         didSet {
             setHeader(data : themeData)
@@ -99,14 +97,6 @@ class ThemeVC: UIViewController, UIGestureRecognizerDelegate {
 extension ThemeVC {
     
     func setupNavView(){
-        //오른쪽 바버튼 아이템 설정
-        /*whiteScrapBarBtn = UIBarButtonItem.itemWith(colorfulImage: #imageLiteral(resourceName: "place_detail_unscrap"), target: self, action: #selector(PlaceDetailVC.sample(_sender:)))
-        blackScrapBarBtn = UIBarButtonItem.itemWith(colorfulImage: #imageLiteral(resourceName: "place_detail_unscrap_black"), target: self, action: #selector(PlaceDetailVC.sample(_sender:)))*/
-        
-        let titleBarBtn = UIBarButtonItem.titleBarbutton(title: "23,341", red: 255, green: 255, blue: 255, fontSize: 14, fontName: NanumSquareOTF.NanumSquareOTFR.rawValue, selector: nil, target: self)
-        titleBarBtn.isEnabled = false
-        self.navigationItem.rightBarButtonItems = [whiteScrapBarBtn!, titleBarBtn]
-        
         //왼쪽 백버튼 아이템 설정
         setBackBtn(color: .white)
         
@@ -133,8 +123,6 @@ extension ThemeVC
             
             navBarTintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
-            navigationItem.rightBarButtonItems?[1].tintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
-            navigationItem.rightBarButtonItems?[0] = blackScrapBarBtn!
             let alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / CGFloat(kNavBarBottom)
             navBarBackgroundAlpha = alpha
             navBarTintColor = UIColor.black.withAlphaComponent(alpha)
@@ -143,11 +131,8 @@ extension ThemeVC
         }
         else
         {
-            
             navBarTintColor = .white
             navigationItem.leftBarButtonItem?.tintColor = .white
-            navigationItem.rightBarButtonItems?[1].tintColor = .white
-            navigationItem.rightBarButtonItems?[0] = whiteScrapBarBtn!
             navBarBackgroundAlpha = 0
             navBarTitleColor = .white
             statusBarStyle = .lightContent

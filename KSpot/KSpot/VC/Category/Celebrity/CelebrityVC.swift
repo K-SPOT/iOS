@@ -40,7 +40,7 @@ extension CelebrityVC : UITableViewDelegate, UITableViewDataSource {
         if let celebrityList_ = celebrityList {
             //cell.delegate = parent as? SelectSenderDelegate
            cell.delegate = self
-           cell.configure(data: celebrityList_[indexPath.row])
+           cell.configure(data: celebrityList_[indexPath.row], index : indexPath.row)
         }
         return cell
     }

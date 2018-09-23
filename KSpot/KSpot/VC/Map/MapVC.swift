@@ -20,6 +20,7 @@ class MapVC: UIViewController {
         return viewController
     }()
     
+    var currentSelectedLang = selectedLang
     var filterView = MapFilterView.instanceFromNib()
     var selectedFirstFilter : FilterToggleBtn?
     var selectedSecondFilter : Int?
@@ -55,12 +56,18 @@ class MapVC: UIViewController {
         initContainerView()
         locationInit()
         setFilterView(filterView)
-        
+        setTranslationBtn()
         //네비게이션 타이틀
         self.navigationItem.title = "K-Spot"
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if currentSelectedLang != selectedLang {
+            self.viewDidLoad()
+            currentSelectedLang = selectedLang
+        }
+    }
     func initContainerView(){
         addChildView(containerView: containerView, asChildViewController: mapContainerVC)
     }
@@ -328,7 +335,7 @@ extension MapVC : CLLocationManagerDelegate{
              print("my long : \(longitude)")
             getMapInfo()
         } else {
-            print("여기다 이자식")
+            mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변 아님"
             mapContainerVC.tap(.seongbukgu)
         }
     }

@@ -309,9 +309,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="K-Spot" id="kwT-rU-c1m">
                         <barButtonItem key="backBarButtonItem" title=" " id="JFD-pc-J9w"/>
-                        <barButtonItem key="leftBarButtonItem" image="navigationbar_translation" id="icU-Dn-hma">
-                            <color key="tintColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="main_search" id="IrG-M1-7q2">
                             <color key="tintColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -1442,7 +1439,6 @@
         <image name="login_skip" width="70" height="18"/>
         <image name="main_arrow" width="15" height="15"/>
         <image name="main_search" width="24" height="24"/>
-        <image name="navigationbar_translation" width="24" height="24"/>
         <image name="search_result_place_icon" width="37" height="37"/>
         <image name="tab_category_gray" width="23" height="23"/>
         <image name="tab_home_gray" width="23" height="23"/>

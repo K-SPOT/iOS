@@ -129,9 +129,6 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="K-Spot" id="hsn-O4-I9a">
                         <barButtonItem key="backBarButtonItem" title=" " id="Kwc-fb-EWg"/>
-                        <barButtonItem key="leftBarButtonItem" image="navigationbar_translation" id="Nof-4P-NWI">
-                            <color key="tintColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="category_search" id="vjt-SG-hPs">
                             <color key="tintColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -225,6 +222,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="countLbl" destination="tgH-xv-xbe" id="Zwz-Rg-6yJ"/>
                                             <outlet property="mainImgView" destination="PG7-Ux-HBV" id="SYF-H5-tlZ"/>
                                             <outlet property="subscribeBtn" destination="iJv-GC-SaV" id="r8m-hf-nWy"/>
                                             <outlet property="subtitleLbl" destination="bxD-Q6-Z8T" id="qkT-wI-NNU"/>
@@ -839,6 +837,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="countLbl" destination="f94-qX-w3L" id="kNq-Ut-hEu"/>
                                             <outlet property="mainImgView" destination="seC-Q3-8AE" id="tCa-Zk-Lj0"/>
                                             <outlet property="subscribeBtn" destination="TbH-Ti-fGI" id="W2L-fw-oDU"/>
                                             <outlet property="subtitleLbl" destination="ddh-B6-EZl" id="7iX-Q0-0AT"/>
@@ -878,6 +877,5 @@
         <image name="category_search" width="24" height="24"/>
         <image name="cimg" width="319" height="351"/>
         <image name="map_location_arrow" width="24" height="24"/>
-        <image name="navigationbar_translation" width="24" height="24"/>
     </resources>
 </document>

@@ -39,7 +39,7 @@ extension BroadcastVC : UITableViewDelegate, UITableViewDataSource, SelectSender
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BroadcastTVCell.reuseIdentifier) as! BroadcastTVCell
         if let broadcastList_ = broadcastList {
-            cell.configure(data: broadcastList_[indexPath.row])
+            cell.configure(data: broadcastList_[indexPath.row], index : indexPath.row)
              //cell.delegate = parent as? SelectSenderDelegate
             cell.delegate = self
         }

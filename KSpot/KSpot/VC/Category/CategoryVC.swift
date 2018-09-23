@@ -14,6 +14,7 @@ class CategoryVC: UIViewController {
     @IBOutlet weak var celebrityBtn: CategoryToggleBtn!
     @IBOutlet weak var celebrityGreenView: UIView!
     @IBOutlet weak var broadcastBtn: CategoryToggleBtn!
+     var currentSelectedLang = selectedLang
     var celebrityList : [ChannelVODataChannelList]? {
         didSet {
             celebrityVC.celebrityList = celebrityList
@@ -51,6 +52,15 @@ class CategoryVC: UIViewController {
     @IBAction func switchView(_ sender: CategoryToggleBtn) {
         updateView(selected: sender.tag)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("여기는 \(currentSelectedLang)")
+        if currentSelectedLang != selectedLang {
+            self.viewDidLoad()
+            currentSelectedLang = selectedLang
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,13 +68,9 @@ class CategoryVC: UIViewController {
         broadcastBtn.setBtn(another: celebrityBtn, bottomLine: broadcastGreenView)
         self.getMyChannel(url: UrlPath.channelList.getURL())
         updateView(selected: 0)
-        
-      
+        setTranslationBtn()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        //self.navigationController?.navigationBar.isHidden = false
-        //viewWillLayoutSubviews()
-    }
+
 }
 
 //컨테이너뷰

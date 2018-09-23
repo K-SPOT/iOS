@@ -181,7 +181,7 @@ extension PlaceDetailVC {
         greenScrapBarBtn?.tag = 3
         whiteScrapBarBtn = UIBarButtonItem.itemWith(colorfulImage: #imageLiteral(resourceName: "place_detail_unscrap"), target: self, action: #selector(PlaceDetailVC.scrapAction(_sender:)))
         blackScrapBarBtn = UIBarButtonItem.itemWith(colorfulImage: #imageLiteral(resourceName: "place_detail_unscrap_black"), target: self, action: #selector(PlaceDetailVC.scrapAction(_sender:)))
-        whiteFullScrapBarBtn = UIBarButtonItem.itemWith(colorfulImage: #imageLiteral(resourceName: "mypage_scrap_star"), target: self, action: #selector(PlaceDetailVC.scrapAction(_sender:)))
+        whiteFullScrapBarBtn = UIBarButtonItem.itemWith(colorfulImage: #imageLiteral(resourceName: "place_detail_scrap"), target: self, action: #selector(PlaceDetailVC.scrapAction(_sender:)))
         greenScrapBarBtn = UIBarButtonItem.itemWith(colorfulImage: #imageLiteral(resourceName: "place_detail_scrap_green"), target: self, action: #selector(PlaceDetailVC.scrapAction(_sender:)))
         
         let titleBarBtn = UIBarButtonItem.titleBarbutton(title: "", red: 255, green: 255, blue: 255, fontSize: 14, fontName: NanumSquareOTF.NanumSquareOTFR.rawValue, selector: nil, target: self)
