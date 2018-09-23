@@ -53,7 +53,10 @@ extension ScrapVC : UICollectionViewDataSource, UICollectionViewDelegate{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.goToPlaceDetailVC(selectedIdx: 0)
+        if let userScrapList_ = userScrapList{
+              self.goToPlaceDetailVC(selectedIdx: userScrapList_[indexPath.row].spotID)
+        }
+      
     }
 }
 

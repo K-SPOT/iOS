@@ -19,12 +19,15 @@ struct MypageVOData: Codable {
 }
 
 struct MypageVODataChannel: Codable {
-    let korName, engName, backgroundImg: String
+    let korName, engName, backgroundImg : String
+    let channelID : Int
+    
     
     enum CodingKeys: String, CodingKey {
         case korName = "kor_name"
         case engName = "eng_name"
         case backgroundImg = "background_img"
+        case channelID = "channel_id"
     }
 }
 

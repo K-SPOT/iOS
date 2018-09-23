@@ -56,7 +56,13 @@ extension CategoryDetailMorePlaceVC : UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.goToPlaceDetailVC(selectedIdx: 0)
+        if let channelMoreData_ = channelMoreData{
+            if self.title == "이벤트" {
+                self.goToPlaceDetailVC(selectedIdx: channelMoreData_[indexPath.row].spotID, isPlace: false)
+            } else {
+              self.goToPlaceDetailVC(selectedIdx: channelMoreData_[indexPath.row].spotID)
+            }
+        }
     }
 }
 

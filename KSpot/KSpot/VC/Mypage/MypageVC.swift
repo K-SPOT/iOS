@@ -116,14 +116,14 @@ extension MypageVC : UITableViewDelegate, UITableViewDataSource{
 extension MypageVC : SelectSectionDelegate{
     func tap(section: Section, seledtedId: Int) {
         //more action
-        if (seledtedId == 0){
+        if (seledtedId == -1){
             let mypageStoryboard = Storyboard.shared().mypageStoryboard
             if let subscribeVC = mypageStoryboard.instantiateViewController(withIdentifier:SubscribeVC.reuseIdentifier) as? SubscribeVC {
                
                 self.navigationController?.pushViewController(subscribeVC, animated: true)
             }
         } else {
-             self.goToCelebrityDetail(selectedIdx : 0)
+             self.goToCelebrityDetail(selectedIdx : seledtedId)
         }
     }
 }

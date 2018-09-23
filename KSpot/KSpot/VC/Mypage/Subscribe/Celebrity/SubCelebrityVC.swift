@@ -42,10 +42,10 @@ extension SubCelebrityVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let categoryStoryboard = Storyboard.shared().categoryStoryboard
-        if let categoryDetailVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailVC.reuseIdentifier) as? CategoryDetailVC {
-            tableView.deselectRow(at: indexPath, animated: true)
-            self.navigationController?.pushViewController(categoryDetailVC, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let celebritySubscriptionList_ = celebritySubscriptionList{
+             self.goToCelebrityDetail(selectedIdx: celebritySubscriptionList_[indexPath.row].channelId)
         }
+       
     }
 }

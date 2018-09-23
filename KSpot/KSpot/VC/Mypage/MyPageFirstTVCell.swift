@@ -23,7 +23,7 @@ class MypageFisrtTVCell: UITableViewCell {
         return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
     @IBAction func moreAction(_ sender: UIButton) {
-        delegate?.tap(section: .first, seledtedId: 0)
+        delegate?.tap(section: .first, seledtedId: -1)
     }
    
     
@@ -62,7 +62,11 @@ extension MypageFisrtTVCell : UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.tap(section: .first, seledtedId: 1)
+        if let channelArr_ = channelArr{
+           delegate?.tap(section: .first, seledtedId: channelArr_[indexPath.row].channelID)
+           
+        }
+       
     }
 }
 

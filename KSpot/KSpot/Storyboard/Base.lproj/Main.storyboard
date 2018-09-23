@@ -1147,6 +1147,12 @@
                                                     </constraints>
                                                     <state key="normal" image="category_detail_subscription_green"/>
                                                 </button>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0G-S3-UVB">
+                                                    <rect key="frame" x="5" y="38.5" width="5" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Kal-3v-3xZ" firstAttribute="leading" secondItem="VG3-7G-SfX" secondAttribute="leading" constant="16" id="C4O-2Z-4Gb"/>
@@ -1156,11 +1162,14 @@
                                                 <constraint firstItem="Kal-3v-3xZ" firstAttribute="width" secondItem="VG3-7G-SfX" secondAttribute="width" multiplier="100:375" id="XJE-jd-7mX"/>
                                                 <constraint firstItem="FyN-JX-EzK" firstAttribute="centerY" secondItem="Kal-3v-3xZ" secondAttribute="centerY" id="Y3e-r4-EXj"/>
                                                 <constraint firstItem="pVm-VF-88u" firstAttribute="leading" secondItem="FyN-JX-EzK" secondAttribute="trailing" constant="10" id="abk-VE-vat"/>
+                                                <constraint firstItem="l0G-S3-UVB" firstAttribute="centerY" secondItem="Kal-3v-3xZ" secondAttribute="centerY" id="meW-Pn-CYh"/>
+                                                <constraint firstItem="l0G-S3-UVB" firstAttribute="leading" secondItem="VG3-7G-SfX" secondAttribute="leading" constant="5" id="xqs-4e-lNJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="pVm-VF-88u" secondAttribute="trailing" constant="16" id="z8Q-kf-azq"/>
                                                 <constraint firstItem="Kal-3v-3xZ" firstAttribute="top" secondItem="VG3-7G-SfX" secondAttribute="top" constant="12" id="zKx-a0-Hhs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="countLbl" destination="l0G-S3-UVB" id="oiB-ta-4Gy"/>
                                             <outlet property="mainImgView" destination="Kal-3v-3xZ" id="v08-CZ-KbH"/>
                                             <outlet property="subscribeBtn" destination="pVm-VF-88u" id="A7E-rS-7Qz"/>
                                             <outlet property="subtitleLbl" destination="Clk-aI-9fa" id="9Jt-Sg-JkI"/>

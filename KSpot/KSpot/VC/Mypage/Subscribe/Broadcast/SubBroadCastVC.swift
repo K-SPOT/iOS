@@ -43,10 +43,10 @@ extension SubBroadCastVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let categoryStoryboard = Storyboard.shared().categoryStoryboard
-        if let categoryDetailVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailVC.reuseIdentifier) as? CategoryDetailVC {
-            tableView.deselectRow(at: indexPath, animated: true)
-            self.navigationController?.pushViewController(categoryDetailVC, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let broadcastSubscriptionList_ = broadcastSubscriptionList{
+            self.goToCelebrityDetail(selectedIdx: broadcastSubscriptionList_[indexPath.row].channelId)
         }
+        
     }
 }
