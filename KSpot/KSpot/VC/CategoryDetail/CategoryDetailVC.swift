@@ -341,7 +341,7 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
             if indexPath.section == 1  {
                 self.goToPlaceDetailVC(selectedIdx: relatedPlace_[indexPath.row].spotID)
             } else if indexPath.section == 2 {
-                self.goToCelebrityDetail(selectedIdx : relatedEvent_[indexPath.row].spotID)
+                self.goToPlaceDetailVC(selectedIdx : relatedEvent_[indexPath.row].spotID, isPlace : false)
             }
         }
         

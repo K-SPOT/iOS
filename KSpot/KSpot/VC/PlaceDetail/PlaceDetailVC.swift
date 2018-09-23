@@ -65,6 +65,15 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
         }
     }
     
+    @IBAction func writeReviewAction(_ sender: Any) {
+        //리뷰 쓰기
+        let mapStoryboard = Storyboard.shared().mapStoryboard
+        if let reviewWriteVC = mapStoryboard.instantiateViewController(withIdentifier:ReviewWriteVC.reuseIdentifier) as? ReviewWriteVC {
+            reviewWriteVC.selectedIdx = self.selectedIdx
+            self.navigationController?.pushViewController(reviewWriteVC, animated: true)
+        }
+    }
+    
     @IBAction func phoneViewAction(_ sender: Any) {
         guard let contact = placeData?.contact else {return}
         if isPlace {
@@ -124,6 +133,10 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
         locationView.makeRounded(cornerRadius: 17)
         contactView.makeRounded(cornerRadius: nil)
         contactView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getPlaceInfo(url: UrlPath.spot.getURL("\(selectedIdx)/detail"))
     }
     
@@ -303,14 +316,8 @@ extension PlaceDetailVC : SelectSectionDelegate, SelectSenderDelegate {
         if section == .first {
             self.goToCelebrityDetail(selectedIdx : seledtedId)
         } else {
-            //리뷰 쓰기
-            if seledtedId == -1 {
-                let mapStoryboard = Storyboard.shared().mapStoryboard
-                if let reviewWriteVC = mapStoryboard.instantiateViewController(withIdentifier:ReviewWriteVC.reuseIdentifier) as? ReviewWriteVC {
-                    reviewWriteVC.selectedIdx = self.selectedIdx
-                    self.navigationController?.pushViewController(reviewWriteVC, animated: true)
-                }
-            } else {
+            
+            
                 //리뷰 보기
                 let mapStoryboard = Storyboard.shared().mapStoryboard
                 if let reviewContainerVC = mapStoryboard.instantiateViewController(withIdentifier:ReviewContainerVC.reuseIdentifier) as? ReviewContainerVC {
@@ -322,7 +329,7 @@ extension PlaceDetailVC : SelectSectionDelegate, SelectSenderDelegate {
                     }
                     self.navigationController?.pushViewController(reviewContainerVC, animated: true)
                 }
-            }
+            
             
         }
     }

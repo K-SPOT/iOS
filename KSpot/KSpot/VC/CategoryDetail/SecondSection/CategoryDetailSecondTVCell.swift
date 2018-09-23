@@ -23,7 +23,6 @@ class CategoryDetailSecondTVCell: UITableViewCell {
         descLbl.text = data.description
         placeLbl.text = "\(data.addressGu) · \(data.station)"
         scrapCountLbl.text = data.scrapCnt.description
-        titleLbl.adjustsFontSizeToFitWidth = true
     }
     
     func configure2(data : SearchResultVODataPlace){

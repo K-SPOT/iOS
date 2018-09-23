@@ -27,11 +27,7 @@ class PlaceDetailSecondTVCell: UITableViewCell {
             collectionView.reloadData()
         }
     }
-    
-    @IBAction func writeReviewAction(_ sender: Any) {
-        //-1이면 리뷰 쓰는 것
-        delegate?.tap(section: .second, seledtedId: -1)
-    }
+  
     
     @IBAction func showAllAction(_ sender: Any) {
         delegate?.tap(section: .second, seledtedId: 1)
