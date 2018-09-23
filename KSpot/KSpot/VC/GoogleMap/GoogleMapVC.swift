@@ -26,7 +26,12 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
     typealias latLong = (lat : Double, long : Double)
     let currentLocationMarker = GMSMarker()
     var locationManager = CLLocationManager()
-    var chosenPlace: MyPlace?
+    var currentLocation : CLLocation?
+    var chosenPlace: MyPlace? {
+        didSet {
+            print("바뀜 \(chosenPlace?.lat)")
+        }
+    }
     var delegate : SelectGoogleDelegate?
     var entryPoint : MapEntryPoint = .currentLocation
     let defualtLat = 36.3504
@@ -83,26 +88,23 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
         setBackBtn()
         setupViews()
         initGoogleMaps()
+        setInitPlace()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    func setInitPlace(){
         if entryPoint == .currentLocation {
             locationManager.startUpdatingLocation()
             if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-                let myLocation = getMyLatLong()
-                chosenPlace = MyPlace(name: "", lat: myLocation.lat, long: myLocation.long)
+                currentLocation = locationManager.location
+                guard let latitude = currentLocation?.coordinate.latitude,
+                    let longitude = currentLocation?.coordinate.longitude else {return}
+                chosenPlace = MyPlace(name: "", lat: latitude, long: longitude)
             } else {
-                chosenPlace = MyPlace(name: "대전", lat: defualtLat, long: defualtLong)
-            }
-        } else {
-            let lat = chosenPlace?.lat
-            let long = chosenPlace?.long
-            if let lat_ = lat, let long_ = long {
-                goToSelectedMapView(lat : lat_, long : long_)
+                if chosenPlace == nil {
+                    chosenPlace = MyPlace(name: "대전", lat: defualtLat, long: defualtLong)
+                }
             }
         }
-
     }
     
     func goToSelectedMapView(lat : Double, long : Double){
