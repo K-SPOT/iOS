@@ -59,10 +59,12 @@ struct PlaceDetailVODataReview: Codable {
     let img: String
     let reviewScore: Double
     let regTime: String
+    let reviewId : Int
     
     enum CodingKeys: String, CodingKey {
         case title, content, img, name
         case reviewScore = "review_score"
         case regTime = "reg_time"
+        case reviewId = "review_id"
     }
 }

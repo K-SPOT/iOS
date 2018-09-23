@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MessageUI
+
 
 class ReviewVC: UIViewController {
  @IBOutlet weak var ratingView: CosmosView!
@@ -51,26 +53,27 @@ extension ReviewVC : SelectDelegate {
     func tap(selected : Int?) {
         let alert = UIAlertController(title: nil, message: "신고 사유를 선택해주세요", preferredStyle: .actionSheet)
         
-        let report1 = UIAlertAction(title: "음란물", style: .default) { (_) in
-            reportAction()
+        let report1 = UIAlertAction(title: "음란물", style: .default) { (re1) in
+            reportAction(reportReason: re1.title!)
         }
-        let report2 = UIAlertAction(title: "사칭 및 사기", style: .default) { (_) in
-            reportAction()
+        let report2 = UIAlertAction(title: "사칭 및 사기", style: .default) { (re2) in
+            reportAction(reportReason: re2.title!)
         }
-        let report3 = UIAlertAction(title: "허위사실 유포", style: .default) { (_) in
-           reportAction()
+        let report3 = UIAlertAction(title: "허위사실 유포", style: .default) { (re3) in
+           reportAction(reportReason: re3.title!)
         }
-        let report4 = UIAlertAction(title: "상업적 광고 및 판매", style: .default) { (_) in
-           reportAction()
+        let report4 = UIAlertAction(title: "상업적 광고 및 판매", style: .default) { (re4) in
+           reportAction(reportReason: re4.title!)
         }
-        let report5 = UIAlertAction(title: "욕설 및 불쾌감을 주는 표현", style: .default) { (_) in
-            reportAction()
+        let report5 = UIAlertAction(title: "욕설 및 불쾌감을 주는 표현", style: .default) { (re5) in
+            reportAction(reportReason: re5.title!)
         }
         
-        func reportAction(){
-            self.simpleAlert(title: "신고접수", message: "신고가 완료되었습니다")
+        func reportAction(reportReason : String){
+            guard let selectedMailId = selected else {return}
+            sendMail(selectedId: selectedMailId, reason : reportReason)
         }
-      
+
         let cancleAction = UIAlertAction(title: "취소",style: .cancel)
         alert.addAction(report1)
         alert.addAction(report2)
@@ -82,6 +85,25 @@ extension ReviewVC : SelectDelegate {
     }
 }
 
+extension ReviewVC : MFMailComposeViewControllerDelegate{
+    func sendMail(selectedId : Int, reason : String){
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["rkdthd1234@naver.com"])
+            mail.setSubject("신고 등록")
+            mail.setMessageBody("<p>'ID Number. \(selectedId)' 신고 등록</p><p>신고 사유는 \(reason)입니다.</p>", isHTML: true)
+            self.present(mail, animated: true)
+        } else {
+            self.simpleAlert(title: "실패", message: "신고 메일을 보낼 수 없습니다. 다시 시도해주세요")
+        }
+    }
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        
+        controller.dismiss(animated: true)
+    }
+    
+}
 
 //tableView dataSource, delegate
 extension ReviewVC:UITableViewDelegate,UITableViewDataSource
@@ -92,6 +114,9 @@ extension ReviewVC:UITableViewDelegate,UITableViewDataSource
         }
         return 0
     }
+    
+    
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {

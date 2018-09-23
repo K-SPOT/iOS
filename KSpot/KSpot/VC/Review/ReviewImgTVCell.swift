@@ -21,7 +21,7 @@ class ReviewImgTVCell: UITableViewCell {
     var delegate : SelectDelegate?
    
     @IBAction func moreAction(_ sender: Any) {
-        delegate?.tap(selected: 0)
+        delegate?.tap(selected: self.tag)
     }
     func configure(data : PlaceDetailVODataReview){
         titleLbl.text = data.title
@@ -29,12 +29,17 @@ class ReviewImgTVCell: UITableViewCell {
         setImgWithKF(url: data.img, imgView: myImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
         ratingView.rating = data.reviewScore
         writingInfoLbl.text = "\(data.name) · \(data.regTime)"
-    }
+        
+        //self.tag = 960403
+        self.tag = data.reviewId
+    } //configure
     override func awakeFromNib() {
         super.awakeFromNib()
         contentLbl.setLineSpacing(lineSpacing: 6)
         ratingView.settings.fillMode = .half
         ratingView.rating = 3.5
+        
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
