@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import FBSDKCoreKit
-import FBSDKLoginKit
+//import FBSDKCoreKit
+//import FBSDKLoginKit
 import ImageSlideshow
 
 /*struct SampleStruct {
@@ -35,9 +35,12 @@ class MainViewController: UIViewController {
     fileprivate func reloadRootViewController() {
         //isUserLogin()
         //if FBSDKAccessToken.current() == nil
-        if FBSDKAccessToken.current() == nil {
+        if !isUserLogin() {
             goToLoginPage(entryPoint: 1)
         }
+      /*  if FBSDKAccessToken.current() == nil {
+            goToLoginPage(entryPoint: 1)
+        }*/
     }
     
     

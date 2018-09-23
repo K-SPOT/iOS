@@ -8,7 +8,7 @@
 
 import UIKit
 import MessageUI
-import FBSDKLoginKit
+//import FBSDKLoginKit
 
 
 class ReviewVC: UIViewController {
@@ -53,7 +53,7 @@ class ReviewVC: UIViewController {
 extension ReviewVC : SelectDelegate {
     func tap(selected : Int?) {
         
-        if FBSDKAccessToken.current() == nil {
+        if !isUserLogin() {
             goToLoginPage()
         } else {
             //신고하기

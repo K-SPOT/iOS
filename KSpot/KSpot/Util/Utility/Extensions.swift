@@ -114,8 +114,10 @@ extension UIViewController {
     }
     
     func isUserLogin() -> Bool {
-        return FBSDKAccessToken.currentAccessTokenIsActive()
-            // &&UserDefaults.standard.string(forKey: "userAuth") != "-1"
+        if FBSDKAccessToken.current() == nil {
+            return false
+        }
+        return true
     }
     
     func simpleAlert(title: String, message: String){

@@ -31,7 +31,7 @@ class MyPageContainerVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if FBSDKAccessToken.current() == nil {
+        if !isUserLogin() {
             updateView(selected: 1)
         } else {
             updateView(selected: 0)

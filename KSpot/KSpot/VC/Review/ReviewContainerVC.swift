@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FBSDKLoginKit
+//import FBSDKLoginKit
 
 class ReviewContainerVC: UIViewController, UIGestureRecognizerDelegate {
 
@@ -24,7 +24,7 @@ class ReviewContainerVC: UIViewController, UIGestureRecognizerDelegate {
     }()
     
     @IBAction func writeReviewAction(_ sender: Any) {
-        if FBSDKAccessToken.current() == nil {
+        if !isUserLogin() {
             goToLoginPage()
         } else {
             //리뷰 쓰기

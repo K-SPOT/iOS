@@ -85,13 +85,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, SelectSen
     }
     
     @objc func subscribeAction(_ sender : mySubscribeBtn){
-        //tap(section: .first, seledtedId: sender.contentIdx!, sender: sender)
-        let params = ["channel_id" : sender.contentIdx?.description]
-        if sender.isSelected {
-            unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
-        } else {
-            subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
-        }
+        tap(section: .first, seledtedId: sender.contentIdx!, sender: sender)
     }
     
     
@@ -388,7 +382,7 @@ extension CategoryDetailVC {
         })
     }
     
-    func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
+    /*func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
             switch result {
@@ -435,5 +429,5 @@ extension CategoryDetailVC {
                 break
             }
         })
-    }
+    }*/
 }

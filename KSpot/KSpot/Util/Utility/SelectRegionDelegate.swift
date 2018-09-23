@@ -33,16 +33,18 @@ protocol SelectSenderDelegate {
 
 extension SelectSenderDelegate where Self : UIViewController {
     func tap(section : Section, seledtedId : Int, sender : mySubscribeBtn){
-        let params = ["channel_id" : seledtedId]
-        if sender.isSelected {
-            unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
+        if !isUserLogin() {
+            goToLoginPage()
         } else {
-            subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
+            let params = ["channel_id" : seledtedId]
+            if sender.isSelected {
+                unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
+            } else {
+                subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
+            }
         }
     }
-    
-    
-    
+
     func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }

@@ -7,7 +7,7 @@
 
 import UIKit
 import MessageUI
-import FBSDKLoginKit
+//import FBSDKLoginKit
 
 private let NAVBAR_COLORCHANGE_POINT:CGFloat = -80
 private let IMAGE_HEIGHT:CGFloat = 232
@@ -71,7 +71,7 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     }
     
     @IBAction func writeReviewAction(_ sender: Any) {
-        if FBSDKAccessToken.current() == nil {
+        if !isUserLogin() {
             goToLoginPage()
         } else {
             //리뷰 쓰기
@@ -151,7 +151,7 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     
     
     @objc public func scrapAction(_sender : UIBarButtonItem) {
-        if FBSDKAccessToken.current() == nil {
+        if !isUserLogin() {
             goToLoginPage()
         } else {
             //스크랩
