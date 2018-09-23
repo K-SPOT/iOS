@@ -29,6 +29,7 @@ enum UrlPath : String {
 
     //맵
     case spot = "/spot/"
+    case spotSubscription = "/spot/scrap/"
 
     //리뷰
     case reviewWrite = "/spot/review"
@@ -40,6 +41,7 @@ enum UrlPath : String {
     case channelSubscription = "/channel/subscription/"
     case channelDetail = "/channel/detail/"
     case channelSpotMore
+    
     
     func getSpotMoreURL(channelId : Int, isEvent : Int)->String{
         return "\(NetworkConfiguration.shared().baseURL)/channel/\(channelId)/spot/\(isEvent)"

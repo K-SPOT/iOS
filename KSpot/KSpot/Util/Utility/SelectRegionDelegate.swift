@@ -28,6 +28,7 @@ protocol SelectSectionDelegate {
 
 protocol SelectSenderDelegate {
     func tap(section : Section, seledtedId : Int, sender : mySubscribeBtn)
+
 }
 
 extension SelectSenderDelegate where Self : UIViewController {
@@ -39,6 +40,8 @@ extension SelectSenderDelegate where Self : UIViewController {
             subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
         }
     }
+    
+    
     
     func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in

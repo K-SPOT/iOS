@@ -35,9 +35,11 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     @IBOutlet weak var openTimeLbl: UILabel!
     @IBOutlet weak var closeTimeLbl: UILabel!
     var whiteScrapBarBtn : UIBarButtonItem?
+    var whiteFullScrapBarBtn : UIBarButtonItem?
     var blackScrapBarBtn : UIBarButtonItem?
     var greenScrapBarBtn : UIBarButtonItem?
     var selectedIdx = 0
+    var scrapCount = 0
     var isPlace = true
     var placeData : PlaceDetailVOData? {
         didSet {
@@ -143,8 +145,23 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     }
     
     
-    @objc public func sample(_sender : UIBarButtonItem) {
-        
+    @objc public func scrapAction(_sender : UIBarButtonItem) {
+        if navigationItem.rightBarButtonItems?[0] == whiteScrapBarBtn! || navigationItem.rightBarButtonItems?[0] == blackScrapBarBtn! {
+            if(navigationItem.rightBarButtonItems?[0] == whiteScrapBarBtn!) {
+                 print("서브스크라이브 하얀 빈버튼")
+            } else {
+                 print("서브스크라이브 블랙 빈버튼")
+            }
+            let param : [String : Any] = ["spot_id":selectedIdx]
+            subscribe(url: UrlPath.spotSubscription.getURL(), params: param, sender: _sender)
+        } else {
+            if(navigationItem.rightBarButtonItems?[0] == whiteFullScrapBarBtn!) {
+                print("언서브스크라이브 하얀 풀버튼")
+            } else {
+                print("언서브스크라이브 그린 버튼")
+            }
+            unsubscribe(url: UrlPath.spotSubscription.getURL(selectedIdx.description), sender: _sender)
+        }
     }
     
     deinit {
@@ -158,9 +175,14 @@ extension PlaceDetailVC {
     
     func setNavbar(){
         //오른쪽 바버튼 아이템 설정
-        whiteScrapBarBtn = UIBarButtonItem.itemWith(colorfulImage: #imageLiteral(resourceName: "place_detail_unscrap"), target: self, action: #selector(PlaceDetailVC.sample(_sender:)))
-        blackScrapBarBtn = UIBarButtonItem.itemWith(colorfulImage: #imageLiteral(resourceName: "place_detail_unscrap_black"), target: self, action: #selector(PlaceDetailVC.sample(_sender:)))
-        greenScrapBarBtn = UIBarButtonItem.itemWith(colorfulImage: #imageLiteral(resourceName: "place_detail_scrap_green"), target: self, action: #selector(PlaceDetailVC.sample(_sender:)))
+        whiteScrapBarBtn?.tag = 0
+        blackScrapBarBtn?.tag = 1
+        whiteFullScrapBarBtn?.tag = 2
+        greenScrapBarBtn?.tag = 3
+        whiteScrapBarBtn = UIBarButtonItem.itemWith(colorfulImage: #imageLiteral(resourceName: "place_detail_unscrap"), target: self, action: #selector(PlaceDetailVC.scrapAction(_sender:)))
+        blackScrapBarBtn = UIBarButtonItem.itemWith(colorfulImage: #imageLiteral(resourceName: "place_detail_unscrap_black"), target: self, action: #selector(PlaceDetailVC.scrapAction(_sender:)))
+        whiteFullScrapBarBtn = UIBarButtonItem.itemWith(colorfulImage: #imageLiteral(resourceName: "mypage_scrap_star"), target: self, action: #selector(PlaceDetailVC.scrapAction(_sender:)))
+        greenScrapBarBtn = UIBarButtonItem.itemWith(colorfulImage: #imageLiteral(resourceName: "place_detail_scrap_green"), target: self, action: #selector(PlaceDetailVC.scrapAction(_sender:)))
         
         let titleBarBtn = UIBarButtonItem.titleBarbutton(title: "", red: 255, green: 255, blue: 255, fontSize: 14, fontName: NanumSquareOTF.NanumSquareOTFR.rawValue, selector: nil, target: self)
         titleBarBtn.isEnabled = false
@@ -205,11 +227,12 @@ extension PlaceDetailVC {
         if placeData.isScrap == 0{
             self.navigationItem.rightBarButtonItems = [whiteScrapBarBtn!, titleBarBtn]
         } else {
-            self.navigationItem.rightBarButtonItems = [greenScrapBarBtn!, titleBarBtn]
+            self.navigationItem.rightBarButtonItems = [whiteFullScrapBarBtn!, titleBarBtn]
         }
     } //setBarButtons
-  
+    
     func setHeaderView(placeData : PlaceDetailVOData){
+        scrapCount = placeData.scrapCnt
         ratingLbl.text = placeData.reviewScore.description
         titleLbl.text = placeData.name
         descLbl.text = placeData.description
@@ -241,7 +264,12 @@ extension PlaceDetailVC {
             navBarTintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             navigationItem.rightBarButtonItems?[1].tintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
-            navigationItem.rightBarButtonItems?[0] = blackScrapBarBtn!
+            if navigationItem.rightBarButtonItems?[0] == whiteScrapBarBtn {
+                navigationItem.rightBarButtonItems?[0] = blackScrapBarBtn!
+            } else if navigationItem.rightBarButtonItems?[0] == whiteFullScrapBarBtn{
+                 navigationItem.rightBarButtonItems?[0] = greenScrapBarBtn!
+            }
+            
             let alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / CGFloat(kNavBarBottom)
             navBarBackgroundAlpha = alpha
         }
@@ -250,7 +278,11 @@ extension PlaceDetailVC {
             navBarTintColor = .white
             navigationItem.leftBarButtonItem?.tintColor = .white
             navigationItem.rightBarButtonItems?[1].tintColor = .white
-            navigationItem.rightBarButtonItems?[0] = whiteScrapBarBtn!
+            if navigationItem.rightBarButtonItems?[0] == blackScrapBarBtn {
+                navigationItem.rightBarButtonItems?[0] = whiteScrapBarBtn!
+            } else if navigationItem.rightBarButtonItems?[0] == greenScrapBarBtn{
+                navigationItem.rightBarButtonItems?[0] = whiteFullScrapBarBtn!
+            }
             navBarBackgroundAlpha = 0
         }
         
@@ -316,25 +348,26 @@ extension PlaceDetailVC: UITableViewDelegate,UITableViewDataSource{
 }
 
 extension PlaceDetailVC : SelectSectionDelegate, SelectSenderDelegate {
+    
+    
+    
     func tap(section: Section, seledtedId: Int) {
         
         //관련/연예인 방송
         if section == .first {
             self.goToCelebrityDetail(selectedIdx : seledtedId)
         } else {
-            
-            
-                //리뷰 보기
-                let mapStoryboard = Storyboard.shared().mapStoryboard
-                if let reviewContainerVC = mapStoryboard.instantiateViewController(withIdentifier:ReviewContainerVC.reuseIdentifier) as? ReviewContainerVC {
-                    
-                   reviewContainerVC.selectedIdx = self.selectedIdx
-
-                    if let reviewScore = placeData?.reviewScore {
-                         reviewContainerVC.rating = reviewScore
-                    }
-                    self.navigationController?.pushViewController(reviewContainerVC, animated: true)
+            //리뷰 보기
+            let mapStoryboard = Storyboard.shared().mapStoryboard
+            if let reviewContainerVC = mapStoryboard.instantiateViewController(withIdentifier:ReviewContainerVC.reuseIdentifier) as? ReviewContainerVC {
+                
+                reviewContainerVC.selectedIdx = self.selectedIdx
+                
+                if let reviewScore = placeData?.reviewScore {
+                    reviewContainerVC.rating = reviewScore
                 }
+                self.navigationController?.pushViewController(reviewContainerVC, animated: true)
+            }
             
             
         }
@@ -351,6 +384,58 @@ extension PlaceDetailVC {
             case .networkSuccess(let placeData):
                 let placeData_ = placeData as! [PlaceDetailVOData]
                 self.placeData = placeData_[0]
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    }
+    
+    func subscribe(url : String, params : [String:Any], sender : UIBarButtonItem){
+        ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(_):
+                if self.navigationItem.rightBarButtonItems?[0] == self.whiteScrapBarBtn! {
+                    self.navigationItem.rightBarButtonItems?[0] = self.whiteFullScrapBarBtn!
+                } else {
+                    self.navigationItem.rightBarButtonItems?[0] = self.greenScrapBarBtn!
+                }
+                var changed : Int = 0
+                if self.navigationItem.rightBarButtonItems?[1].title == self.scrapCount.description {
+                    changed = self.scrapCount+1
+                } else {
+                    changed = self.scrapCount
+                }
+                self.navigationItem.rightBarButtonItems?[1].title =  changed.description
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    } //subscribe
+    
+    func unsubscribe(url : String, sender : UIBarButtonItem){
+        ChannelSubscribeService.shareInstance.unsubscribe(url: url, completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(_):
+                if self.navigationItem.rightBarButtonItems?[0] == self.whiteFullScrapBarBtn! {
+                    self.navigationItem.rightBarButtonItems?[0] = self.whiteScrapBarBtn!
+                } else {
+                    self.navigationItem.rightBarButtonItems?[0] = self.blackScrapBarBtn!
+                }
+                var changed : Int = 0
+                if self.navigationItem.rightBarButtonItems?[1].title == self.scrapCount.description {
+                    changed = self.scrapCount-1
+                } else {
+                    changed = self.scrapCount
+                }
+                self.navigationItem.rightBarButtonItems?[1].title =  changed.description
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
             default :
