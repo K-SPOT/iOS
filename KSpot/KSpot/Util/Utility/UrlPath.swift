@@ -19,6 +19,7 @@ enum UrlPath : String {
     case mainSearch = "/search"
     case theme = "/theme/"
     case searchResult = "/search/"
+    case spotEvent = "/spot/event"
     
     //마이페이지
     case mypage = "/user/mypage"

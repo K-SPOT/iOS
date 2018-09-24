@@ -1715,10 +1715,10 @@
             </objects>
             <point key="canvasLocation" x="4208.8000000000002" y="542.87856071964018"/>
         </scene>
-        <!--스크랩-->
+        <!--최신 EVENT-->
         <scene sceneID="hYA-As-Zam">
             <objects>
-                <viewController storyboardIdentifier="ScrapVC" id="AKB-1w-McI" customClass="ScrapVC" customModule="KSpot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventMoreVC" id="AKB-1w-McI" customClass="EventMoreVC" customModule="KSpot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jGV-b2-5G3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1733,7 +1733,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ScrapCVCell" id="huk-qL-Yb8" customClass="MapContainerCVCell" customModule="KSpot" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EventMoreCVCell" id="huk-qL-Yb8" customClass="MapContainerCVCell" customModule="KSpot" customModuleProvider="target">
                                         <rect key="frame" x="16" y="0.0" width="343" height="371"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1880,7 +1880,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sPD-zS-i5R"/>
                     </view>
-                    <navigationItem key="navigationItem" title="스크랩" id="mzr-BT-r1E"/>
+                    <navigationItem key="navigationItem" title="최신 EVENT" id="mzr-BT-r1E"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>

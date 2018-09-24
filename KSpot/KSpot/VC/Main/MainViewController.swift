@@ -72,6 +72,10 @@ extension MainViewController : SelectSectionDelegate {
             }
         } else if section == .forth{
             //moreBtn
+            let mainStoryboard = Storyboard.shared().mainStoryboard
+            if let eventMoreVC = mainStoryboard.instantiateViewController(withIdentifier:EventMoreVC.reuseIdentifier) as? EventMoreVC {
+                self.navigationController?.pushViewController(eventMoreVC, animated: true)
+            }
         } else {
             self.goToPlaceDetailVC(selectedIdx: seledtedId)
         }
