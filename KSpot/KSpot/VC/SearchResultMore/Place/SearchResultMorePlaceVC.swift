@@ -14,12 +14,18 @@ class SearchResultMorePlaceVC: UIViewController, UIGestureRecognizerDelegate {
     var searchData : [SearchResultVODataPlace]?
     var headerTitle = ""
     @IBOutlet weak var tableView : UITableView!
+    var isChange : Bool? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame : .zero)
         setBackBtn()
+        tableView.reloadData()
     }
     
     

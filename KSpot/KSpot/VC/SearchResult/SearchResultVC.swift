@@ -114,6 +114,7 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
                 searchResultMoreVC.navigationItem.title = "'\(navTitle.prefix(9))...' 검색결과"
             }
             searchResultMoreVC.searchData = searchResultData?.place
+            searchResultMoreVC.searchTxt = self.searchTxt
             self.navigationController?.pushViewController(searchResultMoreVC, animated: true)
         }
     }

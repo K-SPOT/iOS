@@ -276,11 +276,12 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     
     @objc func placeMoreAction(_ sender : UIButton){
         let categoryStoryboard = Storyboard.shared().categoryStoryboard
-        if let categoryDetailMoreVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailMoreVC.reuseIdentifier) as? CategoryDetailMoreVC {
-            categoryDetailMoreVC.title = "장소"
-            categoryDetailMoreVC.isPlace = true
-            categoryDetailMoreVC.selectedIdx = selectedIdx
-            self.navigationController?.pushViewController(categoryDetailMoreVC, animated: true)
+        if let categoryDetailMorePlaceVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailMorePlaceVC.reuseIdentifier) as? CategoryDetailMorePlaceVC {
+            categoryDetailMorePlaceVC.title = "장소"
+            categoryDetailMorePlaceVC.isPlace = true
+            categoryDetailMorePlaceVC.selectedIdx = selectedIdx
+            
+            self.navigationController?.pushViewController(categoryDetailMorePlaceVC, animated: true)
         }
     }
     
@@ -384,6 +385,7 @@ extension CategoryDetailVC {
                 self.setImgWithKF(url: info.backgroundImg, imgView: self.backgroundImg, defaultImg: #imageLiteral(resourceName: "aimg"))
                 self.setImgWithKF(url: info.thumbnailImg, imgView: self.logoImg, defaultImg: #imageLiteral(resourceName: "aimg"))
                 self.subscribeBtn.setSubscribeBtn(idx: info.id, isSubscribe: info.subscription)
+
                 self.recommendPlace = detailData.placeRecommendedByChannel
                 self.relatedPlace = detailData.placeRelatedChannel
                 self.relatedEvent = detailData.eventRelatedChannel
@@ -396,6 +398,8 @@ extension CategoryDetailVC {
             }
         })
     }
+    
+    
     
     func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
@@ -446,3 +450,5 @@ extension CategoryDetailVC {
         })
     }
 }
+
+

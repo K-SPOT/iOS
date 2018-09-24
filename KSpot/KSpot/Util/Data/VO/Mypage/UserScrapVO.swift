@@ -8,38 +8,6 @@
 
 import Foundation
 
-/*struct UserScrapVO: Codable {
-    let message: String
-    let data: [UserScrapVOData]
-}
-
-struct UserScrapVOData: Codable {
-    let spotID: Int
-    let reviewScore: Int
-    let name, description, addressGu, station: String
-    let img: String
-    let channel: UserScrapVODataChannel
-    
-    enum CodingKeys: String, CodingKey {
-        case spotID = "spot_id"
-        case reviewScore = "review_score"
-        case name, description
-        case addressGu = "address_gu"
-        case station, img, channel
-    }
-}
-
-
-struct UserScrapVODataChannel: Codable {
-    let channelID, thubnailImg: [String]
-    
-    enum CodingKeys: String, CodingKey {
-        case channelID = "channel_id"
-        case thubnailImg = "thubnail_img"
-    }
-}*/
-
-
 struct UserScrapVO: Codable {
     let data: [UserScrapVOData]
     let message: String

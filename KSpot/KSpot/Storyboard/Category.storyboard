@@ -99,21 +99,11 @@
                                     <constraint firstItem="rjg-jO-3IV" firstAttribute="centerY" secondItem="D1t-fX-Frm" secondAttribute="centerY" id="zyR-jK-4ek"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="toj-1L-edV">
-                                <rect key="frame" x="127.5" y="562" width="119" height="61"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="61" id="mft-E5-rAc"/>
-                                    <constraint firstAttribute="width" constant="119" id="rGQ-dE-dbh"/>
-                                </constraints>
-                                <state key="normal" image="category_filter"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="toj-1L-edV" firstAttribute="centerX" secondItem="j9D-rF-wLf" secondAttribute="centerX" id="8Wv-cr-YQF"/>
                             <constraint firstItem="YLT-kX-336" firstAttribute="top" secondItem="j9D-rF-wLf" secondAttribute="top" id="HQY-fy-LRd"/>
                             <constraint firstItem="YLT-kX-336" firstAttribute="leading" secondItem="j9D-rF-wLf" secondAttribute="leading" id="Lmo-qx-ymB"/>
-                            <constraint firstItem="j9D-rF-wLf" firstAttribute="bottom" secondItem="toj-1L-edV" secondAttribute="bottom" id="PlF-ef-aXS"/>
                             <constraint firstItem="D1t-fX-Frm" firstAttribute="bottom" secondItem="YLT-kX-336" secondAttribute="bottom" id="QW8-Nx-vAr"/>
                             <constraint firstItem="D1t-fX-Frm" firstAttribute="trailing" secondItem="YLT-kX-336" secondAttribute="trailing" id="VId-vy-mb1"/>
                             <constraint firstItem="3yg-ay-cRr" firstAttribute="leading" secondItem="j9D-rF-wLf" secondAttribute="leading" id="WGW-v8-hKY"/>
@@ -550,48 +540,6 @@
             </objects>
             <point key="canvasLocation" x="2853.5999999999999" y="140.32983508245877"/>
         </scene>
-        <!--Category Detail MoreVC-->
-        <scene sceneID="TIN-Pv-xKM">
-            <objects>
-                <viewController storyboardIdentifier="CategoryDetailMoreVC" id="gh4-yF-UUW" customClass="CategoryDetailMoreVC" customModule="KSpot" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="CsK-MQ-NbX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CSh-ia-4aP">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                            </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERh-E0-rBn">
-                                <rect key="frame" x="128" y="606" width="119" height="61"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="119" id="8HS-YD-mbD"/>
-                                    <constraint firstAttribute="height" constant="61" id="Uqd-SS-Tjq"/>
-                                </constraints>
-                                <state key="normal" image="category_filter"/>
-                                <connections>
-                                    <action selector="filterAction:" destination="gh4-yF-UUW" eventType="touchUpInside" id="fVs-Zg-iMh"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="rDb-pr-CDP" firstAttribute="trailing" secondItem="CSh-ia-4aP" secondAttribute="trailing" id="50m-U4-P5G"/>
-                            <constraint firstItem="rDb-pr-CDP" firstAttribute="bottom" secondItem="ERh-E0-rBn" secondAttribute="bottom" id="J5u-A2-RUv"/>
-                            <constraint firstItem="CSh-ia-4aP" firstAttribute="leading" secondItem="CsK-MQ-NbX" secondAttribute="leading" id="NQ2-Q8-ECW"/>
-                            <constraint firstItem="rDb-pr-CDP" firstAttribute="bottom" secondItem="CSh-ia-4aP" secondAttribute="bottom" id="e7z-39-diI"/>
-                            <constraint firstItem="CSh-ia-4aP" firstAttribute="top" secondItem="rDb-pr-CDP" secondAttribute="top" id="f8c-sU-jDE"/>
-                            <constraint firstItem="ERh-E0-rBn" firstAttribute="centerX" secondItem="CSh-ia-4aP" secondAttribute="centerX" id="gIL-Nz-FEN"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="rDb-pr-CDP"/>
-                    </view>
-                    <connections>
-                        <outlet property="containerView" destination="CSh-ia-4aP" id="I8n-AY-nj0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HoT-np-DO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3583" y="-149"/>
-        </scene>
         <!--Category Detail More PlaceVC-->
         <scene sceneID="j1a-eX-uAY">
             <objects>
@@ -873,7 +821,6 @@
         <image name="category_detail_subscription_green" width="57" height="24"/>
         <image name="category_detail_top_button" width="44" height="44"/>
         <image name="category_detail_unscrap" width="11" height="15"/>
-        <image name="category_filter" width="119" height="61"/>
         <image name="category_search" width="24" height="24"/>
         <image name="cimg" width="319" height="351"/>
         <image name="map_location_arrow" width="24" height="24"/>

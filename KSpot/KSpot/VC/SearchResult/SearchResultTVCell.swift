@@ -29,7 +29,7 @@ class SearchResultTVCell: UITableViewCell {
         case 4 :
             myImgView.image = #imageLiteral(resourceName: "search_result_event_firecracker_icon")
         case 5 :
-            myImgView.image = #imageLiteral(resourceName: "search_result_event_firecracker_icon")
+            myImgView.image = #imageLiteral(resourceName: "search_result_place_etc_icon")
         case 6 :
             myImgView.image = #imageLiteral(resourceName: "search_result_event_etc_icon")
         default :
