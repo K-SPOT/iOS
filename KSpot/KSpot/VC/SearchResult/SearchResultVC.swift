@@ -26,6 +26,11 @@ class SearchResultVC: UIViewController, UIGestureRecognizerDelegate {
         setBackBtn()
         getSearchData(url: UrlPath.searchResult.getURL(searchTxt))
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getSearchData(url: UrlPath.searchResult.getURL(searchTxt))
+    }
 
 
 }
@@ -86,6 +91,7 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
         let mainStoryboard = Storyboard.shared().mainStoryboard
         if let searchResultMoreCelebrityVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultMoreCelebrityVC.reuseIdentifier) as? SearchResultMoreCelebrityVC {
             searchResultMoreCelebrityVC.headerTitle = "연예인 / 방송"
+            searchResultMoreCelebrityVC.searchString = searchTxt
             guard let navTitle = self.navigationItem.title else{return}
             if ((navTitle.count) < 10) {
                 searchResultMoreCelebrityVC.navigationItem.title = "'\(navTitle)' 검색결과"
@@ -227,7 +233,9 @@ extension SearchResultVC {
             switch result {
             case .networkSuccess(_):
                 sender.isSelected = true
-                self.searchResultData?.channel[sender.indexPath!].subscription = 1
+            self.searchResultData?.channel[sender.indexPath!].subscription = 1
+                /*let indexPath = IndexPath(item: sender.indexPath!, section: 0)
+                 self.tableView.reloadRows(at: [indexPath], with: .top)*/
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
             default :

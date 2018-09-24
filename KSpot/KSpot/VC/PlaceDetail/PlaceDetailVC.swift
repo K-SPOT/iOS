@@ -464,9 +464,7 @@ extension PlaceDetailVC {
             guard let `self` = self else { return }
             switch result {
             case .networkSuccess(_):
-                print("여기로 들어옴-1")
                 sender.isSelected = true
-                print(sender.indexPath)
                 self.placeData?.channel.isSubscription[sender.indexPath!] = "1"
                 /*let indexPath = IndexPath(item: sender.indexPath!, section: 0)
                  self.tableView.reloadRows(at: [indexPath], with: .top)*/
@@ -484,9 +482,7 @@ extension PlaceDetailVC {
             guard let `self` = self else { return }
             switch result {
             case .networkSuccess(_):
-                print("여기로 들어옴-2")
                 sender.isSelected = false
-                print(sender.indexPath)
                 self.placeData?.channel.isSubscription[sender.indexPath!] = "0"
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
