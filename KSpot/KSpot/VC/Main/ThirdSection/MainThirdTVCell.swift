@@ -11,21 +11,27 @@ import UIKit
 class MainThirdTVCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var moreBtn: UIButton!
+    
     private var indexOfCellBeforeDragging = 0
     private var collectionViewFlowLayout: UICollectionViewFlowLayout {
         return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
-   var delegate : SelectSectionDelegate?
+    var delegate : SelectSectionDelegate?
     var popularPlaceData : [MainVODataMain]? {
         didSet {
             collectionView.reloadData()
         }
+    }
+    @objc func tap(_ sender : UIButton){
+        delegate?.tap(section: .forth, seledtedId: 0)
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        moreBtn.addTarget(self, action: #selector(tap(_:)), for: .touchUpInside)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

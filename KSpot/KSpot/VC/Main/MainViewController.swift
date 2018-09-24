@@ -70,6 +70,8 @@ extension MainViewController : SelectSectionDelegate {
                     self.navigationController?.pushViewController(themeVC, animated: true)
                 }
             }
+        } else if section == .forth{
+            //moreBtn
         } else {
             self.goToPlaceDetailVC(selectedIdx: seledtedId)
         }
@@ -79,7 +81,7 @@ extension MainViewController : SelectSectionDelegate {
 extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -101,13 +103,17 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             cell.recommendPlaceData = mainData?.mainRecommandSpot
             cell.delegate = self
             return cell
-        } else {
+        } else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: MainThirdTVCell.reuseIdentifier) as! MainThirdTVCell
             cell.popularPlaceData = mainData?.mainBestPlace
             cell.delegate = self
             return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MainForthTVCell") as! MainThirdTVCell
+            cell.popularPlaceData = mainData?.mainBestEvent
+            cell.delegate = self
+            return cell
         }
-        
     }
     
 }
