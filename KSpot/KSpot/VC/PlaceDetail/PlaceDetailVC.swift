@@ -42,7 +42,7 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     var selectedIdx = 0
     var scrapCount = 0
     var isPlace = true
-    var placeData : PlaceDetailVOData? {
+    var isChange : Bool? {
         didSet {
             tableView.reloadData()
             if let placeData_ = placeData {
@@ -53,6 +53,7 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
             }
         }
     }
+    var placeData : PlaceDetailVOData?
     
     lazy var cycleScrollView:WRCycleScrollView = {
         
@@ -157,9 +158,9 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
             //스크랩
             if navigationItem.rightBarButtonItems?[0] == whiteScrapBarBtn! || navigationItem.rightBarButtonItems?[0] == blackScrapBarBtn! {
                 let param : [String : Any] = ["spot_id":selectedIdx]
-                subscribe(url: UrlPath.spotSubscription.getURL(), params: param, sender: _sender)
+                scrap(url: UrlPath.spotSubscription.getURL(), params: param, sender: _sender)
             } else {
-                unsubscribe(url: UrlPath.spotSubscription.getURL(selectedIdx.description), sender: _sender)
+                unscrap(url: UrlPath.spotSubscription.getURL(selectedIdx.description), sender: _sender)
             }
         }
     }
@@ -349,8 +350,20 @@ extension PlaceDetailVC: UITableViewDelegate,UITableViewDataSource{
 
 extension PlaceDetailVC : SelectSectionDelegate, SelectSenderDelegate {
     
-    
-    
+    //SelectSenderDelegate
+    func tap(section: Section, seledtedId: Int, sender: mySubscribeBtn) {
+        if !isUserLogin() {
+            goToLoginPage()
+        } else {
+            let params = ["channel_id" : sender.contentIdx]
+            if sender.isSelected {
+                self.unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
+            } else {
+                self.subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
+            }
+        }
+    }
+    //SelectSectionDelegate
     func tap(section: Section, seledtedId: Int) {
         
         //관련/연예인 방송
@@ -384,6 +397,7 @@ extension PlaceDetailVC {
             case .networkSuccess(let placeData):
                 let placeData_ = placeData as! [PlaceDetailVOData]
                 self.placeData = placeData_[0]
+                self.isChange = true
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
             default :
@@ -393,7 +407,7 @@ extension PlaceDetailVC {
         })
     }
     
-    func subscribe(url : String, params : [String:Any], sender : UIBarButtonItem){
+    func scrap(url : String, params : [String:Any], sender : UIBarButtonItem){
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
             switch result {
@@ -419,7 +433,7 @@ extension PlaceDetailVC {
         })
     } //subscribe
     
-    func unsubscribe(url : String, sender : UIBarButtonItem){
+    func unscrap(url : String, sender : UIBarButtonItem){
         ChannelSubscribeService.shareInstance.unsubscribe(url: url, completion: { [weak self] (result) in
             guard let `self` = self else { return }
             switch result {
@@ -436,6 +450,44 @@ extension PlaceDetailVC {
                     changed = self.scrapCount
                 }
                 self.navigationItem.rightBarButtonItems?[1].title =  changed.description
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    }
+    
+    func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
+        ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(_):
+                print("여기로 들어옴-1")
+                sender.isSelected = true
+                print(sender.indexPath)
+                self.placeData?.channel.isSubscription[sender.indexPath!] = "1"
+                /*let indexPath = IndexPath(item: sender.indexPath!, section: 0)
+                 self.tableView.reloadRows(at: [indexPath], with: .top)*/
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    } //subscribe
+    
+    func unsubscribe(url : String, sender : mySubscribeBtn){
+        ChannelSubscribeService.shareInstance.unsubscribe(url: url, completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(_):
+                print("여기로 들어옴-2")
+                sender.isSelected = false
+                print(sender.indexPath)
+                self.placeData?.channel.isSubscription[sender.indexPath!] = "0"
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
             default :

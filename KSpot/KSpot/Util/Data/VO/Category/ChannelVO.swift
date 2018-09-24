@@ -25,7 +25,7 @@ struct ChannelVOData: Codable {
 struct ChannelVODataChannelList: Codable {
     let channelID, subscriptionCnt, spotCnt: Int
     let thumbnailImg: String
-    let subscription: Int
+    var subscription: Int
     let name: String
     
     enum CodingKeys: String, CodingKey {

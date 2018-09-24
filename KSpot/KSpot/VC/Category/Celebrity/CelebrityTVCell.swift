@@ -11,6 +11,7 @@ import UIKit
 class mySubscribeBtn : UIButton {
     var isSubscribe : Int?
     var contentIdx : Int?
+    var indexPath : Int?
     var isSelectedFisrt : Bool?
 }
 
@@ -29,12 +30,12 @@ class CelebrityTVCell: UITableViewCell {
         titleLbl.text = data.name
         subtitleLbl.text = "구독자 \(data.subscriptionCnt.description) · 게시물 \(data.spotCnt.description)"
         subscribeBtn.setSubscribeBtn(idx: data.channelID, isSubscribe: data.subscription)
-
+        subscribeBtn.indexPath = index
         subscribeBtn.addTarget(self, action: #selector(subscribeAction(_:)), for: .touchUpInside)
     }
     
     @objc func subscribeAction(_ sender : mySubscribeBtn){
-          delegate?.tap(section: .first, seledtedId: sender.contentIdx!, sender: sender)
+          delegate?.tap(section: .first, seledtedId: sender.tag, sender: sender)
     }
     
     override func prepareForReuse() {

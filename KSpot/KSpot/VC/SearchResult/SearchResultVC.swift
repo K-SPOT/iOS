@@ -10,11 +10,12 @@ import UIKit
 
 class SearchResultVC: UIViewController, UIGestureRecognizerDelegate {
 
-    var searchResultData : SearchResultVOData? {
+    var isChange : Bool? {
         didSet {
             tableView.reloadData()
         }
     }
+    var searchResultData : SearchResultVOData?
     var searchTxt = ""
     @IBOutlet weak var tableView : UITableView!
     override func viewDidLoad() {
@@ -57,6 +58,7 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
         if section == 0  {
             if( searchResultData_.channel.count != 0) {
                 header.titleLbl.text = "연예인 / 방송"
+                header.morBtn.addTarget(self, action: #selector(goToCelebrityMore(_:)), for: .touchUpInside)
                 return header
             } else {
                 return nil
@@ -77,6 +79,21 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
             } else {
                 return nil
             }
+        }
+    }
+    
+    @objc func goToCelebrityMore(_ sender : UIButton) {
+        let mainStoryboard = Storyboard.shared().mainStoryboard
+        if let searchResultMoreCelebrityVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultMoreCelebrityVC.reuseIdentifier) as? SearchResultMoreCelebrityVC {
+            searchResultMoreCelebrityVC.headerTitle = "연예인 / 방송"
+            guard let navTitle = self.navigationItem.title else{return}
+            if ((navTitle.count) < 10) {
+                searchResultMoreCelebrityVC.navigationItem.title = "'\(navTitle)' 검색결과"
+            } else {
+                searchResultMoreCelebrityVC.navigationItem.title = "'\(navTitle.prefix(9))...' 검색결과"
+            }
+            searchResultMoreCelebrityVC.searchData = searchResultData?.channel
+            self.navigationController?.pushViewController(searchResultMoreCelebrityVC, animated: true)
         }
     }
     
@@ -176,14 +193,14 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
 }
 
 extension SearchResultVC : SelectSenderDelegate{
-    /*func tap(section: Section, seledtedId: Int, sender: mySubscribeBtn) {
+    func tap(section: Section, seledtedId: Int, sender: mySubscribeBtn) {
         if sender.isSelected {
             unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
         } else {
              let params = ["channel_id" : seledtedId]
             subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
         }
-    }*/
+    }
 }
 
 //통신
@@ -194,6 +211,7 @@ extension SearchResultVC {
             switch result {
             case .networkSuccess(let searchResultData):
                 self.searchResultData = searchResultData as? SearchResultVOData
+                self.isChange = true
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
             default :
@@ -203,13 +221,13 @@ extension SearchResultVC {
         })
     }
     
-    /*func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
+    func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
             switch result {
             case .networkSuccess(_):
                 sender.isSelected = true
-                
+                self.searchResultData?.channel[sender.indexPath!].subscription = 1
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
             default :
@@ -224,8 +242,9 @@ extension SearchResultVC {
             guard let `self` = self else { return }
             switch result {
             case .networkSuccess(_):
-                sender.isSelected = false
                 
+                sender.isSelected = false
+                self.searchResultData?.channel[sender.indexPath!].subscription = 0
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
             default :
@@ -233,5 +252,5 @@ extension SearchResultVC {
                 break
             }
         })
-    }*/
+    }
 }

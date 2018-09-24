@@ -19,6 +19,7 @@ class MypageVC: UIViewController {
             //faceBookLogout
             let fbLoginManager = FBSDKLoginManager()
             fbLoginManager.logOut()
+            UserDefaults.standard.set(nil, forKey: "userAuth")
             let parentVC = self.parent as? MyPageContainerVC
             parentVC?.viewWillAppear(false)
         }

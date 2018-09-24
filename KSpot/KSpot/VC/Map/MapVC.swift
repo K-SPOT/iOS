@@ -325,23 +325,6 @@ extension MapVC : CLLocationManagerDelegate{
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
-        
-        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            currentLocation = locationManager.location
-            
-            guard let latitude = currentLocation?.coordinate.latitude,
-                let longitude = currentLocation?.coordinate.longitude else {return}
-            chosenPlace = MyPlace(name: "", lat: latitude, long: longitude)
-            
-            print("my lat : \(latitude)")
-             print("my long : \(longitude)")
-            entryPoint = .google
-            getMapInfo()
-        } else {
-            entryPoint = .local
-            mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변 아님"
-            mapContainerVC.tap(.gangnamgu)
-        }
     }
     
     
@@ -350,8 +333,19 @@ extension MapVC : CLLocationManagerDelegate{
         if status == .denied {
             showLocationDisableAlert()
             //이때 디폴트 세팅
-        } else {
-            //self.locationAction(0)
+            entryPoint = .local
+            mapContainerVC.tap(.gangnamgu)
+        } else if status == .authorizedAlways || status == .authorizedWhenInUse{
+            currentLocation = locationManager.location
+            
+            guard let latitude = currentLocation?.coordinate.latitude,
+                let longitude = currentLocation?.coordinate.longitude else {return}
+            chosenPlace = MyPlace(name: "", lat: latitude, long: longitude)
+            
+            print("my lat : \(latitude)")
+            print("my long : \(longitude)")
+            entryPoint = .google
+            getMapInfo()
             
         }
     }

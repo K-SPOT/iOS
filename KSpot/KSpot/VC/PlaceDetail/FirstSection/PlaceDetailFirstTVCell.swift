@@ -66,7 +66,8 @@ extension PlaceDetailFirstTVCell : UICollectionViewDataSource, UICollectionViewD
                 cell.configure(id : relatedChannel_.channelID[indexPath.row],
                                name : relatedChannel_.channelName[indexPath.row],
                                img : relatedChannel_.thumbnailImg[indexPath.row],
-                               isSubscribe : relatedChannel_.isSubscription[indexPath.row]
+                               isSubscribe : relatedChannel_.isSubscription[indexPath.row],
+                               indexPath : indexPath.row
                                )
                 
             }

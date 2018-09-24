@@ -18,12 +18,18 @@ class CategoryVC: UIViewController {
     var celebrityList : [ChannelVODataChannelList]? {
         didSet {
             celebrityVC.celebrityList = celebrityList
+            celebrityVC.isChange = true
         }
     }
     var broadcastList : [ChannelVODataChannelList]? {
         didSet {
             broadcastVC.broadcastList = broadcastList
+            celebrityVC.isChange = true
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.getMyChannel(url: UrlPath.channelList.getURL())
     }
     
     @IBOutlet weak var broadcastGreenView: UIView!
@@ -104,7 +110,8 @@ extension CategoryVC  {
             case .networkSuccess(let channelList):
                let channelList = channelList as! ChannelVOData
                self.broadcastList = channelList.channelBroadcastList
-                self.celebrityList = channelList.channelCelebrityList
+               self.celebrityList = channelList.channelCelebrityList
+                
             case .networkFail :
                 self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
             default :

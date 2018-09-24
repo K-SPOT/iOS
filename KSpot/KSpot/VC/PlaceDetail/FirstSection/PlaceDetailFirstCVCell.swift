@@ -14,10 +14,11 @@ class PlaceDetailFirstCVCell: UICollectionViewCell {
     @IBOutlet weak var subscribeBtn: mySubscribeBtn!
     var delegate : SelectSenderDelegate?
     
-    func configure(id : String, name : String, img : String, isSubscribe : String){
+    func configure(id : String, name : String, img : String, isSubscribe : String, indexPath : Int){
         setImgWithKF(url: img, imgView: logoImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
         nameLbl.text = name
         subscribeBtn.setSubscribeBtn(idx: Int(id)!, isSubscribe: Int(isSubscribe)!)
+        subscribeBtn.indexPath = indexPath
     }
     
     @objc func subscribeAction(_ sender : mySubscribeBtn){

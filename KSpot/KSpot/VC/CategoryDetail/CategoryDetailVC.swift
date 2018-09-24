@@ -12,6 +12,8 @@ private let TOPVIEW_HEIGHT:CGFloat = 269
 private let NAVBAR_COLORCHANGE_POINT:CGFloat = TOPVIEW_HEIGHT - CGFloat(kNavBarBottom * 2)
 
 class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, SelectSenderDelegate{
+   
+    
     
     @IBOutlet weak var tableView: UITableView!
     var selectedIdx = 0
@@ -61,6 +63,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, SelectSen
         let button = mySubscribeBtn()
         //button.setImage(#imageLiteral(resourceName: "category_subscription_white"), for: .normal)
         button.addTarget(self, action: #selector(CategoryDetailVC.subscribeAction(_:)), for: .touchUpInside)
+       
         return button
     }()
     
@@ -84,8 +87,21 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, SelectSen
         tableView.setContentOffset(.zero, animated: true)
     }
     
+    
     @objc func subscribeAction(_ sender : mySubscribeBtn){
         tap(section: .first, seledtedId: sender.contentIdx!, sender: sender)
+    }
+    func tap(section: Section, seledtedId: Int, sender: mySubscribeBtn) {
+        if !isUserLogin() {
+            goToLoginPage()
+        } else {
+            let params = ["channel_id" : sender.contentIdx]
+            if sender.isSelected {
+                unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
+            } else {
+                subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
+            }
+        }
     }
     
     
@@ -364,7 +380,6 @@ extension CategoryDetailVC {
                 self.mainTitleLbl.text = info.name
                 self.subTitleLbl.text = info.company
                 self.initailSubCount = info.subscriptionCnt
-                print("여기 확인 \(info.subscriptionCnt)")
                 self.subscribeLbl.text = info.subscriptionCnt.description
                 self.setImgWithKF(url: info.backgroundImg, imgView: self.backgroundImg, defaultImg: #imageLiteral(resourceName: "aimg"))
                 self.setImgWithKF(url: info.thumbnailImg, imgView: self.logoImg, defaultImg: #imageLiteral(resourceName: "aimg"))
@@ -382,7 +397,7 @@ extension CategoryDetailVC {
         })
     }
     
-    /*func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
+    func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
             switch result {
@@ -429,5 +444,5 @@ extension CategoryDetailVC {
                 break
             }
         })
-    }*/
+    }
 }

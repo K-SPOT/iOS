@@ -21,7 +21,7 @@ struct PlaceDetailVOData: Codable {
     let station, prevStation, nextStation, openTime: String
     let closeTime, contact, lineNumber: String
     let scrapCnt, isScrap: Int
-    let channel: PlaceDetailVODataChannel
+    var channel: PlaceDetailVODataChannel
     let reviews: [PlaceDetailVODataReview]
   
     enum CodingKeys: String, CodingKey {
@@ -45,7 +45,7 @@ struct PlaceDetailVOData: Codable {
 struct PlaceDetailVODataChannel: Codable {
     let channelID, channelName: [String]
     let thumbnailImg: [String]
-    let isSubscription: [String]
+    var isSubscription: [String]
     
     enum CodingKeys: String, CodingKey {
         case channelID = "channel_id"

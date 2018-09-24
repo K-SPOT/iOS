@@ -31,7 +31,7 @@ protocol SelectSenderDelegate {
 
 }
 
-extension SelectSenderDelegate where Self : UIViewController {
+/*extension SelectSenderDelegate where Self : UIViewController {
     func tap(section : Section, seledtedId : Int, sender : mySubscribeBtn){
         if !isUserLogin() {
             goToLoginPage()
@@ -77,7 +77,7 @@ extension SelectSenderDelegate where Self : UIViewController {
         })
     }
 }
-
+*/
 
 
 enum Section {

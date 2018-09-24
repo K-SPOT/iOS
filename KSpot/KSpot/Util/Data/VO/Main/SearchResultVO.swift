@@ -13,7 +13,7 @@ struct SearchResultVO: Codable {
 }
 
 struct SearchResultVOData: Codable {
-    let channel: [ChannelVODataChannelList]
+    var channel: [ChannelVODataChannelList]
     let place, event : [SearchResultVODataPlace]
 }
 

@@ -38,11 +38,18 @@ extension PostableService {
       
         var headers: HTTPHeaders?
         
-       
+        if userAuth == "-1" {
             headers = [
-                "authorization" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIxNjM1NTU4MjcwNDgyNDgiLCJpYXQiOjE1MzcyOTEyNzcsImV4cCI6MTUzOTg4MzI3N30.exOHB3iyJdpckGLi_nCIOMQX4ArOQ_9n9QYBs1Xci5U",
                 "flag" : selectedLang.rawValue.description
             ]
+        } else {
+            headers = [
+                "authorization" : userAuth,
+                "flag" : selectedLang.rawValue.description
+            ]
+        }
+       
+        
         
         
         

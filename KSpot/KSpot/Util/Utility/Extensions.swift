@@ -281,6 +281,7 @@ extension mySubscribeBtn {
         } else {
             self.isSelected = true
         }
+        
     }
 }
 
