@@ -11,16 +11,27 @@ import UIKit
 class MainThirdTVCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var moreBtn: UIButton!
+    
     private var indexOfCellBeforeDragging = 0
     private var collectionViewFlowLayout: UICollectionViewFlowLayout {
         return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
-   var delegate : SelectSectionDelegate?
-    let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg")]
+    var delegate : SelectSectionDelegate?
+    var popularPlaceData : [MainVODataMain]? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    @objc func tap(_ sender : UIButton){
+        delegate?.tap(section: .forth, seledtedId: 0)
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        moreBtn.addTarget(self, action: #selector(tap(_:)), for: .touchUpInside)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,7 +40,7 @@ class MainThirdTVCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
+      //  self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
     }
 }
 
@@ -39,27 +50,28 @@ extension MainThirdTVCell : UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sunglassArr.count
+        if let popularPlaceData_ = popularPlaceData{
+            return popularPlaceData_.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell: MainThirdCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: MainThirdCVCell.reuseIdentifier, for: indexPath) as? MainThirdCVCell
         {
-//
-//            cell.contentView.layer.cornerRadius = 17
-//            cell.contentView.layer.borderWidth = 1.0
-//            cell.contentView.layer.borderColor = #colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1)
-//            cell.contentView.layer.masksToBounds = true
-            
-            cell.myImgView.image = sunglassArr[indexPath.row]
+            if let popularPlaceData_ = popularPlaceData {
+                cell.configure(data: popularPlaceData_[indexPath.row])
+            }
             return cell
         }
         return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.tap(section: .third, seledtedId: indexPath.row)
+        if let popularPlaceData_ = popularPlaceData {
+            delegate?.tap(section: .third, seledtedId: popularPlaceData_[indexPath.row].spotID)
+        }
     }
     
    

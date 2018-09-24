@@ -26,6 +26,7 @@ class ReviewWriteVC: UIViewController, UITextFieldDelegate {
     var keyboardDismissGesture: UITapGestureRecognizer?
     let imagePicker : UIImagePickerController = UIImagePickerController()
     let defaultTxtMsg = "생각을 공유해보세요"
+    var selectedIdx = 0
     lazy var deleteImgBtn : UIButton = {
         let button = UIButton()
         button.isEnabled = true
@@ -62,10 +63,13 @@ class ReviewWriteVC: UIViewController, UITextFieldDelegate {
         doneBtn.tintColor = #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1)
         ratingView.settings.fillMode = .half
         ratingView.didTouchCosmos = didTouchCosmos
-        
         ratingView.didFinishTouchingCosmos = didFinishTouchingCosmos
     }
     
+    
+    @IBAction func doneBtnAction(_ sender: Any) {
+        reviewWrite(url: UrlPath.reviewWrite.getURL(), selectedIdx: selectedIdx, title: titleTxtField.text!, content: contentTxtView.text, score: ratingView.rating)
+    }
     
     @objc func clickImg(){
         openGallery()
@@ -93,6 +97,13 @@ class ReviewWriteVC: UIViewController, UITextFieldDelegate {
         }
     } //isValid
     
+    private func simpleOKAlert(title: String, message: String, okHandler : ((UIAlertAction) -> Void)?){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인",style: .default, handler: okHandler)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 extension ReviewWriteVC {
@@ -101,14 +112,14 @@ extension ReviewWriteVC {
     }
     
     private func didTouchCosmos(_ rating: Double) {
-       
+        
         self.ratingLbl.text = ReviewWriteVC.formatValue(rating)
-    
+        
     }
     
     private func didFinishTouchingCosmos(_ rating: Double) {
         self.ratingLbl.text = ReviewWriteVC.formatValue(rating)
-       
+        
     }
 }
 
@@ -311,6 +322,46 @@ UINavigationControllerDelegate  {
         }
     }
     
+}
+
+
+//통신
+extension ReviewWriteVC {
+    func reviewWrite(url : String, selectedIdx : Int, title : String, content : String, score : Double){
+  
+        let params : [String : Any] = [
+            "spot_id" : selectedIdx,
+            "title" : title,
+            "content" : content,
+            "review_score" : score
+        ]
+        
+        var images : [String : Data]?
+        if let image = imageData {
+            images = [
+                "review_img" : image
+            ]
+        }
+        
+        UserEditService.shareInstance.editProfile(url: url, params: params, image: images, completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(_):
+                self.simpleOKAlert(title: "확인", message: "리뷰 등록이 완료되었습니다", okHandler: { (_) in
+                     self.pop()
+                })
+            case .duplicated :
+                self.simpleAlert(title: "오류", message: "중복된 아이디입니다")
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "인터넷 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+        
+        
+    }
 }
 
 

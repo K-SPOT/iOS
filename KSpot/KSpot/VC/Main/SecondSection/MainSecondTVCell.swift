@@ -17,8 +17,11 @@ class MainSecondTVCell: UITableViewCell {
         return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
     var delegate : SelectSectionDelegate?
-    
-    let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg")]
+    var recommendPlaceData : [MainVODataMain]? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.delegate = self
@@ -33,7 +36,7 @@ class MainSecondTVCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
+        //self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
         
     }
     
@@ -45,21 +48,29 @@ extension MainSecondTVCell : UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sunglassArr.count
+        if let recommendPlaceData_ = recommendPlaceData{
+            return recommendPlaceData_.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell: MainSecondCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: MainSecondCVCell.reuseIdentifier, for: indexPath) as? MainSecondCVCell
         {
-            cell.myImgView.image = sunglassArr[indexPath.row]
+            if let recommendPlaceData_ = recommendPlaceData {
+                 cell.configure(data: recommendPlaceData_[indexPath.row])
+            }
             return cell
         }
         return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.tap(section: .second, seledtedId: indexPath.row)
+        if let recommendPlaceData_ = recommendPlaceData {
+             delegate?.tap(section: .second, seledtedId: recommendPlaceData_[indexPath.row].spotID)
+        }
+       
     }
 }
 

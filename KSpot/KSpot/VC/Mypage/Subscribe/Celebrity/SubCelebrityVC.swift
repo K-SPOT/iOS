@@ -11,6 +11,11 @@ import UIKit
 class SubCelebrityVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var celebritySubscriptionList : [UserSubcriptionVOBroadcast]? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -22,19 +27,25 @@ class SubCelebrityVC: UIViewController {
 
 extension SubCelebrityVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if let celebritySubscriptionList_ = celebritySubscriptionList {
+            return celebritySubscriptionList_.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SubCelebrityTVCell.reuseIdentifier) as! SubCelebrityTVCell
+        if let celebritySubscriptionList_ = celebritySubscriptionList {
+            cell.configure(data: celebritySubscriptionList_[indexPath.row])
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let categoryStoryboard = Storyboard.shared().categoryStoryboard
-        if let categoryDetailVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailVC.reuseIdentifier) as? CategoryDetailVC {
-            tableView.deselectRow(at: indexPath, animated: true)
-            self.navigationController?.pushViewController(categoryDetailVC, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let celebritySubscriptionList_ = celebritySubscriptionList{
+             self.goToCelebrityDetail(selectedIdx: celebritySubscriptionList_[indexPath.row].channelId)
         }
+       
     }
 }

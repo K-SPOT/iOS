@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol SelectRegionDelegate {
     func tap(_ tag : Region)
@@ -16,12 +17,25 @@ protocol SelectDelegate {
     func tap(selected : Int?)
 }
 
+protocol SelectGoogleDelegate {
+    func tap(selectedGoogle : MyPlace?)
+}
+
 protocol SelectSectionDelegate {
     func tap(section : Section, seledtedId : Int)
 }
+
+
+protocol SelectSenderDelegate {
+    func tap(section : Section, seledtedId : Int, sender : mySubscribeBtn)
+
+}
+
+
 
 enum Section {
     case first
     case second
     case third
+    case forth
 }

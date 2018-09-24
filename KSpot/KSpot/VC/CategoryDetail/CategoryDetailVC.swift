@@ -11,11 +11,14 @@ import UIKit
 private let TOPVIEW_HEIGHT:CGFloat = 269
 private let NAVBAR_COLORCHANGE_POINT:CGFloat = TOPVIEW_HEIGHT - CGFloat(kNavBarBottom * 2)
 
-class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
+class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, SelectSenderDelegate{
+   
+    
     
     @IBOutlet weak var tableView: UITableView!
-    
-    
+    var selectedIdx = 0
+    var initailSubCount = 0
+   
     lazy var backgroundImg :UIImageView = {
         let imgView = UIImageView(image: UIImage(named: "cimg"))
         
@@ -56,10 +59,11 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
         return label
     }()
     
-    lazy var subscribeBtn:UIButton = {
-        let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "category_subscription_white"), for: .normal)
+    lazy var subscribeBtn:mySubscribeBtn = {
+        let button = mySubscribeBtn()
+        //button.setImage(#imageLiteral(resourceName: "category_subscription_white"), for: .normal)
         button.addTarget(self, action: #selector(CategoryDetailVC.subscribeAction(_:)), for: .touchUpInside)
+       
         return button
     }()
     
@@ -83,18 +87,34 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
         tableView.setContentOffset(.zero, animated: true)
     }
     
-    @objc func subscribeAction(_ : UIButton){
-        print("구독버튼 클릭")
+    
+    @objc func subscribeAction(_ sender : mySubscribeBtn){
+        tap(section: .first, seledtedId: sender.contentIdx!, sender: sender)
+    }
+    func tap(section: Section, seledtedId: Int, sender: mySubscribeBtn) {
+        if !isUserLogin() {
+            goToLoginPage()
+        } else {
+            let params = ["channel_id" : sender.contentIdx]
+            if sender.isSelected {
+                unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
+            } else {
+                subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
+            }
+        }
     }
     
     
-    let sunglassArr1 = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
-    let sunglassArr2 : [UIImage] =  [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg"), #imageLiteral(resourceName: "bimg")]
+    var recommendPlace : [ChannelDetailVODataPlaceRecommendedByChannel]?
+    var relatedPlace : [ChannelDetailVODataRelatedChannel]?
+    var relatedEvent : [ChannelDetailVODataRelatedChannel]?
     override func viewDidLoad() {
         
         setupTableView()
         setupNavView()
+        getChannelDetail(url : UrlPath.channelDetail.getURL(selectedIdx.description))
     }
+   
     
     func setupTableView(){
         tableView.contentInset = UIEdgeInsetsMake(-CGFloat(kNavBarBottom), 0, 0, 0)
@@ -144,9 +164,13 @@ extension CategoryDetailVC {
         mainTitleLbl.snp.makeConstraints { (make) in
             make.leading.equalTo(logoImg.snp.trailing).offset(8)
             make.top.equalTo(backgroundImg.snp.bottom).offset(16)
+            make.width.equalTo(180)
+            mainTitleLbl.adjustsFontSizeToFitWidth = true
         }
         subTitleLbl.snp.makeConstraints { (make) in
             make.leading.equalTo(mainTitleLbl.snp.leading)
+            make.width.equalTo(200)
+            subTitleLbl.adjustsFontSizeToFitWidth = true
             make.top.equalTo(mainTitleLbl.snp.bottom).offset(9)
         }
         subscribeBtn.snp.makeConstraints { (make) in
@@ -158,6 +182,9 @@ extension CategoryDetailVC {
         }
         subscribeLbl.snp.makeConstraints { (make) in
             make.trailing.equalToSuperview().offset(-16)
+            make.width.equalTo(50)
+            subscribeLbl.textAlignment = .right
+            subscribeLbl.adjustsFontSizeToFitWidth = true
             make.top.equalTo(subscribeBtn.snp.bottom).offset(9)
         }
         bottomGrayView.snp.makeConstraints { (make) in
@@ -203,17 +230,29 @@ extension CategoryDetailVC
 extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        if let relatedEvent_ = relatedEvent {
+            if relatedEvent_.count == 0 {
+                return 2
+            } else {
+                return 3
+            }
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         } else if section == 1{
-            return sunglassArr1.count
+            if let relatedPlace_ = relatedPlace {
+                return relatedPlace_.count
+            }
         } else {
-            return sunglassArr2.count
+            if let relatedEvent_ = relatedEvent {
+                return relatedEvent_.count
+            }
         }
+        return 0
     }
     
     
@@ -237,17 +276,22 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     
     @objc func placeMoreAction(_ sender : UIButton){
         let categoryStoryboard = Storyboard.shared().categoryStoryboard
-        if let categoryDetailMoreVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailMoreVC.reuseIdentifier) as? CategoryDetailMoreVC {
-            categoryDetailMoreVC.title = "장소"
-            self.navigationController?.pushViewController(categoryDetailMoreVC, animated: true)
+        if let categoryDetailMorePlaceVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailMorePlaceVC.reuseIdentifier) as? CategoryDetailMorePlaceVC {
+            categoryDetailMorePlaceVC.title = "장소"
+            categoryDetailMorePlaceVC.isPlace = true
+            categoryDetailMorePlaceVC.selectedIdx = selectedIdx
+            
+            self.navigationController?.pushViewController(categoryDetailMorePlaceVC, animated: true)
         }
     }
     
     @objc func eventMoreAction(_ sender : UIButton){
         let categoryStoryboard = Storyboard.shared().categoryStoryboard
-        if let categoryDetailMoreEventVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailMoreEventVC.reuseIdentifier) as? CategoryDetailMoreEventVC {
-            
+        if let categoryDetailMoreEventVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailMorePlaceVC.reuseIdentifier) as? CategoryDetailMorePlaceVC {
             categoryDetailMoreEventVC.title = "이벤트"
+            categoryDetailMoreEventVC.isPlace = false
+           categoryDetailMoreEventVC.selectedIdx = selectedIdx
+            
             self.navigationController?.pushViewController(categoryDetailMoreEventVC, animated: true)
         }
     }
@@ -257,16 +301,21 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 1 {
-            return heightForHeaderInSection(arr : sunglassArr1)
+            if let relatedPlace_ = relatedPlace {
+                return heightForHeaderInSection(arr : relatedPlace_)
+            }
         } else if section == 2 {
-            return heightForHeaderInSection(arr : sunglassArr2)
+            if let relatedEvent_ = relatedEvent {
+                return heightForHeaderInSection(arr : relatedEvent_)
+            }
         } else {
             return 0
         }
+        return 0
         //return section == 1 || section == 2  ? 79 : 0
     }
     
-    private func heightForHeaderInSection(arr : [UIImage]) -> CGFloat {
+    private func heightForHeaderInSection(arr : [ChannelDetailVODataRelatedChannel]) -> CGFloat {
         if (arr.count > 0){
             return 62
         }
@@ -279,14 +328,20 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: CategoryDetailFirstTVCell.reuseIdentifier) as! CategoryDetailFirstTVCell
             cell.delegate = self
+            cell.recommendData = self.recommendPlace
+            cell.titleTxt = "\(self.mainTitleLbl.text ?? "")'s 추천 장소"
             return cell
             
         }  else {
             let cell = tableView.dequeueReusableCell(withIdentifier: CategoryDetailSecondTVCell.reuseIdentifier) as! CategoryDetailSecondTVCell
             if indexPath.section == 1 {
-                //cell.configure
+                if let relatedPlace_ = relatedPlace{
+                     cell.configure(data: relatedPlace_[indexPath.row])
+                }
             } else {
-                //cell.configure
+                if let relatedEvent_ = relatedEvent{
+                   cell.configure(data: relatedEvent_[indexPath.row])
+                }
             }
             return cell
         }
@@ -294,11 +349,14 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        if indexPath.section == 1  {
-            goToPlaceDetailVC()
-        } else if indexPath.section == 2 {
-            goToCelebrityDetail()
+        if let relatedPlace_ = relatedPlace, let relatedEvent_ = relatedEvent {
+            if indexPath.section == 1  {
+                self.goToPlaceDetailVC(selectedIdx: relatedPlace_[indexPath.row].spotID)
+            } else if indexPath.section == 2 {
+                self.goToPlaceDetailVC(selectedIdx : relatedEvent_[indexPath.row].spotID, isPlace : false)
+            }
         }
+        
     }
     
 }
@@ -306,7 +364,91 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
 extension CategoryDetailVC : SelectSectionDelegate {
     func tap(section: Section, seledtedId: Int) {
         if section == .first {
-            goToPlaceDetailVC()
+           self.goToPlaceDetailVC(selectedIdx: seledtedId)
         }
     }
 }
+
+//통신
+extension CategoryDetailVC {
+    func getChannelDetail(url : String){
+        ChannelDetailService.shareInstance.getChannelDetail(url: url,completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(let channelDetailData):
+                let detailData = channelDetailData as! ChannelDetailVOData
+                let info = detailData.channelInfo
+                self.mainTitleLbl.text = info.name
+                self.subTitleLbl.text = info.company
+                self.initailSubCount = info.subscriptionCnt
+                self.subscribeLbl.text = info.subscriptionCnt.description
+                self.setImgWithKF(url: info.backgroundImg, imgView: self.backgroundImg, defaultImg: #imageLiteral(resourceName: "aimg"))
+                self.setImgWithKF(url: info.thumbnailImg, imgView: self.logoImg, defaultImg: #imageLiteral(resourceName: "aimg"))
+                self.subscribeBtn.setSubscribeBtn(idx: info.id, isSubscribe: info.subscription)
+
+                self.recommendPlace = detailData.placeRecommendedByChannel
+                self.relatedPlace = detailData.placeRelatedChannel
+                self.relatedEvent = detailData.eventRelatedChannel
+                self.tableView.reloadData()
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    }
+    
+    
+    
+    func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
+        ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(_):
+                sender.isSelected = true
+                sender.isSubscribe = 1
+                var changed : Int = 0
+                //Now change the text and background colour
+                if self.subscribeLbl.text == self.initailSubCount.description {
+                    changed = self.initailSubCount+1
+                } else {
+                    changed = self.initailSubCount
+                }
+                self.subscribeLbl.text = "\(changed)"
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    } //subscribe
+    
+    func unsubscribe(url : String, sender : mySubscribeBtn){
+        ChannelSubscribeService.shareInstance.unsubscribe(url: url, completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(_):
+                sender.isSelected = false
+                sender.isSubscribe = 0
+                var changed : Int = 0
+                
+                //Now change the text and background colour
+                if self.subscribeLbl.text == self.initailSubCount.description {
+                    changed = self.initailSubCount-1
+                } else {
+                    changed = self.initailSubCount
+                }
+                self.subscribeLbl.text = "\(changed)"
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    }
+}
+
+

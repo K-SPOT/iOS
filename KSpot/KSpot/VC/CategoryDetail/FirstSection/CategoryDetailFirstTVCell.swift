@@ -10,15 +10,25 @@ import UIKit
 
 class CategoryDetailFirstTVCell: UITableViewCell {
     
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     private var indexOfCellBeforeDragging = 0
     var currentPages = 0
+    var titleTxt : String? {
+        didSet {
+            titleLbl.text = titleTxt
+        }
+    }
     var delegate : SelectSectionDelegate?
+    var recommendData : [ChannelDetailVODataPlaceRecommendedByChannel]? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     private var collectionViewFlowLayout: UICollectionViewFlowLayout {
         return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
     
-    let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg")]
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.delegate = self
@@ -45,15 +55,20 @@ extension CategoryDetailFirstTVCell : UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sunglassArr.count
+        if let recommendData_ = recommendData {
+            return recommendData_.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell: CategoryDetailFirstCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryDetailFirstCVCell.reuseIdentifier, for: indexPath) as? CategoryDetailFirstCVCell
         {
-            cell.myImgView.image = sunglassArr[indexPath.row]
-            
+            if let recommendData_ = recommendData {
+                 cell.configure(data: recommendData_[indexPath.row])
+            }
+           
             return cell
         }
         return UICollectionViewCell()
@@ -64,7 +79,10 @@ extension CategoryDetailFirstTVCell : UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.tap(section: .first, seledtedId: 0)
+        if let recommendData_ = recommendData {
+            delegate?.tap(section: .first, seledtedId: recommendData_[indexPath.row].spotID)
+        }
+        
     }
     
     

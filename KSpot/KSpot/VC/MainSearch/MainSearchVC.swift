@@ -21,6 +21,8 @@ class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var broadcastStack: UIStackView!
     
     @IBOutlet weak var eventStack: UIStackView!
+    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackBtn()
@@ -29,7 +31,27 @@ class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
         searchTxtfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         searchBtn.addTarget(self, action: #selector(searchAction(_:)), for: .touchUpInside)
         searchIconBtn.addTarget(self, action: #selector(searchIconAction(_:)), for: .touchUpInside)
+        getSearchData(url: UrlPath.mainSearch.getURL())
         // textfeild.delegate = self 하기
+    }
+    
+    func setStackViewContent(searchData : MainSearchVOData?){
+        guard let searchData = searchData else {return}
+        for i in 0..<searchData.celebrity.count {
+            let button = celebrityStack.arrangedSubviews[i] as! UIButton
+            button.setTitle(searchData.celebrity[i].name, for: .normal)
+            button.tag = searchData.celebrity[i].channelId
+        }
+        for i in 0..<searchData.broadcast.count {
+            let button = broadcastStack.arrangedSubviews[i] as! UIButton
+            button.setTitle(searchData.broadcast[i].name, for: .normal)
+            button.tag = searchData.broadcast[i].channelId
+        }
+        for i in 0..<searchData.event.count {
+            let button = eventStack.arrangedSubviews[i] as! UIButton
+            button.setTitle(searchData.event[i].name, for: .normal)
+            button.tag = searchData.event[i].spotID
+        }
     }
     
     func setStackViewAction(){
@@ -46,11 +68,11 @@ class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func goToCelebrityDetail(_ sender : UIButton){
-        self.goToCelebrityDetail()
+        self.goToCelebrityDetail(selectedIdx : sender.tag)
     }
     
     @objc func goToPlaceDetailVC(_ sender : UIButton){
-        self.goToPlaceDetailVC()
+        self.goToPlaceDetailVC(selectedIdx: sender.tag)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -67,15 +89,16 @@ class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
     
     @objc func searchAction(_ button : UIButton) {
         let mainStoryboard = Storyboard.shared().mainStoryboard
-        if let mainSearchVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultVC.reuseIdentifier) as? SearchResultVC {
+        if let searchResultVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultVC.reuseIdentifier) as? SearchResultVC {
             //네비게이션 타이틀
             guard let searchTxt = searchTxtfield.text else{return}
             if ((searchTxt.count) < 10) {
-                 mainSearchVC.navigationItem.title = searchTxtfield.text
+                 searchResultVC.navigationItem.title = searchTxtfield.text
             } else {
-                mainSearchVC.navigationItem.title = "\(searchTxt.prefix(9))..."
+                searchResultVC.navigationItem.title = "\(searchTxt.prefix(9))..."
             }
-            self.navigationController?.pushViewController(mainSearchVC, animated: true)
+            searchResultVC.searchTxt = searchTxt
+            self.navigationController?.pushViewController(searchResultVC, animated: true)
         }
     }
     
@@ -138,6 +161,25 @@ extension MainSearchVC : UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
        
         return true
+    }
+}
+
+//통신
+extension MainSearchVC {
+    func getSearchData(url : String){
+        MainSearchService.shareInstance.getMainData(url: url,completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(let mainSearchData):
+                let searchData = mainSearchData as? MainSearchVOData
+                self.setStackViewContent(searchData: searchData)
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
     }
 }
 

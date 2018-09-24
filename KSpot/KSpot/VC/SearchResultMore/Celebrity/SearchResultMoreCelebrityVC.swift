@@ -8,28 +8,138 @@
 
 import UIKit
 
-class SearchResultMoreCelebrityVC: UIViewController {
-
+class SearchResultMoreCelebrityVC: UIViewController, UIGestureRecognizerDelegate {
+    
+    
+    var searchData : [ChannelVODataChannelList]?
+    var headerTitle = ""
+    var searchString = ""
+    @IBOutlet weak var tableView : UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView(frame : .zero)
+        setBackBtn()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        getSearchData(url: UrlPath.searchResult.getURL(searchString))
     }
-    */
-
+    
+    
 }
+
+extension SearchResultMoreCelebrityVC : SelectSenderDelegate{
+    func tap(section: Section, seledtedId: Int, sender: mySubscribeBtn) {
+        if !isUserLogin() {
+            goToLoginPage()
+        } else {
+            let params = ["channel_id" : sender.contentIdx]
+            if sender.isSelected {
+                unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
+            } else {
+                subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
+            }
+        }
+    }
+}
+
+extension SearchResultMoreCelebrityVC : UITableViewDelegate, UITableViewDataSource  {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let searchData_ = searchData {
+            return searchData_.count
+        }
+        return 0
+    }
+    
+    
+    //headerSection View 만드는 것
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableCell(withIdentifier: "SearchResultHeaderCell2") as! CategoryDetailSecondTVHeaderCell
+        header.titleLbl.text = headerTitle
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 62
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BroadcastTVCell2") as! BroadcastTVCell
+        if let searchData_ = searchData {
+            cell.delegate = self
+            cell.configure(data: searchData_[indexPath.row], index: indexPath.row)
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let searchData_ = searchData{
+           self.goToCelebrityDetail(selectedIdx: searchData_[indexPath.row].channelID)
+        }
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+}
+
+//통신
+extension SearchResultMoreCelebrityVC{
+    
+    func getSearchData(url : String){
+        SearchResultService.shareInstance.getSearchResult(url: url,completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(let searchResultData):
+                let searchResultData_ = searchResultData as? SearchResultVOData
+                self.searchData = searchResultData_?.channel
+                self.tableView.reloadData()
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    }
+    
+    func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
+        ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(_):
+                
+                sender.isSelected = true
+               
+                self.searchData![sender.indexPath!].subscription = 1
+                /*let indexPath = IndexPath(item: sender.indexPath!, section: 0)
+                 self.tableView.reloadRows(at: [indexPath], with: .top)*/
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    } //subscribe
+    
+    func unsubscribe(url : String, sender : mySubscribeBtn){
+        ChannelSubscribeService.shareInstance.unsubscribe(url: url, completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(_):
+             
+                sender.isSelected = false
+             
+                self.searchData![sender.indexPath!].subscription = 0
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    }
+}
+

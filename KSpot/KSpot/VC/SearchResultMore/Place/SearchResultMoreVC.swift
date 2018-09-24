@@ -12,6 +12,12 @@ class SearchResultMoreVC: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var containerView: UIView!
     var filterView = PlaceFilterView.instanceFromNib()
+    var searchData : [SearchResultVODataPlace]? {
+        didSet {
+            searchResultMorePlaceVC.searchData = searchData
+        }
+    }
+    var searchTxt = ""
     private lazy var searchResultMorePlaceVC: SearchResultMorePlaceVC = {
         let storyboard = Storyboard.shared().mainStoryboard
         var viewController = storyboard.instantiateViewController(withIdentifier: SearchResultMorePlaceVC.reuseIdentifier) as! SearchResultMorePlaceVC
@@ -20,8 +26,9 @@ class SearchResultMoreVC: UIViewController, UIGestureRecognizerDelegate {
     }()
     
     var selectedFirstFilter : FilterToggleBtn?
-    var selectedSecondFilter = Set<UIButton>()
-    
+    var selectedSecondFilter : Set<UIButton>?
+    var selectedSecondFilter_ = Set<UIButton>()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,9 +106,31 @@ extension SearchResultMoreVC {
         //여기서 통신
         //if selectedFirstFiler.tag == 0 이면 인기순
         print(selectedFirstFilter?.tag ?? -1)
-        selectedSecondFilter.forEach({ (button) in
+        /*selectedSecondFilter.forEach({ (button) in
             print(button.tag)
-        })
+        })*/
+        ///search/:keyword/filter/place/:order/:is_food/:is_cafe/:is_sights/:is_etc
+        var isFood : Int = 1
+        var isCafe : Int = 1
+        var isSights : Int = 1
+        var isEtc : Int = 1
+        var order = -1
+        if let first = (selectedFirstFilter?.tag) {
+            order = first
+        }
+        
+        let keyword = searchTxt
+        if let selectedSecondFilter_ = selectedSecondFilter {
+            
+            let buttonTagArr = selectedSecondFilter_.map({ (button) in
+                return button.tag
+            })
+            isFood =  buttonTagArr.contains(0) ? 1: 0
+            isCafe = buttonTagArr.contains(1) ? 1 : 0
+            isSights = buttonTagArr.contains(2) ? 1 : 0
+            isEtc = buttonTagArr.contains(3) ? 1 : 0
+        }
+        getFilteredData(url: UrlPath.searchResult.getURL("\(keyword)/filter/place/\(order)/\(isFood)/\(isCafe)/\(isSights)/\(isEtc)"))
         self.filterView.removeFromSuperview()
     }
     
@@ -116,10 +145,31 @@ extension SearchResultMoreVC {
     @objc public func secondFilterAction(_sender: UIButton) {
         if(!_sender.isSelected) {
             _sender.isSelected = true
-            selectedSecondFilter.insert(_sender)
+            selectedSecondFilter_.insert(_sender)
         } else {
             _sender.isSelected = false
-            selectedSecondFilter.remove(_sender)
+            selectedSecondFilter_.remove(_sender)
         }
+        selectedSecondFilter = selectedSecondFilter_
+    }
+}
+
+extension SearchResultMoreVC {
+    func getFilteredData(url : String){
+        SearchResultPlaceMoreService.shareInstance.getSearchResultPlaceMore(url: url,completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(let searchResultData):
+                let searchResultData_ = searchResultData as? [SearchResultVODataPlace]
+                self.searchData = searchResultData_
+                self.searchResultMorePlaceVC.isChange = true
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
     }
 }

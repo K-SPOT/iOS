@@ -20,50 +20,66 @@ class MapVC: UIViewController {
         return viewController
     }()
     
-    
+    var currentSelectedLang = selectedLang
     var filterView = MapFilterView.instanceFromNib()
     var selectedFirstFilter : FilterToggleBtn?
     var selectedSecondFilter : Int?
-    var selectedThirdFilter = Set<UIButton>()
+    var selectedThirdFilter : Set<UIButton>?
+    var selectedThirdFilter_ = Set<UIButton>()
+    var entryPoint : EntryPoint = .local
+    var defaultSpot : [UserScrapVOData]?{
+        didSet {
+            mapContainerVC.defaultSpot = defaultSpot
+        }
+    }
+    var chosenPlace : MyPlace?
     var isGoogleMapLocation : Bool = true {
         didSet {
             filterView.isGoogle = isGoogleMapLocation
             if isGoogleMapLocation {
                 //구글 맵에서 선택했을 때는 거리 인덱스 활성화
-                 setDistanceIdx(index: selectedSecondFilter ?? 3)
+                setDistanceIdx(index: selectedSecondFilter ?? 3)
             } else {
-                  filterView.distanceLbl.text = "1k 까지 설정"
+                filterView.distanceLbl.text = "1k 까지 설정"
                 //지도에서 클릭해서 선택했을 때는 버튼 활성화
-                 if let selectedBtn_ = selectedFirstFilter {
-                 selectedBtn_.selected()
-                 } else {
-                 filterView.popularBtn.selected()
-                 selectedFirstFilter = filterView.popularBtn
-                 }
+                if let selectedBtn_ = selectedFirstFilter {
+                    selectedBtn_.selected()
+                } else {
+                    filterView.popularBtn.selected()
+                    selectedFirstFilter = filterView.popularBtn
+                }
             }
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(getLangInfo(_:)), name: NSNotification.Name("GetLanguageValue"), object: nil)
         initContainerView()
         locationInit()
         setFilterView(filterView)
-       
+        setTranslationBtn()
         //네비게이션 타이틀
         self.navigationItem.title = "K-Spot"
     }
-   
     
+    @objc func getLangInfo(_ notification : Notification) {
+        if entryPoint == .google {
+            getMapInfo()
+        } else {
+            mapContainerVC.getDefualtMapData()
+        }
+    }
+
     func initContainerView(){
         addChildView(containerView: containerView, asChildViewController: mapContainerVC)
     }
     
     @IBAction func filterAction(_ sender: Any) {
-   
+        
         UIApplication.shared.keyWindow!.addSubview(filterView)
     }
     
-   
+    
     @IBAction func locationAction(_ sender: Any) {
         
         isGoogleMapLocation = true
@@ -72,6 +88,9 @@ class MapVC: UIViewController {
             googleMapVC.delegate = self
             
             googleMapVC.entryPoint = .currentLocation
+            googleMapVC.selectedThirdFilter = selectedThirdFilter
+            googleMapVC.selectedSecondFilter = selectedSecondFilter
+            googleMapVC.selectedFirstFilter = selectedFirstFilter
             self.navigationController?.pushViewController(googleMapVC, animated: true)
         }
         
@@ -82,11 +101,81 @@ class MapVC: UIViewController {
     
     
 }
-extension MapVC : SelectDelegate {
-    func tap(selected: Int?) {
+extension MapVC : SelectGoogleDelegate {
+    //구글 맵에서 들어온 것
+    func tap(selectedGoogle: MyPlace?) {
         isGoogleMapLocation = true
         mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변"
+        entryPoint = .google
+        chosenPlace = selectedGoogle
+        getMapInfo()
+    }
+}
+
+extension MapVC {
+    func getMapInfo(){
+        var isFood : Int = 1
+        var isCafe : Int = 1
+        var isSights : Int = 1
+        var isEvent : Int = 1
+        var isEtc : Int = 1
+        if let selectedThirdFilter_ = selectedThirdFilter {
+            
+            let buttonTagArr = selectedThirdFilter_.map({ (button) in
+                return button.tag
+            })
+            isFood =  buttonTagArr.contains(0) ? 1: 0
+            isCafe = buttonTagArr.contains(1) ? 1 : 0
+            isSights = buttonTagArr.contains(2) ? 1 : 0
+            isEvent = buttonTagArr.contains(3) ? 1 : 0
+            isEtc = buttonTagArr.contains(4) ? 1 : 0
+        }
+        var distance : Double = 1.0
+        if let selectedSecondFilter_ = selectedSecondFilter{
+            switch selectedSecondFilter_ {
+            case 0 :
+                distance = 0.1
+            case 1 :
+                distance = 0.3
+            case 2 :
+                distance = 0.5
+            case 3 :
+                distance = 1
+            case 4 :
+                distance = 3
+            default :
+                break
+            }
+        }
         
+        var lat : Double = 0
+        var long : Double = 0
+        if let chosenPlace_ = chosenPlace {
+            lat = chosenPlace_.lat
+            long = chosenPlace_.long
+        }
+        getGoogleSpot(url: UrlPath.spot.getURL("\(distance)/\(lat)/\(long)/\(isFood)/\(isCafe)/\(isSights)/\(isEvent)/\(isEtc)/"))
+       
+    }
+    
+    
+}
+
+extension MapVC {
+    func getGoogleSpot(url : String){
+        GoogleSpotService.shareInstance.getGoogleSpot(url: url,completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(let defaultSpot):
+                self.mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변"
+                self.defaultSpot = defaultSpot as? [UserScrapVOData]
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
     }
 }
 //필터 뷰 버튼 액션 적용
@@ -118,7 +207,7 @@ extension MapVC {
         if (safeIndex == 0){
             filterView.leftBtn.isHidden = true
         } else if (safeIndex == descArr.count - 1){
-             filterView.rightBtn.isHidden = true
+            filterView.rightBtn.isHidden = true
         } else {
             filterView.leftBtn.isHidden = false
             filterView.rightBtn.isHidden = false
@@ -130,28 +219,28 @@ extension MapVC {
     
     
     func setFilterView(_ filterView : MapFilterView){
-       
+        
         filterView.cancleBtn.addTarget(self, action: #selector(MapVC.cancleAction(_sender:)), for: .touchUpInside)
         filterView.okBtn.addTarget(self, action: #selector(MapVC.okAction(_sender:)), for: .touchUpInside)
         let buttons : [btnNum] = [ (filterView.popularBtn, 0), (filterView.recentBtn, 0), (filterView.leftBtn, 1), (filterView.rightBtn, 1), (filterView.restaurantBtn, 2), (filterView.cafeBtn, 2), (filterView.hotplaceBtn, 2), (filterView.eventBtn, 2), (filterView.etcBtn, 2)]
         
         addtarget(inputs: buttons)
-
+        
         filterView.isGoogle = isGoogleMapLocation
         
         //첫번째 섹션
         let popularBtn = filterView.popularBtn!
         let recentBtn = filterView.recentBtn!
-      
+        
         popularBtn.setOtherBtn(another: recentBtn)
         recentBtn.setOtherBtn(another: popularBtn)
-     
-      /*  if let selectedBtn_ = selectedFirstFilter {
-            selectedBtn_.selected()
-        } else {
-            popularBtn.selected()
-            selectedFirstFilter = popularBtn
-        }*/
+        
+        /*  if let selectedBtn_ = selectedFirstFilter {
+         selectedBtn_.selected()
+         } else {
+         popularBtn.selected()
+         selectedFirstFilter = popularBtn
+         }*/
         
         //두번째 섹션 - default 는 1km
         setDistanceIdx(index: selectedSecondFilter ?? 3)
@@ -176,9 +265,20 @@ extension MapVC {
         //if selectedFirstFiler.tag == 0 이면 인기순
         print(selectedFirstFilter?.tag ?? -1)
         print(selectedSecondFilter ?? -1)
-        selectedThirdFilter.forEach({ (button) in
-            print(button.tag)
-        })
+        if let selectedThirdFilter_ = selectedThirdFilter {
+            selectedThirdFilter_.forEach({ (button) in
+                print(button.tag)
+            })
+        }
+        
+        mapContainerVC.selectedFirstFilter = self.selectedFirstFilter
+        mapContainerVC.selectedSecondFilter = self.selectedSecondFilter
+        mapContainerVC.selectedThirdFilter = selectedThirdFilter
+        mapContainerVC.entryPoint = self.entryPoint
+        print("엔트리포인트는 \(entryPoint)")
+        if entryPoint == .google {
+            getMapInfo()
+        }
         self.filterView.removeFromSuperview()
     }
     
@@ -203,14 +303,16 @@ extension MapVC {
         }
         setDistanceIdx(index: index)
     }
+    
     @objc public func thirdFilterAction(_sender: UIButton) {
         if(!_sender.isSelected) {
             _sender.isSelected = true
-            selectedThirdFilter.insert(_sender)
+            selectedThirdFilter_.insert(_sender)
         } else {
             _sender.isSelected = false
-            selectedThirdFilter.remove(_sender)
+            selectedThirdFilter_.remove(_sender)
         }
+        selectedThirdFilter = selectedThirdFilter_
     }
 }
 
@@ -223,16 +325,27 @@ extension MapVC : CLLocationManagerDelegate{
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
-        
     }
+    
     
     //location 허용 안했을 때
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .denied {
             showLocationDisableAlert()
             //이때 디폴트 세팅
-        } else {
-            //self.locationAction(0)
+            entryPoint = .local
+            mapContainerVC.tap(.gangnamgu)
+        } else if status == .authorizedAlways || status == .authorizedWhenInUse{
+            currentLocation = locationManager.location
+            
+            guard let latitude = currentLocation?.coordinate.latitude,
+                let longitude = currentLocation?.coordinate.longitude else {return}
+            chosenPlace = MyPlace(name: "", lat: latitude, long: longitude)
+            
+            print("my lat : \(latitude)")
+            print("my long : \(longitude)")
+            entryPoint = .google
+            getMapInfo()
             
         }
     }

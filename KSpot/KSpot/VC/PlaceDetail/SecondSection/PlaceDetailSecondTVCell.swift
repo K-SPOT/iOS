@@ -11,28 +11,34 @@ import UIKit
 class PlaceDetailSecondTVCell: UITableViewCell {
     
     @IBOutlet weak var countLbl: UILabel!
-    @IBOutlet weak var showAllBtn: UIButton!
     @IBOutlet weak var ratingLbl: UILabel!
-    
     @IBOutlet weak var ratingView: CosmosView!
-  
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    @IBAction func writeReviewAction(_ sender: Any) {
-        //-1이면 리뷰 쓰는 것
-        delegate?.tap(section: .second, seledtedId: -1)
-        
-    }
-    
     private var indexOfCellBeforeDragging = 0
     private var collectionViewFlowLayout: UICollectionViewFlowLayout {
         return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
     var delegate : SelectSectionDelegate?
+    var reviewData : [PlaceDetailVODataReview]? {
+        didSet {
+            if let reviewData_ = reviewData {
+                countLbl.text = reviewData_.count.description+"개"
+            }
+            collectionView.reloadData()
+        }
+    }
+  
     
-    let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg")]
+    @IBAction func showAllAction(_ sender: Any) {
+        delegate?.tap(section: .second, seledtedId: 1)
+    }
     
-    
+   
+    func configure(reviewScore : Double){
+        ratingLbl.text = reviewScore.description
+        ratingView.rating = reviewScore
+    }
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.delegate = self
@@ -44,9 +50,6 @@ class PlaceDetailSecondTVCell: UITableViewCell {
         if let ratingLblInt_ = ratingLblInt {
             ratingView.rating = ratingLblInt_
         }
-        
-        
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -55,7 +58,7 @@ class PlaceDetailSecondTVCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
+       // self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
         
     }
     
@@ -68,22 +71,24 @@ extension PlaceDetailSecondTVCell : UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sunglassArr.count
+        if let reviewData_ = reviewData {
+            return reviewData_.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell: PlaceDetailSecondCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceDetailSecondCVCell.reuseIdentifier, for: indexPath) as? PlaceDetailSecondCVCell
         {
-            cell.reviewImgView.image = sunglassArr[indexPath.row]
+            if let reviewData_ = reviewData {
+                cell.configure(data : reviewData_[indexPath.row])
+            }
             return cell
         }
         return UICollectionViewCell()
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.tap(section: .second, seledtedId: indexPath.row)
-    }
+
 }
 
 

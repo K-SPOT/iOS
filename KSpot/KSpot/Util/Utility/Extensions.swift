@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import Kingfisher
 
 /*---------------------NSObject---------------------------*/
 extension NSObject {
@@ -22,18 +24,21 @@ extension NSObject {
 
 //화면 이동
 extension UIViewController {
-    func goToPlaceDetailVC(title : String = ""){
+    func goToPlaceDetailVC(selectedIdx : Int, isPlace : Bool = true, title : String = ""){
         let mapStoryboard = Storyboard.shared().mapStoryboard
         if let placeDetailVC = mapStoryboard.instantiateViewController(withIdentifier:PlaceDetailVC.reuseIdentifier) as? PlaceDetailVC {
             placeDetailVC.navigationItem.title = title
+            placeDetailVC.isPlace = isPlace
+            placeDetailVC.selectedIdx = selectedIdx
             self.navigationController?.pushViewController(placeDetailVC, animated: true)
         }
     } //goToPlaceDetailVC
     
-    func goToCelebrityDetail(title : String = ""){
+    func goToCelebrityDetail(selectedIdx : Int, title : String = ""){
         let categoryStoryboard = Storyboard.shared().categoryStoryboard
         if let categoryDetailVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailVC.reuseIdentifier) as? CategoryDetailVC {
             categoryDetailVC.navigationItem.title = title
+            categoryDetailVC.selectedIdx = selectedIdx
             self.navigationController?.pushViewController(categoryDetailVC, animated: true)
         }
     } //goToCelebrityDetail
@@ -46,10 +51,10 @@ extension UIViewController {
         }
     } //goToSearchVC
     
-    func goToLoginPage(){
+    func goToLoginPage(entryPoint : Int = 0){
         let mainStoryboard = Storyboard.shared().mainStoryboard
         if let loginVC = mainStoryboard.instantiateViewController(withIdentifier:LoginVC.reuseIdentifier) as? LoginVC {
-            
+           loginVC.entryPoint = entryPoint
             self.present(loginVC, animated: true, completion: nil)
         }
     } //goToLoginPage
@@ -65,6 +70,21 @@ extension UIViewController {
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
     }
     
+    func setTranslationBtn(){
+        let transBTN = UIBarButtonItem(image: UIImage(named: "navigationbar_translation"),
+                                      style: .plain,
+                                      target: self,
+                                      action: #selector(self.translate))
+        navigationItem.leftBarButtonItem = transBTN
+        navigationItem.leftBarButtonItem?.tintColor = ColorChip.shared().barbuttonColor
+    }
+    
+    @objc func translate(){
+        selectedLang = selectedLang == .kor ? .eng : .kor
+        let langInfo : [String : Language] = ["selectedLanguage" : selectedLang]
+        NotificationCenter.default.post(name: NSNotification.Name("GetLanguageValue"), object: nil, userInfo: langInfo)
+       // self.viewDidLoad()
+    }
     
     @objc func pop(){
         self.navigationController?.popViewController(animated: true)
@@ -72,12 +92,29 @@ extension UIViewController {
 }
 
 extension UIViewController {
+    
+    func setImgWithKF(url : String, imgView : UIImageView, defaultImg : UIImage){
+        if let url = URL(string: url){
+            imgView.kf.setImage(with: url)
+        } else {
+            imgView.image = defaultImg
+        }
+    }
     func gsno(_ value : String?) -> String{
         return value ?? ""
     }
     
     func gino(_ value : Int?) -> Int {
         return value ?? 0
+    }
+    
+
+    
+    func isUserLogin() -> Bool {
+        if FBSDKAccessToken.current() == nil {
+            return false
+        }
+        return true
     }
     
     func simpleAlert(title: String, message: String){
@@ -143,6 +180,13 @@ extension UIView {
     }
 }
 
+extension UIImage {
+    func getCropRatio() -> CGFloat {
+        let widthRatio = CGFloat(self.size.width / self.size.height)
+        return widthRatio
+    }
+}
+
 /*---------------------UIImageView---------------------------*/
 /*extension UIImageView {
     func makeImageRound(){
@@ -202,6 +246,42 @@ extension UICollectionViewCell {
         self.contentView.layer.borderWidth = 0.5
         self.contentView.layer.borderColor = #colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1)
         self.contentView.layer.masksToBounds = true
+    }
+    
+    
+    func setImgWithKF(url : String, imgView : UIImageView, defaultImg : UIImage){
+        if let url = URL(string: url){
+            imgView.kf.setImage(with: url)
+        } else {
+            imgView.image = defaultImg
+        }
+    }
+ 
+}
+
+extension UITableViewCell {
+    func setImgWithKF(url : String, imgView : UIImageView, defaultImg : UIImage){
+        if let url = URL(string: url){
+            imgView.kf.setImage(with: url)
+        } else {
+            imgView.image = defaultImg
+        }
+    }
+  
+}
+
+extension mySubscribeBtn {
+    func setSubscribeBtn(idx : Int, isSubscribe : Int){
+        self.setImage(UIImage(named: "category_subscription_white"), for: .normal)
+        self.setImage(
+            UIImage(named: "category_subscription_green"), for: .selected)
+        self.contentIdx = idx
+        if isSubscribe == 0 {
+            self.isSelected = false
+        } else {
+            self.isSelected = true
+        }
+        
     }
 }
 

@@ -11,6 +11,11 @@ import UIKit
 class CategoryDetailFirstCVCell: UICollectionViewCell {
     @IBOutlet weak var myImgView : UIImageView!
     @IBOutlet weak var placeLbl : UILabel!
+    
+    func configure(data : ChannelDetailVODataPlaceRecommendedByChannel){
+        setImgWithKF(url: data.img, imgView: myImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
+        placeLbl.text = data.name
+    }
     override func awakeFromNib() {
         self.makeCornerRound(cornerRadius: 17)
     }

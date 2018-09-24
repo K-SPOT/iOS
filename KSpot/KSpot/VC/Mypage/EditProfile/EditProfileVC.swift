@@ -14,11 +14,14 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var nameTxtfield: UITextField!
     @IBOutlet weak var nameCountLbl: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
+    
     var keyboardDismissGesture: UITapGestureRecognizer?
    
     var greenDoneBtn : UIBarButtonItem?
     var grayDoneBtn : UIBarButtonItem?
     //let imagePicker : UIImagePickerController = UIImagePickerController()
+    var profileImg : UIImage?
+    var nameTxt : String = ""
     var imageData : Data? {
         didSet {
             if imageData != nil {
@@ -42,12 +45,15 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
         self.navigationItem.rightBarButtonItem = greenDoneBtn
         profileImgView.makeRounded(cornerRadius: nil)
         nameTxtfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        nameCountLbl.text = nameTxt.count.description
+        nameTxtfield.text = nameTxt
+        profileImgView.image = profileImg
         setBackBtn()
         setKeyboardSetting()
     }
     
     @objc func doneAction(_sender : UIBarButtonItem) {
-           print("click done")
+        editProfile(url: UrlPath.userEdit.getURL(), editedName: nameTxtfield.text!)
     }
     
 
@@ -70,6 +76,13 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
             nameTxtfield.text = String(describing: contentTxt.prefix(19))
             nameCountLbl.text = nameTxtfield.text?.count.description
         }
+    }
+    
+    private func simpleOKAlert(title: String, message: String, okHandler : ((UIAlertAction) -> Void)?){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인",style: .default, handler: okHandler)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -160,3 +173,39 @@ extension EditProfileVC{
     
 }
 
+//통신
+extension EditProfileVC {
+    func editProfile(url : String, editedName : String ){
+       
+        
+        let params : [String : Any] = [
+            "name" : editedName
+        ]
+        
+        var images : [String : Data]?
+        if let image = imageData {
+            images = [
+                "profile_img" : image
+            ]
+        }
+        
+        UserEditService.shareInstance.editProfile(url: url, params: params, image: images, completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(_):
+                self.simpleOKAlert(title: "확인", message: "프로필 변경이 완료되었습니다", okHandler: { (_) in
+                     self.pop()
+                })
+            case .duplicated :
+                self.simpleAlert(title: "오류", message: "중복된 아이디입니다")
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "인터넷 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+        
+        
+    }
+}

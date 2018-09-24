@@ -8,160 +8,152 @@
 
 import UIKit
 import FBSDKLoginKit
+import Kingfisher
 
 class MypageVC: UIViewController {
-
-    @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var tableView: UITableView!
+    var numberofRows = 0
     @IBAction func logoutAction(_ sender: Any) {
         self.simpleAlertwithHandler(title: "로그아웃 하시겠습니까?", message: "") { (_) in
             //faceBookLogout
             let fbLoginManager = FBSDKLoginManager()
             fbLoginManager.logOut()
-            self.simpleAlert(title: "완료", message: "로그아웃이 완료되었습니다")
+            UserDefaults.standard.set(nil, forKey: "userAuth")
+            let parentVC = self.parent as? MyPageContainerVC
+            parentVC?.viewWillAppear(false)
         }
     }
     
-    @IBAction func moreAction(_ sender: Any) {
-        let mypageStoryboard = Storyboard.shared().mypageStoryboard
-        if let subscribeVC = mypageStoryboard.instantiateViewController(withIdentifier:SubscribeVC.reuseIdentifier) as? SubscribeVC {
-            self.navigationController?.pushViewController(subscribeVC, animated: true)
-        }
-    }
-    
-    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
-    private var indexOfCellBeforeDragging = 0
-    private var collectionViewFlowLayout: UICollectionViewFlowLayout {
-        return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+    
+    
+    var channelArr : [MypageVODataChannel]? {
+        didSet {
+            tableView.reloadData()
+        }
     }
-  
-    let sunglassArr = [#imageLiteral(resourceName: "aimg"),#imageLiteral(resourceName: "bimg"), #imageLiteral(resourceName: "cimg"), #imageLiteral(resourceName: "aimg")]
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.getMyInfo(url: UrlPath.mypage.getURL())
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        NotificationCenter.default.addObserver(self, selector: #selector(getLangInfo(_:)), name: NSNotification.Name("GetLanguageValue"), object: nil)
         tableView.delegate = self
         tableView.dataSource = self
-        collectionView.delegate = self
-        collectionView.dataSource = self
+       
         profileImgView.makeRounded(cornerRadius: profileImgView.frame.height/2)
-    
     }
-
+    @objc func getLangInfo(_ notification : Notification) {
+        self.getMyInfo(url: UrlPath.mypage.getURL())
+    }
+    
+    
 }
 
 //tableView delegate, datasource
 extension MypageVC : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        if channelArr?.count != 0 {
+            numberofRows = 3
+        } else {
+            numberofRows = 2
+        }
+        return numberofRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell = tableView.dequeueReusableCell(withIdentifier: MypageTVCell.reuseIdentifier) as! MypageTVCell
-        if indexPath.row == 0 {
-           cell.myLbl.text = "스크랩"
+        if numberofRows == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: MypageTVCell.reuseIdentifier) as! MypageTVCell
+            if indexPath.row == 0 {
+                cell.myLbl.text = "스크랩"
+            } else {
+                cell.myLbl.text = "회원정보 수정"
+            }
+            return cell
         } else {
-           cell.myLbl.text = "회원정보 수정"
+           
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: MypageFisrtTVCell.reuseIdentifier) as! MypageFisrtTVCell
+                cell.channelArr = self.channelArr
+                cell.delegate = self
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: MypageTVCell.reuseIdentifier) as! MypageTVCell
+                if indexPath.row == 1 {
+                    cell.myLbl.text = "스크랩"
+                } else {
+                    cell.myLbl.text = "회원정보 수정"
+                }
+                return cell
+            }
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let mypageStoryboard = Storyboard.shared().mypageStoryboard
-        if indexPath.row == 0 {
-           
+        if (indexPath.row == 0 && numberofRows == 2) || (indexPath.row == 1 && numberofRows == 3){
+            
             if let scrapVC = mypageStoryboard.instantiateViewController(withIdentifier:ScrapVC.reuseIdentifier) as? ScrapVC {
                 
                 self.navigationController?.pushViewController(scrapVC, animated: true)
             }
-        } else {
+        } else if (indexPath.row == 1 && numberofRows == 2) || (indexPath.row == 2 && numberofRows == 3) {
             if let editProfileVC = mypageStoryboard.instantiateViewController(withIdentifier:EditProfileVC.reuseIdentifier) as? EditProfileVC {
-                
+                editProfileVC.profileImg = self.profileImgView.image
+                if let nameTxt = nameLbl.text {
+                    editProfileVC.nameTxt = (self.nameLbl.text?.prefix((nameTxt.count)-5).description) ?? ""
+                }
                 self.navigationController?.pushViewController(editProfileVC, animated: true)
             }
         }
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 }
 
 
-
-extension MypageVC : UICollectionViewDataSource, UICollectionViewDelegate {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sunglassArr.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if let cell: MypageCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: MypageCVCell.reuseIdentifier, for: indexPath) as? MypageCVCell
-        {
-            cell.myImgView.image = sunglassArr[indexPath.row]
-            return cell
+extension MypageVC : SelectSectionDelegate{
+    func tap(section: Section, seledtedId: Int) {
+        //more action
+        if (seledtedId == -1){
+            let mypageStoryboard = Storyboard.shared().mypageStoryboard
+            if let subscribeVC = mypageStoryboard.instantiateViewController(withIdentifier:SubscribeVC.reuseIdentifier) as? SubscribeVC {
+               
+                self.navigationController?.pushViewController(subscribeVC, animated: true)
+            }
+        } else {
+             self.goToCelebrityDetail(selectedIdx : seledtedId)
         }
-        return UICollectionViewCell()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        goToCelebrityDetail()
     }
 }
 
 
-extension MypageVC: UICollectionViewDelegateFlowLayout {
-    //section내의
-    //-간격 위아래
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 15
-    }
-    //-간격 왼쪽오른쪽
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    //cell size
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (248/375)*self.view.frame.width, height: (168/667)*self.view.frame.height)
-    }
-    
+
+//통신
+extension MypageVC {
+    func getMyInfo(url : String){
+        MypageService.shareInstance.getMypageInfo(url: url,completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(let mypageData):
+                let userData = mypageData as! MypageVOData
+                self.nameLbl.text = "\(userData.user.name) 고객님,"
+                self.setImgWithKF(url: self.gsno(userData.user.profileImg), imgView: self.profileImgView, defaultImg: #imageLiteral(resourceName: "mypage_membership_edit_default_img"))
+                self.channelArr = userData.channel
+            case .networkFail :
+                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    } //getmyinfo
 }
 
-extension MypageVC : UIScrollViewDelegate{
-    
-    private func indexOfMajorCell() -> Int {
-        
-        let itemWidth = collectionViewFlowLayout.itemSize.width
-        let proportionalOffset = collectionView.contentOffset.x / (itemWidth)
-        let index = Int(round(proportionalOffset))
-        let numberOfItems = collectionView.numberOfItems(inSection: 0)
-        let safeIndex = max(0, min(numberOfItems - 1, index))
-        return safeIndex
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        indexOfCellBeforeDragging = indexOfMajorCell()
-        
-    }
-    
-    
-    
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
-        // Stop scrollView sliding:
-        targetContentOffset.pointee = scrollView.contentOffset
-        // calculate where scrollView should snap to:
-        let indexOfMajorCell = self.indexOfMajorCell()
-        let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-    }
-    
-    
-}
 
 
