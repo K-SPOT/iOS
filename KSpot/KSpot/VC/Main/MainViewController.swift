@@ -30,6 +30,8 @@ class MainViewController: UIViewController {
         }
     }
     
+  
+    
     var currentSelectedLang = selectedLang
     
     fileprivate func reloadRootViewController() {
@@ -110,11 +112,13 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: MainThirdTVCell.reuseIdentifier) as! MainThirdTVCell
             cell.popularPlaceData = mainData?.mainBestPlace
+            cell.configure(section: indexPath.row)
             cell.delegate = self
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MainForthTVCell") as! MainThirdTVCell
             cell.popularPlaceData = mainData?.mainBestEvent
+             cell.configure(section: indexPath.row)
             cell.delegate = self
             return cell
         }

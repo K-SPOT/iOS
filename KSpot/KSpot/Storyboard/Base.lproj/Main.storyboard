@@ -117,7 +117,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SMTown 코엑스 아티움" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qND-Ug-b1J">
-                                                                        <rect key="frame" x="31" y="62.5" width="192" height="14.5"/>
+                                                                        <rect key="frame" x="31" y="62" width="192" height="14.5"/>
                                                                         <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="13"/>
                                                                         <color key="textColor" red="0.36862745098039218" green="0.36862745098039218" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -181,6 +181,8 @@
                                         <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="collectionView" destination="TE1-lf-SG4" id="m5U-ZP-DGJ"/>
+                                            <outlet property="recommendPlaceLbl" destination="5XM-PP-vgJ" id="SMc-XG-98q"/>
+                                            <outlet property="thisWeekLbl" destination="Beo-QM-og1" id="jJ9-KN-Ila"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainThirdTVCell" rowHeight="383" id="gPV-zh-4qP" customClass="MainThirdTVCell" customModule="KSpot" customModuleProvider="target">
@@ -254,6 +256,7 @@
                                                             </view>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
+                                                                <constraint firstItem="Eo5-or-coo" firstAttribute="top" secondItem="LSp-RU-UU6" secondAttribute="bottom" constant="27" id="6Hp-JH-eNG"/>
                                                                 <constraint firstItem="LSp-RU-UU6" firstAttribute="trailing" secondItem="zAN-1h-mqF" secondAttribute="trailing" id="CLN-CX-onz"/>
                                                                 <constraint firstAttribute="trailing" secondItem="zAN-1h-mqF" secondAttribute="trailing" constant="31" id="Kk4-yY-03G"/>
                                                                 <constraint firstItem="zAN-1h-mqF" firstAttribute="top" secondItem="kg6-Ne-p0g" secondAttribute="top" constant="20" id="Ozo-Lg-84S"/>
@@ -301,8 +304,10 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
+                                            <outlet property="boldLbl" destination="9Rz-Ng-bG6" id="S75-D9-14R"/>
                                             <outlet property="collectionView" destination="6B1-y0-Cyq" id="uRo-Qt-CIv"/>
                                             <outlet property="moreBtn" destination="UlW-cp-1ud" id="t6P-kp-lGI"/>
+                                            <outlet property="regularLbl" destination="rj9-bp-nmJ" id="SWX-KX-T26"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainForthTVCell" rowHeight="383" id="oqd-Gd-QcE" customClass="MainThirdTVCell" customModule="KSpot" customModuleProvider="target">
@@ -382,6 +387,7 @@
                                                                 <constraint firstItem="s1a-oP-w03" firstAttribute="top" secondItem="pUT-7S-yer" secondAttribute="top" constant="20" id="N8j-fg-Un3"/>
                                                                 <constraint firstItem="s1a-oP-w03" firstAttribute="leading" secondItem="pUT-7S-yer" secondAttribute="leading" constant="31" id="PJa-0e-Qc4"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Cxb-FO-HEk" secondAttribute="trailing" id="T4W-fu-8Cc"/>
+                                                                <constraint firstItem="Cxb-FO-HEk" firstAttribute="top" secondItem="KkR-yT-bgG" secondAttribute="bottom" constant="27" id="YRJ-rj-WJ7"/>
                                                                 <constraint firstItem="KkR-yT-bgG" firstAttribute="top" secondItem="s1a-oP-w03" secondAttribute="bottom" constant="9" id="g0a-bl-evx"/>
                                                                 <constraint firstAttribute="trailing" secondItem="s1a-oP-w03" secondAttribute="trailing" constant="31" id="qAr-d9-ond"/>
                                                                 <constraint firstItem="Cxb-FO-HEk" firstAttribute="leading" secondItem="pUT-7S-yer" secondAttribute="leading" id="sPd-Oo-Rae"/>
@@ -423,8 +429,10 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
+                                            <outlet property="boldLbl" destination="dmH-uA-uPZ" id="J6j-fT-cXO"/>
                                             <outlet property="collectionView" destination="QXR-VP-38c" id="Sh7-eE-iHR"/>
                                             <outlet property="moreBtn" destination="GCU-8b-8h3" id="DIG-UD-Qbs"/>
+                                            <outlet property="regularLbl" destination="eDW-Kz-xzZ" id="0Bk-qZ-kSg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -10,9 +10,14 @@ import UIKit
 
 class MainSecondTVCell: UITableViewCell {
     
+    @IBOutlet weak var thisWeekLbl: UILabel!
+    
+    @IBOutlet weak var recommendPlaceLbl: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     private var indexOfCellBeforeDragging = 0
     var finalOffset : CGFloat = 0
+
+    
     private var collectionViewFlowLayout: UICollectionViewFlowLayout {
         return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
     }
@@ -26,7 +31,6 @@ class MainSecondTVCell: UITableViewCell {
         super.awakeFromNib()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -35,7 +39,13 @@ class MainSecondTVCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+        if selectedLang == .kor {
+            thisWeekLbl.text = "이번주 올라온"
+            recommendPlaceLbl.text = "따끈따끈 추천 PLACE"
+        } else {
+            thisWeekLbl.text = "this week updated"
+            recommendPlaceLbl.text = "hot recommend PLACE"
+        }
         //self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
         
     }
