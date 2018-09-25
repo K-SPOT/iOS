@@ -21,9 +21,16 @@ class ScrapVC: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         setBackBtn()
         getUserScrap(url: UrlPath.userScrap.getURL())
+        self.navigationItem.title = selectedLang == .kor ? "스크랩" : "Scrap"
         collectionView.delegate = self
         collectionView.dataSource = self
+        setLanguageNoti(selector: #selector(getLangInfo(_:)))
     }
+    @objc func getLangInfo(_ notification : Notification) {
+        self.navigationItem.title = selectedLang == .kor ? "스크랩" : "Scrap"
+        getUserScrap(url: UrlPath.userScrap.getURL())
+    }
+    
 
 }
 
@@ -90,7 +97,7 @@ extension ScrapVC {
                 let scrapData = scrapData as! [UserScrapVOData]
                 self.userScrapList = scrapData
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+               self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

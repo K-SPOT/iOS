@@ -10,6 +10,8 @@ import UIKit
 
 class MypageFisrtTVCell: UITableViewCell {
 
+    @IBOutlet weak var mySubsLbl: UILabel!
+    @IBOutlet weak var moreBtn: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
      var delegate : SelectSectionDelegate?
     var channelArr : [MypageVODataChannel]? {

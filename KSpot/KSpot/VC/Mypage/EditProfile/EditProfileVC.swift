@@ -11,15 +11,17 @@ import UIKit
 class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var editBtn: UIButton!
+    @IBOutlet weak var nickNameLbl: UILabel!
     @IBOutlet weak var nameTxtfield: UITextField!
     @IBOutlet weak var nameCountLbl: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
+     @IBOutlet weak var doneBtn: UIBarButtonItem!
     
     var keyboardDismissGesture: UITapGestureRecognizer?
-   
-    var greenDoneBtn : UIBarButtonItem?
-    var grayDoneBtn : UIBarButtonItem?
-    //let imagePicker : UIImagePickerController = UIImagePickerController()
+    
+   // var greenDoneBtn : UIBarButtonItem?
+   // var grayDoneBtn : UIBarButtonItem?
+    let imagePicker : UIImagePickerController = UIImagePickerController()
     var profileImg : UIImage?
     var nameTxt : String = ""
     var imageData : Data? {
@@ -40,9 +42,10 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-         grayDoneBtn = UIBarButtonItem.titleBarbutton(title: "완료", red: 236, green: 236, blue: 236, fontSize: 18, fontName: NanumSquareOTF.NanumSquareOTFB.rawValue, selector: nil, target: self)
-        greenDoneBtn = UIBarButtonItem.titleBarbutton(title: "완료", red: 64, green: 211, blue: 159, fontSize: 18, fontName: NanumSquareOTF.NanumSquareOTFB.rawValue, selector: #selector(EditProfileVC.doneAction(_sender:)), target: self)
-        self.navigationItem.rightBarButtonItem = greenDoneBtn
+        /*grayDoneBtn = UIBarButtonItem.titleBarbutton(title: "완료", red: 236, green: 236, blue: 236, fontSize: 18, fontName: NanumSquareOTF.NanumSquareOTFB.rawValue, selector: nil, target: self)
+        greenDoneBtn = UIBarButtonItem.titleBarbutton(title: "완료", red: 64, green: 211, blue: 159, fontSize: 18, fontName: NanumSquareOTF.NanumSquareOTFB.rawValue, selector: #selector(EditProfileVC.doneAction(_sender:)), target: self)*/
+        //self.navigationItem.rightBarButtonItem = greenDoneBtn
+        
         profileImgView.makeRounded(cornerRadius: nil)
         nameTxtfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         nameCountLbl.text = nameTxt.count.description
@@ -50,29 +53,47 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
         profileImgView.image = profileImg
         setBackBtn()
         setKeyboardSetting()
+        setLanguageNoti(selector: #selector(getLangInfo(_:)))
+        setLanguage()
     }
     
-    @objc func doneAction(_sender : UIBarButtonItem) {
-        editProfile(url: UrlPath.userEdit.getURL(), editedName: nameTxtfield.text!)
+    @objc func getLangInfo(_ notification : Notification) {
+        setLanguage()
     }
+    func setLanguage(){
+        self.navigationItem.title = selectedLang == .kor ? "회원정보 수정" : "Edit Profile"
+        nickNameLbl.text = selectedLang == .kor ? "닉네임" : "Nickname"
+        doneBtn.title = selectedLang == .kor ? "완료" : "complete"
+    }
+    
     
 
+    @IBAction func doneAction(_ sender: Any) {
+         editProfile(url: UrlPath.userEdit.getURL(), editedName: nameTxtfield.text!)
+    }
+    
     @objc func textFieldDidChange(_ textField: UITextField) {
-       
+        
         if let text = nameTxtfield.text {
             nameCountLbl.text = text.count.description
         } else {
             nameCountLbl.text = "0"
         }
         guard let contentTxt = nameTxtfield.text else {return}
-
+        
         if contentTxt.count < 2 {
-            self.navigationItem.rightBarButtonItem = grayDoneBtn
+            doneBtn.tintColor = #colorLiteral(red: 0.9254901961, green: 0.9254901961, blue: 0.9254901961, alpha: 1)
+            doneBtn.isEnabled = false
+           // self.navigationItem.rightBarButtonItem = grayDoneBtn
         } else {
-            self.navigationItem.rightBarButtonItem = greenDoneBtn
+            doneBtn.tintColor = ColorChip.shared().mainColor
+            doneBtn.isEnabled = true
+            //self.navigationItem.rightBarButtonItem = greenDoneBtn
         }
         if(contentTxt.count > 20) {
-            simpleAlert(title: "오류", message: "20글자 초과")
+            let alertTitle = selectedLang == .kor ? "오류" : "Error"
+            let alertMsg = selectedLang == .kor ? "20글자 초과" : "longer than 20 characters"
+            self.simpleAlert(title: alertTitle, message: alertMsg)
             nameTxtfield.text = String(describing: contentTxt.prefix(19))
             nameCountLbl.text = nameTxtfield.text?.count.description
         }
@@ -112,7 +133,9 @@ UINavigationControllerDelegate  {
     // Method
     func openGallery(){
         let selectAlert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let libraryAction = UIAlertAction(title: "앨범에서 사진 선택", style: .default) { _ in if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary){
+        let libraryTxt = selectedLang == .kor ? "앨범에서 사진 선택" : "Select image from album"
+        let defualtTxt = selectedLang == .kor ? "기본 이미지 선택" : "Default image"
+        let libraryAction = UIAlertAction(title: libraryTxt, style: .default) { _ in if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary){
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
@@ -121,7 +144,7 @@ UINavigationControllerDelegate  {
             }
         }
         
-        let defualtAction = UIAlertAction(title: "기본 이미지 선택", style: .default) {
+        let defualtAction = UIAlertAction(title: defualtTxt, style: .default) {
             _ in
             self.imageData = UIImageJPEGRepresentation(#imageLiteral(resourceName: "mypage_membership_edit_default_img"), 0.1)
         }
@@ -176,7 +199,7 @@ extension EditProfileVC{
 //통신
 extension EditProfileVC {
     func editProfile(url : String, editedName : String ){
-       
+        
         
         let params : [String : Any] = [
             "name" : editedName
@@ -194,12 +217,14 @@ extension EditProfileVC {
             switch result {
             case .networkSuccess(_):
                 self.simpleOKAlert(title: "확인", message: "프로필 변경이 완료되었습니다", okHandler: { (_) in
-                     self.pop()
+                    self.pop()
                 })
             case .duplicated :
-                self.simpleAlert(title: "오류", message: "중복된 아이디입니다")
+                let alertTitle = selectedLang == .kor ? "오류" : "Error"
+                let alertMsg = selectedLang == .kor ? "이미 사용중인 닉네임입니다" : "This nickname is already using"
+                self.simpleAlert(title: alertTitle, message: alertMsg)
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "인터넷 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

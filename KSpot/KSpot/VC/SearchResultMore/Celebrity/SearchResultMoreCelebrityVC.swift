@@ -96,7 +96,7 @@ extension SearchResultMoreCelebrityVC{
                 self.searchData = searchResultData_?.channel
                 self.tableView.reloadData()
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break
@@ -116,7 +116,7 @@ extension SearchResultMoreCelebrityVC{
                 /*let indexPath = IndexPath(item: sender.indexPath!, section: 0)
                  self.tableView.reloadRows(at: [indexPath], with: .top)*/
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break
@@ -134,7 +134,7 @@ extension SearchResultMoreCelebrityVC{
              
                 self.searchData![sender.indexPath!].subscription = 0
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+               self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

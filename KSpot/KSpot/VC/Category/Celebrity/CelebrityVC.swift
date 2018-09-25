@@ -80,7 +80,7 @@ extension CelebrityVC {
                 /*let indexPath = IndexPath(item: sender.indexPath!, section: 0)
                 self.tableView.reloadRows(at: [indexPath], with: .top)*/
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break
@@ -93,12 +93,12 @@ extension CelebrityVC {
             guard let `self` = self else { return }
             switch result {
             case .networkSuccess(_):
-                print("여기로 들어옴-2")
+             
                 sender.isSelected = false
-                print(sender.indexPath)
+            
                 self.celebrityList![sender.indexPath!].subscription = 0
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+               self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

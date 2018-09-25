@@ -39,7 +39,12 @@ class MyPageContainerVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-         setTranslationBtn()
+        self.navigationItem.title = selectedLang == .kor ? "마이페이지" : "MY PAGE"
+        setTranslationBtn()
+        setLanguageNoti(selector: #selector(getLangInfo(_:)))
+    }
+    @objc func getLangInfo(_ notification : Notification) {
+        self.navigationItem.title = selectedLang == .kor ? "마이페이지" : "MY PAGE"
     }
 
     private func updateView(selected : Int) {

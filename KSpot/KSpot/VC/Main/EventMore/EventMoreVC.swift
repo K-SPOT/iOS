@@ -19,6 +19,11 @@ class EventMoreVC: UIViewController, UIGestureRecognizerDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        if selectedLang == .kor {
+            self.navigationItem.title = "최신 EVENT"
+        } else {
+            self.navigationItem.title = "NEW EVENT"
+        }
         setBackBtn()
         getMoreEvent(url: UrlPath.spotEvent.getURL())
         collectionView.delegate = self
@@ -90,7 +95,7 @@ extension EventMoreVC {
                 let eventData = eventData as! [UserScrapVOData]
                 self.eventList = eventData
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+               self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

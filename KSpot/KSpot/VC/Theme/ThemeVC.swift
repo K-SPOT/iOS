@@ -25,7 +25,7 @@ class ThemeVC: UIViewController, UIGestureRecognizerDelegate {
 
     func setHeader(data : ThemeVOData?){
         guard let data = data else {return}
-        titleLbl.text = data.theme.title
+        titleLbl.text = "\(data.theme.title[0])\n\(data.theme.title[1])"
         subtitleLbl.text = data.theme.subtitle
         setImgWithKF(url: data.theme.img, imgView: topView, defaultImg: #imageLiteral(resourceName: "aimg"))
     }
@@ -183,7 +183,7 @@ extension ThemeVC {
             case .networkSuccess(let themeData):
                 self.themeData = themeData as? ThemeVOData
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

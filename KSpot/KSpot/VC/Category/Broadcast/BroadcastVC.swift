@@ -80,7 +80,7 @@ extension BroadcastVC {
                 sender.isSelected = true
                 self.broadcastList![sender.indexPath!].subscription = 1
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break
@@ -97,7 +97,7 @@ extension BroadcastVC {
                 sender.isSelected = false
                 self.broadcastList![sender.indexPath!].subscription = 0
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

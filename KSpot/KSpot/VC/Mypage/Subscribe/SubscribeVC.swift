@@ -56,10 +56,24 @@ class SubscribeVC: UIViewController, UIGestureRecognizerDelegate {
         getUserSubcription(url: UrlPath.userSubscription.getURL())
         updateView(selected: 0)
         setBackBtn()
+        setLanguage()
+        setLanguageNoti(selector: #selector(getLangInfo(_:)))
+    }
+    @objc func getLangInfo(_ notification : Notification) {
+        self.navigationItem.title = selectedLang == .kor ? "구독" : "Subscribe"
+        getUserSubcription(url: UrlPath.userSubscription.getURL())
+        setLanguage()
+    }
+    func setLanguage(){
+        if selectedLang == .kor {
+            celebrityBtn.setTitle("연예인", for: .normal)
+            broadcastBtn.setTitle("방송", for: .normal)
+        } else {
+            celebrityBtn.setTitle("Celebrity", for: .normal)
+            broadcastBtn.setTitle("Broadcast", for: .normal)
+        }
     }
     
-    
-
 }
 
 
@@ -92,7 +106,7 @@ extension SubscribeVC{
                 self.celebritySubscriptionList = subsData.celebrity
                
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+               self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

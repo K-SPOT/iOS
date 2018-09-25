@@ -11,6 +11,7 @@ import UIKit
 class MapHeaderView: UICollectionReusableView {
     @IBOutlet weak var selectedRegionLbl: UILabel!
    
+    @IBOutlet weak var mapImgView: UIImageView!
     @IBOutlet weak var gangsuBtn1: RegionBtn!
     @IBOutlet weak var yeongdeungpoBtn1: RegionBtn!
     @IBOutlet weak var gwanakBtn1: RegionBtn!

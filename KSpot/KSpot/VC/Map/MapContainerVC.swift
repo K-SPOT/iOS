@@ -102,6 +102,8 @@ extension MapContainerVC : UICollectionViewDataSource, UICollectionViewDelegate{
     private func setRegion(inputs : [buttonRegion]){
         inputs.forEach { (input) in
             input.0.region = input.1
+            input.0.setTitle("", for: .normal)
+            input.0.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
         }
     }
     
@@ -216,7 +218,7 @@ extension MapContainerVC {
                 self.defaultSpot = defaultSpot as? [UserScrapVOData]
                 self.mapView?.selectedRegionLbl.text = self.regionTxt
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

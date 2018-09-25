@@ -10,6 +10,7 @@ import UIKit
 
 class PlaceDetailFirstTVCell: UITableViewCell {
     
+    @IBOutlet weak var relatedCelebrityLbl: UILabel!
     @IBOutlet weak var countLbl: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
   
@@ -18,7 +19,14 @@ class PlaceDetailFirstTVCell: UITableViewCell {
     var relatedChannel : PlaceDetailVODataChannel? {
         didSet {
             if let relatedChannel_ = self.relatedChannel {
-                countLbl.text = relatedChannel_.channelID.count.description+"개"
+                if selectedLang == .kor {
+                    countLbl.text = relatedChannel_.channelID.count.description+"개"
+                    relatedCelebrityLbl.text = "관련 연예인/방송"
+                } else {
+                    countLbl.text = relatedChannel_.channelID.count.description
+                    relatedCelebrityLbl.text = "related Celebrity/Broadcast"
+                }
+               
                 collectionView.reloadData()
             }
         }

@@ -13,7 +13,7 @@ class ReviewContainerVC: UIViewController, UIGestureRecognizerDelegate {
 
     var selectedIdx = 0
     var rating = 0.0
-    
+    @IBOutlet weak var writeReviewBtn: UIButton!
     @IBOutlet weak var containerView: UIView!
     private lazy var reviewVC: ReviewVC = {
         let storyboard = Storyboard.shared().mapStoryboard
@@ -38,6 +38,9 @@ class ReviewContainerVC: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if selectedLang == .eng {
+              writeReviewBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
+        }
         setBackBtn()
         initContainerView()
     }

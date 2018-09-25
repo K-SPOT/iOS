@@ -10,8 +10,12 @@ import UIKit
 
 class PlaceDetailSecondTVCell: UITableViewCell {
     
+    
+    @IBOutlet weak var reviewLbl: UILabel!
     @IBOutlet weak var countLbl: UILabel!
+    
     @IBOutlet weak var ratingLbl: UILabel!
+    @IBOutlet weak var moreBtn: UIButton!
     @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var collectionView: UICollectionView!
     private var indexOfCellBeforeDragging = 0
@@ -22,7 +26,16 @@ class PlaceDetailSecondTVCell: UITableViewCell {
     var reviewData : [PlaceDetailVODataReview]? {
         didSet {
             if let reviewData_ = reviewData {
-                countLbl.text = reviewData_.count.description+"개"
+                if selectedLang == .kor {
+                   countLbl.text = reviewData_.count.description+"개"
+                    reviewLbl.text = "리뷰"
+                    moreBtn.setTitle("모두보기", for: .normal)
+                } else {
+                     countLbl.text = reviewData_.count.description
+                     reviewLbl.text = "Review"
+                    moreBtn.setTitle("view all", for: .normal)
+                }
+               
             }
             collectionView.reloadData()
         }

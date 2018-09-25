@@ -12,6 +12,33 @@ class MainThirdTVCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var moreBtn: UIButton!
+     @IBOutlet weak var regularLbl: UILabel!
+     @IBOutlet weak var boldLbl: UILabel!
+    
+    
+    func configure(section : Int){
+        if section == 2 {
+            if selectedLang == .kor {
+                regularLbl.text = "인기 장소"
+                boldLbl.text = "BEST 10"
+                
+            } else {
+                regularLbl.text = "Hot place"
+                boldLbl.text = "BEST 10"
+            }
+        } else {
+            //3
+            if selectedLang == .kor {
+                regularLbl.text = "이번주"
+                boldLbl.text = "NEW EVENT 5"
+                moreBtn.setTitle("더보기", for: .normal)
+            } else {
+                regularLbl.text = ""
+                boldLbl.text = "NEW EVENT 5"
+                moreBtn.setTitle("MORE", for: .normal)
+            }
+        }
+    }
     
     private var indexOfCellBeforeDragging = 0
     private var collectionViewFlowLayout: UICollectionViewFlowLayout {

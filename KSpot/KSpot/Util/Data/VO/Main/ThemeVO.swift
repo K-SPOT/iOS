@@ -23,9 +23,15 @@ struct ThemeVOData: Codable {
     }
 }
 
-struct ThemeVODataTheme: Codable {
+struct ThemeVODataTheme : Codable {
     let img: String
-    let title, subtitle: String
+    let title: [String]
+    let subtitle: String
+    
+    enum CodingKeys: String, CodingKey {
+        case img, title
+        case subtitle
+    }
 }
 
 struct ThemeVODataThemeContent: Codable {

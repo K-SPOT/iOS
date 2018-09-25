@@ -11,11 +11,16 @@ import UIKit
 class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
     var keyboardDismissGesture: UITapGestureRecognizer?
     
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var searchIconBtn: UIButton!
     @IBOutlet weak var searchTxtfield: UITextField!
     
     @IBOutlet weak var searchBtn: UIButton!
     
+    @IBOutlet weak var celebrityLbl: UILabel!
+    
+    @IBOutlet weak var eventLbl: UILabel!
+    @IBOutlet weak var broadcastLbl: UILabel!
     @IBOutlet weak var celebrityStack: UIStackView!
     
     @IBOutlet weak var broadcastStack: UIStackView!
@@ -33,6 +38,16 @@ class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
         searchIconBtn.addTarget(self, action: #selector(searchIconAction(_:)), for: .touchUpInside)
         getSearchData(url: UrlPath.mainSearch.getURL())
         // textfeild.delegate = self 하기
+        if selectedLang == .eng {
+           
+            titleLbl.text = "What are you looking for?"
+            searchTxtfield.placeholder = "Please enter your key word"
+            celebrityLbl.text = "celebrity"
+            broadcastLbl.text = "broadcast"
+            eventLbl.text = "event"
+            searchBtn.setTitle("search", for: .normal)
+        }
+        
     }
     
     func setStackViewContent(searchData : MainSearchVOData?){
@@ -174,7 +189,7 @@ extension MainSearchVC {
                 let searchData = mainSearchData as? MainSearchVOData
                 self.setStackViewContent(searchData: searchData)
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

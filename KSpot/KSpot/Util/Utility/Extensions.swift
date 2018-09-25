@@ -19,6 +19,45 @@ extension NSObject {
 
 
 
+extension UIDevice {
+    var iPhoneX: Bool {
+        return UIScreen.main.nativeBounds.height == 2436
+    }
+    var iPhone: Bool {
+        return UIDevice.current.userInterfaceIdiom == .phone
+    }
+    enum ScreenType: String {
+        case iPhones_4_4S = "iPhone 4 or iPhone 4S"
+        case iPhones_5_5s_5c_SE = "iPhone 5, iPhone 5s, iPhone 5c or iPhone SE"
+        case iPhones_6_6s_7_8 = "iPhone 6, iPhone 6S, iPhone 7 or iPhone 8"
+        case iPhones_6Plus_6sPlus_7Plus_8Plus = "iPhone 6 Plus, iPhone 6S Plus, iPhone 7 Plus or iPhone 8 Plus"
+        case iPhones_X_XS = "iPhone X or iPhone XS"
+        case iPhone_XR = "iPhone XR"
+        case iPhone_XSMax = "iPhone XS Max"
+        case unknown
+    }
+    var screenType: ScreenType {
+        switch UIScreen.main.nativeBounds.height {
+        case 960:
+            return .iPhones_4_4S
+        case 1136:
+            return .iPhones_5_5s_5c_SE
+        case 1334:
+            return .iPhones_6_6s_7_8
+        case 1792:
+            return .iPhone_XR
+        case 1920, 2208:
+            return .iPhones_6Plus_6sPlus_7Plus_8Plus
+        case 2436:
+            return .iPhones_X_XS
+        case 2688:
+            return .iPhone_XSMax
+        default:
+            return .unknown
+        }
+    }
+}
+
 /*---------------------UIViewController---------------------------*/
 
 
@@ -79,6 +118,12 @@ extension UIViewController {
         navigationItem.leftBarButtonItem?.tintColor = ColorChip.shared().barbuttonColor
     }
     
+    func setLanguageNoti(selector : Selector){
+       
+        NotificationCenter.default.addObserver(self, selector: selector, name: NSNotification.Name("GetLanguageValue"), object: nil)
+    
+    }
+    
     @objc func translate(){
         selectedLang = selectedLang == .kor ? .eng : .kor
         let langInfo : [String : Language] = ["selectedLanguage" : selectedLang]
@@ -119,16 +164,28 @@ extension UIViewController {
     
     func simpleAlert(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인",style: .default)
-      
+        let okTitle = selectedLang == .kor ? "확인" : "Check"
+        let okAction = UIAlertAction(title: okTitle,style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+    
+    func networkSimpleAlert(){
+        let title = selectedLang == .kor ? "오류" : "Error"
+         let message = selectedLang == .kor ? "네트워크 연결상태를 확인해주세요" : "Please check network"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okTitle = selectedLang == .kor ? "확인" : "Check"
+        let okAction = UIAlertAction(title: okTitle,style: .default)
         alert.addAction(okAction)
         present(alert, animated: true)
     }
     
     func simpleAlertwithHandler(title: String, message: String, okHandler : ((UIAlertAction) -> Void)?){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인",style: .default, handler: okHandler)
-        let cancelAction = UIAlertAction(title: "취소",style: .cancel, handler: nil)
+        let okTitle = selectedLang == .kor ? "확인" : "Check"
+        let cancelTitle = selectedLang == .kor ? "취소" : "Cancel"
+        let okAction = UIAlertAction(title: okTitle,style: .default, handler: okHandler)
+        let cancelAction = UIAlertAction(title: cancelTitle,style: .cancel, handler: nil)
         alert.addAction(okAction)
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
@@ -272,9 +329,16 @@ extension UITableViewCell {
 
 extension mySubscribeBtn {
     func setSubscribeBtn(idx : Int, isSubscribe : Int){
-        self.setImage(UIImage(named: "category_subscription_white"), for: .normal)
-        self.setImage(
-            UIImage(named: "category_subscription_green"), for: .selected)
+        if selectedLang == .kor {
+            self.setImage(UIImage(named: "category_subscription_white"), for: .normal)
+            self.setImage(
+                UIImage(named: "category_subscription_green"), for: .selected)
+        } else {
+            self.setImage(UIImage(named: "board_star_gray"), for: .normal)
+            self.setImage(
+                UIImage(named: "board_star_green"), for: .selected)
+        }
+      
         self.contentIdx = idx
         if isSubscribe == 0 {
             self.isSelected = false

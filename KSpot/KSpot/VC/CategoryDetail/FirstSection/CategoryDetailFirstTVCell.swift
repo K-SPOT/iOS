@@ -11,12 +11,19 @@ import UIKit
 class CategoryDetailFirstTVCell: UITableViewCell {
     
     @IBOutlet weak var titleLbl: UILabel!
+    
+    @IBOutlet weak var subTitleLbl: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     private var indexOfCellBeforeDragging = 0
     var currentPages = 0
     var titleTxt : String? {
         didSet {
             titleLbl.text = titleTxt
+        }
+    }
+    var subtitleTxt : String? {
+        didSet {
+            subTitleLbl.text = subtitleTxt
         }
     }
     var delegate : SelectSectionDelegate?
@@ -43,7 +50,7 @@ class CategoryDetailFirstTVCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
+        //self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
         
     }
     

@@ -18,6 +18,7 @@ class CategoryDetailMorePlaceVC: UIViewController, UIGestureRecognizerDelegate {
     }
     var isPlace = true
     var selectedIdx = 0
+    var mainTitle : String? = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackBtn()
@@ -25,7 +26,13 @@ class CategoryDetailMorePlaceVC: UIViewController, UIGestureRecognizerDelegate {
         collectionView.dataSource = self
         let isEvent = isPlace ? 0 : 1
         getChannelSpotMore(url: UrlPath.channelSpotMore.getSpotMoreURL(channelId: selectedIdx, isEvent: isEvent))
+        setLanguageNoti(selector: #selector(getLangInfo(_:)))
         
+    }
+    
+    @objc func getLangInfo(_ notification : Notification) {
+        let isEvent = isPlace ? 0 : 1
+        getChannelSpotMore(url: UrlPath.channelSpotMore.getSpotMoreURL(channelId: selectedIdx, isEvent: isEvent))
     }
     
 }
@@ -42,6 +49,27 @@ extension CategoryDetailMorePlaceVC : UICollectionViewDataSource, UICollectionVi
         }
         return 0
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        //1
+        switch kind {
+        //2
+        case UICollectionElementKindSectionHeader:
+            //3
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                             withReuseIdentifier: "CategoryDetailMorePlaceHeaderView",
+                                                                             for: indexPath) as! CategoryDetailMorePlaceHeaderView
+            if let mainTitle = mainTitle {
+                headerView.titleLbl.text = mainTitle+" K-Spot"
+            }
+            
+            return headerView
+        default:
+            //4
+            assert(false, "Unexpected element kind")
+        }
+    }
+
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -95,7 +123,7 @@ extension CategoryDetailMorePlaceVC {
             case .networkSuccess(let channelMoreData):
                 self.channelMoreData = channelMoreData as? [UserScrapVOData]
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break
