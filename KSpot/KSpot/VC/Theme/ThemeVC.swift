@@ -25,7 +25,7 @@ class ThemeVC: UIViewController, UIGestureRecognizerDelegate {
 
     func setHeader(data : ThemeVOData?){
         guard let data = data else {return}
-        titleLbl.text = data.theme.title
+        titleLbl.text = "\(data.theme.title[0])\n\(data.theme.title[1])"
         subtitleLbl.text = data.theme.subtitle
         setImgWithKF(url: data.theme.img, imgView: topView, defaultImg: #imageLiteral(resourceName: "aimg"))
     }

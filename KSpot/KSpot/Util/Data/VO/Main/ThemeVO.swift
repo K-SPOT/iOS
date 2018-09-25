@@ -23,11 +23,11 @@ struct ThemeVOData: Codable {
     }
 }
 
-struct ThemeVODataTheme: Codable {
+/*struct ThemeVODataTheme: Codable {
     let img: String
     let title, subtitle: String
-}
-/*struct ThemeVODataTheme : Codable {
+}*/
+struct ThemeVODataTheme : Codable {
     let img: String
     let title: [String]
     let mainImg: String
@@ -38,7 +38,7 @@ struct ThemeVODataTheme: Codable {
         case mainImg = "main_img"
         case subtitle
     }
-}*/
+}
 
 struct ThemeVODataThemeContent: Codable {
     let spotID: Int
