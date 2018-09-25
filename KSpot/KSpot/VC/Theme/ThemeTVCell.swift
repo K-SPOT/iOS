@@ -34,6 +34,11 @@ class ThemeTVCell: UITableViewCell {
         if desCount >= 3 {
             thirdDesLbl.text = data.description[2]
         }
+        if selectedLang == .kor {
+            placeDetailBtn.setImage(#imageLiteral(resourceName: "theme_place_more_button"), for: .normal)
+        } else {
+            placeDetailBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
+        }
     }
     
     @objc func placeDetailAction(_ sender : UIButton){

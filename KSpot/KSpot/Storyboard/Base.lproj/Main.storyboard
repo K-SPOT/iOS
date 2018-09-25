@@ -256,7 +256,6 @@
                                                             </view>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
-                                                                <constraint firstItem="Eo5-or-coo" firstAttribute="top" secondItem="LSp-RU-UU6" secondAttribute="bottom" constant="27" id="6Hp-JH-eNG"/>
                                                                 <constraint firstItem="LSp-RU-UU6" firstAttribute="trailing" secondItem="zAN-1h-mqF" secondAttribute="trailing" id="CLN-CX-onz"/>
                                                                 <constraint firstAttribute="trailing" secondItem="zAN-1h-mqF" secondAttribute="trailing" constant="31" id="Kk4-yY-03G"/>
                                                                 <constraint firstItem="zAN-1h-mqF" firstAttribute="top" secondItem="kg6-Ne-p0g" secondAttribute="top" constant="20" id="Ozo-Lg-84S"/>
@@ -387,7 +386,6 @@
                                                                 <constraint firstItem="s1a-oP-w03" firstAttribute="top" secondItem="pUT-7S-yer" secondAttribute="top" constant="20" id="N8j-fg-Un3"/>
                                                                 <constraint firstItem="s1a-oP-w03" firstAttribute="leading" secondItem="pUT-7S-yer" secondAttribute="leading" constant="31" id="PJa-0e-Qc4"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Cxb-FO-HEk" secondAttribute="trailing" id="T4W-fu-8Cc"/>
-                                                                <constraint firstItem="Cxb-FO-HEk" firstAttribute="top" secondItem="KkR-yT-bgG" secondAttribute="bottom" constant="27" id="YRJ-rj-WJ7"/>
                                                                 <constraint firstItem="KkR-yT-bgG" firstAttribute="top" secondItem="s1a-oP-w03" secondAttribute="bottom" constant="9" id="g0a-bl-evx"/>
                                                                 <constraint firstAttribute="trailing" secondItem="s1a-oP-w03" secondAttribute="trailing" constant="31" id="qAr-d9-ond"/>
                                                                 <constraint firstItem="Cxb-FO-HEk" firstAttribute="leading" secondItem="pUT-7S-yer" secondAttribute="leading" id="sPd-Oo-Rae"/>
