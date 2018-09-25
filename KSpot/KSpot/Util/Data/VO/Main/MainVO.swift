@@ -30,16 +30,16 @@ struct MainVOData: Codable {
 
 
 struct MainVODataTheme: Codable {
-    let title: String
+   
     let mainImg: String
     let themeID: Int
-    let subtitle: String
+   
     
     enum CodingKeys: String, CodingKey {
-        case title
+   
         case mainImg = "main_img"
         case themeID = "theme_id"
-        case subtitle
+      
     }
 }
 

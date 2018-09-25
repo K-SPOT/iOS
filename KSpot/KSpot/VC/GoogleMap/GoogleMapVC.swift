@@ -48,7 +48,13 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
         tf.borderStyle = .roundedRect
         tf.backgroundColor = .white
         tf.layer.borderColor = UIColor.darkGray.cgColor
-        tf.placeholder="찾고 싶은 장소를 입력해주세요"
+        if selectedLang == .kor {
+          tf.placeholder="찾고 싶은 장소를 입력해주세요"
+        } else {
+         tf.placeholder="Enter the place what you're looking for"
+           
+        }
+       
         tf.translatesAutoresizingMaskIntoConstraints=false
         return tf
     }()
@@ -65,7 +71,11 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
     let okBtn: UIButton = {
         let btn=UIButton()
         btn.backgroundColor = ColorChip.shared().mainColor
-        btn.setTitle("이 위치로 장소 설정",for: .normal)
+        if selectedLang == .kor {
+           btn.setTitle("이 위치로 장소 설정",for: .normal)
+        } else {
+            btn.setTitle("Set my location to here",for: .normal)
+        }
         btn.setTitleColor(.white, for: .normal)
         btn.titleLabel?.font = UIFont(name: NanumSquareOTF.NanumSquareOTFR.rawValue, size: 20)
         btn.addTarget(self, action: #selector(okAction), for: .touchUpInside)
@@ -250,6 +260,7 @@ extension GoogleMapVC {
             make.trailing.equalToSuperview().offset(-10)
             make.height.equalTo(35)
         }
+         txtFieldSearch.adjustsFontSizeToFitWidth = true
         setupTextField(textField: txtFieldSearch, img: #imageLiteral(resourceName: "main_search"))
         
         

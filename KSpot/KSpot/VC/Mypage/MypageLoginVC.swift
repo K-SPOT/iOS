@@ -10,14 +10,27 @@ import UIKit
 
 class MypageLoginVC: UIViewController {
     
-
+    @IBOutlet weak var boldLbl: UILabel!
+    @IBOutlet weak var regularLbl: UILabel!
+    @IBOutlet weak var loginBtn: UIButton!
+    
     @IBAction func loginAction(_ sender: Any) {
         goToLoginPage()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLanguageNoti(selector: #selector(getLangInfo(_:)))
 
         // Do any additional setup after loading the view.
+    }
+    @objc func getLangInfo(_ notification : Notification) {
+        boldLbl.text = selectedLang == .kor ? "로그인이 필요한 서비스입니다 :)" : "This is a service that requires login :)"
+         regularLbl.text = selectedLang == .kor ? "구독채널과 스크랩을 하려면 로그인해주세요" : "Please login to subscribe and scrap"
+        if selectedLang == .kor {
+            loginBtn.setImage(#imageLiteral(resourceName: "mypage_login_button"), for: .normal)
+        } else {
+            loginBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
+        }
     }
 
 

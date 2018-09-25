@@ -48,7 +48,8 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(getLangInfo(_:)), name: NSNotification.Name("GetLanguageValue"), object: nil)
+       
+        setLanguageNoti(selector: #selector(getLangInfo(_:)))
         reloadRootViewController()
         tableView.delegate = self
         tableView.dataSource = self
@@ -99,7 +100,11 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 var imageArr : [InputSource] = mainData_.theme.flatMap({ (data) in
                     KingfisherSource(urlString: data.mainImg)
                 })
-                imageArr.insert(ImageSource(imageString: "main_theme image")!, at: 0)
+                if selectedLang == .kor {
+                  imageArr.insert(ImageSource(imageString: "main_theme image")!, at: 0)
+                } else {
+                    
+                }
                 cell.imageSource = imageArr
             }
             cell.awakeFromNib()
@@ -135,7 +140,7 @@ extension MainViewController {
             case .networkSuccess(let mainData):
                 self.mainData = mainData as? MainVOData
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

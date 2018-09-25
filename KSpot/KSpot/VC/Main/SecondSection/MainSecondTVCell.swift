@@ -43,8 +43,8 @@ class MainSecondTVCell: UITableViewCell {
             thisWeekLbl.text = "이번주 올라온"
             recommendPlaceLbl.text = "따끈따끈 추천 PLACE"
         } else {
-            thisWeekLbl.text = "this week updated"
-            recommendPlaceLbl.text = "hot recommend PLACE"
+            thisWeekLbl.text = "This week,"
+            recommendPlaceLbl.text = "we recommend this PLACE"
         }
         //self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
         

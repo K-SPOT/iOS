@@ -10,6 +10,7 @@ import UIKit
 
 class SearchResultMoreVC: UIViewController, UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var filterBtn : UIButton!
     @IBOutlet weak var containerView: UIView!
     var filterView = PlaceFilterView.instanceFromNib()
     var searchData : [SearchResultVODataPlace]? {
@@ -21,7 +22,12 @@ class SearchResultMoreVC: UIViewController, UIGestureRecognizerDelegate {
     private lazy var searchResultMorePlaceVC: SearchResultMorePlaceVC = {
         let storyboard = Storyboard.shared().mainStoryboard
         var viewController = storyboard.instantiateViewController(withIdentifier: SearchResultMorePlaceVC.reuseIdentifier) as! SearchResultMorePlaceVC
-        viewController.headerTitle = "장소"
+        if selectedLang == .kor {
+            viewController.headerTitle = "장소"
+        } else {
+            viewController.headerTitle = "Spot"
+        }
+        
         return viewController
     }()
     
@@ -35,6 +41,11 @@ class SearchResultMoreVC: UIViewController, UIGestureRecognizerDelegate {
         initContainerView()
         setFilterView(filterView)
         setBackBtn()
+        if selectedLang == .kor {
+            filterBtn.setImage(#imageLiteral(resourceName: "map_filter"), for: .normal)
+        } else {
+            filterBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
+        }
     }
     
     
@@ -76,9 +87,14 @@ extension SearchResultMoreVC {
         addtarget(inputs: buttons)
         
         //첫번째 섹션
+       
         let popularBtn = filterView.popularBtn!
         let recentBtn = filterView.recentBtn!
-        
+        if selectedLang == .eng {
+            popularBtn.setTitle("popularity", for: .normal)
+            recentBtn.setTitle("recent", for: .normal)
+            filterView.okBtn.setTitle("Check", for: .normal)
+        }
         popularBtn.setOtherBtn(another: recentBtn)
         recentBtn.setOtherBtn(another: popularBtn)
         if let selectedBtn_ = selectedFirstFilter {
@@ -89,10 +105,20 @@ extension SearchResultMoreVC {
         }
         
         //두번째 섹션
-        filterView.restaurantBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_restaurant_green"), unselected: #imageLiteral(resourceName: "map_filter_restaurant_gray"))
-        filterView.hotplaceBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_hotplace_green"), unselected: #imageLiteral(resourceName: "map_filter_hotplace_gray"))
-        filterView.etcBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_etc_green"), unselected: #imageLiteral(resourceName: "map_filter_etc_gray"))
-        filterView.cafeBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_cafe_green"), unselected: #imageLiteral(resourceName: "map_filter_cafe_gray"))
+        if selectedLang == .kor {
+            filterView.restaurantBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_restaurant_green"), unselected: #imageLiteral(resourceName: "map_filter_restaurant_gray"))
+            filterView.hotplaceBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_hotplace_green"), unselected: #imageLiteral(resourceName: "map_filter_hotplace_gray"))
+            filterView.etcBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_etc_green"), unselected: #imageLiteral(resourceName: "map_filter_etc_gray"))
+            filterView.cafeBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_cafe_green"), unselected: #imageLiteral(resourceName: "map_filter_cafe_gray"))
+        } else {
+            filterView.restaurantBtn!.setImage(selected: #imageLiteral(resourceName: "board_star_green"), unselected: #imageLiteral(resourceName: "board_star_gray"))
+             filterView.hotplaceBtn!.setImage(selected: #imageLiteral(resourceName: "board_star_green"), unselected: #imageLiteral(resourceName: "board_star_gray"))
+             filterView.cafeBtn!.setImage(selected: #imageLiteral(resourceName: "board_star_green"), unselected: #imageLiteral(resourceName: "board_star_gray"))
+             filterView.etcBtn!.setImage(selected: #imageLiteral(resourceName: "board_star_green"), unselected: #imageLiteral(resourceName: "board_star_gray"))
+        }
+        
+    
+        
         
     } //setFilterView
     
@@ -164,7 +190,7 @@ extension SearchResultMoreVC {
                 self.searchData = searchResultData_
                 self.searchResultMorePlaceVC.isChange = true
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
                 
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")

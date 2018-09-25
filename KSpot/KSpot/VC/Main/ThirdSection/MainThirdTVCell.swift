@@ -23,7 +23,7 @@ class MainThirdTVCell: UITableViewCell {
                 boldLbl.text = "BEST 10"
                 
             } else {
-                regularLbl.text = "POPULAR PLACE"
+                regularLbl.text = "Hot place"
                 boldLbl.text = "BEST 10"
             }
         } else {
@@ -33,9 +33,9 @@ class MainThirdTVCell: UITableViewCell {
                 boldLbl.text = "NEW EVENT 5"
                 moreBtn.setTitle("더보기", for: .normal)
             } else {
-                regularLbl.text = "THIS WEEK"
+                regularLbl.text = ""
                 boldLbl.text = "NEW EVENT 5"
-                moreBtn.setTitle("more", for: .normal)
+                moreBtn.setTitle("MORE", for: .normal)
             }
         }
     }

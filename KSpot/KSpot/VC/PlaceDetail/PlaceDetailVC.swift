@@ -21,11 +21,14 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var descLbl: UILabel!
     @IBOutlet weak var addressLbl: UILabel!
+    @IBOutlet weak var addressLbl2: UILabel!
     @IBOutlet weak var staionImgView: UIImageView!
     @IBOutlet weak var lineNumImgView: UIImageView!
     @IBOutlet weak var currentStationLbl: UILabel!
     @IBOutlet weak var prevStationLbl: UILabel!
     @IBOutlet weak var nextsStationLbl: UILabel!
+    
+    @IBOutlet weak var writeReviewBtn: UIButton!
     @IBOutlet weak var locationView : UIView!
     @IBOutlet weak var contactView: UIView!
     @IBOutlet weak var contactImgView: UIImageView!
@@ -104,7 +107,7 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients([to])
-            mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
+          //  mail.setMessageBody("<p></p>", isHTML: true)
             
             present(mail, animated: true)
         } else {
@@ -124,27 +127,21 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
         setTableView()
         //setcycleScrollView()
         setNavbar()
-        if isPlace {
-            openCloseLbl.text = "오픈/마감 시간"
-            openLbl.text = "오픈"
-            closeLbl.text = "마감"
-            contactImgView.image = #imageLiteral(resourceName: "place_detail_phone")
-        } else {
-            openCloseLbl.text = "이벤트 시작일/종료일"
-            openLbl.text = "시작일"
-            closeLbl.text = "종료일"
-            contactImgView.image = #imageLiteral(resourceName: "place_detail_user")
-        }
-        
         currentStationLbl.adjustsFontSizeToFitWidth = true
         titleLbl.adjustsFontSizeToFitWidth = true
         descLbl.adjustsFontSizeToFitWidth = true
         addressLbl.adjustsFontSizeToFitWidth = true
+        addressLbl2.adjustsFontSizeToFitWidth = true
         locationView.makeRounded(cornerRadius: 17)
         contactView.makeRounded(cornerRadius: nil)
         contactView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
+       // setLanguageNoti(selector: #selector(getLangInfo(_:)))
     }
     
+  /*  @objc func getLangInfo(_ notification : Notification) {
+          isChange = true
+    }
+*/
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getPlaceInfo(url: UrlPath.spot.getURL("\(selectedIdx)/detail"))
@@ -238,6 +235,7 @@ extension PlaceDetailVC {
         titleLbl.text = placeData.name
         descLbl.text = placeData.description
         addressLbl.text = placeData.address
+        addressLbl2.text = placeData.address
         currentStationLbl.text = placeData.station
         prevStationLbl.text = placeData.prevStation
         nextsStationLbl.text = placeData.nextStation
@@ -248,6 +246,35 @@ extension PlaceDetailVC {
     } //setHeaderView
     
     func setFooterView(placeData : PlaceDetailVOData){
+        if selectedLang == .eng  {
+            writeReviewBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
+        }
+        
+        if isPlace {
+            if selectedLang == .kor  {
+                openCloseLbl.text = "오픈/마감 시간"
+                openLbl.text = "오픈"
+                closeLbl.text = "마감"
+            } else {
+                openCloseLbl.text = "open / close time"
+                openLbl.text = "open"
+                closeLbl.text = "close"
+            }
+            
+            contactImgView.image = #imageLiteral(resourceName: "place_detail_phone")
+        } else {
+            if selectedLang == .kor  {
+                openCloseLbl.text = "이벤트 기간"
+                openLbl.text = "시작"
+                closeLbl.text = "종료"
+            } else {
+                openCloseLbl.text = "period"
+                openLbl.text = "start"
+                closeLbl.text = "end"
+            }
+            contactImgView.image = #imageLiteral(resourceName: "place_detail_user")
+        }
+        
         openTimeLbl.text = placeData.openTime
         closeTimeLbl.text = placeData.closeTime
         contactLbl.text = placeData.contact
@@ -399,7 +426,7 @@ extension PlaceDetailVC {
                 self.placeData = placeData_[0]
                 self.isChange = true
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break
@@ -425,7 +452,7 @@ extension PlaceDetailVC {
                 }
                 self.navigationItem.rightBarButtonItems?[1].title =  changed.description
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break
@@ -451,7 +478,7 @@ extension PlaceDetailVC {
                 }
                 self.navigationItem.rightBarButtonItems?[1].title =  changed.description
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break
@@ -469,7 +496,7 @@ extension PlaceDetailVC {
                 /*let indexPath = IndexPath(item: sender.indexPath!, section: 0)
                  self.tableView.reloadRows(at: [indexPath], with: .top)*/
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break
@@ -485,7 +512,7 @@ extension PlaceDetailVC {
                 sender.isSelected = false
                 self.placeData?.channel.isSubscription[sender.indexPath!] = "0"
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

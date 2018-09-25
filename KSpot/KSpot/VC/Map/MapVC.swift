@@ -11,6 +11,7 @@ import CoreLocation
 import SwiftyJSON
 class MapVC: UIViewController {
     
+    @IBOutlet weak var filterBtn: UIButton!
     @IBOutlet weak var containerView: UIView!
     var locationManager = CLLocationManager()
     var currentLocation : CLLocation?
@@ -42,7 +43,12 @@ class MapVC: UIViewController {
                 //구글 맵에서 선택했을 때는 거리 인덱스 활성화
                 setDistanceIdx(index: selectedSecondFilter ?? 3)
             } else {
-                filterView.distanceLbl.text = "1k 까지 설정"
+                if selectedLang == .kor {
+                    filterView.distanceLbl.text = "1km 까지 설정"
+                } else {
+                    filterView.distanceLbl.text = "Set up to 1km"
+                }
+                
                 //지도에서 클릭해서 선택했을 때는 버튼 활성화
                 if let selectedBtn_ = selectedFirstFilter {
                     selectedBtn_.selected()
@@ -55,19 +61,26 @@ class MapVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(getLangInfo(_:)), name: NSNotification.Name("GetLanguageValue"), object: nil)
+        setLanguageNoti(selector: #selector(getLangInfo(_:)))
         initContainerView()
         locationInit()
         setFilterView(filterView)
         setTranslationBtn()
+     
         //네비게이션 타이틀
         self.navigationItem.title = "K-Spot"
-        
-        
-       
     }
     
     @objc func getLangInfo(_ notification : Notification) {
+         setFilterView(filterView)
+        if selectedLang == .kor {
+            filterBtn.setImage(#imageLiteral(resourceName: "map_filter"), for: .normal)
+            mapContainerVC.mapView?.mapImgView.image = #imageLiteral(resourceName: "map_illustration_img")
+        } else {
+            filterBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
+            mapContainerVC.mapView?.mapImgView.image = #imageLiteral(resourceName: "map_illustration_eng_img")
+        }
+        
         if entryPoint == .google {
             getMapInfo()
         } else {
@@ -110,7 +123,12 @@ extension MapVC : SelectGoogleDelegate {
     //구글 맵에서 들어온 것
     func tap(selectedGoogle: MyPlace?) {
         isGoogleMapLocation = true
-        mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변"
+        if selectedLang == .kor {
+            mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변"
+        } else {
+            mapContainerVC.mapView?.selectedRegionLbl.text = "Around me"
+        }
+       
         entryPoint = .google
         chosenPlace = selectedGoogle
         getMapInfo()
@@ -172,10 +190,15 @@ extension MapVC {
             guard let `self` = self else { return }
             switch result {
             case .networkSuccess(let defaultSpot):
-                self.mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변"
+                if selectedLang == .kor {
+                     self.mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변"
+                } else {
+                    self.mapContainerVC.mapView?.selectedRegionLbl.text = "Around me"
+                }
+               
                 self.defaultSpot = defaultSpot as? [UserScrapVOData]
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break
@@ -200,12 +223,11 @@ extension MapVC {
             default :
                 break
             }
-            
         }
     }
     
     func setDistanceIdx(index : Int){
-        let descArr : [String] = ["100m", "300m", "500m", "1k", "3k"]
+        let descArr : [String] = ["100m", "300m", "500m", "1km", "3km"]
         let numberOfItems = descArr.count
         let safeIndex = max(0, min(numberOfItems - 1, index))
         
@@ -219,7 +241,12 @@ extension MapVC {
         }
         
         selectedSecondFilter = safeIndex
-        filterView.distanceLbl.text = "\(descArr[safeIndex]) 까지 설정"
+        if selectedLang == .kor {
+            filterView.distanceLbl.text = "\(descArr[safeIndex]) 까지 설정"
+        } else {
+            filterView.distanceLbl.text = "Set up to \(descArr[safeIndex])"
+        }
+        
     }
     
     
@@ -236,26 +263,33 @@ extension MapVC {
         //첫번째 섹션
         let popularBtn = filterView.popularBtn!
         let recentBtn = filterView.recentBtn!
+        if selectedLang == .eng {
+            popularBtn.setTitle("popularity", for: .normal)
+            recentBtn.setTitle("recent", for: .normal)
+            filterView.okBtn.setTitle("Check", for: .normal)
+        }
         
         popularBtn.setOtherBtn(another: recentBtn)
         recentBtn.setOtherBtn(another: popularBtn)
-        
-        /*  if let selectedBtn_ = selectedFirstFilter {
-         selectedBtn_.selected()
-         } else {
-         popularBtn.selected()
-         selectedFirstFilter = popularBtn
-         }*/
         
         //두번째 섹션 - default 는 1km
         setDistanceIdx(index: selectedSecondFilter ?? 3)
         
         //세번째 섹션
-        filterView.restaurantBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_restaurant_green"), unselected: #imageLiteral(resourceName: "map_filter_restaurant_gray"))
-        filterView.hotplaceBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_hotplace_green"), unselected: #imageLiteral(resourceName: "map_filter_hotplace_gray"))
-        filterView.etcBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_etc_green"), unselected: #imageLiteral(resourceName: "map_filter_etc_gray"))
-        filterView.cafeBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_cafe_green"), unselected: #imageLiteral(resourceName: "map_filter_cafe_gray"))
-        filterView.eventBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_event_green"), unselected: #imageLiteral(resourceName: "map_filter_event_gray"))
+        if selectedLang == .kor {
+            filterView.restaurantBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_restaurant_green"), unselected: #imageLiteral(resourceName: "map_filter_restaurant_gray"))
+            filterView.hotplaceBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_hotplace_green"), unselected: #imageLiteral(resourceName: "map_filter_hotplace_gray"))
+            filterView.etcBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_etc_green"), unselected: #imageLiteral(resourceName: "map_filter_etc_gray"))
+            filterView.cafeBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_cafe_green"), unselected: #imageLiteral(resourceName: "map_filter_cafe_gray"))
+            filterView.eventBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_event_green"), unselected: #imageLiteral(resourceName: "map_filter_event_gray"))
+        } else {
+            filterView.restaurantBtn!.setImage(selected: #imageLiteral(resourceName: "board_star_green"), unselected: #imageLiteral(resourceName: "board_star_gray"))
+            filterView.hotplaceBtn!.setImage(selected: #imageLiteral(resourceName: "board_star_green"), unselected: #imageLiteral(resourceName: "board_star_gray"))
+            filterView.etcBtn!.setImage(selected: #imageLiteral(resourceName: "board_star_green"), unselected: #imageLiteral(resourceName: "board_star_gray"))
+            filterView.cafeBtn!.setImage(selected: #imageLiteral(resourceName: "board_star_green"), unselected: #imageLiteral(resourceName: "board_star_gray"))
+            filterView.eventBtn!.setImage(selected: #imageLiteral(resourceName: "board_star_green"), unselected: #imageLiteral(resourceName: "board_star_gray"))
+        }
+        
         
     } //setFilterView
     

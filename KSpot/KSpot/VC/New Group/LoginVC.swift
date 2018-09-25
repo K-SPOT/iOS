@@ -35,8 +35,8 @@ class LoginVC: UIViewController {
             boldLbl.text = "로그인을 해주세요 :)"
             skipBtn.setImage(#imageLiteral(resourceName: "login_skip"), for: .normal)
         } else {
-            regularLbl.text = "Hello"
-            boldLbl.text = "Plase login :)"
+            regularLbl.text = "Hi"
+            boldLbl.text = "Please Login :)"
             skipBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
         }
       
@@ -90,7 +90,7 @@ extension LoginVC {
                  UserDefaults.standard.set(userData?.authorization, forKey : "userAuth")
                 self.dismiss(animated: false, completion: nil)
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+               self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

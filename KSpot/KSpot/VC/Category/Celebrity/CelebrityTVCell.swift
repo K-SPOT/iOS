@@ -28,7 +28,11 @@ class CelebrityTVCell: UITableViewCell {
         self.setImgWithKF(url: data.thumbnailImg, imgView: mainImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
         countLbl.text = (index+1).description
         titleLbl.text = data.name
-        subtitleLbl.text = "구독자 \(data.subscriptionCnt.description) · 게시물 \(data.spotCnt.description)"
+        if selectedLang == .kor {
+          subtitleLbl.text = "구독자 \(data.subscriptionCnt.description) · 게시물 \(data.spotCnt.description)"
+        } else {
+            subtitleLbl.text = "subscriber \(data.subscriptionCnt.description) · post \(data.spotCnt.description)"
+        }
         subscribeBtn.setSubscribeBtn(idx: data.channelID, isSubscribe: data.subscription)
         subscribeBtn.indexPath = index
         subscribeBtn.addTarget(self, action: #selector(subscribeAction(_:)), for: .touchUpInside)

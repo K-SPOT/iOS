@@ -183,7 +183,7 @@ extension ThemeVC {
             case .networkSuccess(let themeData):
                 self.themeData = themeData as? ThemeVOData
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

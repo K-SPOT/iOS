@@ -113,6 +113,11 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, SelectSen
         setupTableView()
         setupNavView()
         getChannelDetail(url : UrlPath.channelDetail.getURL(selectedIdx.description))
+        setLanguageNoti(selector: #selector(getLangInfo(_:)))
+    }
+    
+    @objc func getLangInfo(_ notification : Notification) {
+        getChannelDetail(url : UrlPath.channelDetail.getURL(selectedIdx.description))
     }
    
     
@@ -154,7 +159,7 @@ extension CategoryDetailVC {
             make.height.equalTo(165)
             
         }
-        
+        backgroundImg.contentMode = .scaleToFill
         logoImg.snp.makeConstraints { (make) in
             make.height.width.equalTo(74)
             make.leading.equalToSuperview().offset(16)
@@ -261,12 +266,22 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
         let header = tableView.dequeueReusableCell(withIdentifier: CategoryDetailSecondTVHeaderCell.reuseIdentifier) as! CategoryDetailSecondTVHeaderCell
         
         if section == 1 {
-            header.titleLbl.text = "관련된 장소"
+            if selectedLang == .kor {
+                header.titleLbl.text = "관련된 장소"
+            } else {
+                header.titleLbl.text = "related place"
+                header.morBtn.setTitle("MORE", for: .normal)
+            }
             header.morBtn.addTarget(self, action: #selector(placeMoreAction(_:)), for: .touchUpInside)
             
             return header
         } else if section == 2{
-            header.titleLbl.text = "관련된 이벤트"
+            if selectedLang == .kor {
+                header.titleLbl.text = "관련된 이벤트"
+            } else {
+                header.titleLbl.text = "related event"
+                header.morBtn.setTitle("MORE", for: .normal)
+            }
             header.morBtn.addTarget(self, action: #selector(eventMoreAction(_:)), for: .touchUpInside)
             return header
         } else {
@@ -277,10 +292,15 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     @objc func placeMoreAction(_ sender : UIButton){
         let categoryStoryboard = Storyboard.shared().categoryStoryboard
         if let categoryDetailMorePlaceVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailMorePlaceVC.reuseIdentifier) as? CategoryDetailMorePlaceVC {
-            categoryDetailMorePlaceVC.title = "장소"
+            if selectedLang == .kor {
+                categoryDetailMorePlaceVC.title = "장소"
+            } else {
+                categoryDetailMorePlaceVC.title = "PLACE"
+            }
+            
             categoryDetailMorePlaceVC.isPlace = true
             categoryDetailMorePlaceVC.selectedIdx = selectedIdx
-            
+            categoryDetailMorePlaceVC.mainTitle = mainTitleLbl.text
             self.navigationController?.pushViewController(categoryDetailMorePlaceVC, animated: true)
         }
     }
@@ -288,7 +308,11 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     @objc func eventMoreAction(_ sender : UIButton){
         let categoryStoryboard = Storyboard.shared().categoryStoryboard
         if let categoryDetailMoreEventVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailMorePlaceVC.reuseIdentifier) as? CategoryDetailMorePlaceVC {
-            categoryDetailMoreEventVC.title = "이벤트"
+            if selectedLang == .kor {
+                categoryDetailMoreEventVC.title = "이벤트"
+            } else {
+                categoryDetailMoreEventVC.title = "EVENT"
+            }
             categoryDetailMoreEventVC.isPlace = false
            categoryDetailMoreEventVC.selectedIdx = selectedIdx
             
@@ -329,7 +353,13 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
             let cell = tableView.dequeueReusableCell(withIdentifier: CategoryDetailFirstTVCell.reuseIdentifier) as! CategoryDetailFirstTVCell
             cell.delegate = self
             cell.recommendData = self.recommendPlace
-            cell.titleTxt = "\(self.mainTitleLbl.text ?? "")'s 추천 장소"
+            if selectedLang == .kor {
+                cell.titleTxt = "\(self.mainTitleLbl.text ?? "")'s 추천 장소"
+                cell.subtitleTxt = "사람들이 많이 찾는 장소를 확인해보세요"
+            } else {
+                cell.titleTxt = "\(self.mainTitleLbl.text ?? "")'s recommended place"
+                 cell.subtitleTxt = "Check out the places people are looking for!"
+            }
             return cell
             
         }  else {
@@ -391,7 +421,7 @@ extension CategoryDetailVC {
                 self.relatedEvent = detailData.eventRelatedChannel
                 self.tableView.reloadData()
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break
@@ -417,7 +447,7 @@ extension CategoryDetailVC {
                 }
                 self.subscribeLbl.text = "\(changed)"
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+               self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break
@@ -442,7 +472,7 @@ extension CategoryDetailVC {
                 }
                 self.subscribeLbl.text = "\(changed)"
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+               self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

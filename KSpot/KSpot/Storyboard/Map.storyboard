@@ -78,6 +78,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="containerView" destination="g26-82-bsl" id="Owq-3o-b6L"/>
+                        <outlet property="filterBtn" destination="vAf-1v-fhL" id="Zu8-XU-aDT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I55-Ld-6mg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -258,14 +259,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추천 K-spot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTS-5j-bW5">
-                                                    <rect key="frame" x="68.5" y="31.5" width="93.5" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="K-spot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTS-5j-bW5">
+                                                    <rect key="frame" x="68.5" y="31.5" width="56" height="20"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="1ti-od-3Vp">
-                                                    <rect key="frame" x="167" y="34" width="15" height="15"/>
+                                                    <rect key="frame" x="129.5" y="34" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="1ti-od-3Vp" secondAttribute="height" multiplier="1:1" id="Aql-sq-Tl0"/>
                                                         <constraint firstAttribute="width" constant="15" id="jIM-8J-13H"/>
@@ -745,6 +746,7 @@
                                         <outlet property="jongroBtn1" destination="au9-rV-xXA" id="107-lB-AXB"/>
                                         <outlet property="jungguBtn" destination="KUH-DP-Mrg" id="pEq-PP-uug"/>
                                         <outlet property="jungnangBtn" destination="r4l-pQ-wHf" id="tmy-f9-c0M"/>
+                                        <outlet property="mapImgView" destination="tJL-Gj-h54" id="Q27-zW-ra4"/>
                                         <outlet property="mapoBtn" destination="Hf9-rv-xI8" id="7we-A8-mXj"/>
                                         <outlet property="mapoBtn1" destination="Eyv-1L-YJ1" id="dwd-Tl-8d2"/>
                                         <outlet property="nowonBtn" destination="NGY-Wf-hIs" id="xc7-wH-vKL"/>
@@ -971,6 +973,7 @@
                                                 <constraint firstItem="1Aj-fI-70K" firstAttribute="centerY" secondItem="sDy-q0-M2m" secondAttribute="centerY" id="DIi-3f-w7J"/>
                                                 <constraint firstItem="4HX-3l-Tlt" firstAttribute="top" secondItem="4Xv-5S-QDt" secondAttribute="bottom" constant="8" id="SKT-sW-6M3"/>
                                                 <constraint firstItem="4HX-3l-Tlt" firstAttribute="leading" secondItem="4Xv-5S-QDt" secondAttribute="leading" id="dsS-eI-i7E"/>
+                                                <constraint firstItem="1Aj-fI-70K" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4Xv-5S-QDt" secondAttribute="trailing" constant="10" id="phw-pw-Lgb"/>
                                             </constraints>
                                         </view>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="place_detail_location_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="B0y-RP-HES">
@@ -1130,7 +1133,7 @@
                                         <rect key="frame" x="0.0" y="294" width="375" height="271"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K2l-Cx-Op4" id="kZZ-Zr-003">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="271"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="270.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="관련 연예인/방송" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYz-Gt-woe">
@@ -1219,13 +1222,14 @@
                                         <connections>
                                             <outlet property="collectionView" destination="v0L-fB-C20" id="pOE-eR-XLd"/>
                                             <outlet property="countLbl" destination="VpI-Ae-enX" id="kt2-l1-JaX"/>
+                                            <outlet property="relatedCelebrityLbl" destination="kYz-Gt-woe" id="6YR-QU-C5H"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlaceDetailSecondTVCell" rowHeight="361" id="xji-9O-34O" customClass="PlaceDetailSecondTVCell" customModule="KSpot" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="565" width="375" height="361"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xji-9O-34O" id="d1Y-6q-DUC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="361"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="360.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="리뷰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8J-sf-38z">
@@ -1434,8 +1438,10 @@
                                         <connections>
                                             <outlet property="collectionView" destination="hT3-0p-1Da" id="ecm-oW-3ue"/>
                                             <outlet property="countLbl" destination="z8H-M8-Cgx" id="K8v-Gg-LRF"/>
+                                            <outlet property="moreBtn" destination="HEX-sJ-uqG" id="rru-rq-xE1"/>
                                             <outlet property="ratingLbl" destination="k5T-OV-vjw" id="G1V-F0-PI2"/>
                                             <outlet property="ratingView" destination="Yyz-wn-KqC" id="aAM-Nj-Rvf"/>
+                                            <outlet property="reviewLbl" destination="a8J-sf-38z" id="baS-xE-Wze"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1452,7 +1458,8 @@
                     </view>
                     <size key="freeformSize" width="375" height="1700"/>
                     <connections>
-                        <outlet property="addressLbl" destination="4Xv-5S-QDt" id="8AV-Ll-dlR"/>
+                        <outlet property="addressLbl" destination="Hv1-DB-k2S" id="rGb-Th-vkY"/>
+                        <outlet property="addressLbl2" destination="4Xv-5S-QDt" id="Xr1-Av-z7O"/>
                         <outlet property="closeLbl" destination="rcQ-zD-gQ2" id="l1t-NS-V8T"/>
                         <outlet property="closeTimeLbl" destination="3yM-tc-Za7" id="uzG-8y-lbC"/>
                         <outlet property="contactImgView" destination="e0x-zf-xYO" id="fHw-1i-tjW"/>
@@ -1471,6 +1478,7 @@
                         <outlet property="staionImgView" destination="QGJ-yN-97G" id="jrE-az-0cr"/>
                         <outlet property="tableView" destination="O9C-nv-jxo" id="HwT-Co-gtu"/>
                         <outlet property="titleLbl" destination="fZm-8e-0tb" id="FXA-mN-5Di"/>
+                        <outlet property="writeReviewBtn" destination="cET-dz-gvd" id="EYS-Ry-W2p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3h-Pm-orP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1523,6 +1531,7 @@
                     </view>
                     <connections>
                         <outlet property="containerView" destination="7QO-V8-fc4" id="xzz-ni-qja"/>
+                        <outlet property="writeReviewBtn" destination="GJh-l0-Eks" id="Wy5-N1-Dq6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NVO-IP-H6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1585,7 +1594,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWf-cR-Fip">
-                                                <rect key="frame" x="186.5" y="85.5" width="29" height="22.5"/>
+                                                <rect key="frame" x="186.5" y="86" width="29" height="22.5"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1620,7 +1629,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwi-IZ-PRh">
-                                                <rect key="frame" x="218.5" y="85" width="25" height="23"/>
+                                                <rect key="frame" x="218.5" y="85.5" width="25" height="23"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -1714,7 +1723,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRU-0a-UEZ">
-                                            <rect key="frame" x="156" y="84" width="29" height="22.5"/>
+                                            <rect key="frame" x="156" y="84.5" width="29" height="22.5"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                             <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -1769,7 +1778,7 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVS-sb-9qM">
-                                            <rect key="frame" x="188" y="84" width="25" height="23"/>
+                                            <rect key="frame" x="188" y="84.5" width="25" height="23"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -2000,6 +2009,7 @@
                         <outlet property="ratingLbl" destination="TRU-0a-UEZ" id="vCC-3c-iH4"/>
                         <outlet property="ratingView" destination="keI-gx-Hdy" id="PRJ-nR-kFA"/>
                         <outlet property="reviewCountLbl" destination="MOA-bZ-mky" id="rJh-YA-lPA"/>
+                        <outlet property="reviewLbl" destination="uRp-99-dDo" id="o0N-KL-H6S"/>
                         <outlet property="tableView" destination="pJ1-AL-Gyg" id="bks-GV-ged"/>
                     </connections>
                 </viewController>

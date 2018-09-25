@@ -125,6 +125,7 @@
 		3BD4120E2158CED6008306A9 /* EventMoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4120D2158CED6008306A9 /* EventMoreVC.swift */; };
 		3BD412102158D5AC008306A9 /* SearchResultPlaceMoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4120F2158D5AC008306A9 /* SearchResultPlaceMoreService.swift */; };
 		3BD412122158D5D7008306A9 /* SearchResultPlaceMoreVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD412112158D5D7008306A9 /* SearchResultPlaceMoreVO.swift */; };
+		3BD41214215A6A0F008306A9 /* CategoryDetailMorePlaceHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD41213215A6A0F008306A9 /* CategoryDetailMorePlaceHeaderView.swift */; };
 		3BE666682154CAE40044801C /* DefaultSpotVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE666672154CAE40044801C /* DefaultSpotVO.swift */; };
 		3BE6666A2154CB120044801C /* DefaultSpotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE666692154CB120044801C /* DefaultSpotService.swift */; };
 		3BE6666F2156ABCB0044801C /* GoogleSpotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6666E2156ABCB0044801C /* GoogleSpotService.swift */; };
@@ -260,6 +261,7 @@
 		3BD4120D2158CED6008306A9 /* EventMoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMoreVC.swift; sourceTree = "<group>"; };
 		3BD4120F2158D5AC008306A9 /* SearchResultPlaceMoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultPlaceMoreService.swift; sourceTree = "<group>"; };
 		3BD412112158D5D7008306A9 /* SearchResultPlaceMoreVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultPlaceMoreVO.swift; sourceTree = "<group>"; };
+		3BD41213215A6A0F008306A9 /* CategoryDetailMorePlaceHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailMorePlaceHeaderView.swift; sourceTree = "<group>"; };
 		3BE666672154CAE40044801C /* DefaultSpotVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSpotVO.swift; sourceTree = "<group>"; };
 		3BE666692154CB120044801C /* DefaultSpotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSpotService.swift; sourceTree = "<group>"; };
 		3BE6666E2156ABCB0044801C /* GoogleSpotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSpotService.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				3B3C43CE214EECC5005B8650 /* CategoryDetailMorePlaceVC.swift */,
+				3BD41213215A6A0F008306A9 /* CategoryDetailMorePlaceHeaderView.swift */,
 			);
 			path = CategoryDetailMore;
 			sourceTree = "<group>";
@@ -1106,6 +1109,7 @@
 				3B3C442621519C98005B8650 /* UserSubcriptionVO.swift in Sources */,
 				3BE6666A2154CB120044801C /* DefaultSpotService.swift in Sources */,
 				3B3C43D8214EF459005B8650 /* PlaceFilterView.swift in Sources */,
+				3BD41214215A6A0F008306A9 /* CategoryDetailMorePlaceHeaderView.swift in Sources */,
 				3BD412102158D5AC008306A9 /* SearchResultPlaceMoreService.swift in Sources */,
 				3B0FA12A214C2F87009F33AE /* Gallery.swift in Sources */,
 				3BF85DD32154A5200005C83D /* ReviewVO.swift in Sources */,

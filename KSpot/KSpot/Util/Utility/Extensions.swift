@@ -118,6 +118,12 @@ extension UIViewController {
         navigationItem.leftBarButtonItem?.tintColor = ColorChip.shared().barbuttonColor
     }
     
+    func setLanguageNoti(selector : Selector){
+       
+        NotificationCenter.default.addObserver(self, selector: selector, name: NSNotification.Name("GetLanguageValue"), object: nil)
+    
+    }
+    
     @objc func translate(){
         selectedLang = selectedLang == .kor ? .eng : .kor
         let langInfo : [String : Language] = ["selectedLanguage" : selectedLang]
@@ -158,16 +164,28 @@ extension UIViewController {
     
     func simpleAlert(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인",style: .default)
-      
+        let okTitle = selectedLang == .kor ? "확인" : "Check"
+        let okAction = UIAlertAction(title: okTitle,style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+    
+    func networkSimpleAlert(){
+        let title = selectedLang == .kor ? "오류" : "Error"
+         let message = selectedLang == .kor ? "네트워크 연결상태를 확인해주세요" : "Please check network"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okTitle = selectedLang == .kor ? "확인" : "Check"
+        let okAction = UIAlertAction(title: okTitle,style: .default)
         alert.addAction(okAction)
         present(alert, animated: true)
     }
     
     func simpleAlertwithHandler(title: String, message: String, okHandler : ((UIAlertAction) -> Void)?){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인",style: .default, handler: okHandler)
-        let cancelAction = UIAlertAction(title: "취소",style: .cancel, handler: nil)
+        let okTitle = selectedLang == .kor ? "확인" : "Check"
+        let cancelTitle = selectedLang == .kor ? "취소" : "Cancel"
+        let okAction = UIAlertAction(title: okTitle,style: .default, handler: okHandler)
+        let cancelAction = UIAlertAction(title: cancelTitle,style: .cancel, handler: nil)
         alert.addAction(okAction)
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
@@ -311,9 +329,16 @@ extension UITableViewCell {
 
 extension mySubscribeBtn {
     func setSubscribeBtn(idx : Int, isSubscribe : Int){
-        self.setImage(UIImage(named: "category_subscription_white"), for: .normal)
-        self.setImage(
-            UIImage(named: "category_subscription_green"), for: .selected)
+        if selectedLang == .kor {
+            self.setImage(UIImage(named: "category_subscription_white"), for: .normal)
+            self.setImage(
+                UIImage(named: "category_subscription_green"), for: .selected)
+        } else {
+            self.setImage(UIImage(named: "board_star_gray"), for: .normal)
+            self.setImage(
+                UIImage(named: "board_star_green"), for: .selected)
+        }
+      
         self.contentIdx = idx
         if isSubscribe == 0 {
             self.isSelected = false

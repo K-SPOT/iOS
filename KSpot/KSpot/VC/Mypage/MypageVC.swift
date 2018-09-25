@@ -13,9 +13,17 @@ import Kingfisher
 class MypageVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var welcomLbl: UILabel!
+    @IBOutlet weak var logoutBtn: UIButton!
     var numberofRows = 0
+    var userName = "" {
+        didSet {
+            nameLbl.text = selectedLang == .kor ? userName+", 고객님" : userName
+        }
+    }
     @IBAction func logoutAction(_ sender: Any) {
-        self.simpleAlertwithHandler(title: "로그아웃 하시겠습니까?", message: "") { (_) in
+        let logoutTitle = selectedLang == .kor ? "로그아웃 하시겠습니까?" : "Do you want to logout?"
+        self.simpleAlertwithHandler(title: logoutTitle, message: "") { (_) in
             //faceBookLogout
             let fbLoginManager = FBSDKLoginManager()
             fbLoginManager.logOut()
@@ -41,16 +49,28 @@ class MypageVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(getLangInfo(_:)), name: NSNotification.Name("GetLanguageValue"), object: nil)
+        setLanguageNoti(selector: #selector(getLangInfo(_:)))
         tableView.delegate = self
         tableView.dataSource = self
-       
         profileImgView.makeRounded(cornerRadius: profileImgView.frame.height/2)
+        
     }
     @objc func getLangInfo(_ notification : Notification) {
-        self.getMyInfo(url: UrlPath.mypage.getURL())
+        
+        if selectedLang == .kor {
+             self.navigationItem.title = "마이페이지"
+            nameLbl.text = userName+" 고객님,"
+            welcomLbl.text = "안녕하세요!"
+            logoutBtn.setImage(#imageLiteral(resourceName: "mypage_logout"), for: .normal)
+            
+        } else {
+            self.navigationItem.title = "MY PAGE"
+            nameLbl.text = userName+","
+            welcomLbl.text = "Welcome!"
+            logoutBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
+        }
+        tableView.reloadData()
     }
-    
     
 }
 
@@ -70,24 +90,30 @@ extension MypageVC : UITableViewDelegate, UITableViewDataSource{
         if numberofRows == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: MypageTVCell.reuseIdentifier) as! MypageTVCell
             if indexPath.row == 0 {
-                cell.myLbl.text = "스크랩"
+                cell.myLbl.text = selectedLang == .kor ? "스크랩" : "Scrap"
             } else {
-                cell.myLbl.text = "회원정보 수정"
+                cell.myLbl.text = selectedLang == .kor ? "회원정보 수정" : "Edit Profile"
             }
             return cell
         } else {
-           
+            
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: MypageFisrtTVCell.reuseIdentifier) as! MypageFisrtTVCell
                 cell.channelArr = self.channelArr
                 cell.delegate = self
+                cell.mySubsLbl.text = selectedLang == .kor ? "내 구독" : "My Subscribe"
+                if selectedLang == .kor {
+                    cell.moreBtn.setTitle("더보기", for: .normal)
+                } else {
+                    cell.moreBtn.setTitle("MORE", for: .normal)
+                }
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: MypageTVCell.reuseIdentifier) as! MypageTVCell
                 if indexPath.row == 1 {
-                    cell.myLbl.text = "스크랩"
+                    cell.myLbl.text = selectedLang == .kor ? "스크랩" : "Scrap"
                 } else {
-                    cell.myLbl.text = "회원정보 수정"
+                    cell.myLbl.text = selectedLang == .kor ? "회원정보 수정" : "Edit Profile"
                 }
                 return cell
             }
@@ -106,9 +132,7 @@ extension MypageVC : UITableViewDelegate, UITableViewDataSource{
         } else if (indexPath.row == 1 && numberofRows == 2) || (indexPath.row == 2 && numberofRows == 3) {
             if let editProfileVC = mypageStoryboard.instantiateViewController(withIdentifier:EditProfileVC.reuseIdentifier) as? EditProfileVC {
                 editProfileVC.profileImg = self.profileImgView.image
-                if let nameTxt = nameLbl.text {
-                    editProfileVC.nameTxt = (self.nameLbl.text?.prefix((nameTxt.count)-5).description) ?? ""
-                }
+                editProfileVC.nameTxt = userName
                 self.navigationController?.pushViewController(editProfileVC, animated: true)
             }
         }
@@ -123,11 +147,11 @@ extension MypageVC : SelectSectionDelegate{
         if (seledtedId == -1){
             let mypageStoryboard = Storyboard.shared().mypageStoryboard
             if let subscribeVC = mypageStoryboard.instantiateViewController(withIdentifier:SubscribeVC.reuseIdentifier) as? SubscribeVC {
-               
+                
                 self.navigationController?.pushViewController(subscribeVC, animated: true)
             }
         } else {
-             self.goToCelebrityDetail(selectedIdx : seledtedId)
+            self.goToCelebrityDetail(selectedIdx : seledtedId)
         }
     }
 }
@@ -142,11 +166,11 @@ extension MypageVC {
             switch result {
             case .networkSuccess(let mypageData):
                 let userData = mypageData as! MypageVOData
-                self.nameLbl.text = "\(userData.user.name) 고객님,"
+                self.userName = userData.user.name
                 self.setImgWithKF(url: self.gsno(userData.user.profileImg), imgView: self.profileImgView, defaultImg: #imageLiteral(resourceName: "mypage_membership_edit_default_img"))
                 self.channelArr = userData.channel
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

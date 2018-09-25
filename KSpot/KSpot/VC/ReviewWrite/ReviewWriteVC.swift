@@ -13,7 +13,6 @@ class ReviewWriteVC: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var ratingView: CosmosView!
-    
     @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var scrollTopView: UIView!
     @IBOutlet weak var titleTxtField: UITextField!
@@ -25,7 +24,7 @@ class ReviewWriteVC: UIViewController, UITextFieldDelegate {
     var images : [String : Data]?
     var keyboardDismissGesture: UITapGestureRecognizer?
     let imagePicker : UIImagePickerController = UIImagePickerController()
-    let defaultTxtMsg = "생각을 공유해보세요"
+    let defaultTxtMsg = selectedLang == .kor ? "생각을 공유해주세요 :)" : " Please share your thoughts :)"
     var selectedIdx = 0
     lazy var deleteImgBtn : UIButton = {
         let button = UIButton()
@@ -56,6 +55,11 @@ class ReviewWriteVC: UIViewController, UITextFieldDelegate {
         setToolbar()
         setBackBtn()
         titleTxtField.addTarget(self, action: #selector(isValid), for: .editingChanged)
+        if selectedLang == .eng {
+            titleTxtField.placeholder = "Please enter the subject"
+        }
+        doneBtn.title = selectedLang == .kor ? "완료" : "complete"
+     
         contentTxtView.delegate = self
         contentTxtView.text = defaultTxtMsg
         contentTxtView.textColor = #colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1)
@@ -92,7 +96,9 @@ class ReviewWriteVC: UIViewController, UITextFieldDelegate {
         guard let contentTxt = titleTxtField.text else {return}
         
         if(contentTxt.count > 20) {
-            simpleAlert(title: "오류", message: "20글자 초과")
+            let alertTitle = selectedLang == .kor ? "오류" : "Error"
+            let alertMsg = selectedLang == .kor ? "20글자 초과" : "longer than 20 characters"
+            self.simpleAlert(title: alertTitle, message: alertMsg)
             titleTxtField.text = String(describing: contentTxt.prefix(19))
         }
     } //isValid
@@ -231,7 +237,9 @@ extension ReviewWriteVC : UITextViewDelegate{
         }
         guard let contentTxt = contentTxtView.text else {return}
         if(contentTxt.count > 300) {
-            simpleAlert(title: "오류", message: "300글자 초과")
+            let alertTitle = selectedLang == .kor ? "오류" : "Error"
+            let alertMsg = selectedLang == .kor ? "300글자 초과" : "longer than 300 characters"
+            self.simpleAlert(title: alertTitle, message: alertMsg)
             contentTxtView.text = String(describing: contentTxt.prefix(299))
             writeCountLbl.text = contentTxtView.text.count.description
             isValid()
@@ -350,10 +358,8 @@ extension ReviewWriteVC {
                 self.simpleOKAlert(title: "확인", message: "리뷰 등록이 완료되었습니다", okHandler: { (_) in
                      self.pop()
                 })
-            case .duplicated :
-                self.simpleAlert(title: "오류", message: "중복된 아이디입니다")
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "인터넷 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

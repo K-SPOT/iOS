@@ -59,10 +59,18 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableCell(withIdentifier: CategoryDetailSecondTVHeaderCell.reuseIdentifier) as! CategoryDetailSecondTVHeaderCell
 
+        if selectedLang == .eng {
+            header.morBtn.setTitle("MORE", for: .normal)
+        }
         guard let searchResultData_ = searchResultData else {return nil}
         if section == 0  {
             if( searchResultData_.channel.count != 0) {
-                header.titleLbl.text = "연예인 / 방송"
+                if selectedLang == .kor {
+                    header.titleLbl.text = "연예인 / 방송"
+                } else {
+                    header.titleLbl.text = "Celebrity / Broadcast"
+                }
+                
                 header.morBtn.addTarget(self, action: #selector(goToCelebrityMore(_:)), for: .touchUpInside)
                 return header
             } else {
@@ -70,7 +78,11 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
             }
         } else if section == 1 {
             if( searchResultData_.place.count != 0) {
-                header.titleLbl.text = "장소"
+                if selectedLang == .kor {
+                    header.titleLbl.text = "장소"
+                } else {
+                    header.titleLbl.text = "Spot"
+                }
                 header.morBtn.addTarget(self, action: #selector(goToPlaceMore(_:)), for: .touchUpInside)
                 return header
             } else {
@@ -78,7 +90,11 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
             }
         } else {
             if( searchResultData_.event.count != 0) {
-                header.titleLbl.text = "이벤트"
+                if selectedLang == .kor {
+                    header.titleLbl.text = "이벤트"
+                } else {
+                    header.titleLbl.text = "Event"
+                }
                 header.morBtn.addTarget(self, action: #selector(goToEventMore(_:)), for: .touchUpInside)
                 return header
             } else {
@@ -90,13 +106,26 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
     @objc func goToCelebrityMore(_ sender : UIButton) {
         let mainStoryboard = Storyboard.shared().mainStoryboard
         if let searchResultMoreCelebrityVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultMoreCelebrityVC.reuseIdentifier) as? SearchResultMoreCelebrityVC {
-            searchResultMoreCelebrityVC.headerTitle = "연예인 / 방송"
+            if selectedLang == .kor {
+                searchResultMoreCelebrityVC.headerTitle = "연예인 / 방송"
+            } else {
+                searchResultMoreCelebrityVC.headerTitle = "Celebrity / Broadcast"
+            }
+           
             searchResultMoreCelebrityVC.searchString = searchTxt
             guard let navTitle = self.navigationItem.title else{return}
             if ((navTitle.count) < 10) {
-                searchResultMoreCelebrityVC.navigationItem.title = "'\(navTitle)' 검색결과"
+                if selectedLang == .kor {
+                    searchResultMoreCelebrityVC.navigationItem.title = "'\(navTitle)' 검색결과"
+                } else {
+                     searchResultMoreCelebrityVC.navigationItem.title = "'\(navTitle)' search result"
+                }
             } else {
-                searchResultMoreCelebrityVC.navigationItem.title = "'\(navTitle.prefix(9))...' 검색결과"
+                if selectedLang == .kor {
+                  searchResultMoreCelebrityVC.navigationItem.title = "'\(navTitle.prefix(9))...' 검색결과"
+                } else {
+                    searchResultMoreCelebrityVC.navigationItem.title = "'\(navTitle.prefix(9))...' search result"
+                }
             }
             searchResultMoreCelebrityVC.searchData = searchResultData?.channel
             self.navigationController?.pushViewController(searchResultMoreCelebrityVC, animated: true)
@@ -108,10 +137,21 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
         if let searchResultMoreVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultMoreVC.reuseIdentifier) as? SearchResultMoreVC {
            
             guard let navTitle = self.navigationItem.title else{return}
+          
             if ((navTitle.count) < 10) {
-                searchResultMoreVC.navigationItem.title = "'\(navTitle)' 검색결과"
+                if selectedLang == .kor {
+                   searchResultMoreVC.navigationItem.title = "'\(navTitle)' 검색결과"
+                } else {
+                    searchResultMoreVC.navigationItem.title = "'\(navTitle)' search result"
+                }
+                
             } else {
-                searchResultMoreVC.navigationItem.title = "'\(navTitle.prefix(9))...' 검색결과"
+                if selectedLang == .kor {
+                    searchResultMoreVC.navigationItem.title = "'\(navTitle.prefix(9))...' 검색결과"
+                } else {
+                    searchResultMoreVC.navigationItem.title = "'\(navTitle.prefix(9))...' search result"
+                }
+                
             }
             searchResultMoreVC.searchData = searchResultData?.place
             searchResultMoreVC.searchTxt = self.searchTxt
@@ -122,12 +162,26 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
         let mainStoryboard = Storyboard.shared().mainStoryboard
         if let searchResultMorePlaceVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultMorePlaceVC.reuseIdentifier) as? SearchResultMorePlaceVC {
         
-            searchResultMorePlaceVC.headerTitle = "이벤트"
+            if selectedLang == .kor {
+               searchResultMorePlaceVC.headerTitle = "이벤트"
+            } else {
+                searchResultMorePlaceVC.headerTitle = "Event"
+            }
+            
             guard let navTitle = self.navigationItem.title else{return}
             if ((navTitle.count) < 10) {
-                searchResultMorePlaceVC.navigationItem.title = "'\(navTitle)' 검색결과"
+                if selectedLang == .kor {
+                    searchResultMorePlaceVC.navigationItem.title = "'\(navTitle)' 검색결과"
+                } else {
+                    searchResultMorePlaceVC.navigationItem.title = "'\(navTitle)' search result"
+                }
+                
             } else {
-                searchResultMorePlaceVC.navigationItem.title = "'\(navTitle.prefix(9))...' 검색결과"
+                if selectedLang == .kor {
+                    searchResultMorePlaceVC.navigationItem.title = "'\(navTitle.prefix(9))...' 검색결과"
+                } else {
+                    searchResultMorePlaceVC.navigationItem.title = "'\(navTitle.prefix(9))...' search result"
+                }
             }
            searchResultMorePlaceVC.searchData = searchResultData?.event
             self.navigationController?.pushViewController(searchResultMorePlaceVC, animated: true)
@@ -220,7 +274,7 @@ extension SearchResultVC {
                 self.searchResultData = searchResultData as? SearchResultVOData
                 self.isChange = true
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break
@@ -238,7 +292,7 @@ extension SearchResultVC {
                 /*let indexPath = IndexPath(item: sender.indexPath!, section: 0)
                  self.tableView.reloadRows(at: [indexPath], with: .top)*/
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break
@@ -255,7 +309,7 @@ extension SearchResultVC {
                 sender.isSelected = false
                 self.searchResultData?.channel[sender.indexPath!].subscription = 0
             case .networkFail :
-                self.simpleAlert(title: "오류", message: "네트워크 연결상태를 확인해주세요")
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break
