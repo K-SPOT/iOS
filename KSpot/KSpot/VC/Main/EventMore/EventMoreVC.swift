@@ -19,6 +19,11 @@ class EventMoreVC: UIViewController, UIGestureRecognizerDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        if selectedLang == .kor {
+            self.navigationItem.title = "최신 Event"
+        } else {
+            self.navigationItem.title = "currnet Event"
+        }
         setBackBtn()
         getMoreEvent(url: UrlPath.spotEvent.getURL())
         collectionView.delegate = self
