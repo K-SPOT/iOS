@@ -20,6 +20,8 @@ class MapVC: UIViewController {
         return viewController
     }()
     
+    var currentDevice = UIDevice.current.screenType
+    
     var currentSelectedLang = selectedLang
     var filterView = MapFilterView.instanceFromNib()
     var selectedFirstFilter : FilterToggleBtn?
@@ -60,6 +62,9 @@ class MapVC: UIViewController {
         setTranslationBtn()
         //네비게이션 타이틀
         self.navigationItem.title = "K-Spot"
+        
+        
+       
     }
     
     @objc func getLangInfo(_ notification : Notification) {
@@ -325,6 +330,19 @@ extension MapVC : CLLocationManagerDelegate{
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
+
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            currentLocation = locationManager.location
+            
+            guard let latitude = currentLocation?.coordinate.latitude,
+                let longitude = currentLocation?.coordinate.longitude else {return}
+            chosenPlace = MyPlace(name: "", lat: latitude, long: longitude)
+            entryPoint = .google
+            getMapInfo()
+        } else {
+            entryPoint = .local
+            mapContainerVC.tap(.gangnamgu)
+        }
     }
     
     
