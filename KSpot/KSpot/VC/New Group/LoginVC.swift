@@ -16,12 +16,29 @@ class LoginVC: UIViewController {
 
   
   //  var dict : [String : AnyObject]!
-     @IBOutlet weak var skipBtn: UIButton!
+    
+    @IBOutlet weak var regularLbl: UILabel!
+    
+    @IBOutlet weak var boldLbl: UILabel!
+    
+    @IBOutlet weak var kakaoBtn: UIButton!
+    
+    @IBOutlet weak var facebookBtn: UIButton!
+    @IBOutlet weak var skipBtn: UIButton!
      @IBOutlet weak var xBtn: UIButton!
     var entryPoint = 0
     override func viewDidLoad() {
         super.viewDidLoad()
        // setLanguageFlag(langugae: .kor)
+        if selectedLang == .kor {
+            regularLbl.text = "안녕하세요!"
+            boldLbl.text = "로그인을 해주세요 :)"
+            skipBtn.setImage(#imageLiteral(resourceName: "login_skip"), for: .normal)
+        } else {
+            regularLbl.text = "Hello"
+            boldLbl.text = "Plase login :)"
+            skipBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
+        }
       
         skipBtn.addTarget(self, action: #selector(self.dismiss(_:)), for: .touchUpInside)
         xBtn.addTarget(self, action: #selector(self.dismiss(_:)), for: .touchUpInside)

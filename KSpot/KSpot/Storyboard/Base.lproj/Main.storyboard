@@ -768,6 +768,10 @@
                         <viewLayoutGuide key="safeArea" id="e7c-Jt-Uxz"/>
                     </view>
                     <connections>
+                        <outlet property="boldLbl" destination="F5g-Ir-CXB" id="ZYj-lW-HTB"/>
+                        <outlet property="facebookBtn" destination="lec-4s-1ox" id="9u5-2P-f6k"/>
+                        <outlet property="kakaoBtn" destination="bpw-t1-oN1" id="Irb-sc-S9g"/>
+                        <outlet property="regularLbl" destination="AZg-Bm-cTP" id="OSy-54-SHX"/>
                         <outlet property="skipBtn" destination="aa8-8p-Ica" id="21f-lp-SV3"/>
                         <outlet property="xBtn" destination="c6R-pv-wcu" id="HwJ-NM-dIX"/>
                     </connections>
