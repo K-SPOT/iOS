@@ -128,6 +128,7 @@
 		3BD41214215A6A0F008306A9 /* CategoryDetailMorePlaceHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD41213215A6A0F008306A9 /* CategoryDetailMorePlaceHeaderView.swift */; };
 		3BD41241215B6440008306A9 /* kakao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4123F215B6440008306A9 /* kakao.cpp */; };
 		3BD41245215B65D2008306A9 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD41244215B65D1008306A9 /* KakaoOpenSDK.framework */; };
+		3BD41247215C1A2D008306A9 /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD41246215C1A2C008306A9 /* TabbarVC.swift */; };
 		3BE666682154CAE40044801C /* DefaultSpotVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE666672154CAE40044801C /* DefaultSpotVO.swift */; };
 		3BE6666A2154CB120044801C /* DefaultSpotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE666692154CB120044801C /* DefaultSpotService.swift */; };
 		3BE6666F2156ABCB0044801C /* GoogleSpotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6666E2156ABCB0044801C /* GoogleSpotService.swift */; };
@@ -268,6 +269,7 @@
 		3BD4123F215B6440008306A9 /* kakao.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = kakao.cpp; sourceTree = "<group>"; };
 		3BD41240215B6440008306A9 /* kakao.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = kakao.hpp; sourceTree = "<group>"; };
 		3BD41244215B65D1008306A9 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = SOURCE_ROOT; };
+		3BD41246215C1A2C008306A9 /* TabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
 		3BE666672154CAE40044801C /* DefaultSpotVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSpotVO.swift; sourceTree = "<group>"; };
 		3BE666692154CB120044801C /* DefaultSpotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSpotService.swift; sourceTree = "<group>"; };
 		3BE6666E2156ABCB0044801C /* GoogleSpotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSpotService.swift; sourceTree = "<group>"; };
@@ -842,6 +844,7 @@
 		3BBF8D62213936F000FFF08C /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				3BD41246215C1A2C008306A9 /* TabbarVC.swift */,
 				3BBF8D582139293600FFF08C /* MainViewController.swift */,
 				3BBF8D652139370C00FFF08C /* FirstSection */,
 				3BBF8D642139370A00FFF08C /* SecondSection */,
@@ -1148,6 +1151,7 @@
 				3B3DD0F8213B2FAC00FD00B3 /* Storyboard.swift in Sources */,
 				3B3C440321515C25005B8650 /* APIService.swift in Sources */,
 				3B3C442E2151AA4E005B8650 /* UserEditService.swift in Sources */,
+				3BD41247215C1A2D008306A9 /* TabbarVC.swift in Sources */,
 				3BBB7DB2214A16FE004CC142 /* GettableService.swift in Sources */,
 				3BD412122158D5D7008306A9 /* SearchResultPlaceMoreVO.swift in Sources */,
 				3B3C441721518366005B8650 /* ChannelVO.swift in Sources */,
