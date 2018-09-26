@@ -348,9 +348,9 @@ extension mySubscribeBtn {
             self.setImage(
                 UIImage(named: "category_subscription_green"), for: .selected)
         } else {
-            self.setImage(UIImage(named: "board_star_gray"), for: .normal)
+            self.setImage(UIImage(named: "category_subscription_white_eng"), for: .normal)
             self.setImage(
-                UIImage(named: "board_star_green"), for: .selected)
+                UIImage(named: "category_subscription_green_eng"), for: .selected)
         }
       
         self.contentIdx = idx

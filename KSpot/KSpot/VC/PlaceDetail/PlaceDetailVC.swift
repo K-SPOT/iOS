@@ -264,7 +264,7 @@ extension PlaceDetailVC {
         myPlace = MyPlace(name: placeData.name, lat: placeData.latitude, long: placeData.longitude)
         
         if selectedLang == .eng  {
-            writeReviewBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
+            writeReviewBtn.setImage(#imageLiteral(resourceName: "place_detail_review_write_eng"), for: .normal)
         }
         searchWithGoogleLbl.text = selectedLang == .kor ? "구글맵으로 길찾기" : "Search with google map"
         

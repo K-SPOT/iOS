@@ -34,10 +34,15 @@ class LoginVC: UIViewController {
             regularLbl.text = "안녕하세요!"
             boldLbl.text = "로그인을 해주세요 :)"
             skipBtn.setImage(#imageLiteral(resourceName: "login_skip"), for: .normal)
+            facebookBtn.setImage(#imageLiteral(resourceName: "login__facebook_button"), for: .normal)
+            kakaoBtn.setImage(#imageLiteral(resourceName: "login_kakao_button"), for: .normal)
+            
         } else {
             regularLbl.text = "Hi"
             boldLbl.text = "Please Login :)"
-            skipBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
+            skipBtn.setImage(#imageLiteral(resourceName: "login_skip_eng"), for: .normal)
+            facebookBtn.setImage(#imageLiteral(resourceName: "login__facebook_eng"), for: .normal)
+            kakaoBtn.setImage(#imageLiteral(resourceName: "login_kakao_eng"), for: .normal)
         }
       
         skipBtn.addTarget(self, action: #selector(self.dismiss(_:)), for: .touchUpInside)

@@ -14,8 +14,8 @@ class MainSecondCVCell: UICollectionViewCell {
     @IBOutlet weak var myImgView: UIImageView!
     
     func configure(data : MainVODataMain) {
-        titleLbl.text = data.name
-        placeLbl.text = data.description
+        titleLbl.text = data.description
+        placeLbl.text = data.name
         setImgWithKF(url: data.img, imgView: myImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
     }
     override func awakeFromNib() {

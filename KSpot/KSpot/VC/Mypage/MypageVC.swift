@@ -83,7 +83,7 @@ class MypageVC: UIViewController {
             self.navigationItem.title = "MY PAGE"
             nameLbl.text = userName+","
             welcomLbl.text = "Welcome!"
-            logoutBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
+            logoutBtn.setImage(#imageLiteral(resourceName: "mypage_logout_eng"), for: .normal)
         }
         tableView.reloadData()
     }
