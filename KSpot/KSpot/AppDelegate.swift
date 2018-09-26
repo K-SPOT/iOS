@@ -41,7 +41,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let handled = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
         
-        return handled
+      //  return handled
+        
+        if KOSession.handleOpen(url) || handled{
+            return true
+        }
+        return false
     }
     
     
@@ -50,9 +55,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
         
-        return handled
+      //  return handled
+        if KOSession.handleOpen(url) || handled {
+            return true
+        }
+        return false
     }
     
+
 
     
     

@@ -106,7 +106,7 @@ extension CategoryDetailMorePlaceVC: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (343/375)*view.frame.width, height: (371/375)*view.frame.width)
+        return CGSize(width: (343/375)*view.frame.width, height: 371)
         //return CGSize(width: 375, height: 375)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

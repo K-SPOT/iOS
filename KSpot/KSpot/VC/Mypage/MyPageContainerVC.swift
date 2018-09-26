@@ -13,7 +13,6 @@ class MyPageContainerVC: UIViewController {
 
     @IBOutlet weak var containerView: UIView!
     var currentSelectedLang = selectedLang
-    var currentIsLogin = isLogin
     private lazy var mypageVC: MypageVC = {
         let storyboard = Storyboard.shared().mypageStoryboard
         var viewController = storyboard.instantiateViewController(withIdentifier: MypageVC.reuseIdentifier) as! MypageVC

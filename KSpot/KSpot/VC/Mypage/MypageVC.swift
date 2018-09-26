@@ -22,15 +22,30 @@ class MypageVC: UIViewController {
         }
     }
     @IBAction func logoutAction(_ sender: Any) {
+        
         let logoutTitle = selectedLang == .kor ? "로그아웃 하시겠습니까?" : "Do you want to logout?"
-        self.simpleAlertwithHandler(title: logoutTitle, message: "") { (_) in
-            //faceBookLogout
-            let fbLoginManager = FBSDKLoginManager()
-            fbLoginManager.logOut()
-            UserDefaults.standard.set(nil, forKey: "userAuth")
-            let parentVC = self.parent as? MyPageContainerVC
-            parentVC?.viewWillAppear(false)
+        if loginWith == .facebook {
+            self.simpleAlertwithHandler(title: logoutTitle, message: "") { (_) in
+                //faceBookLogout
+                let fbLoginManager = FBSDKLoginManager()
+                fbLoginManager.logOut()
+                loginWith = nil
+                UserDefaults.standard.set(nil, forKey: "userAuth")
+                let parentVC = self.parent as? MyPageContainerVC
+                parentVC?.viewWillAppear(false)
+            }
+        } else {
+            self.simpleAlertwithHandler(title: logoutTitle, message: "") { (_) in
+                //kakaoLogout
+                KOSession.shared().logoutAndClose(completionHandler: { (success, err) in
+                    UserDefaults.standard.set(nil, forKey: "userAuth")
+                    loginWith = nil
+                    let parentVC = self.parent as? MyPageContainerVC
+                    parentVC?.viewWillAppear(false)
+                })
+            }
         }
+        
     }
     
     @IBOutlet weak var nameLbl: UILabel!
@@ -53,6 +68,7 @@ class MypageVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         profileImgView.makeRounded(cornerRadius: profileImgView.frame.height/2)
+        profileImgView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
         
     }
     @objc func getLangInfo(_ notification : Notification) {
@@ -67,7 +83,7 @@ class MypageVC: UIViewController {
             self.navigationItem.title = "MY PAGE"
             nameLbl.text = userName+","
             welcomLbl.text = "Welcome!"
-            logoutBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
+            logoutBtn.setImage(#imageLiteral(resourceName: "mypage_logout_eng"), for: .normal)
         }
         tableView.reloadData()
     }

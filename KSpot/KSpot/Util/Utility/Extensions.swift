@@ -141,6 +141,7 @@ extension UIViewController {
     func setImgWithKF(url : String, imgView : UIImageView, defaultImg : UIImage){
         if let url = URL(string: url){
             imgView.kf.setImage(with: url)
+           
         } else {
             imgView.image = defaultImg
         }
@@ -156,10 +157,22 @@ extension UIViewController {
 
     
     func isUserLogin() -> Bool {
-        if FBSDKAccessToken.current() == nil {
+        if loginWith == .facebook {
+            if FBSDKAccessToken.current() != nil{
+                return true
+            } else {
+               return false
+            }
+        } else if loginWith == .kakao {
+            let session: KOSession = KOSession.shared();
+            if session.isOpen() {
+                return true
+            } else {
+                return false
+            }
+        } else {
             return false
         }
-        return true
     }
     
     func simpleAlert(title: String, message: String){
@@ -303,6 +316,7 @@ extension UICollectionViewCell {
         self.contentView.layer.borderWidth = 0.5
         self.contentView.layer.borderColor = #colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1)
         self.contentView.layer.masksToBounds = true
+        self.contentView.clipsToBounds = true
     }
     
     
@@ -334,9 +348,9 @@ extension mySubscribeBtn {
             self.setImage(
                 UIImage(named: "category_subscription_green"), for: .selected)
         } else {
-            self.setImage(UIImage(named: "board_star_gray"), for: .normal)
+            self.setImage(UIImage(named: "category_subscription_white_eng"), for: .normal)
             self.setImage(
-                UIImage(named: "board_star_green"), for: .selected)
+                UIImage(named: "category_subscription_green_eng"), for: .selected)
         }
       
         self.contentIdx = idx

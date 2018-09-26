@@ -44,7 +44,7 @@ class SearchResultMoreVC: UIViewController, UIGestureRecognizerDelegate {
         if selectedLang == .kor {
             filterBtn.setImage(#imageLiteral(resourceName: "map_filter"), for: .normal)
         } else {
-            filterBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
+            filterBtn.setImage(#imageLiteral(resourceName: "map_filter_eng"), for: .normal)
         }
     }
     
@@ -55,6 +55,9 @@ class SearchResultMoreVC: UIViewController, UIGestureRecognizerDelegate {
     
     @IBAction func filterAction(_ sender: Any) {
         UIApplication.shared.keyWindow!.addSubview(filterView)
+        filterView.snp.makeConstraints { (make) in
+            make.top.bottom.leading.trailing.equalToSuperview()
+        }
     }
     
 }
@@ -111,10 +114,10 @@ extension SearchResultMoreVC {
             filterView.etcBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_etc_green"), unselected: #imageLiteral(resourceName: "map_filter_etc_gray"))
             filterView.cafeBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_cafe_green"), unselected: #imageLiteral(resourceName: "map_filter_cafe_gray"))
         } else {
-            filterView.restaurantBtn!.setImage(selected: #imageLiteral(resourceName: "board_star_green"), unselected: #imageLiteral(resourceName: "board_star_gray"))
-             filterView.hotplaceBtn!.setImage(selected: #imageLiteral(resourceName: "board_star_green"), unselected: #imageLiteral(resourceName: "board_star_gray"))
-             filterView.cafeBtn!.setImage(selected: #imageLiteral(resourceName: "board_star_green"), unselected: #imageLiteral(resourceName: "board_star_gray"))
-             filterView.etcBtn!.setImage(selected: #imageLiteral(resourceName: "board_star_green"), unselected: #imageLiteral(resourceName: "board_star_gray"))
+            filterView.restaurantBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_restaurant_green_new_eng"), unselected: #imageLiteral(resourceName: "map_filter_restaurant_gray_new_eng"))
+             filterView.hotplaceBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_hotplace_green_new_eng"), unselected: #imageLiteral(resourceName: "map_filter_hotplace_gray_new_eng"))
+             filterView.cafeBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_cafe_green_new_eng"), unselected: #imageLiteral(resourceName: "map_filter_cafe_gray_new_eng"))
+             filterView.etcBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_etc_green_new_eng"), unselected: #imageLiteral(resourceName: "map_filter_etc_gray_new_eng"))
         }
         
     

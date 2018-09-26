@@ -37,7 +37,7 @@ class ThemeTVCell: UITableViewCell {
         if selectedLang == .kor {
             placeDetailBtn.setImage(#imageLiteral(resourceName: "theme_place_more_button"), for: .normal)
         } else {
-            placeDetailBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
+            placeDetailBtn.setImage(#imageLiteral(resourceName: "theme_place_more_button_eng"), for: .normal)
         }
     }
     

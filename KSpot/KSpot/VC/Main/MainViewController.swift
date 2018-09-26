@@ -8,15 +8,15 @@
 
 import UIKit
 //import FBSDKCoreKit
-//import FBSDKLoginKit
+import FBSDKLoginKit
 import ImageSlideshow
 
-/*struct SampleStruct {
- var image : InputSource
- var id : String
- }*/
 var selectedLang : Language = .kor
-var isLogin : Bool = false
+var loginWith : LoginType?
+enum LoginType {
+    case kakao
+    case facebook
+}
 
 class MainViewController: UIViewController {
     @IBAction func searchAction(_ sender: Any) {
@@ -35,8 +35,12 @@ class MainViewController: UIViewController {
     var currentSelectedLang = selectedLang
     
     fileprivate func reloadRootViewController() {
-        //isUserLogin()
-        //if FBSDKAccessToken.current() == nil
+    let session: KOSession = KOSession.shared()
+        if FBSDKAccessToken.current() != nil{
+            loginWith = .facebook
+        } else if session.isOpen() {
+            loginWith = .kakao
+        }
         if !isUserLogin() {
             goToLoginPage(entryPoint: 1)
         }
@@ -48,7 +52,6 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         setLanguageNoti(selector: #selector(getLangInfo(_:)))
         reloadRootViewController()
         tableView.delegate = self
@@ -103,7 +106,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 if selectedLang == .kor {
                   imageArr.insert(ImageSource(imageString: "main_theme image")!, at: 0)
                 } else {
-                    
+                    imageArr.insert(ImageSource(imageString: "main_theme_img_eng")!, at: 0)
                 }
                 cell.imageSource = imageArr
             }

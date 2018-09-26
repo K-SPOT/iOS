@@ -29,7 +29,7 @@ class MypageLoginVC: UIViewController {
         if selectedLang == .kor {
             loginBtn.setImage(#imageLiteral(resourceName: "mypage_login_button"), for: .normal)
         } else {
-            loginBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
+            loginBtn.setImage(#imageLiteral(resourceName: "mypage_login_button_eng"), for: .normal)
         }
     }
 

@@ -166,6 +166,8 @@ extension CategoryDetailVC {
             make.centerY.equalTo(backgroundImg.snp.bottom) //centerVertically
         }
         logoImg.makeRounded(cornerRadius: 37)
+        logoImg.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
+        logoImg.backgroundColor = .white
         mainTitleLbl.snp.makeConstraints { (make) in
             make.leading.equalTo(logoImg.snp.trailing).offset(8)
             make.top.equalTo(backgroundImg.snp.bottom).offset(16)

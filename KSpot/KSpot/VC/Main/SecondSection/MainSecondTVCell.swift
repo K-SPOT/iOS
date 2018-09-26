@@ -98,7 +98,7 @@ extension MainSecondTVCell: UICollectionViewDelegateFlowLayout {
     
     //cell size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (252/375)*window!.frame.width, height: (262/667)*window!.frame.height)
+        return CGSize(width: (252/375)*window!.frame.width, height: 262)
     }
     
     //collectionView inset

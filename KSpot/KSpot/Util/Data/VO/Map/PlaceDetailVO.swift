@@ -16,6 +16,7 @@ struct PlaceDetailVOData: Codable {
     let spotID: Int
     let img: [String]
     let name, description, address: String
+    let latitude, longitude : Double
     let reviewScore : Double
     let reviewCnt: Int
     let station, prevStation, nextStation, openTime: String
@@ -38,7 +39,7 @@ struct PlaceDetailVOData: Codable {
         case contact
         case scrapCnt = "scrap_cnt"
         case isScrap = "is_scrap"
-        case channel, reviews
+        case channel, reviews, latitude, longitude
     }
 }
 

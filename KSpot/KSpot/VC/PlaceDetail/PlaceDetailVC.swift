@@ -33,6 +33,8 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     @IBOutlet weak var contactView: UIView!
     @IBOutlet weak var contactImgView: UIImageView!
     @IBOutlet weak var contactLbl: UILabel!
+    
+    @IBOutlet weak var searchWithGoogleLbl: UILabel!
     @IBOutlet weak var openCloseLbl: UILabel!
     @IBOutlet weak var openLbl: UILabel!
     @IBOutlet weak var closeLbl: UILabel!
@@ -45,6 +47,7 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     var selectedIdx = 0
     var scrapCount = 0
     var isPlace = true
+    var myPlace : MyPlace?
     var isChange : Bool? {
         didSet {
             tableView.reloadData()
@@ -66,11 +69,20 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     }()
     
     @IBAction func goToMapAction(_ sender: Any) {
-        let mapStoryboard = Storyboard.shared().mapStoryboard
-        if let googleMapVC = mapStoryboard.instantiateViewController(withIdentifier:GoogleMapVC.reuseIdentifier) as? GoogleMapVC {
-            googleMapVC.chosenPlace = MyPlace(name: "대전히히", lat: 36.3504, long: 127.3845)
-            googleMapVC.entryPoint = .searchSpecificLocation
-            self.navigationController?.pushViewController(googleMapVC, animated: true)
+        guard let myPlace = myPlace else {return}
+        let title = myPlace.name
+        let lat = myPlace.lat
+        let long = myPlace.long
+        let query = "https://www.google.com/maps/search/\(title)/@\(lat),\(long),23z/"
+        // let query = "https://www.google.com/maps/search/?api=1&query=\(addressLbl.text!)&zoom=23"
+        guard let encodedUrl = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            print("invalid url")
+            return
+        }
+        if let url = URL(string:encodedUrl) {
+            UIApplication.shared.open(url)
+        } else {
+            simpleAlert(title: "오류", message: "구글맵 페이지로 이동할 수 없습니다")
         }
     }
     
@@ -92,7 +104,7 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
         if isPlace {
             contact.makeACall()
         } else {
-            sendEmail(to : contact)
+            //sendEmail(to : contact)
         }
     }
     
@@ -130,8 +142,10 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
         currentStationLbl.adjustsFontSizeToFitWidth = true
         titleLbl.adjustsFontSizeToFitWidth = true
         descLbl.adjustsFontSizeToFitWidth = true
-        addressLbl.adjustsFontSizeToFitWidth = true
-        addressLbl2.adjustsFontSizeToFitWidth = true
+        //addressLbl.adjustsFontSizeToFitWidth = true
+       // addressLbl2.adjustsFontSizeToFitWidth = true
+        addressLbl.sizeToFit()
+        addressLbl2.sizeToFit()
         locationView.makeRounded(cornerRadius: 17)
         contactView.makeRounded(cornerRadius: nil)
         contactView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
@@ -230,6 +244,7 @@ extension PlaceDetailVC {
     } //setBarButtons
     
     func setHeaderView(placeData : PlaceDetailVOData){
+        
         scrapCount = placeData.scrapCnt
         ratingLbl.text = placeData.reviewScore.description
         titleLbl.text = placeData.name
@@ -246,9 +261,12 @@ extension PlaceDetailVC {
     } //setHeaderView
     
     func setFooterView(placeData : PlaceDetailVOData){
+        myPlace = MyPlace(name: placeData.name, lat: placeData.latitude, long: placeData.longitude)
+        
         if selectedLang == .eng  {
-            writeReviewBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
+            writeReviewBtn.setImage(#imageLiteral(resourceName: "place_detail_review_write_eng"), for: .normal)
         }
+        searchWithGoogleLbl.text = selectedLang == .kor ? "구글맵으로 길찾기" : "Search with google map"
         
         if isPlace {
             if selectedLang == .kor  {
@@ -278,6 +296,7 @@ extension PlaceDetailVC {
         openTimeLbl.text = placeData.openTime
         closeTimeLbl.text = placeData.closeTime
         contactLbl.text = placeData.contact
+        contactLbl.adjustsFontSizeToFitWidth = true
     } //setFooterView
 }
 

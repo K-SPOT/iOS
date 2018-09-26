@@ -573,10 +573,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울 남산타워" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JM9-6l-oFM">
-                                                    <rect key="frame" x="16" y="214" width="126" height="24.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="260" id="WAw-HU-sUe"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="16" y="214" width="126" height="25"/>
                                                     <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="22"/>
                                                     <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -669,6 +666,7 @@
                                             <constraint firstItem="JM9-6l-oFM" firstAttribute="top" secondItem="11u-C4-sEt" secondAttribute="bottom" constant="14" id="GnC-Kl-0Bz"/>
                                             <constraint firstAttribute="bottom" secondItem="0R3-nw-y0G" secondAttribute="bottom" id="Hct-63-Pxu"/>
                                             <constraint firstItem="11u-C4-sEt" firstAttribute="top" secondItem="4w4-Le-8MB" secondAttribute="top" id="Jgp-V4-zjl"/>
+                                            <constraint firstItem="JM9-6l-oFM" firstAttribute="width" relation="lessThanOrEqual" secondItem="4w4-Le-8MB" secondAttribute="width" multiplier="260:375" id="MHs-6G-UzQ"/>
                                             <constraint firstAttribute="trailing" secondItem="92b-IM-buj" secondAttribute="trailing" constant="16" id="QWU-D1-QiA"/>
                                             <constraint firstItem="92b-IM-buj" firstAttribute="leading" secondItem="JM9-6l-oFM" secondAttribute="leading" id="ReJ-YP-ERD"/>
                                             <constraint firstItem="eYu-QL-B3P" firstAttribute="centerY" secondItem="kmn-pn-KVz" secondAttribute="centerY" id="Shq-Ou-0pP"/>
@@ -681,6 +679,7 @@
                                             <constraint firstItem="5Mv-JB-BMx" firstAttribute="centerY" secondItem="zy5-Iw-axe" secondAttribute="centerY" id="j8q-OI-yy2"/>
                                             <constraint firstItem="JM9-6l-oFM" firstAttribute="leading" secondItem="4w4-Le-8MB" secondAttribute="leading" constant="16" id="kWX-Bf-tOG"/>
                                             <constraint firstAttribute="trailing" secondItem="11u-C4-sEt" secondAttribute="trailing" id="kq1-wn-cSw"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5Mv-JB-BMx" secondAttribute="trailing" constant="16" id="rf2-jv-idw"/>
                                             <constraint firstItem="0R3-nw-y0G" firstAttribute="top" secondItem="CTl-vq-KKC" secondAttribute="bottom" id="tRs-qH-uIQ"/>
                                             <constraint firstItem="0R3-nw-y0G" firstAttribute="leading" secondItem="4w4-Le-8MB" secondAttribute="leading" id="xOu-XG-PiE"/>
                                         </constraints>

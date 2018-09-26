@@ -45,8 +45,9 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
         /*grayDoneBtn = UIBarButtonItem.titleBarbutton(title: "완료", red: 236, green: 236, blue: 236, fontSize: 18, fontName: NanumSquareOTF.NanumSquareOTFB.rawValue, selector: nil, target: self)
         greenDoneBtn = UIBarButtonItem.titleBarbutton(title: "완료", red: 64, green: 211, blue: 159, fontSize: 18, fontName: NanumSquareOTF.NanumSquareOTFB.rawValue, selector: #selector(EditProfileVC.doneAction(_sender:)), target: self)*/
         //self.navigationItem.rightBarButtonItem = greenDoneBtn
-        
+       
         profileImgView.makeRounded(cornerRadius: nil)
+        profileImgView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
         nameTxtfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         nameCountLbl.text = nameTxt.count.description
         nameTxtfield.text = nameTxt
@@ -63,6 +64,7 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
     func setLanguage(){
         self.navigationItem.title = selectedLang == .kor ? "회원정보 수정" : "Edit Profile"
         nickNameLbl.text = selectedLang == .kor ? "닉네임" : "Nickname"
+        nickNameLbl.sizeToFit()
         doneBtn.title = selectedLang == .kor ? "완료" : "complete"
     }
     

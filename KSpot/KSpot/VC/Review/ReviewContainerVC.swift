@@ -39,7 +39,7 @@ class ReviewContainerVC: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
 
         if selectedLang == .eng {
-              writeReviewBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
+              writeReviewBtn.setImage(#imageLiteral(resourceName: "review_write_floating_eng"), for: .normal)
         }
         setBackBtn()
         initContainerView()
