@@ -95,6 +95,9 @@ class MapVC: UIViewController {
     @IBAction func filterAction(_ sender: Any) {
         
         UIApplication.shared.keyWindow!.addSubview(filterView)
+        filterView.snp.makeConstraints { (make) in
+            make.top.bottom.leading.trailing.equalToSuperview()
+        }
     }
     
     
@@ -267,6 +270,10 @@ extension MapVC {
             popularBtn.setTitle("popularity", for: .normal)
             recentBtn.setTitle("recent", for: .normal)
             filterView.okBtn.setTitle("Check", for: .normal)
+        } else {
+            popularBtn.setTitle("인기순", for: .normal)
+            recentBtn.setTitle("최신순", for: .normal)
+            filterView.okBtn.setTitle("확인", for: .normal)
         }
         
         popularBtn.setOtherBtn(another: recentBtn)

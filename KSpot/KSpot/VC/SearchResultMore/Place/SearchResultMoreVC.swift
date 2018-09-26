@@ -55,6 +55,9 @@ class SearchResultMoreVC: UIViewController, UIGestureRecognizerDelegate {
     
     @IBAction func filterAction(_ sender: Any) {
         UIApplication.shared.keyWindow!.addSubview(filterView)
+        filterView.snp.makeConstraints { (make) in
+            make.top.bottom.leading.trailing.equalToSuperview()
+        }
     }
     
 }

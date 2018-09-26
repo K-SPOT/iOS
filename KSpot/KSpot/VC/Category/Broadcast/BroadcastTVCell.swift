@@ -25,7 +25,7 @@ class BroadcastTVCell: UITableViewCell {
             subtitleLbl.text = "구독자 \(data.subscriptionCnt.description) · 게시물 \(data.spotCnt.description)"
             
         } else {
-            subtitleLbl.text = "subscriber \(data.subscriptionCnt.description) · post \(data.spotCnt.description)"
+            subtitleLbl.text = "sub \(data.subscriptionCnt.description) · post \(data.spotCnt.description)"
             
         }
      

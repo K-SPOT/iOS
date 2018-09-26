@@ -31,7 +31,7 @@ class CelebrityTVCell: UITableViewCell {
         if selectedLang == .kor {
           subtitleLbl.text = "구독자 \(data.subscriptionCnt.description) · 게시물 \(data.spotCnt.description)"
         } else {
-            subtitleLbl.text = "subscriber \(data.subscriptionCnt.description) · post \(data.spotCnt.description)"
+            subtitleLbl.text = "sub \(data.subscriptionCnt.description) · post \(data.spotCnt.description)"
         }
         subscribeBtn.setSubscribeBtn(idx: data.channelID, isSubscribe: data.subscription)
         subscribeBtn.indexPath = index

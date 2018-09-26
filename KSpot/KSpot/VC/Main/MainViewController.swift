@@ -106,7 +106,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 if selectedLang == .kor {
                   imageArr.insert(ImageSource(imageString: "main_theme image")!, at: 0)
                 } else {
-                    
+                    imageArr.insert(ImageSource(imageString: "main_theme_img_eng")!, at: 0)
                 }
                 cell.imageSource = imageArr
             }

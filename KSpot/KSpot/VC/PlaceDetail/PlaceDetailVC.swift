@@ -33,6 +33,8 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     @IBOutlet weak var contactView: UIView!
     @IBOutlet weak var contactImgView: UIImageView!
     @IBOutlet weak var contactLbl: UILabel!
+    
+    @IBOutlet weak var searchWithGoogleLbl: UILabel!
     @IBOutlet weak var openCloseLbl: UILabel!
     @IBOutlet weak var openLbl: UILabel!
     @IBOutlet weak var closeLbl: UILabel!
@@ -102,7 +104,7 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
         if isPlace {
             contact.makeACall()
         } else {
-            sendEmail(to : contact)
+            //sendEmail(to : contact)
         }
     }
     
@@ -140,8 +142,10 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
         currentStationLbl.adjustsFontSizeToFitWidth = true
         titleLbl.adjustsFontSizeToFitWidth = true
         descLbl.adjustsFontSizeToFitWidth = true
-        addressLbl.adjustsFontSizeToFitWidth = true
-        addressLbl2.adjustsFontSizeToFitWidth = true
+        //addressLbl.adjustsFontSizeToFitWidth = true
+       // addressLbl2.adjustsFontSizeToFitWidth = true
+        addressLbl.sizeToFit()
+        addressLbl2.sizeToFit()
         locationView.makeRounded(cornerRadius: 17)
         contactView.makeRounded(cornerRadius: nil)
         contactView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
@@ -262,6 +266,7 @@ extension PlaceDetailVC {
         if selectedLang == .eng  {
             writeReviewBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
         }
+        searchWithGoogleLbl.text = selectedLang == .kor ? "구글맵으로 길찾기" : "Search with google map"
         
         if isPlace {
             if selectedLang == .kor  {
@@ -291,6 +296,7 @@ extension PlaceDetailVC {
         openTimeLbl.text = placeData.openTime
         closeTimeLbl.text = placeData.closeTime
         contactLbl.text = placeData.contact
+        contactLbl.adjustsFontSizeToFitWidth = true
     } //setFooterView
 }
 

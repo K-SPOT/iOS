@@ -118,7 +118,7 @@ extension PlaceDetailSecondTVCell: UICollectionViewDelegateFlowLayout {
     
     //cell size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (340/375)*window!.frame.width, height: (206/667)*window!.frame.height)
+        return CGSize(width: (340/375)*window!.frame.width, height: 206)
     }
     
 }

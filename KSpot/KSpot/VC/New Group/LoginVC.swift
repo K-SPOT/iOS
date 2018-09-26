@@ -99,6 +99,7 @@ class LoginVC: UIViewController {
                 
                 if session.isOpen(){
                     let params : [String : Any] = ["access_token" : session.token.accessToken]
+                    print("accessToken is \(session.token.accessToken)")
                     self.kakaoLogin(url: UrlPath.kakaoLogin.getURL(), params: params)
                     
                 }else{
