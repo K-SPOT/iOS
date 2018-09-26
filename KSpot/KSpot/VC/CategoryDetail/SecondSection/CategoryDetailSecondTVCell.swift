@@ -36,8 +36,8 @@ class CategoryDetailSecondTVCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.myImgView.layer.cornerRadius = 17
-        self.myImgView.layer.masksToBounds = true
+        myImgView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
+        myImgView.makeRounded(cornerRadius: 6)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

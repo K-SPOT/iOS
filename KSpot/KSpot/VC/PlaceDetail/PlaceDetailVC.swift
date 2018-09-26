@@ -45,6 +45,7 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     var selectedIdx = 0
     var scrapCount = 0
     var isPlace = true
+    var myPlace : MyPlace?
     var isChange : Bool? {
         didSet {
             tableView.reloadData()
@@ -66,9 +67,21 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     }()
     
     @IBAction func goToMapAction(_ sender: Any) {
-        UIApplication.shared.open(URL(string : "https://www.google.com/maps/place/22.317528,114.170972")! as URL, options: [:], completionHandler: { (_) in
-            
-        })
+        guard let myPlace = myPlace else {return}
+        let title = myPlace.name
+        let lat = myPlace.lat
+        let long = myPlace.long
+        let query = "https://www.google.com/maps/search/\(title)/@\(lat),\(long),23z/"
+        // let query = "https://www.google.com/maps/search/?api=1&query=\(addressLbl.text!)&zoom=23"
+        guard let encodedUrl = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            print("invalid url")
+            return
+        }
+        if let url = URL(string:encodedUrl) {
+            UIApplication.shared.open(url)
+        } else {
+            simpleAlert(title: "오류", message: "구글맵 페이지로 이동할 수 없습니다")
+        }
     }
     
     @IBAction func writeReviewAction(_ sender: Any) {
@@ -227,6 +240,7 @@ extension PlaceDetailVC {
     } //setBarButtons
     
     func setHeaderView(placeData : PlaceDetailVOData){
+        
         scrapCount = placeData.scrapCnt
         ratingLbl.text = placeData.reviewScore.description
         titleLbl.text = placeData.name
@@ -243,6 +257,8 @@ extension PlaceDetailVC {
     } //setHeaderView
     
     func setFooterView(placeData : PlaceDetailVOData){
+        myPlace = MyPlace(name: placeData.name, lat: placeData.latitude, long: placeData.longitude)
+        
         if selectedLang == .eng  {
             writeReviewBtn.setImage(#imageLiteral(resourceName: "board_star_green"), for: .normal)
         }

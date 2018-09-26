@@ -20,8 +20,10 @@ class SubBroadcastTVCell: UITableViewCell {
         greenView.isHidden = (data.newPostCheck == 0)
     }
     override func awakeFromNib() {
-        profileView.makeRounded(cornerRadius: profileView.frame.height/2)
         super.awakeFromNib()
+        profileView.makeRounded(cornerRadius: profileView.frame.height/2)
+         profileView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
+        
         // Initialization code
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

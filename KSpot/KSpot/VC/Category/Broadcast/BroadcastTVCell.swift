@@ -40,6 +40,8 @@ class BroadcastTVCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.mainImgView.makeRounded(cornerRadius: 5)
+        self.mainImgView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
         // Initialization code
     }
 

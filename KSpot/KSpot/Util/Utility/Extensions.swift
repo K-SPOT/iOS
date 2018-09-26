@@ -141,6 +141,7 @@ extension UIViewController {
     func setImgWithKF(url : String, imgView : UIImageView, defaultImg : UIImage){
         if let url = URL(string: url){
             imgView.kf.setImage(with: url)
+           
         } else {
             imgView.image = defaultImg
         }
@@ -315,6 +316,7 @@ extension UICollectionViewCell {
         self.contentView.layer.borderWidth = 0.5
         self.contentView.layer.borderColor = #colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1)
         self.contentView.layer.masksToBounds = true
+        self.contentView.clipsToBounds = true
     }
     
     

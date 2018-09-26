@@ -20,7 +20,8 @@ class MainSecondCVCell: UICollectionViewCell {
     }
     override func awakeFromNib() {
        
-        titleLbl.setLineSpacing(lineSpacing: 6); self.makeCornerRound(cornerRadius: 17)
+        titleLbl.setLineSpacing(lineSpacing: 6);
+        self.makeCornerRound(cornerRadius: 17)
     }
 }
 

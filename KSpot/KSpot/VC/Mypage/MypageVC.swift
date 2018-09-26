@@ -68,6 +68,7 @@ class MypageVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         profileImgView.makeRounded(cornerRadius: profileImgView.frame.height/2)
+        profileImgView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
         
     }
     @objc func getLangInfo(_ notification : Notification) {
