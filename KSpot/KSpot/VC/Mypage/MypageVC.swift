@@ -22,15 +22,30 @@ class MypageVC: UIViewController {
         }
     }
     @IBAction func logoutAction(_ sender: Any) {
+        
         let logoutTitle = selectedLang == .kor ? "로그아웃 하시겠습니까?" : "Do you want to logout?"
-        self.simpleAlertwithHandler(title: logoutTitle, message: "") { (_) in
-            //faceBookLogout
-            let fbLoginManager = FBSDKLoginManager()
-            fbLoginManager.logOut()
-            UserDefaults.standard.set(nil, forKey: "userAuth")
-            let parentVC = self.parent as? MyPageContainerVC
-            parentVC?.viewWillAppear(false)
+        if loginWith == .facebook {
+            self.simpleAlertwithHandler(title: logoutTitle, message: "") { (_) in
+                //faceBookLogout
+                let fbLoginManager = FBSDKLoginManager()
+                fbLoginManager.logOut()
+                loginWith = nil
+                UserDefaults.standard.set(nil, forKey: "userAuth")
+                let parentVC = self.parent as? MyPageContainerVC
+                parentVC?.viewWillAppear(false)
+            }
+        } else {
+            self.simpleAlertwithHandler(title: logoutTitle, message: "") { (_) in
+                //kakaoLogout
+                KOSession.shared().logoutAndClose(completionHandler: { (success, err) in
+                    UserDefaults.standard.set(nil, forKey: "userAuth")
+                    loginWith = nil
+                    let parentVC = self.parent as? MyPageContainerVC
+                    parentVC?.viewWillAppear(false)
+                })
+            }
         }
+        
     }
     
     @IBOutlet weak var nameLbl: UILabel!

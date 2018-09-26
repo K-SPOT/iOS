@@ -697,6 +697,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpw-t1-oN1">
                                         <rect key="frame" x="0.0" y="0.0" width="287" height="41"/>
                                         <state key="normal" image="login_kakao_button"/>
+                                        <connections>
+                                            <action selector="loginWithKakao:" destination="8Tf-e7-IlC" eventType="touchUpInside" id="Ntr-s9-c8S"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lec-4s-1ox">
                                         <rect key="frame" x="0.0" y="63" width="287" height="41"/>

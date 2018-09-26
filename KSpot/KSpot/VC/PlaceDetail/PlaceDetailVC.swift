@@ -66,12 +66,9 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     }()
     
     @IBAction func goToMapAction(_ sender: Any) {
-        let mapStoryboard = Storyboard.shared().mapStoryboard
-        if let googleMapVC = mapStoryboard.instantiateViewController(withIdentifier:GoogleMapVC.reuseIdentifier) as? GoogleMapVC {
-            googleMapVC.chosenPlace = MyPlace(name: "대전히히", lat: 36.3504, long: 127.3845)
-            googleMapVC.entryPoint = .searchSpecificLocation
-            self.navigationController?.pushViewController(googleMapVC, animated: true)
-        }
+        UIApplication.shared.open(URL(string : "https://www.google.com/maps/place/22.317528,114.170972")! as URL, options: [:], completionHandler: { (_) in
+            
+        })
     }
     
     @IBAction func writeReviewAction(_ sender: Any) {

@@ -156,10 +156,22 @@ extension UIViewController {
 
     
     func isUserLogin() -> Bool {
-        if FBSDKAccessToken.current() == nil {
+        if loginWith == .facebook {
+            if FBSDKAccessToken.current() != nil{
+                return true
+            } else {
+               return false
+            }
+        } else if loginWith == .kakao {
+            let session: KOSession = KOSession.shared();
+            if session.isOpen() {
+                return true
+            } else {
+                return false
+            }
+        } else {
             return false
         }
-        return true
     }
     
     func simpleAlert(title: String, message: String){

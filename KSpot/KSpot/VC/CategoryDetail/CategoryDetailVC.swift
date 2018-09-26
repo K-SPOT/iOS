@@ -166,6 +166,7 @@ extension CategoryDetailVC {
             make.centerY.equalTo(backgroundImg.snp.bottom) //centerVertically
         }
         logoImg.makeRounded(cornerRadius: 37)
+        logoImg.contentMode = .scaleToFill
         mainTitleLbl.snp.makeConstraints { (make) in
             make.leading.equalTo(logoImg.snp.trailing).offset(8)
             make.top.equalTo(backgroundImg.snp.bottom).offset(16)

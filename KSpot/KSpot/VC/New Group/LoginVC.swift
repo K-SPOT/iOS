@@ -57,7 +57,12 @@ class LoginVC: UIViewController {
     }
 
     @IBAction func facebookLoginAction(_ sender: UIButton) {
+        let session: KOSession = KOSession.shared();
         
+        
+        if session.isOpen() {
+            session.close()
+        }
         /* Facebook SDK 사용합니다. */
         let fbLoginManager = FBSDKLoginManager()
         fbLoginManager.loginBehavior = .native // .web, .brower, .systemAccount
@@ -74,7 +79,48 @@ class LoginVC: UIViewController {
                 }
             }
         }
-    }
+    } //fbLogin
+    
+    @IBAction func loginWithKakao(_ sender: Any) {
+        if FBSDKAccessToken.current() != nil{
+            let fbLoginManager = FBSDKLoginManager()
+            fbLoginManager.logOut()
+        }
+        
+        let session: KOSession = KOSession.shared();
+   
+        
+        if session.isOpen() {
+            session.close()
+        }
+        
+        session.open(completionHandler: { (error) -> Void in
+            if error == nil{
+                
+                if session.isOpen(){
+                    let params : [String : Any] = ["access_token" : session.token.accessToken]
+                    self.kakaoLogin(url: UrlPath.kakaoLogin.getURL(), params: params)
+                    
+                }else{
+                    print("Login failed")
+                }
+            }else{
+                print("Login error : \(String(describing: error))")
+            }
+            if !session.isOpen() {
+                if let error = error as NSError? {
+                    switch error.code {
+                    case Int(KOErrorCancelled.rawValue):
+                        break
+                    default:
+                        //간편 로그인 취소
+                        print("error : \(error.description)")
+                        
+                    }
+                }
+            }
+        })
+    } //kakao login
 }
 
 //통신
@@ -86,8 +132,9 @@ extension LoginVC {
             case .networkSuccess(let loginData):
                 //유저 값 설정
                 let userData = loginData as? FacebookLoginVOData
-                 UserDefaults.standard.set(userData?.id, forKey: "userId")
+                 //UserDefaults.standard.set(userData?.id, forKey: "userId")
                  UserDefaults.standard.set(userData?.authorization, forKey : "userAuth")
+                loginWith = .facebook
                 self.dismiss(animated: false, completion: nil)
             case .networkFail :
                self.networkSimpleAlert()
@@ -96,5 +143,24 @@ extension LoginVC {
                 break
             }
         })
-    } //login
+    } //fb login
+    func kakaoLogin(url : String, params : [String:Any]){
+        FacebookLoginService.shareInstance.login(url: url, params : params, completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case .networkSuccess(let loginData):
+                //유저 값 설정
+                let userData = loginData as? FacebookLoginVOData
+              //  UserDefaults.standard.set(userData?.id, forKey: "userId")
+                UserDefaults.standard.set(userData?.authorization, forKey : "userAuth")
+                self.dismiss(animated: false, completion: nil)
+                loginWith = .kakao
+            case .networkFail :
+                self.networkSimpleAlert()
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    } //ko login
 }

@@ -12,7 +12,7 @@ import Foundation
 enum UrlPath : String {
     //로그인
     case facebookLogin = "/user/facebook/signin"
-    
+    case kakaoLogin = "/user/kakao/signin"
 
     //메인
     case main = "/main"

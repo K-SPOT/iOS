@@ -14,6 +14,7 @@ struct FacebookLoginVO: Codable {
 }
 
 struct FacebookLoginVOData: Codable {
-    let id: String
+  //  let id: String
     let authorization: String
 }
+
