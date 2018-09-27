@@ -18,10 +18,10 @@ class PlaceDetailSecondTVCell: UITableViewCell {
     @IBOutlet weak var moreBtn: UIButton!
     @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var collectionView: UICollectionView!
-    private var indexOfCellBeforeDragging = 0
-    private var collectionViewFlowLayout: UICollectionViewFlowLayout {
-        return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-    }
+    var finalOffset : CGFloat = 0
+    var startOffset  : CGFloat = 0
+    var currentIdx = 0
+  
     var delegate : SelectSectionDelegate?
     var reviewData : [PlaceDetailVODataReview]? {
         didSet {
@@ -125,41 +125,42 @@ extension PlaceDetailSecondTVCell: UICollectionViewDelegateFlowLayout {
 
 extension PlaceDetailSecondTVCell : UIScrollViewDelegate{
     
-    private func indexOfMajorCell() -> Int {
-        
-      //  let itemWidth = collectionViewFlowLayout.itemSize.width
-      //  let proportionalOffset = collectionView.contentOffset.x / (itemWidth)
+    private func indexOfMajorCell(direction : Direction) -> Int {
         var index = 0
-        let numberOfItems = collectionView.numberOfItems(inSection: 0)
-        let offset = collectionView.contentOffset.x
-        if offset > CGFloat(CGFloat(indexOfCellBeforeDragging)*collectionView.frame.width){
-            //왼쪽으로 스와이프
-            index = indexOfCellBeforeDragging+1
-        } else {
-            index = indexOfCellBeforeDragging-1
+        switch direction {
+        case .right :
+            index = currentIdx + 1
+        case .left :
+            index = currentIdx - 1
         }
-        
+        let numberOfItems = collectionView.numberOfItems(inSection: 0)
         let safeIndex = max(0, min(numberOfItems - 1, index))
+        currentIdx = safeIndex
         return safeIndex
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        indexOfCellBeforeDragging = indexOfMajorCell()
-        
+        startOffset = collectionView.contentOffset.x
     }
-    
-    
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
-        // Stop scrollView sliding:
+        finalOffset = collectionView.contentOffset.x
         targetContentOffset.pointee = scrollView.contentOffset
-        // calculate where scrollView should snap to:
-        let indexOfMajorCell = self.indexOfMajorCell()
-        let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        if finalOffset > startOffset {
+            //뒤로 넘기기
+            let majorIdx = indexOfMajorCell(direction: .right)
+            let indexPath = IndexPath(row: majorIdx, section: 0)
+            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        } else if finalOffset < startOffset {
+            //앞으로 가기
+            let majorIdx = indexOfMajorCell(direction: .left)
+            let indexPath = IndexPath(row: majorIdx, section: 0)
+            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        } else {
+            print("둘다 아님")
+        }
     }
-    
     
 }
 

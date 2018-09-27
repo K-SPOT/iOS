@@ -71,6 +71,7 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
 
     @IBAction func doneAction(_ sender: Any) {
          editProfile(url: UrlPath.userEdit.getURL(), editedName: nameTxtfield.text!)
+        self.pleaseWait()
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -217,9 +218,12 @@ extension EditProfileVC {
             guard let `self` = self else { return }
             switch result {
             case .networkSuccess(_):
-                self.simpleOKAlert(title: "확인", message: "프로필 변경이 완료되었습니다", okHandler: { (_) in
+                self.clearAllNotice()
+                self.noticeSuccess("수정 완료!", autoClear: true, autoClearTime: 1)
+                 self.pop()
+               /* self.simpleOKAlert(title: "확인", message: "프로필 변경이 완료되었습니다", okHandler: { (_) in
                     self.pop()
-                })
+                })*/
             case .duplicated :
                 let alertTitle = selectedLang == .kor ? "오류" : "Error"
                 let alertMsg = selectedLang == .kor ? "이미 사용중인 닉네임입니다" : "This nickname is already using"

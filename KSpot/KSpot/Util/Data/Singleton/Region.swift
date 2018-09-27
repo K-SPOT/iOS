@@ -13,6 +13,12 @@ enum Language : Int {
     case eng = 1
 }
 
+
+enum Direction {
+    case right
+    case left
+}
+
 enum Distance : String {
     case oneHM = "100m"
     case threeHM = "300m"

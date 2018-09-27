@@ -16,11 +16,9 @@ class MainSecondTVCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     private var indexOfCellBeforeDragging = 0
     var finalOffset : CGFloat = 0
+    var startOffset  : CGFloat = 0
+    var currentIdx = 0
 
-    
-    private var collectionViewFlowLayout: UICollectionViewFlowLayout {
-        return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-    }
     var delegate : SelectSectionDelegate?
     var recommendPlaceData : [MainVODataMain]? {
         didSet {
@@ -107,54 +105,44 @@ extension MainSecondTVCell: UICollectionViewDelegateFlowLayout {
     }
 }
 
+
 extension MainSecondTVCell : UIScrollViewDelegate{
     
-    private func indexOfMajorCell() -> Int {
-      /*var index = 0
-        let numberOfItems = collectionView.numberOfItems(inSection: 0)
-        let offset = collectionView.contentOffset.x
-        
-        print("offset : \(offset)")
-        if (offset > finalOffset){
-            //왼쪽으로 스와이프
-            index = indexOfCellBeforeDragging+1
-        } else {
-            index = indexOfCellBeforeDragging-1
+    private func indexOfMajorCell(direction : Direction) -> Int {
+        var index = 0
+        switch direction {
+        case .right :
+          index = currentIdx + 1
+        case .left :
+          index = currentIdx - 1
         }
-        
-        let safeIndex = max(0, min(numberOfItems - 1, index))
-        return safeIndex*/
-        let itemWidth = collectionViewFlowLayout.itemSize.width
-        let proportionalOffset = collectionView.contentOffset.x / (itemWidth)
-       // print("최종 오프셋 \(collectionView.contentOffset.x)")
-       // print("proportionalOffset \(proportionalOffset)")
-        let index = Int(round(proportionalOffset))
         let numberOfItems = collectionView.numberOfItems(inSection: 0)
         let safeIndex = max(0, min(numberOfItems - 1, index))
+        currentIdx = safeIndex
         return safeIndex
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-       // print("시작")
-        indexOfCellBeforeDragging = indexOfMajorCell()
+        startOffset = collectionView.contentOffset.x
     }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        finalOffset = collectionView.contentOffset.x
-        //print("오프셋 \(collectionView.contentOffset.x)")
-        
-    }
-    
-    
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
-        // Stop scrollView sliding:
+
+        finalOffset = collectionView.contentOffset.x
         targetContentOffset.pointee = scrollView.contentOffset
-        // calculate where scrollView should snap to:
-        let indexOfMajorCell = self.indexOfMajorCell()
-        let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        if finalOffset > startOffset {
+            //뒤로 넘기기
+            let majorIdx = indexOfMajorCell(direction: .right)
+            let indexPath = IndexPath(row: majorIdx, section: 0)
+            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        } else if finalOffset < startOffset {
+            //앞으로 가기
+            let majorIdx = indexOfMajorCell(direction: .left)
+            let indexPath = IndexPath(row: majorIdx, section: 0)
+            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        } else {
+            print("둘다 아님")
+        }
     }
     
     

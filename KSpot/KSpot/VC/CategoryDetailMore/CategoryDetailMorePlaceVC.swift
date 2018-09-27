@@ -52,7 +52,16 @@ extension CategoryDetailMorePlaceVC : UICollectionViewDataSource, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         //1
-        switch kind {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                         withReuseIdentifier: "CategoryDetailMorePlaceHeaderView",
+                                                                         for: indexPath) as! CategoryDetailMorePlaceHeaderView
+        if let mainTitle = mainTitle {
+            headerView.titleLbl.text = mainTitle+" K-Spot"
+        }
+        
+        return headerView
+
+      /*  switch kind {
         //2
         case UICollectionElementKindSectionHeader:
             //3
@@ -67,7 +76,7 @@ extension CategoryDetailMorePlaceVC : UICollectionViewDataSource, UICollectionVi
         default:
             //4
             assert(false, "Unexpected element kind")
-        }
+        }*/
     }
 
     

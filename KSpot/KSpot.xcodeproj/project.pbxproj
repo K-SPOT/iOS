@@ -129,6 +129,7 @@
 		3BD41241215B6440008306A9 /* kakao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4123F215B6440008306A9 /* kakao.cpp */; };
 		3BD41245215B65D2008306A9 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD41244215B65D1008306A9 /* KakaoOpenSDK.framework */; };
 		3BD41247215C1A2D008306A9 /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD41246215C1A2C008306A9 /* TabbarVC.swift */; };
+		3BDD9EE0215D7530001676F9 /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDD9EDF215D7530001676F9 /* SwiftNotice.swift */; };
 		3BE666682154CAE40044801C /* DefaultSpotVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE666672154CAE40044801C /* DefaultSpotVO.swift */; };
 		3BE6666A2154CB120044801C /* DefaultSpotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE666692154CB120044801C /* DefaultSpotService.swift */; };
 		3BE6666F2156ABCB0044801C /* GoogleSpotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6666E2156ABCB0044801C /* GoogleSpotService.swift */; };
@@ -270,6 +271,7 @@
 		3BD41240215B6440008306A9 /* kakao.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = kakao.hpp; sourceTree = "<group>"; };
 		3BD41244215B65D1008306A9 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = SOURCE_ROOT; };
 		3BD41246215C1A2C008306A9 /* TabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
+		3BDD9EDF215D7530001676F9 /* SwiftNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
 		3BE666672154CAE40044801C /* DefaultSpotVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSpotVO.swift; sourceTree = "<group>"; };
 		3BE666692154CB120044801C /* DefaultSpotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSpotService.swift; sourceTree = "<group>"; };
 		3BE6666E2156ABCB0044801C /* GoogleSpotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSpotService.swift; sourceTree = "<group>"; };
@@ -545,6 +547,7 @@
 				3B3DD16B213DA7A700FD00B3 /* WRNavigationBar */,
 				3B3DD105213B3F5400FD00B3 /* Font */,
 				3BB188382145303F0021B543 /* CosmosDistrib.swift */,
+				3BDD9EDF215D7530001676F9 /* SwiftNotice.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1178,6 +1181,7 @@
 				3B3DD0F3213B2BC900FD00B3 /* CategoryVC.swift in Sources */,
 				3BBB7D9F2146F6D9004CC142 /* ReviewNoImgTVCell.swift in Sources */,
 				3BF85DCF21541BCB0005C83D /* PlaceDetailVO.swift in Sources */,
+				3BDD9EE0215D7530001676F9 /* SwiftNotice.swift in Sources */,
 				3BBB7D81214578C6004CC142 /* SubCelebrityVC.swift in Sources */,
 				3BBB7D83214578D2004CC142 /* SubBroadCastVC.swift in Sources */,
 				3BBF8D5B21392A0D00FFF08C /* Extensions.swift in Sources */,
@@ -1269,6 +1273,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1327,6 +1332,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
