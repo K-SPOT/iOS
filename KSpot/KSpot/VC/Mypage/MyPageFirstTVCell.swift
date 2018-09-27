@@ -27,7 +27,6 @@ class MypageFisrtTVCell: UITableViewCell {
         delegate?.tap(section: .first, seledtedId: -1)
     }
    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.delegate = self

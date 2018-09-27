@@ -57,6 +57,7 @@ class SubscribeVC: UIViewController, UIGestureRecognizerDelegate {
         updateView(selected: 0)
         setBackBtn()
         setLanguage()
+         self.navigationItem.title = selectedLang == .kor ? "구독" : "Subscribe"
         setLanguageNoti(selector: #selector(getLangInfo(_:)))
     }
     @objc func getLangInfo(_ notification : Notification) {
