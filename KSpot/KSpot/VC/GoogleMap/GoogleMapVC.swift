@@ -29,7 +29,7 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
     var currentLocation : CLLocation?
     var chosenPlace: MyPlace? {
         didSet {
-            print("바뀜 \(chosenPlace?.lat)")
+           // print("바뀜 \(chosenPlace?.lat)")
         }
     }
     var delegate : SelectGoogleDelegate?
@@ -51,7 +51,7 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
         if selectedLang == .kor {
           tf.placeholder="찾고 싶은 장소를 입력해주세요"
         } else {
-         tf.placeholder="Enter the place what you're looking for"
+         tf.placeholder="Enter the place"
            
         }
        

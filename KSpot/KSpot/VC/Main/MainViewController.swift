@@ -82,7 +82,7 @@ extension MainViewController : SelectSectionDelegate {
             if let eventMoreVC = mainStoryboard.instantiateViewController(withIdentifier:EventMoreVC.reuseIdentifier) as? EventMoreVC {
                 self.navigationController?.pushViewController(eventMoreVC, animated: true)
             }
-        } else if section == .third {
+        } else if section == .third || section == .second{
             self.goToPlaceDetailVC(selectedIdx: seledtedId)
         } else if section == .forth {
              self.goToPlaceDetailVC(selectedIdx: seledtedId, isPlace: false)

@@ -321,7 +321,7 @@ extension MapVC {
         mapContainerVC.selectedSecondFilter = self.selectedSecondFilter
         mapContainerVC.selectedThirdFilter = selectedThirdFilter
         mapContainerVC.entryPoint = self.entryPoint
-        print("엔트리포인트는 \(entryPoint)")
+       
         if entryPoint == .google {
             getMapInfo()
         }
@@ -400,9 +400,6 @@ extension MapVC : CLLocationManagerDelegate{
             guard let latitude = currentLocation?.coordinate.latitude,
                 let longitude = currentLocation?.coordinate.longitude else {return}
             chosenPlace = MyPlace(name: "", lat: latitude, long: longitude)
-            
-            print("my lat : \(latitude)")
-            print("my long : \(longitude)")
             entryPoint = .google
             getMapInfo()
             

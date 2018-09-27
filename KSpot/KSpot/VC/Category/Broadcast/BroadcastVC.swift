@@ -76,7 +76,7 @@ extension BroadcastVC {
             guard let `self` = self else { return }
             switch result {
             case .networkSuccess(_):
-                print("여기로 들어옴-1")
+               
                 sender.isSelected = true
                 self.broadcastList![sender.indexPath!].subscription = 1
             case .networkFail :
@@ -93,7 +93,7 @@ extension BroadcastVC {
             guard let `self` = self else { return }
             switch result {
             case .networkSuccess(_):
-                print("여기로 들어옴-2")
+                
                 sender.isSelected = false
                 self.broadcastList![sender.indexPath!].subscription = 0
             case .networkFail :
