@@ -76,14 +76,16 @@ extension MainViewController : SelectSectionDelegate {
                     self.navigationController?.pushViewController(themeVC, animated: true)
                 }
             }
-        } else if section == .forth{
+        } else if seledtedId == -1 {
             //moreBtn
             let mainStoryboard = Storyboard.shared().mainStoryboard
             if let eventMoreVC = mainStoryboard.instantiateViewController(withIdentifier:EventMoreVC.reuseIdentifier) as? EventMoreVC {
                 self.navigationController?.pushViewController(eventMoreVC, animated: true)
             }
-        } else {
+        } else if section == .third || section == .second{
             self.goToPlaceDetailVC(selectedIdx: seledtedId)
+        } else if section == .forth {
+             self.goToPlaceDetailVC(selectedIdx: seledtedId, isPlace: false)
         }
     }
 }

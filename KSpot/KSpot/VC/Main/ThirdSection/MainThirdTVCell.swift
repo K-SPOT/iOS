@@ -14,10 +14,12 @@ class MainThirdTVCell: UITableViewCell {
     @IBOutlet weak var moreBtn: UIButton!
      @IBOutlet weak var regularLbl: UILabel!
      @IBOutlet weak var boldLbl: UILabel!
+    var isPlace : Bool = true
     
     
     func configure(section : Int){
         if section == 2 {
+            isPlace = true
             if selectedLang == .kor {
                 regularLbl.text = "인기 장소"
                 boldLbl.text = "BEST 10"
@@ -28,6 +30,7 @@ class MainThirdTVCell: UITableViewCell {
             }
         } else {
             //3
+            isPlace = false
             if selectedLang == .kor {
                 regularLbl.text = "이번주"
                 boldLbl.text = "NEW EVENT 5"
@@ -51,7 +54,7 @@ class MainThirdTVCell: UITableViewCell {
         }
     }
     @objc func tap(_ sender : UIButton){
-        delegate?.tap(section: .forth, seledtedId: 0)
+        delegate?.tap(section: .forth, seledtedId: -1)
     }
 
     override func awakeFromNib() {
@@ -97,7 +100,11 @@ extension MainThirdTVCell : UICollectionViewDataSource, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let popularPlaceData_ = popularPlaceData {
-            delegate?.tap(section: .third, seledtedId: popularPlaceData_[indexPath.row].spotID)
+            if isPlace == true {
+              delegate?.tap(section: .third, seledtedId: popularPlaceData_[indexPath.row].spotID)
+            } else {
+                delegate?.tap(section: .forth, seledtedId: popularPlaceData_[indexPath.row].spotID)
+            }
         }
     }
     

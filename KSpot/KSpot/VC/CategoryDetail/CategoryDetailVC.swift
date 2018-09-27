@@ -317,7 +317,7 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
             }
             categoryDetailMoreEventVC.isPlace = false
            categoryDetailMoreEventVC.selectedIdx = selectedIdx
-            
+             categoryDetailMoreEventVC.mainTitle = mainTitleLbl.text
             self.navigationController?.pushViewController(categoryDetailMoreEventVC, animated: true)
         }
     }

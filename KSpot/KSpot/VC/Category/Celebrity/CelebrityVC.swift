@@ -73,7 +73,7 @@ extension CelebrityVC {
             guard let `self` = self else { return }
             switch result {
             case .networkSuccess(_):
-                print("여기로 들어옴-1")
+                
                 sender.isSelected = true
                 print(sender.indexPath)
                 self.celebrityList![sender.indexPath!].subscription = 1

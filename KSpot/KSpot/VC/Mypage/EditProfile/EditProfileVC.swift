@@ -37,7 +37,6 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func imageTapAction(_ sender: Any) {
-        print("tapped")
         openGallery()
     }
     override func viewDidLoad() {

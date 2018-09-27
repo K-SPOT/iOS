@@ -58,6 +58,7 @@ class ReviewWriteVC: UIViewController, UITextFieldDelegate {
         if selectedLang == .eng {
             titleTxtField.placeholder = "Please enter the subject"
         }
+        self.navigationItem.title = selectedLang == .kor ? "리뷰 작성" : "WRITE REVIEW"
         doneBtn.title = selectedLang == .kor ? "완료" : "complete"
      
         contentTxtView.delegate = self
