@@ -102,6 +102,7 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     @IBAction func phoneViewAction(_ sender: Any) {
         guard let contact = placeData?.contact else {return}
         if isPlace {
+            print("tapped")
             contact.makeACall()
         } else {
             //sendEmail(to : contact)
