@@ -11,6 +11,8 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import FacebookCore
 
+let tempUserId = "2163555827048248"
+
 class LoginVC: UIViewController {
 
     @IBOutlet weak var regularLbl: UILabel!
@@ -126,10 +128,37 @@ class LoginVC: UIViewController {
             }
         })
     } //kakao login
+    
+    //temp login
+    @IBAction func loginWithTemp(_ sender: Any) {
+        let params : [String : Any] = ["user_id" : tempUserId]
+        self.tempLogin(url: UrlPath.tempLogin.getURL(), params: params)
+    }
 }
 
 // MARK: - 통신
 extension LoginVC {
+    
+    //임시 로그인
+    func tempLogin(url : String, params : [String:Any]){
+        self.pleaseWait()
+        FacebookLoginService.shareInstance.login(url: url, params : params, completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            self.clearAllNotice()
+            switch result {
+            case .networkSuccess(let loginData):
+                //유저 값 설정
+                let userData = loginData as? FacebookLoginVOData
+                UserDefaults.standard.set(userData?.authorization, forKey : "userAuth")
+                self.dismiss(animated: false, completion: nil)
+            case .networkFail :
+                self.networkSimpleAlert()
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    } //tempLogin
 
     //페이스북
     func facebookLogin(url : String, params : [String:Any]){

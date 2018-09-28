@@ -48,7 +48,12 @@ class MypageVC: UIViewController {
     //로그아웃
     @IBAction func logoutAction(_ sender: Any) {
         let logoutTitle = selectedLang == .kor ? "로그아웃 하시겠습니까?" : "Do you want to logout?"
-        if loginWith == .facebook {
+        self.simpleAlertwithHandler(title: logoutTitle, message: "") { (_) in
+            UserDefaults.standard.set(nil, forKey: "userAuth")
+            let parentVC = self.parent as? MyPageContainerVC
+            parentVC?.viewWillAppear(false)
+        }
+        /*if loginWith == .facebook {
             self.simpleAlertwithHandler(title: logoutTitle, message: "") { (_) in
                 //faceBookLogout
                 let fbLoginManager = FBSDKLoginManager()
@@ -68,7 +73,7 @@ class MypageVC: UIViewController {
                     parentVC?.viewWillAppear(false)
                 })
             }
-        }
+        }*/
     } //logout
     
     @objc func getLangInfo(_ notification : Notification) {

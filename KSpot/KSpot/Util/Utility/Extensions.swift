@@ -157,7 +157,8 @@ extension UIViewController {
 
     
     func isUserLogin() -> Bool {
-        if loginWith == .facebook {
+        
+       /* if loginWith == .facebook {
             if FBSDKAccessToken.current() != nil{
                 return true
             } else {
@@ -172,6 +173,12 @@ extension UIViewController {
             }
         } else {
             return false
+        }*/
+        let userAuth = UserDefaults.standard.string(forKey: "userAuth") ?? "-1"
+        if userAuth == "-1"{
+            return false
+        } else {
+            return true
         }
     }
     
