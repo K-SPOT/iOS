@@ -17,7 +17,6 @@ class CategoryDetailSecondTVCell: UITableViewCell {
     @IBOutlet weak var scrapCountLbl : UILabel!
     
     func configure(data : ChannelDetailVODataRelatedChannel){
-        
         setImgWithKF(url: data.img, imgView: myImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
         titleLbl.text = data.name
         descLbl.text = data.description
@@ -25,8 +24,8 @@ class CategoryDetailSecondTVCell: UITableViewCell {
         scrapCountLbl.text = data.scrapCnt.description
     }
     
+    //검색결과에서 들어온 것
     func configure2(data : SearchResultVODataPlace){
-        
         setImgWithKF(url: data.img, imgView: myImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
         titleLbl.text = data.name
         descLbl.text = data.description
@@ -38,12 +37,6 @@ class CategoryDetailSecondTVCell: UITableViewCell {
         super.awakeFromNib()
         myImgView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
         myImgView.makeRounded(cornerRadius: 6)
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

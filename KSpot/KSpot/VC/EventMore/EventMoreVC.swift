@@ -11,12 +11,12 @@ import UIKit
 class EventMoreVC: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
     var eventList : [UserScrapVOData]? {
         didSet {
             collectionView.reloadData()
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if selectedLang == .kor {
@@ -29,9 +29,9 @@ class EventMoreVC: UIViewController, UIGestureRecognizerDelegate {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-    
 }
 
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension EventMoreVC : UICollectionViewDataSource, UICollectionViewDelegate{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -47,8 +47,7 @@ extension EventMoreVC : UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell: MapContainerCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventMoreCVCell", for: indexPath) as? MapContainerCVCell
-        {
+        if let cell: MapContainerCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventMoreCVCell", for: indexPath) as? MapContainerCVCell {
             if let eventList_ = eventList {
                 cell.configure(data: eventList_[indexPath.row])
             }
@@ -61,10 +60,10 @@ extension EventMoreVC : UICollectionViewDataSource, UICollectionViewDelegate{
         if let eventList_ = eventList{
             self.goToPlaceDetailVC(selectedIdx: eventList_[indexPath.row].spotID)
         }
-        
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension EventMoreVC : UICollectionViewDelegateFlowLayout {
     //section내의
     //-간격 위아래
@@ -85,7 +84,7 @@ extension EventMoreVC : UICollectionViewDelegateFlowLayout {
     }
 }
 
-//통신
+//MARK: - 통신
 extension EventMoreVC {
     func getMoreEvent(url : String){
         self.pleaseWait()
@@ -97,7 +96,7 @@ extension EventMoreVC {
                 let eventData = eventData as! [UserScrapVOData]
                 self.eventList = eventData
             case .networkFail :
-               self.networkSimpleAlert()
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

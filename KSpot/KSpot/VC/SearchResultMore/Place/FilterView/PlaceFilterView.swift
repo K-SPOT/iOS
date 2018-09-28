@@ -13,7 +13,6 @@ class PlaceFilterView: UIView {
     @IBOutlet weak var cancleBtn: UIButton!
     @IBOutlet weak var popularBtn: FilterToggleBtn!
     @IBOutlet weak var recentBtn: FilterToggleBtn!
-    
     @IBOutlet weak var restaurantBtn: UIButton!
     @IBOutlet weak var cafeBtn: UIButton!
     @IBOutlet weak var hotplaceBtn: UIButton!

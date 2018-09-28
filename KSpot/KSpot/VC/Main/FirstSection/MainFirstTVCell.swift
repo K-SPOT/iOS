@@ -10,13 +10,11 @@ import UIKit
 import ImageSlideshow
 
 class MainFirstTVCell: UITableViewCell {
-    
-    
+
     @IBOutlet var slideshow: ImageSlideshow!
-    
-    var imageSource : [InputSource] = [] 
-    
+    var imageSource : [InputSource] = []
     var delegate : SelectSectionDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         slideshow.slideshowInterval = 5.0
@@ -40,8 +38,8 @@ class MainFirstTVCell: UITableViewCell {
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(MainFirstTVCell.didTap))
         slideshow.addGestureRecognizer(recognizer)
     }
- 
     
+    //delegate
     @objc func didTap() {
         delegate?.tap(section: .first, seledtedId: slideshow.currentPage-1)
     }

@@ -8,14 +8,11 @@
 
 import UIKit
 import MessageUI
-//import FBSDKLoginKit
-
 
 class ReviewVC: UIViewController {
- @IBOutlet weak var ratingView: CosmosView!
-     @IBOutlet weak var reviewLbl: UILabel!
+    @IBOutlet weak var ratingView: CosmosView!
+    @IBOutlet weak var reviewLbl: UILabel!
     @IBOutlet weak var reviewCountLbl: UILabel!
-    
     @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var selectedIdx : Int = 0
@@ -38,9 +35,9 @@ class ReviewVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         getReviews(url: UrlPath.spot.getURL("\(selectedIdx)/review"))
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -48,14 +45,10 @@ class ReviewVC: UIViewController {
         ratingView.settings.fillMode = .precise
         reviewLbl.text = selectedLang == .kor ? "리뷰" : "Review"
     }
-    
-    
-    
-    func update(_ rating: Double) {
-        ratingView.rating = rating
-    }
 }
 
+
+//MARK: - 신고
 extension ReviewVC : SelectDelegate {
     func tap(selected : Int?) {
         
@@ -63,7 +56,6 @@ extension ReviewVC : SelectDelegate {
             goToLoginPage()
         } else {
             //신고하기
-            
             var alertTitle : String = selectedLang == .kor ? "신고 사유를 선택해주세요" : "Please select a reason for reporting"
             var reportTitle1 : String = selectedLang == .kor ? "음란물" : "obscene"
             var reportTitle2 : String = selectedLang == .kor ? "사칭 및 사기" : "impersonation and fraud"
@@ -107,6 +99,7 @@ extension ReviewVC : SelectDelegate {
     } //tap
 }
 
+//MARK: - 메일
 extension ReviewVC : MFMailComposeViewControllerDelegate{
     func sendMail(selectedId : Int, reason : String){
         if MFMailComposeViewController.canSendMail() {
@@ -126,24 +119,19 @@ extension ReviewVC : MFMailComposeViewControllerDelegate{
         }
     }
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        
         controller.dismiss(animated: true)
     }
     
 }
 
-//tableView dataSource, delegate
-extension ReviewVC:UITableViewDelegate,UITableViewDataSource
-{
+//MARK: - UITableViewDelegate,UITableViewDataSource
+extension ReviewVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let reviewData_ = reviewData{
             return reviewData_.reviews.count
         }
         return 0
     }
-    
-    
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
@@ -171,7 +159,7 @@ extension ReviewVC:UITableViewDelegate,UITableViewDataSource
     }
 }
 
-//통신
+//MARK: - 통신
 extension ReviewVC {
     func getReviews(url : String){
         self.pleaseWait()

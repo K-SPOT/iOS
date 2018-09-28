@@ -25,26 +25,10 @@ class BroadcastVC: UIViewController {
         tableView.tableFooterView = UIView(frame : .zero)
       
     }
-
-
-}
-
-extension BroadcastVC : SelectSenderDelegate {
-    func tap(section : Section, seledtedId : Int, sender : mySubscribeBtn){
-        if !isUserLogin() {
-            goToLoginPage()
-        } else {
-            let params = ["channel_id" : sender.contentIdx]
-            if sender.isSelected {
-                unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
-            } else {
-                subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
-            }
-        }
-    }
 }
 
 
+//MARK: - UITableViewDelegate, UITableViewDataSource
 extension BroadcastVC : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let broadcastList_ = broadcastList {
@@ -70,6 +54,23 @@ extension BroadcastVC : UITableViewDelegate, UITableViewDataSource{
     }
 }
 
+//MARK: - 구독
+extension BroadcastVC : SelectSenderDelegate {
+    func tap(section : Section, seledtedId : Int, sender : mySubscribeBtn){
+        if !isUserLogin() {
+            goToLoginPage()
+        } else {
+            let params = ["channel_id" : sender.contentIdx]
+            if sender.isSelected {
+                unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
+            } else {
+                subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
+            }
+        }
+    }
+}
+
+//MARK: - 통신
 extension BroadcastVC {
     func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
          self.pleaseWait()

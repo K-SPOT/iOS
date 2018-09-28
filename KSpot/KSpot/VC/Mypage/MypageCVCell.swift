@@ -11,8 +11,8 @@ import Kingfisher
 
 class MypageCVCell: UICollectionViewCell {
     @IBOutlet weak var myImgView: UIImageView!
-     @IBOutlet weak var engNameLbl: UILabel!
-     @IBOutlet weak var koreanNameLbl: UILabel!
+    @IBOutlet weak var engNameLbl: UILabel!
+    @IBOutlet weak var koreanNameLbl: UILabel!
     
     func configure(data : MypageVODataChannel){
         self.setImgWithKF(url: data.backgroundImg, imgView: myImgView, defaultImg: #imageLiteral(resourceName: "aimg"))

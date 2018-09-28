@@ -26,14 +26,14 @@ class ScrapVC: UIViewController, UIGestureRecognizerDelegate {
         collectionView.dataSource = self
         setLanguageNoti(selector: #selector(getLangInfo(_:)))
     }
+    
     @objc func getLangInfo(_ notification : Notification) {
         self.navigationItem.title = selectedLang == .kor ? "스크랩" : "Scrap"
         getUserScrap(url: UrlPath.userScrap.getURL())
     }
-    
-
 }
 
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension ScrapVC : UICollectionViewDataSource, UICollectionViewDelegate{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -67,6 +67,7 @@ extension ScrapVC : UICollectionViewDataSource, UICollectionViewDelegate{
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension ScrapVC: UICollectionViewDelegateFlowLayout {
     //section내의
     //-간격 위아래
@@ -87,7 +88,7 @@ extension ScrapVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-//통신
+//MARK: - 통신
 extension ScrapVC {
     func getUserScrap(url : String){
         self.pleaseWait()

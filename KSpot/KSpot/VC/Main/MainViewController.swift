@@ -7,21 +7,14 @@
 //
 
 import UIKit
-//import FBSDKCoreKit
 import FBSDKLoginKit
 import ImageSlideshow
 
+//MARK: - 앱 전체에서 쓰일 전역변수
 var selectedLang : Language = .kor
 var loginWith : LoginType?
-enum LoginType {
-    case kakao
-    case facebook
-}
 
 class MainViewController: UIViewController {
-    @IBAction func searchAction(_ sender: Any) {
-        self.goToSearchVC()
-    }
     
     @IBOutlet weak var tableView: UITableView!
     var mainData : MainVOData? {
@@ -30,12 +23,31 @@ class MainViewController: UIViewController {
         }
     }
     
-  
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setLanguageNoti(selector: #selector(getLangInfo(_:)))
+        setTranslationBtn()
+        setRootViewController()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView(frame : .zero)
+        getMainData(url: UrlPath.main.getURL())
+        
+    }
     
-    var currentSelectedLang = selectedLang
+    @IBAction func searchAction(_ sender: Any) {
+        self.goToSearchVC()
+    }
     
-    fileprivate func reloadRootViewController() {
-    let session: KOSession = KOSession.shared()
+    
+    
+    @objc func getLangInfo(_ notification : Notification) {
+        getMainData(url: UrlPath.main.getURL())
+    }
+    
+    //MARK: - 로그인 안했을 때 첫 화면 띄우는 함수
+    fileprivate func setRootViewController() {
+        let session: KOSession = KOSession.shared()
         if FBSDKAccessToken.current() != nil{
             loginWith = .facebook
         } else if session.isOpen() {
@@ -44,52 +56,10 @@ class MainViewController: UIViewController {
         if !isUserLogin() {
             goToLoginPage(entryPoint: 1)
         }
-        /*  if FBSDKAccessToken.current() == nil {
-         goToLoginPage(entryPoint: 1)
-         }*/
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setLanguageNoti(selector: #selector(getLangInfo(_:)))
-        reloadRootViewController()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.tableFooterView = UIView(frame : .zero)
-        getMainData(url: UrlPath.main.getURL())
-        setTranslationBtn()
-    }
-    
-    @objc func getLangInfo(_ notification : Notification) {
-        getMainData(url: UrlPath.main.getURL())
     }
 }
 
-extension MainViewController : SelectSectionDelegate {
-    func tap(section: Section, seledtedId: Int) {
-        if (section == .first) {
-            if seledtedId >= 0 {
-                let mainStoryboard = Storyboard.shared().mainStoryboard
-                if let themeVC = mainStoryboard.instantiateViewController(withIdentifier:ThemeVC.reuseIdentifier) as? ThemeVC {
-                    themeVC.selectedId = (mainData?.theme[seledtedId].themeID)
-                    self.navigationController?.pushViewController(themeVC, animated: true)
-                }
-            }
-        } else if seledtedId == -1 {
-            //moreBtn
-            let mainStoryboard = Storyboard.shared().mainStoryboard
-            if let eventMoreVC = mainStoryboard.instantiateViewController(withIdentifier:EventMoreVC.reuseIdentifier) as? EventMoreVC {
-                self.navigationController?.pushViewController(eventMoreVC, animated: true)
-            }
-        } else if section == .third || section == .second{
-            self.goToPlaceDetailVC(selectedIdx: seledtedId)
-        } else if section == .forth {
-             self.goToPlaceDetailVC(selectedIdx: seledtedId, isPlace: false)
-        }
-    }
-}
-
+//MARK: - UITableViewDelegate, UITableViewDataSource
 extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -106,7 +76,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                     KingfisherSource(urlString: data.mainImg)
                 })
                 if selectedLang == .kor {
-                  imageArr.insert(ImageSource(imageString: "main_theme image")!, at: 0)
+                    imageArr.insert(ImageSource(imageString: "main_theme image")!, at: 0)
                 } else {
                     imageArr.insert(ImageSource(imageString: "main_theme_img_eng")!, at: 0)
                 }
@@ -128,7 +98,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MainForthTVCell") as! MainThirdTVCell
             cell.popularPlaceData = mainData?.mainBestEvent
-             cell.configure(section: indexPath.row)
+            cell.configure(section: indexPath.row)
             cell.delegate = self
             return cell
         }
@@ -136,7 +106,37 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     
 }
 
-//통신
+//MARK: - SelectSectionDelegate
+extension MainViewController : SelectSectionDelegate {
+    func tap(section: Section, seledtedId: Int) {
+        //테마 뷰 클릭했을 때
+        if (section == .first) {
+            if seledtedId >= 0 {
+                let mainStoryboard = Storyboard.shared().mainStoryboard
+                if let themeVC = mainStoryboard.instantiateViewController(withIdentifier:ThemeVC.reuseIdentifier) as? ThemeVC {
+                    themeVC.selectedId = (mainData?.theme[seledtedId].themeID)
+                    self.navigationController?.pushViewController(themeVC, animated: true)
+                }
+            }
+        }
+        //이벤트 더보기 버튼
+        else if seledtedId == -1 {
+            let mainStoryboard = Storyboard.shared().mainStoryboard
+            if let eventMoreVC = mainStoryboard.instantiateViewController(withIdentifier:EventMoreVC.reuseIdentifier) as? EventMoreVC {
+                self.navigationController?.pushViewController(eventMoreVC, animated: true)
+            }
+        }
+        //장소 상세보기
+        else if section == .second || section == .third{
+            self.goToPlaceDetailVC(selectedIdx: seledtedId)
+        }
+        //이벤트 상세보기
+        else if section == .forth {
+            self.goToPlaceDetailVC(selectedIdx: seledtedId, isPlace: false)
+        }
+    }
+}
+
 extension MainViewController {
     func getMainData(url : String){
         self.pleaseWait()

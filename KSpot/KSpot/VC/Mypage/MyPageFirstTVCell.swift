@@ -13,15 +13,15 @@ class MypageFisrtTVCell: UITableViewCell {
     @IBOutlet weak var mySubsLbl: UILabel!
     @IBOutlet weak var moreBtn: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-     var delegate : SelectSectionDelegate?
+    var delegate : SelectSectionDelegate?
+    var finalOffset : CGFloat = 0
+    var startOffset  : CGFloat = 0
+    var currentIdx = 0
     var channelArr : [MypageVODataChannel]? {
         didSet {
             collectionView.reloadData()
         }
     }
-    var finalOffset : CGFloat = 0
-    var startOffset  : CGFloat = 0
-    var currentIdx = 0
 
     @IBAction func moreAction(_ sender: UIButton) {
         delegate?.tap(section: .first, seledtedId: -1)
@@ -35,7 +35,7 @@ class MypageFisrtTVCell: UITableViewCell {
     
 }
 
-
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension MypageFisrtTVCell : UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -71,6 +71,7 @@ extension MypageFisrtTVCell : UICollectionViewDataSource, UICollectionViewDelega
 }
 
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension MypageFisrtTVCell: UICollectionViewDelegateFlowLayout {
     //section내의
     //-간격 위아래
@@ -89,6 +90,7 @@ extension MypageFisrtTVCell: UICollectionViewDelegateFlowLayout {
     
 }
 
+//MARK: - 컬렉션뷰 드래깅
 extension MypageFisrtTVCell : UIScrollViewDelegate{
     
     private func indexOfMajorCell(direction : Direction) -> Int {

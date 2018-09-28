@@ -15,14 +15,38 @@ class MypageVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var welcomLbl: UILabel!
     @IBOutlet weak var logoutBtn: UIButton!
+    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var profileImgView: UIImageView!
+    
     var numberofRows = 0
     var userName = "" {
         didSet {
             nameLbl.text = selectedLang == .kor ? userName+", 고객님" : userName
         }
     }
-    @IBAction func logoutAction(_ sender: Any) {
+    var channelArr : [MypageVODataChannel]? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.getMyInfo(url: UrlPath.mypage.getURL())
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setLanguageNoti(selector: #selector(getLangInfo(_:)))
+        tableView.delegate = self
+        tableView.dataSource = self
+        profileImgView.makeRounded(cornerRadius: profileImgView.frame.height/2)
+        profileImgView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
         
+    }
+    
+    //로그아웃
+    @IBAction func logoutAction(_ sender: Any) {
         let logoutTitle = selectedLang == .kor ? "로그아웃 하시겠습니까?" : "Do you want to logout?"
         if loginWith == .facebook {
             self.simpleAlertwithHandler(title: logoutTitle, message: "") { (_) in
@@ -45,32 +69,8 @@ class MypageVC: UIViewController {
                 })
             }
         }
-        
-    }
+    } //logout
     
-    @IBOutlet weak var nameLbl: UILabel!
-    @IBOutlet weak var profileImgView: UIImageView!
-    
-    
-    var channelArr : [MypageVODataChannel]? {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.getMyInfo(url: UrlPath.mypage.getURL())
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setLanguageNoti(selector: #selector(getLangInfo(_:)))
-        tableView.delegate = self
-        tableView.dataSource = self
-        profileImgView.makeRounded(cornerRadius: profileImgView.frame.height/2)
-        profileImgView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
-        
-    }
     @objc func getLangInfo(_ notification : Notification) {
         
         if selectedLang == .kor {
@@ -90,7 +90,7 @@ class MypageVC: UIViewController {
     
 }
 
-//tableView delegate, datasource
+//MARK: - tableView delegate, datasource
 extension MypageVC : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -156,10 +156,10 @@ extension MypageVC : UITableViewDelegate, UITableViewDataSource{
     }
 }
 
-
+//MARK: - 더보기, 연예인 상세 보기
 extension MypageVC : SelectSectionDelegate{
     func tap(section: Section, seledtedId: Int) {
-        //more action
+        //더보기
         if (seledtedId == -1){
             let mypageStoryboard = Storyboard.shared().mypageStoryboard
             if let subscribeVC = mypageStoryboard.instantiateViewController(withIdentifier:SubscribeVC.reuseIdentifier) as? SubscribeVC {
@@ -174,13 +174,13 @@ extension MypageVC : SelectSectionDelegate{
 
 
 
-//통신
+//MARK: - 통신
 extension MypageVC {
     func getMyInfo(url : String){
-        self.pleaseWait()
+        //self.pleaseWait()
         MypageService.shareInstance.getMypageInfo(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
-             self.clearAllNotice()
+            // self.clearAllNotice()
             switch result {
             case .networkSuccess(let mypageData):
                 let userData = mypageData as! MypageVOData

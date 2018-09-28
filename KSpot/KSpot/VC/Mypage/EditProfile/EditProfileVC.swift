@@ -15,12 +15,9 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var nameTxtfield: UITextField!
     @IBOutlet weak var nameCountLbl: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
-     @IBOutlet weak var doneBtn: UIBarButtonItem!
+    @IBOutlet weak var doneBtn: UIBarButtonItem!
     
     var keyboardDismissGesture: UITapGestureRecognizer?
-    
-   // var greenDoneBtn : UIBarButtonItem?
-   // var grayDoneBtn : UIBarButtonItem?
     let imagePicker : UIImagePickerController = UIImagePickerController()
     var profileImg : UIImage?
     var nameTxt : String = ""
@@ -35,15 +32,9 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
             }
         }
     }
-    
-    @IBAction func imageTapAction(_ sender: Any) {
-        openGallery()
-    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*grayDoneBtn = UIBarButtonItem.titleBarbutton(title: "완료", red: 236, green: 236, blue: 236, fontSize: 18, fontName: NanumSquareOTF.NanumSquareOTFB.rawValue, selector: nil, target: self)
-        greenDoneBtn = UIBarButtonItem.titleBarbutton(title: "완료", red: 64, green: 211, blue: 159, fontSize: 18, fontName: NanumSquareOTF.NanumSquareOTFB.rawValue, selector: #selector(EditProfileVC.doneAction(_sender:)), target: self)*/
-        //self.navigationItem.rightBarButtonItem = greenDoneBtn
        
         profileImgView.makeRounded(cornerRadius: nil)
         profileImgView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
@@ -57,9 +48,18 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
         setLanguage()
     }
     
+    @IBAction func imageTapAction(_ sender: Any) {
+        openGallery()
+    }
+    
+    @IBAction func doneAction(_ sender: Any) {
+        editProfile(url: UrlPath.userEdit.getURL(), editedName: nameTxtfield.text!)
+    }
+    
     @objc func getLangInfo(_ notification : Notification) {
         setLanguage()
     }
+    
     func setLanguage(){
         self.navigationItem.title = selectedLang == .kor ? "회원정보 수정" : "Edit Profile"
         nickNameLbl.text = selectedLang == .kor ? "닉네임" : "Nickname"
@@ -67,14 +67,8 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
         doneBtn.title = selectedLang == .kor ? "완료" : "complete"
     }
     
-    
-
-    @IBAction func doneAction(_ sender: Any) {
-         editProfile(url: UrlPath.userEdit.getURL(), editedName: nameTxtfield.text!)
-    }
-    
+    //닉네임 변경
     @objc func textFieldDidChange(_ textField: UITextField) {
-        
         if let text = nameTxtfield.text {
             nameCountLbl.text = text.count.description
         } else {
@@ -85,11 +79,9 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
         if contentTxt.count < 2 {
             doneBtn.tintColor = #colorLiteral(red: 0.9254901961, green: 0.9254901961, blue: 0.9254901961, alpha: 1)
             doneBtn.isEnabled = false
-           // self.navigationItem.rightBarButtonItem = grayDoneBtn
         } else {
             doneBtn.tintColor = ColorChip.shared().mainColor
             doneBtn.isEnabled = true
-            //self.navigationItem.rightBarButtonItem = greenDoneBtn
         }
         if(contentTxt.count > 20) {
             let alertTitle = selectedLang == .kor ? "오류" : "Error"
@@ -99,17 +91,10 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
             nameCountLbl.text = nameTxtfield.text?.count.description
         }
     }
-    
-    private func simpleOKAlert(title: String, message: String, okHandler : ((UIAlertAction) -> Void)?){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인",style: .default, handler: okHandler)
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
-    }
 }
 
 
-//앨범 열기 위함
+//MARK: - 앨범 열기 위함
 extension EditProfileVC : UIImagePickerControllerDelegate,
 UINavigationControllerDelegate  {
     
@@ -159,7 +144,7 @@ UINavigationControllerDelegate  {
 }
 
 
-//키보드 대응
+//MARK: - 키보드 대응
 extension EditProfileVC{
     func setKeyboardSetting() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
@@ -197,7 +182,7 @@ extension EditProfileVC{
     
 }
 
-//통신
+//MARK: - 통신
 extension EditProfileVC {
     func editProfile(url : String, editedName : String ){
         self.pleaseWait()
@@ -220,9 +205,6 @@ extension EditProfileVC {
             case .networkSuccess(_):
                 self.noticeSuccess("수정 완료!", autoClear: true, autoClearTime: 1)
                  self.pop()
-               /* self.simpleOKAlert(title: "확인", message: "프로필 변경이 완료되었습니다", okHandler: { (_) in
-                    self.pop()
-                })*/
             case .duplicated :
                 let alertTitle = selectedLang == .kor ? "오류" : "Error"
                 let alertMsg = selectedLang == .kor ? "이미 사용중인 닉네임입니다" : "This nickname is already using"
@@ -234,7 +216,5 @@ extension EditProfileVC {
                 break
             }
         })
-        
-        
     }
 }

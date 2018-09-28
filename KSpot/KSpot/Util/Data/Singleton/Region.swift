@@ -13,6 +13,10 @@ enum Language : Int {
     case eng = 1
 }
 
+enum LoginType {
+    case kakao
+    case facebook
+}
 
 enum Direction {
     case right

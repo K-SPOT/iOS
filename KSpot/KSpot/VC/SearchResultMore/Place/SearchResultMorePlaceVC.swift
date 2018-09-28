@@ -10,10 +10,9 @@ import UIKit
 
 class SearchResultMorePlaceVC: UIViewController, UIGestureRecognizerDelegate {
     
-  
+    @IBOutlet weak var tableView : UITableView!
     var searchData : [SearchResultVODataPlace]?
     var headerTitle = ""
-    @IBOutlet weak var tableView : UITableView!
     var isChange : Bool? {
         didSet {
             tableView.reloadData()
@@ -21,16 +20,15 @@ class SearchResultMorePlaceVC: UIViewController, UIGestureRecognizerDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        setBackBtn()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame : .zero)
-        setBackBtn()
         tableView.reloadData()
     }
-    
-    
 }
 
+//MARK: - UITableViewDelegate, UITableViewDataSource
 extension SearchResultMorePlaceVC : UITableViewDelegate, UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,7 +38,6 @@ extension SearchResultMorePlaceVC : UITableViewDelegate, UITableViewDataSource  
         return 0
     }
     
-    
     //headerSection View 만드는 것
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableCell(withIdentifier: "SearchResultHeaderCell") as! CategoryDetailSecondTVHeaderCell
@@ -48,6 +45,7 @@ extension SearchResultMorePlaceVC : UITableViewDelegate, UITableViewDataSource  
         return header
     }
     
+    //헤더 뷰 높이
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 62
     }
@@ -64,7 +62,7 @@ extension SearchResultMorePlaceVC : UITableViewDelegate, UITableViewDataSource  
         if let searchData_ = searchData{
             var isPlace = true
             if self.headerTitle == "이벤트" {
-               isPlace = false
+                isPlace = false
             }
             self.goToPlaceDetailVC(selectedIdx: searchData_[indexPath.row].spotID, isPlace : isPlace)
             

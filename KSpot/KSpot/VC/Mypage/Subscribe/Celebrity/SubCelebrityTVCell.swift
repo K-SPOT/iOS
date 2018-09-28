@@ -12,7 +12,6 @@ class SubCelebrityTVCell: UITableViewCell {
 
     @IBOutlet weak var greenView: CustomView!
     @IBOutlet weak var profileView: UIImageView!
-    
     @IBOutlet weak var nameLbl: UILabel!
     
     func configure(data : UserSubcriptionVOBroadcast) {
@@ -24,14 +23,7 @@ class SubCelebrityTVCell: UITableViewCell {
          super.awakeFromNib()
         profileView.makeRounded(cornerRadius: profileView.frame.height/2)
         profileView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
-       
-        // Initialization code
-    }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

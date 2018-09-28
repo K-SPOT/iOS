@@ -10,10 +10,7 @@ import UIKit
 
 class ReviewNoImgTVCell: UITableViewCell {
     @IBOutlet weak var titleLbl: UILabel!
-    
     @IBOutlet weak var contentLbl: UILabel!
-    
-
     @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var writingInfoLbl: UILabel!
     var delegate : SelectDelegate?
@@ -32,12 +29,6 @@ class ReviewNoImgTVCell: UITableViewCell {
         contentLbl.setLineSpacing(lineSpacing: 6)
         ratingView.settings.fillMode = .half
         ratingView.rating = 3.5
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

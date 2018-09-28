@@ -11,11 +11,8 @@ import UIKit
 class ReviewImgTVCell: UITableViewCell {
     
     @IBOutlet weak var titleLbl: UILabel!
-    
     @IBOutlet weak var contentLbl: UILabel!
-    
     @IBOutlet weak var myImgView: UIImageView!
-    
     @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var writingInfoLbl: UILabel!
     var delegate : SelectDelegate?
@@ -29,23 +26,14 @@ class ReviewImgTVCell: UITableViewCell {
         setImgWithKF(url: data.img, imgView: myImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
         ratingView.rating = data.reviewScore
         writingInfoLbl.text = "\(data.name) · \(data.regTime)"
-        
-        //self.tag = 960403
         self.tag = data.reviewId
     } //configure
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         contentLbl.setLineSpacing(lineSpacing: 6)
         ratingView.settings.fillMode = .half
         ratingView.rating = 3.5
-        
-
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

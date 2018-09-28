@@ -8,9 +8,8 @@
 
 import UIKit
 
-class CelebrityVC: UIViewController, SelectSenderDelegate {
+class CelebrityVC: UIViewController{
     
-   
     @IBOutlet weak var tableView: UITableView!
     var delegate : SelectDelegate?
     var isChange : Bool? {
@@ -19,29 +18,16 @@ class CelebrityVC: UIViewController, SelectSenderDelegate {
         }
     }
     var celebrityList : [ChannelVODataChannelList]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame : .zero)
     }
-    
-    func tap(section : Section, seledtedId : Int, sender : mySubscribeBtn){
-        if !isUserLogin() {
-            goToLoginPage()
-        } else {
-            let params = ["channel_id" : sender.contentIdx]
-            if sender.isSelected {
-                unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
-            } else {
-                subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
-            }
-        }
-    }
-    
-   
 }
 
+//MARK: - UITableViewDelegate, UITableViewDataSource
 extension CelebrityVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let celebrityList_ = celebrityList {
@@ -53,7 +39,6 @@ extension CelebrityVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CelebrityTVCell.reuseIdentifier) as! CelebrityTVCell
         if let celebrityList_ = celebrityList {
-            //cell.delegate = parent as? SelectSenderDelegate
            cell.delegate = self
            cell.configure(data: celebrityList_[indexPath.row], index : indexPath.row)
         }
@@ -67,6 +52,23 @@ extension CelebrityVC : UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+//MARK: - 구독하기
+extension CelebrityVC : SelectSenderDelegate {
+    func tap(section : Section, seledtedId : Int, sender : mySubscribeBtn){
+        if !isUserLogin() {
+            goToLoginPage()
+        } else {
+            let params = ["channel_id" : sender.contentIdx]
+            if sender.isSelected {
+                unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
+            } else {
+                subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
+            }
+        }
+    }
+}
+
+//MARK: - 통신
 extension CelebrityVC {
     func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
          self.pleaseWait()
@@ -75,12 +77,8 @@ extension CelebrityVC {
             self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
-                
                 sender.isSelected = true
-                print(sender.indexPath)
                 self.celebrityList![sender.indexPath!].subscription = 1
-                /*let indexPath = IndexPath(item: sender.indexPath!, section: 0)
-                self.tableView.reloadRows(at: [indexPath], with: .top)*/
             case .networkFail :
                 self.networkSimpleAlert()
             default :
@@ -97,9 +95,7 @@ extension CelebrityVC {
             self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
-             
                 sender.isSelected = false
-            
                 self.celebrityList![sender.indexPath!].subscription = 0
             case .networkFail :
                self.networkSimpleAlert()

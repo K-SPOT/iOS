@@ -7,14 +7,13 @@
 //
 
 import UIKit
-//import FBSDKLoginKit
 
 class ReviewContainerVC: UIViewController, UIGestureRecognizerDelegate {
 
-    var selectedIdx = 0
-    var rating = 0.0
     @IBOutlet weak var writeReviewBtn: UIButton!
     @IBOutlet weak var containerView: UIView!
+    var selectedIdx = 0
+    var rating = 0.0
     private lazy var reviewVC: ReviewVC = {
         let storyboard = Storyboard.shared().mapStoryboard
         var viewController = storyboard.instantiateViewController(withIdentifier: ReviewVC.reuseIdentifier) as! ReviewVC
@@ -22,6 +21,16 @@ class ReviewContainerVC: UIViewController, UIGestureRecognizerDelegate {
         viewController.selectedIdx = selectedIdx
         return viewController
     }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        if selectedLang == .eng {
+              writeReviewBtn.setImage(#imageLiteral(resourceName: "review_write_floating_eng"), for: .normal)
+        }
+        setBackBtn()
+        initContainerView()
+    }
     
     @IBAction func writeReviewAction(_ sender: Any) {
         if !isUserLogin() {
@@ -35,19 +44,7 @@ class ReviewContainerVC: UIViewController, UIGestureRecognizerDelegate {
             }
         }
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        if selectedLang == .eng {
-              writeReviewBtn.setImage(#imageLiteral(resourceName: "review_write_floating_eng"), for: .normal)
-        }
-        setBackBtn()
-        initContainerView()
-    }
-    
     func initContainerView(){
         addChildView(containerView: containerView, asChildViewController: reviewVC)
     }
-
-  
 }

@@ -22,14 +22,13 @@ class ThemeVC: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     var selectedId : Int? = 0
-
-    func setHeader(data : ThemeVOData?){
-        guard let data = data else {return}
-        titleLbl.text = "\(data.theme.title[0])\n\(data.theme.title[1])"
-        subtitleLbl.text = data.theme.subtitle
-        setImgWithKF(url: data.theme.img, imgView: topView, defaultImg: #imageLiteral(resourceName: "aimg"))
-    }
-    
+    lazy var topView:UIImageView = {
+        let imgView = UIImageView(image: UIImage(named: "aimg"))
+        imgView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: IMAGE_HEIGHT)
+        imgView.contentMode = UIViewContentMode.scaleAspectFill
+        imgView.clipsToBounds = true
+        return imgView
+    }()
     lazy var titleLbl:UILabel = {
         let label = UILabel()
         label.backgroundColor = UIColor.clear
@@ -47,17 +46,10 @@ class ThemeVC: UIViewController, UIGestureRecognizerDelegate {
         label.textColor = UIColor.white
         label.text = "#논현동 #압구정동 #신사동 #가락시장"
         label.textAlignment = .center
-         label.font = UIFont(name: NanumSquareOTF.NanumSquareOTFR.rawValue, size: 15)
+        label.font = UIFont(name: NanumSquareOTF.NanumSquareOTFR.rawValue, size: 15)
         return label
     }()
-    
-    lazy var topView:UIImageView = {
-        let imgView = UIImageView(image: UIImage(named: "aimg"))
-        imgView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: IMAGE_HEIGHT)
-        imgView.contentMode = UIViewContentMode.scaleAspectFill
-        imgView.clipsToBounds = true
-        return imgView
-    }()
+ 
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -65,11 +57,6 @@ class ThemeVC: UIViewController, UIGestureRecognizerDelegate {
         setupNavView()
         guard let selectedId_ = selectedId else {return}
         getTheme(url: UrlPath.theme.getURL(selectedId_.description))
-    }
-    
-    deinit {
-        tableView.delegate = nil
-        print("ThemeVC deinit")
     }
     
     func setupTableView(){
@@ -88,39 +75,56 @@ class ThemeVC: UIViewController, UIGestureRecognizerDelegate {
         }
         
         tableView.tableHeaderView = topView
+    } //setupTableView
+    
+    func setHeader(data : ThemeVOData?){
+        guard let data = data else {return}
+        titleLbl.text = "\(data.theme.title[0])\n\(data.theme.title[1])"
+        subtitleLbl.text = data.theme.subtitle
+        setImgWithKF(url: data.theme.img, imgView: topView, defaultImg: #imageLiteral(resourceName: "aimg"))
     }
-    
-    
-}
-
-//네비게이션 설정
-extension ThemeVC {
     
     func setupNavView(){
         //왼쪽 백버튼 아이템 설정
         setBackBtn(color: .white)
-        
         self.navigationItem.title = ""
-        
         //네비게이션바 컬러
         navBarBarTintColor = .white
         navBarBackgroundAlpha = 0
         //네비게이션 바 안의 아이템 컬러
         navBarTintColor = .white
-        
     }
 }
 
+//MARK: -UITableViewDelegate,UITableViewDataSource
+extension ThemeVC : UITableViewDelegate,UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let themeData_ = themeData {
+            return themeData_.themeContents.count
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ThemeTVCell.reuseIdentifier) as! ThemeTVCell
+        cell.delegate = self
+        if let themeData_ = themeData {
+            cell.configure(data : themeData_.themeContents[indexPath.row], row : indexPath.row)
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
 
-// MARK: - 스크롤 할 때
-extension ThemeVC
-{
-    func scrollViewDidScroll(_ scrollView: UIScrollView)
-    {
+// MARK: - 스크롤 할 때 네비게이션 색깔
+extension ThemeVC {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
-        if (offsetY > NAVBAR_COLORCHANGE_POINT)
-        {
-            
+        //정해진 포인트보다 아래로 스크롤
+        if (offsetY > NAVBAR_COLORCHANGE_POINT){
             navBarTintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             let alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / CGFloat(kNavBarBottom)
@@ -129,8 +133,8 @@ extension ThemeVC
             navBarTitleColor = UIColor.black.withAlphaComponent(alpha)
             statusBarStyle = .default
         }
-        else
-        {
+        //정해진 포인트 보다 위로 스크롤
+        else {
             navBarTintColor = .white
             navigationItem.leftBarButtonItem?.tintColor = .white
             navBarBackgroundAlpha = 0
@@ -140,34 +144,7 @@ extension ThemeVC
     }
 }
 
-
-//tableView dataSource, delegate
-extension ThemeVC:UITableViewDelegate,UITableViewDataSource
-{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let themeData_ = themeData {
-            return themeData_.themeContents.count
-        }
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ThemeTVCell.reuseIdentifier) as! ThemeTVCell
-        cell.delegate = self
-        if let themeData_ = themeData {
-            cell.configure(data : themeData_.themeContents[indexPath.row], row : indexPath.row)
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-    }
-}
-
+//MARK: - SelectDelegate. 장소 상세보기 버튼
 extension ThemeVC : SelectDelegate {
     func tap(selected: Int?) {
         guard let selected_ = selected else {return}
@@ -175,9 +152,10 @@ extension ThemeVC : SelectDelegate {
     }
 }
 
+//MARK- : 통신
 extension ThemeVC {
     func getTheme(url : String){
-         self.pleaseWait()
+        self.pleaseWait()
         ThemeService.shareInstance.getThemeData(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
             self.clearAllNotice()

@@ -9,13 +9,13 @@
 import UIKit
 
 class TabbarVC: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setLanguageNoti(selector: #selector(getLangInfo(_:)))
     }
 
-    
+    // MARK: - 언어 설정
     @objc func getLangInfo(_ notification : Notification) {
         if selectedLang == .kor {
             tabBar.items?[0].title = "홈"
@@ -29,6 +29,4 @@ class TabbarVC: UITabBarController {
             tabBar.items?[3].title = "MYPAGE"
         }
     }
-    
-
 }

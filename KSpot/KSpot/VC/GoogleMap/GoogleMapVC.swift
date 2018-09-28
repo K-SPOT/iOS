@@ -17,44 +17,30 @@ struct MyPlace {
     var long: Double
 }
 
-enum MapEntryPoint {
-    case searchSpecificLocation
-    case currentLocation
-}
 
 class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDelegate {
     typealias latLong = (lat : Double, long : Double)
+    
+    @IBOutlet var myMapView: GMSMapView!
+    let defualtLat = 36.3504
+    let defualtLong = 127.3845
     let currentLocationMarker = GMSMarker()
     var locationManager = CLLocationManager()
     var currentLocation : CLLocation?
-    var chosenPlace: MyPlace? {
-        didSet {
-           // print("바뀜 \(chosenPlace?.lat)")
-        }
-    }
+    var chosenPlace: MyPlace?
     var delegate : SelectGoogleDelegate?
-    var entryPoint : MapEntryPoint = .currentLocation
-    let defualtLat = 36.3504
-    let defualtLong = 127.3845
-    
-    var selectedFirstFilter : FilterToggleBtn?
-    var selectedSecondFilter : Int?
-    var selectedThirdFilter : Set<UIButton>?
-
-    @IBOutlet var myMapView: GMSMapView!
-    
     let txtFieldSearch: UITextField = {
         let tf=UITextField()
         tf.borderStyle = .roundedRect
         tf.backgroundColor = .white
         tf.layer.borderColor = UIColor.darkGray.cgColor
         if selectedLang == .kor {
-          tf.placeholder="찾고 싶은 장소를 입력해주세요"
+            tf.placeholder="찾고 싶은 장소를 입력해주세요"
         } else {
-         tf.placeholder="Enter the place"
-           
+            tf.placeholder="Enter the place"
+            
         }
-       
+        
         tf.translatesAutoresizingMaskIntoConstraints=false
         return tf
     }()
@@ -72,7 +58,7 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
         let btn=UIButton()
         btn.backgroundColor = ColorChip.shared().mainColor
         if selectedLang == .kor {
-           btn.setTitle("이 위치로 장소 설정",for: .normal)
+            btn.setTitle("이 위치로 장소 설정",for: .normal)
         } else {
             btn.setTitle("Set my location to here",for: .normal)
         }
@@ -82,12 +68,11 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
         btn.translatesAutoresizingMaskIntoConstraints=false
         return btn
     }()
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-    
         navBarBackgroundAlpha = 0
         myMapView.delegate=self
         txtFieldSearch.delegate=self
@@ -101,49 +86,35 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
         setInitPlace()
     }
     
+    //초기 구글맵 설정
+    func initGoogleMaps() {
+        let camera = GMSCameraPosition.camera(withLatitude: defualtLat, longitude: defualtLong, zoom: 17.0)
+        self.myMapView.camera = camera
+        self.myMapView.delegate = self
+        self.myMapView.isMyLocationEnabled = true
+    }
+    
+    //초기 장소 설정
     func setInitPlace(){
-        if entryPoint == .currentLocation {
+      
             locationManager.startUpdatingLocation()
             if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+                //위치 허용됐을 때 현재 위치
                 currentLocation = locationManager.location
                 guard let latitude = currentLocation?.coordinate.latitude,
                     let longitude = currentLocation?.coordinate.longitude else {return}
                 chosenPlace = MyPlace(name: "", lat: latitude, long: longitude)
             } else {
+                //위치 허용 안됐을때 대전으로
                 if chosenPlace == nil {
                     chosenPlace = MyPlace(name: "대전", lat: defualtLat, long: defualtLong)
                 }
             }
-        }
     }
     
-    func goToSelectedMapView(lat : Double, long : Double){
-        
-        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 17.0)
-        
-        self.myMapView.animate(to: camera)
-        let marker=GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: lat, longitude: long)
-        marker.icon = #imageLiteral(resourceName: "map_gps_dot")
-        marker.title = "\(chosenPlace?.name ?? "")"
-        marker.map = myMapView
-        
-    }
+   
     
-    @objc func btnMyLocationAction() {
-
-        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-           
-            let myLocation = getMyLatLong()
-            chosenPlace = MyPlace(name: "", lat: myLocation.lat, long: myLocation.long)
-            let camera = GMSCameraPosition.camera(withLatitude: myLocation.lat, longitude: myLocation.long, zoom: 17.0)
-            self.myMapView.animate(to: camera)
-        } else {
-            showLocationDisableAlert()
-        }
-        
-    }
-
+    //현재 위치 받아오는 함수
     func getMyLatLong() -> latLong {
         let location: CLLocation? = myMapView.myLocation
         if let location_ = location {
@@ -154,6 +125,7 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
         return (defualtLat, defualtLong)
     }
     
+    //현재 위치 허용 안됐을 때 띄우는 경고창
     func showLocationDisableAlert() {
         let alertController = UIAlertController(title: "위치 접근이 제한되었습니다.", message: "위치 정보가 필요합니다.", preferredStyle: .alert)
         let openAction = UIAlertAction(title: "설정으로 가기", style: .default) { (action) in
@@ -166,19 +138,39 @@ class GoogleMapVC: UIViewController, UIGestureRecognizerDelegate, GMSMapViewDele
         self.present(alertController, animated: true, completion: nil)
     }
     
+   
+}
+
+//MARK: - 버튼들에 대한 액션
+extension GoogleMapVC {
+    
+    //현재 위치 버튼 눌렀을 때
+    @objc func btnMyLocationAction() {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            //허용 되면 현재 위치 받아와서 설정
+            let myLocation = getMyLatLong()
+            chosenPlace = MyPlace(name: "", lat: myLocation.lat, long: myLocation.long)
+            let camera = GMSCameraPosition.camera(withLatitude: myLocation.lat, longitude: myLocation.long, zoom: 17.0)
+            self.myMapView.animate(to: camera)
+        } else {
+            //허용 안됐을때 경고
+            showLocationDisableAlert()
+        }
+    }
+    
+    //확인 버튼
     @objc func okAction() {
         delegate?.tap(selectedGoogle: chosenPlace)
         self.pop()
     }
 }
 
-
+//MARK: - GOOGLE AUTO COMPLETE DELEGATE / 검색 시 지역 클릭, 취소에 대한 액션
 extension GoogleMapVC : GMSAutocompleteViewControllerDelegate {
-    // MARK: GOOGLE AUTO COMPLETE DELEGATE
+
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         let lat = place.coordinate.latitude
         let long = place.coordinate.longitude
-
         let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 17.0)
         myMapView.camera = camera
         txtFieldSearch.text=place.formattedAddress
@@ -200,17 +192,9 @@ extension GoogleMapVC : GMSAutocompleteViewControllerDelegate {
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    func initGoogleMaps() {
-        let camera = GMSCameraPosition.camera(withLatitude: defualtLat, longitude: defualtLong, zoom: 17.0)
-        self.myMapView.camera = camera
-        self.myMapView.delegate = self
-        self.myMapView.isMyLocationEnabled = true
-    }
-    
 }
 
-//CLLocationManagerDelegate
+//MARK: - CLLocationManagerDelegate
 extension GoogleMapVC : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error while getting location \(error)")
@@ -225,11 +209,11 @@ extension GoogleMapVC : CLLocationManagerDelegate {
         let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 17.0)
         
         self.myMapView.animate(to: camera)
-
+        
     }
 }
 
-//UITextFieldDelegate
+//MARK: - UITextFieldDelegate / 텍필 클릭할 때 검색 창 뜨는 것
 extension GoogleMapVC : UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         let autoCompleteController = GMSAutocompleteViewController()
@@ -245,10 +229,9 @@ extension GoogleMapVC : UITextFieldDelegate {
     }
 }
 
-//컨스트레인
+//MARK: - 텍필, 버튼들에 대한 컨스트레인
 extension GoogleMapVC {
     func setupViews() {
-        
         myMapView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
         }
@@ -260,7 +243,7 @@ extension GoogleMapVC {
             make.trailing.equalToSuperview().offset(-10)
             make.height.equalTo(35)
         }
-         txtFieldSearch.adjustsFontSizeToFitWidth = true
+        txtFieldSearch.adjustsFontSizeToFitWidth = true
         setupTextField(textField: txtFieldSearch, img: #imageLiteral(resourceName: "main_search"))
         
         

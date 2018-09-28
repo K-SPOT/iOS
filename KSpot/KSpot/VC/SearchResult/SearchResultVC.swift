@@ -9,7 +9,8 @@
 import UIKit
 
 class SearchResultVC: UIViewController, UIGestureRecognizerDelegate {
-
+   
+    @IBOutlet weak var tableView : UITableView!
     var isChange : Bool? {
         didSet {
             tableView.reloadData()
@@ -17,7 +18,12 @@ class SearchResultVC: UIViewController, UIGestureRecognizerDelegate {
     }
     var searchResultData : SearchResultVOData?
     var searchTxt = ""
-    @IBOutlet weak var tableView : UITableView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getSearchData(url: UrlPath.searchResult.getURL(searchTxt))
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -26,21 +32,16 @@ class SearchResultVC: UIViewController, UIGestureRecognizerDelegate {
         setBackBtn()
         getSearchData(url: UrlPath.searchResult.getURL(searchTxt))
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getSearchData(url: UrlPath.searchResult.getURL(searchTxt))
-    }
-
-
 }
 
+//MARK: - UITableViewDelegate, UITableViewDataSource
 extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
     
+    //섹션마다 3/4/4 이하로 테이블 뷰 뿌려줌
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let searchResultData_ = searchResultData {
             if section == 0 {
@@ -58,7 +59,7 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
     //headerSection View 만드는 것
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableCell(withIdentifier: CategoryDetailSecondTVHeaderCell.reuseIdentifier) as! CategoryDetailSecondTVHeaderCell
-
+        
         if selectedLang == .eng {
             header.morBtn.setTitle("MORE", for: .normal)
         }
@@ -103,99 +104,13 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
         }
     }
     
-    @objc func goToCelebrityMore(_ sender : UIButton) {
-        let mainStoryboard = Storyboard.shared().mainStoryboard
-        if let searchResultMoreCelebrityVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultMoreCelebrityVC.reuseIdentifier) as? SearchResultMoreCelebrityVC {
-            if selectedLang == .kor {
-                searchResultMoreCelebrityVC.headerTitle = "연예인 / 방송"
-            } else {
-                searchResultMoreCelebrityVC.headerTitle = "Celebrity / Broadcast"
-            }
-           
-            searchResultMoreCelebrityVC.searchString = searchTxt
-            guard let navTitle = self.navigationItem.title else{return}
-            if ((navTitle.count) < 10) {
-                if selectedLang == .kor {
-                    searchResultMoreCelebrityVC.navigationItem.title = "'\(navTitle)' 검색결과"
-                } else {
-                     searchResultMoreCelebrityVC.navigationItem.title = "'\(navTitle)' search result"
-                }
-            } else {
-                if selectedLang == .kor {
-                  searchResultMoreCelebrityVC.navigationItem.title = "'\(navTitle.prefix(9))...' 검색결과"
-                } else {
-                    searchResultMoreCelebrityVC.navigationItem.title = "'\(navTitle.prefix(9))...' search result"
-                }
-            }
-            searchResultMoreCelebrityVC.searchData = searchResultData?.channel
-            self.navigationController?.pushViewController(searchResultMoreCelebrityVC, animated: true)
-        }
-    }
-    
-    @objc func goToPlaceMore(_ sender : UIButton){
-        let mainStoryboard = Storyboard.shared().mainStoryboard
-        if let searchResultMoreVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultMoreVC.reuseIdentifier) as? SearchResultMoreVC {
-           
-            guard let navTitle = self.navigationItem.title else{return}
-          
-            if ((navTitle.count) < 10) {
-                if selectedLang == .kor {
-                   searchResultMoreVC.navigationItem.title = "'\(navTitle)' 검색결과"
-                } else {
-                    searchResultMoreVC.navigationItem.title = "'\(navTitle)' search result"
-                }
-                
-            } else {
-                if selectedLang == .kor {
-                    searchResultMoreVC.navigationItem.title = "'\(navTitle.prefix(9))...' 검색결과"
-                } else {
-                    searchResultMoreVC.navigationItem.title = "'\(navTitle.prefix(9))...' search result"
-                }
-                
-            }
-            searchResultMoreVC.searchData = searchResultData?.place
-            searchResultMoreVC.searchTxt = self.searchTxt
-            self.navigationController?.pushViewController(searchResultMoreVC, animated: true)
-        }
-    }
-    @objc func goToEventMore(_ sender : UIButton){
-        let mainStoryboard = Storyboard.shared().mainStoryboard
-        if let searchResultMorePlaceVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultMorePlaceVC.reuseIdentifier) as? SearchResultMorePlaceVC {
-        
-            if selectedLang == .kor {
-               searchResultMorePlaceVC.headerTitle = "이벤트"
-            } else {
-                searchResultMorePlaceVC.headerTitle = "Event"
-            }
-            
-            guard let navTitle = self.navigationItem.title else{return}
-            if ((navTitle.count) < 10) {
-                if selectedLang == .kor {
-                    searchResultMorePlaceVC.navigationItem.title = "'\(navTitle)' 검색결과"
-                } else {
-                    searchResultMorePlaceVC.navigationItem.title = "'\(navTitle)' search result"
-                }
-                
-            } else {
-                if selectedLang == .kor {
-                    searchResultMorePlaceVC.navigationItem.title = "'\(navTitle.prefix(9))...' 검색결과"
-                } else {
-                    searchResultMorePlaceVC.navigationItem.title = "'\(navTitle.prefix(9))...' search result"
-                }
-            }
-           searchResultMorePlaceVC.searchData = searchResultData?.event
-            self.navigationController?.pushViewController(searchResultMorePlaceVC, animated: true)
-        }
-    }
-    
-   
-    
+    //헤더뷰 높이
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-         guard let searchResultData_ = searchResultData else {return 0}
+        guard let searchResultData_ = searchResultData else {return 0}
         if section == 0  {
             return heightForHeaderInSection(arr: searchResultData_.channel)
         } else if section == 1 {
-           return heightForHeaderInSection(arr: searchResultData_.place)
+            return heightForHeaderInSection(arr: searchResultData_.place)
         } else {
             return heightForHeaderInSection(arr: searchResultData_.event)
         }
@@ -253,24 +168,117 @@ extension SearchResultVC : UITableViewDelegate, UITableViewDataSource  {
     
 }
 
+//MARK: - 각 섹션의 더보기에 대한 함수들
+extension SearchResultVC  {
+    //연예인/방송 더보기
+    @objc func goToCelebrityMore(_ sender : UIButton) {
+        let mainStoryboard = Storyboard.shared().mainStoryboard
+        if let searchResultMoreCelebrityVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultMoreCelebrityVC.reuseIdentifier) as? SearchResultMoreCelebrityVC {
+            if selectedLang == .kor {
+                searchResultMoreCelebrityVC.headerTitle = "연예인 / 방송"
+            } else {
+                searchResultMoreCelebrityVC.headerTitle = "Celebrity / Broadcast"
+            }
+            
+            searchResultMoreCelebrityVC.searchString = searchTxt
+            guard let navTitle = self.navigationItem.title else{return}
+            if ((navTitle.count) < 10) {
+                if selectedLang == .kor {
+                    searchResultMoreCelebrityVC.navigationItem.title = "'\(navTitle)' 검색결과"
+                } else {
+                    searchResultMoreCelebrityVC.navigationItem.title = "'\(navTitle)' search result"
+                }
+            } else {
+                if selectedLang == .kor {
+                    searchResultMoreCelebrityVC.navigationItem.title = "'\(navTitle.prefix(9))...' 검색결과"
+                } else {
+                    searchResultMoreCelebrityVC.navigationItem.title = "'\(navTitle.prefix(9))...' search result"
+                }
+            }
+            searchResultMoreCelebrityVC.searchData = searchResultData?.channel
+            self.navigationController?.pushViewController(searchResultMoreCelebrityVC, animated: true)
+        }
+    }
+    
+    //장소 더보기
+    @objc func goToPlaceMore(_ sender : UIButton){
+        let mainStoryboard = Storyboard.shared().mainStoryboard
+        if let searchResultMoreVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultMoreVC.reuseIdentifier) as? SearchResultMoreVC {
+            
+            guard let navTitle = self.navigationItem.title else{return}
+            
+            if ((navTitle.count) < 10) {
+                if selectedLang == .kor {
+                    searchResultMoreVC.navigationItem.title = "'\(navTitle)' 검색결과"
+                } else {
+                    searchResultMoreVC.navigationItem.title = "'\(navTitle)' search result"
+                }
+                
+            } else {
+                if selectedLang == .kor {
+                    searchResultMoreVC.navigationItem.title = "'\(navTitle.prefix(9))...' 검색결과"
+                } else {
+                    searchResultMoreVC.navigationItem.title = "'\(navTitle.prefix(9))...' search result"
+                }
+                
+            }
+            searchResultMoreVC.searchData = searchResultData?.place
+            searchResultMoreVC.searchTxt = self.searchTxt
+            self.navigationController?.pushViewController(searchResultMoreVC, animated: true)
+        }
+    }
+    
+    //이벤트 더보기
+    @objc func goToEventMore(_ sender : UIButton){
+        let mainStoryboard = Storyboard.shared().mainStoryboard
+        if let searchResultMorePlaceVC = mainStoryboard.instantiateViewController(withIdentifier:SearchResultMorePlaceVC.reuseIdentifier) as? SearchResultMorePlaceVC {
+            
+            if selectedLang == .kor {
+                searchResultMorePlaceVC.headerTitle = "이벤트"
+            } else {
+                searchResultMorePlaceVC.headerTitle = "Event"
+            }
+            
+            guard let navTitle = self.navigationItem.title else{return}
+            if ((navTitle.count) < 10) {
+                if selectedLang == .kor {
+                    searchResultMorePlaceVC.navigationItem.title = "'\(navTitle)' 검색결과"
+                } else {
+                    searchResultMorePlaceVC.navigationItem.title = "'\(navTitle)' search result"
+                }
+                
+            } else {
+                if selectedLang == .kor {
+                    searchResultMorePlaceVC.navigationItem.title = "'\(navTitle.prefix(9))...' 검색결과"
+                } else {
+                    searchResultMorePlaceVC.navigationItem.title = "'\(navTitle.prefix(9))...' search result"
+                }
+            }
+            searchResultMorePlaceVC.searchData = searchResultData?.event
+            self.navigationController?.pushViewController(searchResultMorePlaceVC, animated: true)
+        }
+    }
+}
+
+//MARK: - 구독
 extension SearchResultVC : SelectSenderDelegate{
     func tap(section: Section, seledtedId: Int, sender: mySubscribeBtn) {
         if sender.isSelected {
             unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
         } else {
-             let params = ["channel_id" : seledtedId]
+            let params = ["channel_id" : seledtedId]
             subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
         }
     }
 }
 
-//통신
+//MARK: - 통신
 extension SearchResultVC {
     func getSearchData(url : String){
-         self.pleaseWait()
+        self.pleaseWait()
         SearchResultService.shareInstance.getSearchResult(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
-             self.clearAllNotice()
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(let searchResultData):
                 self.searchResultData = searchResultData as? SearchResultVOData
@@ -285,17 +293,14 @@ extension SearchResultVC {
     }
     
     func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
-         self.pleaseWait()
+        self.pleaseWait()
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
-             self.clearAllNotice()
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
                 sender.isSelected = true
-            self.searchResultData?.channel[sender.indexPath!].subscription = 1
-                /*let indexPath = IndexPath(item: sender.indexPath!, section: 0)
-                 self.tableView.reloadRows(at: [indexPath], with: .top)*/
-            case .networkFail :
+                self.searchResultData?.channel[sender.indexPath!].subscription = 1
                 self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
@@ -305,13 +310,12 @@ extension SearchResultVC {
     } //subscribe
     
     func unsubscribe(url : String, sender : mySubscribeBtn){
-         self.pleaseWait()
+        self.pleaseWait()
         ChannelSubscribeService.shareInstance.unsubscribe(url: url, completion: { [weak self] (result) in
             guard let `self` = self else { return }
             self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
-                
                 sender.isSelected = false
                 self.searchResultData?.channel[sender.indexPath!].subscription = 0
             case .networkFail :

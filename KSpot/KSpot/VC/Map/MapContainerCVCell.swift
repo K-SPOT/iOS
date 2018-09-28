@@ -15,8 +15,6 @@ class MapContainerCVCell: UICollectionViewCell {
     @IBOutlet weak var descLbl: UILabel!
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-
-   
     var channel : UserScrapVODataChannel?
     
     func configure(data : UserScrapVOData){
@@ -38,6 +36,7 @@ class MapContainerCVCell: UICollectionViewCell {
     }
 }
 
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension MapContainerCVCell  : UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -68,6 +67,7 @@ extension MapContainerCVCell  : UICollectionViewDataSource, UICollectionViewDele
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension MapContainerCVCell : UICollectionViewDelegateFlowLayout {
     //section내의
     //-간격 위아래

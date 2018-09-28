@@ -9,11 +9,9 @@
 import UIKit
 
 class PlaceDetailSecondTVCell: UITableViewCell {
-    
-    
+
     @IBOutlet weak var reviewLbl: UILabel!
     @IBOutlet weak var countLbl: UILabel!
-    
     @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var moreBtn: UIButton!
     @IBOutlet weak var ratingView: CosmosView!
@@ -21,7 +19,6 @@ class PlaceDetailSecondTVCell: UITableViewCell {
     var finalOffset : CGFloat = 0
     var startOffset  : CGFloat = 0
     var currentIdx = 0
-  
     var delegate : SelectSectionDelegate?
     var reviewData : [PlaceDetailVODataReview]? {
         didSet {
@@ -63,21 +60,11 @@ class PlaceDetailSecondTVCell: UITableViewCell {
         if let ratingLblInt_ = ratingLblInt {
             ratingView.rating = ratingLblInt_
         }
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-       // self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
-        
-    }
-    
+    }    
    
 }
 
+//MARK: -UICollectionViewDataSource, UICollectionViewDelegate
 extension PlaceDetailSecondTVCell : UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -104,7 +91,7 @@ extension PlaceDetailSecondTVCell : UICollectionViewDataSource, UICollectionView
 
 }
 
-
+//MARK: - UICollectionViewDelegateFlowLayout
 extension PlaceDetailSecondTVCell: UICollectionViewDelegateFlowLayout {
     //section내의
     //-간격 위아래
@@ -120,11 +107,10 @@ extension PlaceDetailSecondTVCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (340/375)*window!.frame.width, height: 206)
     }
-    
 }
 
-extension PlaceDetailSecondTVCell : UIScrollViewDelegate{
-    
+//MARK: - 컬렉션뷰 드래깅
+extension PlaceDetailSecondTVCell : UIScrollViewDelegate {
     private func indexOfMajorCell(direction : Direction) -> Int {
         var index = 0
         switch direction {

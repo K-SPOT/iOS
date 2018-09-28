@@ -11,29 +11,28 @@ import UIKit
 class MainSecondTVCell: UITableViewCell {
     
     @IBOutlet weak var thisWeekLbl: UILabel!
-    
     @IBOutlet weak var recommendPlaceLbl: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    private var indexOfCellBeforeDragging = 0
+   
     var finalOffset : CGFloat = 0
     var startOffset  : CGFloat = 0
     var currentIdx = 0
-
     var delegate : SelectSectionDelegate?
     var recommendPlaceData : [MainVODataMain]? {
         didSet {
             collectionView.reloadData()
         }
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
+  /*  override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-    }
+    }*/
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -44,12 +43,11 @@ class MainSecondTVCell: UITableViewCell {
             thisWeekLbl.text = "This week,"
             recommendPlaceLbl.text = "we recommend this PLACE"
         }
-        //self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
-        
     }
     
 }
 
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension MainSecondTVCell : UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -64,10 +62,9 @@ extension MainSecondTVCell : UICollectionViewDataSource, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell: MainSecondCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: MainSecondCVCell.reuseIdentifier, for: indexPath) as? MainSecondCVCell
-        {
+        if let cell: MainSecondCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: MainSecondCVCell.reuseIdentifier, for: indexPath) as? MainSecondCVCell{
             if let recommendPlaceData_ = recommendPlaceData {
-                 cell.configure(data: recommendPlaceData_[indexPath.row])
+                cell.configure(data: recommendPlaceData_[indexPath.row])
             }
             return cell
         }
@@ -76,13 +73,12 @@ extension MainSecondTVCell : UICollectionViewDataSource, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let recommendPlaceData_ = recommendPlaceData {
-             delegate?.tap(section: .second, seledtedId: recommendPlaceData_[indexPath.row].spotID)
+            delegate?.tap(section: .second, seledtedId: recommendPlaceData_[indexPath.row].spotID)
         }
-       
     }
 }
 
-
+//MARK: - UICollectionViewDelegateFlowLayout
 extension MainSecondTVCell: UICollectionViewDelegateFlowLayout {
     //section내의
     //-간격 위아래
@@ -105,16 +101,18 @@ extension MainSecondTVCell: UICollectionViewDelegateFlowLayout {
     }
 }
 
-
-extension MainSecondTVCell : UIScrollViewDelegate{
-    
+//MARK: - 컬렉션 뷰 드래깅
+extension MainSecondTVCell : UIScrollViewDelegate {
+    /**
+     현재 메인셀의 인덱스를 구하는 함수
+     */
     private func indexOfMajorCell(direction : Direction) -> Int {
         var index = 0
         switch direction {
         case .right :
-          index = currentIdx + 1
+            index = currentIdx + 1
         case .left :
-          index = currentIdx - 1
+            index = currentIdx - 1
         }
         let numberOfItems = collectionView.numberOfItems(inSection: 0)
         let safeIndex = max(0, min(numberOfItems - 1, index))
@@ -127,8 +125,9 @@ extension MainSecondTVCell : UIScrollViewDelegate{
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-
+        
         finalOffset = collectionView.contentOffset.x
+        //stop scrollview sliding
         targetContentOffset.pointee = scrollView.contentOffset
         if finalOffset > startOffset {
             //뒤로 넘기기
@@ -144,6 +143,4 @@ extension MainSecondTVCell : UIScrollViewDelegate{
             print("둘다 아님")
         }
     }
-    
-    
 }

@@ -11,28 +11,26 @@ import UIKit
 class CategoryDetailFirstTVCell: UITableViewCell {
     
     @IBOutlet weak var titleLbl: UILabel!
-    
     @IBOutlet weak var subTitleLbl: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
 
     var finalOffset : CGFloat = 0
     var startOffset  : CGFloat = 0
     var currentIdx = 0
-
-    var titleTxt : String? {
-        didSet {
-            titleLbl.text = titleTxt
-        }
-    }
-    var subtitleTxt : String? {
-        didSet {
-            subTitleLbl.text = subtitleTxt
-        }
-    }
     var delegate : SelectSectionDelegate?
     var recommendData : [ChannelDetailVODataPlaceRecommendedByChannel]? {
         didSet {
             collectionView.reloadData()
+        }
+    }
+    
+    func configure(celebrityName : String?){
+        if selectedLang == .kor {
+            titleLbl.text = "\(celebrityName ?? "")'s 추천 장소"
+            subTitleLbl.text = "사람들이 많이 찾는 장소를 확인해보세요"
+        } else {
+            titleLbl.text = "\(celebrityName ?? "")'s recommended place"
+            subTitleLbl.text = "Check out the places people are looking for!"
         }
     }
   
@@ -40,22 +38,10 @@ class CategoryDetailFirstTVCell: UITableViewCell {
         super.awakeFromNib()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        //self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
-        
-    }
-    
 }
 
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension CategoryDetailFirstTVCell : UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -70,12 +56,10 @@ extension CategoryDetailFirstTVCell : UICollectionViewDataSource, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell: CategoryDetailFirstCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryDetailFirstCVCell.reuseIdentifier, for: indexPath) as? CategoryDetailFirstCVCell
-        {
+        if let cell: CategoryDetailFirstCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryDetailFirstCVCell.reuseIdentifier, for: indexPath) as? CategoryDetailFirstCVCell {
             if let recommendData_ = recommendData {
                  cell.configure(data: recommendData_[indexPath.row])
             }
-           
             return cell
         }
         return UICollectionViewCell()
@@ -91,10 +75,9 @@ extension CategoryDetailFirstTVCell : UICollectionViewDataSource, UICollectionVi
         }
         
     }
-    
-    
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension CategoryDetailFirstTVCell: UICollectionViewDelegateFlowLayout {
     //section내의
     //-간격 위아래
@@ -110,10 +93,9 @@ extension CategoryDetailFirstTVCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (318/375)*window!.frame.width, height: (195/667)*window!.frame.height)
     }
-    
-    
 }
 
+//MARK: - 콜렉션뷰 드래깅
 extension CategoryDetailFirstTVCell : UIScrollViewDelegate{
     
     private func indexOfMajorCell(direction : Direction) -> Int {
@@ -152,5 +134,4 @@ extension CategoryDetailFirstTVCell : UIScrollViewDelegate{
             print("둘다 아님")
         }
     }
-
 }

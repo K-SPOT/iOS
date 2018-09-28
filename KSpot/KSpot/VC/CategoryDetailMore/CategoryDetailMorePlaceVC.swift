@@ -11,14 +11,15 @@ import UIKit
 class CategoryDetailMorePlaceVC: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    var isPlace = true
+    var selectedIdx = 0
+    var mainTitle : String? = ""
     var channelMoreData : [UserScrapVOData]? {
         didSet {
             collectionView.reloadData()
         }
     }
-    var isPlace = true
-    var selectedIdx = 0
-    var mainTitle : String? = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackBtn()
@@ -34,9 +35,9 @@ class CategoryDetailMorePlaceVC: UIViewController, UIGestureRecognizerDelegate {
         let isEvent = isPlace ? 0 : 1
         getChannelSpotMore(url: UrlPath.channelSpotMore.getSpotMoreURL(channelId: selectedIdx, isEvent: isEvent))
     }
-    
 }
 
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension CategoryDetailMorePlaceVC : UICollectionViewDataSource, UICollectionViewDelegate{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -50,6 +51,7 @@ extension CategoryDetailMorePlaceVC : UICollectionViewDataSource, UICollectionVi
         return 0
     }
     
+    //헤더 뷰
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         //1
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
@@ -60,23 +62,6 @@ extension CategoryDetailMorePlaceVC : UICollectionViewDataSource, UICollectionVi
         }
         
         return headerView
-
-      /*  switch kind {
-        //2
-        case UICollectionElementKindSectionHeader:
-            //3
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                             withReuseIdentifier: "CategoryDetailMorePlaceHeaderView",
-                                                                             for: indexPath) as! CategoryDetailMorePlaceHeaderView
-            if let mainTitle = mainTitle {
-                headerView.titleLbl.text = mainTitle+" K-Spot"
-            }
-            
-            return headerView
-        default:
-            //4
-            assert(false, "Unexpected element kind")
-        }*/
     }
 
     
@@ -103,6 +88,7 @@ extension CategoryDetailMorePlaceVC : UICollectionViewDataSource, UICollectionVi
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension CategoryDetailMorePlaceVC: UICollectionViewDelegateFlowLayout {
     //section내의
     //-간격 위아래
@@ -123,7 +109,7 @@ extension CategoryDetailMorePlaceVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-//통신
+//MARK: - 통신
 extension CategoryDetailMorePlaceVC {
     func getChannelSpotMore(url : String){
         self.pleaseWait()

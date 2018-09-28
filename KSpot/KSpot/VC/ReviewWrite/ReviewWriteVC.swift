@@ -11,7 +11,6 @@ import SnapKit
 
 class ReviewWriteVC: UIViewController, UITextFieldDelegate {
     
-    
     @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var scrollTopView: UIView!
@@ -113,13 +112,13 @@ class ReviewWriteVC: UIViewController, UITextFieldDelegate {
     
 }
 
+//MARK: - 별점
 extension ReviewWriteVC {
     private class func formatValue(_ value: Double) -> String {
         return String(format: "%.1f", value)
     }
     
     private func didTouchCosmos(_ rating: Double) {
-        
         self.ratingLbl.text = ReviewWriteVC.formatValue(rating)
         
     }
@@ -130,7 +129,7 @@ extension ReviewWriteVC {
     }
 }
 
-//이미지뷰에 대한 추가 및 삭제
+//MARK: - 이미지뷰에 대한 추가 및 삭제
 extension ReviewWriteVC {
     func makeImgView(){
         self.scrollTopView.addSubview(contentImgView)
@@ -161,7 +160,7 @@ extension ReviewWriteVC {
 }
 
 
-//custom toolbar
+//MARK: - custom toolbar
 extension ReviewWriteVC {
     func setToolbar(){
         let toolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
@@ -186,7 +185,7 @@ extension ReviewWriteVC {
 }
 
 
-//TextView delegate
+//MARK: - TextView delegate
 extension ReviewWriteVC : UITextViewDelegate{
     
     //텍스트뷰 플레이스 홀더처럼
@@ -204,32 +203,7 @@ extension ReviewWriteVC : UITextViewDelegate{
         }
     }
     
-    
-    
     func textViewDidChange(_ textView: UITextView) {
-        
-        /*if let myString = textView.text {
-         let emptySpacesCount = myString.components(separatedBy: " ").count-1
-         if emptySpacesCount == myString.count {
-         doneBtn.tintColor = .gray
-         doneBtn.isEnabled = false
-         return
-         }
-         
-         let nCount = myString.components(separatedBy: "\n").count-1
-         if nCount == myString.count {
-         doneBtn.tintColor = .gray
-         doneBtn.isEnabled = false
-         return
-         }
-         
-         let nCount_emptySpaceCount = nCount+emptySpacesCount
-         if nCount_emptySpaceCount == myString.count {
-         doneBtn.tintColor = .gray
-         doneBtn.isEnabled = false
-         return
-         }
-         }*/
         isValid()
         if let text = contentTxtView.text {
             writeCountLbl.text = text.count.description
@@ -251,7 +225,7 @@ extension ReviewWriteVC : UITextViewDelegate{
 }
 
 
-//키보드 대응
+//MARK: - 키보드 대응
 extension ReviewWriteVC {
     func setKeyboardSetting() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
@@ -296,7 +270,7 @@ extension ReviewWriteVC {
 }
 
 
-//앨범 열기 위함
+//MARK: - 앨범 열기 위함
 extension ReviewWriteVC : UIImagePickerControllerDelegate,
 UINavigationControllerDelegate  {
     
@@ -334,7 +308,7 @@ UINavigationControllerDelegate  {
 }
 
 
-//통신
+//MARK: - 통신
 extension ReviewWriteVC {
     func reviewWrite(url : String, selectedIdx : Int, title : String, content : String, score : Double){
         self.pleaseWait()
@@ -360,9 +334,6 @@ extension ReviewWriteVC {
                 self.clearAllNotice()
                 self.noticeSuccess("등록 완료", autoClear: true, autoClearTime: 1)
                 self.pop()
-                /*self.simpleOKAlert(title: "확인", message: "리뷰 등록이 완료되었습니다", okHandler: { (_) in
-                     self.pop()
-                })*/
             case .networkFail :
                 self.networkSimpleAlert()
             default :
