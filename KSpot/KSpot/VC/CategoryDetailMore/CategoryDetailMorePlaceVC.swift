@@ -69,6 +69,7 @@ extension CategoryDetailMorePlaceVC : UICollectionViewDataSource, UICollectionVi
         
         if let cell: MapContainerCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlaceMoreCVCell", for: indexPath) as? MapContainerCVCell
         {
+            cell.delegate = self
             if let channelMoreData_ = channelMoreData{
                cell.configure(data: channelMoreData_[indexPath.row])
             }
@@ -106,6 +107,15 @@ extension CategoryDetailMorePlaceVC: UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 0, 16, 0)
+    }
+}
+
+//MARK: - 연예인 상세 페이지
+extension CategoryDetailMorePlaceVC : SelectDelegate {
+    func tap(selected: Int?) {
+        if let selected_ = selected {
+            self.goToCelebrityDetail(selectedIdx: selected_)
+        }
     }
 }
 

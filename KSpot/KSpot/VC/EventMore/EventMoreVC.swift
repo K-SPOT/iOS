@@ -48,6 +48,7 @@ extension EventMoreVC : UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell: MapContainerCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventMoreCVCell", for: indexPath) as? MapContainerCVCell {
+            cell.delegate = self
             if let eventList_ = eventList {
                 cell.configure(data: eventList_[indexPath.row])
             }
@@ -81,6 +82,15 @@ extension EventMoreVC : UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 0, 16, 0)
+    }
+}
+
+//MARK: - 연예인 상세 페이지
+extension EventMoreVC : SelectDelegate {
+    func tap(selected: Int?) {
+        if let selected_ = selected {
+            self.goToCelebrityDetail(selectedIdx: selected_)
+        }
     }
 }
 

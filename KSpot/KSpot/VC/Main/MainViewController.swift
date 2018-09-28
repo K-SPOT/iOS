@@ -15,7 +15,8 @@ var selectedLang : Language = .kor
 var loginWith : LoginType?
 
 class MainViewController: UIViewController {
-    
+  
+    @IBOutlet weak var themeIconImg: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     var mainData : MainVOData? {
         didSet {
@@ -42,6 +43,11 @@ class MainViewController: UIViewController {
     
     
     @objc func getLangInfo(_ notification : Notification) {
+        if selectedLang == .kor {
+            themeIconImg.image = #imageLiteral(resourceName: "main_theme")
+        } else {
+            themeIconImg.image = #imageLiteral(resourceName: "main_theme_eng")
+        }
         getMainData(url: UrlPath.main.getURL())
     }
     
@@ -76,7 +82,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                     KingfisherSource(urlString: data.mainImg)
                 })
                 if selectedLang == .kor {
-                    imageArr.insert(ImageSource(imageString: "main_theme image")!, at: 0)
+                    imageArr.insert(ImageSource(imageString: "sampleTheme")!, at: 0)
                 } else {
                     imageArr.insert(ImageSource(imageString: "main_theme_img_eng")!, at: 0)
                 }

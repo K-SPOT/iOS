@@ -81,8 +81,6 @@ extension MapContainerVC : SelectRegionDelegate {
             }
         }
         
-        print("체크체크! \(regionTxt)")
-        
         mapView?.selectedRegionLbl.text = regionTxt
         parentVC?.isGoogleMapLocation = false
         
@@ -178,6 +176,7 @@ extension MapContainerVC : UICollectionViewDataSource, UICollectionViewDelegate{
         
         if let cell: MapContainerCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: MapContainerCVCell.reuseIdentifier, for: indexPath) as? MapContainerCVCell
         {
+            cell.delegate = self
             if let defaultSpot_ = defaultSpot{
                 cell.configure(data : defaultSpot_[indexPath.row])
             }
@@ -212,6 +211,15 @@ extension MapContainerVC: UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 0, 16, 0)
+    }
+}
+
+//MARK: - 연예인 상세 페이지
+extension MapContainerVC : SelectDelegate {
+    func tap(selected: Int?) {
+        if let selected_ = selected {
+            self.goToCelebrityDetail(selectedIdx: selected_)
+        }
     }
 }
 

@@ -51,9 +51,11 @@ extension ScrapVC : UICollectionViewDataSource, UICollectionViewDelegate{
         
         if let cell: MapContainerCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScrapCVCell", for: indexPath) as? MapContainerCVCell
         {
+            cell.delegate = self
             if let userScrapList_ = userScrapList {
                 cell.configure(data: userScrapList_[indexPath.row])
             }
+            
             return cell
         }
         return UICollectionViewCell()
@@ -85,6 +87,15 @@ extension ScrapVC: UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 0, 16, 0)
+    }
+}
+
+//MARK: - 연예인 상세 페이지
+extension ScrapVC : SelectDelegate {
+    func tap(selected: Int?) {
+        if let selected_ = selected {
+            self.goToCelebrityDetail(selectedIdx: selected_)
+        }
     }
 }
 
