@@ -69,8 +69,10 @@ extension CelebrityVC : UITableViewDelegate, UITableViewDataSource {
 
 extension CelebrityVC {
     func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
+         self.pleaseWait()
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
                 
@@ -89,8 +91,10 @@ extension CelebrityVC {
     } //subscribe
     
     func unsubscribe(url : String, sender : mySubscribeBtn){
+        self.pleaseWait()
         ChannelSubscribeService.shareInstance.unsubscribe(url: url, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
              

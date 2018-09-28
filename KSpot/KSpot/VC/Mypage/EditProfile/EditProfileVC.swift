@@ -71,7 +71,6 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
 
     @IBAction func doneAction(_ sender: Any) {
          editProfile(url: UrlPath.userEdit.getURL(), editedName: nameTxtfield.text!)
-        self.pleaseWait()
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -201,7 +200,7 @@ extension EditProfileVC{
 //통신
 extension EditProfileVC {
     func editProfile(url : String, editedName : String ){
-        
+        self.pleaseWait()
         
         let params : [String : Any] = [
             "name" : editedName
@@ -216,9 +215,9 @@ extension EditProfileVC {
         
         UserEditService.shareInstance.editProfile(url: url, params: params, image: images, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
-                self.clearAllNotice()
                 self.noticeSuccess("수정 완료!", autoClear: true, autoClearTime: 1)
                  self.pop()
                /* self.simpleOKAlert(title: "확인", message: "프로필 변경이 완료되었습니다", okHandler: { (_) in

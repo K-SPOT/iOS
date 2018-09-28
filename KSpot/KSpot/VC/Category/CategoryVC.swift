@@ -111,9 +111,12 @@ extension CategoryVC : SelectDelegate {
 
 //통신
 extension CategoryVC  {
+    
     func getMyChannel(url : String){
+         self.pleaseWait()
         ChannelService.shareInstance.getChannelList(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(let channelList):
                let channelList = channelList as! ChannelVOData

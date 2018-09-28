@@ -88,8 +88,10 @@ extension SearchResultMoreCelebrityVC : UITableViewDelegate, UITableViewDataSour
 extension SearchResultMoreCelebrityVC{
     
     func getSearchData(url : String){
+        self.pleaseWait()
         SearchResultService.shareInstance.getSearchResult(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+             self.clearAllNotice()
             switch result {
             case .networkSuccess(let searchResultData):
                 let searchResultData_ = searchResultData as? SearchResultVOData
@@ -105,8 +107,10 @@ extension SearchResultMoreCelebrityVC{
     }
     
     func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
+        self.pleaseWait()
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+             self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
                 
@@ -125,8 +129,10 @@ extension SearchResultMoreCelebrityVC{
     } //subscribe
     
     func unsubscribe(url : String, sender : mySubscribeBtn){
+        self.pleaseWait()
         ChannelSubscribeService.shareInstance.unsubscribe(url: url, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+             self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
              

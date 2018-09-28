@@ -131,8 +131,10 @@ class LoginVC: UIViewController {
 //통신
 extension LoginVC {
     func facebookLogin(url : String, params : [String:Any]){
+        self.pleaseWait()
         FacebookLoginService.shareInstance.login(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(let loginData):
                 //유저 값 설정
@@ -150,8 +152,10 @@ extension LoginVC {
         })
     } //fb login
     func kakaoLogin(url : String, params : [String:Any]){
+        self.pleaseWait()
         FacebookLoginService.shareInstance.login(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(let loginData):
                 //유저 값 설정

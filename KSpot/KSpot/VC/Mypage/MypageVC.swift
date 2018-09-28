@@ -177,8 +177,10 @@ extension MypageVC : SelectSectionDelegate{
 //통신
 extension MypageVC {
     func getMyInfo(url : String){
+        self.pleaseWait()
         MypageService.shareInstance.getMypageInfo(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+             self.clearAllNotice()
             switch result {
             case .networkSuccess(let mypageData):
                 let userData = mypageData as! MypageVOData

@@ -187,28 +187,7 @@ extension MapVC {
     
 }
 
-extension MapVC {
-    func getGoogleSpot(url : String){
-        GoogleSpotService.shareInstance.getGoogleSpot(url: url,completion: { [weak self] (result) in
-            guard let `self` = self else { return }
-            switch result {
-            case .networkSuccess(let defaultSpot):
-                if selectedLang == .kor {
-                     self.mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변"
-                } else {
-                    self.mapContainerVC.mapView?.selectedRegionLbl.text = "Around me"
-                }
-               
-                self.defaultSpot = defaultSpot as? [UserScrapVOData]
-            case .networkFail :
-                self.networkSimpleAlert()
-            default :
-                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
-                break
-            }
-        })
-    }
-}
+
 //필터 뷰 버튼 액션 적용
 extension MapVC {
     
@@ -420,6 +399,30 @@ extension MapVC : CLLocationManagerDelegate{
     }
 }
 
-
+//통신
+extension MapVC {
+    func getGoogleSpot(url : String){
+        self.pleaseWait()
+        GoogleSpotService.shareInstance.getGoogleSpot(url: url,completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            self.clearAllNotice()
+            switch result {
+            case .networkSuccess(let defaultSpot):
+                if selectedLang == .kor {
+                    self.mapContainerVC.mapView?.selectedRegionLbl.text = "내 주변"
+                } else {
+                    self.mapContainerVC.mapView?.selectedRegionLbl.text = "Around me"
+                }
+                
+                self.defaultSpot = defaultSpot as? [UserScrapVOData]
+            case .networkFail :
+                self.networkSimpleAlert()
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    }
+}
 
 

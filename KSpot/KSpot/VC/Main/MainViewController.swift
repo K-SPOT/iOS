@@ -139,8 +139,10 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
 //통신
 extension MainViewController {
     func getMainData(url : String){
+        self.pleaseWait()
         MainService.shareInstance.getMainData(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(let mainData):
                 self.mainData = mainData as? MainVOData

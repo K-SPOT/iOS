@@ -46,7 +46,13 @@ K-SPOT은 **연예인 관련 장소 추천 서비스**입니다.
 - [SnapKit](https://github.com/SnapKit/SnapKit)
 - [Cosmos](https://github.com/evgenyneu/Cosmos)
 - [WRNavigationBar_swift]( https://github.com/wangrui460/WRNavigationBar_swift)
+- [SwiftNotice](https://github.com/johnlui/SwiftNotice)
+- [ImageSlideshow](https://github.com/zvonicek/ImageSlideshow)
 3. 지도
-- [GoogleMaps]
-- [GooglePlaces]
+- [GoogleMaps](https://developers.google.com/maps/documentation/ios-sdk/start)
+- [GooglePlaces](https://developers.google.com/places/ios-sdk/start)
+
+4. 간편 로그인
+- [페이스북](https://github.com/facebook/facebook-objc-sdk)
+- [카카오톡](https://developers.kakao.com/docs/sdk)
 

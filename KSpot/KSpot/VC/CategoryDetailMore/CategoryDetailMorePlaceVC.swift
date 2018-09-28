@@ -126,8 +126,10 @@ extension CategoryDetailMorePlaceVC: UICollectionViewDelegateFlowLayout {
 //통신
 extension CategoryDetailMorePlaceVC {
     func getChannelSpotMore(url : String){
+        self.pleaseWait()
         UserScrapService.shareInstance.getScrapList(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(let channelMoreData):
                 self.channelMoreData = channelMoreData as? [UserScrapVOData]

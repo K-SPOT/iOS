@@ -72,8 +72,10 @@ extension BroadcastVC : UITableViewDelegate, UITableViewDataSource{
 
 extension BroadcastVC {
     func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
+         self.pleaseWait()
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+             self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
                
@@ -89,11 +91,12 @@ extension BroadcastVC {
     } //subscribe
     
     func unsubscribe(url : String, sender : mySubscribeBtn){
+         self.pleaseWait()
         ChannelSubscribeService.shareInstance.unsubscribe(url: url, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+             self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
-                
                 sender.isSelected = false
                 self.broadcastList![sender.indexPath!].subscription = 0
             case .networkFail :

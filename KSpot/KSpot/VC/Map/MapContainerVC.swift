@@ -211,8 +211,10 @@ extension MapContainerVC: UICollectionViewDelegateFlowLayout {
 //통신
 extension MapContainerVC {
     func getDefaultSpot(url : String){
+        self.pleaseWait()
         DefaultSpotService.shareInstance.getDefaultSpot(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(let defaultSpot):
                 self.defaultSpot = defaultSpot as? [UserScrapVOData]

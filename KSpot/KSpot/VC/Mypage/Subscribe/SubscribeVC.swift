@@ -98,8 +98,10 @@ extension SubscribeVC{
 //통신
 extension SubscribeVC{
     func getUserSubcription(url : String){
+        self.pleaseWait()
         UserSubcriptionService.shareInstance.getSubscriptionList(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+             self.clearAllNotice()
             switch result {
             case .networkSuccess(let subsData):
                 let subsData = subsData as! UserSubcriptionVOData

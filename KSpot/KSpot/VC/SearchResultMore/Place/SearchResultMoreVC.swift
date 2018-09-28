@@ -34,7 +34,7 @@ class SearchResultMoreVC: UIViewController, UIGestureRecognizerDelegate {
     var selectedFirstFilter : FilterToggleBtn?
     var selectedSecondFilter : Set<UIButton>?
     var selectedSecondFilter_ = Set<UIButton>()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +90,7 @@ extension SearchResultMoreVC {
         addtarget(inputs: buttons)
         
         //첫번째 섹션
-       
+        
         let popularBtn = filterView.popularBtn!
         let recentBtn = filterView.recentBtn!
         if selectedLang == .eng {
@@ -115,12 +115,12 @@ extension SearchResultMoreVC {
             filterView.cafeBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_cafe_green"), unselected: #imageLiteral(resourceName: "map_filter_cafe_gray"))
         } else {
             filterView.restaurantBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_restaurant_green_new_eng"), unselected: #imageLiteral(resourceName: "map_filter_restaurant_gray_new_eng"))
-             filterView.hotplaceBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_hotplace_green_new_eng"), unselected: #imageLiteral(resourceName: "map_filter_hotplace_gray_new_eng"))
-             filterView.cafeBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_cafe_green_new_eng"), unselected: #imageLiteral(resourceName: "map_filter_cafe_gray_new_eng"))
-             filterView.etcBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_etc_green_new_eng"), unselected: #imageLiteral(resourceName: "map_filter_etc_gray_new_eng"))
+            filterView.hotplaceBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_hotplace_green_new_eng"), unselected: #imageLiteral(resourceName: "map_filter_hotplace_gray_new_eng"))
+            filterView.cafeBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_cafe_green_new_eng"), unselected: #imageLiteral(resourceName: "map_filter_cafe_gray_new_eng"))
+            filterView.etcBtn!.setImage(selected: #imageLiteral(resourceName: "map_filter_etc_green_new_eng"), unselected: #imageLiteral(resourceName: "map_filter_etc_gray_new_eng"))
         }
         
-    
+        
         
         
     } //setFilterView
@@ -136,8 +136,8 @@ extension SearchResultMoreVC {
         //if selectedFirstFiler.tag == 0 이면 인기순
         print(selectedFirstFilter?.tag ?? -1)
         /*selectedSecondFilter.forEach({ (button) in
-            print(button.tag)
-        })*/
+         print(button.tag)
+         })*/
         ///search/:keyword/filter/place/:order/:is_food/:is_cafe/:is_sights/:is_etc
         var isFood : Int = 1
         var isCafe : Int = 1
@@ -185,8 +185,10 @@ extension SearchResultMoreVC {
 
 extension SearchResultMoreVC {
     func getFilteredData(url : String){
+        self.pleaseWait()
         SearchResultPlaceMoreService.shareInstance.getSearchResultPlaceMore(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(let searchResultData):
                 let searchResultData_ = searchResultData as? [SearchResultVODataPlace]

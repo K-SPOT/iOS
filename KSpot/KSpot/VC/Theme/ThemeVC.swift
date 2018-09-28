@@ -177,8 +177,10 @@ extension ThemeVC : SelectDelegate {
 
 extension ThemeVC {
     func getTheme(url : String){
+         self.pleaseWait()
         ThemeService.shareInstance.getThemeData(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(let themeData):
                 self.themeData = themeData as? ThemeVOData

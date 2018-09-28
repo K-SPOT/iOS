@@ -447,8 +447,10 @@ extension PlaceDetailVC : SelectSectionDelegate, SelectSenderDelegate {
 //통신
 extension PlaceDetailVC {
     func getPlaceInfo(url : String){
+         self.pleaseWait()
         PlaceDetailService.shareInstance.getPlaceData(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+             self.clearAllNotice()
             switch result {
             case .networkSuccess(let placeData):
                 let placeData_ = placeData as! [PlaceDetailVOData]
@@ -464,8 +466,10 @@ extension PlaceDetailVC {
     }
     
     func scrap(url : String, params : [String:Any], sender : UIBarButtonItem){
+         self.pleaseWait()
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+             self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
                 if self.navigationItem.rightBarButtonItems?[0] == self.whiteScrapBarBtn! {
@@ -490,8 +494,10 @@ extension PlaceDetailVC {
     } //subscribe
     
     func unscrap(url : String, sender : UIBarButtonItem){
+         self.pleaseWait()
         ChannelSubscribeService.shareInstance.unsubscribe(url: url, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
                 if self.navigationItem.rightBarButtonItems?[0] == self.whiteFullScrapBarBtn! {

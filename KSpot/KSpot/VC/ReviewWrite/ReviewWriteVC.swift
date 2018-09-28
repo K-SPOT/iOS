@@ -337,7 +337,7 @@ UINavigationControllerDelegate  {
 //통신
 extension ReviewWriteVC {
     func reviewWrite(url : String, selectedIdx : Int, title : String, content : String, score : Double){
-  
+        self.pleaseWait()
         let params : [String : Any] = [
             "spot_id" : selectedIdx,
             "title" : title,
@@ -354,11 +354,15 @@ extension ReviewWriteVC {
         
         UserEditService.shareInstance.editProfile(url: url, params: params, image: images, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+             self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
-                self.simpleOKAlert(title: "확인", message: "리뷰 등록이 완료되었습니다", okHandler: { (_) in
+                self.clearAllNotice()
+                self.noticeSuccess("등록 완료", autoClear: true, autoClearTime: 1)
+                self.pop()
+                /*self.simpleOKAlert(title: "확인", message: "리뷰 등록이 완료되었습니다", okHandler: { (_) in
                      self.pop()
-                })
+                })*/
             case .networkFail :
                 self.networkSimpleAlert()
             default :

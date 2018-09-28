@@ -88,8 +88,10 @@ extension EventMoreVC : UICollectionViewDelegateFlowLayout {
 //통신
 extension EventMoreVC {
     func getMoreEvent(url : String){
+        self.pleaseWait()
         UserScrapService.shareInstance.getScrapList(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(let eventData):
                 let eventData = eventData as! [UserScrapVOData]

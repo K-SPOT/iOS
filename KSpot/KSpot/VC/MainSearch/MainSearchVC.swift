@@ -182,8 +182,10 @@ extension MainSearchVC : UITextFieldDelegate{
 //통신
 extension MainSearchVC {
     func getSearchData(url : String){
+         self.pleaseWait()
         MainSearchService.shareInstance.getMainData(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(let mainSearchData):
                 let searchData = mainSearchData as? MainSearchVOData

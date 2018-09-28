@@ -174,8 +174,10 @@ extension ReviewVC:UITableViewDelegate,UITableViewDataSource
 //통신
 extension ReviewVC {
     func getReviews(url : String){
+        self.pleaseWait()
         ReviewService.shareInstance.getReviewData(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+             self.clearAllNotice()
             switch result {
             case .networkSuccess(let reviewData):
                 self.reviewData = reviewData as? ReviewVOData
