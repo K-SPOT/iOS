@@ -93,7 +93,13 @@ class ThemeVC: UIViewController, UIGestureRecognizerDelegate {
     
     func setHeader(data : ThemeVOData?){
         guard let data = data else {return}
-        titleLbl.text = "\(data.theme.title[0])\n\(data.theme.title[1])"
+          let count = data.theme.title.count
+        if count == 2 {
+            titleLbl.text = "\(data.theme.title[0])\n\(data.theme.title[1])"
+        } else if count == 1 {
+            titleLbl.text = "\(data.theme.title[0])"
+        }
+        //titleLbl.text = "\(data.theme.title[0])\n\(data.theme.title[1])"
         titleLbl.adjustsFontSizeToFitWidth = true
         subtitleLbl.text = data.theme.subtitle
         subtitleLbl.adjustsFontSizeToFitWidth = true
