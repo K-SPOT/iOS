@@ -19,6 +19,8 @@ class LoginVC: UIViewController {
     @IBOutlet weak var boldLbl: UILabel!
     @IBOutlet weak var kakaoBtn: UIButton!
     @IBOutlet weak var facebookBtn: UIButton!
+    
+    @IBOutlet weak var tempBtn: UIButton!
     @IBOutlet weak var skipBtn: UIButton!
     @IBOutlet weak var xBtn: UIButton!
     // 0이면 중간에 들어온 것, 1이면 처음으로 들어온 것
@@ -31,12 +33,14 @@ class LoginVC: UIViewController {
             regularLbl.text = "안녕하세요!"
             boldLbl.text = "로그인을 해주세요 :)"
             skipBtn.setImage(#imageLiteral(resourceName: "login_skip"), for: .normal)
+            tempBtn.setImage(#imageLiteral(resourceName: "login_button_temporary"), for: .normal)
             facebookBtn.setImage(#imageLiteral(resourceName: "login__facebook_button"), for: .normal)
             kakaoBtn.setImage(#imageLiteral(resourceName: "login_kakao_button"), for: .normal)
         } else {
             regularLbl.text = "Hi"
             boldLbl.text = "Please Login :)"
             skipBtn.setImage(#imageLiteral(resourceName: "login_skip_eng"), for: .normal)
+            tempBtn.setImage(#imageLiteral(resourceName: "login_button_temporary_eng"), for: .normal)
             facebookBtn.setImage(#imageLiteral(resourceName: "login__facebook_eng"), for: .normal)
             kakaoBtn.setImage(#imageLiteral(resourceName: "login_kakao_eng"), for: .normal)
         }
@@ -53,6 +57,11 @@ class LoginVC: UIViewController {
             xBtn.isHidden = false
         }
     } //viewDidLoad
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
+    }
     
     @objc func dismiss(_ sender : UIButton){
         self.dismiss(animated: true, completion: nil)

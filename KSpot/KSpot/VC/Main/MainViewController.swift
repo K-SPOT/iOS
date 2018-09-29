@@ -29,11 +29,17 @@ class MainViewController: UIViewController {
         setLanguageNoti(selector: #selector(getLangInfo(_:)))
         setTranslationBtn()
         setRootViewController()
+        setNavTitleImg()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame : .zero)
         getMainData(url: UrlPath.main.getURL())
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
     }
     
     @IBAction func searchAction(_ sender: Any) {
@@ -63,6 +69,19 @@ class MainViewController: UIViewController {
             goToLoginPage(entryPoint: 1)
         }
     }
+    
+    //네비게이션 타이틀 이미지 설정
+    func setNavTitleImg(){
+        //setupTitleNavImg
+        let titleImageView = UIImageView(image: #imageLiteral(resourceName: "main_logo"))
+        titleImageView.contentMode = .scaleAspectFit
+        titleImageView.snp.makeConstraints { (make) in
+            make.height.equalTo(19)
+            make.width.equalTo(71)
+        }
+        navigationItem.titleView = titleImageView
+    }
+    
 }
 
 //MARK: - UITableViewDelegate, UITableViewDataSource
@@ -82,9 +101,9 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                     KingfisherSource(urlString: data.mainImg)
                 })
                 if selectedLang == .kor {
-                    imageArr.insert(ImageSource(imageString: "sampleTheme")!, at: 0)
+                    imageArr.insert(ImageSource(imageString: "main_theme_img_today")!, at: 0)
                 } else {
-                    imageArr.insert(ImageSource(imageString: "main_theme_img_eng")!, at: 0)
+                    imageArr.insert(ImageSource(imageString: "main_theme_img_today_eng")!, at: 0)
                 }
                 cell.imageSource = imageArr
             }

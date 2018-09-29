@@ -27,12 +27,15 @@ class ThemeTVCell: UITableViewCell {
         let desCount = data.description.count
         if desCount >= 1 {
             firstDesLbl.text = data.description[0]
+            firstDesLbl.setLineSpacing(lineSpacing: 2)
         }
         if desCount >= 2 {
             secondDesLbl.text = data.description[1]
+            secondDesLbl.setLineSpacing(lineSpacing: 2)
         }
         if desCount >= 3 {
             thirdDesLbl.text = data.description[2]
+            thirdDesLbl.setLineSpacing(lineSpacing: 2)
         }
         if selectedLang == .kor {
             placeDetailBtn.setImage(#imageLiteral(resourceName: "theme_place_more_button"), for: .normal)

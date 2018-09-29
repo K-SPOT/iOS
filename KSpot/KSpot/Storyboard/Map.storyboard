@@ -910,6 +910,7 @@
                                         <constraint firstItem="GKm-tq-8ua" firstAttribute="leading" secondItem="fZm-8e-0tb" secondAttribute="trailing" constant="10" id="J7N-1D-BSb"/>
                                         <constraint firstItem="Hv1-DB-k2S" firstAttribute="leading" secondItem="9Q3-oL-G9T" secondAttribute="trailing" constant="6" id="M00-ji-Ur6"/>
                                         <constraint firstAttribute="trailing" secondItem="nAE-Ge-KfA" secondAttribute="trailing" constant="16" id="NLa-6d-wj9"/>
+                                        <constraint firstItem="1EK-97-hui" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wUm-Ga-AzB" secondAttribute="trailing" constant="10" id="Pvy-S7-TMT"/>
                                         <constraint firstItem="0Iq-dq-01I" firstAttribute="centerY" secondItem="QGJ-yN-97G" secondAttribute="centerY" id="Pz4-hx-o9T"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mNR-RO-Hxi" secondAttribute="trailing" constant="16" id="Ssv-dK-psi"/>
                                         <constraint firstItem="Hv1-DB-k2S" firstAttribute="centerX" secondItem="nAE-Ge-KfA" secondAttribute="centerX" constant="7" id="TDg-Fa-UVL"/>
@@ -1161,20 +1162,20 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m0k-g0-dhh">
-                                                                        <rect key="frame" x="22.5" y="13" width="55" height="55"/>
+                                                                        <rect key="frame" x="22" y="13" width="55" height="55"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="m0k-g0-dhh" secondAttribute="height" multiplier="1:1" id="HhL-tE-OZc"/>
                                                                             <constraint firstAttribute="width" constant="55" id="Ku5-vP-5pK"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="방탄소년단" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwC-X9-bwR">
-                                                                        <rect key="frame" x="23" y="77" width="55" height="14"/>
+                                                                        <rect key="frame" x="22.5" y="77" width="55" height="14"/>
                                                                         <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="12"/>
                                                                         <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVY-Qx-oh8" customClass="mySubscribeBtn" customModule="KSpot" customModuleProvider="target">
-                                                                        <rect key="frame" x="24.5" y="99" width="51" height="22"/>
+                                                                        <rect key="frame" x="24" y="99" width="51" height="22"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="22" id="UTM-jy-ezf"/>
                                                                             <constraint firstAttribute="width" constant="51" id="lwt-cx-PAN"/>
@@ -1185,9 +1186,11 @@
                                                             </view>
                                                             <constraints>
                                                                 <constraint firstAttribute="bottom" secondItem="BVY-Qx-oh8" secondAttribute="bottom" constant="13" id="3Ts-iP-CJQ"/>
+                                                                <constraint firstItem="mwC-X9-bwR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2ee-9g-RCe" secondAttribute="leading" constant="6" id="6Ns-GE-bE7"/>
                                                                 <constraint firstItem="m0k-g0-dhh" firstAttribute="top" secondItem="2ee-9g-RCe" secondAttribute="top" constant="13" id="Vi0-oM-6Md"/>
                                                                 <constraint firstItem="mwC-X9-bwR" firstAttribute="centerX" secondItem="m0k-g0-dhh" secondAttribute="centerX" id="Xti-4s-3bm"/>
                                                                 <constraint firstItem="BVY-Qx-oh8" firstAttribute="centerX" secondItem="mwC-X9-bwR" secondAttribute="centerX" id="gdY-FC-zeC"/>
+                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mwC-X9-bwR" secondAttribute="trailing" constant="6" id="k4P-73-OtN"/>
                                                                 <constraint firstItem="m0k-g0-dhh" firstAttribute="centerX" secondItem="2ee-9g-RCe" secondAttribute="centerX" id="pmh-hL-bqg"/>
                                                                 <constraint firstItem="mwC-X9-bwR" firstAttribute="top" secondItem="m0k-g0-dhh" secondAttribute="bottom" constant="9" id="xrk-Bk-Wif"/>
                                                             </constraints>
@@ -1727,7 +1730,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRU-0a-UEZ">
-                                            <rect key="frame" x="156" y="84.5" width="29" height="22.5"/>
+                                            <rect key="frame" x="156" y="84" width="29" height="22.5"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                             <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -1782,7 +1785,7 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVS-sb-9qM">
-                                            <rect key="frame" x="188" y="84.5" width="25" height="23"/>
+                                            <rect key="frame" x="188" y="84" width="25" height="23"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFR" family="NanumSquareOTF" pointSize="20"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -2054,7 +2057,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bimg" width="357" height="348"/>
+        <image name="bimg" width="197" height="183"/>
         <image name="board_star_green" width="18" height="18"/>
         <image name="category_detail_top_button" width="44" height="44"/>
         <image name="main_arrow" width="15" height="15"/>

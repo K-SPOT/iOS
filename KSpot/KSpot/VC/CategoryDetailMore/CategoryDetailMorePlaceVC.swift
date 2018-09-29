@@ -28,7 +28,11 @@ class CategoryDetailMorePlaceVC: UIViewController, UIGestureRecognizerDelegate {
         let isEvent = isPlace ? 0 : 1
         getChannelSpotMore(url: UrlPath.channelSpotMore.getSpotMoreURL(channelId: selectedIdx, isEvent: isEvent))
         setLanguageNoti(selector: #selector(getLangInfo(_:)))
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
     }
     
     @objc func getLangInfo(_ notification : Notification) {

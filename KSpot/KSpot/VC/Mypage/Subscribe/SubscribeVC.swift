@@ -52,6 +52,11 @@ class SubscribeVC: UIViewController, UIGestureRecognizerDelegate {
         setLanguageNoti(selector: #selector(getLangInfo(_:)))
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
+    }
+    
     @IBAction func switchView(_ sender: CategoryToggleBtn) {
         updateView(selected: sender.tag)
     }

@@ -38,6 +38,11 @@ class MapContainerVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
+    }
 }
 
 //MARK: - 지도 클릭

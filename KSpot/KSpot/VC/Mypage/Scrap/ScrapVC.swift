@@ -27,6 +27,11 @@ class ScrapVC: UIViewController, UIGestureRecognizerDelegate {
         setLanguageNoti(selector: #selector(getLangInfo(_:)))
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
+    }
+    
     @objc func getLangInfo(_ notification : Notification) {
         self.navigationItem.title = selectedLang == .kor ? "스크랩" : "Scrap"
         getUserScrap(url: UrlPath.userScrap.getURL())

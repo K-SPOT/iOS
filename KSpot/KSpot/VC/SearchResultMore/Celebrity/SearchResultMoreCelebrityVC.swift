@@ -15,6 +15,11 @@ class SearchResultMoreCelebrityVC: UIViewController, UIGestureRecognizerDelegate
     var headerTitle = ""
     var searchString = ""
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getSearchData(url: UrlPath.searchResult.getURL(searchString))
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -23,9 +28,11 @@ class SearchResultMoreCelebrityVC: UIViewController, UIGestureRecognizerDelegate
         setBackBtn()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        getSearchData(url: UrlPath.searchResult.getURL(searchString))
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
     }
+ 
 }
 
 

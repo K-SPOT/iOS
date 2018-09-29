@@ -45,6 +45,11 @@ class ReviewVC: UIViewController {
         ratingView.settings.fillMode = .precise
         reviewLbl.text = selectedLang == .kor ? "리뷰" : "Review"
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
+    }
 }
 
 

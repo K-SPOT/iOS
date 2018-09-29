@@ -48,6 +48,11 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
         setLanguage()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
+    }
+    
     @IBAction func imageTapAction(_ sender: Any) {
         openGallery()
     }

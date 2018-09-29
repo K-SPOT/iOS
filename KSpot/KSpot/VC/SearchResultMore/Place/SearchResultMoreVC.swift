@@ -47,6 +47,11 @@ class SearchResultMoreVC: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
+    }
+    
     //필터버튼 클릭
     @IBAction func filterAction(_ sender: Any) {
         UIApplication.shared.keyWindow!.addSubview(filterView)

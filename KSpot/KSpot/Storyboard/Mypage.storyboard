@@ -918,8 +918,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="aimg" width="750" height="910"/>
-        <image name="bimg" width="357" height="348"/>
+        <image name="aimg" width="197" height="183"/>
+        <image name="bimg" width="197" height="183"/>
         <image name="board_star_green" width="18" height="18"/>
         <image name="map_location_arrow" width="24" height="24"/>
         <image name="mypage_login_button" width="91" height="38"/>

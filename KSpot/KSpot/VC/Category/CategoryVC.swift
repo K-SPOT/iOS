@@ -60,6 +60,7 @@ class CategoryVC: UIViewController {
         self.getMyChannel(url: UrlPath.channelList.getURL())
         updateView(selected: 0)
         setTranslationBtn()
+        setNavTitleImg()
     }
     
     
@@ -82,6 +83,18 @@ class CategoryVC: UIViewController {
             broadcastBtn.setTitle("Broadcast", for: .normal)
         }
         self.getMyChannel(url: UrlPath.channelList.getURL())
+    }
+    
+    //네비게이션 타이틀 이미지 설정
+    func setNavTitleImg(){
+        //setupTitleNavImg
+        let titleImageView = UIImageView(image: #imageLiteral(resourceName: "main_logo"))
+        titleImageView.contentMode = .scaleAspectFit
+        titleImageView.snp.makeConstraints { (make) in
+            make.height.equalTo(19)
+            make.width.equalTo(71)
+        }
+        navigationItem.titleView = titleImageView
     }
 }
 

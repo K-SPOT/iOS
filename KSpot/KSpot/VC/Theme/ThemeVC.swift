@@ -29,6 +29,11 @@ class ThemeVC: UIViewController, UIGestureRecognizerDelegate {
         imgView.clipsToBounds = true
         return imgView
     }()
+    lazy var blackView:UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.26)
+        return view
+    }()
     lazy var titleLbl:UILabel = {
         let label = UILabel()
         label.backgroundColor = UIColor.clear
@@ -59,13 +64,22 @@ class ThemeVC: UIViewController, UIGestureRecognizerDelegate {
         getTheme(url: UrlPath.theme.getURL(selectedId_.description))
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
+    }
+    
     func setupTableView(){
         tableView.contentInset = UIEdgeInsetsMake(-CGFloat(kNavBarBottom), 0, 0, 0)
         tableView.delegate = self
         tableView.dataSource = self
+        topView.addSubview(blackView)
         topView.addSubview(titleLbl)
         topView.addSubview(subtitleLbl)
-        
+
+        blackView.snp.makeConstraints { (make) in
+            make.bottom.top.leading.trailing.equalToSuperview()
+        }
         titleLbl.snp.makeConstraints { (make) in
             make.centerX.centerY.equalTo(topView)
         }
@@ -80,7 +94,9 @@ class ThemeVC: UIViewController, UIGestureRecognizerDelegate {
     func setHeader(data : ThemeVOData?){
         guard let data = data else {return}
         titleLbl.text = "\(data.theme.title[0])\n\(data.theme.title[1])"
+        titleLbl.adjustsFontSizeToFitWidth = true
         subtitleLbl.text = data.theme.subtitle
+        subtitleLbl.adjustsFontSizeToFitWidth = true
         setImgWithKF(url: data.theme.img, imgView: topView, defaultImg: #imageLiteral(resourceName: "aimg"))
     }
     

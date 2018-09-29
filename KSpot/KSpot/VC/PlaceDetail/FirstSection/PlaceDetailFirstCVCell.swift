@@ -17,6 +17,7 @@ class PlaceDetailFirstCVCell: UICollectionViewCell {
     func configure(id : String, name : String, img : String, isSubscribe : String, indexPath : Int){
         setImgWithKF(url: img, imgView: logoImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
         nameLbl.text = name
+        nameLbl.adjustsFontSizeToFitWidth = true
         subscribeBtn.setSubscribeBtn(idx: Int(id)!, isSubscribe: Int(isSubscribe)!)
         subscribeBtn.indexPath = indexPath
     }

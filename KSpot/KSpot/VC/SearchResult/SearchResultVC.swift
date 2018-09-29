@@ -32,6 +32,11 @@ class SearchResultVC: UIViewController, UIGestureRecognizerDelegate {
         setBackBtn()
         getSearchData(url: UrlPath.searchResult.getURL(searchTxt))
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
+    }
 }
 
 //MARK: - UITableViewDelegate, UITableViewDataSource

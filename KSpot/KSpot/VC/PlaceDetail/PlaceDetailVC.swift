@@ -83,6 +83,10 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate {
         contactView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
+    }
     
     //구글맵으로 가는 함수
     @IBAction func goToMapAction(_ sender: Any) {
@@ -213,19 +217,29 @@ extension PlaceDetailVC {
         //
         let desc = placeData.description
        
-        if let range = desc.range(of: "\n") {
+        if let range = desc.range(of: "\r\n") {
             let prefix = desc[..<range.lowerBound] // or str[str.startIndex..<range.lowerBound]
             let suffix = desc[range.upperBound..<desc.endIndex]
             let totalString = prefix+" "+suffix
             descLbl.text = totalString.description
-        } else {
+        }
+        else if let range = desc.range(of: "\n"){
+            let prefix = desc[..<range.lowerBound] // or str[str.startIndex..<range.lowerBound]
+            let suffix = desc[range.upperBound..<desc.endIndex]
+            let totalString = prefix+" "+suffix
+            descLbl.text = totalString.description
+        }
+        else {
              descLbl.text = placeData.description
         }
         addressLbl.text = placeData.address
         addressLbl2.text = placeData.address
+        addressLbl2.adjustsFontSizeToFitWidth = true
         currentStationLbl.text = placeData.station
         prevStationLbl.text = placeData.prevStation
+        prevStationLbl.adjustsFontSizeToFitWidth = true
         nextsStationLbl.text = placeData.nextStation
+        nextsStationLbl.adjustsFontSizeToFitWidth = true
         if let lineNum = Int(placeData.lineNumber){
             staionImgView.image = UIImage(named: "place_detail_line_\(lineNum)")
             lineNumImgView.image = UIImage(named: "place_detail_dot_\(lineNum)")

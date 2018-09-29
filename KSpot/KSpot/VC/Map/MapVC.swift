@@ -66,10 +66,15 @@ class MapVC: UIViewController {
         locationInit()
         setFilterView(filterView)
         setTranslationBtn()
+        setNavTitleImg()
         //네비게이션 타이틀
-        self.navigationItem.title = "K-Spot"
+        //self.navigationItem.title = "K-Spot"
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
+    }
    
     //필터 버튼 클릭
     @IBAction func filterAction(_ sender: Any) {
@@ -113,6 +118,18 @@ class MapVC: UIViewController {
     
     func initContainerView(){
         addChildView(containerView: containerView, asChildViewController: mapContainerVC)
+    }
+    
+    //네비게이션 타이틀 이미지 설정
+    func setNavTitleImg(){
+        //setupTitleNavImg
+        let titleImageView = UIImageView(image: #imageLiteral(resourceName: "main_logo"))
+        titleImageView.contentMode = .scaleAspectFit
+        titleImageView.snp.makeConstraints { (make) in
+            make.height.equalTo(19)
+            make.width.equalTo(71)
+        }
+        navigationItem.titleView = titleImageView
     }
 }
 

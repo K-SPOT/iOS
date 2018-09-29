@@ -42,6 +42,11 @@ class MainSearchVC: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
+    }
+    
     //텍스트필드 입력했을 때
     @objc func textFieldDidChange(_ textField: UITextField) {
         if !(searchTxtfield.text?.isEmpty)! {

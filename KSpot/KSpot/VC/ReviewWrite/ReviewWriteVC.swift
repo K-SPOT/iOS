@@ -70,6 +70,10 @@ class ReviewWriteVC: UIViewController, UITextFieldDelegate {
         ratingView.didFinishTouchingCosmos = didFinishTouchingCosmos
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
+    }
     
     @IBAction func doneBtnAction(_ sender: Any) {
         reviewWrite(url: UrlPath.reviewWrite.getURL(), selectedIdx: selectedIdx, title: titleTxtField.text!, content: contentTxtView.text, score: ratingView.rating)
