@@ -13,7 +13,8 @@ enum UrlPath : String {
     //로그인
     case facebookLogin = "/user/facebook/signin"
     case kakaoLogin = "/user/kakao/signin"
-
+    case tempLogin = "/user/temp/signin"
+    
     //메인
     case main = "/main"
     case mainSearch = "/search"

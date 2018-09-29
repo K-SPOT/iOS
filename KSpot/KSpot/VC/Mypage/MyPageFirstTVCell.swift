@@ -13,22 +13,20 @@ class MypageFisrtTVCell: UITableViewCell {
     @IBOutlet weak var mySubsLbl: UILabel!
     @IBOutlet weak var moreBtn: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-     var delegate : SelectSectionDelegate?
+    var delegate : SelectSectionDelegate?
+    var finalOffset : CGFloat = 0
+    var startOffset  : CGFloat = 0
+    var currentIdx = 0
     var channelArr : [MypageVODataChannel]? {
         didSet {
             collectionView.reloadData()
         }
     }
-    private var indexOfCellBeforeDragging = 0
-    var finalOffset : CGFloat = 0
-    private var collectionViewFlowLayout: UICollectionViewFlowLayout {
-        return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-    }
+
     @IBAction func moreAction(_ sender: UIButton) {
         delegate?.tap(section: .first, seledtedId: -1)
     }
    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.delegate = self
@@ -37,7 +35,7 @@ class MypageFisrtTVCell: UITableViewCell {
     
 }
 
-
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension MypageFisrtTVCell : UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -73,6 +71,7 @@ extension MypageFisrtTVCell : UICollectionViewDataSource, UICollectionViewDelega
 }
 
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension MypageFisrtTVCell: UICollectionViewDelegateFlowLayout {
     //section내의
     //-간격 위아래
@@ -91,33 +90,44 @@ extension MypageFisrtTVCell: UICollectionViewDelegateFlowLayout {
     
 }
 
+//MARK: - 컬렉션뷰 드래깅
 extension MypageFisrtTVCell : UIScrollViewDelegate{
     
-    private func indexOfMajorCell() -> Int {
-        
-        let itemWidth = collectionViewFlowLayout.itemSize.width
-        let proportionalOffset = collectionView.contentOffset.x / (itemWidth)
-        let index = Int(round(proportionalOffset))
+    private func indexOfMajorCell(direction : Direction) -> Int {
+        var index = 0
+        switch direction {
+        case .right :
+            index = currentIdx + 1
+        case .left :
+            index = currentIdx - 1
+        }
         let numberOfItems = collectionView.numberOfItems(inSection: 0)
         let safeIndex = max(0, min(numberOfItems - 1, index))
+        currentIdx = safeIndex
         return safeIndex
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        indexOfCellBeforeDragging = indexOfMajorCell()
-        
+        startOffset = collectionView.contentOffset.x
     }
-    
-    
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
-        // Stop scrollView sliding:
+        finalOffset = collectionView.contentOffset.x
         targetContentOffset.pointee = scrollView.contentOffset
-        // calculate where scrollView should snap to:
-        let indexOfMajorCell = self.indexOfMajorCell()
-        let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        if finalOffset > startOffset {
+            //뒤로 넘기기
+            let majorIdx = indexOfMajorCell(direction: .right)
+            let indexPath = IndexPath(row: majorIdx, section: 0)
+            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        } else if finalOffset < startOffset {
+            //앞으로 가기
+            let majorIdx = indexOfMajorCell(direction: .left)
+            let indexPath = IndexPath(row: majorIdx, section: 0)
+            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        } else {
+            print("둘다 아님")
+        }
     }
     
     

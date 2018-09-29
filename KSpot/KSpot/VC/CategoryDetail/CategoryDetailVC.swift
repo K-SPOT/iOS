@@ -11,13 +11,14 @@ import UIKit
 private let TOPVIEW_HEIGHT:CGFloat = 269
 private let NAVBAR_COLORCHANGE_POINT:CGFloat = TOPVIEW_HEIGHT - CGFloat(kNavBarBottom * 2)
 
-class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, SelectSenderDelegate{
-   
-    
-    
+class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
+
     @IBOutlet weak var tableView: UITableView!
     var selectedIdx = 0
     var initailSubCount = 0
+    var recommendPlace : [ChannelDetailVODataPlaceRecommendedByChannel]?
+    var relatedPlace : [ChannelDetailVODataRelatedChannel]?
+    var relatedEvent : [ChannelDetailVODataRelatedChannel]?
    
     lazy var backgroundImg :UIImageView = {
         let imgView = UIImageView(image: UIImage(named: "cimg"))
@@ -34,7 +35,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, SelectSen
         let label = UILabel()
         label.backgroundColor = UIColor.clear
         label.textColor = .black
-        label.text = "짱절미"
+        label.text = ""
         label.textAlignment = .left
         label.font = UIFont(name: NanumSquareOTF.NanumSquareOTFB.rawValue, size: 20)
         return label
@@ -43,7 +44,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, SelectSen
         let label = UILabel()
         label.backgroundColor = UIColor.clear
         label.textColor = #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1)
-        label.text = "절미쓰 엔터테이먼트"
+        label.text = ""
         label.textAlignment = .left
         label.font = UIFont(name: NanumSquareOTF.NanumSquareOTFR.rawValue, size: 14)
         return label
@@ -61,9 +62,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, SelectSen
     
     lazy var subscribeBtn:mySubscribeBtn = {
         let button = mySubscribeBtn()
-        //button.setImage(#imageLiteral(resourceName: "category_subscription_white"), for: .normal)
         button.addTarget(self, action: #selector(CategoryDetailVC.subscribeAction(_:)), for: .touchUpInside)
-       
         return button
     }()
     
@@ -82,44 +81,30 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, SelectSen
         return view
     }()
     
-    
-    @IBAction func scrollToTopAction(_ sender: Any) {
-        tableView.setContentOffset(.zero, animated: true)
-    }
-    
-    
-    @objc func subscribeAction(_ sender : mySubscribeBtn){
-        tap(section: .first, seledtedId: sender.contentIdx!, sender: sender)
-    }
-    func tap(section: Section, seledtedId: Int, sender: mySubscribeBtn) {
-        if !isUserLogin() {
-            goToLoginPage()
-        } else {
-            let params = ["channel_id" : sender.contentIdx]
-            if sender.isSelected {
-                unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
-            } else {
-                subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
-            }
-        }
-    }
-    
-    
-    var recommendPlace : [ChannelDetailVODataPlaceRecommendedByChannel]?
-    var relatedPlace : [ChannelDetailVODataRelatedChannel]?
-    var relatedEvent : [ChannelDetailVODataRelatedChannel]?
     override func viewDidLoad() {
-        
         setupTableView()
         setupNavView()
         getChannelDetail(url : UrlPath.channelDetail.getURL(selectedIdx.description))
         setLanguageNoti(selector: #selector(getLangInfo(_:)))
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
+    }
+    
+    @IBAction func scrollToTopAction(_ sender: Any) {
+        tableView.setContentOffset(.zero, animated: true)
+    }
+    
     @objc func getLangInfo(_ notification : Notification) {
         getChannelDetail(url : UrlPath.channelDetail.getURL(selectedIdx.description))
     }
-   
+    
+    //구독
+    @objc func subscribeAction(_ sender : mySubscribeBtn){
+        tap(section: .first, seledtedId: sender.contentIdx!, sender: sender)
+    }
     
     func setupTableView(){
         tableView.contentInset = UIEdgeInsetsMake(-CGFloat(kNavBarBottom), 0, 0, 0)
@@ -131,7 +116,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate, SelectSen
     
 }
 
-//네비게이션 및 탑 뷰 설정
+//MARK: - 네비게이션 및 탑 뷰 설정
 extension CategoryDetailVC {
     //네비게이션 설정
     func setupNavView(){
@@ -145,7 +130,6 @@ extension CategoryDetailVC {
     }
     //탑뷰 설정
     func makeTopViewConstraint(){
-        
         topView.addSubview(backgroundImg)
         topView.addSubview(logoImg)
         topView.addSubview(mainTitleLbl)
@@ -153,7 +137,6 @@ extension CategoryDetailVC {
         topView.addSubview(subscribeLbl)
         topView.addSubview(subscribeBtn)
         topView.addSubview(bottomGrayView)
-        
         backgroundImg.snp.makeConstraints { (make) in
             make.leading.trailing.top.equalToSuperview()
             make.height.equalTo(165)
@@ -203,14 +186,10 @@ extension CategoryDetailVC {
 
 
 // MARK: - 스크롤 할 때
-extension CategoryDetailVC
-{
-    func scrollViewDidScroll(_ scrollView: UIScrollView)
-    {
+extension CategoryDetailVC {
+    func scrollViewDidScroll(_ scrollView: UIScrollView){
         let offsetY = scrollView.contentOffset.y
-        if (offsetY > NAVBAR_COLORCHANGE_POINT)
-        {
-            
+        if (offsetY > NAVBAR_COLORCHANGE_POINT){
             navBarTintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             
@@ -219,13 +198,9 @@ extension CategoryDetailVC
             navBarTintColor = UIColor.black.withAlphaComponent(alpha)
             navBarTitleColor = UIColor.black.withAlphaComponent(alpha)
             statusBarStyle = .default
-        }
-        else
-        {
-            
+        } else{
             navBarTintColor = .white
             navigationItem.leftBarButtonItem?.tintColor = .white
-            
             navBarBackgroundAlpha = 0
             navBarTitleColor = .white
             statusBarStyle = .lightContent
@@ -233,7 +208,7 @@ extension CategoryDetailVC
     }
 }
 
-
+//MARK: - UITableViewDelegate, UITableViewDataSource
 extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -261,7 +236,6 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
         }
         return 0
     }
-    
     
     //headerSection View 만드는 것
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -291,40 +265,7 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
         }
     }
     
-    @objc func placeMoreAction(_ sender : UIButton){
-        let categoryStoryboard = Storyboard.shared().categoryStoryboard
-        if let categoryDetailMorePlaceVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailMorePlaceVC.reuseIdentifier) as? CategoryDetailMorePlaceVC {
-            if selectedLang == .kor {
-                categoryDetailMorePlaceVC.title = "장소"
-            } else {
-                categoryDetailMorePlaceVC.title = "PLACE"
-            }
-            
-            categoryDetailMorePlaceVC.isPlace = true
-            categoryDetailMorePlaceVC.selectedIdx = selectedIdx
-            categoryDetailMorePlaceVC.mainTitle = mainTitleLbl.text
-            self.navigationController?.pushViewController(categoryDetailMorePlaceVC, animated: true)
-        }
-    }
-    
-    @objc func eventMoreAction(_ sender : UIButton){
-        let categoryStoryboard = Storyboard.shared().categoryStoryboard
-        if let categoryDetailMoreEventVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailMorePlaceVC.reuseIdentifier) as? CategoryDetailMorePlaceVC {
-            if selectedLang == .kor {
-                categoryDetailMoreEventVC.title = "이벤트"
-            } else {
-                categoryDetailMoreEventVC.title = "EVENT"
-            }
-            categoryDetailMoreEventVC.isPlace = false
-           categoryDetailMoreEventVC.selectedIdx = selectedIdx
-             categoryDetailMoreEventVC.mainTitle = mainTitleLbl.text
-            self.navigationController?.pushViewController(categoryDetailMoreEventVC, animated: true)
-        }
-    }
-    
-    
-    
-    
+    //헤더 높이
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 1 {
             if let relatedPlace_ = relatedPlace {
@@ -338,7 +279,6 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
             return 0
         }
         return 0
-        //return section == 1 || section == 2  ? 79 : 0
     }
     
     private func heightForHeaderInSection(arr : [ChannelDetailVODataRelatedChannel]) -> CGFloat {
@@ -347,21 +287,14 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
         }
         return 0
     }
-    
-    
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: CategoryDetailFirstTVCell.reuseIdentifier) as! CategoryDetailFirstTVCell
             cell.delegate = self
             cell.recommendData = self.recommendPlace
-            if selectedLang == .kor {
-                cell.titleTxt = "\(self.mainTitleLbl.text ?? "")'s 추천 장소"
-                cell.subtitleTxt = "사람들이 많이 찾는 장소를 확인해보세요"
-            } else {
-                cell.titleTxt = "\(self.mainTitleLbl.text ?? "")'s recommended place"
-                 cell.subtitleTxt = "Check out the places people are looking for!"
-            }
+            cell.configure(celebrityName: self.mainTitleLbl.text)
             return cell
             
         }  else {
@@ -388,15 +321,63 @@ extension CategoryDetailVC : UITableViewDelegate, UITableViewDataSource  {
                 self.goToPlaceDetailVC(selectedIdx : relatedEvent_[indexPath.row].spotID, isPlace : false)
             }
         }
-        
     }
-    
 }
 
-extension CategoryDetailVC : SelectSectionDelegate {
+//MARK: - 장소/이벤트 더보기에 대한 액션
+extension CategoryDetailVC {
+    @objc func placeMoreAction(_ sender : UIButton){
+        let categoryStoryboard = Storyboard.shared().categoryStoryboard
+        if let categoryDetailMorePlaceVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailMorePlaceVC.reuseIdentifier) as? CategoryDetailMorePlaceVC {
+            if selectedLang == .kor {
+                categoryDetailMorePlaceVC.title = "장소"
+            } else {
+                categoryDetailMorePlaceVC.title = "PLACE"
+            }
+            
+            categoryDetailMorePlaceVC.isPlace = true
+            categoryDetailMorePlaceVC.selectedIdx = selectedIdx
+            categoryDetailMorePlaceVC.mainTitle = mainTitleLbl.text
+            self.navigationController?.pushViewController(categoryDetailMorePlaceVC, animated: true)
+        }
+    }
+    
+    @objc func eventMoreAction(_ sender : UIButton){
+        let categoryStoryboard = Storyboard.shared().categoryStoryboard
+        if let categoryDetailMoreEventVC = categoryStoryboard.instantiateViewController(withIdentifier:CategoryDetailMorePlaceVC.reuseIdentifier) as? CategoryDetailMorePlaceVC {
+            if selectedLang == .kor {
+                categoryDetailMoreEventVC.title = "이벤트"
+            } else {
+                categoryDetailMoreEventVC.title = "EVENT"
+            }
+            categoryDetailMoreEventVC.isPlace = false
+            categoryDetailMoreEventVC.selectedIdx = selectedIdx
+            categoryDetailMoreEventVC.mainTitle = mainTitleLbl.text
+            self.navigationController?.pushViewController(categoryDetailMoreEventVC, animated: true)
+        }
+    }
+}
+
+//MARK: - 장소 상세보기, 구독
+extension CategoryDetailVC : SelectSectionDelegate, SelectSenderDelegate {
+    //장소 상세보기
     func tap(section: Section, seledtedId: Int) {
         if section == .first {
            self.goToPlaceDetailVC(selectedIdx: seledtedId)
+        }
+    }
+    
+    //구독
+    func tap(section: Section, seledtedId: Int, sender: mySubscribeBtn) {
+        if !isUserLogin() {
+            goToLoginPage()
+        } else {
+            let params = ["channel_id" : sender.contentIdx]
+            if sender.isSelected {
+                unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
+            } else {
+                subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
+            }
         }
     }
 }
@@ -404,8 +385,10 @@ extension CategoryDetailVC : SelectSectionDelegate {
 //통신
 extension CategoryDetailVC {
     func getChannelDetail(url : String){
+         self.pleaseWait()
         ChannelDetailService.shareInstance.getChannelDetail(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+             self.clearAllNotice()
             switch result {
             case .networkSuccess(let channelDetailData):
                 let detailData = channelDetailData as! ChannelDetailVOData
@@ -434,8 +417,10 @@ extension CategoryDetailVC {
     
     
     func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
+        self.pleaseWait()
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
                 sender.isSelected = true
@@ -458,8 +443,10 @@ extension CategoryDetailVC {
     } //subscribe
     
     func unsubscribe(url : String, sender : mySubscribeBtn){
+        self.pleaseWait()
         ChannelSubscribeService.shareInstance.unsubscribe(url: url, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
                 sender.isSelected = false

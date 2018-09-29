@@ -9,19 +9,16 @@
 import UIKit
 
 class PlaceDetailSecondTVCell: UITableViewCell {
-    
-    
+
     @IBOutlet weak var reviewLbl: UILabel!
     @IBOutlet weak var countLbl: UILabel!
-    
     @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var moreBtn: UIButton!
     @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var collectionView: UICollectionView!
-    private var indexOfCellBeforeDragging = 0
-    private var collectionViewFlowLayout: UICollectionViewFlowLayout {
-        return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-    }
+    var finalOffset : CGFloat = 0
+    var startOffset  : CGFloat = 0
+    var currentIdx = 0
     var delegate : SelectSectionDelegate?
     var reviewData : [PlaceDetailVODataReview]? {
         didSet {
@@ -63,21 +60,11 @@ class PlaceDetailSecondTVCell: UITableViewCell {
         if let ratingLblInt_ = ratingLblInt {
             ratingView.rating = ratingLblInt_
         }
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-       // self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
-        
-    }
-    
+    }    
    
 }
 
+//MARK: -UICollectionViewDataSource, UICollectionViewDelegate
 extension PlaceDetailSecondTVCell : UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -104,7 +91,7 @@ extension PlaceDetailSecondTVCell : UICollectionViewDataSource, UICollectionView
 
 }
 
-
+//MARK: - UICollectionViewDelegateFlowLayout
 extension PlaceDetailSecondTVCell: UICollectionViewDelegateFlowLayout {
     //section내의
     //-간격 위아래
@@ -120,46 +107,46 @@ extension PlaceDetailSecondTVCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (340/375)*window!.frame.width, height: 206)
     }
-    
 }
 
-extension PlaceDetailSecondTVCell : UIScrollViewDelegate{
-    
-    private func indexOfMajorCell() -> Int {
-        
-      //  let itemWidth = collectionViewFlowLayout.itemSize.width
-      //  let proportionalOffset = collectionView.contentOffset.x / (itemWidth)
+//MARK: - 컬렉션뷰 드래깅
+extension PlaceDetailSecondTVCell : UIScrollViewDelegate {
+    private func indexOfMajorCell(direction : Direction) -> Int {
         var index = 0
-        let numberOfItems = collectionView.numberOfItems(inSection: 0)
-        let offset = collectionView.contentOffset.x
-        if offset > CGFloat(CGFloat(indexOfCellBeforeDragging)*collectionView.frame.width){
-            //왼쪽으로 스와이프
-            index = indexOfCellBeforeDragging+1
-        } else {
-            index = indexOfCellBeforeDragging-1
+        switch direction {
+        case .right :
+            index = currentIdx + 1
+        case .left :
+            index = currentIdx - 1
         }
-        
+        let numberOfItems = collectionView.numberOfItems(inSection: 0)
         let safeIndex = max(0, min(numberOfItems - 1, index))
+        currentIdx = safeIndex
         return safeIndex
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        indexOfCellBeforeDragging = indexOfMajorCell()
-        
+        startOffset = collectionView.contentOffset.x
     }
-    
-    
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
-        // Stop scrollView sliding:
+        finalOffset = collectionView.contentOffset.x
         targetContentOffset.pointee = scrollView.contentOffset
-        // calculate where scrollView should snap to:
-        let indexOfMajorCell = self.indexOfMajorCell()
-        let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        if finalOffset > startOffset {
+            //뒤로 넘기기
+            let majorIdx = indexOfMajorCell(direction: .right)
+            let indexPath = IndexPath(row: majorIdx, section: 0)
+            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        } else if finalOffset < startOffset {
+            //앞으로 가기
+            let majorIdx = indexOfMajorCell(direction: .left)
+            let indexPath = IndexPath(row: majorIdx, section: 0)
+            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        } else {
+            print("둘다 아님")
+        }
     }
-    
     
 }
 

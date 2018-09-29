@@ -9,12 +9,13 @@
 import UIKit
 
 class CategoryVC: UIViewController {
-
+    
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var celebrityBtn: CategoryToggleBtn!
     @IBOutlet weak var celebrityGreenView: UIView!
     @IBOutlet weak var broadcastBtn: CategoryToggleBtn!
-     var currentSelectedLang = selectedLang
+    @IBOutlet weak var broadcastGreenView: UIView!
+    var currentSelectedLang = selectedLang
     var celebrityList : [ChannelVODataChannelList]? {
         didSet {
             celebrityVC.celebrityList = celebrityList
@@ -28,16 +29,7 @@ class CategoryVC: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.getMyChannel(url: UrlPath.channelList.getURL())
-    }
-    
-    @IBOutlet weak var broadcastGreenView: UIView!
-    
-    @IBAction func searchAction(_ sender: Any) {
-        self.goToSearchVC()
-    }
-    
+
     
     private lazy var celebrityVC: CelebrityVC = {
         let storyboard = Storyboard.shared().categoryStoryboard
@@ -54,12 +46,12 @@ class CategoryVC: UIViewController {
         return viewController
     }()
     
-   
-    @IBAction func switchView(_ sender: CategoryToggleBtn) {
-        updateView(selected: sender.tag)
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.getMyChannel(url: UrlPath.channelList.getURL())
     }
     
-  
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setLanguageNoti(selector: #selector(getLangInfo(_:)))
@@ -68,9 +60,19 @@ class CategoryVC: UIViewController {
         self.getMyChannel(url: UrlPath.channelList.getURL())
         updateView(selected: 0)
         setTranslationBtn()
+        setNavTitleImg()
     }
     
     
+    @IBAction func searchAction(_ sender: Any) {
+        self.goToSearchVC()
+    }
+    
+    //0 - 연예인, 1 - 방송
+    @IBAction func switchView(_ sender: CategoryToggleBtn) {
+        updateView(selected: sender.tag)
+    }
+
     @objc func getLangInfo(_ notification : Notification) {
         if selectedLang == .kor {
             celebrityBtn.setTitle("연예인", for: .normal)
@@ -82,56 +84,62 @@ class CategoryVC: UIViewController {
         }
         self.getMyChannel(url: UrlPath.channelList.getURL())
     }
-
+    
+    //네비게이션 타이틀 이미지 설정
+    func setNavTitleImg(){
+        //setupTitleNavImg
+        let titleImageView = UIImageView(image: #imageLiteral(resourceName: "main_logo"))
+        titleImageView.contentMode = .scaleAspectFit
+        titleImageView.snp.makeConstraints { (make) in
+            make.height.equalTo(19)
+            make.width.equalTo(71)
+        }
+        navigationItem.titleView = titleImageView
+    }
 }
 
-//컨테이너뷰
+//MARK: - 업데이트 컨테이너 뷰
 extension CategoryVC{
     private func updateView(selected : Int) {
         if selected == 0 {
-        
             removeChildView(containerView: containerView, asChildViewController: broadcastVC)
-          
+            
             addChildView(containerView: containerView, asChildViewController: celebrityVC)
         } else {
             removeChildView(containerView: containerView, asChildViewController: celebrityVC)
-          
+            
             addChildView(containerView: containerView, asChildViewController: broadcastVC)
         }
     }
-
+    
 }
 
-//딜리게이트
+//MARK: - Celebrity Detail로 이동
 extension CategoryVC : SelectDelegate {
     func tap(selected: Int?) {
         goToCelebrityDetail(selectedIdx: selected!)
     }
 }
 
-//통신
+//MARK: -통신
 extension CategoryVC  {
+    
     func getMyChannel(url : String){
+        //self.pleaseWait()
         ChannelService.shareInstance.getChannelList(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            //self.clearAllNotice()
             switch result {
             case .networkSuccess(let channelList):
-               let channelList = channelList as! ChannelVOData
-               self.broadcastList = channelList.channelBroadcastList
-               self.celebrityList = channelList.channelCelebrityList
-                
+                let channelList = channelList as! ChannelVOData
+                self.broadcastList = channelList.channelBroadcastList
+                self.celebrityList = channelList.channelCelebrityList
             case .networkFail :
-               self.networkSimpleAlert()
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break
             }
         })
     }
-    
-
-    
-    
-    
-    
 }

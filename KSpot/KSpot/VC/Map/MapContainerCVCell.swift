@@ -15,10 +15,8 @@ class MapContainerCVCell: UICollectionViewCell {
     @IBOutlet weak var descLbl: UILabel!
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-
-   
     var channel : UserScrapVODataChannel?
-    
+    var delegate : SelectDelegate?
     func configure(data : UserScrapVOData){
         setImgWithKF(url: data.img, imgView: myImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
         titleLbl.text = data.name
@@ -36,8 +34,15 @@ class MapContainerCVCell: UICollectionViewCell {
         self.contentView.layer.borderColor = #colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1)
         self.contentView.layer.masksToBounds = true
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        collectionView.reloadData()
+    }
+    
 }
 
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension MapContainerCVCell  : UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -61,13 +66,15 @@ extension MapContainerCVCell  : UICollectionViewDataSource, UICollectionViewDele
         }
         return UICollectionViewCell()
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-       
-        return UIEdgeInsetsMake(11 ,16, 15 , 16)
+ 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let channel_ = channel {
+            delegate?.tap(selected: Int(channel_.channelID[indexPath.row]))
+        }
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension MapContainerCVCell : UICollectionViewDelegateFlowLayout {
     //section내의
     //-간격 위아래
@@ -82,5 +89,11 @@ extension MapContainerCVCell : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
        // return CGSize(width: self.frame.width, height: (364/375)*self.frame.width)
         return CGSize(width: 26, height: 26)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        return UIEdgeInsetsMake(11 ,16, 15 , 16)
     }
 }

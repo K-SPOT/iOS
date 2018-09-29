@@ -19,6 +19,7 @@ class MapContainerVC: UIViewController {
     var selectedSecondFilter : Int?
     var selectedThirdFilter : Set<UIButton>?
     var selectedRegion : Region?
+    var mapView : MapHeaderView?
     var entryPoint : EntryPoint = .local {
         didSet {
             if entryPoint == .local {
@@ -26,73 +27,81 @@ class MapContainerVC: UIViewController {
             }
         }
     }
-    var mapView : MapHeaderView?
     var defaultSpot : [UserScrapVOData]? {
         didSet {
             collectionView.reloadData()
         }
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-
-    func getDefualtMapData(){
-        var isFood = 1
-        var isCafe = 1
-        var isSights = 1
-        var isEvent = 1
-        var isEtc = 1
-        if let selectedThirdFilter_ = selectedThirdFilter {
-            
-                let buttonTagArr = selectedThirdFilter_.map({ (button) in
-                    return button.tag
-                })
-                isFood =  buttonTagArr.contains(0) ? 1: 0
-                isCafe = buttonTagArr.contains(1) ? 1 : 0
-                isSights = buttonTagArr.contains(2) ? 1 : 0
-                isEvent = buttonTagArr.contains(3) ? 1 : 0
-                isEtc = buttonTagArr.contains(4) ? 1 : 0
-                
-            
-        }
-        
-        let parentVC = self.parent as? MapVC
-        
-            if let selectedRegion_ = selectedRegion{
-                if selectedLang == .kor {
-                    regionTxt = selectedRegion_.rawValue
-                } else {
-                    regionTxt = "\(selectedRegion_)"
-                }
-            }
-       
-            mapView?.selectedRegionLbl.text = regionTxt
-            parentVC?.isGoogleMapLocation = false
-            
-            let addressGu = regionTxt
-            let order = selectedFirstFilter?.tag ?? 0
-            getDefaultSpot(url: UrlPath.spot.getURL("\(addressGu)/\(order)/\(isFood)/\(isCafe)/\(isSights)/\(isEvent)/\(isEtc)/"))
-        
-    } 
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
+    }
 }
 
+//MARK: - 지도 클릭
 extension MapContainerVC : SelectRegionDelegate {
     func tap(_ region : Region) {
         selectedRegion = region
         let parentVC = self.parent as? MapVC
         parentVC?.entryPoint = .local
         entryPoint = .local
-        getDefualtMapData()
+    }
+    
+    /**
+     entryPoint 변경되고 그것이 local 일때 (지도가 클릭되었을 경우) 실행되는 함수
+     선택된것들을 가지고 통신 함
+     */
+    func getDefualtMapData(){
+        //필터에서 아무것도 선택되지 않은상태면 디폴트는 1(선택)
+        var isFood = 1
+        var isCafe = 1
+        var isSights = 1
+        var isEvent = 1
+        var isEtc = 1
+        if let selectedThirdFilter_ = selectedThirdFilter {
+            let buttonTagArr = selectedThirdFilter_.map({ (button) in
+                return button.tag
+            })
+            isFood =  buttonTagArr.contains(0) ? 1: 0
+            isCafe = buttonTagArr.contains(1) ? 1 : 0
+            isSights = buttonTagArr.contains(2) ? 1 : 0
+            isEvent = buttonTagArr.contains(3) ? 1 : 0
+            isEtc = buttonTagArr.contains(4) ? 1 : 0
+        }
+        
+        let parentVC = self.parent as? MapVC
+        
+        if let selectedRegion_ = selectedRegion{
+            if selectedLang == .kor {
+                regionTxt = selectedRegion_.rawValue
+            } else {
+                regionTxt = "\(selectedRegion_)"
+            }
+        }
+        
+        mapView?.selectedRegionLbl.text = regionTxt
+        parentVC?.isGoogleMapLocation = false
+        
+        let addressGu = regionTxt
+        let order = selectedFirstFilter?.tag ?? 0
+        getDefaultSpot(url: UrlPath.spot.getURL("\(addressGu)/\(order)/\(isFood)/\(isCafe)/\(isSights)/\(isEvent)/\(isEtc)/"))
+        
     }
 }
 
+
+
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension MapContainerVC : UICollectionViewDataSource, UICollectionViewDelegate{
     private typealias buttonRegion = (RegionBtn, Region)
+    //버튼의 딜리게이트 설정(클릭시 tap 함수 실행)
     private func setDelegate(buttons : [RegionBtn]){
         buttons.forEach { (button) in
             button.delegate = self
@@ -172,6 +181,7 @@ extension MapContainerVC : UICollectionViewDataSource, UICollectionViewDelegate{
         
         if let cell: MapContainerCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: MapContainerCVCell.reuseIdentifier, for: indexPath) as? MapContainerCVCell
         {
+            cell.delegate = self
             if let defaultSpot_ = defaultSpot{
                 cell.configure(data : defaultSpot_[indexPath.row])
             }
@@ -181,13 +191,16 @@ extension MapContainerVC : UICollectionViewDataSource, UICollectionViewDelegate{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let defaultSpot_ = defaultSpot{
-            self.goToPlaceDetailVC(selectedIdx: defaultSpot_[indexPath.row].spotID)
+        if let defaultSpot_ = defaultSpot, let type = defaultSpot?[indexPath.row].type {
+            //0 1 2 6 - 장소, 3 4 5 - 이벤트야?
+            let isPlace = type == 0 || type == 1 || type == 2 || type == 6 ? true : false
+            self.goToPlaceDetailVC(selectedIdx: defaultSpot_[indexPath.row].spotID, isPlace: isPlace)
         }
         
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension MapContainerVC: UICollectionViewDelegateFlowLayout {
     //section내의
     //-간격 위아래
@@ -208,11 +221,22 @@ extension MapContainerVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-//통신
+//MARK: - 연예인 상세 페이지
+extension MapContainerVC : SelectDelegate {
+    func tap(selected: Int?) {
+        if let selected_ = selected {
+            self.goToCelebrityDetail(selectedIdx: selected_)
+        }
+    }
+}
+
+//MARK: - 통신
 extension MapContainerVC {
     func getDefaultSpot(url : String){
+        self.pleaseWait()
         DefaultSpotService.shareInstance.getDefaultSpot(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(let defaultSpot):
                 self.defaultSpot = defaultSpot as? [UserScrapVOData]

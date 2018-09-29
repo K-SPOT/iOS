@@ -112,7 +112,6 @@
 		3BBB7DAE2147DEBA004CC142 /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7DAD2147DEBA004CC142 /* NetworkConfiguration.swift */; };
 		3BBB7DB2214A16FE004CC142 /* GettableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB7DB1214A16FE004CC142 /* GettableService.swift */; };
 		3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D462139262800FFF08C /* AppDelegate.swift */; };
-		3BBF8D492139262800FFF08C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF8D482139262800FFF08C /* ViewController.swift */; };
 		3BBF8D4C2139262800FFF08C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF8D4A2139262800FFF08C /* Main.storyboard */; };
 		3BBF8D4E2139262800FFF08C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF8D4D2139262800FFF08C /* Assets.xcassets */; };
 		3BBF8D512139262800FFF08C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF8D4F2139262800FFF08C /* LaunchScreen.storyboard */; };
@@ -129,6 +128,7 @@
 		3BD41241215B6440008306A9 /* kakao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4123F215B6440008306A9 /* kakao.cpp */; };
 		3BD41245215B65D2008306A9 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD41244215B65D1008306A9 /* KakaoOpenSDK.framework */; };
 		3BD41247215C1A2D008306A9 /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD41246215C1A2C008306A9 /* TabbarVC.swift */; };
+		3BDD9EE0215D7530001676F9 /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDD9EDF215D7530001676F9 /* SwiftNotice.swift */; };
 		3BE666682154CAE40044801C /* DefaultSpotVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE666672154CAE40044801C /* DefaultSpotVO.swift */; };
 		3BE6666A2154CB120044801C /* DefaultSpotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE666692154CB120044801C /* DefaultSpotService.swift */; };
 		3BE6666F2156ABCB0044801C /* GoogleSpotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6666E2156ABCB0044801C /* GoogleSpotService.swift */; };
@@ -250,7 +250,6 @@
 		3BBB7DB1214A16FE004CC142 /* GettableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettableService.swift; sourceTree = "<group>"; };
 		3BBF8D432139262800FFF08C /* KSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBF8D462139262800FFF08C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3BBF8D482139262800FFF08C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3BBF8D4B2139262800FFF08C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3BBF8D4D2139262800FFF08C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BBF8D502139262800FFF08C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -270,6 +269,7 @@
 		3BD41240215B6440008306A9 /* kakao.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = kakao.hpp; sourceTree = "<group>"; };
 		3BD41244215B65D1008306A9 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = SOURCE_ROOT; };
 		3BD41246215C1A2C008306A9 /* TabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
+		3BDD9EDF215D7530001676F9 /* SwiftNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
 		3BE666672154CAE40044801C /* DefaultSpotVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSpotVO.swift; sourceTree = "<group>"; };
 		3BE666692154CB120044801C /* DefaultSpotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSpotService.swift; sourceTree = "<group>"; };
 		3BE6666E2156ABCB0044801C /* GoogleSpotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSpotService.swift; sourceTree = "<group>"; };
@@ -431,9 +431,11 @@
 		3B3DD0E8213AE29D00FD00B3 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				3BDD9EE1215DD1C3001676F9 /* Tabbar */,
 				3B3C43FF214FE01A005B8650 /* Login */,
 				3BBF8D62213936F000FFF08C /* Main */,
 				3BBB7D9021469640004CC142 /* Theme */,
+				3BD4120C2158CEB2008306A9 /* EventMore */,
 				3BBB7D7A21456D60004CC142 /* MainSearch */,
 				3B3C43C8214EDF5D005B8650 /* SearchResult */,
 				3B3C43DB214F0525005B8650 /* SearchResultMore */,
@@ -545,6 +547,7 @@
 				3B3DD16B213DA7A700FD00B3 /* WRNavigationBar */,
 				3B3DD105213B3F5400FD00B3 /* Font */,
 				3BB188382145303F0021B543 /* CosmosDistrib.swift */,
+				3BDD9EDF215D7530001676F9 /* SwiftNotice.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -784,9 +787,9 @@
 		3BBB7DB3214A17A2004CC142 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				3BF85DCD21541BBD0005C83D /* Map */,
 				3B3C441E21519C38005B8650 /* Main */,
 				3B3C441F21519C41005B8650 /* Category */,
+				3BF85DCD21541BBD0005C83D /* Map */,
 				3B3C442021519C53005B8650 /* Mypage */,
 			);
 			path = Service;
@@ -796,9 +799,9 @@
 			isa = PBXGroup;
 			children = (
 				3B3C441A21518C3E005B8650 /* DefaultVO.swift */,
-				3BF85DCC21541BB50005C83D /* Map */,
 				3B3C442321519C6D005B8650 /* Main */,
 				3B3C442221519C68005B8650 /* Category */,
+				3BF85DCC21541BB50005C83D /* Map */,
 				3B3C442121519C63005B8650 /* Mypage */,
 			);
 			path = VO;
@@ -825,18 +828,17 @@
 		3BBF8D452139262800FFF08C /* KSpot */ = {
 			isa = PBXGroup;
 			children = (
-				3BD41244215B65D1008306A9 /* KakaoOpenSDK.framework */,
 				3B3DD104213B3F4D00FD00B3 /* Resources */,
-				3BBF8D462139262800FFF08C /* AppDelegate.swift */,
-				3BBF8D482139262800FFF08C /* ViewController.swift */,
 				3B3DD0EA213AE2AF00FD00B3 /* Storyboard */,
 				3B3DD0E9213AE2A000FD00B3 /* Util */,
 				3B3DD0E8213AE29D00FD00B3 /* VC */,
+				3BBF8D462139262800FFF08C /* AppDelegate.swift */,
 				3BBF8D522139262800FFF08C /* Info.plist */,
 				3BBF8D4D2139262800FFF08C /* Assets.xcassets */,
 				3BD4123F215B6440008306A9 /* kakao.cpp */,
 				3BD41240215B6440008306A9 /* kakao.hpp */,
 				3BD4123E215B643F008306A9 /* KSpot-Bridging-Header.h */,
+				3BD41244215B65D1008306A9 /* KakaoOpenSDK.framework */,
 			);
 			path = KSpot;
 			sourceTree = "<group>";
@@ -844,12 +846,10 @@
 		3BBF8D62213936F000FFF08C /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				3BD41246215C1A2C008306A9 /* TabbarVC.swift */,
 				3BBF8D582139293600FFF08C /* MainViewController.swift */,
 				3BBF8D652139370C00FFF08C /* FirstSection */,
 				3BBF8D642139370A00FFF08C /* SecondSection */,
 				3BBF8D632139370600FFF08C /* ThirdSection */,
-				3BD4120C2158CEB2008306A9 /* EventMore */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -886,6 +886,14 @@
 				3BD4120D2158CED6008306A9 /* EventMoreVC.swift */,
 			);
 			path = EventMore;
+			sourceTree = "<group>";
+		};
+		3BDD9EE1215DD1C3001676F9 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				3BD41246215C1A2C008306A9 /* TabbarVC.swift */,
+			);
+			path = Tabbar;
 			sourceTree = "<group>";
 		};
 		3BF85DCC21541BB50005C83D /* Map */ = {
@@ -1130,7 +1138,6 @@
 				3BF85DD32154A5200005C83D /* ReviewVO.swift in Sources */,
 				3B3DD0FC213B318E00FD00B3 /* BroadcastVC.swift in Sources */,
 				3B3C440921515CB9005B8650 /* UrlPath.swift in Sources */,
-				3BBF8D492139262800FFF08C /* ViewController.swift in Sources */,
 				3B3C440B21515FCB005B8650 /* FacebookLoginService.swift in Sources */,
 				3BBF8D472139262800FFF08C /* AppDelegate.swift in Sources */,
 				3B3DD124213BFCE700FD00B3 /* Region.swift in Sources */,
@@ -1178,6 +1185,7 @@
 				3B3DD0F3213B2BC900FD00B3 /* CategoryVC.swift in Sources */,
 				3BBB7D9F2146F6D9004CC142 /* ReviewNoImgTVCell.swift in Sources */,
 				3BF85DCF21541BCB0005C83D /* PlaceDetailVO.swift in Sources */,
+				3BDD9EE0215D7530001676F9 /* SwiftNotice.swift in Sources */,
 				3BBB7D81214578C6004CC142 /* SubCelebrityVC.swift in Sources */,
 				3BBB7D83214578D2004CC142 /* SubBroadCastVC.swift in Sources */,
 				3BBF8D5B21392A0D00FFF08C /* Extensions.swift in Sources */,
@@ -1269,6 +1277,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1327,6 +1336,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

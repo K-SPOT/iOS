@@ -12,12 +12,21 @@ class MainThirdTVCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var moreBtn: UIButton!
-     @IBOutlet weak var regularLbl: UILabel!
-     @IBOutlet weak var boldLbl: UILabel!
+    @IBOutlet weak var regularLbl: UILabel!
+    @IBOutlet weak var boldLbl: UILabel!
     var isPlace : Bool = true
-    
+    var finalOffset : CGFloat = 0
+    var startOffset  : CGFloat = 0
+    var currentIdx = 0
+    var delegate : SelectSectionDelegate?
+    var popularPlaceData : [MainVODataMain]? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     func configure(section : Int){
+        //장소 셀 설정
         if section == 2 {
             isPlace = true
             if selectedLang == .kor {
@@ -28,8 +37,9 @@ class MainThirdTVCell: UITableViewCell {
                 regularLbl.text = "Hot place"
                 boldLbl.text = "BEST 10"
             }
-        } else {
-            //3
+        }
+        //이벤트 셀 설정
+        else {
             isPlace = false
             if selectedLang == .kor {
                 regularLbl.text = "이번주"
@@ -43,37 +53,21 @@ class MainThirdTVCell: UITableViewCell {
         }
     }
     
-    private var indexOfCellBeforeDragging = 0
-    private var collectionViewFlowLayout: UICollectionViewFlowLayout {
-        return collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-    }
-    var delegate : SelectSectionDelegate?
-    var popularPlaceData : [MainVODataMain]? {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+   
+    //더보기 버튼에 대한 액션 -> selectedId : -1
     @objc func tap(_ sender : UIButton){
         delegate?.tap(section: .forth, seledtedId: -1)
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         moreBtn.addTarget(self, action: #selector(tap(_:)), for: .touchUpInside)
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-      //  self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
-    }
 }
 
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension MainThirdTVCell : UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -101,16 +95,15 @@ extension MainThirdTVCell : UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let popularPlaceData_ = popularPlaceData {
             if isPlace == true {
-              delegate?.tap(section: .third, seledtedId: popularPlaceData_[indexPath.row].spotID)
+                delegate?.tap(section: .third, seledtedId: popularPlaceData_[indexPath.row].spotID)
             } else {
                 delegate?.tap(section: .forth, seledtedId: popularPlaceData_[indexPath.row].spotID)
             }
         }
     }
-    
-   
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension MainThirdTVCell: UICollectionViewDelegateFlowLayout {
     //section내의
     //-간격 위아래
@@ -131,37 +124,47 @@ extension MainThirdTVCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 33, 0, 33)
     }
-    
-    
 }
 
+//MARK: - 컬렉션뷰 드래깅
 extension MainThirdTVCell : UIScrollViewDelegate{
-    
-    private func indexOfMajorCell() -> Int {
-        let itemWidth = collectionViewFlowLayout.itemSize.width
-        
-        let proportionalOffset = collectionView.contentOffset.x / itemWidth
-        
-        let index = Int(round(proportionalOffset))
+    /**
+     현재 메인셀의 인덱스를 구하는 함수
+     */
+    private func indexOfMajorCell(direction : Direction) -> Int {
+        var index = 0
+        switch direction {
+        case .right :
+            index = currentIdx + 1
+        case .left :
+            index = currentIdx - 1
+        }
         let numberOfItems = collectionView.numberOfItems(inSection: 0)
         let safeIndex = max(0, min(numberOfItems - 1, index))
+        currentIdx = safeIndex
         return safeIndex
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        indexOfCellBeforeDragging = indexOfMajorCell()
+        startOffset = collectionView.contentOffset.x
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        // Stop scrollView sliding:
+        finalOffset = collectionView.contentOffset.x
         targetContentOffset.pointee = scrollView.contentOffset
-        
-        // calculate where scrollView should snap to:
-        let indexOfMajorCell = self.indexOfMajorCell()
-        let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        
+        if finalOffset > startOffset {
+            //뒤로 넘기기
+            let majorIdx = indexOfMajorCell(direction: .right)
+            let indexPath = IndexPath(row: majorIdx, section: 0)
+            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        } else if finalOffset < startOffset {
+            //앞으로 가기
+            let majorIdx = indexOfMajorCell(direction: .left)
+            let indexPath = IndexPath(row: majorIdx, section: 0)
+            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        } else {
+            print("둘다 아님")
+        }
     }
-    
 }
 

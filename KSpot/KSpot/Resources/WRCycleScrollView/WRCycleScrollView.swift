@@ -198,7 +198,7 @@ class WRCycleScrollView: UIView
         // 解决WRCycleCell自动偏移问题
         collectionView?.contentInset = .zero
         if isLoadOver == false {
-            changeToFirstCycleCell(animated: false)
+           // changeToFirstCycleCell(animated: false)
         }
         if showPageControl == true {
             setupPageControlFrame()

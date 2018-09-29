@@ -11,7 +11,6 @@ class MainThirdCVCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var placeLbl: UILabel!
-   
     @IBOutlet weak var myImgView: UIImageView!
     
     func configure(data : MainVODataMain) {
@@ -20,11 +19,9 @@ class MainThirdCVCell: UICollectionViewCell {
         setImgWithKF(url: data.img, imgView: myImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
     }
     
-    
     override func awakeFromNib() {
-        
-      
-        titleLbl.setLineSpacing(lineSpacing: 6); self.makeCornerRound(cornerRadius: 17)
+        titleLbl.setLineSpacing(lineSpacing: 6)
+        self.makeCornerRound(cornerRadius: 17)
     }
 }
 

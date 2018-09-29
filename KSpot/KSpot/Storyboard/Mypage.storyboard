@@ -151,14 +151,14 @@
                                                 <action selector="logoutAction:" destination="bEn-mv-NYG" eventType="touchUpInside" id="Dbc-Ps-hUq"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="짱절미미지구뿌셔 우주뿌셔 뿌셔뿌셔 다뿌셔 지구도 뿌시고 아주 그냥 다해고객님," textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b86-Co-Qvf">
-                                            <rect key="frame" x="84" y="24" width="192" height="53.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b86-Co-Qvf">
+                                            <rect key="frame" x="84" y="51" width="192" height="0.0"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안녕하세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hz-yx-fzy">
-                                            <rect key="frame" x="84" y="80" width="77" height="18"/>
+                                            <rect key="frame" x="84" y="53.5" width="77" height="18"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFL" family="NanumSquareOTF" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -340,7 +340,7 @@
             </objects>
             <point key="canvasLocation" x="-1222" y="605"/>
         </scene>
-        <!--구독-->
+        <!--SubscribeVC-->
         <scene sceneID="akE-Ls-hvI">
             <objects>
                 <viewController storyboardIdentifier="SubscribeVC" id="ahK-dc-ORU" customClass="SubscribeVC" customModule="KSpot" customModuleProvider="target" sceneMemberID="viewController">
@@ -349,16 +349,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="el9-9R-SnU">
-                                <rect key="frame" x="0.0" y="64" width="375" height="42"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="fZM-sl-CQU"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GbE-rY-WJ7">
-                                <rect key="frame" x="0.0" y="106" width="375" height="517"/>
+                                <rect key="frame" x="0.0" y="62" width="375" height="561"/>
                             </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="jgn-eU-c37">
-                                <rect key="frame" x="0.0" y="64" width="375" height="42"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="42"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UAx-Nj-G48">
                                         <rect key="frame" x="0.0" y="0.0" width="187.5" height="42"/>
@@ -399,7 +399,7 @@
                                                 </connections>
                                             </button>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LM3-Gc-tzN">
-                                                <rect key="frame" x="0.0" y="-64" width="187.5" height="3"/>
+                                                <rect key="frame" x="0.0" y="-20" width="187.5" height="3"/>
                                                 <color key="backgroundColor" red="0.41927871109999998" green="0.85189700130000001" blue="0.68716549869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="3" id="ppk-Ux-Nbl"/>
@@ -434,10 +434,6 @@
                         <viewLayoutGuide key="safeArea" id="FsA-3M-1Lb"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="구독" id="gct-sA-IRW">
-                        <barButtonItem key="backBarButtonItem" title=" " id="8r9-ne-Owk"/>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="broadcastBtn" destination="U7m-sv-Ll5" id="QNA-Wd-Fzk"/>
@@ -922,8 +918,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="aimg" width="750" height="910"/>
-        <image name="bimg" width="357" height="348"/>
+        <image name="aimg" width="197" height="183"/>
+        <image name="bimg" width="197" height="183"/>
         <image name="board_star_green" width="18" height="18"/>
         <image name="map_location_arrow" width="24" height="24"/>
         <image name="mypage_login_button" width="91" height="38"/>

@@ -38,19 +38,9 @@ class PlaceDetailFirstTVCell: UITableViewCell {
         self.collectionView.dataSource = self
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        //self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: false)
-    }
-    
 }
 
+//MARK: UICollectionViewDataSource, UICollectionViewDelegate
 extension PlaceDetailFirstTVCell : UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -92,6 +82,7 @@ extension PlaceDetailFirstTVCell : UICollectionViewDataSource, UICollectionViewD
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension PlaceDetailFirstTVCell: UICollectionViewDelegateFlowLayout {
     //section내의
     //-간격 위아래

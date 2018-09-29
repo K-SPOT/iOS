@@ -14,7 +14,6 @@ class SubscribeVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var celebrityBtn: CategoryToggleBtn!
     @IBOutlet weak var celebrityGreenView: UIView!
     @IBOutlet weak var broadcastBtn: CategoryToggleBtn!
-    
     @IBOutlet weak var broadcastGreenView: UIView!
     
     var celebritySubscriptionList : [UserSubcriptionVOBroadcast]? {
@@ -28,7 +27,6 @@ class SubscribeVC: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    
     private lazy var celebrityVC: SubCelebrityVC = {
         let storyboard = Storyboard.shared().mypageStoryboard
         var viewController = storyboard.instantiateViewController(withIdentifier: SubCelebrityVC.reuseIdentifier) as! SubCelebrityVC
@@ -40,15 +38,8 @@ class SubscribeVC: UIViewController, UIGestureRecognizerDelegate {
         var viewController = storyboard.instantiateViewController(withIdentifier: SubBroadCastVC.reuseIdentifier) as! SubBroadCastVC
         return viewController
     }()
-    
-    
-    @IBAction func switchView(_ sender: CategoryToggleBtn) {
-        updateView(selected: sender.tag)
-    }
-    
-    
-    
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         celebrityBtn.setBtn(another: broadcastBtn, bottomLine: celebrityGreenView)
@@ -57,8 +48,19 @@ class SubscribeVC: UIViewController, UIGestureRecognizerDelegate {
         updateView(selected: 0)
         setBackBtn()
         setLanguage()
+         self.navigationItem.title = selectedLang == .kor ? "구독" : "Subscribe"
         setLanguageNoti(selector: #selector(getLangInfo(_:)))
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
+    }
+    
+    @IBAction func switchView(_ sender: CategoryToggleBtn) {
+        updateView(selected: sender.tag)
+    }
+    
     @objc func getLangInfo(_ notification : Notification) {
         self.navigationItem.title = selectedLang == .kor ? "구독" : "Subscribe"
         getUserSubcription(url: UrlPath.userSubscription.getURL())
@@ -73,11 +75,10 @@ class SubscribeVC: UIViewController, UIGestureRecognizerDelegate {
             broadcastBtn.setTitle("Broadcast", for: .normal)
         }
     }
-    
 }
 
 
-//컨테이너뷰
+//MARK: - 컨테이너뷰 업데이트
 extension SubscribeVC{
     private func updateView(selected : Int) {
         if selected == 0 {
@@ -94,11 +95,13 @@ extension SubscribeVC{
     
 }
 
-//통신
+//MARK: - 통신
 extension SubscribeVC{
     func getUserSubcription(url : String){
+        self.pleaseWait()
         UserSubcriptionService.shareInstance.getSubscriptionList(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+             self.clearAllNotice()
             switch result {
             case .networkSuccess(let subsData):
                 let subsData = subsData as! UserSubcriptionVOData

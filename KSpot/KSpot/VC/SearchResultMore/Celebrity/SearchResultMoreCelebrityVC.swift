@@ -10,11 +10,16 @@ import UIKit
 
 class SearchResultMoreCelebrityVC: UIViewController, UIGestureRecognizerDelegate {
     
-    
+    @IBOutlet weak var tableView : UITableView!
     var searchData : [ChannelVODataChannelList]?
     var headerTitle = ""
     var searchString = ""
-    @IBOutlet weak var tableView : UITableView!
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getSearchData(url: UrlPath.searchResult.getURL(searchString))
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -23,28 +28,15 @@ class SearchResultMoreCelebrityVC: UIViewController, UIGestureRecognizerDelegate
         setBackBtn()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        getSearchData(url: UrlPath.searchResult.getURL(searchString))
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
     }
-    
-    
+ 
 }
 
-extension SearchResultMoreCelebrityVC : SelectSenderDelegate{
-    func tap(section: Section, seledtedId: Int, sender: mySubscribeBtn) {
-        if !isUserLogin() {
-            goToLoginPage()
-        } else {
-            let params = ["channel_id" : sender.contentIdx]
-            if sender.isSelected {
-                unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
-            } else {
-                subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
-            }
-        }
-    }
-}
 
+//MARK: - UITableViewDelegate, UITableViewDataSource
 extension SearchResultMoreCelebrityVC : UITableViewDelegate, UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,8 +45,7 @@ extension SearchResultMoreCelebrityVC : UITableViewDelegate, UITableViewDataSour
         }
         return 0
     }
-    
-    
+
     //headerSection View 만드는 것
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableCell(withIdentifier: "SearchResultHeaderCell2") as! CategoryDetailSecondTVHeaderCell
@@ -62,6 +53,7 @@ extension SearchResultMoreCelebrityVC : UITableViewDelegate, UITableViewDataSour
         return header
     }
     
+    //헤더뷰 높이
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 62
     }
@@ -77,19 +69,36 @@ extension SearchResultMoreCelebrityVC : UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let searchData_ = searchData{
-           self.goToCelebrityDetail(selectedIdx: searchData_[indexPath.row].channelID)
+            self.goToCelebrityDetail(selectedIdx: searchData_[indexPath.row].channelID)
         }
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
 }
 
-//통신
-extension SearchResultMoreCelebrityVC{
-    
+//구독
+extension SearchResultMoreCelebrityVC : SelectSenderDelegate {
+    func tap(section: Section, seledtedId: Int, sender: mySubscribeBtn) {
+        if !isUserLogin() {
+            goToLoginPage()
+        } else {
+            let params = ["channel_id" : sender.contentIdx]
+            if sender.isSelected {
+                unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
+            } else {
+                subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
+            }
+        }
+    }
+}
+
+//MARK: - 통신
+extension SearchResultMoreCelebrityVC {
     func getSearchData(url : String){
+        self.pleaseWait()
         SearchResultService.shareInstance.getSearchResult(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(let searchResultData):
                 let searchResultData_ = searchResultData as? SearchResultVOData
@@ -105,16 +114,14 @@ extension SearchResultMoreCelebrityVC{
     }
     
     func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
+        self.pleaseWait()
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
-                
                 sender.isSelected = true
-               
                 self.searchData![sender.indexPath!].subscription = 1
-                /*let indexPath = IndexPath(item: sender.indexPath!, section: 0)
-                 self.tableView.reloadRows(at: [indexPath], with: .top)*/
             case .networkFail :
                 self.networkSimpleAlert()
             default :
@@ -125,16 +132,16 @@ extension SearchResultMoreCelebrityVC{
     } //subscribe
     
     func unsubscribe(url : String, sender : mySubscribeBtn){
+        self.pleaseWait()
         ChannelSubscribeService.shareInstance.unsubscribe(url: url, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
-             
                 sender.isSelected = false
-             
                 self.searchData![sender.indexPath!].subscription = 0
             case .networkFail :
-               self.networkSimpleAlert()
+                self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break

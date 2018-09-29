@@ -6,17 +6,14 @@
 //
 
 import UIKit
-import MessageUI
-//import FBSDKLoginKit
 
 private let NAVBAR_COLORCHANGE_POINT:CGFloat = -80
 private let IMAGE_HEIGHT:CGFloat = 232
 private let SCROLL_DOWN_LIMIT:CGFloat = 100
 private let LIMIT_OFFSET_Y:CGFloat = -(IMAGE_HEIGHT + SCROLL_DOWN_LIMIT)
 
-class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate {
+class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var descLbl: UILabel!
@@ -27,13 +24,11 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     @IBOutlet weak var currentStationLbl: UILabel!
     @IBOutlet weak var prevStationLbl: UILabel!
     @IBOutlet weak var nextsStationLbl: UILabel!
-    
     @IBOutlet weak var writeReviewBtn: UIButton!
     @IBOutlet weak var locationView : UIView!
     @IBOutlet weak var contactView: UIView!
     @IBOutlet weak var contactImgView: UIImageView!
     @IBOutlet weak var contactLbl: UILabel!
-    
     @IBOutlet weak var searchWithGoogleLbl: UILabel!
     @IBOutlet weak var openCloseLbl: UILabel!
     @IBOutlet weak var openLbl: UILabel!
@@ -48,6 +43,7 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
     var scrapCount = 0
     var isPlace = true
     var myPlace : MyPlace?
+    var placeData : PlaceDetailVOData?
     var isChange : Bool? {
         didSet {
             tableView.reloadData()
@@ -59,8 +55,7 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
             }
         }
     }
-    var placeData : PlaceDetailVOData?
-    
+
     lazy var cycleScrollView:WRCycleScrollView = {
         
         let frame = CGRect(x: 0, y: -IMAGE_HEIGHT, width: CGFloat(kScreenWidth), height: IMAGE_HEIGHT)
@@ -68,13 +63,38 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
         return cycleView
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getPlaceInfo(url: UrlPath.spot.getURL("\(selectedIdx)/detail"))
+    }
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        setTableView()
+        setNavbar()
+        currentStationLbl.adjustsFontSizeToFitWidth = true
+        titleLbl.adjustsFontSizeToFitWidth = true
+        descLbl.adjustsFontSizeToFitWidth = true
+        addressLbl.sizeToFit()
+        addressLbl2.sizeToFit()
+        locationView.makeRounded(cornerRadius: 17)
+        contactView.makeRounded(cornerRadius: nil)
+        contactView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
+    }
+    
+    //구글맵으로 가는 함수
     @IBAction func goToMapAction(_ sender: Any) {
         guard let myPlace = myPlace else {return}
         let title = myPlace.name
         let lat = myPlace.lat
         let long = myPlace.long
         let query = "https://www.google.com/maps/search/\(title)/@\(lat),\(long),23z/"
-        // let query = "https://www.google.com/maps/search/?api=1&query=\(addressLbl.text!)&zoom=23"
         guard let encodedUrl = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             print("invalid url")
             return
@@ -86,6 +106,7 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
         }
     }
     
+    //리뷰 작성
     @IBAction func writeReviewAction(_ sender: Any) {
         if !isUserLogin() {
             goToLoginPage()
@@ -99,74 +120,24 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
         }
     }
     
+    //전화
     @IBAction func phoneViewAction(_ sender: Any) {
         guard let contact = placeData?.contact else {return}
         if isPlace {
             contact.makeACall()
-        } else {
-            //sendEmail(to : contact)
         }
     }
     
-    
+    //맨위로
     @IBAction func scrollToTopAction(_ sender: Any) {
         tableView.setContentOffset(CGPoint(x: 0, y : -IMAGE_HEIGHT), animated: true)
     }
     
-    
-    func sendEmail(to : String) {
-        if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self
-            mail.setToRecipients([to])
-          //  mail.setMessageBody("<p></p>", isHTML: true)
-            
-            present(mail, animated: true)
-        } else {
-            // show failure alert
-        }
-    }
-    
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        
-        controller.dismiss(animated: true)
-    }
-    
-    
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-        setTableView()
-        //setcycleScrollView()
-        setNavbar()
-        currentStationLbl.adjustsFontSizeToFitWidth = true
-        titleLbl.adjustsFontSizeToFitWidth = true
-        descLbl.adjustsFontSizeToFitWidth = true
-        //addressLbl.adjustsFontSizeToFitWidth = true
-       // addressLbl2.adjustsFontSizeToFitWidth = true
-        addressLbl.sizeToFit()
-        addressLbl2.sizeToFit()
-        locationView.makeRounded(cornerRadius: 17)
-        contactView.makeRounded(cornerRadius: nil)
-        contactView.makeViewBorder(width: 0.5, color: #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1))
-       // setLanguageNoti(selector: #selector(getLangInfo(_:)))
-    }
-    
-  /*  @objc func getLangInfo(_ notification : Notification) {
-          isChange = true
-    }
-*/
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getPlaceInfo(url: UrlPath.spot.getURL("\(selectedIdx)/detail"))
-    }
-    
-    
+    //스크랩
     @objc public func scrapAction(_sender : UIBarButtonItem) {
         if !isUserLogin() {
             goToLoginPage()
         } else {
-            //스크랩
             if navigationItem.rightBarButtonItems?[0] == whiteScrapBarBtn! || navigationItem.rightBarButtonItems?[0] == blackScrapBarBtn! {
                 let param : [String : Any] = ["spot_id":selectedIdx]
                 scrap(url: UrlPath.spotSubscription.getURL(), params: param, sender: _sender)
@@ -175,14 +146,9 @@ class PlaceDetailVC: UIViewController, UIGestureRecognizerDelegate, MFMailCompos
             }
         }
     }
-    
-    deinit {
-        tableView.delegate = nil
-        print("ZhiHuVC deinit")
-    }
 }
 
-//네비게이션 바, 테이블뷰, 스크롤뷰 설정
+//MARK: - 네비게이션 바, 테이블뷰, 스크롤뷰 설정
 extension PlaceDetailVC {
     
     func setNavbar(){
@@ -251,22 +217,32 @@ extension PlaceDetailVC {
         //
         let desc = placeData.description
        
-        if let range = desc.range(of: "\n") {
+        if let range = desc.range(of: "\r\n") {
             let prefix = desc[..<range.lowerBound] // or str[str.startIndex..<range.lowerBound]
             let suffix = desc[range.upperBound..<desc.endIndex]
             let totalString = prefix+" "+suffix
             descLbl.text = totalString.description
-        } else {
+        }
+        else if let range = desc.range(of: "\n"){
+            let prefix = desc[..<range.lowerBound] // or str[str.startIndex..<range.lowerBound]
+            let suffix = desc[range.upperBound..<desc.endIndex]
+            let totalString = prefix+" "+suffix
+            descLbl.text = totalString.description
+        }
+        else {
              descLbl.text = placeData.description
         }
         addressLbl.text = placeData.address
         addressLbl2.text = placeData.address
+        addressLbl2.adjustsFontSizeToFitWidth = true
         currentStationLbl.text = placeData.station
         prevStationLbl.text = placeData.prevStation
+        prevStationLbl.adjustsFontSizeToFitWidth = true
         nextsStationLbl.text = placeData.nextStation
-        if let lineNum = Int(placeData.lineNumber){
-            staionImgView.image = UIImage(named: "place_detail_line_\(lineNum)")
-            lineNumImgView.image = UIImage(named: "place_detail_dot_\(lineNum)")
+        nextsStationLbl.adjustsFontSizeToFitWidth = true
+        if let lineNum = LineNumber(rawValue : placeData.lineNumber) {
+            staionImgView.image = UIImage(named: lineNum.lineImgName)
+            lineNumImgView.image = UIImage(named: lineNum.dotImgName)
         }
     } //setHeaderView
     
@@ -312,12 +288,10 @@ extension PlaceDetailVC {
 
 // MARK: - ScrollViewDidScroll
 extension PlaceDetailVC {
-    func scrollViewDidScroll(_ scrollView: UIScrollView)
-    {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         
-        if (offsetY > NAVBAR_COLORCHANGE_POINT)
-        {
+        if (offsetY > NAVBAR_COLORCHANGE_POINT) {
             navBarTintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             navigationItem.rightBarButtonItems?[1].tintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
@@ -329,9 +303,8 @@ extension PlaceDetailVC {
             
             let alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / CGFloat(kNavBarBottom)
             navBarBackgroundAlpha = alpha
-        }
-        else
-        {
+            
+        } else {
             navBarTintColor = .white
             navigationItem.leftBarButtonItem?.tintColor = .white
             navigationItem.rightBarButtonItems?[1].tintColor = .white
@@ -343,31 +316,30 @@ extension PlaceDetailVC {
             navBarBackgroundAlpha = 0
         }
         
-        // 限制下拉距离
+        // 풀 다운 한계
         if (offsetY < LIMIT_OFFSET_Y) {
             scrollView.contentOffset = CGPoint.init(x: 0, y: LIMIT_OFFSET_Y)
         }
         
-        // 改变图片框的大小 (上滑的时候不改变)
-        // 这里不能使用offsetY，因为当（offsetY < LIMIT_OFFSET_Y）的时候，y = LIMIT_OFFSET_Y 不等于 offsetY
+        // 사진의 크기 변경 (위로올릴때는 변하지 않음)
+        // 여기서는 offsetY 사용 불가.（offsetY < LIMIT_OFFSET_Y） 일때, y = LIMIT_OFFSET_Y 는 offsetY 대응되지 않기 때문
         let newOffsetY = scrollView.contentOffset.y
-        if (newOffsetY < -IMAGE_HEIGHT)
-        {
+        if (newOffsetY < -IMAGE_HEIGHT) {
             cycleScrollView.frame = CGRect(x: 0, y: newOffsetY, width: CGFloat(kScreenWidth), height: -newOffsetY)
         }
     }
     
     // private
-    fileprivate func imageScaledToSize(image:UIImage, newSize:CGSize) -> UIImage
-    {
+   /* fileprivate func imageScaledToSize(image:UIImage, newSize:CGSize) -> UIImage {
         UIGraphicsBeginImageContext(CGSize(width: newSize.width * 2.0, height: newSize.height * 2.0))
         image.draw(in: CGRect(x: 0, y: 0, width: newSize.width * 2.0, height: newSize.height * 2.0))
         let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext() ?? image
         UIGraphicsEndImageContext()
         return newImage
-    }
+    }*/
 }
 
+//MARK: - UITableViewDelegate,UITableViewDataSource
 extension PlaceDetailVC: UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -404,9 +376,9 @@ extension PlaceDetailVC: UITableViewDelegate,UITableViewDataSource{
     
 }
 
+//MARK: - 관련 연예인/방송 구독 / 연예인 디테일 / 리뷰 보기
 extension PlaceDetailVC : SelectSectionDelegate, SelectSenderDelegate {
-    
-    //SelectSenderDelegate
+    //SelectSenderDelegate -  관련 연예인/방송 구독
     func tap(section: Section, seledtedId: Int, sender: mySubscribeBtn) {
         if !isUserLogin() {
             goToLoginPage()
@@ -421,7 +393,6 @@ extension PlaceDetailVC : SelectSectionDelegate, SelectSenderDelegate {
     }
     //SelectSectionDelegate
     func tap(section: Section, seledtedId: Int) {
-        
         //관련/연예인 방송
         if section == .first {
             self.goToCelebrityDetail(selectedIdx : seledtedId)
@@ -437,18 +408,18 @@ extension PlaceDetailVC : SelectSectionDelegate, SelectSenderDelegate {
                 }
                 self.navigationController?.pushViewController(reviewContainerVC, animated: true)
             }
-            
-            
         }
     }
 }
 
 
-//통신
+//MARK: - 통신
 extension PlaceDetailVC {
     func getPlaceInfo(url : String){
+         self.pleaseWait()
         PlaceDetailService.shareInstance.getPlaceData(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+             self.clearAllNotice()
             switch result {
             case .networkSuccess(let placeData):
                 let placeData_ = placeData as! [PlaceDetailVOData]
@@ -464,8 +435,10 @@ extension PlaceDetailVC {
     }
     
     func scrap(url : String, params : [String:Any], sender : UIBarButtonItem){
+         self.pleaseWait()
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+             self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
                 if self.navigationItem.rightBarButtonItems?[0] == self.whiteScrapBarBtn! {
@@ -490,8 +463,10 @@ extension PlaceDetailVC {
     } //subscribe
     
     func unscrap(url : String, sender : UIBarButtonItem){
+         self.pleaseWait()
         ChannelSubscribeService.shareInstance.unsubscribe(url: url, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+            self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
                 if self.navigationItem.rightBarButtonItems?[0] == self.whiteFullScrapBarBtn! {

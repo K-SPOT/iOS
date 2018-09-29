@@ -24,7 +24,7 @@ class SubCelebrityVC: UIViewController {
 
 }
 
-
+//MARK: - UITableViewDelegate, UITableViewDataSource
 extension SubCelebrityVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let celebritySubscriptionList_ = celebritySubscriptionList {

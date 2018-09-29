@@ -13,6 +13,43 @@ enum Language : Int {
     case eng = 1
 }
 
+enum LoginType {
+    case kakao
+    case facebook
+}
+
+enum Direction {
+    case right
+    case left
+}
+
+enum LineNumber : String {
+    case one = "1"
+    case two = "2"
+    case three = "3"
+    case four = "4"
+    case five = "5"
+    case six = "6"
+    case seven = "7"
+    case eight = "8"
+    case nine = "9"
+    case gyeonguijungang  = "경의중앙"
+    case shinbundang = "신분당"
+    case bundang = "분당"
+    
+    var lineImgName : String  {
+        return "place_detail_line_\(self)"
+    }
+    var dotImgName : String  {
+        if selectedLang == .kor {
+            return "place_detail_dot_\(self)"
+        } else {
+            return "place_detail_dot_\(self)_eng"
+        }
+        
+    }
+}
+
 enum Distance : String {
     case oneHM = "100m"
     case threeHM = "300m"

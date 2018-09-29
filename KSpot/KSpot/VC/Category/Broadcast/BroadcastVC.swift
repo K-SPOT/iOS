@@ -23,28 +23,16 @@ class BroadcastVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame : .zero)
-      
     }
-
-
-}
-
-extension BroadcastVC : SelectSenderDelegate {
-    func tap(section : Section, seledtedId : Int, sender : mySubscribeBtn){
-        if !isUserLogin() {
-            goToLoginPage()
-        } else {
-            let params = ["channel_id" : sender.contentIdx]
-            if sender.isSelected {
-                unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
-            } else {
-                subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
-            }
-        }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
     }
 }
 
 
+//MARK: - UITableViewDelegate, UITableViewDataSource
 extension BroadcastVC : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let broadcastList_ = broadcastList {
@@ -70,10 +58,29 @@ extension BroadcastVC : UITableViewDelegate, UITableViewDataSource{
     }
 }
 
+//MARK: - 구독
+extension BroadcastVC : SelectSenderDelegate {
+    func tap(section : Section, seledtedId : Int, sender : mySubscribeBtn){
+        if !isUserLogin() {
+            goToLoginPage()
+        } else {
+            let params = ["channel_id" : sender.contentIdx]
+            if sender.isSelected {
+                unsubscribe(url: UrlPath.channelSubscription.getURL(sender.contentIdx?.description), sender: sender)
+            } else {
+                subscribe(url: UrlPath.channelSubscription.getURL(), params: params, sender: sender)
+            }
+        }
+    }
+}
+
+//MARK: - 통신
 extension BroadcastVC {
     func subscribe(url : String, params : [String:Any], sender : mySubscribeBtn){
+         self.pleaseWait()
         ChannelSubscribeService.shareInstance.subscribe(url: url, params : params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+             self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
                
@@ -89,11 +96,12 @@ extension BroadcastVC {
     } //subscribe
     
     func unsubscribe(url : String, sender : mySubscribeBtn){
+         self.pleaseWait()
         ChannelSubscribeService.shareInstance.unsubscribe(url: url, completion: { [weak self] (result) in
             guard let `self` = self else { return }
+             self.clearAllNotice()
             switch result {
             case .networkSuccess(_):
-                
                 sender.isSelected = false
                 self.broadcastList![sender.indexPath!].subscription = 0
             case .networkFail :

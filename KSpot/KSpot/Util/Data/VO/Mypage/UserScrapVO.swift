@@ -21,12 +21,13 @@ struct UserScrapVOData: Codable {
     let channel: UserScrapVODataChannel
     let station: String
     let reviewScore: Double
+    let type : Int?
     
     enum CodingKeys: String, CodingKey {
         case img, name
         case addressGu = "address_gu"
         case spotID = "spot_id"
-        case description, channel, station
+        case description, channel, station, type
         case reviewScore = "review_score"
     }
 }

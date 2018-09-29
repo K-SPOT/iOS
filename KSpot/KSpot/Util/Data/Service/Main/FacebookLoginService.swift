@@ -24,7 +24,7 @@ struct FacebookLoginService: PostableService {
                 case HttpResponseCode.SERVER_ERROR.rawValue :
                     completion(.serverErr)
                 default :
-                    print("login error")
+                    print("no 201/204/500 rescode is \(networkResult.resCode)")
                     break
                 }
                 

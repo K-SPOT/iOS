@@ -36,12 +36,15 @@ class MyPageContainerVC: UIViewController {
             updateView(selected: 0)
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = selectedLang == .kor ? "마이페이지" : "MY PAGE"
         setTranslationBtn()
         setLanguageNoti(selector: #selector(getLangInfo(_:)))
+        setNavTitleImg()
     }
+    
     @objc func getLangInfo(_ notification : Notification) {
         self.navigationItem.title = selectedLang == .kor ? "마이페이지" : "MY PAGE"
     }
@@ -59,5 +62,16 @@ class MyPageContainerVC: UIViewController {
         }
     }
 
+    //네비게이션 타이틀 이미지 설정
+    func setNavTitleImg(){
+        //setupTitleNavImg
+        let titleImageView = UIImageView(image: #imageLiteral(resourceName: "main_logo"))
+        titleImageView.contentMode = .scaleAspectFit
+        titleImageView.snp.makeConstraints { (make) in
+            make.height.equalTo(19)
+            make.width.equalTo(71)
+        }
+        navigationItem.titleView = titleImageView
+    }
 
 }

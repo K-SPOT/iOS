@@ -26,14 +26,19 @@ class ScrapVC: UIViewController, UIGestureRecognizerDelegate {
         collectionView.dataSource = self
         setLanguageNoti(selector: #selector(getLangInfo(_:)))
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.clearAllNotice()
+    }
+    
     @objc func getLangInfo(_ notification : Notification) {
         self.navigationItem.title = selectedLang == .kor ? "스크랩" : "Scrap"
         getUserScrap(url: UrlPath.userScrap.getURL())
     }
-    
-
 }
 
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension ScrapVC : UICollectionViewDataSource, UICollectionViewDelegate{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -51,9 +56,11 @@ extension ScrapVC : UICollectionViewDataSource, UICollectionViewDelegate{
         
         if let cell: MapContainerCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScrapCVCell", for: indexPath) as? MapContainerCVCell
         {
+            cell.delegate = self
             if let userScrapList_ = userScrapList {
                 cell.configure(data: userScrapList_[indexPath.row])
             }
+            
             return cell
         }
         return UICollectionViewCell()
@@ -67,6 +74,7 @@ extension ScrapVC : UICollectionViewDataSource, UICollectionViewDelegate{
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension ScrapVC: UICollectionViewDelegateFlowLayout {
     //section내의
     //-간격 위아래
@@ -87,11 +95,22 @@ extension ScrapVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-//통신
+//MARK: - 연예인 상세 페이지
+extension ScrapVC : SelectDelegate {
+    func tap(selected: Int?) {
+        if let selected_ = selected {
+            self.goToCelebrityDetail(selectedIdx: selected_)
+        }
+    }
+}
+
+//MARK: - 통신
 extension ScrapVC {
     func getUserScrap(url : String){
+        self.pleaseWait()
         UserScrapService.shareInstance.getScrapList(url: url,completion: { [weak self] (result) in
             guard let `self` = self else { return }
+             self.clearAllNotice()
             switch result {
             case .networkSuccess(let scrapData):
                 let scrapData = scrapData as! [UserScrapVOData]
