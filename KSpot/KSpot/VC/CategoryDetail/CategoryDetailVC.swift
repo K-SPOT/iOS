@@ -35,7 +35,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
         let label = UILabel()
         label.backgroundColor = UIColor.clear
         label.textColor = .black
-        label.text = "짱절미"
+        label.text = ""
         label.textAlignment = .left
         label.font = UIFont(name: NanumSquareOTF.NanumSquareOTFB.rawValue, size: 20)
         return label
@@ -44,7 +44,7 @@ class CategoryDetailVC: UIViewController, UIGestureRecognizerDelegate{
         let label = UILabel()
         label.backgroundColor = UIColor.clear
         label.textColor = #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1)
-        label.text = "절미쓰 엔터테이먼트"
+        label.text = ""
         label.textAlignment = .left
         label.font = UIFont(name: NanumSquareOTF.NanumSquareOTFR.rawValue, size: 14)
         return label

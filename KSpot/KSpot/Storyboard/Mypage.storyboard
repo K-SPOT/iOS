@@ -151,14 +151,14 @@
                                                 <action selector="logoutAction:" destination="bEn-mv-NYG" eventType="touchUpInside" id="Dbc-Ps-hUq"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="짱절미미지구뿌셔 우주뿌셔 뿌셔뿌셔 다뿌셔 지구도 뿌시고 아주 그냥 다해고객님," textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b86-Co-Qvf">
-                                            <rect key="frame" x="84" y="24" width="192" height="53.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b86-Co-Qvf">
+                                            <rect key="frame" x="84" y="51" width="192" height="0.0"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFB" family="NanumSquareOTF" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안녕하세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hz-yx-fzy">
-                                            <rect key="frame" x="84" y="80" width="77" height="18"/>
+                                            <rect key="frame" x="84" y="53.5" width="77" height="18"/>
                                             <fontDescription key="fontDescription" name="NanumSquareOTFL" family="NanumSquareOTF" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>

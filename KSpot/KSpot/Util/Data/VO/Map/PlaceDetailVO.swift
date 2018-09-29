@@ -20,7 +20,8 @@ struct PlaceDetailVOData: Codable {
     let reviewScore : Double
     let reviewCnt: Int
     let station, prevStation, nextStation, openTime: String
-    let closeTime, contact, lineNumber: String
+    let closeTime, contact : String
+    let lineNumber: String
     let scrapCnt, isScrap: Int
     var channel: PlaceDetailVODataChannel
     let reviews: [PlaceDetailVODataReview]

@@ -191,8 +191,10 @@ extension MapContainerVC : UICollectionViewDataSource, UICollectionViewDelegate{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let defaultSpot_ = defaultSpot{
-            self.goToPlaceDetailVC(selectedIdx: defaultSpot_[indexPath.row].spotID)
+        if let defaultSpot_ = defaultSpot, let type = defaultSpot?[indexPath.row].type {
+            //0 1 2 6 - 장소, 3 4 5 - 이벤트야?
+            let isPlace = type == 0 || type == 1 || type == 2 || type == 6 ? true : false
+            self.goToPlaceDetailVC(selectedIdx: defaultSpot_[indexPath.row].spotID, isPlace: isPlace)
         }
         
     }

@@ -240,9 +240,9 @@ extension PlaceDetailVC {
         prevStationLbl.adjustsFontSizeToFitWidth = true
         nextsStationLbl.text = placeData.nextStation
         nextsStationLbl.adjustsFontSizeToFitWidth = true
-        if let lineNum = Int(placeData.lineNumber){
-            staionImgView.image = UIImage(named: "place_detail_line_\(lineNum)")
-            lineNumImgView.image = UIImage(named: "place_detail_dot_\(lineNum)")
+        if let lineNum = LineNumber(rawValue : placeData.lineNumber) {
+            staionImgView.image = UIImage(named: lineNum.lineImgName)
+            lineNumImgView.image = UIImage(named: lineNum.dotImgName)
         }
     } //setHeaderView
     
