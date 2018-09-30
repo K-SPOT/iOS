@@ -100,13 +100,10 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 var imageArr : [InputSource] = mainData_.theme.flatMap({ (data) in
                     KingfisherSource(urlString: data.mainImg)
                 })
-              //  var imageArr: [InputSource] = []
                 if selectedLang == .kor {
                     imageArr.insert(ImageSource(imageString: "main_theme_img_today")!, at: 0)
-                    /*imageArr.append(contentsOf: [ImageSource(imageString: "main_theme_img_today")!, ImageSource(imageString: "main_theme_img_bts")!, ImageSource(imageString: "main_theme_img_birthday")!, ImageSource(imageString: "main_theme_img_cafe")!, ImageSource(imageString: "main_theme_img_drama")!, ImageSource(imageString: "main_theme_img_trails")!])*/
                 } else {
                     imageArr.insert(ImageSource(imageString: "main_theme_img_today_eng")!, at: 0)
-                  /*  imageArr.append(contentsOf: [ImageSource(imageString: "main_theme_img_today_eng")!, ImageSource(imageString: "main_theme_img_bts_eng")!, ImageSource(imageString: "main_theme_img_birthday_eng")!, ImageSource(imageString: "main_theme_img_cafe_eng")!, ImageSource(imageString: "main_theme_img_drama_eng")!, ImageSource(imageString: "main_theme_img_trails_eng")!])*/
                 }
                 cell.imageSource = imageArr
             }
