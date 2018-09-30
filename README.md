@@ -51,8 +51,7 @@
 
 ## [ WorkFlow ]
 
-
-
+![workflow](https://github.com/K-SPOT/iOS/blob/master/publicData/images/workflow.jpeg)
 
 ## [ Develop Environment ]
 
