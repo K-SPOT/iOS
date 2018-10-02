@@ -41,10 +41,10 @@ enum LineNumber : String {
         return "place_detail_line_\(self)"
     }
     var dotImgName : String  {
-        if selectedLang == .kor {
-            return "place_detail_dot_\(self)"
-        } else {
+        if (selectedLang == .eng) && (self == .gyeonguijungang || self == .shinbundang || self == .bundang) {
             return "place_detail_dot_\(self)_eng"
+        } else {
+            return "place_detail_dot_\(self)"
         }
         
     }
