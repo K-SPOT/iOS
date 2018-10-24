@@ -511,9 +511,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="descLbl" destination="VAu-4z-39J" id="DZ3-Go-QEo"/>
+                                            <outlet property="descLbl" destination="jIy-7L-aEt" id="xmO-eS-VX0"/>
                                             <outlet property="myImgView" destination="hF9-jb-g8o" id="p1B-UE-2Lm"/>
-                                            <outlet property="placeLbl" destination="jIy-7L-aEt" id="qJ9-Sq-9Eb"/>
+                                            <outlet property="placeLbl" destination="VAu-4z-39J" id="tQb-p0-fyd"/>
                                             <outlet property="scrapCountLbl" destination="1Df-m7-mua" id="BS6-vV-pDF"/>
                                             <outlet property="titleLbl" destination="HyK-A5-klr" id="tCP-OP-gNU"/>
                                         </connections>
@@ -843,14 +843,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="aimg" width="750" height="910"/>
+        <image name="aimg" width="197" height="183"/>
         <image name="board_star_green" width="18" height="18"/>
         <image name="category_detail_location_arrow" width="12" height="17"/>
         <image name="category_detail_subscription_green" width="57" height="24"/>
         <image name="category_detail_top_button" width="44" height="44"/>
         <image name="category_detail_unscrap" width="11" height="15"/>
         <image name="category_search" width="24" height="24"/>
-        <image name="cimg" width="319" height="351"/>
+        <image name="cimg" width="197" height="183"/>
         <image name="main_arrow" width="15" height="15"/>
         <image name="map_location_arrow" width="24" height="24"/>
     </resources>
