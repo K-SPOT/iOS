@@ -16,10 +16,12 @@ class CategoryDetailSecondTVCell: UITableViewCell {
     @IBOutlet weak var placeLbl : UILabel!
     @IBOutlet weak var scrapCountLbl : UILabel!
     
+   
+    
     func configure(data : ChannelDetailVODataRelatedChannel){
         setImgWithKF(url: data.img, imgView: myImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
         titleLbl.text = data.name
-        descLbl.text = data.description
+        descLbl.text = data.description.getMultiToOneLine()
         placeLbl.text = "\(data.addressGu) · \(data.station)"
         scrapCountLbl.text = data.scrapCnt.description
     }
@@ -28,7 +30,7 @@ class CategoryDetailSecondTVCell: UITableViewCell {
     func configure2(data : SearchResultVODataPlace){
         setImgWithKF(url: data.img, imgView: myImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
         titleLbl.text = data.name
-        descLbl.text = data.description
+        descLbl.text = data.description.getMultiToOneLine()
         placeLbl.text = "\(data.addressGu) · \(data.station)"
         scrapCountLbl.text = data.scrapCnt.description
     }
