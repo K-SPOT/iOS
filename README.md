@@ -2,6 +2,7 @@
 
 
 ## [ About ]
+[K-SPOT 기술 설명 PDF](https://github.com/K-SPOT/iOS/blob/master/publicData/Kspot_UI_description.pdf)
 
 **K-SPOT**은 **연예인 관련 장소 추천 서비스**입니다. 
 
