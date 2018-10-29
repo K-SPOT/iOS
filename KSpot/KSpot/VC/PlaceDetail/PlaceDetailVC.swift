@@ -214,24 +214,8 @@ extension PlaceDetailVC {
         scrapCount = placeData.scrapCnt
         ratingLbl.text = placeData.reviewScore.description
         titleLbl.text = placeData.name
-        //
-        let desc = placeData.description
        
-        if let range = desc.range(of: "\r\n") {
-            let prefix = desc[..<range.lowerBound] // or str[str.startIndex..<range.lowerBound]
-            let suffix = desc[range.upperBound..<desc.endIndex]
-            let totalString = prefix+" "+suffix
-            descLbl.text = totalString.description
-        }
-        else if let range = desc.range(of: "\n"){
-            let prefix = desc[..<range.lowerBound] // or str[str.startIndex..<range.lowerBound]
-            let suffix = desc[range.upperBound..<desc.endIndex]
-            let totalString = prefix+" "+suffix
-            descLbl.text = totalString.description
-        }
-        else {
-             descLbl.text = placeData.description
-        }
+        descLbl.text = placeData.description.getMultiToOneLine()
         addressLbl.text = placeData.address
         addressLbl2.text = placeData.address
         addressLbl2.adjustsFontSizeToFitWidth = true

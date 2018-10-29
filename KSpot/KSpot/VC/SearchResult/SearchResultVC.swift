@@ -306,6 +306,7 @@ extension SearchResultVC {
             case .networkSuccess(_):
                 sender.isSelected = true
                 self.searchResultData?.channel[sender.indexPath!].subscription = 1
+            case .networkFail :
                 self.networkSimpleAlert()
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")

@@ -427,5 +427,27 @@ extension String {
     }
 }
 
+extension String {
+    func getMultiToOneLine() -> String{
+        let data = self
+        let desc = data
+        if let range = desc.range(of: "\r\n") {
+            let prefix = desc[..<range.lowerBound] // or str[str.startIndex..<range.lowerBound]
+            let suffix = desc[range.upperBound..<desc.endIndex]
+            let totalString = prefix+" "+suffix
+            return totalString.description
+        }
+        else if let range = desc.range(of: "\n"){
+            let prefix = desc[..<range.lowerBound] // or str[str.startIndex..<range.lowerBound]
+            let suffix = desc[range.upperBound..<desc.endIndex]
+            let totalString = prefix+" "+suffix
+            return totalString.description
+        }
+        else {
+            return data
+        }
+    }
+}
+
 
 

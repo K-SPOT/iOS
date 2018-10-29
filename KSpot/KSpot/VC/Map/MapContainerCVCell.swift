@@ -21,7 +21,7 @@ class MapContainerCVCell: UICollectionViewCell {
         setImgWithKF(url: data.img, imgView: myImgView, defaultImg: #imageLiteral(resourceName: "aimg"))
         titleLbl.text = data.name
         ratingLbl.text = data.reviewScore.description
-        descLbl.text = data.description
+        descLbl.text = data.description.getMultiToOneLine()
         locationLbl.text = "\(data.addressGu) · \(data.station)"
         channel = data.channel
     }
