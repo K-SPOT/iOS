@@ -70,8 +70,8 @@ class LoginVC: UIViewController {
 
     // MARK: - 페이스북 로그인
     @IBAction func facebookLoginAction(_ sender: UIButton) {
-        simpleAlert(title: "알림", message: "안드로이드와 동일한 테스트 환경을 위해 페이스북 로그인은 현재 잠시 중단되어있습니다")
-       /* //카카오톡 세션 열려있으면 닫기
+       // simpleAlert(title: "알림", message: "안드로이드와 동일한 테스트 환경을 위해 페이스북 로그인은 현재 잠시 중단되어있습니다")
+        //카카오톡 세션 열려있으면 닫기
         let session: KOSession = KOSession.shared();
         
         if session.isOpen() {
@@ -95,13 +95,13 @@ class LoginVC: UIViewController {
                     self.facebookLogin(url: UrlPath.facebookLogin.getURL(), params: param)
                 }
             }
-        }*/
+        }
     } //fbLogin
     
     // MARK: - 카카오톡 로그인
     @IBAction func loginWithKakao(_ sender: Any) {
-        simpleAlert(title: "알림", message: "안드로이드와 동일한 테스트 환경을 위해 카카오톡 로그인은 현재 잠시 중단되어있습니다")
-        /*//페이스북 열려있으면 닫기
+        //simpleAlert(title: "알림", message: "안드로이드와 동일한 테스트 환경을 위해 카카오톡 로그인은 현재 잠시 중단되어있습니다")
+        //페이스북 열려있으면 닫기
         if FBSDKAccessToken.current() != nil{
             let fbLoginManager = FBSDKLoginManager()
             fbLoginManager.logOut()
@@ -137,7 +137,7 @@ class LoginVC: UIViewController {
                     }
                 }
             }
-        })*/
+        })
     } //kakao login
     
     //temp login
