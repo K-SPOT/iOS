@@ -19,7 +19,7 @@ class MainFirstTVCell: UITableViewCell {
         super.awakeFromNib()
         slideshow.slideshowInterval = 5.0
         slideshow.pageIndicatorPosition = .init(horizontal: .center, vertical: .customUnder(padding: 30))
-        slideshow.contentScaleMode = UIViewContentMode.scaleAspectFill
+        slideshow.contentScaleMode = UIViewContentMode.scaleAspectFit
         //slideshow.contentScaleMode = UIViewContentMode.scaleAspectFit
         
         let pageControl = UIPageControl()
